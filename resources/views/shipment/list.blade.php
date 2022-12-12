@@ -427,10 +427,10 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
                         data: 'sale_date'
                     },
                     {
-                        data: 'est_arrival_date'
+                        data: 'cut_off_date'
                     },
                     {
-                        data: 'ship_date'
+                        data: 'est_arrival_date'
                     },
                     {
                         data: 'shipper'
