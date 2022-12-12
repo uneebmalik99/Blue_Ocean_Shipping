@@ -25,7 +25,7 @@
 
 
       $('#notes').postitall({
-          content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+          content: '',
           width: 150,
           height: 200,
           posX: 50,
@@ -45,7 +45,7 @@
           var a = $("#the_notes div.PIApostit").last().css("top");
           var b = $("#the_notes div.PIApostit").last().css("left");
           $.PostItAll.new({
-              content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+              content: '',
               width: 150,
               height: 200,
               posX: parseInt(b, 10) + 10, //185
@@ -95,7 +95,7 @@
   function setSticky() {
 
       $('#notes').postitall({
-          content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+          content: '',
           width: 150,
           height: 200,
           posX: 50,
@@ -110,7 +110,7 @@
       });
 
       $('#notes1').postitall({
-          content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+          content: '',
           width: 150,
           height: 200,
           posX: 230,

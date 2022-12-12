@@ -15,7 +15,7 @@
                             <i class="icofont icofont-rounded-down"></i>
                         </div>
                         <div class="card-header-right rounded d-flex align-items-center h-50 p-1 mr-2"
-                            style="background: >
+                             >
                             <i class="icofont icofont-refresh"></i>
                         </div>
                         <div class="card-header-right rounded d-flex align-items-center h-50 p-1"
@@ -34,7 +34,9 @@
             <div id="sticky-body">
                 <div class="row">
                     <div class="col-sm-2">
-                        <p id="notes" class="notes"></p>
+                        <p id="notes" class="notes">
+                            
+                        </p>
                     </div>
                     <div class="col-sm-2">
                         <p id="notes1" class="notes1"></p>
