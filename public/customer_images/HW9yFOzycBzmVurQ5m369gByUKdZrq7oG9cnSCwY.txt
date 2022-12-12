@@ -1,0 +1,3580 @@
+-- phpMyAdmin SQL Dump
+-- version 5.0.4
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Nov 14, 2022 at 11:47 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 8.0.2
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `blue_ocean_shipping`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `auctions`
+--
+
+CREATE TABLE `auctions` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `location` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `auctions`
+--
+
+INSERT INTO `auctions` (`id`, `name`, `location`, `date`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'kashif', NULL, NULL, '1', '2022-10-19 19:50:47', '2022-10-19 19:50:47');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `auction_copies`
+--
+
+CREATE TABLE `auction_copies` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `size` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `vehicle_id` bigint(20) UNSIGNED NOT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `auction_copies`
+--
+
+INSERT INTO `auction_copies` (`id`, `name`, `type`, `size`, `vehicle_id`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(3, 'auction_copies/jwKJRV94gFzUxIHYoiao34jSkEDqfq74ZTY1WwHp.txt', 'txt', '0.079 kb', 71, NULL, '2022-09-21 05:16:20', '2022-09-21 05:16:20'),
+(4, 'auction_copies/1GSEAYX0AoUnkBJEHB6Qi9aM6gcImfj8zvC9MNMH.pdf', 'pdf', '67.406 kb', 51, NULL, '2022-10-07 14:54:19', '2022-10-07 14:54:19'),
+(5, 'auction_copies/KMrXROxkTbrYmd2bIv4uRWuVCmR4gVe2Y3SH306o.pdf', 'pdf', '67.406 kb', 11, NULL, '2022-10-12 16:23:52', '2022-10-12 16:23:52'),
+(6, 'auction_copies/0PmXHLJixtLY0o6E5E7sJK3Cc6lxPrAzRQFOfo7y.pdf', 'pdf', '67.406 kb', 29, NULL, '2022-10-12 17:35:24', '2022-10-12 17:35:24'),
+(7, 'vehicle_images/JOuhzJubfYPUzgeyeS4aJxJuWWEASa7iFUP1pKZz.pdf', 'pdf', '75.793 kb', 23, NULL, '2022-10-14 20:01:19', '2022-10-14 20:01:19'),
+(8, 'vehicle_images/6S3pZeJ77y1wgcBgkrIPU7ZoWBtj4RQeEYMrao09.pdf', 'pdf', '67.406 kb', 34, NULL, '2022-10-14 20:37:48', '2022-10-14 20:37:48'),
+(9, 'vehicle_images/4o0L6VVKjxGJVfCgr8ISOmnaLEzBw8y3DxGrTRtD.pdf', 'pdf', '67.406 kb', 34, NULL, '2022-10-14 20:38:05', '2022-10-14 20:38:05'),
+(10, 'vehicle_images/FlWOSoWXQlzoJRyP2NxkhFotifSiTJpEfsJAV2y9.pdf', 'pdf', '67.406 kb', 34, NULL, '2022-10-14 20:38:15', '2022-10-14 20:38:15'),
+(11, 'vehicle_images/cxHtLdzFsDpu1TxBB9uycOQj90wxWy2NThDa2zFr.pdf', 'pdf', '67.406 kb', 34, NULL, '2022-10-14 20:38:25', '2022-10-14 20:38:25'),
+(12, 'vehicle_images/cUJj6mbhm0BSf2WIdlvKlDcvLFSVrauFGUOpxcLn.pdf', 'pdf', '67.406 kb', 39, NULL, '2022-10-14 20:39:20', '2022-10-14 20:39:20'),
+(13, 'vehicle_images/LPaKxSUJ9Q3qsTxuzs4a4w2VuZRvNygBn06G12j3.html', 'html', '22.314 kb', 1, NULL, '2022-11-01 19:07:37', '2022-11-01 19:07:37'),
+(14, 'vehicle_images/D28dLxwMTSJaUlFYoEmNcscNOCn3PILrmjbQIDOv.html', 'html', '22.314 kb', 1, NULL, '2022-11-01 19:07:46', '2022-11-01 19:07:46'),
+(15, 'vehicle_images/1GG11iJfReI3Zq4rOGkXS0GyaFerObgR1e3s9iPX.html', 'html', '22.314 kb', 1, NULL, '2022-11-01 19:08:56', '2022-11-01 19:08:56'),
+(16, 'vehicle_images/eTcYGS2GlJ3ZTCkKcp0cpbOAjedfEZi9WFJIfcd9.txt', 'txt', '7.638 kb', 1, NULL, '2022-11-03 13:16:06', '2022-11-03 13:16:06'),
+(17, 'vehicle_images/juPPfaJCMzqbbPtDeELvPdvEOvsiIXIYo1Ss4TVd.pdf', 'pdf', '82.671 kb', 6, NULL, '2022-11-03 18:33:14', '2022-11-03 18:33:14'),
+(18, 'vehicle_images/6H4rsM5rogjbbjO6w7YfOgrdVFafxr1BO04piBjk.pdf', 'pdf', '82.671 kb', 7, NULL, '2022-11-03 18:41:51', '2022-11-03 18:41:51'),
+(19, 'vehicle_images/3wYbYDUvs2StsbehEprlAwkqvofpcjC7hq0bhOJS.pdf', 'pdf', '82.671 kb', 8, NULL, '2022-11-03 18:43:53', '2022-11-03 18:43:53'),
+(20, 'vehicle_images/yEVrUeBw66LRUA6kNWbmPwRMOPHutn8swtV52Jtb.pdf', 'pdf', '273.087 kb', 12, NULL, '2022-11-09 17:56:39', '2022-11-09 17:56:39'),
+(21, 'vehicle_images/g8F8whDdLnBV8BzN1vfUzNWOhpa43El4v9irGscq.pdf', 'pdf', '2991.243 kb', 13, NULL, '2022-11-11 17:58:27', '2022-11-11 17:58:27'),
+(22, 'vehicle_images/dhTyQ6dShJjJisP1dm4btx1PCwF7XrU8BQDjG8Up.pdf', 'pdf', '2991.243 kb', 13, NULL, '2022-11-11 17:58:36', '2022-11-11 17:58:36'),
+(23, 'vehicle_images/J1Vs4wV7VN9XVor0rojxlm3qM9iQQlY4SrgPXlnY.pdf', 'pdf', '2991.243 kb', 13, NULL, '2022-11-11 17:59:02', '2022-11-11 17:59:02'),
+(24, 'vehicle_images/0kkuXq1py9zrUQHn5RgWPLmwLalTkJS1MnmijQlc.pdf', 'pdf', '2991.243 kb', 14, NULL, '2022-11-11 18:01:32', '2022-11-11 18:01:32');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `auction_images`
+--
+
+CREATE TABLE `auction_images` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `thumbnail` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `vehicle_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `auction_images`
+--
+
+INSERT INTO `auction_images` (`id`, `name`, `thumbnail`, `vehicle_id`, `created_at`, `updated_at`) VALUES
+(31, 'vehicle_images/wOl1niF6NGKUklQhYXl78b6l9QIJHYuPWl9S1WOQ.jpg', '1665752757.jpg', 23, '2022-10-14 20:05:57', '2022-10-14 20:05:57'),
+(32, 'vehicle_images/9DsvXjCxbHCT5NicG2IDZm4YazZwsIskzmnpUvqh.jpg', '1665752780.jpg', 23, '2022-10-14 20:06:20', '2022-10-14 20:06:20'),
+(33, 'vehicle_images/bkFSGfyqczOKVS5erdQiBnNO9cEv8YWoaIGTzv9U.jpg', '1665752836.jpg', 23, '2022-10-14 20:07:16', '2022-10-14 20:07:16'),
+(34, 'vehicle_images/3eJjN2RWa1ghFWQ0Tf30147t6vvnBU60cLAsnbC3.jpg', '1665753047.jpg', 23, '2022-10-14 20:10:47', '2022-10-14 20:10:47'),
+(35, 'vehicle_images/eBVEN1MTIVaQrVAeebK6PEhbbJGdFkIWojGgM2xJ.jpg', '1665753047.jpg', 23, '2022-10-14 20:10:47', '2022-10-14 20:10:47'),
+(36, 'vehicle_images/ZSUCcUPaU0eZrwxA5ozil3QMPgHPJ5GEdX7vMyck.png', '1667304536.png', 1, '2022-11-01 19:08:56', '2022-11-01 19:08:56'),
+(37, 'vehicle_images/lsQ1XahvLvL2dUOJdEQakM9zTbkqwNMOfGkdKHWO.jpg', '1667456166.jpg', 1, '2022-11-03 13:16:06', '2022-11-03 13:16:06'),
+(38, 'vehicle_images/giivdQldktViVasKVZA4mZJole2CuIoZOfbePMa5.png', '1667475194.png', 6, '2022-11-03 18:33:14', '2022-11-03 18:33:14'),
+(39, 'vehicle_images/kM31KPd2IxSrN5XFWVIbjgeQxUOhLWZdPhaJubTZ.png', '1667475711.png', 7, '2022-11-03 18:41:51', '2022-11-03 18:41:51'),
+(40, 'vehicle_images/qRGXeI6FSEgH1n14LGwwoTWMmYZWQCb8W4psSCZg.jpg', '1667475833.jpg', 8, '2022-11-03 18:43:53', '2022-11-03 18:43:53'),
+(41, 'vehicle_images/QHOqD7XbxLOdCR81zcE4QhJgA9b1YDvphAfrLDTx.jpg', '1667987799.jpg', 12, '2022-11-09 17:56:39', '2022-11-09 17:56:39'),
+(42, 'vehicle_images/1UGiDBX5pL0uO8oy7zM5q9a2YK7iF7d1ywO3kB1A.jpg', '1668145745.jpg', 7, '2022-11-11 13:49:05', '2022-11-11 13:49:05'),
+(43, 'vehicle_images/NhbQAHh8QayQzT3ASHpFh1iWRBVZyZpVDOgl476n.png', '1668145745.png', 7, '2022-11-11 13:49:05', '2022-11-11 13:49:05'),
+(44, 'vehicle_images/lKGLvcfya7pCIKllYdAZCQRc4fcFhWgYW1CHUfH2.jpg', '1668145745.jpg', 7, '2022-11-11 13:49:05', '2022-11-11 13:49:05'),
+(45, 'vehicle_images/AsLYiVhYuFfqvuRfdK8elsJsQOkDD7uGZIU9bD2s.jpg', '1668145745.jpg', 7, '2022-11-11 13:49:05', '2022-11-11 13:49:05'),
+(46, 'vehicle_images/kEwyGR4zy5EWoy6krTtAL9oTHRMBuRf9HPHDoBPg.png', '1668160694.png', 13, '2022-11-11 17:58:15', '2022-11-11 17:58:15'),
+(47, 'vehicle_images/QDs2VtqkYxNeBnpzQUTEzzeSk4Bk9JyUTo5m9gs8.png', '1668160695.png', 13, '2022-11-11 17:58:15', '2022-11-11 17:58:15'),
+(48, 'vehicle_images/aAWubGEFFgZuLcQQiv5meu3oSnePhyIRWCWaT3K4.png', '1668160695.png', 13, '2022-11-11 17:58:15', '2022-11-11 17:58:15'),
+(49, 'vehicle_images/s1WbO8QbhGyY5XJ5W0QKWgkwC18YCropYBc2Fc6b.png', '1668160695.png', 13, '2022-11-11 17:58:15', '2022-11-11 17:58:15'),
+(50, 'vehicle_images/U8dxVj76ej1J8ooHJgT9UP51z90TAvzoFu0JgHGl.png', '1668160695.png', 13, '2022-11-11 17:58:15', '2022-11-11 17:58:15'),
+(51, 'vehicle_images/mccY8sbeBV8SMOzxjsfFMJFSql55ijlRFDGbWV7v.png', '1668160707.png', 13, '2022-11-11 17:58:27', '2022-11-11 17:58:27'),
+(52, 'vehicle_images/LDSKm0s8NsRoQ5A4otYSZDnDJwCGABpnZepQwWfq.png', '1668160707.png', 13, '2022-11-11 17:58:27', '2022-11-11 17:58:27'),
+(53, 'vehicle_images/J5qjJ8pkhyjLgh7zUwUqrReDI7rPgELIofbeCxuL.png', '1668160707.png', 13, '2022-11-11 17:58:27', '2022-11-11 17:58:27'),
+(54, 'vehicle_images/upzNZs275VdNSi1DqcyZiCls21UqemBLGboIjrbO.png', '1668160707.png', 13, '2022-11-11 17:58:28', '2022-11-11 17:58:28'),
+(55, 'vehicle_images/AgcItzHKFqAqx9ZYedHDONc9mZNVepwxjieOIjFg.png', '1668160708.png', 13, '2022-11-11 17:58:28', '2022-11-11 17:58:28'),
+(56, 'vehicle_images/bl39NXl4Be6nXlwN87N1HgKb2Tgv58Mq3jac8UtH.png', '1668160716.png', 13, '2022-11-11 17:58:36', '2022-11-11 17:58:36'),
+(57, 'vehicle_images/CuezBPxOKIT71FoE8E8loMflXN0yXTolU5EK5jlu.png', '1668160716.png', 13, '2022-11-11 17:58:36', '2022-11-11 17:58:36'),
+(58, 'vehicle_images/zIma3dUuFVac1pDa3LVQfGN53sdYDqLoLwsEtpju.png', '1668160716.png', 13, '2022-11-11 17:58:36', '2022-11-11 17:58:36'),
+(59, 'vehicle_images/tSGAGWmIyEQYrYs9GddapgR48V39xuuxWZIhEpAg.png', '1668160716.png', 13, '2022-11-11 17:58:36', '2022-11-11 17:58:36'),
+(60, 'vehicle_images/OmD8ZvacjHCelRXfoh18sqcZEViLwnfpjbu2Jc0f.png', '1668160716.png', 13, '2022-11-11 17:58:36', '2022-11-11 17:58:36'),
+(61, 'vehicle_images/LpBdsLmPHkjarPOUiZLOLGXNENlAW0DAY1RdzgfT.png', '1668160742.png', 13, '2022-11-11 17:59:02', '2022-11-11 17:59:02'),
+(62, 'vehicle_images/5phuCJjzEtxao1gDqRPKtYdgNGK9bCJRdP0M7T1o.png', '1668160742.png', 13, '2022-11-11 17:59:02', '2022-11-11 17:59:02'),
+(63, 'vehicle_images/fGhJ2tkSluMPyoOtusqgH29QqSKAoLjcZVTpJBUz.png', '1668160742.png', 13, '2022-11-11 17:59:02', '2022-11-11 17:59:02'),
+(64, 'vehicle_images/eGUbknde9p1BkLqYplbVr1yGfPLxSF9PxAaXoGSB.png', '1668160742.png', 13, '2022-11-11 17:59:02', '2022-11-11 17:59:02'),
+(65, 'vehicle_images/XzJKljxJrNXL00NqAoAeEIiPdG4275oZzVy2yotL.png', '1668160742.png', 13, '2022-11-11 17:59:02', '2022-11-11 17:59:02'),
+(66, 'vehicle_images/1Iydxtiqck7d1kKz4e3jjgQf9mZo5M1hPDWTwuuN.png', '1668160892.png', 14, '2022-11-11 18:01:32', '2022-11-11 18:01:32'),
+(67, 'vehicle_images/mqMgwSKy1VJu3hjDoDi11x8vZ7dyt4cZejvskgjL.png', '1668160892.png', 14, '2022-11-11 18:01:32', '2022-11-11 18:01:32'),
+(68, 'vehicle_images/mCwUEs52rfyYv1fguHs7XaryqZ4OOcHiv3JKxcpy.png', '1668160892.png', 14, '2022-11-11 18:01:32', '2022-11-11 18:01:32'),
+(69, 'vehicle_images/7zvCzrSvpnG7aU00nvSB7vXKtiWcaBXs4ZuVHWSe.jpg', '1668411203.jpg', 14, '2022-11-14 15:33:23', '2022-11-14 15:33:23'),
+(70, 'vehicle_images/O7DE1Ef8Pe797qnoOR9bWKyltgQSS01hWJ3JJJ25.png', '1668422276.png', 32, '2022-11-14 18:37:56', '2022-11-14 18:37:56');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `auction_invoices`
+--
+
+CREATE TABLE `auction_invoices` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `size` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `vehicle_id` bigint(20) UNSIGNED NOT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `auction_invoices`
+--
+
+INSERT INTO `auction_invoices` (`id`, `name`, `type`, `size`, `vehicle_id`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(4, 'auction_invoices/9a3VWO1UDGoFyT2mWSPv1f0lJv19FceCBWDWcjJ6.txt', 'txt', '9.104 kb', 71, NULL, '2022-09-21 05:16:16', '2022-09-21 05:16:16'),
+(5, 'auction_invoices/tR5I4pkZ68rGUCR15KAL2CTskDGgQjXJGdr8NQEL.pdf', 'pdf', '67.406 kb', 51, NULL, '2022-10-07 14:54:08', '2022-10-07 14:54:08'),
+(6, 'auction_invoices/qMewos9enRQayONuSvnRJaeGYJxCCUnxyk0d82av.pdf', 'pdf', '75.793 kb', 11, NULL, '2022-10-12 16:22:18', '2022-10-12 16:22:18'),
+(7, 'auction_invoices/zukweuNyfAdquIUW5WhmFOJO3scq9YmK1N7lQu1C.pdf', 'pdf', '75.793 kb', 29, NULL, '2022-10-12 17:35:20', '2022-10-12 17:35:20'),
+(8, 'vehicle_images/5bU3FYpK2QRko9sp6z1zCbVnfywqYVaDw3WGBJMS.pdf', 'pdf', '75.793 kb', 23, NULL, '2022-10-14 19:57:05', '2022-10-14 19:57:05'),
+(9, 'vehicle_images/ivlnK3u9S48l5RQ72NywgaUznqKRWKdZq9t82leJ.pdf', 'pdf', '75.793 kb', 34, NULL, '2022-10-14 20:37:40', '2022-10-14 20:37:40'),
+(10, 'vehicle_images/h6q7VX767GpHDziz6P8qrhyqj8E86Ign6hYdZdxX.pdf', 'pdf', '75.793 kb', 34, NULL, '2022-10-14 20:37:48', '2022-10-14 20:37:48'),
+(11, 'vehicle_images/ErnYAfXWDQ1ETss1kdG3BxSzeJBzzKUIrzSRLeQK.pdf', 'pdf', '75.793 kb', 34, NULL, '2022-10-14 20:38:05', '2022-10-14 20:38:05'),
+(12, 'vehicle_images/MDDrF2rEO3bRyzsfOOpV3AkKmghcflVpk6aquUWn.pdf', 'pdf', '75.793 kb', 34, NULL, '2022-10-14 20:38:15', '2022-10-14 20:38:15'),
+(13, 'vehicle_images/mKUv8EA2QtWngBPRfiajgrEwBnppgvC9n20RHdWh.pdf', 'pdf', '75.793 kb', 34, NULL, '2022-10-14 20:38:25', '2022-10-14 20:38:25'),
+(14, 'vehicle_images/akz7sKzsGELnQi0vCy059ycxGP1sKIi2FeJSbdE9.txt', 'txt', '31.914 kb', 116, NULL, '2022-10-26 12:39:34', '2022-10-26 12:39:34'),
+(15, 'vehicle_images/3mItrAyMEs8OqskgLcdY5pTyKkF9SNqnfEAPN8j4.html', 'html', '22.314 kb', 1, NULL, '2022-11-03 13:16:06', '2022-11-03 13:16:06'),
+(16, 'vehicle_images/X6bhmvJPHk6ilvEM1QWva6M8aX7UlBu3fXD4beZC.pdf', 'pdf', '82.671 kb', 6, NULL, '2022-11-03 18:33:14', '2022-11-03 18:33:14'),
+(17, 'vehicle_images/h4uWMGbq3k7iLfuaIh46fZjxoiaxtO8SrWKVRVip.pdf', 'pdf', '82.671 kb', 7, NULL, '2022-11-03 18:41:51', '2022-11-03 18:41:51'),
+(18, 'vehicle_images/jAlQChJjGT7iU3PgiLqRHM3GGhHN7i3WVBRzmZIu.pdf', 'pdf', '82.671 kb', 8, NULL, '2022-11-03 18:43:53', '2022-11-03 18:43:53'),
+(19, 'vehicle_images/nzjsQxGQBEGxNtElyWTKkjwMp5fOYHegRO87qEyq.pdf', 'pdf', '273.087 kb', 12, NULL, '2022-11-09 17:56:39', '2022-11-09 17:56:39'),
+(20, 'vehicle_images/g4nnmGJG1F4d2RupxUVeQKFENKzHsOlTmU7JQH6R.pdf', 'pdf', '2991.243 kb', 13, NULL, '2022-11-11 17:58:27', '2022-11-11 17:58:27'),
+(21, 'vehicle_images/lGUQ7Nr0rLoUMWXoNIN0zLZ5kYi7Uk5N53q3rbNc.pdf', 'pdf', '2991.243 kb', 13, NULL, '2022-11-11 17:58:36', '2022-11-11 17:58:36'),
+(22, 'vehicle_images/SVvBOMnRRtcv8cwEd8ASMqFK6GeXEHS10n473udi.pdf', 'pdf', '2991.243 kb', 13, NULL, '2022-11-11 17:59:02', '2022-11-11 17:59:02'),
+(23, 'vehicle_images/HBSLhno5ED3y8tC3v4TZWicmBOSmwTZuLx1G2A0m.pdf', 'pdf', '2991.243 kb', 14, NULL, '2022-11-11 18:01:32', '2022-11-11 18:01:32');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `audits`
+--
+
+CREATE TABLE `audits` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `datetime` date NOT NULL,
+  `logs` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `auth_assignments`
+--
+
+CREATE TABLE `auth_assignments` (
+  `item_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `auth_user_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `auth_items`
+--
+
+CREATE TABLE `auth_items` (
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` smallint(6) NOT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `rule_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `data` blob DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `auth_item_child`
+--
+
+CREATE TABLE `auth_item_child` (
+  `parent` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `child` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `auth_rules`
+--
+
+CREATE TABLE `auth_rules` (
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `data` blob NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `billing_parties`
+--
+
+CREATE TABLE `billing_parties` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `first_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company_email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `country` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `city` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `zip_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `foreign_passport_number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `identification_number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `expiry_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `shipping` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `shipment_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `purchased_from` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `request_pickup` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `end_use` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `buyer_number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `customer_id` bigint(20) UNSIGNED NOT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `billing_parties`
+--
+
+INSERT INTO `billing_parties` (`id`, `first_name`, `last_name`, `company_name`, `company_email`, `country`, `city`, `phone`, `address`, `zip_code`, `foreign_passport_number`, `identification_number`, `expiry_date`, `shipping`, `shipment_type`, `purchased_from`, `request_pickup`, `end_use`, `buyer_number`, `customer_id`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(2, 'k', 'kj', 'jk', 'kj', 'j', 'k', 'jk', 'j', 'kj', 'kj', 'k', '2022-10-26', 'single', 'motorcycle', 'auction', 'no', 'personal', '24', 1, NULL, '2022-10-27 14:12:33', '2022-10-27 14:12:33'),
+(3, 'ksfdal', 'klj', 'jkl', 'klj', 'j', 'kj', 'k', 'jk', 'jk', 'j', 'kj', '2022-11-22', 'single', 'motorcycle', 'auction', 'no', 'personal', '246', 66, NULL, '2022-11-07 19:11:22', '2022-11-07 19:11:22'),
+(4, 'kj', 'k', 'kj', 'j', 'kj', 'kj', 'kj', 'lkj', 'lkj', 'lkj', 'lkj', NULL, 'single', 'motorcycle', 'auction', 'no', 'business', '2463456', 67, NULL, '2022-11-09 17:52:55', '2022-11-09 17:52:55');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bill_of_sales`
+--
+
+CREATE TABLE `bill_of_sales` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `thumbnail` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `vehicle_id` bigint(20) UNSIGNED NOT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `bill_of_sales`
+--
+
+INSERT INTO `bill_of_sales` (`id`, `name`, `thumbnail`, `vehicle_id`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(27, 'vehicle_images/d8SmTmUxxs11yl61GRG4fm8hYtWxMDwmESDc7Pr9.png', '1666707181.png', 116, NULL, '2022-10-25 21:13:01', '2022-10-25 21:13:01'),
+(28, 'vehicle_images/4LwvMWFcZiw4LBQsHxA8nx3x2pNA3SvarD6oGdR6.png', '1666762774.png', 116, NULL, '2022-10-26 12:39:34', '2022-10-26 12:39:34'),
+(33, 'vehicle_images/3gw1qBepkV937xQiYxap9cCNL2jOPwa7VCyg3nDl.jpg', '1667475711.jpg', 7, NULL, '2022-11-03 18:41:51', '2022-11-03 18:41:51'),
+(34, 'vehicle_images/D8yC6W1H8tWrs9y1ceMF6EuWmOVImjDEZoGAc1s0.png', '1667475833.png', 8, NULL, '2022-11-03 18:43:53', '2022-11-03 18:43:53'),
+(35, 'vehicle_images/dyQhWR6mzp8xJ8za8iGLUtboBabwmZhDbDJHaRTj.png', '1667980330.png', 7, NULL, '2022-11-09 15:52:10', '2022-11-09 15:52:10'),
+(36, 'vehicle_images/3WkZoCkllNf6m5ecBTd9fz1Endi48bL3OJrWAkd4.jpg', '1667987799.jpg', 12, NULL, '2022-11-09 17:56:39', '2022-11-09 17:56:39'),
+(37, 'vehicle_images/rGJLEAeHGqFQopNZ7AMS8odk1ciLNIAohmnzEi4F.jpg', '1668160695.jpg', 13, NULL, '2022-11-11 17:58:15', '2022-11-11 17:58:15'),
+(38, 'vehicle_images/Sp6QhBRL47hFD59xQITaWo9SYs18sUcF9Jw6tGwc.png', '1668160695.png', 13, NULL, '2022-11-11 17:58:15', '2022-11-11 17:58:15'),
+(39, 'vehicle_images/5nurYr5O1GXweP74LRDkrmhfA8lumw4LomDkrS3R.png', '1668160695.png', 13, NULL, '2022-11-11 17:58:15', '2022-11-11 17:58:15'),
+(40, 'vehicle_images/07qDE9B89tqgT0qVoF0IF4MQHLk1Lq0gTCqJcR8R.png', '1668160695.png', 13, NULL, '2022-11-11 17:58:15', '2022-11-11 17:58:15'),
+(41, 'vehicle_images/npLoIRTB01R1fA2jngwqjAqUf8PlKpkEBPMZ5BA8.jpg', '1668160708.jpg', 13, NULL, '2022-11-11 17:58:28', '2022-11-11 17:58:28'),
+(42, 'vehicle_images/LgcIxAWRryRazpgWbnzzxaI2R5VMt7rEwuWo3SCs.png', '1668160708.png', 13, NULL, '2022-11-11 17:58:28', '2022-11-11 17:58:28'),
+(43, 'vehicle_images/L0kXrwMRnEd3YmETUZNhyNHc6wpuF99VHLVCoMI8.png', '1668160708.png', 13, NULL, '2022-11-11 17:58:28', '2022-11-11 17:58:28'),
+(44, 'vehicle_images/BpQvET9Rj9FsmTpb0D0vJwIxGxyplrF3MEBACIhF.png', '1668160708.png', 13, NULL, '2022-11-11 17:58:28', '2022-11-11 17:58:28'),
+(45, 'vehicle_images/RsZazAZeIAdNzhCNYmXTy42kr80H4kPSetHdQyKi.jpg', '1668160716.jpg', 13, NULL, '2022-11-11 17:58:36', '2022-11-11 17:58:36'),
+(46, 'vehicle_images/bidArEaRX6qA6Y04iKbNdwF7Q5q2S1mI2VoPQkIb.png', '1668160716.png', 13, NULL, '2022-11-11 17:58:36', '2022-11-11 17:58:36'),
+(47, 'vehicle_images/DwDOiSCj0ivPwloNOkTDs5Kr601aiWfNUKDvSOEe.png', '1668160716.png', 13, NULL, '2022-11-11 17:58:36', '2022-11-11 17:58:36'),
+(48, 'vehicle_images/rLCLCfcH8sedeoy6aub6zCMgEciOvAkmp4ukQdma.png', '1668160716.png', 13, NULL, '2022-11-11 17:58:36', '2022-11-11 17:58:36'),
+(49, 'vehicle_images/PC4zWthc93dvH6f8Ko7QGSjLAfiRlyf0HUKxlHOW.jpg', '1668160742.jpg', 13, NULL, '2022-11-11 17:59:02', '2022-11-11 17:59:02'),
+(50, 'vehicle_images/sQNNnd8D4gtOl0MnBwkcaILuZ9AIBLYOPKHH1sT5.png', '1668160742.png', 13, NULL, '2022-11-11 17:59:02', '2022-11-11 17:59:02'),
+(51, 'vehicle_images/Bq3XCivdIIkuAA6dA7GC0lS7aPc9s4qYJXmzBpQ4.png', '1668160742.png', 13, NULL, '2022-11-11 17:59:02', '2022-11-11 17:59:02'),
+(52, 'vehicle_images/GTXkZHXiZ1FTklLWEvwgDcHtyYreZO0emZa7Zy1B.png', '1668160742.png', 13, NULL, '2022-11-11 17:59:02', '2022-11-11 17:59:02'),
+(53, 'vehicle_images/S1z33YA9HR6KgfSbVFKRze77uGBmiLWdg3tRgp1E.jpg', '1668160892.jpg', 14, NULL, '2022-11-11 18:01:32', '2022-11-11 18:01:32'),
+(54, 'vehicle_images/Q0iETDG9X8q0BsGmz0q0gZ8Q3OzdfhoR0xclBjsY.jpg', '1668160892.jpg', 14, NULL, '2022-11-11 18:01:32', '2022-11-11 18:01:32'),
+(55, 'vehicle_images/RK3GMQeg74wqYHvXUcWxGcS9hKbrxA0lo5pvZu7V.jpg', '1668160892.jpg', 14, NULL, '2022-11-11 18:01:32', '2022-11-11 18:01:32');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `colors`
+--
+
+CREATE TABLE `colors` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `colors`
+--
+
+INSERT INTO `colors` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'red 1', '1', NULL, '2022-10-26 14:00:51');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `companies`
+--
+
+CREATE TABLE `companies` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `companies`
+--
+
+INSERT INTO `companies` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'kashif lateef', '1', '2022-10-19 19:06:50', '2022-11-01 16:15:44'),
+(2, 'kashif kashif', '1', '2022-10-19 19:51:31', '2022-10-28 16:15:20');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `conditions`
+--
+
+CREATE TABLE `conditions` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `consignees`
+--
+
+CREATE TABLE `consignees` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `customer_user_id` int(11) NOT NULL,
+  `consignee_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `consignee_address_1` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `consignee_address_2` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `city` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `state` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `country` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `zip_code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cargo_details` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `added_by_role` bigint(20) UNSIGNED NOT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `consignees`
+--
+
+INSERT INTO `consignees` (`id`, `customer_user_id`, `consignee_name`, `consignee_address_1`, `consignee_address_2`, `city`, `state`, `country`, `zip_code`, `phone`, `cargo_details`, `added_by_role`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(1, 2, 'Abubaker', 'house#234', 'house#234', 'Sargodha', 'Punjab', 'Pakistan', '40100', '03213434343', 'new cargo', 5, NULL, '2022-08-24 19:41:59', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `container_sizes`
+--
+
+CREATE TABLE `container_sizes` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` enum('1','0') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `container_sizes`
+--
+
+INSERT INTO `container_sizes` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
+(1, '50', '1', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `container_types`
+--
+
+CREATE TABLE `container_types` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` enum('1','0') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `container_types`
+--
+
+INSERT INTO `container_types` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'container type', '1', NULL, NULL),
+(2, 'container 2', '1', '2022-10-31 12:58:09', '2022-10-31 12:58:09');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customers`
+--
+
+CREATE TABLE `customers` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `customer_number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `customer_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `customer_email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `level` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `main_phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `main_fax` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `industry` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `source` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `customer_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sales_tpye` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sales_person` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `inside_person` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `lead` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `payment_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `payment_term` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `price_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `location_number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `zip_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `state` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `country` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address_1` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address_2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `added_by_role` bigint(20) UNSIGNED NOT NULL,
+  `add_by_email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customer_documents`
+--
+
+CREATE TABLE `customer_documents` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `file` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `thumbnail` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `customer_documents`
+--
+
+INSERT INTO `customer_documents` (`id`, `file`, `description`, `user_id`, `thumbnail`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(1, 'customer_images/pEuUbjLqDdB3IinhMuHjac3CnZZcI6CIYh6TPYeR.xlsx', 'testing...', 27, '1664446324.xlsx', NULL, '2022-09-23 06:26:14', '2022-09-29 05:12:04'),
+(2, 'customer_images/8eyRgU2DeXDWW2kNikd8WSaLNJ9GMjhz5rIMv8Kd.pdf', NULL, 46, '1665057287.pdf', NULL, '2022-10-06 18:54:47', '2022-10-06 18:54:47'),
+(3, 'customer_images/jx7Di0GYtJNl2Zipga0ThmxgKu1yQKUa4GS6AQKE.pdf', NULL, 47, '1665484081.pdf', NULL, '2022-10-11 17:28:01', '2022-10-11 17:28:01'),
+(4, 'customer_images/U2v7CtBz23lM5WX3RjKj5vXf1XktYeDhWTke4rtm.pdf', NULL, 48, '1666085011.pdf', NULL, '2022-10-18 16:23:31', '2022-10-18 16:23:31'),
+(5, 'customer_images/tLRBM00kz3Lf9EJa4iRLW5aPmIEUZTVlok0eGRx0.pdf', NULL, 49, '1666086656.pdf', NULL, '2022-10-18 16:50:56', '2022-10-18 16:50:56'),
+(6, 'customer_images/rhjCzHMje0O1wS1ZZ0lAEQsHSrq5Dd9a4lxP41ae.pdf', NULL, 51, '1666260830.pdf', NULL, '2022-10-20 17:13:50', '2022-10-20 17:13:50'),
+(7, 'customer_images/GKUPAnJGzBpsVLzz5W8Z88M6wHkylIpWJkDp18e0.pdf', NULL, 53, '1666267679.pdf', NULL, '2022-10-20 19:07:59', '2022-10-20 19:07:59'),
+(8, 'customer_images/GElmLfnIs0rlgqsKJF4VDjwH9fErJgTmvm8qFZeI.pdf', NULL, 54, '1666267908.pdf', NULL, '2022-10-20 19:11:48', '2022-10-20 19:11:48'),
+(9, 'customer_images/yuIret5snfMjxUHuOvmTBqVoqh4vNLhW2zj1HJrL.txt', NULL, 66, '1668259382.txt', NULL, '2022-11-08 22:20:37', '2022-11-12 21:23:02'),
+(11, 'customer_images/tdKxi9PkWqLvDMPXf1IG6TPSjrnKDzZZTVuIpc1P.pdf', NULL, 67, '1667987553.pdf', NULL, '2022-11-09 17:52:33', '2022-11-09 17:52:33');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `destination_countries`
+--
+
+CREATE TABLE `destination_countries` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abbrevation` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `destination_countries`
+--
+
+INSERT INTO `destination_countries` (`id`, `name`, `abbrevation`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'pakistan', NULL, '1', NULL, '2022-10-26 13:55:16');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `destination_ports`
+--
+
+CREATE TABLE `destination_ports` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `destination` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `state_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `destination_ports`
+--
+
+INSERT INTO `destination_ports` (`id`, `destination`, `status`, `state_id`, `created_at`, `updated_at`) VALUES
+(1, 'port 1', '1', 1, NULL, '2022-10-26 13:55:26');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `destination_states`
+--
+
+CREATE TABLE `destination_states` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `abbrevation` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `country_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `destination_states`
+--
+
+INSERT INTO `destination_states` (`id`, `name`, `abbrevation`, `status`, `country_id`, `created_at`, `updated_at`) VALUES
+(1, 'isb', NULL, '1', 1, NULL, '2022-10-26 13:55:21');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `destination_terminals`
+--
+
+CREATE TABLE `destination_terminals` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` enum('1','0') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `destinationPort_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `destination_terminals`
+--
+
+INSERT INTO `destination_terminals` (`id`, `name`, `status`, `destinationPort_id`, `created_at`, `updated_at`) VALUES
+(1, 'terminal 1', '1', 1, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dock_receipts`
+--
+
+CREATE TABLE `dock_receipts` (
+  `export_id` bigint(20) UNSIGNED NOT NULL,
+  `awb_number` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `export_reference` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `forwarding_agent` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `domestic_routing_insctructions` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pre_carriage_by` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `place_of_receipt_by_pre_carrier` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exporting_carrier` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `final_destination` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `loading_terminal` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `container_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `number_of_packages` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `by` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date` date NOT NULL,
+  `auto_recieving_date` date NOT NULL,
+  `auto_cut_off` date NOT NULL,
+  `vessel_cut_off` date NOT NULL,
+  `sale_date` date NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `documents`
+--
+
+CREATE TABLE `documents` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `thumbnail` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `normal` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `is_deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `vehicle_id` bigint(20) UNSIGNED NOT NULL,
+  `invoice_id` bigint(20) UNSIGNED NOT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `d_countries`
+--
+
+CREATE TABLE `d_countries` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `country` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `state` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `port` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `terminal` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` enum('1','0') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `d_countries`
+--
+
+INSERT INTO `d_countries` (`id`, `country`, `state`, `port`, `terminal`, `status`, `created_at`, `updated_at`) VALUES
+(3, 'pak', 'state3', 'port3', 'terminal3', '1', NULL, NULL),
+(4, 'test', 'test', 'test', 'test', '1', '2022-11-01 03:57:12', '2022-11-01 03:57:12');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `exports`
+--
+
+CREATE TABLE `exports` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `export_date` date NOT NULL,
+  `loading_date` date NOT NULL,
+  `broker_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `booking_number` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `eta` date NOT NULL,
+  `ar_number` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `xtn_number` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seal_number` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `container_number` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cutt_off` date NOT NULL,
+  `vessel` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `voyage` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `terminal` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `streamline_ship` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `destination` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `itn` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `contact_details` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `special_instruction` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `container_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `port_of_loading` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `port_of_discharge` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `export_invoice` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `note` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `export_is_deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `added_by_role` bigint(20) UNSIGNED NOT NULL,
+  `customer_user_id` bigint(20) UNSIGNED NOT NULL,
+  `notes_status` int(11) NOT NULL,
+  `oti_number` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `exports`
+--
+
+INSERT INTO `exports` (`id`, `export_date`, `loading_date`, `broker_name`, `booking_number`, `eta`, `ar_number`, `xtn_number`, `seal_number`, `container_number`, `cutt_off`, `vessel`, `voyage`, `terminal`, `streamline_ship`, `destination`, `itn`, `contact_details`, `special_instruction`, `container_type`, `port_of_loading`, `port_of_discharge`, `export_invoice`, `note`, `export_is_deleted`, `added_by_role`, `customer_user_id`, `notes_status`, `oti_number`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, '2022-10-10', '2022-10-10', 'khan', '1235467', '2022-10-11', '77', '56354', '56546546', '3534534', '2022-10-24', '3543534terf', 'ffsterte35', 'gddfg555', 'grgdetge4546', 'jannat', '432rewrew', 'tgfvfvre34', 'fsdewr43535', 'fdsfsdf454', '234324ewrwe', '3422342rwew', '2342r', '23432', 0, 2, 3, 0, 5345, '2022-10-10 07:37:08', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `export__images`
+--
+
+CREATE TABLE `export__images` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `thumbnail` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `export_id` bigint(20) UNSIGNED NOT NULL,
+  `baseurl` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `failed_jobs`
+--
+
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `features`
+--
+
+CREATE TABLE `features` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `images`
+--
+
+CREATE TABLE `images` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `thumbnail` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `normal` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `vehicle_id` bigint(20) UNSIGNED NOT NULL,
+  `is_deleted` tinyint(1) DEFAULT 0,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `base_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `images`
+--
+
+INSERT INTO `images` (`id`, `name`, `thumbnail`, `normal`, `vehicle_id`, `is_deleted`, `deleted_at`, `created_at`, `updated_at`, `base_url`) VALUES
+(33, 'vehicle_images/gMYDdHLDkObnLMUY8uuG9fKfIs5sPhtMcNyirSoe.png', '1662885494.png', NULL, 1, 0, NULL, '2022-09-11 03:38:14', '2022-09-11 03:38:14', NULL),
+(34, 'vehicle_images/JID4ZU5ky8GH1CHp7SCHA4w17BlUqS2CafyBpB8b.png', '1662885494.png', NULL, 1, 0, NULL, '2022-09-11 03:38:14', '2022-09-11 03:38:14', NULL),
+(35, 'vehicle_images/8cDSeOhYNP5uuzgzBtxqTQQ4SxSYH8HY6CVmFaLN.png', '1662885494.png', NULL, 1, 0, NULL, '2022-09-11 03:38:14', '2022-09-11 03:38:14', NULL),
+(36, 'vehicle_images/nLlUQ6xP58SWDbPWyqxfubUFblukiPZbDsEOYrjX.png', '1662885640.png', NULL, 15, 0, NULL, '2022-09-11 03:40:40', '2022-09-11 03:40:40', NULL),
+(37, 'vehicle_images/gas8eHlvyDudku0GfkLtahC8En3HSk80kFBfdmMA.png', '1662971710.png', NULL, 15, 0, NULL, '2022-09-12 03:35:11', '2022-09-12 03:35:11', NULL),
+(38, 'vehicle_images/sGuj5b8shypiVcjw230JQwIOkWlaaBgFO9Pbbd4d.png', '1663671311.png', NULL, 15, 0, NULL, '2022-09-20 05:55:11', '2022-09-20 05:55:11', NULL),
+(39, 'vehicle_images/FzwbseteSqPLcgyTMmj8KgQUDPPxxUYQ0tFZbI42.png', '1663671379.png', NULL, 15, 0, NULL, '2022-09-20 05:56:19', '2022-09-20 05:56:19', NULL),
+(40, 'vehicle_images/dQkacYSs5y50pIc3yu88r0ciHRyMTK38vB6UA2yy.png', '1663671384.png', NULL, 121, 0, NULL, '2022-09-20 05:56:24', '2022-09-20 05:56:24', NULL),
+(41, 'vehicle_images/ukvID7hmRULpGim6mud6mL5SIFJ0gJWIORvVDB8Q.png', '1663671384.png', NULL, 121, 0, NULL, '2022-09-20 05:56:24', '2022-09-20 05:56:24', NULL),
+(42, 'vehicle_images/4MCvRPnhNs3WARqxJyYmtpfP8lWZCO9nc7bfK8u5.png', '1663671637.png', NULL, 125, 0, NULL, '2022-09-20 06:00:37', '2022-09-20 06:00:37', NULL),
+(43, 'vehicle_images/fHhx8BUI2gV51CDejt3VrS2fSB4n3c6hW1tHQlx3.png', '1663671890.png', NULL, 125, 0, NULL, '2022-09-20 06:04:50', '2022-09-20 06:04:50', NULL),
+(44, 'vehicle_images/ZVKTltAjMTkkyF5XI7KtEsUwD4ydCQNJxpFe9MYg.png', '1663849975.png', NULL, 51, 0, NULL, '2022-09-22 07:32:55', '2022-09-22 07:32:55', NULL),
+(45, 'vehicle_images/bWsV7oH4iV746eHnrdvFAcCPVSkzFnO7RNyIxcb9.jpg', '1663850074.jpg', NULL, 52, 0, NULL, '2022-09-22 07:34:34', '2022-09-22 07:34:34', NULL),
+(46, 'vehicle_images/mYq4vEksjB0AsHxIbO6EcQ0HAifOUO1KyOOXEVit.jpg', '1663850074.jpg', NULL, 51, 0, NULL, '2022-09-22 07:34:34', '2022-09-22 07:34:34', NULL),
+(47, 'vehicle_images/oSD0YrBKMi8fwckjPHeuRd2u1weQKib6bwPRz6hV.jpg', '1663850074.jpg', NULL, 52, 0, NULL, '2022-09-22 07:34:34', '2022-09-22 07:34:34', NULL),
+(48, 'vehicle_images/phiIdTZFzsRadCKhdWOAPL8E5fo5lxhK9dhDbYaF.webp', '1664194713.webp', NULL, 53, 0, NULL, '2022-09-26 07:18:33', '2022-09-26 07:18:33', NULL),
+(49, 'vehicle_images/6PRolMiZngepgcj0zzxABxRkvQaqMjqIjtTXjfXi.webp', '1664194713.webp', NULL, 53, 0, NULL, '2022-09-26 07:18:33', '2022-09-26 07:18:33', NULL),
+(50, 'vehicle_images/pXshNsyLrQgtu3EoWXKcG0fag1G61c34asflTjje.jpg', '1664195189.jpg', NULL, 51, 0, NULL, '2022-09-26 07:26:29', '2022-09-26 07:26:29', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `invoices`
+--
+
+CREATE TABLE `invoices` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `export_id` bigint(20) UNSIGNED NOT NULL,
+  `customer_user_id` bigint(20) UNSIGNED NOT NULL,
+  `consignee_id` bigint(20) UNSIGNED NOT NULL,
+  `vehicle_id` int(11) NOT NULL,
+  `total_amount` double(8,2) DEFAULT NULL,
+  `amount_paid` double(8,2) DEFAULT NULL,
+  `amount_due` double(8,2) DEFAULT NULL,
+  `export_invoice` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `note` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `adjustment_damaged` double(8,2) DEFAULT NULL,
+  `adjustment_storage` double(8,2) DEFAULT NULL,
+  `adjustment_discount` double(8,2) DEFAULT NULL,
+  `adjustment_other` double(8,2) DEFAULT NULL,
+  `is_deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `currency` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `discount` double(8,2) DEFAULT NULL,
+  `before_discount` double(8,2) DEFAULT NULL,
+  `upload_invoice` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `issued_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `branch` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `issued_at` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `references` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `working` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `payment_team` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `added_by_role` bigint(20) UNSIGNED DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `invoices`
+--
+
+INSERT INTO `invoices` (`id`, `export_id`, `customer_user_id`, `consignee_id`, `vehicle_id`, `total_amount`, `amount_paid`, `amount_due`, `export_invoice`, `note`, `adjustment_damaged`, `adjustment_storage`, `adjustment_discount`, `adjustment_other`, `is_deleted`, `currency`, `discount`, `before_discount`, `upload_invoice`, `number`, `issued_by`, `branch`, `status`, `issued_at`, `references`, `working`, `created_by`, `payment_team`, `added_by_role`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(1, 1, 2, 1, 0, 13212.00, 132213.00, NULL, NULL, '321', NULL, NULL, NULL, NULL, 0, NULL, 312.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, '2022-10-12 02:56:10', '2022-10-18 02:04:02'),
+(2, 1, 2, 1, 0, 432.00, 123.00, NULL, NULL, '234', NULL, NULL, NULL, NULL, 0, NULL, 432.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, '2022-10-12 04:11:56', '2022-10-18 02:03:23'),
+(3, 1, 2, 1, 0, 7576.00, 2344.00, NULL, NULL, '432423', NULL, NULL, NULL, NULL, 0, NULL, 432423.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, '2022-10-12 07:55:14', '2022-10-18 02:01:41'),
+(4, 1, 2, 1, 0, 13212.00, 132213.00, NULL, NULL, '321', NULL, NULL, NULL, NULL, 0, NULL, 312.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, '2022-10-18 01:20:17', '2022-10-18 02:00:44'),
+(5, 1, 2, 1, 0, 23423.00, 789.00, NULL, NULL, '798', NULL, NULL, NULL, NULL, 0, NULL, 987.00, NULL, 'CV_2022-09-21_Muhammad Nouman_Akram.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2022-10-19 19:46:58', '2022-10-19 19:46:25', '2022-10-19 19:46:58');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `invoice__payments`
+--
+
+CREATE TABLE `invoice__payments` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `invoice_id` int(11) NOT NULL,
+  `export_id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL,
+  `paid_amount` double NOT NULL,
+  `remaining_amount` double NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `note` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `added_by_role` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `keys`
+--
+
+CREATE TABLE `keys` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `keys`
+--
+
+INSERT INTO `keys` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'keys', '1', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `loading_countries`
+--
+
+CREATE TABLE `loading_countries` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `country` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `state` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `port` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `terminal` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` enum('1','0') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `loading_countries`
+--
+
+INSERT INTO `loading_countries` (`id`, `country`, `state`, `port`, `terminal`, `status`, `created_at`, `updated_at`) VALUES
+(2, 'pakistan', 'isb', 'port 1', 'terminal 1', '1', NULL, NULL),
+(3, 'we', 'qwer', 'qwer', 'qwer', '1', '2022-11-01 17:26:15', '2022-11-01 17:26:15');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `loading_ports`
+--
+
+CREATE TABLE `loading_ports` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `destination` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `state_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `loading_ports`
+--
+
+INSERT INTO `loading_ports` (`id`, `destination`, `status`, `state_id`, `created_at`, `updated_at`) VALUES
+(1, 'port 1', '1', 1, NULL, '2022-10-25 18:35:28');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `loading__images`
+--
+
+CREATE TABLE `loading__images` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `thumbnail` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `shipment_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `loading__images`
+--
+
+INSERT INTO `loading__images` (`id`, `name`, `thumbnail`, `shipment_id`, `created_at`, `updated_at`) VALUES
+(4, 'shipment_images/8aiYmecKxa7LlOFuFF3vbqPrqRzaT6KToepZAqQG.png', '1667475760.png', 13, '2022-11-03 18:42:40', '2022-11-03 18:42:40'),
+(5, 'shipment_images/b8MD1EN2rZzxb2ztvUsKdt8QwAgPlITyLAFgh8ij.png', '1668072103.png', 14, '2022-11-10 17:21:43', '2022-11-10 17:21:43');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `loadin_terminals`
+--
+
+CREATE TABLE `loadin_terminals` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` enum('1','0') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `loadingport_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `loadin_terminals`
+--
+
+INSERT INTO `loadin_terminals` (`id`, `name`, `status`, `loadingport_id`, `created_at`, `updated_at`) VALUES
+(1, 'terminal', '1', 1, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `locations`
+--
+
+CREATE TABLE `locations` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `zip_code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `added_by_role` bigint(20) UNSIGNED NOT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `locations`
+--
+
+INSERT INTO `locations` (`id`, `name`, `zip_code`, `added_by_role`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(1, 'New Jersey', '08701', 3, NULL, '2022-09-15 05:11:17', '2022-09-15 05:11:17'),
+(2, 'Savannah', '31401', 3, NULL, '2022-09-15 05:11:17', '2022-09-15 05:11:17'),
+(3, 'Texas', '77494', 3, NULL, '2022-09-15 05:11:17', '2022-09-15 05:11:17'),
+(4, 'Los Angeles', '90001', 3, NULL, '2022-09-15 05:11:17', '2022-09-15 05:11:17'),
+(5, 'Seattle', '98101', 3, NULL, '2022-09-15 05:11:17', '2022-09-15 05:11:17'),
+(6, 'Baltimore', '21211', 3, NULL, '2022-09-15 05:11:17', '2022-09-15 05:11:17'),
+(7, 'Norfolk', '23324', 3, NULL, '2022-09-15 05:11:17', '2022-09-15 05:11:17');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `makes`
+--
+
+CREATE TABLE `makes` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `makes`
+--
+
+INSERT INTO `makes` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
+(1, '1st make', '1', '2022-10-24 10:23:06', '2022-10-25 18:41:08'),
+(2, '2nd make', '1', '2022-10-24 10:23:06', '2022-10-26 12:46:13'),
+(3, '3rd make', '1', '2022-10-24 10:23:06', '2022-10-24 10:23:06'),
+(4, '4th make', '1', '2022-10-24 10:23:06', '2022-10-24 10:23:06'),
+(5, '5th make', '1', '2022-10-24 10:23:06', '2022-10-24 10:23:06'),
+(6, '6th make', '1', '2022-10-24 10:23:06', '2022-10-26 12:49:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_100000_create_password_resets_table', 1),
+(2, '2019_08_19_000000_create_failed_jobs_table', 1),
+(6, '2022_08_01_112132_create_towing_requests_table', 1),
+(10, '2022_08_03_063608_create_consignees_table', 1),
+(13, '2022_08_03_073837_create_documents_table', 1),
+(14, '2022_08_03_115246_create_conditions_table', 1),
+(15, '2022_08_03_115729_create_vehicle__conditions_table', 1),
+(16, '2022_08_03_123758_create_vehicle__exports_table', 1),
+(17, '2022_08_04_062014_create_export__images_table', 1),
+(18, '2022_08_04_062924_create_features_table', 1),
+(19, '2022_08_04_063503_create_images_table', 1),
+(20, '2022_08_04_064434_create_invoice__payments_table', 1),
+(21, '2022_08_04_064943_create_notes_table', 1),
+(22, '2022_08_04_065732_create_pricings_table', 1),
+(23, '2022_08_04_070631_create_vehicle__features_table', 1),
+(24, '2022_08_04_072941_create_audits_table', 1),
+(25, '2022_08_04_073554_create_auth_assignments_table', 1),
+(26, '2022_08_04_091838_create_auth_items_table', 1),
+(27, '2022_08_04_094020_create_auth_item_child_table', 1),
+(28, '2022_08_04_100650_create_auth_rules_table', 1),
+(29, '2022_08_04_103518_create_dock_receipts_table', 1),
+(39, '2022_08_22_092416_create_stickies_table', 5),
+(49, '2022_08_31_094417_create_shippers_table', 13),
+(52, '2022_08_31_112330_create_quotations_table', 14),
+(58, '2022_09_06_071648_create_roles_table', 17),
+(59, '2022_08_02_131855_create_notifications_table', 18),
+(60, '2022_08_01_062155_create_locations_table', 19),
+(64, '2022_09_19_114102_create_invoice_images_table', 23),
+(65, '2022_09_19_114244_create_warehouse_images_table', 23),
+(66, '2022_09_19_114624_create_auction_invoices_table', 24),
+(72, '2022_09_20_131013_create_auction_images_table', 29),
+(73, '2022_09_21_095955_create_auction_copies_table', 30),
+(75, '2022_08_01_062154_create_users_table', 32),
+(77, '2022_09_22_070028_create_customer_documents_table', 33),
+(82, '2022_09_23_105533_create_shipment_images_table', 35),
+(83, '2022_09_30_072933_create_shipment__invices_table', 36),
+(84, '2022_09_30_073030_create_stamp__titles_table', 36),
+(85, '2022_09_30_073202_create_loading__images_table', 36),
+(86, '2022_09_30_073240_create_other__documents_table', 36),
+(87, '2022_09_30_113155_create_bill_of_sales_table', 37),
+(88, '2022_09_30_114622_create_original_titles_table', 37),
+(89, '2022_09_30_115047_create_pickup_images_table', 37),
+(91, '2022_10_12_062546_create_vehicle_types_table', 39),
+(93, '2022_10_18_111928_create_companies_table', 40),
+(97, '2022_10_18_112132_create_makes_table', 40),
+(98, '2022_10_18_112220_create_colors_table', 40),
+(99, '2022_10_18_112244_create_titles_table', 40),
+(100, '2022_10_18_112305_create_keys_table', 40),
+(101, '2022_10_18_112323_create_auctions_table', 40),
+(103, '2022_09_23_104113_create_shipment_statuses_table', 41),
+(104, '2022_10_24_122557_create_shipment_lines_table', 42),
+(105, '2022_10_24_123208_create_container_types_table', 43),
+(106, '2022_10_24_123710_create_container_sizes_table', 44),
+(107, '2022_09_16_060632_create_vehicle_status_table', 45),
+(108, '2022_10_19_101753_create_shipping_countries_table', 46),
+(109, '2022_10_18_111829_create_states_table', 47),
+(110, '2022_10_18_112103_create_loading_ports_table', 48),
+(112, '2022_10_25_064559_create_loadin_terminals_table', 49),
+(113, '2022_08_30_112551_create_billing_parties_table', 50),
+(114, '2022_10_18_112039_create_destination_countries_table', 51),
+(115, '2022_10_26_060151_create_destination_states_table', 52),
+(116, '2022_10_18_112039_create_destination_ports_table', 53),
+(117, '2022_10_26_060920_create_destination_terminals_table', 54),
+(119, '2022_11_01_053123_create_loading_countries_table', 55),
+(120, '2022_11_01_080003_create_vehicles_table', 56),
+(121, '2022_09_24_122756_create_shipments_table', 57),
+(122, '2022_11_05_065456_create_permission_tables', 58);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `model_has_permissions`
+--
+
+CREATE TABLE `model_has_permissions` (
+  `permission_id` bigint(20) UNSIGNED NOT NULL,
+  `model_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `model_has_roles`
+--
+
+CREATE TABLE `model_has_roles` (
+  `role_id` bigint(20) UNSIGNED NOT NULL,
+  `model_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `model_has_roles`
+--
+
+INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
+(1, 'App\\Models\\User', 1),
+(4, 'App\\Models\\User', 65),
+(4, 'App\\Models\\User', 66),
+(4, 'App\\Models\\User', 67),
+(4, 'App\\Models\\User', 68),
+(4, 'App\\Models\\User', 69);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `m_m_s`
+--
+
+CREATE TABLE `m_m_s` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `make` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `series` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` enum('1','0') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `m_m_s`
+--
+
+INSERT INTO `m_m_s` (`id`, `make`, `model`, `series`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Dolorem hic dolorem', 'Consectetur esse ve', 'Qui temporibus porro', '1', NULL, '2022-11-01 03:55:54'),
+(2, '2nd make', '2nd model', '2nd series', '1', NULL, NULL),
+(6, '2nd make', '2nd model', '2nd series', '1', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notes`
+--
+
+CREATE TABLE `notes` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `export_id` bigint(20) UNSIGNED NOT NULL,
+  `image_url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `vehicle_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notifications`
+--
+
+CREATE TABLE `notifications` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `subject` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `message` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `is_read` tinyint(1) NOT NULL,
+  `status` int(11) NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `expiry_date` date NOT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `notifications`
+--
+
+INSERT INTO `notifications` (`id`, `subject`, `message`, `is_read`, `status`, `user_id`, `expiry_date`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(1, 'notification 1', '<p>Testing notification</p>', 0, 1, 21, '2022-09-13', NULL, '2022-09-12 01:42:31', '2022-09-13 05:10:21'),
+(2, 'Notification 2', '<p>testing...</p>', 0, 1, 21, '2022-09-23', NULL, '2022-09-13 01:44:08', '2022-09-13 05:36:35'),
+(3, 'I\'m having problem while signing in the ABL app. I\'m consistently getting network request failed.', '<p>this is a testing notification</p>', 0, 1, 11, '2022-09-30', NULL, '2022-09-13 06:09:48', '2022-09-13 06:10:24'),
+(4, 'demo', '<p>testing</p>', 0, 1, 8, '2022-10-06', '2022-10-31 18:03:52', '2022-10-06 18:23:02', '2022-10-31 18:03:52');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `no_of_vehicles`
+--
+
+CREATE TABLE `no_of_vehicles` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` enum('1','0') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `no_of_vehicles`
+--
+
+INSERT INTO `no_of_vehicles` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
+(4, '1', '1', '2022-11-03 19:10:26', '2022-11-03 19:10:33');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `original_titles`
+--
+
+CREATE TABLE `original_titles` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `thumbnail` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `vehicle_id` bigint(20) UNSIGNED NOT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `original_titles`
+--
+
+INSERT INTO `original_titles` (`id`, `name`, `thumbnail`, `vehicle_id`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(12, 'vehicle_images/SIL5un4dE9gWxoubSuY4xjECWweaPmmg7SRP6vtL.png', '1666707181.png', 116, NULL, '2022-10-25 21:13:01', '2022-10-25 21:13:01'),
+(16, 'vehicle_images/guxo6VcChDBzHHM0V8uaJU8EV9NnxvPqwd7is4NE.png', '1667475711.png', 7, NULL, '2022-11-03 18:41:51', '2022-11-03 18:41:51'),
+(17, 'vehicle_images/3LO176PizJeemOKdkQFj7LKZ3x1W8iDVTwmhj51Q.png', '1667475833.png', 8, NULL, '2022-11-03 18:43:53', '2022-11-03 18:43:53'),
+(18, 'vehicle_images/OEguS8MtdrEQoMAOHd0xCE0AIutUbXRordP7UOuI.png', '1667987799.png', 12, NULL, '2022-11-09 17:56:39', '2022-11-09 17:56:39'),
+(19, 'vehicle_images/HaEORbCR7cAzMjWuKNomUsmxtrngLSgfO4RfVoCr.png', '1668160695.png', 13, NULL, '2022-11-11 17:58:15', '2022-11-11 17:58:15'),
+(20, 'vehicle_images/s09URcAquu26ab6eSHFuDruOH24FnyMPKHzmAE72.png', '1668160695.png', 13, NULL, '2022-11-11 17:58:15', '2022-11-11 17:58:15'),
+(21, 'vehicle_images/0cx8k88yRzuYyYOMMbuSLz8Tf3xP2gDGdylNpAUE.png', '1668160695.png', 13, NULL, '2022-11-11 17:58:15', '2022-11-11 17:58:15'),
+(22, 'vehicle_images/fkxwYkWOlGZk2w2HehKmNQFKC2sjecKve845mg9C.png', '1668160708.png', 13, NULL, '2022-11-11 17:58:28', '2022-11-11 17:58:28'),
+(23, 'vehicle_images/fDfsA5mvGaL4XPKKibbIfyTpRp9rwsWvgWaiFvSx.png', '1668160708.png', 13, NULL, '2022-11-11 17:58:28', '2022-11-11 17:58:28'),
+(24, 'vehicle_images/Pi2kJfaqnDhsWIUuFbzpUN3KXVXJIfNFCrCjEg7G.png', '1668160708.png', 13, NULL, '2022-11-11 17:58:28', '2022-11-11 17:58:28'),
+(25, 'vehicle_images/tVXxyrLS7sunzf60nfYilizs4QkW2KCyYertaSS9.png', '1668160716.png', 13, NULL, '2022-11-11 17:58:36', '2022-11-11 17:58:36'),
+(26, 'vehicle_images/3XWu895lAx80IiTN2nzwMKUT0p8UFjPez2UyxbXM.png', '1668160716.png', 13, NULL, '2022-11-11 17:58:36', '2022-11-11 17:58:36'),
+(27, 'vehicle_images/P484yZm9GUl9cDxfVl1OIyT2OoK6XDCIqexIhQlM.png', '1668160716.png', 13, NULL, '2022-11-11 17:58:36', '2022-11-11 17:58:36'),
+(28, 'vehicle_images/7zxOSAHHfHCZIfS6H81hBdSqG0rxt72QUCqAsK9N.png', '1668160742.png', 13, NULL, '2022-11-11 17:59:02', '2022-11-11 17:59:02'),
+(29, 'vehicle_images/hBGOuB8tH2jfpyoZ4ArAy2a8kCR7zNrcx4n2uU4h.png', '1668160742.png', 13, NULL, '2022-11-11 17:59:02', '2022-11-11 17:59:02'),
+(30, 'vehicle_images/HpYOcEsikgwf7Ol0i8pJbPV6e92VeIfpNGN9HMAJ.png', '1668160742.png', 13, NULL, '2022-11-11 17:59:02', '2022-11-11 17:59:02'),
+(31, 'vehicle_images/z8j2KLaryfHMcifaR9nrnujIN6NgWsiA2LyaIOG1.jpg', '1668160892.jpg', 14, NULL, '2022-11-11 18:01:32', '2022-11-11 18:01:32'),
+(32, 'vehicle_images/D4om597gFymJEIyxLANlRXCWFnZ2EGpy8fPWuGb8.png', '1668160892.png', 14, NULL, '2022-11-11 18:01:32', '2022-11-11 18:01:32'),
+(33, 'vehicle_images/VsnK2tM5cOdyEkcEyKgXlfpcOEhsjsQqzdUdsaui.png', '1668160892.png', 14, NULL, '2022-11-11 18:01:32', '2022-11-11 18:01:32'),
+(34, 'vehicle_images/J2QJXheIYUndEiYmdNp3UFe7zlmBKjtsqUOVmxSL.png', '1668160892.png', 14, NULL, '2022-11-11 18:01:32', '2022-11-11 18:01:32');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `other__documents`
+--
+
+CREATE TABLE `other__documents` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `thumbnail` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `shipment_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `other__documents`
+--
+
+INSERT INTO `other__documents` (`id`, `name`, `thumbnail`, `shipment_id`, `created_at`, `updated_at`) VALUES
+(5, 'shipment_images/0dMjX5s00YHU9igrTshOKu4LxDKiX5QxlBs2JPJX.png', '1667475760.png', 13, '2022-11-03 18:42:40', '2022-11-03 18:42:40');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `password_resets`
+--
+
+INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
+('admin@admin.com', '$2y$10$hcJ4qCYUve2GCObKhqlz/OGVlFp9QnSIzKK4fSdmkPA3J8MdUirQO', '2022-08-12 18:51:57'),
+('admin@admin.com', '$2y$10$hcJ4qCYUve2GCObKhqlz/OGVlFp9QnSIzKK4fSdmkPA3J8MdUirQO', '2022-08-12 18:51:57');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `permissions`
+--
+
+CREATE TABLE `permissions` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `guard_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `permissions`
+--
+
+INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
+(1, 'view', 'web', '2022-11-05 15:11:58', '2022-11-05 15:11:58'),
+(2, 'create', 'web', '2022-11-05 15:12:18', '2022-11-05 15:12:18'),
+(3, 'edit', 'web', '2022-11-05 15:12:35', '2022-11-05 15:12:35'),
+(4, 'delete', 'web', '2022-11-05 15:12:48', '2022-11-05 15:12:48'),
+(5, 'Page Access', 'web', '2022-11-05 15:13:50', '2022-11-05 15:13:50');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pickup_images`
+--
+
+CREATE TABLE `pickup_images` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `thumbnail` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `vehicle_id` bigint(20) UNSIGNED NOT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `pickup_images`
+--
+
+INSERT INTO `pickup_images` (`id`, `name`, `thumbnail`, `vehicle_id`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(12, 'vehicle_images/i5xghTvtV3CBzNEaaKZtrPQso1aZWJHayFoz03zZ.png', '1666762774.png', 116, NULL, '2022-10-26 12:39:34', '2022-10-26 12:39:34'),
+(16, 'vehicle_images/enlWU596GfZhNKPaiYrqRpz4Hkn0iGQSCC05zOx1.png', '1667475711.png', 7, NULL, '2022-11-03 18:41:51', '2022-11-03 18:41:51'),
+(17, 'vehicle_images/StlLHwsb3zoJJL9EaPOdvkUjQgpB5mnZfApLIHhC.png', '1667475833.png', 8, NULL, '2022-11-03 18:43:53', '2022-11-03 18:43:53'),
+(18, 'vehicle_images/wuaZupVfGrqAqLWLNMdf89yl9hJZbHr03jPswOI7.jpg', '1668145651.jpg', 7, NULL, '2022-11-11 13:47:32', '2022-11-11 13:47:32'),
+(19, 'vehicle_images/Zoeq3sBRRPRwuyor8rFxwYK26ARtEiJFD5cDGH0G.png', '1668145652.png', 7, NULL, '2022-11-11 13:47:32', '2022-11-11 13:47:32'),
+(20, 'vehicle_images/Tl1B1Cnf2u3wVT0SXOdTtDqhrS58dxoYgD9vsgpC.jpg', '1668145652.jpg', 7, NULL, '2022-11-11 13:47:32', '2022-11-11 13:47:32'),
+(21, 'vehicle_images/iQ4kp2qn7DejaGYZLU3iKrKUh7O0tpre6VFuTmFX.jpg', '1668145652.jpg', 7, NULL, '2022-11-11 13:47:32', '2022-11-11 13:47:32'),
+(22, 'vehicle_images/f3Ww9v3vyo7X5TKFMyUWAGeOTfLKQNpIkmV3DiSw.png', '1668160695.png', 13, NULL, '2022-11-11 17:58:15', '2022-11-11 17:58:15'),
+(23, 'vehicle_images/EQlvR6C3AhMEyQXKYhQhpesvq14YgBgq0XtoOAMO.png', '1668160695.png', 13, NULL, '2022-11-11 17:58:15', '2022-11-11 17:58:15'),
+(24, 'vehicle_images/BWcRLsoEMGBEgOCxlTVtmX18FLOaUG1qTDBlKsEJ.png', '1668160695.png', 13, NULL, '2022-11-11 17:58:15', '2022-11-11 17:58:15'),
+(25, 'vehicle_images/zBZBjxQrcwBpZNzEvCUqWxWowXlzRIF8Prp4qDYu.jpg', '1668160695.jpg', 13, NULL, '2022-11-11 17:58:15', '2022-11-11 17:58:15'),
+(26, 'vehicle_images/GDJWlVq7AkffJdqh6vH6rbuuwA3nsBMSQEGMLecb.png', '1668160708.png', 13, NULL, '2022-11-11 17:58:28', '2022-11-11 17:58:28'),
+(27, 'vehicle_images/kGVFUE1M1V6R6HhdoNJyppVEN1GqCpNJnySVVYhx.png', '1668160708.png', 13, NULL, '2022-11-11 17:58:28', '2022-11-11 17:58:28'),
+(28, 'vehicle_images/5RCYfLiTjQ1a6qkWboogCY7yBcBU5RL9OTapzR5j.png', '1668160716.png', 13, NULL, '2022-11-11 17:58:36', '2022-11-11 17:58:36'),
+(29, 'vehicle_images/XnXrF0daezAYQoKGU0jPKijCnhLGtCjn0j6Qm9Y3.png', '1668160716.png', 13, NULL, '2022-11-11 17:58:36', '2022-11-11 17:58:36'),
+(30, 'vehicle_images/76WV257SoClsgPznQQ8gLqId7Fm1q4PiDSZ82jLa.png', '1668160742.png', 13, NULL, '2022-11-11 17:59:02', '2022-11-11 17:59:02'),
+(31, 'vehicle_images/AmNHXFOZuHm2B7eFjwkSwee8Nd0TCCxHqkhWhAGl.png', '1668160742.png', 13, NULL, '2022-11-11 17:59:02', '2022-11-11 17:59:02'),
+(32, 'vehicle_images/c9wA8j4neFEvUztcigEJFv1Se2DveV6V3MTMrokO.jpg', '1668160892.jpg', 14, NULL, '2022-11-11 18:01:32', '2022-11-11 18:01:32'),
+(33, 'vehicle_images/MYTMaC41j66rX4Qi0Mks9jMCUingMTv2UrtzdJCE.png', '1668160892.png', 14, NULL, '2022-11-11 18:01:32', '2022-11-11 18:01:32'),
+(34, 'vehicle_images/Xt5vVQSLYvLKs7VNqc6P0uxrXIk7wk4PfYClRXPH.jpg', '1668160892.jpg', 14, NULL, '2022-11-11 18:01:32', '2022-11-11 18:01:32'),
+(35, 'vehicle_images/cAAJv4lu5Pz8AgqcCWV6R5LALFLdIWzYSKECS0F1.png', '1668163332.png', 12, NULL, '2022-11-11 18:42:12', '2022-11-11 18:42:12'),
+(36, 'vehicle_images/bgyJWOixNWAK7tRCH02t19fC8xsksU9UcGlx3o9v.png', '1668163332.png', 12, NULL, '2022-11-11 18:42:12', '2022-11-11 18:42:12'),
+(37, 'vehicle_images/7zUL5E8EaLBm0OvK9SNiP1xHwNZFvutLGvCvvOzp.png', '1668234021.png', 15, NULL, '2022-11-12 14:20:21', '2022-11-12 14:20:21'),
+(38, 'vehicle_images/wfiMGX6tGYmEFO5utB0YOVICdoMNA0rMTk2OLPlG.png', '1668234021.png', 15, NULL, '2022-11-12 14:20:21', '2022-11-12 14:20:21');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pickup_location`
+--
+
+CREATE TABLE `pickup_location` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `pickup_location`
+--
+
+INSERT INTO `pickup_location` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
+(3, 's', '1', '2022-10-24 13:34:40', '2022-10-25 19:24:45'),
+(4, 'a', '1', '2022-10-24 13:34:46', '2022-10-28 16:15:31');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pricings`
+--
+
+CREATE TABLE `pricings` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `upload_file` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `month` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `princing_type` int(11) NOT NULL,
+  `status` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `added_by_role` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `quotations`
+--
+
+CREATE TABLE `quotations` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `destination_port` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `valid_from` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `valid_till` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `container_size` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `vehicle` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `loading_port` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `shipping_line` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `default` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `special_rate` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `customer_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `quotations`
+--
+
+INSERT INTO `quotations` (`id`, `destination_port`, `valid_from`, `valid_till`, `container_size`, `vehicle`, `loading_port`, `shipping_line`, `default`, `special_rate`, `customer_id`, `created_at`, `updated_at`) VALUES
+(1, 'new york', '09/01/2022', '11/01/2022', NULL, '20', '10', '30', '13000', '12000', 21, '2022-09-01 06:49:42', '2022-09-01 06:49:42'),
+(2, 'H', 'JKH', 'K', '20', '20', '10', '20', '12', 'ASD', 46, '2022-10-06 18:55:30', '2022-10-06 18:55:30'),
+(3, 'port 1', '2022-10-19', '2022-10-27', '20', '20', '20', '30', 'ui', 'u', 1, '2022-10-27 13:12:57', '2022-10-27 13:12:57'),
+(4, NULL, NULL, NULL, '10', '10', '10', '10', NULL, NULL, 1, '2022-10-27 13:16:06', '2022-10-27 13:16:06'),
+(5, NULL, NULL, NULL, '10', '10', '10', '10', NULL, NULL, 1, '2022-10-27 13:16:18', '2022-10-27 13:16:18'),
+(6, NULL, NULL, NULL, '10', '10', '10', '10', NULL, NULL, 1, '2022-10-27 13:16:41', '2022-10-27 13:16:41'),
+(7, NULL, NULL, NULL, '10', '10', '10', '10', NULL, NULL, 1, '2022-10-27 14:28:40', '2022-10-27 14:28:40');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `guard_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
+(1, 'Super Admin', 'web', '2022-11-05 14:31:05', '2022-11-05 14:31:05'),
+(2, 'Sub Admin', 'web', '2022-11-05 14:31:43', '2022-11-05 14:31:43'),
+(3, 'Location Admin', 'web', '2022-11-05 14:32:05', '2022-11-05 14:32:05'),
+(4, 'Customer', 'web', '2022-11-05 14:32:24', '2022-11-05 14:32:24');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `role_has_permissions`
+--
+
+CREATE TABLE `role_has_permissions` (
+  `permission_id` bigint(20) UNSIGNED NOT NULL,
+  `role_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `role_has_permissions`
+--
+
+INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
+(1, 1),
+(1, 4),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `series`
+--
+
+CREATE TABLE `series` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `model_id` bigint(20) UNSIGNED NOT NULL,
+  `status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `series`
+--
+
+INSERT INTO `series` (`id`, `name`, `model_id`, `status`, `created_at`, `updated_at`) VALUES
+(1, '1st series', 1, '1', '2022-10-24 10:26:14', '2022-10-24 10:26:14'),
+(2, '2nd Series', 2, '1', NULL, '2022-10-26 12:48:54'),
+(3, '3rd series', 3, '1', '2022-10-24 10:26:14', '2022-10-24 10:26:14'),
+(4, '4th Series', 5, '1', NULL, NULL),
+(5, '5th series', 4, '1', '2022-10-24 10:26:14', '2022-10-24 10:26:14');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shipments`
+--
+
+CREATE TABLE `shipments` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `company_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `customer_email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `customer_phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `shipment_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `loading_date` date DEFAULT NULL,
+  `cut_off_date` date DEFAULT NULL,
+  `export_date` date DEFAULT NULL,
+  `ship_date` date DEFAULT NULL,
+  `sale_date` date DEFAULT NULL,
+  `est_arrival_date` date DEFAULT NULL,
+  `booking_number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `container_no` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `container_size` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `container_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `shipping_reference` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ase-itn_number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `xtn_number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `oti_number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `select_consignee` bigint(20) UNSIGNED DEFAULT NULL,
+  `shipper` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `loading_terminal` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `loading_port` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `loading_state` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `discharge_port` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `loading_country` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `destination_terminal` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `destination_port` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `destination_state` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `destination_country` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `hand_over_to` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `hand_over_date` date DEFAULT NULL,
+  `shipping_line` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `vessel` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `seal_number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `voyage` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `units` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `types` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `insurance` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `fmc_license_number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `select_notify_party` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` bigint(20) UNSIGNED NOT NULL,
+  `notes` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `shipments`
+--
+
+INSERT INTO `shipments` (`id`, `company_name`, `customer_email`, `customer_phone`, `shipment_type`, `loading_date`, `cut_off_date`, `export_date`, `ship_date`, `sale_date`, `est_arrival_date`, `booking_number`, `container_no`, `container_size`, `container_type`, `shipping_reference`, `ase-itn_number`, `xtn_number`, `oti_number`, `select_consignee`, `shipper`, `loading_terminal`, `loading_port`, `loading_state`, `discharge_port`, `loading_country`, `destination_terminal`, `destination_port`, `destination_state`, `destination_country`, `hand_over_to`, `hand_over_date`, `shipping_line`, `vessel`, `seal_number`, `voyage`, `units`, `types`, `insurance`, `fmc_license_number`, `select_notify_party`, `status`, `notes`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(13, 'Rowan Bartell DVM', 'olson.rosina@example.org', '3425', 'abc', NULL, NULL, NULL, NULL, NULL, NULL, '45', '2345', '50', 'container type', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, '2022-11-03 18:42:23', '2022-11-10 17:13:23', '2022-11-10 17:13:23'),
+(14, 'Dr. Philip Bayer', 'admin@admin.com', '2345234', 'abc', NULL, NULL, NULL, NULL, NULL, NULL, '2345', '2345234523', '50', 'container 2', NULL, NULL, NULL, NULL, 1, 'wert', 'terminal 1', 'port 1', 'isb', NULL, 'pakistan', 'terminal3', 'port3', 'state3', 'pak', NULL, NULL, 'line', 'wret', '2345', NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, '2022-11-10 17:21:08', '2022-11-10 17:21:08', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shipment_images`
+--
+
+CREATE TABLE `shipment_images` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `thumbnail` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `shipment_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `shipment_images`
+--
+
+INSERT INTO `shipment_images` (`id`, `name`, `thumbnail`, `shipment_id`, `created_at`, `updated_at`) VALUES
+(12, 'shipment_images/64g0L1dBrYH1ziVnnPZgWnPdZrO2iddESx4FDWuj.webp', '1664455924.webp', 20, '2022-09-29 07:52:04', '2022-09-29 07:52:04');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shipment_lines`
+--
+
+CREATE TABLE `shipment_lines` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` enum('1','0') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `shipment_lines`
+--
+
+INSERT INTO `shipment_lines` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'line', '1', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shipment_statuses`
+--
+
+CREATE TABLE `shipment_statuses` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` enum('1','0') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `shipment_statuses`
+--
+
+INSERT INTO `shipment_statuses` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Booked', '1', '2022-10-24 17:31:28', '2022-10-24 17:31:28'),
+(2, 'Shipped', '1', '2022-10-24 17:31:28', '2022-10-24 17:31:28'),
+(3, 'Arrived', '1', '2022-10-24 17:31:28', '2022-10-24 17:31:28'),
+(4, 'Completed', '1', '2022-10-24 17:31:28', '2022-10-24 17:31:28');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shipment_types`
+--
+
+CREATE TABLE `shipment_types` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` enum('1','0') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `shipment_types`
+--
+
+INSERT INTO `shipment_types` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'abc', '1', '2022-11-01 05:43:23', '2022-11-01 01:08:12');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shipment__invices`
+--
+
+CREATE TABLE `shipment__invices` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `thumbnail` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `shipment_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `shipment__invices`
+--
+
+INSERT INTO `shipment__invices` (`id`, `name`, `thumbnail`, `shipment_id`, `created_at`, `updated_at`) VALUES
+(2, 'shipment_images/bt32xCmpW9NTUr7aHyYwnedxl58WqND0xlhQqswo.jpg', '1666937234.jpg', 23, '2022-10-28 13:07:14', '2022-10-28 13:07:14'),
+(8, 'shipment_images/D75Hn6ZMP5IphJGnsDQx75kyIw1tI7sYzo7ogB5x.png', '1667475760.png', 13, '2022-11-03 18:42:40', '2022-11-03 18:42:40');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shippers`
+--
+
+CREATE TABLE `shippers` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `shipper_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `contact_person_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company_email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `country` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `city` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `zip_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `consignee` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `consolidate` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `original_shipping_documents` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `insurance` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `destination_port` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `customer_id` bigint(20) UNSIGNED NOT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `shippers`
+--
+
+INSERT INTO `shippers` (`id`, `shipper_name`, `contact_person_name`, `phone`, `company_email`, `country`, `city`, `zip_code`, `address`, `consignee`, `consolidate`, `original_shipping_documents`, `insurance`, `destination_port`, `customer_id`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(1, 'uneeb', 'ahmed', '03216008673', 'uneeb@gmail.com', 'Pakistan', 'Sargodha', '40100', 'House#276, Street#7, Rehmat Park, University Road, Sargodha', 'same as billing party', 'no', 'send back', 'no', 'multiple', 21, NULL, '2022-09-01 06:49:14', '2022-09-01 06:49:14'),
+(2, 'xyz', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 22, NULL, '2022-09-02 01:05:21', '2022-09-02 01:05:21'),
+(3, 'KJ', 'KJ', 'KJ', 'KJK', 'J', 'KJ', 'KJ', 'K', 'same as billing party', 'no', 'send back', 'no', 'single', 46, NULL, '2022-10-06 18:55:19', '2022-10-06 18:55:19'),
+(4, 'kj', 'kj', 'kj', 'kj@gmail.com', 'jk', 'j', 'kkj', 'k', 'same as billing party', 'no', 'send back', 'no', 'single', 54, NULL, '2022-10-20 19:17:04', '2022-10-20 19:17:04'),
+(5, 'aksdjfkj', 'lkjf', 'lkj', 'lk2g@gmail.com', 'jkj', 'kj', 'k', 'jk', 'same as billing party', 'no', 'send back', 'no', 'single', 1, NULL, '2022-10-27 14:28:30', '2022-10-27 14:28:30'),
+(6, 'dskljf', 'kljk', 'lfj', 'klj', 'klj', 'klj', 'lkj', 'kl', 'same as billing party', 'no', 'send back', 'yes', 'multiple', 66, NULL, '2022-11-07 19:11:40', '2022-11-07 19:11:40'),
+(7, 'kjsdlfkj', 'lkjfwlkjflk', 'jflk', 'j', 'lkjk', 'jk', 'j', 'kj', 'same as billing party', 'no', 'send back', 'no', 'single', 67, NULL, '2022-11-09 17:53:13', '2022-11-09 17:53:13');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shipper_name`
+--
+
+CREATE TABLE `shipper_name` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `shipper_name`
+--
+
+INSERT INTO `shipper_name` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
+(2, 'sdfsdf', '1', '2022-10-24 11:37:05', '2022-10-24 13:36:37'),
+(3, 'sdfsdfsd', '1', '2022-10-24 11:37:05', '2022-10-24 11:37:05'),
+(4, 'sdfsf', '1', '2022-10-24 11:37:05', '2022-10-24 11:37:05');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shipping_countries`
+--
+
+CREATE TABLE `shipping_countries` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `shipping_countries`
+--
+
+INSERT INTO `shipping_countries` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'pakistan', '1', NULL, '2022-10-26 13:34:51'),
+(2, 'inida', '1', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shipping_states`
+--
+
+CREATE TABLE `shipping_states` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `shipping_states`
+--
+
+INSERT INTO `shipping_states` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'kashif', '1', '2022-10-25 19:18:14', '2022-10-25 19:18:14');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `site`
+--
+
+CREATE TABLE `site` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `site`
+--
+
+INSERT INTO `site` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
+(2, 'sdfsdf', '1', '2022-10-24 11:27:33', '2022-10-24 13:46:25'),
+(3, 'xyz', '1', '2022-10-25 13:32:28', '2022-10-28 16:15:34');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `stamp__titles`
+--
+
+CREATE TABLE `stamp__titles` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `thumbnail` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `shipment_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `stamp__titles`
+--
+
+INSERT INTO `stamp__titles` (`id`, `name`, `thumbnail`, `shipment_id`, `created_at`, `updated_at`) VALUES
+(1, 'shipment_images/dJDOuvMf49I3a425EFKHQfenhYjx4zH5rJnpfAao.png', '1664538148.png', 24, '2022-09-30 18:42:28', '2022-09-30 18:42:28'),
+(4, 'shipment_images/50FP0uXjXZRBmbaQohCAyN1yGpOEqvO3r8ARpRND.png', '1667475760.png', 13, '2022-11-03 18:42:40', '2022-11-03 18:42:40');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `states`
+--
+
+CREATE TABLE `states` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `abbrevation` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `country_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `states`
+--
+
+INSERT INTO `states` (`id`, `name`, `abbrevation`, `status`, `country_id`, `created_at`, `updated_at`) VALUES
+(1, 'isb', NULL, '1', 1, NULL, '2022-10-25 19:54:38'),
+(3, 'rawalpindi', NULL, '1', 1, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `stickies`
+--
+
+CREATE TABLE `stickies` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `notes` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sticky_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `customer_id` bigint(20) UNSIGNED NOT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `titles`
+--
+
+CREATE TABLE `titles` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` enum('1','0') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `titles`
+--
+
+INSERT INTO `titles` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'kashif k', '1', '2022-10-19 19:07:42', '2022-10-26 14:01:11');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `title_types`
+--
+
+CREATE TABLE `title_types` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `title_types`
+--
+
+INSERT INTO `title_types` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'xyz', '1', '2022-10-25 13:32:52', '2022-10-26 14:12:26');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `towing_requests`
+--
+
+CREATE TABLE `towing_requests` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `condition` int(11) DEFAULT NULL,
+  `damaged` int(11) DEFAULT NULL,
+  `pictures` tinyint(1) DEFAULT NULL,
+  `towed` tinyint(1) DEFAULT NULL,
+  `title_recieved` tinyint(1) DEFAULT NULL,
+  `title_recieved_date` date DEFAULT NULL,
+  `title_number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title_state` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `towing_request_date` date DEFAULT NULL,
+  `pickup_date` date DEFAULT NULL,
+  `deliver_date` date DEFAULT NULL,
+  `note` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title_type` int(11) DEFAULT 0,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `authkey` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password_reset_token` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `company_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `company_email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `role_id` bigint(20) UNSIGNED NOT NULL,
+  `user_is_detected` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address_line1` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address_line2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `city` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `state` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `country` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `zip_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `fax` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `level` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `industry` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `source` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `customer_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sales_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sales_person` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `inside_person` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `lead` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `payment_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `payment_term` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `price_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `location_number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `added_by_user` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `name`, `username`, `authkey`, `password`, `password_reset_token`, `email`, `company_name`, `company_email`, `status`, `role_id`, `user_is_detected`, `address_line1`, `address_line2`, `city`, `state`, `country`, `zip_code`, `phone`, `fax`, `level`, `industry`, `source`, `customer_type`, `sales_type`, `sales_person`, `inside_person`, `lead`, `payment_type`, `payment_term`, `price_code`, `location_number`, `added_by_user`, `user_image`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(1, 'Prof. Cordia Hermiston II', 'xpouros', 'YZIz0', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, 'admin@admin.com', 'Dr. Philip Bayer', 'ltillman@hotmail.com', '0', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2', 'customer_images/asdasdsadaskjldaskldj.png', NULL, '2022-09-22 08:09:59', '2022-09-22 08:09:59'),
+(66, 'kashif a', 'kashif qa', NULL, '$2y$10$eQUwX31Y1zpQCWZzxycPo.U4xXvOORHm.JpJXwWOQqPiBC2gpDMRC', NULL, 'qazikashif745@gmail.com', 'xyz', 'xyz@gmail.com', '1', 4, NULL, 'askdfjkl', 'jlk', NULL, 'k', 'pakistan', '3245', '23453465', 'asdfjkashdfj', 'j', 'kj', 'asojdflkj', 'kj', 'k', 'k', 'askdfjkl', NULL, 'j', 'kj', '32', 'k', '1', 'customer_images/DZHNJ63EusGued0yI7nLvps5d0M9QtZgzeZevMG9.jpg', NULL, '2022-11-07 19:11:00', '2022-11-11 23:19:11'),
+(67, 'kashif', 'kashif', NULL, '$2y$10$fVsouVn1UsFjm.fb4EfHA.PJXqI5MXhkDjjq3TJBDhYrjpGxmft4q', NULL, 'kashifkashif@gmail.com', 'xyzd', 'ajsf@gmail.com', '1', 4, NULL, 'askdjflaj', NULL, NULL, 'isb', 'pka', '2345', '352345', '2345', NULL, NULL, NULL, NULL, NULL, NULL, 'askdjflaj', NULL, NULL, NULL, NULL, 'isb', '1', 'customer_images/DSlHYTDbEAGuIzY1xWI0YrLDhLGtWZ0EhSrEKtn2.jpg', NULL, '2022-11-09 17:52:33', '2022-11-09 17:54:55'),
+(68, 'kashif kashif', 'kashif', NULL, '$2y$10$G5vqq.nPkBsLrwK2csL7Je43l7wS1Ufop063cD/1RTdUAROAoni2q', NULL, 'kashifqazi745@gmail.com', 'jsadflkj', 'kljasdflkj2@gmail.com', '1', 4, NULL, 'iouasdfoipua', NULL, NULL, 'oasdgfio', 'qlkgjklj', '23946', '23984579', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'dfjgklj', '1', 'customer_images/muooPiegTdCsEdAg8VjBkTvsPZwquf1sHp5f7Sb2.jpg', NULL, '2022-11-10 15:52:02', '2022-11-10 15:52:02'),
+(69, 'hjkhkjh', 'hjgjhgjhg', NULL, 'hjgkgjh', NULL, 'hjgkjhgjkhg@HGFH.JHG', 'HFRUYT', 'HJGHJ@UYTIIU.UUYTUIY', '1', 4, NULL, 'TRERR', NULL, NULL, 'REWEW', 'TRERW1', 'WTRE', '87676775765', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'YUT', '1', NULL, NULL, '2022-11-12 21:18:09', '2022-11-12 21:18:09');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vehicles`
+--
+
+CREATE TABLE `vehicles` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `customer_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `vin` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `year` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `make` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `model` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `vehicle_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `weight` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `value` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `auction` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `buyer_id` bigint(20) UNSIGNED NOT NULL,
+  `key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `note` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `hat_number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title_rec_date` date DEFAULT NULL,
+  `title_state` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title_number` int(11) DEFAULT NULL,
+  `shipper_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` bigint(20) UNSIGNED NOT NULL,
+  `sale_date` date DEFAULT NULL,
+  `paid_date` date DEFAULT NULL,
+  `days` int(11) DEFAULT NULL,
+  `posted_date` date DEFAULT NULL,
+  `pickup_date` date DEFAULT NULL,
+  `delivered` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `delivered_date` date DEFAULT NULL,
+  `pickup_location` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `site` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `dealer_fee` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `late_fee` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `auction_storage` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `towing_charges` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `warehouse_storage` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title_fee` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `port_detention_fee` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `custom_inspection` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `additional_fee` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `insurance` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `fee` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `customer_paying_fee` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `profit` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `paid_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `bidder` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `lot` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `entry_date` date DEFAULT NULL,
+  `age` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `assign_date` date DEFAULT NULL,
+  `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `dispatch_date` date DEFAULT NULL,
+  `port` bigint(20) UNSIGNED NOT NULL,
+  `vehicle_is_deleted` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `shipment_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `added_by_user` bigint(20) UNSIGNED DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `vehicles`
+--
+
+INSERT INTO `vehicles` (`id`, `customer_name`, `vin`, `year`, `make`, `model`, `vehicle_type`, `color`, `weight`, `value`, `auction`, `buyer_id`, `key`, `note`, `hat_number`, `title_type`, `title`, `title_rec_date`, `title_state`, `title_number`, `shipper_name`, `status`, `sale_date`, `paid_date`, `days`, `posted_date`, `pickup_date`, `delivered`, `delivered_date`, `pickup_location`, `site`, `dealer_fee`, `late_fee`, `auction_storage`, `towing_charges`, `warehouse_storage`, `title_fee`, `port_detention_fee`, `custom_inspection`, `additional_fee`, `insurance`, `fee`, `customer_paying_fee`, `profit`, `paid_by`, `bidder`, `lot`, `entry_date`, `age`, `assign_date`, `description`, `dispatch_date`, `port`, `vehicle_is_deleted`, `shipment_id`, `added_by_user`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(7, 'Rowan Bartell DVM', 'KM8JUCAC4DU604504', '2013', 'HYUNDAI', 'Tucson', 'MULTIPURPOSE PASSENGER VEHICLE (MPV)', 'red 1', '234', '2345', 'kashif', 1, 'keys', NULL, NULL, 'xyz', 'kashif k', NULL, NULL, NULL, 'sdfsdf', 1, '2022-11-07', '2022-11-09', 2, NULL, NULL, NULL, NULL, NULL, 'sdfsdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, 14, 1, NULL, '2022-11-03 18:41:27', '2022-11-10 17:21:08'),
+(8, 'Rowan Bartell DVM', '23894jhsa', '2019', '2nd make', '2nd model', 'xyzs', 'red 1', '324', '2345', 'kashif', 1, 'keys', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'sdfsdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, 1, NULL, '2022-11-03 18:43:31', '2022-11-10 17:13:23'),
+(12, 'xyzd', '342534', '2022', '2nd make', '2nd model', 'xyzs', 'red 1', '245', '2345', 'kashif', 1, 'keys', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'sdfsdfsd', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, 1, NULL, '2022-11-09 17:56:20', '2022-11-11 18:42:00'),
+(13, 'xyzd', '2345234sadf', '2022', '2nd make', '2nd model', 'xyzs', 'red 1', '1345', '2345', 'kashif', 1, 'keys', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, 1, '2022-11-11 18:00:23', '2022-11-11 17:57:08', '2022-11-11 18:00:23'),
+(14, 'xyzd', 'KM8JUasdfasdfasdasdfCAC4DU604504', '2013', 'HYUNDAI', 'Tucson', 'MULTIPURPOSE PASSENGER VEHICLE (MPV)', 'red 1', 'dsfg', '246', 'kashif', 1, 'keys', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, 1, NULL, '2022-11-11 18:00:52', '2022-11-11 18:00:52'),
+(15, 'xyzd', 'KM8JUCadsfasAC4DU604504', '2013', 'HYUNDAI', 'Tucson', 'MULTIPURPOSE PASSENGER VEHICLE (MPV)', 'red 1', '2345', '13423', 'kashif', 1, 'keys', NULL, '234', 'xyz', 'kashif k', '2022-11-12', 'asdf', 324, 'sdfsdf', 1, '2022-11-10', '2022-11-12', 2, NULL, '2022-11-12', '2022-11-12', NULL, 'asdf', 'sdfsdf', '7', '67', '676', '7', NULL, '67', NULL, '7', '67', '67', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, 1, NULL, '2022-11-12 14:18:32', '2022-11-14 14:40:27'),
+(23, 'jsadflkj', 'A19328471sadhifC4DU604504', '2013', 'HYUNDAI', 'Tucson', 'MULTIPURPOSE PASSENGER VEHICLE (MPV)', 'red 1', '234', '123', 'kashif', 1, 'keys', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, 1, NULL, '2022-11-14 17:11:10', '2022-11-14 17:18:21'),
+(24, 'jsadflkj', 'KAadfasdfasdC4DU604504', '2013', 'HYUNDAI', 'Tucson', 'MULTIPURPOSE PASSENGER VEHICLE (MPV)', 'red 1', '324', '2345', 'kashif', 66, 'keys', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, 1, '2022-11-14 17:31:28', '2022-11-14 17:31:08', '2022-11-14 17:31:28'),
+(25, 'xyz', 'KMsad8JUCAC4DU604504', '2013', 'HYUNDAI', 'Tucson', 'MULTIPURPOSE PASSENGER VEHICLE (MPV)', 'red 1', '43', '543', 'kashif', 66, 'keys', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, 1, '2022-11-14 17:32:08', '2022-11-14 17:31:55', '2022-11-14 17:32:08'),
+(26, 'xyzd', 'asdf', '2013', 'HYUNDAI', 'Tucson', 'MULTIPURPOSE PASSENGER VEHICLE (MPV)', 'red 1', '342', '234', 'kashif', 66, 'keys', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, 1, '2022-11-14 18:27:40', '2022-11-14 18:25:27', '2022-11-14 18:27:40'),
+(27, 'jsadflkj', '1234s', '2013', 'HYUNDAI', 'Tucson', 'MULTIPURPOSE PASSENGER VEHICLE (MPV)', 'red 1', '23', '23', 'kashif', 66, 'keys', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, 1, '2022-11-14 18:29:09', '2022-11-14 18:28:14', '2022-11-14 18:29:09'),
+(28, 'jsadflkj', 'sdgfasdf', '2013', 'HYUNDAI', 'Tucson', 'MULTIPURPOSE PASSENGER VEHICLE (MPV)', 'red 1', '32', '45', 'kashif', 66, 'keys', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, 1, '2022-11-14 18:32:32', '2022-11-14 18:29:39', '2022-11-14 18:32:32'),
+(29, 'xyz', '432dsgf', '2013', 'HYUNDAI', 'Tucson', 'MULTIPURPOSE PASSENGER VEHICLE (MPV)', 'red 1', '23', '354', 'kashif', 66, 'keys', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, 1, '2022-11-14 18:34:32', '2022-11-14 18:33:24', '2022-11-14 18:34:32'),
+(30, 'xyzd', '32ewfs', '2013', 'HYUNDAI', 'Tucson', 'MULTIPURPOSE PASSENGER VEHICLE (MPV)', 'red 1', '23', '43', 'kashif', 66, 'keys', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, 1, '2022-11-14 18:35:51', '2022-11-14 18:35:01', '2022-11-14 18:35:51'),
+(31, 'xyzd', '1wqe', '2013', 'HYUNDAI', 'Tucson', 'MULTIPURPOSE PASSENGER VEHICLE (MPV)', 'red 1', '23', '341', 'kashif', 66, 'keys', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, 1, '2022-11-14 18:36:57', '2022-11-14 18:36:22', '2022-11-14 18:36:57'),
+(32, 'jsadflkj', 'sadf325423', '2013', 'HYUNDAI', 'Tucson', 'MULTIPURPOSE PASSENGER VEHICLE (MPV)', 'red 1', '324', '34', 'kashif', 1, 'keys', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, 1, NULL, '2022-11-14 18:37:30', '2022-11-14 18:46:55');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vehicle_models`
+--
+
+CREATE TABLE `vehicle_models` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `make_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `vehicle_models`
+--
+
+INSERT INTO `vehicle_models` (`id`, `name`, `status`, `make_id`, `created_at`, `updated_at`) VALUES
+(1, 'TOYOTA', '1', 1, '2022-10-24 10:24:21', '2022-10-25 18:41:36'),
+(2, 'GLAXY', '1', 2, '2022-10-24 10:24:21', '2022-10-26 12:47:31'),
+(3, 'SONY', '1', 3, '2022-10-24 10:24:21', '2022-10-24 10:24:21'),
+(4, 'LINUX', '1', 4, '2022-10-24 10:24:21', '2022-10-24 10:24:21'),
+(5, 'HONDA', '1', 5, '2022-10-24 10:24:21', '2022-10-24 10:24:21');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vehicle_status`
+--
+
+CREATE TABLE `vehicle_status` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `status_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `vehicle_status`
+--
+
+INSERT INTO `vehicle_status` (`id`, `status_name`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'New Orders', '1', NULL, NULL),
+(2, 'Dispatched', '1', NULL, '2022-10-26 17:28:38'),
+(3, 'On Hand', '1', NULL, NULL),
+(4, 'No Titles', '1', NULL, NULL),
+(5, 'Towing', '1', NULL, NULL),
+(6, 'Inventory Value', '1', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vehicle_types`
+--
+
+CREATE TABLE `vehicle_types` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `vehicle_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `vehicle_types`
+--
+
+INSERT INTO `vehicle_types` (`id`, `vehicle_type`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'xyzs', '1', NULL, '2022-10-28 15:01:10');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vehicle__conditions`
+--
+
+CREATE TABLE `vehicle__conditions` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `value` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `vehicle_id` bigint(20) UNSIGNED NOT NULL,
+  `condition_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vehicle__exports`
+--
+
+CREATE TABLE `vehicle__exports` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `vehicle_id` bigint(20) UNSIGNED NOT NULL,
+  `export_id` bigint(20) UNSIGNED NOT NULL,
+  `customer_user_id` bigint(20) UNSIGNED NOT NULL,
+  `custom_duty` double DEFAULT NULL,
+  `clearance` double DEFAULT NULL,
+  `towing` double DEFAULT NULL,
+  `shipping` double DEFAULT NULL,
+  `storage` double DEFAULT NULL,
+  `local` double DEFAULT NULL,
+  `others` double DEFAULT NULL,
+  `additional` double DEFAULT NULL,
+  `vat` double DEFAULT NULL,
+  `remarks` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` double DEFAULT NULL,
+  `discount` double DEFAULT NULL,
+  `vehicle_export_is_deleted` tinyint(1) DEFAULT 0,
+  `note_status` int(11) DEFAULT 0,
+  `exchange_rate` tinyint(1) DEFAULT NULL,
+  `ocean_charges` tinyint(1) DEFAULT 0,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vehicle__features`
+--
+
+CREATE TABLE `vehicle__features` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `vehicle_id` bigint(20) UNSIGNED NOT NULL,
+  `feature_id` bigint(20) UNSIGNED NOT NULL,
+  `value` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `warehouse`
+--
+
+CREATE TABLE `warehouse` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `warehouse`
+--
+
+INSERT INTO `warehouse` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
+(2, '2nd series\r\n', '1', NULL, '2022-10-26 14:12:21'),
+(4, 'sdfsdf', '1', '2022-10-24 11:27:25', '2022-10-24 11:27:25');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `warehouse_images`
+--
+
+CREATE TABLE `warehouse_images` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `thumbnail` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `vehicle_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `warehouse_images`
+--
+
+INSERT INTO `warehouse_images` (`id`, `name`, `thumbnail`, `vehicle_id`, `created_at`, `updated_at`) VALUES
+(19, 'vehicle_images/OXuS74mlmiZ6ukG1UHIeuqcYMzXiAAkpPa31OFqw.png', '1665753341.png', 23, '2022-10-14 20:15:41', '2022-10-14 20:15:41'),
+(20, 'vehicle_images/vOg7sVsiwVfRjB2U6L9jEYiPg6SV96QiLH84aF8G.jpg', '1665753341.jpg', 23, '2022-10-14 20:15:41', '2022-10-14 20:15:41'),
+(21, 'vehicle_images/d69vdQiAFn03zeJXQZquh7FO8mJ7E8kz9eu4C0Vs.png', '1666762774.png', 116, '2022-10-26 12:39:34', '2022-10-26 12:39:34'),
+(22, 'vehicle_images/YMFnH48X6GOvPywtzsWepzHVajXDXAPEUkvParBD.png', '1667304536.png', 1, '2022-11-01 19:08:56', '2022-11-01 19:08:56'),
+(23, 'vehicle_images/NnXKNvjXhwfjQWgxHE5qaew9PRIZbxOD33izU78H.png', '1667456166.png', 1, '2022-11-03 13:16:06', '2022-11-03 13:16:06'),
+(24, 'vehicle_images/aPDSYgbgL8TeDyVBZdeCNEAtaeobQGfBcsR8T2BN.png', '1667475194.png', 6, '2022-11-03 18:33:14', '2022-11-03 18:33:14'),
+(25, 'vehicle_images/huNHPr3wvX87oQBgLeDFyX2EW7t8fF4Y8DyGPWnW.png', '1667475711.png', 7, '2022-11-03 18:41:51', '2022-11-03 18:41:51'),
+(26, 'vehicle_images/tpu6jAu4I0gIrFhBxFlW4wiWDb9XtFXVe7cBaNvl.png', '1667475833.png', 8, '2022-11-03 18:43:53', '2022-11-03 18:43:53'),
+(27, 'vehicle_images/7F4g9BD7PH90wcVxkvG2WvQS3of7EtpVNmXthw6Z.jpg', '1667987799.jpg', 12, '2022-11-09 17:56:39', '2022-11-09 17:56:39'),
+(28, 'vehicle_images/3MVLgzAaFiUW2dbihrfI5PfzAk1U9V4kx4kt0oxt.png', '1668145745.png', 7, '2022-11-11 13:49:05', '2022-11-11 13:49:05'),
+(29, 'vehicle_images/MubBztJTzu0wMQnAPAZ1VpP8tNILLPNY8IVX5C0T.png', '1668145745.png', 7, '2022-11-11 13:49:05', '2022-11-11 13:49:05'),
+(30, 'vehicle_images/2XrLGEbU2fZdC6iphFQRUnukNXlJPTrNa0DlNRkW.png', '1668145745.png', 7, '2022-11-11 13:49:05', '2022-11-11 13:49:05'),
+(31, 'vehicle_images/c9mQTdlaZS1UxzGB2FSoOHsKIIwkJiKkaxBrBxqq.png', '1668145745.png', 7, '2022-11-11 13:49:05', '2022-11-11 13:49:05'),
+(32, 'vehicle_images/xLiGwZ1xSEgdZ2bk3rKyZH6MusarNgTEsO68pg99.png', '1668145745.png', 7, '2022-11-11 13:49:05', '2022-11-11 13:49:05'),
+(33, 'vehicle_images/F2RFTWkd3q8VJQkQdV6lBXPtamt4iPKYJN1y5s6l.png', '1668160695.png', 13, '2022-11-11 17:58:15', '2022-11-11 17:58:15'),
+(34, 'vehicle_images/XhSSDg5FoyEl0BQkvcagoxqbFNld1IKv8PmWoCEe.png', '1668160695.png', 13, '2022-11-11 17:58:15', '2022-11-11 17:58:15'),
+(35, 'vehicle_images/su2LwTXq6ag6KPolcNYay0nbiGL2TKleKK3EPfnk.png', '1668160695.png', 13, '2022-11-11 17:58:15', '2022-11-11 17:58:15'),
+(36, 'vehicle_images/8FEsySaZrkyBZZ76NDPlzB5yHkg5x8m1wigWafZO.jpg', '1668160695.jpg', 13, '2022-11-11 17:58:15', '2022-11-11 17:58:15'),
+(37, 'vehicle_images/zNydMJzcmhUehwBMyrus4feCEBr1yfIJOC5886wK.png', '1668160708.png', 13, '2022-11-11 17:58:28', '2022-11-11 17:58:28'),
+(38, 'vehicle_images/vZixHDm8w496YrSZpghEQV4eRc2NTWyKc48CKeSD.png', '1668160708.png', 13, '2022-11-11 17:58:28', '2022-11-11 17:58:28'),
+(39, 'vehicle_images/4GtWnCvu482tcZuC9uq1SMFRogCK9mIIAGoP0wdS.png', '1668160708.png', 13, '2022-11-11 17:58:28', '2022-11-11 17:58:28'),
+(40, 'vehicle_images/6dhUgJ2ENYM9w624bGn4Xnkqv4aKSi7OEjeZodBn.jpg', '1668160708.jpg', 13, '2022-11-11 17:58:28', '2022-11-11 17:58:28'),
+(41, 'vehicle_images/s8pM4IiNJD8T5FxC2b9pERNpiQ1ocZxwukv9zAt9.png', '1668160716.png', 13, '2022-11-11 17:58:36', '2022-11-11 17:58:36'),
+(42, 'vehicle_images/45WWFVUjIIjAlV9AdvkDOsLKR1M75EQPExWTPnaT.png', '1668160716.png', 13, '2022-11-11 17:58:36', '2022-11-11 17:58:36'),
+(43, 'vehicle_images/vMk2xUTVbVos2Tgc2nBXUPHpC1sQjxXTcYPihtCM.png', '1668160716.png', 13, '2022-11-11 17:58:36', '2022-11-11 17:58:36'),
+(44, 'vehicle_images/9ZE56MDoKJahXUX4MYwiYH5ePtnfy6jV0C32BkO0.jpg', '1668160716.jpg', 13, '2022-11-11 17:58:36', '2022-11-11 17:58:36'),
+(45, 'vehicle_images/5KmNeZ6hW7wrmZlpyOuIvZboLVrI8FushJ2Ujjjc.png', '1668160742.png', 13, '2022-11-11 17:59:02', '2022-11-11 17:59:02'),
+(46, 'vehicle_images/JELYmEeqmRFqoTVUTiVWWsAA7V15HazcuOivO3kv.png', '1668160742.png', 13, '2022-11-11 17:59:02', '2022-11-11 17:59:02'),
+(47, 'vehicle_images/U0kEzzDPTRIqSbrQGxIfmz17s0UwqSo7MLCcdDoV.png', '1668160742.png', 13, '2022-11-11 17:59:02', '2022-11-11 17:59:02'),
+(48, 'vehicle_images/9wbxRcN30v2MwZd8UKwjBRLkSz3hkzWBayoRndLn.jpg', '1668160742.jpg', 13, '2022-11-11 17:59:02', '2022-11-11 17:59:02'),
+(49, 'vehicle_images/uhV7u10TAfowGrZ1mHcXHLjG07KHDwoYUbMeSLUM.jpg', '1668160892.jpg', 14, '2022-11-11 18:01:32', '2022-11-11 18:01:32'),
+(50, 'vehicle_images/n55tO642O8tVYrCTFwMjVu4Vmx8S6CI6dysDilbl.png', '1668160892.png', 14, '2022-11-11 18:01:32', '2022-11-11 18:01:32'),
+(51, 'vehicle_images/9Bh9PPN5jwqjNn2gtDek3qL5dEPWwf20vw38R17b.png', '1668160892.png', 14, '2022-11-11 18:01:32', '2022-11-11 18:01:32'),
+(52, 'vehicle_images/gaQ9xW2I5CC5OYeTOgc7eWYUE3iS6mpM4W9DzHwS.jpg', '1668422276.jpg', 32, '2022-11-14 18:37:56', '2022-11-14 18:37:56');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `auctions`
+--
+ALTER TABLE `auctions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `auction_copies`
+--
+ALTER TABLE `auction_copies`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `auction_copies_vehicle_id_foreign` (`vehicle_id`);
+
+--
+-- Indexes for table `auction_images`
+--
+ALTER TABLE `auction_images`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `auction_images_vehicle_id_foreign` (`vehicle_id`);
+
+--
+-- Indexes for table `auction_invoices`
+--
+ALTER TABLE `auction_invoices`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `auction_invoices_vehicle_id_foreign` (`vehicle_id`);
+
+--
+-- Indexes for table `audits`
+--
+ALTER TABLE `audits`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `auth_assignments`
+--
+ALTER TABLE `auth_assignments`
+  ADD PRIMARY KEY (`item_name`,`user_id`),
+  ADD KEY `auth_assignments_auth_user_id_foreign` (`auth_user_id`);
+
+--
+-- Indexes for table `auth_items`
+--
+ALTER TABLE `auth_items`
+  ADD PRIMARY KEY (`name`);
+
+--
+-- Indexes for table `auth_item_child`
+--
+ALTER TABLE `auth_item_child`
+  ADD PRIMARY KEY (`parent`,`child`),
+  ADD KEY `auth_item_child_child_foreign` (`child`);
+
+--
+-- Indexes for table `auth_rules`
+--
+ALTER TABLE `auth_rules`
+  ADD PRIMARY KEY (`name`);
+
+--
+-- Indexes for table `billing_parties`
+--
+ALTER TABLE `billing_parties`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `billing_parties_customer_id_foreign` (`customer_id`);
+
+--
+-- Indexes for table `bill_of_sales`
+--
+ALTER TABLE `bill_of_sales`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `bill_of_sales_vehicle_id_foreign` (`vehicle_id`);
+
+--
+-- Indexes for table `colors`
+--
+ALTER TABLE `colors`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `companies`
+--
+ALTER TABLE `companies`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `conditions`
+--
+ALTER TABLE `conditions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `consignees`
+--
+ALTER TABLE `consignees`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `consignees_added_by_role_foreign` (`added_by_role`);
+
+--
+-- Indexes for table `container_sizes`
+--
+ALTER TABLE `container_sizes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `container_types`
+--
+ALTER TABLE `container_types`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `customers`
+--
+ALTER TABLE `customers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `customer_documents`
+--
+ALTER TABLE `customer_documents`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `customer_documents_user_id_foreign` (`user_id`);
+
+--
+-- Indexes for table `destination_countries`
+--
+ALTER TABLE `destination_countries`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `destination_ports`
+--
+ALTER TABLE `destination_ports`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `destination_ports_state_id_foreign` (`state_id`);
+
+--
+-- Indexes for table `destination_states`
+--
+ALTER TABLE `destination_states`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `destination_states_country_id_foreign` (`country_id`);
+
+--
+-- Indexes for table `destination_terminals`
+--
+ALTER TABLE `destination_terminals`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `destination_terminals_destinationport_id_foreign` (`destinationPort_id`);
+
+--
+-- Indexes for table `dock_receipts`
+--
+ALTER TABLE `dock_receipts`
+  ADD PRIMARY KEY (`export_id`);
+
+--
+-- Indexes for table `documents`
+--
+ALTER TABLE `documents`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `documents_vehicle_id_foreign` (`vehicle_id`),
+  ADD KEY `documents_invoice_id_foreign` (`invoice_id`);
+
+--
+-- Indexes for table `d_countries`
+--
+ALTER TABLE `d_countries`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `exports`
+--
+ALTER TABLE `exports`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `exports_added_by_role_foreign` (`added_by_role`),
+  ADD KEY `exports_customer_user_id_foreign` (`customer_user_id`);
+
+--
+-- Indexes for table `export__images`
+--
+ALTER TABLE `export__images`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `export__images_export_id_foreign` (`export_id`);
+
+--
+-- Indexes for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `features`
+--
+ALTER TABLE `features`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `images`
+--
+ALTER TABLE `images`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `images_vehicle_id_foreign` (`vehicle_id`);
+
+--
+-- Indexes for table `invoices`
+--
+ALTER TABLE `invoices`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `invoices_export_id_foreign` (`export_id`),
+  ADD KEY `invoices_customer_user_id_foreign` (`customer_user_id`),
+  ADD KEY `invoices_consignee_id_foreign` (`consignee_id`),
+  ADD KEY `invoices_added_by_role_foreign` (`added_by_role`);
+
+--
+-- Indexes for table `invoice__payments`
+--
+ALTER TABLE `invoice__payments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `keys`
+--
+ALTER TABLE `keys`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `loading_countries`
+--
+ALTER TABLE `loading_countries`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `loading_ports`
+--
+ALTER TABLE `loading_ports`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `loading_ports_state_id_foreign` (`state_id`);
+
+--
+-- Indexes for table `loading__images`
+--
+ALTER TABLE `loading__images`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `loading__images_shipment_id_foreign` (`shipment_id`);
+
+--
+-- Indexes for table `loadin_terminals`
+--
+ALTER TABLE `loadin_terminals`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `loadin_terminals_loadingport_id_foreign` (`loadingport_id`);
+
+--
+-- Indexes for table `locations`
+--
+ALTER TABLE `locations`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `locations_added_by_role_foreign` (`added_by_role`);
+
+--
+-- Indexes for table `makes`
+--
+ALTER TABLE `makes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `model_has_permissions`
+--
+ALTER TABLE `model_has_permissions`
+  ADD PRIMARY KEY (`permission_id`,`model_id`,`model_type`),
+  ADD KEY `model_has_permissions_model_id_model_type_index` (`model_id`,`model_type`);
+
+--
+-- Indexes for table `model_has_roles`
+--
+ALTER TABLE `model_has_roles`
+  ADD PRIMARY KEY (`role_id`,`model_id`,`model_type`),
+  ADD KEY `model_has_roles_model_id_model_type_index` (`model_id`,`model_type`);
+
+--
+-- Indexes for table `m_m_s`
+--
+ALTER TABLE `m_m_s`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `notes`
+--
+ALTER TABLE `notes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `notes_export_id_foreign` (`export_id`);
+
+--
+-- Indexes for table `notifications`
+--
+ALTER TABLE `notifications`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `notifications_user_id_foreign` (`user_id`);
+
+--
+-- Indexes for table `no_of_vehicles`
+--
+ALTER TABLE `no_of_vehicles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `original_titles`
+--
+ALTER TABLE `original_titles`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `original_titles_vehicle_id_foreign` (`vehicle_id`);
+
+--
+-- Indexes for table `other__documents`
+--
+ALTER TABLE `other__documents`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `other__documents_shipment_id_foreign` (`shipment_id`);
+
+--
+-- Indexes for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indexes for table `permissions`
+--
+ALTER TABLE `permissions`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `permissions_name_guard_name_unique` (`name`,`guard_name`);
+
+--
+-- Indexes for table `pickup_images`
+--
+ALTER TABLE `pickup_images`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `pickup_images_vehicle_id_foreign` (`vehicle_id`);
+
+--
+-- Indexes for table `pickup_location`
+--
+ALTER TABLE `pickup_location`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pricings`
+--
+ALTER TABLE `pricings`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `quotations`
+--
+ALTER TABLE `quotations`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `quotations_customer_id_foreign` (`customer_id`);
+
+--
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `roles_name_guard_name_unique` (`name`,`guard_name`);
+
+--
+-- Indexes for table `role_has_permissions`
+--
+ALTER TABLE `role_has_permissions`
+  ADD PRIMARY KEY (`permission_id`,`role_id`),
+  ADD KEY `role_has_permissions_role_id_foreign` (`role_id`);
+
+--
+-- Indexes for table `series`
+--
+ALTER TABLE `series`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `series_model_id_foreign` (`model_id`);
+
+--
+-- Indexes for table `shipments`
+--
+ALTER TABLE `shipments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `shipments_select_consignee_foreign` (`select_consignee`),
+  ADD KEY `shipments_status_foreign` (`status`);
+
+--
+-- Indexes for table `shipment_images`
+--
+ALTER TABLE `shipment_images`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `shipment_images_shipment_id_foreign` (`shipment_id`);
+
+--
+-- Indexes for table `shipment_lines`
+--
+ALTER TABLE `shipment_lines`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `shipment_statuses`
+--
+ALTER TABLE `shipment_statuses`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `shipment_types`
+--
+ALTER TABLE `shipment_types`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `shipment__invices`
+--
+ALTER TABLE `shipment__invices`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `shipment__invices_shipment_id_foreign` (`shipment_id`);
+
+--
+-- Indexes for table `shippers`
+--
+ALTER TABLE `shippers`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `shippers_customer_id_foreign` (`customer_id`);
+
+--
+-- Indexes for table `shipper_name`
+--
+ALTER TABLE `shipper_name`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `shipping_countries`
+--
+ALTER TABLE `shipping_countries`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `shipping_states`
+--
+ALTER TABLE `shipping_states`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `site`
+--
+ALTER TABLE `site`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `stamp__titles`
+--
+ALTER TABLE `stamp__titles`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `stamp__titles_shipment_id_foreign` (`shipment_id`);
+
+--
+-- Indexes for table `states`
+--
+ALTER TABLE `states`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `states_country_id_foreign` (`country_id`);
+
+--
+-- Indexes for table `stickies`
+--
+ALTER TABLE `stickies`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `stickies_customer_id_foreign` (`customer_id`);
+
+--
+-- Indexes for table `titles`
+--
+ALTER TABLE `titles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `title_types`
+--
+ALTER TABLE `title_types`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `towing_requests`
+--
+ALTER TABLE `towing_requests`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `user_email_unique` (`email`),
+  ADD KEY `user_role_id_foreign` (`role_id`);
+
+--
+-- Indexes for table `vehicles`
+--
+ALTER TABLE `vehicles`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `vehicles_buyer_id_foreign` (`buyer_id`),
+  ADD KEY `vehicles_status_foreign` (`status`),
+  ADD KEY `vehicles_port_foreign` (`port`),
+  ADD KEY `vehicles_shipment_id_foreign` (`shipment_id`),
+  ADD KEY `vehicles_added_by_user_foreign` (`added_by_user`);
+
+--
+-- Indexes for table `vehicle_models`
+--
+ALTER TABLE `vehicle_models`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `vehicle_models_make_id_foreign` (`make_id`);
+
+--
+-- Indexes for table `vehicle_status`
+--
+ALTER TABLE `vehicle_status`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `vehicle_types`
+--
+ALTER TABLE `vehicle_types`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `vehicle__conditions`
+--
+ALTER TABLE `vehicle__conditions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `vehicle__conditions_vehicle_id_foreign` (`vehicle_id`),
+  ADD KEY `vehicle__conditions_condition_id_foreign` (`condition_id`);
+
+--
+-- Indexes for table `vehicle__exports`
+--
+ALTER TABLE `vehicle__exports`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `vehicle__exports_vehicle_id_foreign` (`vehicle_id`),
+  ADD KEY `vehicle__exports_export_id_foreign` (`export_id`),
+  ADD KEY `vehicle__exports_customer_user_id_foreign` (`customer_user_id`);
+
+--
+-- Indexes for table `vehicle__features`
+--
+ALTER TABLE `vehicle__features`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `vehicle__features_vehicle_id_foreign` (`vehicle_id`),
+  ADD KEY `vehicle__features_feature_id_foreign` (`feature_id`);
+
+--
+-- Indexes for table `warehouse`
+--
+ALTER TABLE `warehouse`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `warehouse_images`
+--
+ALTER TABLE `warehouse_images`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `warehouse_images_vehicle_id_foreign` (`vehicle_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `auctions`
+--
+ALTER TABLE `auctions`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `auction_copies`
+--
+ALTER TABLE `auction_copies`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT for table `auction_images`
+--
+ALTER TABLE `auction_images`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+
+--
+-- AUTO_INCREMENT for table `auction_invoices`
+--
+ALTER TABLE `auction_invoices`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT for table `audits`
+--
+ALTER TABLE `audits`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `billing_parties`
+--
+ALTER TABLE `billing_parties`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `bill_of_sales`
+--
+ALTER TABLE `bill_of_sales`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+
+--
+-- AUTO_INCREMENT for table `colors`
+--
+ALTER TABLE `colors`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `companies`
+--
+ALTER TABLE `companies`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `conditions`
+--
+ALTER TABLE `conditions`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `consignees`
+--
+ALTER TABLE `consignees`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `container_sizes`
+--
+ALTER TABLE `container_sizes`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `container_types`
+--
+ALTER TABLE `container_types`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `customers`
+--
+ALTER TABLE `customers`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `customer_documents`
+--
+ALTER TABLE `customer_documents`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `destination_countries`
+--
+ALTER TABLE `destination_countries`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `destination_ports`
+--
+ALTER TABLE `destination_ports`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `destination_states`
+--
+ALTER TABLE `destination_states`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `destination_terminals`
+--
+ALTER TABLE `destination_terminals`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `documents`
+--
+ALTER TABLE `documents`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `d_countries`
+--
+ALTER TABLE `d_countries`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `exports`
+--
+ALTER TABLE `exports`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `export__images`
+--
+ALTER TABLE `export__images`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `features`
+--
+ALTER TABLE `features`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `images`
+--
+ALTER TABLE `images`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+
+--
+-- AUTO_INCREMENT for table `invoices`
+--
+ALTER TABLE `invoices`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `invoice__payments`
+--
+ALTER TABLE `invoice__payments`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `keys`
+--
+ALTER TABLE `keys`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `loading_countries`
+--
+ALTER TABLE `loading_countries`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `loading_ports`
+--
+ALTER TABLE `loading_ports`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `loading__images`
+--
+ALTER TABLE `loading__images`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `loadin_terminals`
+--
+ALTER TABLE `loadin_terminals`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `locations`
+--
+ALTER TABLE `locations`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `makes`
+--
+ALTER TABLE `makes`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
+
+--
+-- AUTO_INCREMENT for table `m_m_s`
+--
+ALTER TABLE `m_m_s`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `notes`
+--
+ALTER TABLE `notes`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `notifications`
+--
+ALTER TABLE `notifications`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `no_of_vehicles`
+--
+ALTER TABLE `no_of_vehicles`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `original_titles`
+--
+ALTER TABLE `original_titles`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
+-- AUTO_INCREMENT for table `other__documents`
+--
+ALTER TABLE `other__documents`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `permissions`
+--
+ALTER TABLE `permissions`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `pickup_images`
+--
+ALTER TABLE `pickup_images`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+
+--
+-- AUTO_INCREMENT for table `pickup_location`
+--
+ALTER TABLE `pickup_location`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `pricings`
+--
+ALTER TABLE `pricings`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `quotations`
+--
+ALTER TABLE `quotations`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `series`
+--
+ALTER TABLE `series`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `shipments`
+--
+ALTER TABLE `shipments`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `shipment_images`
+--
+ALTER TABLE `shipment_images`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `shipment_lines`
+--
+ALTER TABLE `shipment_lines`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `shipment_statuses`
+--
+ALTER TABLE `shipment_statuses`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `shipment_types`
+--
+ALTER TABLE `shipment_types`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `shipment__invices`
+--
+ALTER TABLE `shipment__invices`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `shippers`
+--
+ALTER TABLE `shippers`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `shipper_name`
+--
+ALTER TABLE `shipper_name`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `shipping_countries`
+--
+ALTER TABLE `shipping_countries`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `shipping_states`
+--
+ALTER TABLE `shipping_states`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `site`
+--
+ALTER TABLE `site`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `stamp__titles`
+--
+ALTER TABLE `stamp__titles`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `states`
+--
+ALTER TABLE `states`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `stickies`
+--
+ALTER TABLE `stickies`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+
+--
+-- AUTO_INCREMENT for table `titles`
+--
+ALTER TABLE `titles`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `title_types`
+--
+ALTER TABLE `title_types`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `towing_requests`
+--
+ALTER TABLE `towing_requests`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+
+--
+-- AUTO_INCREMENT for table `vehicles`
+--
+ALTER TABLE `vehicles`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+
+--
+-- AUTO_INCREMENT for table `vehicle_models`
+--
+ALTER TABLE `vehicle_models`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `vehicle_status`
+--
+ALTER TABLE `vehicle_status`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `vehicle_types`
+--
+ALTER TABLE `vehicle_types`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `vehicle__conditions`
+--
+ALTER TABLE `vehicle__conditions`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `vehicle__exports`
+--
+ALTER TABLE `vehicle__exports`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `vehicle__features`
+--
+ALTER TABLE `vehicle__features`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `warehouse`
+--
+ALTER TABLE `warehouse`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `warehouse_images`
+--
+ALTER TABLE `warehouse_images`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `billing_parties`
+--
+ALTER TABLE `billing_parties`
+  ADD CONSTRAINT `billing_parties_customer_id_foreign` FOREIGN KEY (`customer_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `bill_of_sales`
+--
+ALTER TABLE `bill_of_sales`
+  ADD CONSTRAINT `bill_of_sales_vehicle_id_foreign` FOREIGN KEY (`vehicle_id`) REFERENCES `vehicles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `destination_ports`
+--
+ALTER TABLE `destination_ports`
+  ADD CONSTRAINT `destination_ports_state_id_foreign` FOREIGN KEY (`state_id`) REFERENCES `destination_states` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `destination_states`
+--
+ALTER TABLE `destination_states`
+  ADD CONSTRAINT `destination_states_country_id_foreign` FOREIGN KEY (`country_id`) REFERENCES `destination_countries` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `destination_terminals`
+--
+ALTER TABLE `destination_terminals`
+  ADD CONSTRAINT `destination_terminals_destinationport_id_foreign` FOREIGN KEY (`destinationPort_id`) REFERENCES `destination_ports` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `loading_ports`
+--
+ALTER TABLE `loading_ports`
+  ADD CONSTRAINT `loading_ports_state_id_foreign` FOREIGN KEY (`state_id`) REFERENCES `states` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `loading__images`
+--
+ALTER TABLE `loading__images`
+  ADD CONSTRAINT `loading__images_shipment_id_foreign` FOREIGN KEY (`shipment_id`) REFERENCES `shipments` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `loadin_terminals`
+--
+ALTER TABLE `loadin_terminals`
+  ADD CONSTRAINT `loadin_terminals_loadingport_id_foreign` FOREIGN KEY (`loadingport_id`) REFERENCES `loading_ports` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `model_has_permissions`
+--
+ALTER TABLE `model_has_permissions`
+  ADD CONSTRAINT `model_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `model_has_roles`
+--
+ALTER TABLE `model_has_roles`
+  ADD CONSTRAINT `model_has_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `original_titles`
+--
+ALTER TABLE `original_titles`
+  ADD CONSTRAINT `original_titles_vehicle_id_foreign` FOREIGN KEY (`vehicle_id`) REFERENCES `vehicles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `other__documents`
+--
+ALTER TABLE `other__documents`
+  ADD CONSTRAINT `other__documents_shipment_id_foreign` FOREIGN KEY (`shipment_id`) REFERENCES `shipments` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `pickup_images`
+--
+ALTER TABLE `pickup_images`
+  ADD CONSTRAINT `pickup_images_vehicle_id_foreign` FOREIGN KEY (`vehicle_id`) REFERENCES `vehicles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `role_has_permissions`
+--
+ALTER TABLE `role_has_permissions`
+  ADD CONSTRAINT `role_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `role_has_permissions_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `series`
+--
+ALTER TABLE `series`
+  ADD CONSTRAINT `series_model_id_foreign` FOREIGN KEY (`model_id`) REFERENCES `vehicle_models` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `shipments`
+--
+ALTER TABLE `shipments`
+  ADD CONSTRAINT `shipments_select_consignee_foreign` FOREIGN KEY (`select_consignee`) REFERENCES `consignees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `shipments_status_foreign` FOREIGN KEY (`status`) REFERENCES `shipment_statuses` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `shipment_images`
+--
+ALTER TABLE `shipment_images`
+  ADD CONSTRAINT `shipment_images_shipment_id_foreign` FOREIGN KEY (`shipment_id`) REFERENCES `shipments` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `shipment__invices`
+--
+ALTER TABLE `shipment__invices`
+  ADD CONSTRAINT `shipment__invices_shipment_id_foreign` FOREIGN KEY (`shipment_id`) REFERENCES `shipments` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `stamp__titles`
+--
+ALTER TABLE `stamp__titles`
+  ADD CONSTRAINT `stamp__titles_shipment_id_foreign` FOREIGN KEY (`shipment_id`) REFERENCES `shipments` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `states`
+--
+ALTER TABLE `states`
+  ADD CONSTRAINT `states_country_id_foreign` FOREIGN KEY (`country_id`) REFERENCES `shipping_countries` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `vehicles`
+--
+ALTER TABLE `vehicles`
+  ADD CONSTRAINT `vehicles_added_by_user_foreign` FOREIGN KEY (`added_by_user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `vehicles_buyer_id_foreign` FOREIGN KEY (`buyer_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `vehicles_port_foreign` FOREIGN KEY (`port`) REFERENCES `locations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `vehicles_shipment_id_foreign` FOREIGN KEY (`shipment_id`) REFERENCES `shipments` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `vehicles_status_foreign` FOREIGN KEY (`status`) REFERENCES `vehicle_status` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `vehicle_models`
+--
+ALTER TABLE `vehicle_models`
+  ADD CONSTRAINT `vehicle_models_make_id_foreign` FOREIGN KEY (`make_id`) REFERENCES `makes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

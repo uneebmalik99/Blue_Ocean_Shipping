@@ -1,0 +1,206 @@
+.notification_heading p {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 31px;
+    color: #8b8b8b;
+}
+
+.notification_heading .search {
+    position: relative;
+}
+
+.notification_heading .search i {
+    position: absolute;
+    left: 88.33%;
+    right: 13.72%;
+    top: 22.33%;
+    bottom: 13.72%;
+    color: #1f689e;
+}
+
+.notification_heading .search input {
+    background: rgba(255, 255, 255, 0.13);
+    border: 1.5px solid #1f689e;
+    padding: 5px 0;
+    box-shadow: 0px 0px 0px rgba(105, 108, 255, 0.33);
+    border-radius: 8px;
+}
+
+.notification_heading .search input:focus {
+    outline: none !important;
+}
+
+.notification_heading .search ::placeholder {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    padding-left: 10px;
+    color: #8e8e8e;
+}
+
+.notification_box {
+    background: #eef3f4;
+    border: 1px solid #1f689e;
+    box-shadow: 0px 4px 4px rgba(105, 108, 255, 0.33);
+    border-radius: 10px;
+}
+
+.notification_box {
+    position: relative;
+}
+
+/* .notification_box .notification_icon{
+position: absolute;
+top: 75px;
+left: 47%;
+} */
+.notification_title i {
+    color: #ef5757;
+    margin-top: 4px;
+}
+
+.notification_title h4 {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    /* /line-height: 31px; */
+    /* /color: #000000; */
+}
+
+.notification_title p {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    color: #8b8b8b;
+}
+
+.notification_expiry p {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    color: #2c77e7;
+}
+
+.notification_expiry small {
+    font-family: "Inter";
+    font-style: normal;
+    font-size: 12px;
+    color: #2c77e7;
+}
+
+.notification_number .noti_box {
+    width: 20px;
+    height: 20px;
+    background: rgba(31, 104, 158, 0.22);
+    border-radius: 6px;
+}
+
+.notification_number .noti_box p {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    text-align: center;
+    color: #696cff;
+}
+
+.notification_action .edit {
+    width: 20px;
+    height: 20px;
+    background: rgba(4, 139, 82, 0.27);
+    color: green;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    /* /align-content: center; */
+    /* /align-items: center; */
+}
+
+.notification_action .del {
+    width: 20px;
+    height: 20px;
+    background: rgba(239, 87, 87, 0.29);
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.notification_icon i {
+    width: 16px;
+    height: 14px;
+    text-align: center;
+    background: #cddeea;
+    border-radius: 3px;
+}
+
+.create_notification {
+    background: #eef3f4;
+    border: 1px solid #1f689e;
+    box-shadow: 0px 4px 4px rgba(105, 108, 255, 0.33);
+    border-radius: 10px;
+    padding: 10px 10px;
+}
+
+.create_notification .subject label,
+.create_notification .message label,
+.create_notification .expirydate label,
+.create_notification .user_id label {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    color: #000000;
+}
+
+.create_notification .subject input {
+    /* /background: rgba(255, 255, 255, 0.13); */
+    /* /border: 1px solid #1f689e; */
+    box-shadow: 0px 0px 0px rgba(105, 108, 255, 0.33);
+    border-radius: 10px;
+    height: 43px;
+}
+
+.create_notification .expirydate input {
+    /* /background: rgba(255, 255, 255, 0.13); */
+    /* /border: 1px solid #1f689e; */
+    box-shadow: 0px 0px 0px rgba(105, 108, 255, 0.33);
+    border-radius: 10px;
+    height: 43px;
+}
+
+.create_notification .save_notificatio_button button {
+    background: rgba(44, 119, 231, 0.62);
+    box-shadow: 0px 0px 0px rgba(105, 108, 255, 0.33);
+    border-radius: 10px;
+    outline: none !important;
+    color: white;
+}
+
+.message textarea {
+    background: rgba(255, 255, 255, 0.13);
+    border: 1px solid #1f689e;
+    box-shadow: 0px 0px 0px rgba(105, 108, 255, 0.33);
+    border-radius: 10px;
+}
+
+.create_notication_heading p {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 27px;
+    color: #8b8b8b;
+}
+.create_notification .user_id select {
+    border: 1px solid #1f689e;
+    box-shadow: 0px 0px 0px rgba(105, 108, 255, 0.33);
+    border-radius: 10px;
+    height: 43px;
+}

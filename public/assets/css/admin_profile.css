@@ -1,0 +1,117 @@
+       .unknow {
+           background-image: url("/public/image/Group\ 142.png") !important;
+           background-repeat: no-repeat !important;
+           background-position: bottom !important;
+           background-size: cover !important;
+       }
+       
+       .btn {
+           /* background: #7ABAE9; */
+           /* box-shadow: 8px 8px 4px rgba(31, 104, 158, 0.19); */
+           border-radius: 12px;
+       }
+       
+       .text {
+           color: #1F689E;
+           background: #95C2E3;
+           box-shadow: 9px 13px 4px rgba(33, 73, 134, 0.58);
+           border-radius: 8%;
+           position: relative;
+           /* margin-top: 140px; */
+       }
+       
+       .profile_style {
+           color: #6D8DA6;
+           font-weight: 600;
+           margin-bottom: 15px;
+       }
+       
+       .profile_input {
+           background: rgba(255, 255, 255, 0.13);
+           box-shadow: 3px 5px 16px rgba(31, 104, 158, 0.86);
+           border-radius: 10px;
+       }
+       
+       .profile_img {
+           border: 10px solid white;
+           border-radius: 100px;
+       }
+       
+       .permisson-color {
+           color: #1F689E;
+       }
+       
+       .thead {
+           background: linear-gradient(0deg, #1F689E, #1F689E), rgba(255, 255, 255, 0.13);
+           box-shadow: 3px 5px 16px rgba(31, 104, 158, 0.86);
+           border-radius: 10px;
+           font-weight: 600;
+       }
+       
+       .SPY {
+           font-weight: 600;
+           color: #214986;
+       }
+       
+       .profile_row {
+           background: rgba(255, 255, 255, 0.13) !important;
+           box-shadow: 3px 5px 16px rgba(31, 104, 158, 0.86) !important;
+           border-radius: 10px !important;
+       }
+       
+       .check-box {
+           height: 17px;
+           width: 11%;
+       }
+       
+       @media screen and (max-width: 1200px) {
+           .check-box {
+               height: 15px;
+               width: 11%;
+           }
+       }
+       
+       @media screen and (max-width: 992px) {
+           .check-box {
+               height: 15px;
+               width: 18%;
+           }
+       }
+       
+       @media screen and (max-width: 768px) {
+           .check-box {
+               height: 15px;
+               width: 25%;
+           }
+       }
+       
+       @media screen and (max-width: 576px) {
+           .check-box {
+               height: 16px;
+               width: 29%;
+           }
+       }
+       
+       @media screen and (max-width: 515px) {
+           .check-box {
+               height: 14px;
+               width: 29%;
+           }
+       }
+       
+       @media screen and (max-width: 478px) {
+           .check-box {
+               height: 13px;
+               width: 29%;
+           }
+       }
+       
+       @media screen and (max-width: 576px) {
+           .thead {
+               background: linear-gradient(0deg, #1F689E, #1F689E), rgba(255, 255, 255, 0.13);
+               box-shadow: 3px 5px 16px rgba(31, 104, 158, 0.86);
+               border-radius: 10px;
+               font-size: small;
+               font-weight: 600;
+           }
+       }

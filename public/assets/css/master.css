@@ -1,0 +1,120 @@
+.boxi {
+    border: 1px solid #1f689e;
+    filter: drop-shadow(0px 0px 4px rgba(31, 104, 158, 0.19)) !important;
+    color: #1f689e !important;
+    border-radius: 3px !important;
+}
+
+.boxi-1 {
+    background: linear-gradient(0deg, #1f689e, #1f689e),
+        rgba(255, 255, 255, 0.13) !important;
+    box-shadow: 3px 5px 16px rgba(31, 104, 158, 0.86) !important;
+    border-radius: 10px !important;
+}
+
+.text {
+    padding: 0px !important;
+}
+
+.text span {
+    color: white;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+}
+.master-locations {
+    color: #214986;
+}
+
+.sheet {
+    background: rgba(255, 255, 255, 0.13) !important;
+    box-shadow: 3px 5px 16px rgba(31, 104, 158, 0.86);
+    border-radius: 10px;
+}
+
+hr {
+    background: #1f689e !important;
+    /* box-shadow: 3px 5px 16px rgba(31, 104, 158, 0.86) !important; */
+    border-radius: 10px !important;
+}
+
+.tr_head {
+    color: #214986 !important;
+}
+
+.b_pic {
+    background-image: url("/public/image/bg_sheet.png");
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: cover !important;
+}
+
+.f-b {
+    background: rgba(255, 255, 255, 0.13) !important;
+    box-shadow: 3px 5px 16px rgba(31, 104, 158, 0.86) !important;
+    border-radius: 10px !important;
+}
+
+.master_input {
+    background: rgba(255, 255, 255, 0.13) !important;
+    box-shadow: 0px 0px 5px rgba(31, 104, 158, 0.86) !important;
+    border-radius: 10px !important;
+}
+
+.btn_button {
+    background: #7abae9 !important;
+    box-shadow: 8px 8px 4px rgba(31, 104, 158, 0.19) !important;
+    border-radius: 10px !important;
+}
+
+.unknow {
+    background-image: url("/public/image/Group\ 142.png");
+    background-repeat: no-repeat !important;
+    background-position: bottom !important;
+    background-size: cover !important;
+}
+
+@media screen and (max-width: 555px) {
+    .tr_head {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .tr_head {
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 656px) {
+    .master-locations {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 482px) {
+    .master-locations {
+        font-size: 10px;
+        font-weight: 380px;
+    }
+}
+
+@media screen and (max-width: 482px) {
+    .master-locations {
+        font-size: 10px;
+        font-weight: 350px;
+    }
+}
+
+@media screen and (max-width: 404px) {
+    .master-locations {
+        font-size: 9px;
+        font: weight 300px;
+    }
+}
+
+@media (min-width: 404px) and (max-width: 404px) {
+    .master-locations {
+        font-size: 9px;
+        font-weight: 200px;
+    }
+}

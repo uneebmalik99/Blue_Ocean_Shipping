@@ -1,0 +1,2 @@
+for website to full screen on button click 
+a tag onclick="javascript:toggleFullScreen()"

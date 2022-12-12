@@ -1,0 +1,85 @@
+.block-bg {
+    background: linear-gradient(
+        201.25deg,
+        rgba(252, 252, 252, 0.72) 44.54%,
+        rgba(223, 236, 245, 0.72) 66.39%,
+        rgba(236, 243, 248, 0.72) 69.87%,
+        rgba(236, 243, 248, 0.72) 69.88%
+    ) !important;
+    /* border-radius: 1px; */
+}
+
+.bg-clr {
+    background: #1f689e !important;
+    box-shadow: inset 10px 14px 28px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* .bg-div{
+            background: #EEF3F4;
+        } */
+.text-div {
+    border: none !important;
+    background: linear-gradient(
+        201.25deg,
+        rgba(252, 252, 252, 0.72) 44.54%,
+        rgba(223, 236, 245, 0.72) 66.39%,
+        rgba(236, 243, 248, 0.72) 69.87%,
+        rgba(236, 243, 248, 0.72) 69.88%
+    ) !important;
+}
+
+.navi-group {
+    border: 1px solid #1f689e !important;
+    /* filter: drop-shadow(3px 5px 16px rgba(92, 174, 235, 0.55)); */
+    border-radius: 10px !important;
+    background: linear-gradient(
+        201.25deg,
+        rgba(252, 252, 252, 0.72) 44.54%,
+        rgba(223, 236, 245, 0.72) 66.39%,
+        rgba(236, 243, 248, 0.72) 69.87%,
+        rgba(236, 243, 248, 0.72) 69.88%
+    ) !important;
+}
+
+.search-btn {
+    background: #4785b3 !important;
+    box-shadow: 3px 5px 16px rgba(92, 174, 235, 0.55) !important;
+    border-radius: 7px !important;
+}
+
+.bg-btn {
+    background: linear-gradient(
+        102.3deg,
+        #4785b3 41.05%,
+        #0cc1f2 118.58%
+    ) !important;
+    box-shadow: 3px 5px 16px rgba(92, 174, 235, 0.55) !important;
+    border-radius: 7px !important;
+}
+
+.bg-view {
+    background: rgba(223, 242, 254, 0.28) !important;
+    border-radius: 10px !important;
+    border-bottom: #4785b3 !important;
+    box-shadow: 2px 2px 2px rgba(92, 174, 235, 0.55) !important;
+    /* box-shadow: 0 5px #6D8DA6; */
+}
+
+.text-clr {
+    color: #6d8da6 !important;
+}
+
+.card {
+    background: #ffffff !important;
+    box-shadow: 3px 5px 16px rgba(92, 174, 235, 0.55) !important;
+    border-radius: 10px !important;
+}
+/* 
+table {
+    border-collapse: unset;
+}
+
+td,
+th {
+    border-style: none !important;
+} */
