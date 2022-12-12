@@ -12,6 +12,7 @@ use App\Models\Other_Document;
 use App\Models\Shipment;
 use App\Models\VehicleCart;
 use App\Models\Shipment_Invice;
+use App\Models\ShipperName;
 use App\Models\Stamp_Title;
 use App\Models\Vehicle;
 use App\Models\Country;
@@ -256,7 +257,8 @@ class ShipmentController extends Controller
         // $data['companies'] = Company::where('status', '1')->get();
         $data['companies'] = User::role('Customer')->get();
         $data['destination_country'] = DCountry::select('country')->where('status', '1')->groupBy('country')->get()->toArray();
-        $data['shippers'] = Shipper::all();
+        // $data['shippers'] = Shipper::all();
+        $data['shippers'] = ShipperName::where('status', '1')->get();
         // $data['states'] = State::where('status', '1')->get();
         if($request->ajax()) {
             $tab = $request->tab;
@@ -342,7 +344,7 @@ class ShipmentController extends Controller
 
         $data['shipment'] = Shipment::with('vehicle')->where('id', $req->id)->get()->toArray();
         // dd($data['shipment']);
-        $data['shippers'] = Shipper::all();
+        $data['shippers'] = ShipperName::where('status', '1')->get();
 
         $notification = $this->Notification();
         $data['vehicles'] = Vehicle::where('shipment_id', null)->get();

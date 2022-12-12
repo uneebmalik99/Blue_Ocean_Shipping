@@ -42,8 +42,8 @@
                 <td>{{ @$val['bidder'] }}</td>
                 <td>{{ @$val['auction'] }}</td>
                 <td>{{ @$val['title'] }}</td>
-                <td>{{ @$val['keys'] }}</td>
-                <td>{{ @$val['age'] }}</td>
+                <td>{{ @$val['key'] }}</td>
+                <td>{{ @$val['days'] }}</td>
                 <td>{{ @$val['shipper'] }}</td>
                 <td>{{ @$val['port'] }}</td>
                 <td>{{ @$val['note'] }}</td>

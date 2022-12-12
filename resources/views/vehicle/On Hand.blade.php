@@ -72,10 +72,10 @@
                 <td>{{ @$val['lot'] }}</td>
                 <td>{{ @$val['title'] }}</td>
                 <td>{{ @$val['title_type'] }}</td>
-                <td>{{ @$val['keys'] }}</td>
-                <td>{{ @$val['delivered_date'] }}</td>
-                <td>{{ @$val['age'] }}</td>
-                <td>{{ @$val['shipper'] }}</td>
+                <td>{{ @$val['key'] }}</td>
+                <td>{{ @$val['delivered'] }}</td>
+                <td>{{ @$val['days'] }}</td>
+                <td>{{ @$val['shipper_name'] }}</td>
                 <td>
                     <button class='profile-button'><a href={{route('vehicle.profile', @$val['id'])}}>
                         <svg width='14' height='13' viewBox='0 0 16 14' fill='none'

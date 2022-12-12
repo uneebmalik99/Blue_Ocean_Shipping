@@ -38,12 +38,12 @@
                 <td>{{ @$val['bidder'] }}</td>
                 <td>{{ @$val['lot'] }}</td>
                 <td>{{ @$val['pickup_location'] }}</td>
-                <td>{{ @$val['offsite'] }}</td>
+                <td>{{ @$val['site'] }}</td>
                 <td>{{ @$val['title'] }}</td>
                 <td>{{ @$val['title_type'] }}</td>
-                <td>{{ @$val['keys'] }}</td>
+                <td>{{ @$val['key'] }}</td>
                 <td>{{ @$val['sale_date'] }}</td>
-                <td>{{ @$val['age'] }}</td>
+                <td>{{ @$val['days'] }}</td>
                 <td>
                     <button class='profile-button'><a href={{route('vehicle.profile', @$val['id'])}}>
                         <svg width='14' height='13' viewBox='0 0 16 14' fill='none'
