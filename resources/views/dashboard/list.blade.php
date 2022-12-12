@@ -792,33 +792,37 @@
                                 <table class="" id="dashboard_shipment" style="width:100%!important;">
                                     <thead>
                                         <tr class="font-size" style="font-size:11px!important;font-weight:300!important">
-                                            <th>REFERENCE</th>
-                                            <th>BOOKING NO</th>
-                                            <th>SHIPMENT TYPE</th>
+                                            <th>CONSIGNEE</th>
+                                            <th>BOOKING NO:</th>
+                                            <th>CONTAINER NO:</th>
+                                            <th>CONT SIZE</th>
+                                            <th>LINES</th>
+                                            <th>VEHICLES</th>
                                             <th>LOAD DATE</th>
                                             <th>EXPORT DATE</th>
-                                            <th>SHIP DATE</th>
-                                            <th>SALE DATE</th>
-                                            <th>CONTAINER SIZE</th>
-                                            <th>CONTAINER NO</th>
-                                            <th>XTN NO</th>
+                                            <th>ARRIVAL DATE</th>
+                                            <th>P.O.L</th>
+                                            <th>P.O.D</th>
                                             <th>SHIPPER</th>
+                                            <th>ARRIVAL DAY</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach (@$shipments as $shipment)
                                             <tr>
-                                                <td>{{ $shipment['shipping_reference'] }}</td>
+                                                <td>{{ $shipment['select_consignee'] }}</td>
                                                 <td>{{ $shipment['booking_number'] }}</td>
-                                                <td>{{ $shipment['shipment_type'] }}</td>
+                                                <td>{{ $shipment['container_no'] }}</td>
+                                                <td>{{ $shipment['container_size'] }}</td>
+                                                <td>{{ $shipment['shipping_line'] }}</td>
+                                                <td>VIEW VEHICLE</td>
                                                 <td>{{ $shipment['loading_date'] }}</td>
                                                 <td>{{ $shipment['export_date'] }}</td>
-                                                <td>{{ $shipment['ship_date'] }}</td>
-                                                <td>{{ $shipment['sale_date'] }}</td>
-                                                <td>{{ $shipment['container_size'] }}</td>
-                                                <td>{{ $shipment['container_no'] }}</td>
-                                                <td>{{ $shipment['xtn_number'] }}</td>
+                                                <td>{{ $shipment['est_arrival_date'] }}</td>
+                                                <td>{{ $shipment['loading_port'] }}</td>
+                                                <td>{{ $shipment['destination_port'] }}</td>
+                                                <td>{{ $shipment['days'] }}</td>
                                                 <td>{{ $shipment['shipper'] }}</td>
 
                                                 <td>
