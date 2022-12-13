@@ -214,15 +214,15 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
 
 
 
-    Route::get('/shipment_detail/shipment_Hazard_pdf', [pdfController::class, 'shipmentview'])->name('shipment_detail.shipment_Hazard_pdf');
+    Route::get('/shipment_detail/shipment_Hazard_pdf/{id?}', [pdfController::class, 'shipmentview'])->name('shipment_detail.shipment_Hazard_pdf');
 
-    Route::get('/shipment_detail/shipment_Houston_pdf', [pdfController::class, 'shipmentHouston'])->name('shipment_detail.shipment_Houston_pdf');
+    Route::get('/shipment_detail/shipment_Houston_pdf/{id?}', [pdfController::class, 'shipmentHouston'])->name('shipment_detail.shipment_Houston_pdf');
 
-    Route::get('/shipment_detail/shipment_Landing_pdf', [pdfController::class, 'shipmentLanding'])->name('shipment_detail.shipment_Landing_pdf');
+    Route::get('/shipment_detail/shipment_Landing_pdf/{id?}', [pdfController::class, 'shipmentLanding'])->name('shipment_detail.shipment_Landing_pdf');
 
-    Route::get('/shipment_detail/shipment_Custom_pdf', [pdfController::class, 'shipmentCustom'])->name('shipment_detail.shipment_Custom_pdf');
+    Route::get('/shipment_detail/shipment_Custom_pdf/{id?}', [pdfController::class, 'shipmentCustom'])->name('shipment_detail.shipment_Custom_pdf');
 
-    Route::get('/shipment_detail/shipment_Dock_pdf', [pdfController::class, 'shipmentDock'])->name('shipment_detail.shipment_Dock_pdf');   
+    Route::get('/shipment_detail/shipment_Dock_pdf/{id?}', [pdfController::class, 'shipmentDock'])->name('shipment_detail.shipment_Dock_pdf');   
 
 
     //Notification Routes`
@@ -316,6 +316,9 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard.list');
 
     Route::get('/dashboard/changeState/{state?}', [DashboardController::class, 'changeState'])->name('dashboard.changeState');
+
+    Route::get('/dashboard/records/{state?}', [DashboardController::class, 'serverside'])->name('dashboard.records');
+
 
 
     Route::get('/inventory',                            function(){return "Coming Soon!";});

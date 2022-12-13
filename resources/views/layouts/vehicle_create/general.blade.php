@@ -935,18 +935,18 @@
 
                             <div class="col-12 py-2">
                                 <div class="d-flex align-items-center">
-                                    <label for="post_detention" class="col-6 px-0 font-size font-bold">Yard
+                                    <label for="port_detention_fee" class="col-6 px-0 font-size font-bold">Yard
                                         Storage</label>
                                     <div
                                         class="d-flex align-items-center d-flex align-items-center form-control-sm border border-0 rounded-pill bg col-6">
                                         <span class="prefix text-dark">$</span>
                                         <input type="text" class="general_input col-11" name="port_detention_fee"
-                                            id="port_detention_fee" value="{{ @$user[0]['post_detention'] }}">
+                                            id="port_detention_fee" value="{{ @$user[0]['port_detention_fee'] }}">
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-end">
                                     <span class="text-danger">
-                                        @error('post_detention')
+                                        @error('port_detention_fee')
                                             {{ $message }}
                                         @enderror
                                     </span>
@@ -1022,6 +1022,25 @@
         <input type="hidden" class="form-control-sm border border-0 rounded-pill bg col-6" name="added_by_user"
             id="added_by_user" readonly value="{{ Auth::user()->id }}">
         <input type="hidden" readonly name="tab" value="general">
+
+        @if(@$user[0]['id'])
+        <button type="button" class="btn next-style text-white col-1 py-1 mr-2" onclick="save_vehicle_form(this.id)"
+            id="general_vehicle" data-next='attachments_vehicle_tab' name="{{ $module['button'] }}"
+            style="cursor: pointer;">
+            <div class="unskew">Update</div>
+        </button>
+
+        @else
+
+         <button type="button" class="btn next-style text-white col-1 py-1 mr-2" onclick="save_vehicle_form(this.id)"
+            id="general_vehicle" data-next='attachments_vehicle_tab' name="{{ $module['button'] }}"
+            style="cursor: pointer;">
+            <div class="unskew">Save</div>
+        </button>
+
+        @endif
+
+
         <button type="button" class="btn next-style text-white col-1 py-1" onclick="create_vehicle_form(this.id)"
             id="general_vehicle" data-next='attachments_vehicle_tab' name="{{ $module['button'] }}"
             style="cursor: pointer;">

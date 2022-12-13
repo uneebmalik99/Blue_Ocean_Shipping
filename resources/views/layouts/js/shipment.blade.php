@@ -1,4 +1,59 @@
 <script>
+function save_shipment_form(id) {
+        
+        var formData = new FormData(jQuery('#shipment_form')[0]);
+        $next_tab = $('.next_tab').attr('id');
+        formData.append('tab', $next_tab);
+
+        console.log(...formData);
+
+        document.getElementById('load').style.visibility = "visible";
+        $.ajax({
+            method: 'POST',
+            url: '{{ URL::to('admin/shipments/general') }}',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(data) {
+                
+                document.getElementById('load').style.visibility = "hidden";
+                
+                // $('.modal-body').html(data);
+                $('#exampleModal').modal('hide');
+            
+                iziToast.success({
+                    title: 'Success',
+                    message: 'Shipment Update Successfully!',
+                    timeout: 1500,
+                    position: 'topCenter',
+                    zindex: '9999999999999',
+                });
+
+                setTimeout(function() {
+                    window.location.reload(true);
+                }, 1500);
+                
+            },
+            complete: function() {
+                document.getElementById('load').style.visibility = "hidden";
+            },
+            error: function() {
+                document.getElementById('load').style.visibility = "hidden";
+
+                iziToast.warning({
+                    message: 'Failed to insert data!',
+                    timeout: 1500,
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
+            }
+        });
+        
+    }
+
+
+
+
     function create_shipment_form(id) {
         
        
@@ -264,8 +319,8 @@
                 // alert(data[0]['shipper']['id']);
                 $('#customer_email').val(data[0]['email']);
                 $('#customer_phone').val(data[0]['phone']);
-                $('#select_consignee').html('<option selected value="'+data[0]['shippers'][0]['consignee']+'">'+data[0]['shippers'][0]['consignee']+'</option>');
-                $('#notifier').html('<option selected>'+data[0]['shippers'][0]['consignee']+'</option>');
+                $('#select_consignee').html('<option selected>Select Consignee</option><option value="'+data[0]['shippers'][0]['consignee']+'">'+data[0]['shippers'][0]['consignee']+'</option>');
+                $('#notifier').html('<option selected>Select Notifier</option><option value="'+data[0]['shippers'][0]['consignee']+'" >'+data[0]['shippers'][0]['consignee']+'</option>');
             }
         });
     }

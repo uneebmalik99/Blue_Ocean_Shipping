@@ -79,15 +79,15 @@
                     </tr>
                     <tr>
                         <td>BOOKING NUMBER</td>
-                        <td>220434507C</td>
+                        <td>{{ @$shipment[0]['booking_number'] }}</td>
                     </tr>
                     <tr>
                         <td>CONTAINER NUMBER</td>
-                        <td>UETU5849585</td>
+                        <td>{{ @$shipment[0]['container_no'] }}</td>
                     </tr>
                     <tr>
                         <td>NUMBER OF VEHICLES</td>
-                        <td>4</td>
+                        <td>{{ count(@$shipment[0]['vehicle']) }}</td>
                     </tr>
                 </tbody>
             </table>
