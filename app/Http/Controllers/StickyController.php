@@ -81,7 +81,7 @@ class StickyController extends Controller
 
         $notification = $this->Notification();
         $data['location'] = Location::all();
-        $data['records'] = Sticky::with('user')->paginate($this->perpage);
+        $data['records'] = Sticky::with('user')->get()->toArray();
         return view($this->view . 'list', $data, $notification);
     }
 
@@ -96,14 +96,14 @@ class StickyController extends Controller
         if (count($data->get()) > 0) {
             $data->update(['notes' => $notes]);
             
-            $output = "Note updated.";
+            $output = "updated";
 
         } else {
             $Obj->notes = $notes;
             $Obj->sticky_id = $sticky_id;
             $Obj->customer_id = $customer_id;
             $Obj->save();
-            $output = "Note created.";
+            $output = "created";
         }
         return Response($output);
     }

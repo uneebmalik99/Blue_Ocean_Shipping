@@ -130,7 +130,7 @@
           var a = $("#the_notes div.PIApostit").last().css("top");
           var b = $("#the_notes div.PIApostit").last().css("left");
           $.PostItAll.new({
-              content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+              content: '',
               width: 150,
               height: 200,
               posX: parseInt(b, 10) + 10, //185
@@ -151,7 +151,7 @@
 
       //Global vars : enable and disable features and change the notes behaviour
       $.fn.postitall.globals = {
-          prefix: '#PIApostit_', //Id note prefixe
+          prefix: '#PIApostit_', //Id note prefix
           filter: 'domain', //Options: domain, page, all
           savable: false, //Save postit in storage
           randomColor: true, //Random color in new postits
