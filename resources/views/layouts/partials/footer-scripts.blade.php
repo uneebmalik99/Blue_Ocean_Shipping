@@ -478,13 +478,80 @@
 </script>
 
 <script>
+
+function save_vehicle_form(id) {
+       
+       document.getElementById('load').style.visibility = "visible";
+       $tab_id = id;
+       $next_tab = $('#' + $tab_id).data('next');
+       var formData = new FormData(jQuery('#vehicle_form')[0]);
+       $.ajax({
+           method: 'POST',
+           url: '{{ URL::to('admin/vehicles/create_form') }}',
+           data: formData,
+           processData: false,
+           contentType: false,
+           success: function(data) {
+
+               document.getElementById('load').style.visibility = "hidden";
+            //    $('.modal-body').html(data.view);
+               $('#exampleModal').modal('hide');
+
+               iziToast.success({
+                    title: 'Vehicle',
+                    message: "Vehicle Updated Successfully!",
+                    position: 'topCenter',
+                    zindex: '9999999999999',
+
+                });
+                setTimeout(function() {
+                        location.reload(true);
+                    }, 2000);
+
+           },
+           complete: function() {
+               document.getElementById('load').style.visibility = "hidden";
+
+           },
+           error: function(xhr, status, errorThrown) {
+               document.getElementById('load').style.visibility = "hidden";
+
+               iziToast.warning({
+                   message: 'Failed! Some fields are missing',
+                   position: 'topCenter',
+                   zindex: '9999999999999'
+               });
+
+            //    console.log(xhr.responseJSON['errors']);
+               if (xhr.responseJSON['errors']['customer_name']) {
+                   $('#customer_name_error').html('<small style="margin-left:72px">Please Fill*</small>');
+               }
+               if (xhr.responseJSON['errors']['buyer_id']) {
+                   $('#buyer_error').html('<small style="margin-left:72px">Please Fill*</small>');
+               }
+               if (xhr.responseJSON['errors']['vin']) {
+                   $('#vin_error').html('<small style="margin-left:72px">Please Fill*</small>');
+               }
+               if (xhr.responseJSON['errors']['auction']) {
+                   $('#auction_error').html('<small style="margin-left:72px">Please Fill*</small>');
+               }
+               if (xhr.responseJSON['errors']['key']) {
+                   $('#key_error').html('<small style="margin-left:72px">Please Fill*</small>');
+               }
+               if (xhr.responseJSON['errors']['status']) {
+                   $('#status_error').html('<small style="margin-left:72px">Please Fill*</small>');
+               }
+
+           }
+       });
+   }
+
+
+
+
     function create_vehicle_form(id) {
-        // $('#vehicle_form').on('submit', function(event) {
-        // event.preventDefault();
-
-
-
-        // document.getElementById('load').style.visibility = "visible";
+       
+        document.getElementById('load').style.visibility = "visible";
         $tab_id = id;
         $next_tab = $('#' + $tab_id).data('next');
         var formData = new FormData(jQuery('#vehicle_form')[0]);
@@ -569,22 +636,9 @@
                 if (xhr.responseJSON['errors']['vin']) {
                     $('#vin_error').html('<small style="margin-left:72px">Please Fill*</small>');
                 }
-
-
-
                 if (xhr.responseJSON['errors']['auction']) {
                     $('#auction_error').html('<small style="margin-left:72px">Please Fill*</small>');
                 }
-                // if (xhr.responseJSON['errors']['color']) {
-                //     $('#color_error').html('<small style="margin-left:72px">Please Fill*</small>');
-                // }
-                // if (xhr.responseJSON['errors']['value']) {
-                //     $('#value_error').html('<small style="margin-left:72px">Please Fill*</small>');
-                // }
-
-                // if (xhr.responseJSON['errors']['weight']) {
-                //     $('#weight_error').html('<small style="margin-left:72px">Please Fill*</small>');
-                // }
                 if (xhr.responseJSON['errors']['key']) {
                     $('#key_error').html('<small style="margin-left:72px">Please Fill*</small>');
                 }
