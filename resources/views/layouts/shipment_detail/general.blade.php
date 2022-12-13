@@ -183,14 +183,14 @@
                     <button style="background: #1F689E; transform: skew(-30deg) !important;border:none;
                     border-radius: 4px;color:white;margin-right: 6px;font-size: 12px;">
                         <div style="transform: skew(30deg) !important;padding:1px 4px">
-                            <a href="{{route ('shipment_detail.shipment_Hazard_pdf')}}" style="color:white;text-decoration:none;font-size: 12px;" target="_blank">Non Hazard Report</a>
+                            <a href="{{route ('shipment_detail.shipment_Hazard_pdf', @$shipments[0]['id'])}}" style="color:white;text-decoration:none;font-size: 12px;" target="_blank">Non Hazard Report</a>
                         </div>
                     </button>
 
                     <button style="background: #1F689E; transform: skew(-30deg) !important;border:none;
                     border-radius: 4px;color:white;margin-right: 6px;font-size: 12px;">
                         <div style="transform: skew(30deg) !important;padding:1px 4px">
-                            <a href="{{route ('shipment_detail.shipment_Houston_pdf')}}" style="color:white;text-decoration:none;font-size: 12px;" target="_blank">Houston Cover Letter</a>
+                            <a href="{{route ('shipment_detail.shipment_Houston_pdf', @$shipments[0]['id'])}}" style="color:white;text-decoration:none;font-size: 12px;" target="_blank">Houston Cover Letter</a>
                         </div>
                     </button>
                    
@@ -201,21 +201,21 @@
                     <button style="background: #1F689E; transform: skew(-30deg) !important;border:none;
                     border-radius: 4px;color:white;margin-right: 6px;font-size: 12px;">
                         <div style="transform: skew(30deg) !important;padding:1px 4px">
-                            <a href="{{route ('shipment_detail.shipment_Landing_pdf')}}" style="color:white;text-decoration:none;font-size: 12px;" target="_blank">BOL</a>
+                            <a href="{{route ('shipment_detail.shipment_Landing_pdf', @$shipments[0]['id'])}}" style="color:white;text-decoration:none;font-size: 12px;" target="_blank">BOL</a>
                         </div>
                     </button>
 
                     <button style="background: #1F689E; transform: skew(-30deg) !important;border:none;
                     border-radius: 4px;color:white;margin-right: 6px;font-size: 12px;">
                         <div style="transform: skew(30deg) !important;padding:1px 4px">
-                            <a href="{{route ('shipment_detail.shipment_Custom_pdf')}}" style="color:white;text-decoration:none;font-size: 12px;" target="_blank">US Custom</a>
+                            <a href="{{route ('shipment_detail.shipment_Custom_pdf', @$shipments[0]['id'])}}" style="color:white;text-decoration:none;font-size: 12px;" target="_blank">US Custom</a>
                         </div>
                     </button>
 
                     <button style="background: #1F689E; transform: skew(-30deg) !important;border:none;
                     border-radius: 4px;color:white;margin-right: 6px;font-size: 12px;">
                         <div style="transform: skew(30deg) !important;padding:1px 4px">
-                            <a href="{{route ('shipment_detail.shipment_Dock_pdf')}}" style="color:white;text-decoration:none;font-size: 12px;" target="_blank">DOCK RECEIPT</a>
+                            <a href="{{route ('shipment_detail.shipment_Dock_pdf', @$shipments[0]['id'])}}" style="color:white;text-decoration:none;font-size: 12px;" target="_blank">DOCK RECEIPT</a>
                         </div>
                     </button>
                    

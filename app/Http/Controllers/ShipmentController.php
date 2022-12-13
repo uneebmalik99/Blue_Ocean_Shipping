@@ -951,7 +951,8 @@ class ShipmentController extends Controller
                     return $vehicles;
                 })
                 ->addColumn('notes', function($row){
-                    $bol = view('layouts.shipment_filter.shipment_bol', $row)->render();
+                    $data['row'] = $row;
+                    $bol = view('layouts.shipment_filter.shipment_bol', $data)->render();
                     return $bol;
                 })
                 ->addColumn('action', function ($row) {
