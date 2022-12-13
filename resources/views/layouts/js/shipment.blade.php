@@ -264,8 +264,8 @@
                 // alert(data[0]['shipper']['id']);
                 $('#customer_email').val(data[0]['email']);
                 $('#customer_phone').val(data[0]['phone']);
-                $('#select_consignee').html('<option selected value="'+data[0]['shippers'][0]['consignee']+'">'+data[0]['shippers'][0]['consignee']+'</option>');
-                $('#notifier').html('<option selected>'+data[0]['shippers'][0]['consignee']+'</option>');
+                $('#select_consignee').html('<option selected>Select Consignee</option><option value="'+data[0]['shippers'][0]['consignee']+'">'+data[0]['shippers'][0]['consignee']+'</option>');
+                $('#notifier').html('<option selected>Select Notifier</option><option value="'+data[0]['shippers'][0]['consignee']+'" >'+data[0]['shippers'][0]['consignee']+'</option>');
             }
         });
     }

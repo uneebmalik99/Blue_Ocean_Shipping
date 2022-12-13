@@ -824,7 +824,6 @@
                                                 <td>{{ $shipment['destination_port'] }}</td>
                                                 <td>{{ $shipment['days'] }}</td>
                                                 <td>{{ $shipment['shipper'] }}</td>
-
                                                 <td>
                                                     <button class='profile-button'>
                                                         <a href='{{route('shipment.profile', $shipment['id'])}}'>

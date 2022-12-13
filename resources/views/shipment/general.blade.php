@@ -421,12 +421,12 @@
                                             </div>
                                             <div class="col-12 py-2">
                                                 <div class="d-flex align-items-center">
-                                                    <label for="select_consignee "
+                                                    <label for="select_consignee"
                                                         class="col-6 px-0 font-size font-bold">Notifier</label>
                                                     <select
-                                                        class="form-control-sm border border-0 rounded-pill bg col-6" id="notifier" >
-                                                        @if(@$shipment[0]['select_consignee '])
-                                                        <option value="{{@$shipment[0]['select_consignee']}}" selected disabled>{{@$shipment[0]['select_consignee']}}</option>
+                                                        class="form-control-sm border border-0 rounded-pill bg col-6" id="notifier" name="notifier">
+                                                        @if(@$shipment[0]['notifier'])
+                                                        <option value="{{@$shipment[0]['notifier']}}" selected disabled>{{@$shipment[0]['notifier']}}</option>
                                                         @else
                                                         <option selected disabled>Select Notifier</option>
                                                         @endif
