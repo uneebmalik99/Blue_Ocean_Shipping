@@ -317,6 +317,9 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
 
     Route::get('/dashboard/changeState/{state?}', [DashboardController::class, 'changeState'])->name('dashboard.changeState');
 
+    Route::get('/dashboard/records/{state?}', [DashboardController::class, 'serverside'])->name('dashboard.records');
+
+
 
     Route::get('/inventory',                            function(){return "Coming Soon!";});
     //Inventory

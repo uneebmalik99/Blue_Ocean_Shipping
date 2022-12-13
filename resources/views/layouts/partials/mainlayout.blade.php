@@ -103,18 +103,18 @@
     //             },
     //     });
     // }
-        $('#dashboard_shipment').DataTable({
-                   scrollX: true,
-                    "lengthChange": false,
-                    "info": false,
-                    "bPaginate": false,
-                //    "lengthMenu": [[50, 100, 500], [50, 100, 500]],
-                    language: {
-                        search: "",
-                        sLengthMenu: "_MENU_",
-                        searchPlaceholder: "Search"
-                    },
-                });
+        // $('#dashboard_shipment').DataTable({
+        //            scrollX: true,
+        //             "lengthChange": false,
+        //             "info": false,
+        //             "bPaginate": false,
+        //         //    "lengthMenu": [[50, 100, 500], [50, 100, 500]],
+        //             language: {
+        //                 search: "",
+        //                 sLengthMenu: "_MENU_",
+        //                 searchPlaceholder: "Search"
+        //             },
+        //         });
     </script>
 
 </body>
