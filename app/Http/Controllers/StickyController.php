@@ -51,8 +51,9 @@ class StickyController extends Controller
                 }
             }
             $unread = Notification::with('user')->where('status', '0')->paginate($this->perpage);
-            $data['notification_count'] = count($unread);
+        $data['notification_count'] = count($unread);
         } else {
+            
         }
 
         // dd($data);
@@ -86,21 +87,21 @@ class StickyController extends Controller
 
     public function create(Request $request)
     {
+        
         $sticky_id = $request->sticky_id;
         $notes = $request->notes;
         $customer_id = Auth::user()->id;
         $Obj = new Sticky;
         $data = Sticky::where('sticky_id', $sticky_id);
         if (count($data->get()) > 0) {
-            $data = $data->update(['notes' => $notes]);
-            // $data->notes = $notes;
-            // $data->update();
+            $data->update(['notes' => $notes]);
+            
             $output = "Note updated.";
 
         } else {
             $Obj->notes = $notes;
             $Obj->sticky_id = $sticky_id;
-            $Obj->customer_id = '2';
+            $Obj->customer_id = $customer_id;
             $Obj->save();
             $output = "Note created.";
         }
