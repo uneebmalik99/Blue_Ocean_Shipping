@@ -482,7 +482,7 @@
                         <div class="col-12 d-flex justify-content-center ">
                             <a href="#" id="download_all">
                                 <button
-                                    style="background: rgba(37, 101, 4, 0.72); border-radius: 6px;border:none;color:white;transform: skew(-30deg);">
+                                    style="background:#3e5871;cursor:pointer; border-radius: 6px;border:none;color:white;transform: skew(-30deg);">
                                     <div style="transform: skew(30deg);padding:1px 10px;font-size: 13px;">
                                         Download Images in Zip
                                     </div>
