@@ -342,6 +342,12 @@ function save_shipment_form(id) {
         });
     }
 
+    function removeDoc(id){
+        var td = event.target.parentNode;
+        var tr = td.parentNode; // the row to be removed
+        tr.parentNode.removeChild(tr);
+    }
+
     function removerow(id) {
 
         $value = $('#'+id).val();
