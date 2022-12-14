@@ -151,7 +151,7 @@
                                 <div class="row save_notificatio_button">
                                     <div class="col-8"></div>
                                     <div class="col-3">
-                                        <button type="submit" id="save_button"
+                                        <button type="submit" id="save_button" onclick="notification()"
                                             style="outline:none!important;border:none!important;color: #FFFFFF;"
                                             class="px-3 py-1">Save</button>
                                     </div>
@@ -245,6 +245,16 @@
             });
 
 
+        }
+        
+    </script>
+    <script>
+        function notification(){
+            var url = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3";
+            var audio = new Audio(url);
+            audio.currentTime = 0;
+            audio.play();
+            
         }
     </script>
 @endsection

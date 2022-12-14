@@ -2,7 +2,8 @@
 <script type="text/javascript" src="{{ asset('assets/bower_components/jquery-ui/js/jquery-ui.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/bower_components/popper.js/js/popper.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/bower_components/bootstrap/js/bootstrap.min.js') }}"></script>
-
+{{-- Firebase Notifications --}}
+<script src="{{ asset('assets/js/firebase/firebase-notification.js') }}"
 {{-- sortTable --}}
 <script src="{{ asset('assets/js/sorttable.js') }}"></script>
 
@@ -234,7 +235,7 @@
 <script>
     $('.notification_body').on('click', function() {
         $id = $(this).val();
-        // alert('adasdasd');
+        
         $(this).addClass('bg-info border border-light rounded');
         $.ajax({
             type: 'get',
@@ -2130,3 +2131,10 @@ function save_vehicle_form(id) {
 </script>
 
 
+<script>
+    // Play oscillators at certain frequency and for a certain time
+function playNote(frequency, startTime, duration) {
+    
+};
+
+</script>
