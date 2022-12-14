@@ -1,8 +1,8 @@
 @extends('layouts.partials.mainlayout')
 @section('body')
 <style>
-   #the_notes{
-     z-index: auto;
+   #the_notes .PIApostit{
+     z-index: 99999999999999;
    }
 </style>
     <div class="page-body p-4">
