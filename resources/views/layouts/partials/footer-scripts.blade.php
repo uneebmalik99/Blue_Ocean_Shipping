@@ -2118,20 +2118,4 @@ function save_vehicle_form(id) {
             }
         });
     }
-
-    // function selectState(state){
-
-    //     page = $('#'+state).attr('data-tab');
-
-    //     alert(state);
-    //     alert(page);
-
-    // }
-</script>
-
-
-<script>
-    $('.loading_image_update').on('click', function(){
-        alert('kashif');
-    })
 </script>
