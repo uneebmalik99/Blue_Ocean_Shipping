@@ -2130,3 +2130,8 @@ function save_vehicle_form(id) {
 </script>
 
 
+<script>
+    $('.loading_image_update').on('click', function(){
+        alert('kashif');
+    })
+</script>

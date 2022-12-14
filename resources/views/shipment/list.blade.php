@@ -25,6 +25,9 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
     border-top: none!important;
     border-bottom: none!important;
 }
+/* .loading_image_update .uploaded .uploaded-image img:hover{
+    transform: scale(8.5);
+} */
 </style>
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
@@ -506,4 +509,7 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
             });
         </script>
     @endif
+
+
+   
 @endsection
