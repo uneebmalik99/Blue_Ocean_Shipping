@@ -475,7 +475,6 @@
                                 </div>
                             </div>
 
-
                         </div>
                     </div>
                     <div class="row mt-4">
@@ -527,12 +526,12 @@
                                     </td>
                                     <td>{{ @$vehicles['year'] }}</td>
                                     <td>{{ @$vehicles['make'] }}</td>
-                                    <td>{{ @$vehicles['model '] }}</td>
+                                    <td>{{ @$vehicles['model'] }}</td>
                                     <td>{{ @$vehicles['color'] }}</td>
                                     <td>{{ @$vehicles['vin'] }}</td>
-                                    <td>{{ @$vehicles['status '] }}</td>
+                                    <td>{{ @$vehicles['status'] }}</td>
                                     <td>{{ @$vehicles['title_number'] }}</td>
-                                    <td>{{ @$vehicles['title_state '] }}</td>
+                                    <td>{{ @$vehicles['title_state'] }}</td>
                                     <td>{{ @$vehicles['pickup_location'] }}</td>
                                     <td>
                                         <button class="profile-button">
