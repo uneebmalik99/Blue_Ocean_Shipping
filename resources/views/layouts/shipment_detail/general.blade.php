@@ -529,7 +529,7 @@
                                     <td>{{ @$vehicles['model'] }}</td>
                                     <td>{{ @$vehicles['color'] }}</td>
                                     <td>{{ @$vehicles['vin'] }}</td>
-                                    <td>{{ @$vehicles['status'] }}</td>
+                                    <td>{{ @$vehicles['vehicle_status']['status_name'] }}</td>
                                     <td>{{ @$vehicles['title_number'] }}</td>
                                     <td>{{ @$vehicles['title_state'] }}</td>
                                     <td>{{ @$vehicles['pickup_location'] }}</td>

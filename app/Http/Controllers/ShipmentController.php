@@ -651,7 +651,8 @@ class ShipmentController extends Controller
         $notification = $this->Notification();
         $data['vehicles_cart'] = VehicleCart::with('vehicle')->get()->toArray();
 
-        $data['shipments'] = Shipment::with(['vehicle.warehouse_image', 'loading_image'])->where('id', $request->id)->get()->toArray();
+        $data['shipments'] = Shipment::with(['vehicle.warehouse_image', 'loading_image', 'vehicle.vehicle_status'])->where('id', $request->id)->get()->toArray();
+        // dd($data);
         if ($request->ajax()) {
             $tab = $request->tab;
             $output = view('layouts.shipment_detail.' . $tab, $data)->render();
