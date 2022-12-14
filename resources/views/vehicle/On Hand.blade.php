@@ -1,6 +1,6 @@
 {{-- {{dd($records[0]['pickupimages'][0]['name'])}} --}}
 
-<table id="on_hand_table" class="table row-border" style="width:100%!important;">
+<table id="on_hand_table" class="row-border" style="width:100%!important;">
     <thead class="bg-custom">
         <tr class="font-size">
             <th>ADD

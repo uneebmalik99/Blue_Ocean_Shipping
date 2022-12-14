@@ -1,4 +1,4 @@
-<table id="new_order_table" class="table row-border" style="width:100%!important;">
+<table id="new_order_table" class="row-border" style="width:100%!important;">
     <thead class="bg-custom">
         <tr class="font-size">
             <th class="font-bold-tr">CLIENT</th>
@@ -7,7 +7,6 @@
             <th class="font-bold-tr">MODEL</th>
             <th class="font-bold-tr">VIN</th>
             <th class="font-bold-tr">COLOR</th>
-
             <th class="font-bold-tr">AUCTION</th>
             <th class="font-bold-tr">BUYER ID</th>
             <th class="font-bold-tr">LOT #</th>

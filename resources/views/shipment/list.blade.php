@@ -319,7 +319,7 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
 
                 {{-- search filter end --}}
                 <div class="shipment_table_body">
-                    <table id="shipment_table" class="table row-border"
+                    <table id="shipment_table" class="row-border"
                         style="width:100%!important;overflow-x:scroll!important;">
                         <thead class="bg-custom">
                             <tr class="font-size">

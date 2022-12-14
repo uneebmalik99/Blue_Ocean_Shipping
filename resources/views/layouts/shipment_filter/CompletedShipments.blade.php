@@ -64,10 +64,10 @@
     </tr>
 @endforeach --}}
 
-<table id="shipment_table2" class="table row-border" style="width:100%!important;overflow-x:scroll!important;">
+<table id="shipment_table2" class="row-border" style="width:100%!important;overflow-x:scroll!important;">
     <thead class="bg-custom">
         <tr class="font-size">
-            <th class="font-bold-tr">VIEW VEHICLES</th>
+            <th class="font-bold-tr">VIEW</th>
             <th class="font-bold-tr">IMAGE</th>
             <th class="font-bold-tr">CONSIGNEES</th>
             <th class="font-bold-tr">CONTAINER NO:</th>

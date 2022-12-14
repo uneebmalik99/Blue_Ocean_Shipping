@@ -1,4 +1,4 @@
-<table id="dispatched_table" class="table row-border" style="width:100%!important;">
+<table id="dispatched_table" class="row-border" style="width:100%!important;">
     <thead class="bg-custom">
         <tr class="font-size">
             <th class="font-bold-tr">DISP DATE</th>

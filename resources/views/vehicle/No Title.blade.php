@@ -1,4 +1,4 @@
-<table id="no_title" class="table row-border" style="width:100%!important;">
+<table id="no_title" class="row-border" style="width:100%!important;">
     <thead class="bg-custom">
         <tr class="font-size">
             <th class="font-bold-tr">CLIENT</th>
