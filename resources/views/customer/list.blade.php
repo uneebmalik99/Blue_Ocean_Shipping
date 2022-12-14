@@ -268,7 +268,7 @@
                 </div>
                 {{-- search filter end --}}
                 <div class="mt-2 bg-light" style="height: 100%;overflow-x: scroll;">
-                    <table id="customer_table" class="table row-border" style="width:100%!important;">
+                    <table id="customer_table" class="row-border" style="width:100%!important;">
                         <thead class="bg-custom">
                             <tr class="font-size">
                                 <th class="font-bold-tr">Cust ID</th>

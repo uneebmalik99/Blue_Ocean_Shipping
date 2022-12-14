@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>shipment-pdf</title>
+    <title>NON-HAZARDOUR REPORT</title>
     <style>
         table {
             border: 1px solid gray;
@@ -75,7 +75,7 @@
                     </tr>
                     <tr>
                         <td>DESTINATION</td>
-                        <td>JEBEL ALI</td>
+                        <td>{{ @$shpment[0]['destination_port'] }}</td>
                     </tr>
                     <tr>
                         <td>BOOKING NUMBER</td>

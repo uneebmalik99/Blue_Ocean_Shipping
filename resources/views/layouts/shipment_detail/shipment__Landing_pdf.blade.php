@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>shipment Landing</title>
+    <title>Bill Of Landing</title>
     <style>
         #t_pad {
             padding: 25px;
@@ -83,7 +83,7 @@
             <tbody>
                 <tr>
                     
-                    <td  class="t_data"><b>ARIANA MARTIME </b></td>
+                    <td  class="t_data"><b>Blue Ocean Shipping</b></td>
                     <td class="t_img" style="text-align:center ;"><img src="{{asset('images/logo_2.png')}}"  class="img_w" alt=""></td>
                     <td class="t_data"><b>BILL OF LADING</b></td>
                 </tr>
@@ -101,7 +101,7 @@
                     <td class="td3_data">REFERENCE #</td>
                 </tr>
                 <tr>
-                    <td rowspan="4" class="td3_data">MARHABA USED CARS TR SHARJAH IND # 2</td>
+                    <td rowspan="4" class="td3_data">{{ @$shipment[0]['shipper'] }}</td>
                     <td class="td3_data">{{ @$shipment[0]['booking_number'] }}</td>
                     <td class="td3_data">{{ @$shipment[0]['shipping_reference'] }}</td>
                 </tr>
@@ -159,10 +159,10 @@
             <tbody>
                 <tr>
                     <td colspan="2" class="td3_p">NOTIFY</td>
-                    <td class="td3_data">{{ @$shipment[0]['notifier'] }}</td>
+                    <td class="td3_data"></td>
                 </tr>
                 <tr>
-                    <td colspan="2" rowspan="2" class="td3_p" id="t_pad"></td>
+                    <td colspan="2" rowspan="2" class="td3_p" id="t_pad">{{ @$shipment[0]['notifier'] }}</td>
                     <td class="td3_data"></td>
 
                 </tr>

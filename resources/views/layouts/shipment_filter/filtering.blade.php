@@ -64,10 +64,10 @@
     </tr>
 @endforeach --}}
 {{-- {{dd($value)}} --}}
-<table id="shipment_table1" class="table row-border" style="width:100%!important;">
+<table id="shipment_table1" class="row-border" style="width:100%!important;">
     <thead class="bg-custom">
         <tr class="font-size">
-            <th class="font-bold-tr">VIEW VEHICLES</th>
+            <th class="font-bold-tr">VIEW</th>
             <th class="font-bold-tr">IMAGE</th>
             <th class="font-bold-tr">CONSIGNEES</th>
             <th class="font-bold-tr">CONTAINER NO:</th>

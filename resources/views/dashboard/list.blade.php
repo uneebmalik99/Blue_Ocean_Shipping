@@ -814,24 +814,24 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
 
                         <div class="row mt-2 mb-2">
                             <div class="col-12">
-                                <table id="dashboard_shipment" style="width:100%!important;">
-                                    <thead>
+                                <table id="dashboard_shipment" class="row-border" style="width:100%!important;">
+                                    <thead class="bg-custom">
                                         <tr class="font-size" style="font-size:11px!important;font-weight:300!important">
-                                            <th>view</th>
-                                            <th>CONSIGNEE</th>
-                                            <th>BOOKING NO:</th>
-                                            <th>CONTAINER NO:</th>
-                                            <th>CONT SIZE</th>
-                                            <th>LINES</th>
-                                            <th>VEHICLES</th>
-                                            <th>LOAD DATE</th>
-                                            <th>EXPORT DATE</th>
-                                            <th>ARRIVAL DATE</th>
-                                            <th>P.O.L</th>
-                                            <th>P.O.D</th>
-                                            <th>SHIPPER</th>
-                                            {{-- <th>ARRIVAL DAY</th> --}}
-                                            <th>Action</th>
+                                            <th class="font-bold-tr">view</th>
+                                            <th class="font-bold-tr">CONSIGNEE</th>
+                                            <th class="font-bold-tr">BOOKING NO:</th>
+                                            <th class="font-bold-tr">CONTAINER NO:</th>
+                                            <th class="font-bold-tr">CONT SIZE</th>
+                                            <th class="font-bold-tr">LINES</th>
+                                            <th class="font-bold-tr">VEHICLES</th>
+                                            <th class="font-bold-tr">LOAD DATE</th>
+                                            <th class="font-bold-tr">EXPORT DATE</th>
+                                            <th class="font-bold-tr">ARRIVAL DATE</th>
+                                            <th class="font-bold-tr">P.O.L</th>
+                                            <th class="font-bold-tr">P.O.D</th>
+                                            <th class="font-bold-tr">SHIPPER</th>
+                                            {{-- <th class="font-bold-tr">ARRIVAL DAY</th> --}}
+                                            <th class="font-bold-tr">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>

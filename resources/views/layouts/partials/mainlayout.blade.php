@@ -4,12 +4,15 @@
 <head>
     @include('layouts.partials.head')
     <style>
-  
+
     </style>
 </head>
 
 <body>
-    <div id="load"></div>
+    <div id="load">
+        {{-- <iframe src="https://embed.lottiefiles.com/animation/99084"></iframe> --}}
+        <div id="loader"></div>
+    </div>
     <div id="contents"></div>
 
     <div id="pcoded" class="pcoded">
@@ -75,34 +78,50 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js"
         integrity="sha512-BkpSL20WETFylMrcirBahHfSnY++H2O1W+UnEEO4yNIl+jI2+zowyoGJpbtk6bx97fBXf++WJHSSK2MV4ghPcg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.5/lottie.min.js'></script>
+    <script>
+        var animation = bodymovin.loadAnimation({
+            container: document.getElementById('loader'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: '{{ asset('images/loader.json') }}' // lottie file path
+        })
+    </script>
 
     <script>
         $(document).ready(function() {
-            
-           
+
+
             $('#table_id').DataTable({
-                "lengthMenu": [[50, 100, 500], [50, 100, 500]],
+                "lengthMenu": [
+                    [50, 100, 500],
+                    [50, 100, 500]
+                ],
             });
 
 
-        
-            
+
+
             $('#user_table').DataTable({
-                "lengthMenu": [[50, 100, 500], [50, 100, 500]],
+                "lengthMenu": [
+                    [50, 100, 500],
+                    [50, 100, 500]
+                ],
             });
 
-               
+
         });
-    //     $(document).ready(function() {
-    //         $('#customer_table').DataTable({
-    //             "lengthMenu": [[50, 100, 500], [50, 100, 500]],
-    //             language: {
-    //                 search: "",
-    //                 sLengthMenu: "_MENU_",
-    //                 searchPlaceholder: "Search"
-    //             },
-    //     });
-    // }
+        //     $(document).ready(function() {
+        //         $('#customer_table').DataTable({
+        //             "lengthMenu": [[50, 100, 500], [50, 100, 500]],
+        //             language: {
+        //                 search: "",
+        //                 sLengthMenu: "_MENU_",
+        //                 searchPlaceholder: "Search"
+        //             },
+        //     });
+        // }
         // $('#dashboard_shipment').DataTable({
         //            scrollX: true,
         //             "lengthChange": false,

@@ -479,26 +479,25 @@
 </script>
 
 <script>
+    function save_vehicle_form(id) {
 
-function save_vehicle_form(id) {
-       
-       document.getElementById('load').style.visibility = "visible";
-       $tab_id = id;
-       $next_tab = $('#' + $tab_id).data('next');
-       var formData = new FormData(jQuery('#vehicle_form')[0]);
-       $.ajax({
-           method: 'POST',
-           url: '{{ URL::to('admin/vehicles/create_form') }}',
-           data: formData,
-           processData: false,
-           contentType: false,
-           success: function(data) {
+        document.getElementById('load').style.visibility = "visible";
+        $tab_id = id;
+        $next_tab = $('#' + $tab_id).data('next');
+        var formData = new FormData(jQuery('#vehicle_form')[0]);
+        $.ajax({
+            method: 'POST',
+            url: '{{ URL::to('admin/vehicles/create_form') }}',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(data) {
 
-               document.getElementById('load').style.visibility = "hidden";
-            //    $('.modal-body').html(data.view);
-               $('#exampleModal').modal('hide');
+                document.getElementById('load').style.visibility = "hidden";
+                //    $('.modal-body').html(data.view);
+                $('#exampleModal').modal('hide');
 
-               iziToast.success({
+                iziToast.success({
                     title: 'Vehicle',
                     message: "Vehicle Updated Successfully!",
                     position: 'topCenter',
@@ -506,52 +505,52 @@ function save_vehicle_form(id) {
 
                 });
                 setTimeout(function() {
-                        location.reload(true);
-                    }, 2000);
+                    location.reload(true);
+                }, 2000);
 
-           },
-           complete: function() {
-               document.getElementById('load').style.visibility = "hidden";
+            },
+            complete: function() {
+                document.getElementById('load').style.visibility = "hidden";
 
-           },
-           error: function(xhr, status, errorThrown) {
-               document.getElementById('load').style.visibility = "hidden";
+            },
+            error: function(xhr, status, errorThrown) {
+                document.getElementById('load').style.visibility = "hidden";
 
-               iziToast.warning({
-                   message: 'Failed! Some fields are missing',
-                   position: 'topCenter',
-                   zindex: '9999999999999'
-               });
+                iziToast.warning({
+                    message: 'Failed! Some fields are missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
 
-            //    console.log(xhr.responseJSON['errors']);
-               if (xhr.responseJSON['errors']['customer_name']) {
-                   $('#customer_name_error').html('<small style="margin-left:72px">Please Fill*</small>');
-               }
-               if (xhr.responseJSON['errors']['buyer_id']) {
-                   $('#buyer_error').html('<small style="margin-left:72px">Please Fill*</small>');
-               }
-               if (xhr.responseJSON['errors']['vin']) {
-                   $('#vin_error').html('<small style="margin-left:72px">Please Fill*</small>');
-               }
-               if (xhr.responseJSON['errors']['auction']) {
-                   $('#auction_error').html('<small style="margin-left:72px">Please Fill*</small>');
-               }
-               if (xhr.responseJSON['errors']['key']) {
-                   $('#key_error').html('<small style="margin-left:72px">Please Fill*</small>');
-               }
-               if (xhr.responseJSON['errors']['status']) {
-                   $('#status_error').html('<small style="margin-left:72px">Please Fill*</small>');
-               }
+                //    console.log(xhr.responseJSON['errors']);
+                if (xhr.responseJSON['errors']['customer_name']) {
+                    $('#customer_name_error').html('<small style="margin-left:72px">Please Fill*</small>');
+                }
+                if (xhr.responseJSON['errors']['buyer_id']) {
+                    $('#buyer_error').html('<small style="margin-left:72px">Please Fill*</small>');
+                }
+                if (xhr.responseJSON['errors']['vin']) {
+                    $('#vin_error').html('<small style="margin-left:72px">Please Fill*</small>');
+                }
+                if (xhr.responseJSON['errors']['auction']) {
+                    $('#auction_error').html('<small style="margin-left:72px">Please Fill*</small>');
+                }
+                if (xhr.responseJSON['errors']['key']) {
+                    $('#key_error').html('<small style="margin-left:72px">Please Fill*</small>');
+                }
+                if (xhr.responseJSON['errors']['status']) {
+                    $('#status_error').html('<small style="margin-left:72px">Please Fill*</small>');
+                }
 
-           }
-       });
-   }
+            }
+        });
+    }
 
 
 
 
     function create_vehicle_form(id) {
-       
+
         document.getElementById('load').style.visibility = "visible";
         $tab_id = id;
         $next_tab = $('#' + $tab_id).data('next');
@@ -680,7 +679,7 @@ function save_vehicle_form(id) {
                 'id': $id
             },
             success: function(data) {
-                
+
                 $('#subject').html(data[0].subject);
                 $('#expiry_date').html(data[0].expiry_date);
                 $('#message').html(data[0].message);
@@ -959,7 +958,8 @@ function save_vehicle_form(id) {
                                 "</td><td>" + element.model + "</td><td>" + element.vin +
                                 "</td><td>" + element.vin + "</td><td>" + element.vin +
                                 "</td><td>" + element.vin + "</td><td>" + element.vin +
-                                "</td><td class='text-center'><input type='checkbox' value='"+element.id+"' id='vehicle' name='vehicles[]'></td></tr>";
+                                "</td><td class='text-center'><input type='checkbox' value='" +
+                                element.id + "' id='vehicle' name='vehicles[]'></td></tr>";
 
                             html.push(output);
                         });
@@ -999,7 +999,7 @@ function save_vehicle_form(id) {
 </script>
 {{-- Edit invoices --}}
 <script>
-    function updateinvoice(id){
+    function updateinvoice(id) {
         $id = id;
         $.ajax({
             type: 'GET',
@@ -2092,8 +2092,8 @@ function save_vehicle_form(id) {
     }
 </script>
 <script>
-    function create_invoice_form(){
-      
+    function create_invoice_form() {
+
         var formData = new FormData(jQuery('#invoice_shipment_form')[0]);
 
         $.ajax({
@@ -2114,27 +2114,25 @@ function save_vehicle_form(id) {
                 });
 
                 setTimeout(function() {
-            location.reload();
-        }, 1000);
+                    location.reload();
+                }, 1000);
             }
         });
     }
 
-    // function selectState(state){
 
-    //     page = $('#'+state).attr('data-tab');
+    function downloadAll() {
+     
+            $('.showMainImage').multiDownload();
 
-    //     alert(state);
-    //     alert(page);
-
-    // }
+    
+    }
 </script>
-
-
 <script>
     // Play oscillators at certain frequency and for a certain time
 function playNote(frequency, startTime, duration) {
     
+
 };
 
 </script>

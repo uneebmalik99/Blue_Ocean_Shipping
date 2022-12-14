@@ -399,7 +399,7 @@
 
                         </tbody>
                     </table> --}}
-                        <table id="on_hand_table_main" class="table vehicle_table row-border"
+                        <table id="on_hand_table_main" class="row-border"
                             style="width:100%!important;">
                             <thead class="bg-custom">
                                 <tr class="font-size">
