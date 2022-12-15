@@ -10,6 +10,7 @@ use App\Models\Location;
 use App\Models\VehicleCart;
 use App\Models\Vehicle;
 use App\Models\Shipment;
+use App\Models\LoadingCountry;
 use App\Models\Shipper;
 use App\Models\Customer;
 use Carbon\Carbon;
@@ -39,7 +40,9 @@ class DashboardController extends Controller
     {
     
         $data['notification'] = Notification::with('user')->paginate($this->perpage);
-        $data['location'] = Location::all()->toArray();
+        // $data['location'] = Location::all()->toArray();
+        $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
+
         if ($data['notification']->toArray()) {
             $current = Carbon::now();
             foreach ($data['notification'] as $key => $date_notification) {
@@ -227,12 +230,13 @@ class DashboardController extends Controller
 
 
     public function changeState($state){
-        if($state == 'All'){
+        if($state == 'ALL'){
             return redirect()->route('dashboard.list');
         }
 
         $data = [];
         $data = [
+            "state" => $state,
             // "page_title" => $this->plural . " List",
             "page_heading" => $this->plural . ' List',
             "breadcrumbs" => array('#' => $this->plural . " List"),

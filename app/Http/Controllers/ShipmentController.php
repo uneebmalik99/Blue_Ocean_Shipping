@@ -59,7 +59,9 @@ class ShipmentController extends Controller
     private function Notification()
     {
         $data['notification'] = Notification::with('user')->paginate($this->perpage);
-        $data['location'] = Location::all()->toArray();
+        // $data['location'] = Location::all()->toArray();
+        $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
+
         // dd();
         if ($data['notification']->toArray()) {
             $current = Carbon::now();
@@ -157,7 +159,7 @@ class ShipmentController extends Controller
 
 
     public function changeState($state){
-        if($state == 'All'){
+        if($state == 'ALL'){
             return redirect()->route('shipment.list');
         }
         $data = [];
@@ -342,7 +344,7 @@ class ShipmentController extends Controller
         ];
         $data['buyer_ids'] = User::with('billings')->get()->toArray();
 
-        $data['shipment'] = Shipment::with('vehicle')->where('id', $req->id)->get()->toArray();
+        $data['shipment'] = Shipment::with('vehicle', 'customer.billings')->where('id', $req->id)->get()->toArray();
         // dd($data['shipment']);
         $data['shippers'] = ShipperName::where('status', '1')->get();
 
@@ -850,6 +852,14 @@ class ShipmentController extends Controller
                     $vehicles = $totalVehicles;
                     return $vehicles;
                 })
+                ->addColumn('shipper', function($row){
+                    return strtoupper($row['shipper']);
+                })
+                ->addColumn('notes', function($row){
+                    $data['row'] = $row;
+                    $bol = view('layouts.shipment_filter.shipment_bol', $data)->render();
+                    return $bol;
+                })
                 ->addColumn('action', function ($row) {
                     $url_view = url('admin/shipments/profile/' . $row->id);
                     $url_delete = url('admin/shipments/delete/' . $row->id);
@@ -895,7 +905,7 @@ class ShipmentController extends Controller
                                         ";
                     return $btn;
                 })
-                ->rawColumns(['id','action','shipment_id'])
+                ->rawColumns(['id','action','shipment_id', 'notes', 'shipper'])
                 ->make(true);
         }
         if(Auth::user()->hasRole('Customer')){
@@ -917,22 +927,23 @@ class ShipmentController extends Controller
             
             if($state != null){
                 if(Auth::user()->hasRole('Customer')){
-                    $data = Shipment::with('vehicle')->where('customer_email', auth()->user()->email)->where('loading_state', $state)->get();
+
+                    $data = Shipment::with('vehicle', 'customer.billings')->where('customer_email', auth()->user()->email)->where('loading_state', $state)->get();
                 }
                 else{
-                    $data = Shipment::with('vehicle')->where('loading_state', $state)->get();
+                    $data = Shipment::with('vehicle', 'customer.billings')->where('loading_state', $state)->get();
                 }
         }
         else{
             if(Auth::user()->hasRole('Customer')){
-                $data = Shipment::with('vehicle')->where('customer_email', auth()->user()->email)->get();
+                $data = Shipment::with('vehicle', 'customer.billings')->where('customer_email', auth()->user()->email)->get();
             }
             else{
-                $data = Shipment::with('vehicle')->get();
+                $data = Shipment::with('vehicle', 'customer.billings')->get();
             }
         }
 
-
+     
 
             
             return Datatables::of($data)
@@ -955,6 +966,20 @@ class ShipmentController extends Controller
                     $data['row'] = $row;
                     $bol = view('layouts.shipment_filter.shipment_bol', $data)->render();
                     return $bol;
+                })
+                ->addColumn('shipper', function($row){
+                    return strtoupper($row['shipper']);
+                })
+                ->addColumn('select_consignee', function($row){
+                    $data['row'] = $row;
+                    if($row['customer']['billings'][0]['company_name'] != null){
+                        return $row['customer']['billings'][0]['company_name'];
+                    }
+                    return '';
+
+
+                    // $bol = view('layouts.shipment_filter.shipment_consignee_detail', $data)->render();
+                    // return $bol;
                 })
                 ->addColumn('action', function ($row) {
                     $url_view = url('admin/shipments/profile/' . $row->id);
@@ -1001,7 +1026,7 @@ class ShipmentController extends Controller
                                         ";
                     return $btn;
                 })
-                ->rawColumns(['id','action','shipment_id', 'notes'])
+                ->rawColumns(['id','action','shipment_id', 'notes','select_consignee', 'shipper'])
                 ->make(true);
         }
         if(Auth::user()->hasRole('Customer')){
@@ -1076,7 +1101,8 @@ class ShipmentController extends Controller
     }
 
     public function Customer_Details(Request $req){
-        $customer_details = User::with('shippers')->where('company_name', $req->company_name)->get();
+        $customer_details = User::with('billings')->where('company_name', $req->company_name)->get()->toArray();
+        // dd($customer_details);
         return $customer_details;
     }
 

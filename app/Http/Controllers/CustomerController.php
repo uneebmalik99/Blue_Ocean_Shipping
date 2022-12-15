@@ -47,7 +47,9 @@ class CustomerController extends Controller
     {
 
         $data['notification'] = Notification::with('user')->paginate($this->perpage);
-        $data['location'] = Location::all()->toArray();
+        // $data['location'] = Location::all()->toArray();
+        $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
+
         // return $data['notification'];
         // dd(\Carbon\Carbon::now());
         if ($data['notification']) {
@@ -166,7 +168,7 @@ class CustomerController extends Controller
 
     public function changeState($state){
 
-        if($state == 'All'){
+        if($state == 'ALL'){
             return redirect()->route('customer.list');
         }
 
@@ -270,6 +272,7 @@ class CustomerController extends Controller
                     'email' => $request->email,
                 ],
             ];
+
             if($tab == 'shipper'){
                 $data['shipper'] = Shipper::where('customer_id', $customer[0]['id'])->get()->toArray();
             }
@@ -305,7 +308,10 @@ class CustomerController extends Controller
             $data['loading_ports'] = LoadingCountry::select('port')->where('status', '1')->groupBy('port')->get()->toArray();
             $data['shipping_lines'] = ShipmentLine::where('status', '1')->get();
             $data['no_of_vehicle'] = NoOfVehicle::where('status', '1')->get();
+            $data['states'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
+
             $output = view('layouts.customer_create.' . $tab, $data)->render();
+            
             return Response($output);
         }
         
@@ -317,6 +323,7 @@ class CustomerController extends Controller
         //     return redirect($this->action)->with('success', 'Vehicle addedd successfully.');
 
         // }
+        
         $notification = $this->Notification();
         return view($this->view . 'create_edit', $data, $notification);
     }
@@ -346,7 +353,8 @@ class CustomerController extends Controller
         $data['documents'] = User::with('customer_documents')->where('id', $id)->get()->toArray();
         // dd($data['documents']);
         $data['location'] = Location::all();
-        // dd($data['documents']);
+        $data['states'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
+        // dd($data['states']);
         $output = view('layouts.customer_create.general', $data)->render();
         return Response($output);
     }

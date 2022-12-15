@@ -104,7 +104,7 @@ class pdfController extends Controller
 
     public function shipmentview($id){
         $data = [];
-        $data['shipment']=Shipment::with('vehicle')->whereid($id)->get()->toArray();
+        $data['shipment']=Shipment::with('vehicle', 'customer.billings')->whereid($id)->get()->toArray();
         $pdf = PDF::loadview('layouts.shipment_detail.shipment_Hazard_pdf', $data);
         return $pdf->stream(); 
     }

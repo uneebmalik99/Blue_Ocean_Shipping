@@ -82,7 +82,7 @@
             <th class="font-bold-tr">Shipper</th>
             <th class="font-bold-tr">LOADING PORT</th>
             <th class="font-bold-tr">DESTINATION PORT</th>
-            <th class="font-bold-tr">DOCS</th>
+            <th class="font-bold-tr">BAL</th>
             <th class="font-bold-tr">ACTIONS</th>
         </tr>
     </thead>
@@ -192,10 +192,10 @@
                     data: 'loading_date'
                 },
                 {
-                    data: 'sale_date'
+                    data: 'cut_off_date'
                 },
                 {
-                    data: 'ship_date'
+                    data: 'sale_date'
                 },
                 {
                     data: 'est_arrival_date'

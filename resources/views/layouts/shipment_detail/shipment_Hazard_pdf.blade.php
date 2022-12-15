@@ -63,19 +63,19 @@
                 <tbody>
                     <tr>
                         <td>CARRIER</td>
-                        <td>MAERSK</td>
+                        <td>{{ @$shipment[0]['shipping_line'] }}</td>
                     </tr>
                     <tr>
                         <td>VESSEL NAME / VOYAGE</td>
-                        <td>GUDRUN MAERSK 234 W</td>
+                        <td>{{ @$shipment[0]['vessel'] }} / {{ @$shipment[0]['voyage'] }}</td>
                     </tr>
                     <tr>
                         <td>ORIGIN</td>
-                        <td>8</td>
+                        <td>{{ @$shipment[0]['loading_port'] }}</td>
                     </tr>
                     <tr>
                         <td>DESTINATION</td>
-                        <td>{{ @$shpment[0]['destination_port'] }}</td>
+                        <td>{{ @$shipment[0]['destination_port'] }}</td>
                     </tr>
                     <tr>
                         <td>BOOKING NUMBER</td>

@@ -56,5 +56,7 @@ class ShipmentUpdate extends Command
                 DB::update('update shipments set status = ? where id = ?',[3,$shipment['id']]);
             }
         }
+
+
     }
 }

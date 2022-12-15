@@ -78,12 +78,12 @@
             <th class="font-bold-tr">LOAD DATE</th>
             <th class="font-bold-tr">CUT OFF DATE</th>
             <th class="font-bold-tr">EXPORT DATE</th>
-            <th class="font-bold-tr">ARR Date</th>
-            <th class="font-bold-tr">REC Date</th>
-            <th class="font-bold-tr">Shipper</th>
+            <th class="font-bold-tr">ARR DATE</th>
+            <th class="font-bold-tr">REC DATE</th>
+            <th class="font-bold-tr">SHIPPER</th>
             <th class="font-bold-tr">LOADING PORT</th>
             <th class="font-bold-tr">DESTINATION PORT</th>
-            <th class="font-bold-tr">DOCS</th>
+            <th class="font-bold-tr">BAL</th>
             <th class="font-bold-tr">ACTIONS</th>
         </tr>
     </thead>
@@ -180,7 +180,7 @@
                     data: 'loading_date'
                 },
                 {
-                    data: 'sale_date'
+                    data: 'cut_off_date'
                 },
                 {
                     data: 'ship_date'

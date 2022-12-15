@@ -17,6 +17,7 @@ use App\Models\MMS;
 use App\Models\Make;
 use App\Models\VehicleModel;
 use App\Models\ImportVehicle;
+use App\Models\LoadingCountry;
 use App\Models\Color;
 use App\Models\Key;
 use App\Models\Title;
@@ -64,7 +65,9 @@ class VehicleController extends Controller
     private function Notification()
     {
         $data['notification'] = Notification::with('user')->paginate($this->perpage);
-        $data['location'] = Location::all()->toArray();
+        // $data['location'] = Location::all()->toArray();
+        $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
+
         // dd();
         if ($data['notification']->toArray()) {
             $current = Carbon::now();
@@ -125,7 +128,7 @@ class VehicleController extends Controller
             $data['on_hand'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '3')->get();
             $data['no_titles'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '4')->get();
             $data['towing'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '5')->get();
-            $data['location'] = Location::all();
+            $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
             $data['status'] = VehicleStatus::limit(3)->get()->toArray();
             $data['make'] = MMS::select('make')->where('status', '1')->groupBy('make')->get()->toArray();
             $data['model'] = MMS::select('model')->where('status', '1')->groupBy('model')->get()->toArray();
@@ -137,7 +140,7 @@ class VehicleController extends Controller
             $data['on_hand'] = Vehicle::where('status', '3')->get();
             $data['no_titles'] = Vehicle::where('status', '4')->get();
             $data['towing'] = Vehicle::where('status', '5')->get();
-            $data['location'] = Location::all();
+            $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
             $data['status'] = VehicleStatus::limit(3)->get()->toArray();
             $data['make'] = MMS::select('make')->where('status', '1')->groupBy('make')->get()->toArray();
             $data['model'] = MMS::select('model')->where('status', '1')->groupBy('model')->get()->toArray();
@@ -148,7 +151,7 @@ class VehicleController extends Controller
     }
 
     public function changeState($state){
-        if($state == 'All'){
+        if($state == 'ALL'){
             return redirect()->route('vehicle.list');
         }
         $data = [];
@@ -179,7 +182,7 @@ class VehicleController extends Controller
             $data['on_hand'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '3')->where('pickup_location', $state)->get();
             $data['no_titles'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '4')->where('pickup_location', $state)->get();
             $data['towing'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '5')->where('pickup_location', $state)->get();
-            $data['location'] = Location::all();
+            $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
             $data['status'] = VehicleStatus::limit(3)->get()->toArray();
             $data['make'] = MMS::select('make')->where('status', '1')->groupBy('make')->get()->toArray();
             $data['model'] = MMS::select('model')->where('status', '1')->groupBy('model')->get()->toArray();
@@ -191,7 +194,7 @@ class VehicleController extends Controller
             $data['on_hand'] = Vehicle::where('status', '3')->where('pickup_location', $state)->get();
             $data['no_titles'] = Vehicle::where('status', '4')->where('pickup_location', $state)->get();
             $data['towing'] = Vehicle::where('status', '5')->where('pickup_location', $state)->get();
-            $data['location'] = Location::all();
+            $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
             $data['status'] = VehicleStatus::limit(3)->get()->toArray();
             $data['make'] = MMS::select('make')->where('status', '1')->groupBy('make')->get()->toArray();
             $data['model'] = MMS::select('model')->where('status', '1')->groupBy('model')->get()->toArray();

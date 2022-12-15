@@ -20,6 +20,11 @@ class Shipment extends Model
         return $this->belongsTo('App\Models\Consignee');
     }
 
+    public function customer()
+    {
+        return $this->belongsTo('App\Models\User', 'select_consignee', 'id');
+    }
+
     public function status()
     {
         return $this->belongsTo('App\Models\ShipmentStatus', 'status', 'id');

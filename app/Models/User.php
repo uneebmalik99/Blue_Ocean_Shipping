@@ -37,9 +37,9 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Location');
     }
 
-    public function consignees()
+    public function shipment()
     {
-        return $this->hasMany('App\Models\Consignee');
+        return $this->hasMany('App\Models\Shipment', 'select_consignee', 'id');
     }
 
     public function invoices()

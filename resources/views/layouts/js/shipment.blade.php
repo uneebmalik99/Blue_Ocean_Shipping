@@ -315,12 +315,12 @@ function save_shipment_form(id) {
                 'company_name': company_name,
             },
             success: function(data) {
-                console.log(data[0]['shippers'][0]['consignee'])
+                console.log(data[0]['billings'][0]['company_name'])
                 // alert(data[0]['shipper']['id']);
                 $('#customer_email').val(data[0]['email']);
                 $('#customer_phone').val(data[0]['phone']);
-                $('#select_consignee').html('<option selected>Select Consignee</option><option value="'+data[0]['shippers'][0]['consignee']+'">'+data[0]['shippers'][0]['consignee']+'</option>');
-                $('#notifier').html('<option selected>Select Notifier</option><option value="'+data[0]['shippers'][0]['consignee']+'" >'+data[0]['shippers'][0]['consignee']+'</option>');
+                $('#select_consignee').html('<option selected>Select Consignee</option><option value="'+data[0]['id']+'">'+data[0]['billings'][0]['company_name']+'</option>');
+                $('#notifier').html('<option selected>Select Notifier</option><option value="'+data[0]['id']+'" >'+data[0]['billings'][0]['company_name']+'</option>');
             }
         });
     }

@@ -432,10 +432,12 @@
                                                     <select
                                                         class="form-control-sm border border-0 rounded-pill bg col-6"
                                                         name="select_consignee" id="select_consignee">
-                                                        @if (@$shipment[0]['select_consignee'])
-                                                            <option value="{{ @$shipment[0]['select_consignee'] }}"
-                                                                selected disabled>
-                                                                {{ @$shipment[0]['select_consignee'] }}</option>
+                                                        
+                                                        @if (@$shipment[0]['customer']['billings'][0]['company_name'])
+                                                            <option value="{{ @$shipment[0]['customer']['id'] }}"
+                                                                selected disabled>{{ @$shipment[0]['customer']['billings'][0]['company_name'] }}</option>
+                                                        @else
+                                                        <option>Select Consignee</option>
                                                         @endif
                                                         {{-- @foreach ($buyer_ids as $buyer_id)
                                                         @if (@$buyer_id['billings'][0]['company_name'])
@@ -461,10 +463,10 @@
                                                     <select
                                                         class="form-control-sm border border-0 rounded-pill bg col-6"
                                                         id="notifier" name="notifier">
-                                                        @if (@$shipment[0]['notifier'])
-                                                            <option value="{{ @$shipment[0]['notifier'] }}" selected
-                                                                disabled>{{ @$shipment[0]['notifier'] }}</option>
-                                                        @else
+                                                        @if (@$shipment[0]['customer']['billings'][0]['company_name'])
+                                                        <option value="{{ @$shipment[0]['customer']['id'] }}"
+                                                            selected disabled>{{ @$shipment[0]['customer']['billings'][0]['company_name'] }}</option>
+                                                    @else
                                                             <option selected disabled>Select Notifier</option>
                                                         @endif
                                                         {{-- @foreach ($buyer_ids as $buyer_id)

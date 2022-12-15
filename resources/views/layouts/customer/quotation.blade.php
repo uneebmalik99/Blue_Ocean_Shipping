@@ -147,6 +147,8 @@
     
     @if(@$quotation[0]['id'])
     @for ($i=1; $i<count(@$quotation); $i++)
+    @if(@$quotations[$i]['container_size'] == null && @$quotations[$i]['vehicle'] == null && @$quotation[$i]['loading_port'] == 'null' && @$quotation[$i]['shipping_line'] == 'null' && @$quotation[$i]['default'] == null && @$quotation[$i]['special_rate'] == null)
+    @else
     <div class="d-flex py-2">
          <div class="col-8 px-0">
              <div class="d-flex justify-content-around p-2 col-12">
@@ -234,7 +236,8 @@
              </div>
          </div>
         
-     </div>
+    </div>
+    @endif
      @endfor
     @endif
 
