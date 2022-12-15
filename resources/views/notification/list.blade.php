@@ -248,13 +248,5 @@
         }
         
     </script>
-    <script>
-        function notification(){
-            var url = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3";
-            var audio = new Audio(url);
-            audio.currentTime = 0;
-            audio.play();
-            
-        }
-    </script>
+    
 @endsection

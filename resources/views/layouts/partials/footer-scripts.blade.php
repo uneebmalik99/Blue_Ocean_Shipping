@@ -62,8 +62,35 @@
 {{-- <script type="text/javascript" src="{{ asset('js/jquery-latest.min.js') }}"></script> --}}
 <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 
+{{-- Pusher JS --}}
+<script>
 
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
 
+    var pusher = new Pusher('7b4eda220fb943405624', {
+      cluster: 'ap2'
+    });
+
+    var channel = pusher.subscribe('notification-channel');
+    channel.bind('user-assignment', function(data) {
+            
+            
+            var url = "{{ asset('assets/audio/negative_beeps-6008.mp3') }}";
+            var audio = new Audio(url);
+            audio.currentTime = 0;
+            audio.play();
+            
+      
+            iziToast.success({
+                                title: 'Notification',
+                                message: "Notification Assigned Successfully!",
+                                position: 'topCenter',
+                                zindex: '9999999999999',
+                                timeout:700
+                            });
+    });
+  </script>
 
 
 

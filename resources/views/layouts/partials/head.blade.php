@@ -81,20 +81,7 @@
 <script src="https://js.upload.io/upload-js/v1"></script>
 {{-- Pusher JS --}}
 <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
-  <script>
-
-    // Enable pusher logging - don't include this in production
-    Pusher.logToConsole = true;
-
-    var pusher = new Pusher('7b4eda220fb943405624', {
-      cluster: 'ap2'
-    });
-
-    var channel = pusher.subscribe('notification-channel');
-    channel.bind('user-assignment', function(data) {
-      alert(JSON.stringify(data));
-    });
-  </script>
+  
 {{-- Datatable --}}
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>

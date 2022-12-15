@@ -119,7 +119,10 @@ class NotificationController extends Controller
             ]
         );
         if(auth()->user()){
-            $notification = 'Notification Assigned';
+            
+            $user = User::whereid($request->user_id)->first()->toArray();
+            
+            $notification = auth()->user()->name.' Assigned a Task to '.$user['name'];
            
 
             event(new UserAssignmentEvent($notification));
