@@ -19,6 +19,10 @@ class CreateNotificationsTable extends Migration
             $table->text('message');
             $table->boolean('is_read');
             $table->integer('status');
+            $table->morphs('notifiable');
+            $table->string('type');
+            $table->timestamp('read_at')->nullable();
+            $table->text('data');
             $table->foreignId('user_id')->constrained('user')->onUpdate('cascade')->onDelete('cascade');
             $table->date('expiry_date');
             $table->softDeletes();

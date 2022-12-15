@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UserAssignmentEvent;
 use App\Models\Location;
 use App\Models\Notification;
 use App\Models\User;
 use App\Models\VehicleCart;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification as NotificationAssignment;  
+use App\Notifications\UserAssignmentNotification;
 
 class NotificationController extends Controller
 {
@@ -88,13 +91,14 @@ class NotificationController extends Controller
 
     public function create(Request $request)
     {
+        // dd($request);
         $data = $request->session()->all();
-
         $request->validate([
             'subject' => 'required',
             'editor1' => 'required',
             'expirydate' => 'required',
         ]);
+        // dd($request->is_read);
         //    $notification = new Notification();
         //    $notification->subject = $request->subject;
         //    $notification->message = $request->editor1;
@@ -114,6 +118,15 @@ class NotificationController extends Controller
 
             ]
         );
+        if(auth()->user()){
+            
+            $user = User::whereid($request->user_id)->first()->toArray();
+            
+            $notification = auth()->user()->name.' Assigned a Task to '.$user['name'];
+           
+
+            event(new UserAssignmentEvent($notification));
+        }
 
         return back()->with('success', 'Notification Submitted Successfully');
     }

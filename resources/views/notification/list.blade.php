@@ -151,7 +151,7 @@
                                 <div class="row save_notificatio_button">
                                     <div class="col-8"></div>
                                     <div class="col-3">
-                                        <button type="submit" id="save_button"
+                                        <button type="submit" id="save_button" onclick="notification()"
                                             style="outline:none!important;border:none!important;color: #FFFFFF;"
                                             class="px-3 py-1">Save</button>
                                     </div>
@@ -246,5 +246,7 @@
 
 
         }
+        
     </script>
+    
 @endsection

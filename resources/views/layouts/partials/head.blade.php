@@ -79,7 +79,9 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/jquery.mCustomScrollbar.css') }}">
 {{-- File uploader --}}
 <script src="https://js.upload.io/upload-js/v1"></script>
-
+{{-- Pusher JS --}}
+<script src="https://js.pusher.com/7.2/pusher.min.js"></script>
+  
 {{-- Datatable --}}
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>

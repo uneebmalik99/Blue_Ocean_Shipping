@@ -7,15 +7,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
 use App\Traits\LockableTrait;
+use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
-    use HasFactory;
-    use HasRoles;
-    use LockableTrait;
+    use HasFactory,HasRoles,LockableTrait,Notifiable;
+    // use HasRoles;
+    // use LockableTrait;
+    // use Notifiable;
     // use softDeletes;
     protected $primaryKey = 'id';
     protected $table = "user";
     protected $guarded = [];
+    
 
     public function vehicles()
     {
@@ -78,7 +81,7 @@ class User extends Authenticatable
 
     public function notifications()
     {
-        return $this->hasMany('App\Models\Notification', 'customer_id', 'id');
+        return $this->hasMany('App\Models\Notification', 'user_id', 'id');
     }
     public function buyer_id(){
         return $this->hasMany('App\Models\CustomerBuyerId', 'customer_id', 'id');
