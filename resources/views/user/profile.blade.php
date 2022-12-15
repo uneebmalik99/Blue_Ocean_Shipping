@@ -1,4 +1,5 @@
 @extends('layouts.partials.mainlayout')
+@section('body')
 <style>
     .all_roles{
         background: rgba(255, 255, 255, 0.76);
@@ -33,19 +34,25 @@
 
     }
 </style>
-@section('body')
  
     <div class="container">
         <div class="row py-5 mt-2">
             <div class="col-lg-4 d-block profile-div">
                 <div class="text d-flex justify-content-center ps-5 py-5" style="position:relative">
                     <div>
-                        <img src="{{ asset('images/user.png') }}" alt="profile_image" class="profile_img"
+                        {{-- {{ auth()->user()->user_image }} --}}
+                        @if(auth()->user()->user_image != null )
+                        <img src="{{ asset(auth()->user()->user_image) }}" alt="profile_image" class="profile_img"
+                            style="position:absolute;top: -21%;  right: 28.5%; width: 120px;border-radius:50%!important;">
+                        @else
+                        <img src="{{ asset('assets/images/user.png') }}" alt="profile_image" class="profile_img"
                             style="position:absolute;top: -21%;  right: 28.5%; width: 120px;">
+                        @endif
                     </div>
                     <div class="p-5">
                         <h3 class="pt-4 pb-1 text-center text-dark">
                             {{ strtoupper(@$records['username']) }}
+
                         </h3>
                         <h5 class="py-2 d-flex align-items-center">
                             <i>
