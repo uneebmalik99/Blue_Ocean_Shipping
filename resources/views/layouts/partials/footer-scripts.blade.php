@@ -2156,10 +2156,8 @@
     }
 </script>
 <script>
-    // Play oscillators at certain frequency and for a certain time
-function playNote(frequency, startTime, duration) {
-    
-
-};
+    function removeQuotation(){
+        alert("here merge");
+    }
 
 </script>

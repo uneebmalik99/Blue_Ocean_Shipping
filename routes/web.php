@@ -69,6 +69,7 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
     Route::post('/customers/create/billing_customer', [CustomerController::class, 'general_create'])->name('customer.billing_create');
     Route::post('/customers/create/shipper_customer', [CustomerController::class, 'general_create'])->name('customer.shipper_create');
     Route::post('/customers/create/quotation_customer', [CustomerController::class, 'general_create'])->name('customer.quotation_create');
+    Route::get('/customers/add/qoutation_customer',[CustomerController::class,'addQoutation'])->name('customer.addQuotation');
     Route::get('/customers/edit/{id?}',                 [CustomerController::class, 'edit'])->name('customer.edit');
     Route::post('/customers/edit/{id?}',                [CustomerController::class, 'edit'])->name('customer.edit');
     Route::get('/customers/update/{id?}',               [CustomerController::class, 'edit'])->name('customer.edit');

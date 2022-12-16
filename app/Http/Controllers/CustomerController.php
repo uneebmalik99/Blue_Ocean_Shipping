@@ -1075,7 +1075,7 @@ class CustomerController extends Controller
                 ];
 
             } else {
-                // dd($request->id[0]);
+                 
                 if($request->id){
                     for($i = 0; $i<count($request->default); $i++){
                         $Obj = Quotation::where('id', $request->id[$i])->update( [
@@ -1215,6 +1215,17 @@ class CustomerController extends Controller
                 ->make(true);
         }
         return back();
+    }
+    public function addQoutation(){
+        $data['container_size'] = ContainerSize::where('status', '1')->get();
+        $data['loading_ports'] = LoadingCountry::select('port')->where('status', '1')->groupBy('port')->get()->toArray();
+        $data['shipping_lines'] = ShipmentLine::where('status', '1')->get();
+        $data['no_of_vehicle'] = NoOfVehicle::where('status', '1')->get();
+        $data['states'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
+
+        $output = view('layouts.customer_create.qoutation_template',$data)->render();
+
+        return Response($output);
     }
 
 }
