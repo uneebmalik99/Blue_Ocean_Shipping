@@ -750,8 +750,13 @@ class ShipmentController extends Controller
 
     public function delete($id)
     {
-        $data = ['shipment_id'=> null];
-        $data = ['status' => 1];
+        // $data = ['shipment_id'=> null];
+        // $data = ['status' => 1];
+        // $data = ['shipment_status' => 0];
+        $data = [];
+        $data['shipment_id'] = null;
+        $data['status'] = 1;
+        $data['shipment_status'] = '0';
         $vehicles =  Shipment::with('vehicle')->where('id',$id)->get();
            foreach($vehicles[0]['vehicle'] as $vehi){
             $Obj = Vehicle::find($vehi['id']);
