@@ -36,7 +36,7 @@
                 <td>{{ @$val['vin'] }}</td>
                 <td>{{ @$val['lot'] }}</td>
                 <td>{{ @$val['status'] }}</td>
-                <td>{{ @$val['days'] }}</td>
+                <td>{{ date_diff( new \DateTime(@$val['delivered']), new \DateTime())->format("%d") }}</td>
                 <td>{{ @$val['towing_fee'] }}</td>
                 <td>{{ @$val['customer_paying_fee'] }}</td>
                 <td>{{ @$val['fee'] }}</td>

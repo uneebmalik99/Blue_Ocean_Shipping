@@ -43,7 +43,7 @@
                 <td>{{ @$val['auction'] }}</td>
                 <td>{{ @$val['title'] }}</td>
                 <td>{{ @$val['key'] }}</td>
-                <td>{{ @$val['days'] }}</td>
+                <td>{{ date_diff( new \DateTime(@$val['delivered']), new \DateTime())->format("%d") }}</td>
                 <td>{{ @$val['shipper'] }}</td>
                 <td>{{ @$val['port'] }}</td>
                 <td>{{ @$val['note'] }}</td>

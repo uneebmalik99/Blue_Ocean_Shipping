@@ -42,7 +42,7 @@
                 <td>{{ @$val['title_type'] }}</td>
                 <td>{{ @$val['key'] }}</td>
                 <td>{{ @$val['sale_date'] }}</td>
-                <td>{{ @$val['days'] }}</td>
+                <td>{{ date_diff( new \DateTime(@$val['delivered']), new \DateTime())->format("%d") }}</td>
                 <td>
                     <button class='profile-button'><a href={{route('vehicle.profile', @$val['id'])}}>
                         <svg width='14' height='13' viewBox='0 0 16 14' fill='none'
