@@ -43,7 +43,7 @@
                 <td>{{ @$val['profit'] }}</td>
                 <td>{{ @$val['posted_date'] }}</td>
                 <td>{{ @$val['paid_by'] }}</td>
-                <td>{{ @$val['shipper'] }}</td>
+                <td>{{ strtoupper(@$val['shipper_name']) }}</td>
                 <td>{{ @$val['port'] }}</td>
                 <td>
                     <button class='profile-button'><a href={{ route('vehicle.profile', @$val['id']) }}>

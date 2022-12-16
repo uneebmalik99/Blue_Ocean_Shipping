@@ -477,7 +477,7 @@
                                         <td>{{ @$val['key'] }}</td>
                                         <td>{{ @$val['delivered'] }}</td>
                                         <td>{{ date_diff( new \DateTime(@$val['delivered']), new \DateTime())->format("%d"); }}</td>
-                                        <td>{{ @$val['shipper_name'] }}</td>
+                                        <td>{{ strtoupper(@$val['shipper_name']) }}</td>
                                         <td>
                                             <button class='profile-button'><a
                                                     href={{ route('vehicle.profile', @$val['id']) }}>

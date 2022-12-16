@@ -49,7 +49,7 @@
                 <td>{{ $val['title'] }}</td>
                 <td>{{ $val['key'] }}</td>
                 <td>{{ $val['towing_charges'] }}</td>
-                <td>{{ $val['shipper_name'] }}</td>
+                <td>{{ strtoupper($val['shipper_name']) }}</td>
                 <td>{{ $val['port'] }}</td>
                 <td>
                     <button class='profile-button'><a href={{ route('vehicle.profile', @$val['id']) }}>
