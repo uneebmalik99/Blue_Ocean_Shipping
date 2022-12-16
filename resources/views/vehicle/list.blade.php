@@ -1,21 +1,5 @@
 @extends('layouts.partials.mainlayout')
 @section('body')
-    {{-- <style>
-        .dataTables_scrollHead {
-            width: 100% !important;
-        }
-
-        .dataTables_scrollHeadInner {
-            width: 100% !important;
-        }
-
-        .modal-content {
-
-            width: 80% !important;
-            margin: 0 auto !important;
-            z-index: 99999999;
-        }
-    </style> --}}
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
         style="z-index:99999;">
@@ -124,7 +108,6 @@
                                 <div class="col-2 p-2 d-flex justify-content-center align-items-center rounded"
                                     style="background: rgba(86, 138, 75, 0.2); !important">
                                     <img src="{{ asset('images/dispatched.png') }}" alt="dispatched.png" height="22">
-
                                 </div>
                             </div>
                             <div>
@@ -309,26 +292,14 @@
                                 </div>
                             </div>
                         </div>
-                        {{-- @dd($location) --}}
                         <div class="d-flex py-3 px-0">
-                            {{-- <div class="col-3 p-0">
-                            <select
-                                class="form-control-sm border-style input-border-style rounded vehicle_filtering col-11 text-muted px-2"
-                                name="warehouse" id="vehicle_warehouse">
-                                <option value="all">All</option>
-                                <option value="" disabled selected>WAREHOUSE</option>
-                                @foreach ($location as $locations)
-                                    <option value="{{ $locations['id'] }}">{{ $locations['name'] }}</option>
-                                @endforeach
-                            </select>
-                        </div> --}}
+                            
                             <div class="col-3 p-0">
                                 <select
                                     class="form-control-sm border-style input-border-style rounded vehicle_filtering col-11 text-muted px-2"
                                     name="year" id="vehicle_year">
                                     <option value="" disabled selected>YEAR</option>
                                     <option value="all">All</option>
-
                                     <option value="2013">2013</option>
                                     <option value="2014">2014</option>
                                     <option value="2015">2015</option>
@@ -347,7 +318,6 @@
                                     @foreach ($make as $makes)
                                         <option value="{{ @$makes['make'] }}">{{ @$makes['make'] }}</option>
                                     @endforeach
-                                    {{-- <option value="toyota">Toyota</option> --}}
                                 </select>
                             </div>
                             <div class="col-3 p-0">

@@ -19,12 +19,6 @@
         </tr>
     </thead>
     <tbody class="bg-white font-size" id="vehicle_tbody">
-        {{-- @dd($records) --}}
-        {{-- @if (@count($records) == 0)
-            <tr class="font-size">
-                <td colspan="19" class="h5 text-muted text-center">NO VEHICLES TO DISPLAY</td>
-            </tr>
-        @endif --}}
         <?php $i = 1; ?>
         @foreach ($records as $val)
             <tr>
@@ -33,7 +27,6 @@
                             {{ @$val['customer_name'] }}
                             
                 </td>
-                {{-- <td>{{ @$val['customer_name'] }}</td> --}}
                 <td>{{ @$val['year'] }}</td>
                 <td>{{ @$val['make'] }}</td>
                 <td>{{ @$val['model'] }}</td>
