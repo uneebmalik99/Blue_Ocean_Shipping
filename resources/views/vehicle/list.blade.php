@@ -358,8 +358,7 @@
                                     @foreach ($model as $models)
                                         <option value="{{ @$models['model'] }}">{{ @$models['model'] }}</option>
                                     @endforeach
-                                    {{-- <option value="civic">Civic</option> --}}
-                                    {{-- <option value="corolla">Corolla</option> --}}
+                                    
                                 </select>
                             </div>
                             <div class="col-3 p-0">
@@ -369,7 +368,6 @@
                                     <option value="" disabled selected>STATUS</option>
                                     <option value="all">All</option>
                                     @foreach ($status as $stat)
-                                        {{-- @dd($stat) --}}
                                         <option value="{{ $stat['id'] }}">
                                             {{ ucfirst($stat['status_name']) }}</option>
                                     @endforeach
@@ -379,26 +377,7 @@
                     </div>
                     {{-- search filter end --}}
                     <div id="status_body" class="mt-2 bg-light">
-                        {{-- <table id="vehicle_table" class="table row-border vehicle_table" style="width:100%!important;">
-                        <thead class="bg-custom" style="color:white!important;">
-                            <tr>
-                                <th class="font-bold-tr">Sr</th>
-                                <th class="font-bold-tr">Customer Name</th>
-                                <th class="font-bold-tr">VIN</th>
-                                <th class="font-bold-tr">YEAR</th>
-                                <th class="font-bold-tr">MAKE</th>
-                                <th class="font-bold-tr">MODEL</th>
-                                <th class="font-bold-tr">VEHICLE TYPE</th>
-                                <th class="font-bold-tr">VALUE</th>
-                                <th class="font-bold-tr">STATUS</th>
-                                <th class="font-bold-tr">BUYER</th>
-                                <th class="font-bold-tr">ACTION</th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-white font-size" id="vehicle_tbody">
-
-                        </tbody>
-                    </table> --}}
+                     
                         <table id="on_hand_table_main" class="row-border"
                             style="width:100%!important;">
                             <thead class="bg-custom">
@@ -437,15 +416,9 @@
                                 </tr>
                             </thead>
                             <tbody class="bg-white font-size" id="vehicle_tbody">
-                                {{-- @dd($records) --}}
-                                {{-- @if (@count($records) == 0)
-                                    <tr class="font-size">
-                                        <td colspan="19" class="h5 text-muted text-center">NO VEHICLES TO DISPLAY</td>
-                                    </tr>
-                                @endif --}}
+                                
                                 <?php $i = 1; ?>
                                 @foreach ($records as $val)
-                                    {{-- @dd($val['images'][0]['name']) --}}
                                     <tr>
                                         <td>
                                             <input type="checkbox" name="checkboxes" id="{{ @$val['id'] }}" title="Add" onchange="addtoShipment(this.id)">
@@ -457,14 +430,12 @@
                                                     style="color:#3e5871!important;"></i>
                                             
 
-                                            {{-- <img src="{{asset($records[0]['pickupimages'][0]['name'])}}" alt="" style="width: 25px;height:25px;border-radius:50%;"> --}}
                                         </td>
                                         <td>
 
                                             {{ @$val['customer_name'] }}<br>
 
                                         </td>
-                                        {{-- <td>{{ @$val['customer_name'] }}</td> --}}
                                         <td>{{ @$val['year'] }}</td>
                                         <td>{{ @$val['make'] }}</td>
                                         <td>{{ @$val['model'] }}</td>

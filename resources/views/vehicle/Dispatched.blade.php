@@ -23,15 +23,8 @@
         </tr>
     </thead>
     <tbody class="bg-white font-size" id="vehicle_tbody">
-        {{-- @dd($records) --}}
-        {{-- @if (@count($records) == 0)
-            <tr class="font-size">
-                <td colspan="19" class="h5 text-muted text-center">NO VEHICLES TO DISPLAY</td>
-            </tr>
-        @endif --}}
         <?php $i = 1; ?>
         @foreach ($records as $val)
-            {{-- @dd( $val) --}}
             <tr>
                 <td>{{ @$val['posted_date'] }}</td>
                 <td>{{ @$val['customer_name'] }}</td>
