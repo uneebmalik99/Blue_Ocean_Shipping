@@ -284,6 +284,7 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
 
 
 
+    Route::post('/master/getbuyerids',       [MasterController::class, 'getbuyersids'])->name('importVehicle.get_buyerids');
 
 
     // master towing page routes 

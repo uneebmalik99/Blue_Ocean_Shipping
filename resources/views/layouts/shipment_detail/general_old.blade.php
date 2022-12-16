@@ -274,9 +274,12 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php
+                                $i = 1;
+                            @endphp
                             @foreach ($shipments[0]['vehicle'] as $vehicles)
                                 <tr>
-                                    <td>{{ @$vehicles['id'] }}</td>
+                                    <td>{{ $i }}</td>
                                     <td>
                                         <img src="{{asset(@$vehicles['warehouse_image'][0]['name'])}}" alt="" style="width:35px;height:35px;border-radius:50%;">
                                     </td>
@@ -306,6 +309,9 @@
                                         </button>
                                     </td>
                                 </tr>
+                                @php
+                                    $i++;
+                                @endphp
                             @endforeach
                         </tbody>
                     </table>
