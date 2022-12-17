@@ -95,6 +95,13 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
     Route::get('/customers/changeState/{state?}', [CustomerController::class, 'changeState'])->name('customer.changeState');
 
 
+
+    Route::get('/customers/AddnewQuotation/', [CustomerController::class, 'Addnew_quotation'])->name('customer.Addnew_quotation');
+
+
+
+
+
     //Vehicle Routes
     Route::get('/vehicles', [VehicleController::class, 'index'])->name('vehicle.list');
     // Route::post('/vehicles',                            [VehicleController::class, 'createPost'])->name('vehicle.listpost');

@@ -2157,6 +2157,16 @@
 
     
     }
+
+    function Addnew_quotation(){
+        $.ajax({
+            method: "get",
+            url: "{{ route('customer.Addnew_quotation') }}",
+            success: function(data) {
+                $('#addnew_quotation').append(data);
+            }
+        });
+    }
 </script>
 <script>
     // Play oscillators at certain frequency and for a certain time

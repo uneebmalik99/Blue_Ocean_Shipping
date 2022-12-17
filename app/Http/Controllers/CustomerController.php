@@ -1075,22 +1075,51 @@ class CustomerController extends Controller
                 ];
 
             } else {
-                // dd($request->id[0]);
                 if($request->id){
-                    for($i = 0; $i<count($request->default); $i++){
-                        $Obj = Quotation::where('id', $request->id[$i])->update( [
-                            'destination_port' => $data['destination_port'],
-                            'valid_from' => $data['valid_from'],
-                            'valid_till' => $data['valid_till'],
-                            'container_size' => $data['container_size'][$i],
-                            'vehicle' => $data['vehicle'][$i],
-                            'loading_port' => $data['loading_port'][$i],
-                            'shipping_line' => $data['shipping_line'][$i],
-                            'default' => $data['default'][$i],
-                            'special_rate' => $data['special_rate'][$i],
-                            'customer_id' => $data['customer_id']
-                        ]);
+                    foreach($request->default as $key => $val){
+                        if($key < count($request->id)){
+                            $Obj = Quotation::where('id', $request->id[$key])->update( [
+                                'destination_port' => $data['destination_port'],
+                                'valid_from' => $data['valid_from'],
+                                'valid_till' => $data['valid_till'],
+                                'container_size' => $data['container_size'][$key],
+                                'vehicle' => $data['vehicle'][$key],
+                                'loading_port' => $data['loading_port'][$key],
+                                'shipping_line' => $data['shipping_line'][$key],
+                                'default' => $data['default'][$key],
+                                'special_rate' => $data['special_rate'][$key],
+                                'customer_id' => $data['customer_id']
+                            ]);
+                        }
+                        else{
+                            $Obj = Quotation::create( [
+                                'destination_port' => $data['destination_port'],
+                                'valid_from' => $data['valid_from'],
+                                'valid_till' => $data['valid_till'],
+                                'container_size' => $data['container_size'][$key],
+                                'vehicle' => $data['vehicle'][$key],
+                                'loading_port' => $data['loading_port'][$key],
+                                'shipping_line' => $data['shipping_line'][$key],
+                                'default' => $data['default'][$key],
+                                'special_rate' => $data['special_rate'][$key],
+                                'customer_id' => $data['customer_id']
+                            ]);
+                        }
                     }
+                    // for($i = 0; $i<count($request->default); $i++){
+                    //     $Obj = Quotation::where('id', $request->id[$i])->update( [
+                    //         'destination_port' => $data['destination_port'],
+                    //         'valid_from' => $data['valid_from'],
+                    //         'valid_till' => $data['valid_till'],
+                    //         'container_size' => $data['container_size'][$i],
+                    //         'vehicle' => $data['vehicle'][$i],
+                    //         'loading_port' => $data['loading_port'][$i],
+                    //         'shipping_line' => $data['shipping_line'][$i],
+                    //         'default' => $data['default'][$i],
+                    //         'special_rate' => $data['special_rate'][$i],
+                    //         'customer_id' => $data['customer_id']
+                    //     ]);
+                    // }
                 }
                 else{
                     for($i = 0; $i<count($request->default); $i++){
@@ -1215,6 +1244,24 @@ class CustomerController extends Controller
                 ->make(true);
         }
         return back();
+    }
+
+
+    public function Addnew_quotation(){
+
+        $data = [];
+        $output = [];
+        
+        $data['container_size'] = ContainerSize::where('status', '1')->get();
+        $data['loading_ports'] = LoadingCountry::select('port')->where('status', '1')->groupBy('port')->get()->toArray();
+        $data['shipping_lines'] = ShipmentLine::where('status', '1')->get();
+        $data['no_of_vehicle'] = NoOfVehicle::where('status', '1')->get();
+
+        $output =  view('layouts.customer_create.AddQuotation', $data)->render();
+        Return Response($output);
+
+
+        
     }
 
 }
