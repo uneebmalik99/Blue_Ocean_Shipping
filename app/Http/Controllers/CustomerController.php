@@ -352,7 +352,7 @@ class CustomerController extends Controller
 
         $data['documents'] = User::with('customer_documents')->where('id', $id)->get()->toArray();
         // dd($data['documents']);
-        $data['location'] = Location::all();
+        // $data['location'] = Location::all();
         $data['states'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
         // dd($data['states']);
         $output = view('layouts.customer_create.general', $data)->render();

@@ -317,6 +317,7 @@
                 success: function(data) {
                     $('.modal-body').html(data);
                     $('#exampleModal').modal('show');
+                    $('#exampleModalLabel').text('New Customer');
                     $('.user_image').imageUploader({
                         maxFiles: 1
                     });
@@ -332,6 +333,7 @@
                 success: function(data) {
                     $('.modal-body').html(data);
                     $('#exampleModal').modal('show');
+                    $('#exampleModalLabel').text('New Vehicle');
                     $('.billofsales').imageUploader({
                         maxFiles: 4,
                         imagesInputName: 'billofsales',
@@ -389,6 +391,7 @@
                 success: function(data) {
                     $('.modal-body').html(data);
                     $('#exampleModal').modal('show');
+                    $('#exampleModalLabel').text('New Shipment');
                     $('#shipment_vehicle_table').DataTable({
                         "lengthChange": false,
                         "info": false,

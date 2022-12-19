@@ -1,5 +1,4 @@
 <div class="d-flex justify-content-around p-2 col-12">
-
                 <div class="col-2">
                     <div>
                         <select name="container_size[]" id="container_size"

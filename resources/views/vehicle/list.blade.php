@@ -37,7 +37,7 @@
                     <div>
                         <button type="button" class="close text-white h6" data-dismiss="modal" aria-label="Close"
                             style="margin-top: -11px;
-                font-size: 26px;">
+                font-size: 26px;"   onclick="dismissmodal()">
                             <span aria-hidden="true">x</span>
                         </button>
                     </div>
@@ -623,5 +623,11 @@
             //         searchPlaceholder: "Search"
             //     },
             // });
+
+            function dismissmodal(){
+                $('#exampleModal2').modal('hide');
+            }
         </script>
+
+        
     @endsection
