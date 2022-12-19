@@ -352,7 +352,7 @@ class CustomerController extends Controller
 
         $data['documents'] = User::with('customer_documents')->where('id', $id)->get()->toArray();
         // dd($data['documents']);
-        $data['location'] = Location::all();
+        // $data['location'] = Location::all();
         $data['states'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
         // dd($data['states']);
         $output = view('layouts.customer_create.general', $data)->render();
@@ -1075,10 +1075,6 @@ class CustomerController extends Controller
                 ];
 
             } else {
-<<<<<<< HEAD
-                 
-=======
->>>>>>> origin/QaziKashif
                 if($request->id){
                     foreach($request->default as $key => $val){
                         if($key < count($request->id)){
@@ -1248,17 +1244,6 @@ class CustomerController extends Controller
                 ->make(true);
         }
         return back();
-    }
-    public function addQoutation(){
-        $data['container_size'] = ContainerSize::where('status', '1')->get();
-        $data['loading_ports'] = LoadingCountry::select('port')->where('status', '1')->groupBy('port')->get()->toArray();
-        $data['shipping_lines'] = ShipmentLine::where('status', '1')->get();
-        $data['no_of_vehicle'] = NoOfVehicle::where('status', '1')->get();
-        $data['states'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
-
-        $output = view('layouts.customer_create.qoutation_template',$data)->render();
-
-        return Response($output);
     }
 
 

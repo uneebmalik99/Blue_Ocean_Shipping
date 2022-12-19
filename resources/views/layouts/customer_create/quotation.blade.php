@@ -50,9 +50,9 @@
         </div>
 
     </div>
-    <div class="quotations">
+    <div class="d-flex">
         <div class="col-12 px-0">
-            <div class="d-flex justify-content-around col-12">
+            <div class="d-flex justify-content-around p-2 col-12">
                 <div class="col-2">
                     <div>
                         <label for="container_size" class="text-info font-style">Container Size</label>
@@ -82,14 +82,15 @@
                     <div>
                         <select name="vehicle[]" id="vehicle"
                             class="form-control-sm border border-0 rounded-pill bg col-10">
-                            @if(@$quotation[0]['vehicle'])
-                            <option value="{{@$quotation[0]['vehicle']}}" selected>{{@$quotation[0]['vehicle']}}</option>
+                            @if (@$quotation[0]['vehicle'])
+                                <option value="{{ @$quotation[0]['vehicle'] }}" selected>
+                                    {{ @$quotation[0]['vehicle'] }}</option>
                             @else
-                            <option selected value="null">Select Vehicles</option>
+                                <option selected value="null">Select Vehicles</option>
                             @endif
                             @foreach ($no_of_vehicle as $no)
-                             <option value="{{@$no['name']}}">{{$no['name']}}</option>
-                             @endforeach
+                                <option value="{{ @$no['name'] }}">{{ $no['name'] }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -100,10 +101,11 @@
                     <div>
                         <select name="loading_port[]" id="loading_port"
                             class="form-control-sm border border-0 rounded-pill bg col-10">
-                            @if(@$quotation[0]['loading_port'])
-                            <option value="{{@$quotation[0]['loading_port']}}" selected>{{@$quotation[0]['loading_port']}}</option>
+                            @if (@$quotation[0]['loading_port'])
+                                <option value="{{ @$quotation[0]['loading_port'] }}" selected>
+                                    {{ @$quotation[0]['loading_port'] }}</option>
                             @else
-                            <option selected value="null">Select Loading Port</option>
+                                <option selected value="null">Select Loading Port</option>
                             @endif
                             @foreach ($loading_ports as $lports)
                                 <option value="{{ @$lports['port'] }}">{{ @$lports['port'] }}</option>
@@ -118,10 +120,11 @@
                     <div>
                         <select name="shipping_line[]" id="shipping_line"
                             class="form-control-sm border border-0 rounded-pill bg col-10">
-                            @if(@$quotation[0]['shipping_line'])
-                            <option value="{{@$quotation[0]['shipping_line']}}" selected>{{@$quotation[0]['shipping_line']}}</option>
+                            @if (@$quotation[0]['shipping_line'])
+                                <option value="{{ @$quotation[0]['shipping_line'] }}" selected>
+                                    {{ @$quotation[0]['shipping_line'] }}</option>
                             @else
-                            <option selected value="null">Select Shipping Line</option>
+                                <option selected value="null">Select Shipping Line</option>
                             @endif
                             @foreach ($shipping_lines as $Sline)
                                 <option value="{{ @$Sline['name'] }}">{{ @$Sline['name'] }}</option>
@@ -135,15 +138,17 @@
                         <label for="default" class="text-info font-style">Default</label>
                     </div>
                     <div>
-                        <input type="text" class="form-control-sm border border-0 rounded-pill bg col-10" name="default[]" id="default" value="{{@$quotation[0]['default']}}">
-                </div>
+                        <input type="text" class="form-control-sm border border-0 rounded-pill bg col-10"
+                            name="default[]" id="default" value="{{ @$quotation[0]['default'] }}">
+                    </div>
                 </div>
                 <div class="col-2">
                     <div>
                         <label for="special_rate" class="text-info font-style">Special Rate</label>
                     </div>
                     <div>
-                        <input type="text" class="form-control-sm border border-0 rounded-pill bg col-10" name="special_rate[]" id="special_rate" value="{{@$quotation[0]['special_rate']}}">
+                        <input type="text" class="form-control-sm border border-0 rounded-pill bg col-10"
+                            name="special_rate[]" id="special_rate" value="{{ @$quotation[0]['special_rate'] }}">
                     </div>
                 </div>
 
@@ -151,180 +156,118 @@
         </div>
 
     </div>
-    @if(@$quotation[0]['id'])
-    @php
-        $i = 0;
-    @endphp
+    @if (@$quotation[0]['id'])
+        @php
+            $i = 0;
+        @endphp
     @else
-    @php
-    $i = 1;
-    @endphp 
-    @endif  
-    
-    @if(@$quotation[0]['id'])
-    @for ($i=1; $i<count(@$quotation); $i++)
+        @php
+            $i = 1;
+        @endphp
+    @endif
     <div class="d-flex py-2">
-         <div class="col-12 px-0">
-             <div class="d-flex justify-content-around p-2 col-12">
-                 <div class="col-2">
-                     <div>
-                         <select name="container_size[]" id="container_size"
-                             class="form-control-sm border border-0 rounded-pill bg col-10">
-                             @if(@$quotation[$i]['container_size'] != 'null')
-                             <option value="{{@$quotation[$i]['container_size']}}" selected>{{@$quotation[$i]['container_size']}}</option>
-                             @elseif (@$quotation[$i]['container_size'] == 'null')
-                             <option selected value="null">Select</option>
-                             @else
-                             <option selected value="null">Select</option>
-                             @endif
-                             @foreach ($container_size as $csize)
-                                 <option value="{{ @$csize['name'] }}">{{ @$csize['name'] }}</option>
-                             @endforeach
-                         </select>
-                     </div>
-                 </div>
-                 <div class="col-2">
-                     
-                     <div>
-                         <select name="vehicle[]" id="vehicle"
-                             class="form-control-sm border border-0 rounded-pill bg col-10">
-                             @if(@$quotation[$i]['vehicle'] != 'null')
-                             <option value="{{@$quotation[$i]['vehicle']}}" selected>{{@$quotation[$i]['vehicle']}}</option>
-                             @elseif (@$quotation[$i]['vehicle'] == 'null')
-                             <option selected value="null">Select</option>
-                             @else
-                             <option selected value="null">Select</option>
-                             @endif
-                             @foreach ($no_of_vehicle as $no)
-                             <option value="{{@$no['name']}}">{{$no['name']}}</option>
-                             @endforeach
-                             
-                         </select>
-                     </div>
-                 </div>
-                 <div class="col-2">
-                     <div>
-                         <select name="loading_port[]" id="loading_port"
-                             class="form-control-sm border border-0 rounded-pill bg col-10">
-                             @if(@$quotation[$i]['loading_port'] != 'null')
-                             <option value="{{@$quotation[$i]['loading_port']}}" selected>{{@$quotation[$i]['loading_port']}}</option>
-                             @elseif (@$quotation[$i]['loading_port'] == 'null')
-                             <option selected value="null">Select</option>
-                             @else
-                             <option selected value="null">Select</option>
-                            @endif
-                             @foreach ($loading_ports as $lports)
-                             <option value="{{ @$lports['port'] }}">{{ @$lports['port'] }}</option>
-                         @endforeach
-                         </select>
-                     </div>
-                 </div>
-                 <div class="col-2">
-                     
-                     <div>
-                         <select name="shipping_line[]" id="shipping_line"
-                             class="form-control-sm border border-0 rounded-pill bg col-10">
-                             @if(@$quotation[$i]['shipping_line'] != 'null')
-                             <option value="{{@$quotation[$i]['shipping_line']}}" selected>{{@$quotation[$i]['shipping_line']}}</option>
-                             @elseif (@$quotation[$i]['shipping_line'] == 'null')
-                             <option selected value="null">Select</option>
-                             @else
-                             <option selected value="null">Select</option>
-                             @endif
-                             @foreach ($shipping_lines as $Sline)
-                             <option value="{{ @$Sline['name'] }}">{{ @$Sline['name'] }}</option>
-                         @endforeach
-                         </select>
-                     </div>
-                 </div>                
-                <div class="col-2">
-                        
-                        <div>
-                            <input type="text" class="form-control-sm border border-0 rounded-pill bg col-10"
-                                name="default[]" id="default" value="{{@$quotation[$i]['default']}}">
+        <div class="col-12 px-0" id="addnew_quotation">
+            @if (@$quotation[0]['id'])
+            @for ($i = 1; $i < count(@$quotation); $i++)
+            <div class="d-flex py-2">
+                <div class="col-12 px-0">
+                    <div class="d-flex justify-content-around p-2 col-12">
+                        <div class="col-2">
+                            <div>
+                                <select name="container_size[]" id="container_size"
+                                    class="form-control-sm border border-0 rounded-pill bg col-10">
+                                    @if (@$quotation[$i]['container_size'] != 'null')
+                                        <option value="{{ @$quotation[$i]['container_size'] }}" selected>
+                                            {{ @$quotation[$i]['container_size'] }}</option>
+                                    @elseif (@$quotation[$i]['container_size'] == 'null')
+                                        <option selected value="null">Select</option>
+                                    @else
+                                        <option selected value="null">Select</option>
+                                    @endif
+                                    @foreach ($container_size as $csize)
+                                        <option value="{{ @$csize['name'] }}">{{ @$csize['name'] }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
-                </div>
-                <div class="col-2">
-                    
-                    <div>
-                        <input type="text" class="form-control-sm border border-0 rounded-pill bg col-10"
-                            name="special_rate[]" id="special_rate" value="{{@$quotation[$i]['special_rate']}}">
-                    </div>
-                </div>
-                
-             </div>
-         </div>
-         
-         
-     </div>
-     @endfor
-    @else
-    @for ($i=0; $i<9; $i++)
-   <div class="d-flex py-2">
-        <div class="col-12 px-0">
-            <div class="d-flex justify-content-around p-2 col-12">
-                <div class="col-2">
-                    <div>
-                        <select name="container_size[]" id="container_size"
-                            class="form-control-sm border border-0 rounded-pill bg col-10">
-                            <option selected value="null">Select</option>
-                            @foreach ($container_size as $csize)
-                                <option value="{{ @$csize['name'] }}">{{ @$csize['name'] }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="col-2">
-                    
-                    <div>
-                        <select name="vehicle[]" id="vehicle"
-                            class="form-control-sm border border-0 rounded-pill bg col-10">
-                            <option selected value="null">Select</option>
-                            @foreach ($no_of_vehicle as $no)
-                             <option value="{{@$no['name']}}">{{$no['name']}}</option>
-                             @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div>
-                        <select name="loading_port[]" id="loading_port"
-                            class="form-control-sm border border-0 rounded-pill bg col-10">
-                            <option selected value="null">Select</option>
+                        <div class="col-2">
 
-                            @foreach ($loading_ports as $lports)
-                            <option value="{{ @$lports['port'] }}">{{ @$lports['port'] }}</option>
-                        @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="col-2">
-                    
-                    <div>
-                        <select name="shipping_line[]" id="shipping_line"
-                            class="form-control-sm border border-0 rounded-pill bg col-10">
-                            <option selected value="null">Select</option>
+                            <div>
+                                <select name="vehicle[]" id="vehicle"
+                                    class="form-control-sm border border-0 rounded-pill bg col-10">
+                                    @if (@$quotation[$i]['vehicle'] != 'null')
+                                        <option value="{{ @$quotation[$i]['vehicle'] }}" selected>
+                                            {{ @$quotation[$i]['vehicle'] }}</option>
+                                    @elseif (@$quotation[$i]['vehicle'] == 'null')
+                                        <option selected value="null">Select</option>
+                                    @else
+                                        <option selected value="null">Select</option>
+                                    @endif
+                                    @foreach ($no_of_vehicle as $no)
+                                        <option value="{{ @$no['name'] }}">{{ $no['name'] }}</option>
+                                    @endforeach
 
-                            @foreach ($shipping_lines as $Sline)
-                            <option value="{{ @$Sline['name'] }}">{{ @$Sline['name'] }}</option>
-                        @endforeach
-                        </select>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div>
+                                <select name="loading_port[]" id="loading_port"
+                                    class="form-control-sm border border-0 rounded-pill bg col-10">
+                                    @if (@$quotation[$i]['loading_port'] != 'null')
+                                        <option value="{{ @$quotation[$i]['loading_port'] }}" selected>
+                                            {{ @$quotation[$i]['loading_port'] }}</option>
+                                    @elseif (@$quotation[$i]['loading_port'] == 'null')
+                                        <option selected value="null">Select</option>
+                                    @else
+                                        <option selected value="null">Select</option>
+                                    @endif
+                                    @foreach ($loading_ports as $lports)
+                                        <option value="{{ @$lports['port'] }}">{{ @$lports['port'] }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-2">
+
+                            <div>
+                                <select name="shipping_line[]" id="shipping_line"
+                                    class="form-control-sm border border-0 rounded-pill bg col-10">
+                                    @if (@$quotation[$i]['shipping_line'] != 'null')
+                                        <option value="{{ @$quotation[$i]['shipping_line'] }}" selected>
+                                            {{ @$quotation[$i]['shipping_line'] }}</option>
+                                    @elseif (@$quotation[$i]['shipping_line'] == 'null')
+                                        <option selected value="null">Select</option>
+                                    @else
+                                        <option selected value="null">Select</option>
+                                    @endif
+                                    @foreach ($shipping_lines as $Sline)
+                                        <option value="{{ @$Sline['name'] }}">{{ @$Sline['name'] }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-2">
+
+                            <div>
+                                <input type="text" class="form-control-sm border border-0 rounded-pill bg col-10"
+                                    name="default[]" id="default" value="{{ @$quotation[$i]['default'] }}">
+                            </div>
+                        </div>
+                        <div class="col-2">
+
+                            <div>
+                                <input type="text" class="form-control-sm border border-0 rounded-pill bg col-10"
+                                    name="special_rate[]" id="special_rate"
+                                    value="{{ @$quotation[$i]['special_rate'] }}">
+                            </div>
+                        </div>
+
                     </div>
+
                 </div>
-                <div class="col-2">
-                    
-                    <div>
-                        <input type="text" class="form-control-sm border border-0 rounded-pill bg col-10"
-                            name="default[]" id="default">
-                    </div>
-                </div>
-                <div class="col-2">
-                    
-                    <div>
-                        <input type="text" class="form-control-sm border border-0 rounded-pill bg col-10"
-                            name="special_rate[]" id="special_rate">
-                    </div>
-                </div>
+
+
             </div>
         @endfor
             @else
@@ -358,17 +301,3 @@
 
     </div>
 </form>
-
-<script>
-    function appendQuotation(){
-        $.ajax({
-            type: 'GET',
-            url: '{{ route('customer.addQuotation') }}',
-            success: function(data) {
-                
-                $('.quotations').append(data);
-            }
-        });
-    }
-    
-</script>
