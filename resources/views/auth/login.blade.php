@@ -123,14 +123,14 @@
 }
 @media screen and (min-width:4200px){
 h1 {
-font-size:2250px;
+font-size:200px;
 color: white;
 }
 }
 
 @media screen and (min-width:2500px){
 h1 {
-font-size:130px;
+font-size:40px;
 color: white;
 }
 }
@@ -138,7 +138,7 @@ color: white;
 
 @media screen and (min-width:2500px){
 h2 {
-font-size:80px;
+font-size:54px;
 text-transform: capitalize;
         
         color: #1F689E;
