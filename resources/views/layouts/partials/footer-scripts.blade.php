@@ -982,13 +982,13 @@
                         $('#port_of_loading').val(data.shipments[0]['loading_port']);
                         $('#destination_port').val(data.shipments[0]['destination_port']);
                         $('#container_size').val(data.shipments[0]['container_size']);
+                        $('#inovice_shipment_table').empty();
                         var html = [];
+                        console.log(data.shipments[0]['vehicle']);
                         data.shipments[0]['vehicle'].forEach(element => {
                             output = "<tr><td>" + element.year + "</td><td>" + element.make +
                                 "</td><td>" + element.model + "</td><td>" + element.vin +
-                                "</td><td>" + element.vin + "</td><td>" + element.vin +
-                                "</td><td>" + element.vin + "</td><td>" + element.vin +
-                                "</td><td class='text-center'><input type='checkbox' value='" +
+                                "</td><td>" + element.customer_name + "</td><td class='text-center'><input type='checkbox' value='" +
                                 element.id + "' id='vehicle' name='vehicles[]'></td></tr>";
 
                             html.push(output);

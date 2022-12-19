@@ -222,10 +222,7 @@
                                     <th>MAKE</th>
                                     <th>MODEL</th>
                                     <th>VIN</th>
-                                    <th>TITLE</th>
-                                    <th>TITLE STATE</th>
-                                    <th>TITLE NUMBER</th>
-                                    <th>CUSTOMER</th>
+                                    <th>Company Name</th>
                                     <th>ACTION</th>
                                 </tr>
                             </thead>
