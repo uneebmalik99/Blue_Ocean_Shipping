@@ -376,6 +376,7 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
             <div class="pt-3">
                 @can('Page Access')                    
                 <div class="d-flex m-2">
+                    
                     <div class="col-3 p-1">
                         <div class="col-12 py-0 px-1">
                             <div class="col-12 border-style card-rounded py-2 px-3">
