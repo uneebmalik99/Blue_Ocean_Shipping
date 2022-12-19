@@ -299,7 +299,8 @@ class ShipmentController extends Controller
 
         $data['buyer_ids'] = User::with('billings')->get()->toArray();
         // dd($data['shipment']);
-        $data['shippers'] = Shipper::all();
+        $data['shippers'] = ShipperName::where('status', '1')->get();
+
 
         $notification = $this->Notification();
         $data['vehicles'] = Vehicle::where('shipment_id', null)->get();
@@ -315,7 +316,7 @@ class ShipmentController extends Controller
         $data['shipment_lines'] = ShipmentLine::where('status', '1')->get();
         $data['shipment_types'] = ShipmentType::where('status', '1')->get();
         // $data['companies'] = Company::where('status', '1')->get();
-        $data['companies'] = User::all();
+        $data['companies'] = User::role('Customer')->get();
         $data['destination_country'] = DCountry::select('country')->where('status', '1')->groupBy('country')->get()->toArray();
 
         $output = view('shipment.general', $data);
@@ -749,7 +750,13 @@ class ShipmentController extends Controller
 
     public function delete($id)
     {
-        $data = ['shipment_id'=> null];
+        // $data = ['shipment_id'=> null];
+        // $data = ['status' => 1];
+        // $data = ['shipment_status' => 0];
+        $data = [];
+        $data['shipment_id'] = null;
+        $data['status'] = 1;
+        $data['shipment_status'] = '0';
         $vehicles =  Shipment::with('vehicle')->where('id',$id)->get();
            foreach($vehicles[0]['vehicle'] as $vehi){
             $Obj = Vehicle::find($vehi['id']);

@@ -1,6 +1,6 @@
 <script>
-function save_shipment_form(id) {
-        
+    function save_shipment_form(id) {
+
         var formData = new FormData(jQuery('#shipment_form')[0]);
         $next_tab = $('.next_tab').attr('id');
         formData.append('tab', $next_tab);
@@ -15,12 +15,12 @@ function save_shipment_form(id) {
             processData: false,
             contentType: false,
             success: function(data) {
-                
+
                 document.getElementById('load').style.visibility = "hidden";
-                
+
                 // $('.modal-body').html(data);
                 $('#exampleModal').modal('hide');
-            
+
                 iziToast.success({
                     title: 'Success',
                     message: 'Shipment Update Successfully!',
@@ -32,7 +32,7 @@ function save_shipment_form(id) {
                 setTimeout(function() {
                     window.location.reload(true);
                 }, 1500);
-                
+
             },
             complete: function() {
                 document.getElementById('load').style.visibility = "hidden";
@@ -48,15 +48,15 @@ function save_shipment_form(id) {
                 });
             }
         });
-        
+
     }
 
 
 
 
     function create_shipment_form(id) {
-        
-       
+
+
         var formData = new FormData(jQuery('#shipment_form')[0]);
         $next_tab = $('.next_tab').attr('id');
         formData.append('tab', $next_tab);
@@ -72,11 +72,17 @@ function save_shipment_form(id) {
             processData: false,
             contentType: false,
             success: function(data) {
+
                 
+
                 document.getElementById('load').style.visibility = "hidden";
-                
+
                 $('.modal-body').html(data);
                 $('#exampleModal').modal('show');
+                $('#general_shipment_tab').removeClass('next-style');
+                $('#general_shipment_tab').addClass('tab_style');
+                $('#attachments_shipment_tab').addClass('next-style');
+
                 $('.loading_image').imageUploader({
                     maxFiles: 30,
                     imagesInputName: 'loading_image',
@@ -98,11 +104,9 @@ function save_shipment_form(id) {
                 });
 
 
-                $('#general_shipment_tab').removeClass('next-style');
-                $('#general_shipment_tab').addClass('tab_style');
-                $('#attachments_shipment_tab').addClass('next-style');
 
-               
+
+
             },
             complete: function() {
                 document.getElementById('load').style.visibility = "hidden";
@@ -118,7 +122,7 @@ function save_shipment_form(id) {
                 });
             }
         });
-        
+
     }
 </script>
 
@@ -319,8 +323,11 @@ function save_shipment_form(id) {
                 // alert(data[0]['shipper']['id']);
                 $('#customer_email').val(data[0]['email']);
                 $('#customer_phone').val(data[0]['phone']);
-                $('#select_consignee').html('<option selected>Select Consignee</option><option value="'+data[0]['id']+'">'+data[0]['billings'][0]['company_name']+'</option>');
-                $('#notifier').html('<option selected>Select Notifier</option><option value="'+data[0]['id']+'" >'+data[0]['billings'][0]['company_name']+'</option>');
+                $('#select_consignee').html('<option selected>Select Consignee</option><option value="' +
+                    data[0]['id'] + '">' + data[0]['billings'][0]['company_name'] + '</option>');
+                $('#notifier').html('<option selected>Select Notifier</option><option value="' + data[0][
+                    'id'
+                ] + '" >' + data[0]['billings'][0]['company_name'] + '</option>');
             }
         });
     }
@@ -342,7 +349,7 @@ function save_shipment_form(id) {
         });
     }
 
-    function removeDoc(id){
+    function removeDoc(id) {
         var td = event.target.parentNode;
         var tr = td.parentNode; // the row to be removed
         tr.parentNode.removeChild(tr);
@@ -350,7 +357,7 @@ function save_shipment_form(id) {
 
     function removerow(id) {
 
-        $value = $('#'+id).val();
+        $value = $('#' + id).val();
 
         var td = event.target.parentNode;
         var tr = td.parentNode; // the row to be removed
@@ -361,7 +368,7 @@ function save_shipment_form(id) {
             url: '{{ route('shipment.deleteFromCart') }}',
             data: {
                 'id': id,
-                'value':$value,
+                'value': $value,
             },
             success: function(data) {
 

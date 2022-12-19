@@ -430,6 +430,20 @@ class DashboardController extends Controller
                 //     $bol = view('layouts.shipment_filter.shipment_bol', $row)->render();
                 //     return $bol;
                 // })
+                ->addColumn('shipper', function($row){
+                    return strtoupper($row['shipper']);
+                })
+                ->addColumn('select_consignee', function($row){
+                    $data['row'] = $row;
+                    if($row['customer']['billings'][0]['company_name'] != null){
+                        return $row['customer']['billings'][0]['company_name'];
+                    }
+                    return '';
+
+
+                    // $bol = view('layouts.shipment_filter.shipment_consignee_detail', $data)->render();
+                    // return $bol;
+                })
                 ->addColumn('action', function ($row) {
                     $url_view = url('admin/shipments/profile/' . $row->id);
                     $url_delete = url('admin/shipments/delete/' . $row->id);
@@ -465,7 +479,7 @@ class DashboardController extends Controller
                                         ";
                     return $btn;
                 })
-                ->rawColumns(['action','shipment_id'])
+                ->rawColumns(['action','shipment_id', 'shipper', 'select_consignee'])
                 ->make(true);
         }
         if(Auth::user()->hasRole('Customer')){

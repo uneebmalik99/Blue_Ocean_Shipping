@@ -593,6 +593,11 @@
                 document.getElementById('load').style.visibility = "hidden";
                 $('.modal-body').html(data.view);
                 $('#exampleModal').modal('show');
+                $('#' + $tab_id + '_tab').removeClass('next-style');
+                $('#' + $tab_id + '_tab').addClass('tab_style');
+                $('#' + $next_tab).addClass('next-style');
+
+
                 $('.vehicle_auction_image').imageUploader({
                     maxFiles: 15,
                     imagesInputName: 'auction_images',
@@ -635,9 +640,7 @@
                     preloaded: warehouse_image,
                     preloadedInputName: 'warehouse_old'
                 });
-                $('#' + $tab_id + '_tab').removeClass('next-style');
-                $('#' + $tab_id + '_tab').addClass('tab_style');
-                $('#' + $next_tab).addClass('next-style');
+                
 
             },
             complete: function() {
@@ -2153,6 +2156,16 @@
             $('.showMainImage').multiDownload();
 
     
+    }
+
+    function Addnew_quotation(){
+        $.ajax({
+            method: "get",
+            url: "{{ route('customer.Addnew_quotation') }}",
+            success: function(data) {
+                $('#addnew_quotation').append(data);
+            }
+        });
     }
 </script>
 <script>

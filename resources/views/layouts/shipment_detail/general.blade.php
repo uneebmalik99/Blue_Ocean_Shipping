@@ -267,7 +267,7 @@
                         <p style="color:#6D8DA6 ">Note</p><br>
                     </div>
                     <div class="d-flex justify-content-start " style="width: 90%;margin:4px auto;padding:5px; ">
-                        <textarea name=" " id=" " cols="40" rows="4" style="border: 1px solid rgba(26, 88, 133, 0.17); border-radius: 10px;font-size: 13px;
+                        <textarea name=" " id=" " cols="40" rows="4" style="border: 1px solid rgba(26, 88, 133, 0.17); border-radius: 10px;
                     color: #6D8DA6; " disabled>
                     @if(@$shipments[0]['notes'])
                     {{@$shipments[0]['notes']}}
@@ -513,10 +513,14 @@
                                 </tr>
 
                             </thead>
+
                             <tbody>
+                            @php
+                                $i = 1;
+                            @endphp
                                 @foreach ($shipments[0]['vehicle'] as $vehicles)
                                 <tr>
-                                    <td>{{ @$vehicles['id'] }}</td>
+                                    <td>{{ $i }}</td>
                                     <td>
                                         {{-- {{@$vehicles['warehouse_image'][0]['name']}} --}}
                                         @if(@$vehicles['warehouse_image'])
@@ -550,6 +554,10 @@
                                         </button>
                                     </td>
                                 </tr>
+
+                                @php
+                                    $i++;
+                                @endphp
                                 @endforeach
 
                             </tbody>
