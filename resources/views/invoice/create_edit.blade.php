@@ -8,8 +8,8 @@
                 <form method="POST" class="col-12" id="invoice_shipment_form" enctype="multipart/form-data">
                     @csrf
                     
-                    @if(@$shipment[0]['id'])
-                    <input type="hidden" id="id" name="id" value="{{@$shipment[0]['id']}}">
+                    @if(@$invoice[0]['id'])
+                    <input type="hidden" id="id" name="id" value="{{@$invoice[0]['id']}}">
                     @endif
                     
                     <div class="d-xl-flex border-shipment">
@@ -229,14 +229,16 @@
                             <tbody id="inovice_shipment_table">
                                 @isset($invoice[0])
                                     @forelse ($invoice[0]['vehicle'] as $vehicle)
+                                    <tr>
                                     <td>{{ @$vehicle['year'] }}</td>
                                     <td>{{ @$vehicle['make'] }}</td>
                                     <td>{{ @$vehicle['model'] }}</td>
                                     <td>{{@$vehicle['vin'] }}</td>
                                     <td>{{ @$vehicle['customer_name'] }}</td>
-                                    <td class='text-center'><input type='checkbox' id='vehicle' name='vehicles[]'></td>
-                                @empty
-                                    <td>Empty</td>
+                                    <td><input type='checkbox' id='vehicle' value="{{ @$vehicle['id'] }}" name='vehicles[]'/></td>
+                                    </tr>
+                                    @empty
+                            <tr>        <td>Empty</td></tr>
                                 @endforelse
                                 @endisset
                                     
