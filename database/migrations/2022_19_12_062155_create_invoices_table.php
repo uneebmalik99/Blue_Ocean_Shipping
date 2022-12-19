@@ -17,7 +17,7 @@ class CreateInvoicesTable extends Migration
             $table->id();
             $table->string('ar_number');
             $table->string('company_name')->nullable();
-            $table->string('port_of_loading')->nullable;
+            $table->string('port_of_loading')->nullable();
             $table->string('destination_port')->nullable();
             $table->string('container_size')->nullable();
             $table->integer("invoice_no")->nullable();
