@@ -247,6 +247,7 @@ class VehicleController extends Controller
         $data['warehouses'] = Warehouse::where('status', '1')->get();
         $data['sites'] = Site::where('status', '1')->get();
         $data['vehicle_types'] = VehicleType::where('status', '1')->get();
+        $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
         if ($request->ajax()) {
             $tab = $request->tab;
             $output = view('layouts.vehicle_create.' . $tab, $data)->render();
@@ -305,7 +306,8 @@ class VehicleController extends Controller
             // $data['user'] = $Obj_vehicle->find($id)->toArray();
             $data['buyers'] = BillingParty::all();
             $data['buyers_number'] = BillingParty::with('customer.vehicles')->get()->toArray();
-            $data['location'] = Location::all();
+            // $data['location'] = Location::all();
+            $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
             $data['shipment'] = Shipment::all();
             $data['vehicle_make'] = MMS::select('make')->where('status', '1')->groupBy('make')->get()->toArray();
             $data['auctions'] = Auction::where('status', '1')->get();
@@ -983,6 +985,8 @@ class VehicleController extends Controller
 
         // $data['state'] = MMS::where('make', $req->make_id)->where('status', '1')->get()->toArray();
         $data['state'] = MMS::select('model')->where('make', $req->make_id)->where('status', '1')->groupBy('model')->get()->toArray();
+        // $data['state'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
+
 
         // dd($data['state']);
 

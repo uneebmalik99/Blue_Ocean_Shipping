@@ -106,19 +106,19 @@ class DashboardController extends Controller
                 $data['onHand'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', 3)->count();
                 $data['noTitle'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', 4)->count();
                 $all_vehicles = Vehicle::where('added_by_user', auth()->user()->id)->get();
-                $allVehicles_value = Vehicle::where('added_by_user', auth()->user()->id)->get()->sum('value');
+                // $allVehicles_value = Vehicle::where('added_by_user', auth()->user()->id)->get()->sum('value');
                 $data['all_vehicles'] = $all_vehicles;
-                $data['allVehicles_value'] = $allVehicles_value;
+                // $data['allVehicles_value'] = $allVehicles_value;
 
                 $onhand = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '1');
                 $onhand_count = $onhand->count();
-                $onhand_value = $onhand->sum('value');
+                // $onhand_value = $onhand->sum('value');
                 $data['onhand_count'] = $onhand_count;
                 $data['onhand_value'] = $onhand_value;
         
                 $dispatch =  Vehicle::where('added_by_user', auth()->user()->id)->where('status', '2');
                 $dispatch_count = $dispatch->count();
-                $dispatch_value = $dispatch->sum('value'); 
+                // $dispatch_value = $dispatch->sum('value'); 
                 $data['dispatch_count'] = $dispatch_count;
                 $data['dispatch_value'] = $dispatch_value;
 
@@ -164,9 +164,9 @@ class DashboardController extends Controller
                 $data['onHand'] = Vehicle::where('status', 3)->count();
                 $data['noTitle'] = Vehicle::where('status', 4)->count();
                 $all_vehicles = Vehicle::all();
-                $allVehicles_value = Vehicle::get()->sum('value');
+                // $allVehicles_value = Vehicle::get()->sum('value');
                 $data['all_vehicles'] = $all_vehicles;
-                $data['allVehicles_value'] = $allVehicles_value;
+                // $data['allVehicles_value'] = $allVehicles_value;
         
         
         
@@ -266,19 +266,19 @@ class DashboardController extends Controller
                 $data['onHand'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', 3)->where('pickup_location', $state)->count();
                 $data['noTitle'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', 4)->where('pickup_location', $state)->count();
                 $all_vehicles = Vehicle::where('added_by_user', auth()->user()->id)->where('pickup_location', $state)->get();
-                $allVehicles_value = Vehicle::where('added_by_user', auth()->user()->id)->where('pickup_location', $state)->get()->sum('value');
+                // $allVehicles_value = Vehicle::where('added_by_user', auth()->user()->id)->where('pickup_location', $state)->get()->sum('value');
                 $data['all_vehicles'] = $all_vehicles;
-                $data['allVehicles_value'] = $allVehicles_value;
+                // $data['allVehicles_value'] = $allVehicles_value;
 
                 $onhand = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '1')->where('pickup_location', $state);
                 $onhand_count = $onhand->count();
-                $onhand_value = $onhand->sum('value');
+                // $onhand_value = $onhand->sum('value');
                 $data['onhand_count'] = $onhand_count;
                 $data['onhand_value'] = $onhand_value;
         
                 $dispatch =  Vehicle::where('added_by_user', auth()->user()->id)->where('status', '2')->where('pickup_location', $state);
                 $dispatch_count = $dispatch->count();
-                $dispatch_value = $dispatch->sum('value'); 
+                // $dispatch_value = $dispatch->sum('value'); 
                 $data['dispatch_count'] = $dispatch_count;
                 $data['dispatch_value'] = $dispatch_value;
 
@@ -324,21 +324,21 @@ class DashboardController extends Controller
                 $data['onHand'] = Vehicle::where('status', 3)->where('pickup_location', $state)->count();
                 $data['noTitle'] = Vehicle::where('status', 4)->where('pickup_location', $state)->count();
                 $all_vehicles = Vehicle::where('pickup_location', $state)->get();
-                $allVehicles_value = Vehicle::get()->sum('value');
+                // $allVehicles_value = Vehicle::get()->sum('value');
                 $data['all_vehicles'] = $all_vehicles;
-                $data['allVehicles_value'] = $allVehicles_value;
+                // $data['allVehicles_value'] = $allVehicles_value;
         
         
         
                 $onhand = Vehicle::where('status', '1')->where('pickup_location', $state);
                 $onhand_count = $onhand->count();
-                $onhand_value = $onhand->sum('value');
+                // $onhand_value = $onhand->sum('value');
                 $data['onhand_count'] = $onhand_count;
                 $data['onhand_value'] = $onhand_value;
         
                 $dispatch =  Vehicle::where('status', '2')->where('pickup_location', $state);
                 $dispatch_count = $dispatch->count();
-                $dispatch_value = $dispatch->sum('value'); 
+                // $dispatch_value = $dispatch->sum('value'); 
                 $data['dispatch_count'] = $dispatch_count;
                 $data['dispatch_value'] = $dispatch_value;
 
