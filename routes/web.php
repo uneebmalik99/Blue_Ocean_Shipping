@@ -23,7 +23,7 @@ use App\Http\Controllers\pdfController;
 
 Auth::routes();
 
-Route::prefix('/admin')->middleware('auth')->group(function () {
+Route::prefix('/admin')->middleware(['auth','login.status'])->group(function () {
     //Home
     Route::get('/', [HomeController::class, 'index']);
     // User Routes

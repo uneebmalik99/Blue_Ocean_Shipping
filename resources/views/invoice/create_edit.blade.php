@@ -2,7 +2,7 @@
 <div>
     <div>
         <div class="bg-white">
-            
+           
             <div class="mt-3">
                 
                 <form method="POST" class="col-12" id="invoice_shipment_form" enctype="multipart/form-data">
@@ -178,7 +178,7 @@
                                                             class="col-6 px-0 font-size font-bold">Balance</label>
                                                         <input type="text"
                                                             class="form-control-sm border border-0 rounded-pill bg col-6"
-                                                            name="balance" id="balance" value="">
+                                                            name="balance" id="balance" value="{{ @$invoice[0]['balance'] }}">
     
                                                     </div>
                                                 </div>
@@ -227,7 +227,16 @@
                                 </tr>
                             </thead>
                             <tbody id="inovice_shipment_table">
-                               
+                                    @forelse ($invoice[0]['vehicle'] as $vehicle)
+                                        <td>{{ $vehicle['year'] }}</td>
+                                        <td>{{ $vehicle['make'] }}</td>
+                                        <td>{{ $vehicle['model'] }}</td>
+                                        <td>{{ $vehicle['vin'] }}</td>
+                                        <td>{{ $vehicle['customer_name'] }}</td>
+                                        <td class='text-center'><input type='checkbox' id='vehicle' name='vehicles[]'></td>
+                                    @empty
+                                        <td>Empty</td>
+                                    @endforelse
                             </tbody>
                         </table>
 
