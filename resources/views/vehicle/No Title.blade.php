@@ -36,7 +36,7 @@
                 <td>{{ @$val['auction'] }}</td>
                 <td>{{ @$val['title'] }}</td>
                 <td>{{ @$val['key'] }}</td>
-                <td>{{ date_diff( new \DateTime(@$val['delivered']), new \DateTime())->format("%d") }}</td>
+                <td>{{ (@$val['delivered']) ? date_diff( new \DateTime(@$val['delivered']), new \DateTime())->format("%d") + 1 : 0 }}</td>
                 <td>{{ strtoupper(@$val['shipper_name']) }}</td>
                 <td>{{ @$val['port'] }}</td>
                 <td>{{ @$val['note'] }}</td>

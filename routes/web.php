@@ -59,7 +59,7 @@ Route::prefix('/admin')->middleware(['auth'])->group(function () {
     Route::get('/user/allroles',[App\Http\Controllers\UserController::class,'roles'])->name('user.allroles');
 
 
- Route::get('/users/createUser',[App\Http\Controllers\UserController::class,'createUser'])->name('user.createUser');
+    Route::get('/users/createUser',[App\Http\Controllers\UserController::class,'createUser'])->name('user.createUser');
 
     // Customer Routes
     Route::get('/customers', [CustomerController::class, 'index'])->name('customer.list');

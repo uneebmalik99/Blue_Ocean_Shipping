@@ -694,7 +694,7 @@
                                     <label for="post_date" class="col-6 px-0 font-size font-bold">Post Date</label>
                                     <input type="date"
                                         class="form-control-sm border border-0 rounded-pill bg col-6"
-                                        name="posted_date" id="posted_date" value="{{ @$user[0]['post_date'] }}">
+                                        name="posted_date" id="posted_date" value="{{ @$user[0]['posted_date'] }}">
                                 </div>
                                 <div class="d-flex justify-content-end">
                                     <span class="text-danger">
