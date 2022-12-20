@@ -17,7 +17,8 @@
 #dispatch_report_length,
 #onhand_report_length,
 #shipment_report_length,
-#notitle_report_length {
+#notitle_report_length,
+#shipment_reporting_length {
     padding: 2% 0% 1% 2% !important;
 }
 
@@ -40,7 +41,8 @@
 #dispatch_report_length select
 #onhand_report_length select
 #shipment_report_length select,
-#notitle_report_length select{
+#notitle_report_length select
+#shipment_reporting_length select{
     height: calc(1.8125rem + 2px) !important;
     border: 1px solid rgba(189, 189, 189, 1) !important;
     border-radius: 0.25rem !important;
@@ -73,7 +75,8 @@
 #dispatch_report_filter,
 #onhand_report_filter,
 #shipment_report_filter,
-#notitle_report_filter {
+#notitle_report_filter,
+#shipment_reporting_filter {
     padding: 2% 2% 1% 0% !important;
 }
 
@@ -96,7 +99,8 @@
 #dispatch_report_length input
 #onhand_report_length input
 #shipment_report_length input,
-#notitle_report_length input{
+#notitle_report_length input
+#shipment_reporting_length input{
     border: 1px solid rgba(189, 189, 189, 1) !important;
     color: #2b3d51 !important;
     border-radius: 0.25rem !important;
@@ -124,7 +128,8 @@
 #dispatch_report_wrapper,
 #onhand_report_wrapper,
 #shipment_report_wrapper,
-#notitle_report_wrapper {
+#notitle_report_wrapper,
+#shipment_reporting_wrapper {
     background-color: white !important;
 }
 
