@@ -394,7 +394,7 @@ div.dataTables_wrapper div.dataTables_info {
     font-size: 13px !important;
     padding: 1px 14px;
     cursor: pointer;
-    background-color: transparent !important;
+    background-color:#337fb8!important;
 }
 
 .img_active_button {
