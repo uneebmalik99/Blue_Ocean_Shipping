@@ -229,6 +229,7 @@ a:not([href]):not([tabindex]) {
     text-decoration: none;
     color: white;
 }
+
 </style>
 <div class="row my-4">
     <div class="col-sm-10 col-md-10 col-lg-4 pl-0" style="height:500px">
@@ -553,18 +554,17 @@ a:not([href]):not([tabindex]) {
                             <div class="row">
                                 <div class="col-12">
                                     <div class="w-100">
-                                        <div class="w-100 d-flex" style="justify-content: space-around;margin: 5px 1px; padding: 0 3px;">
-                                            <button class="img_active_button img_btn" style="color:white!important;background-color: #337fb8;" id="vehicle_images" onclick="changeImages(this.id)" tab="{{@$vehicle['id']}}">
-                                                <div  style="color:white;font-size: 12px !important;font-weight:600;">Pickup Image</div>
-                                            </button>
+                                        <div class="w-100 d-flex" style="justify-content: space-around;height:auto;background-color: #e9e9e9;margin: 5px 1px; padding: 0 3px;height:38px;width:80%;">
+                                            <button class="img_active_button img_btn" style="color:black;background-color: #337fb8;font-size:12px!important; border:#e9e9e9;font-weight:600;margin-right:-15px!important" id="vehicle_images" onclick="changeImages(this.id)" tab="{{@$vehicle['id']}}">
+                                               Pickup Images
         
-                                            <button class="image_button mx-1 img_btn" style="color:white!important;;font-size:12px!important;font-weight:600;margin-left:22px"  onclick="changeImages(this.id)" tab=" {{@$vehicle['id']}}" id="auction_images">
+                                            <button class="image_button mx-1 img_btn" style="color:black;;font-size:12px!important;font-weight:600;margin-right:-24px!important;"  onclick="changeImages(this.id)" tab=" {{@$vehicle['id']}}" id="auction_images">
                                             
                                                 Auction Image
                                             
                                         </button>
 
-                                        <button class="image_button img_btn" onclick="changeImages(this.id)" tab=" {{@$vehicle['id']}}" id="warehouse_images" style="color:white!important;background-color:337fb8;font-size: 12px !important;font-weight:600;">Ware House Image
+                                        <button class="image_button img_btn" onclick="changeImages(this.id)" tab=" {{@$vehicle['id']}}" id="warehouse_images" style="color:black;background-color:337fb8;font-size: 12px !important;font-weight:600;">Ware House Image
                                         </button>
 
                                         </div>
@@ -685,7 +685,7 @@ a:not([href]):not([tabindex]) {
 
                                 <div class="image_section">
 
-                                    <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12 " style="left:2%">
+                                    <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12 changeImages" style="left:6%">
                                         @if(@$vehicle['pickupimages'])
                                             @foreach(@$vehicle['pickupimages'] as $img)  
                                             <img src="{{asset($img['name'])}}" alt=""class="item_1"  class="showMainImage" style="width:120px!important;height:80px!important;"  onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
@@ -721,17 +721,17 @@ a:not([href]):not([tabindex]) {
 <div id="myModal" class="modal col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12" style= "color:red;z-index:999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;background-color:#000000db">
   <span class="close cursor" onclick="closeModal()">&times;</span>
   <div class="modal-content">
-  <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12 " style="left:-2%;width:104%">
+  <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12 " style="left:-2%;width:auto!important;height:455px!important">
   
-  <div class="mySlides">
+  <div class="mySlides" style="width:auto!important";>
     
-    <img src="{{asset(@$vehicle['pickupimages'][0]['name'])}}" alt=""class="item_1"  class="showMainImage" style="left:-2%;width:104%">
+    <img src="{{asset(@$vehicle['pickupimages'][0]['name'])}}" alt=""   style="width:800px!important;height: 455px!important;">
     
   </div>
                                         @if(@$vehicle['pickupimages'])
                                             @foreach(@$vehicle['pickupimages'] as $img)  
-                                            <div class="mySlides col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12"style="left:-2%;width:104%">
-                                            <img src="{{asset($img['name'])}}" alt=""class="item_1"  class="showMainImage"  style="width:100%!important height: 108px;"  onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+                                            <div class="mySlides col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12"style="left:-2%;width:80%!important">
+                                            <img src="{{asset($img['name'])}}" alt=""  style="width:137%!important;height: 455px!important;"  onclick="openModal();currentSlide(1)" >
                                             </div>
                                             @endforeach
                                         @endif
@@ -752,7 +752,7 @@ a:not([href]):not([tabindex]) {
    @if(@$vehicle['pickupimages'])
                                             @foreach(@$vehicle['pickupimages'] as $img)  
                                             <div class="column ">
-                                            <img src="{{asset($img['name'])}}" alt=""class="item_4"  class="showMainImage"  style="width:100%!important"  onclick="currentSlide(2)" class="hover-shadow cursor">
+                                            <img src="{{asset($img['name'])}}" alt=""class="item_4"  class="showMainImage"  style="width:80%!important"  onclick="currentSlide(2)" class="hover-shadow cursor">
                                             </div>
                                             @endforeach
                                         @endif
