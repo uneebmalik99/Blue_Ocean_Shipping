@@ -48,6 +48,7 @@
             var formData = new FormData(jQuery('#customer_shipper_form')[0]);
         } else if (id == "quotation_customer") {
             var formData = new FormData(jQuery('#customer_quotation_form')[0]);
+            
         } else {
             alert('no tab');
         }

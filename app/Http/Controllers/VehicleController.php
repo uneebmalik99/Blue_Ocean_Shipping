@@ -247,6 +247,7 @@ class VehicleController extends Controller
         $data['warehouses'] = Warehouse::where('status', '1')->get();
         $data['sites'] = Site::where('status', '1')->get();
         $data['vehicle_types'] = VehicleType::where('status', '1')->get();
+        $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
         if ($request->ajax()) {
             $tab = $request->tab;
             $output = view('layouts.vehicle_create.' . $tab, $data)->render();
@@ -305,7 +306,8 @@ class VehicleController extends Controller
             // $data['user'] = $Obj_vehicle->find($id)->toArray();
             $data['buyers'] = BillingParty::all();
             $data['buyers_number'] = BillingParty::with('customer.vehicles')->get()->toArray();
-            $data['location'] = Location::all();
+            // $data['location'] = Location::all();
+            $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
             $data['shipment'] = Shipment::all();
             $data['vehicle_make'] = MMS::select('make')->where('status', '1')->groupBy('make')->get()->toArray();
             $data['auctions'] = Auction::where('status', '1')->get();
@@ -983,6 +985,8 @@ class VehicleController extends Controller
 
         // $data['state'] = MMS::where('make', $req->make_id)->where('status', '1')->get()->toArray();
         $data['state'] = MMS::select('model')->where('make', $req->make_id)->where('status', '1')->groupBy('model')->get()->toArray();
+        // $data['state'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
+
 
         // dd($data['state']);
 
@@ -1019,16 +1023,26 @@ class VehicleController extends Controller
 
     public function assignToCustomer(Request $request){
         $data = [];
+        // dd($request->all());
+        $customer_name = User::select('company_name')->where('id', $request->assignTo_customer)->get()->toArray();
         $assign_vehicle = ImportVehicle::where('id', $request->vehicle_id)->get()->toArray();
-        $assign_vehicle[0]['added_by_user'] = $request->customer_id;
+        // dd($customer_name[0]['company_name'], $request->all(), $assign_vehicle);
+        $assign_vehicle[0]['customer_name'] = $customer_name[0]['company_name'];
+        $assign_vehicle[0]['buyer_id'] = $request->buyer_id;
+        $assign_vehicle[0]['key'] = $request->key;
+        $assign_vehicle[0]['shipper_name'] = $request->shipper;
+        $assign_vehicle[0]['pickup_location'] = $request->pickup_location;
+        $assign_vehicle[0]['added_by_user'] = $request->assignTo_customer;
         unset($assign_vehicle[0]['id']);
         $data = $assign_vehicle;
+        // dd($data[0]);
+        // dd();
         $obj = new Vehicle;
         $obj->create($data[0]);
         if($obj){
             // $assign_vehicle->delete();
             ImportVehicle::find($request->vehicle_id)->delete();
-            return 'Assign To Customer Successfully';
+            return back()->with('success', 'Assign To Customer Successfully');
         }
 
     }

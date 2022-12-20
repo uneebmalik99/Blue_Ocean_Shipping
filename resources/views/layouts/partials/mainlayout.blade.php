@@ -10,7 +10,6 @@
 
 <body>
     <div id="load">
-        {{-- <iframe src="https://embed.lottiefiles.com/animation/99084"></iframe> --}}
         <div id="loader"></div>
     </div>
     <div id="contents"></div>

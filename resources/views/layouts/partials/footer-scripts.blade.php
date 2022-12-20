@@ -317,6 +317,7 @@
                 success: function(data) {
                     $('.modal-body').html(data);
                     $('#exampleModal').modal('show');
+                    $('#exampleModalLabel').text('New Customer');
                     $('.user_image').imageUploader({
                         maxFiles: 1
                     });
@@ -332,6 +333,7 @@
                 success: function(data) {
                     $('.modal-body').html(data);
                     $('#exampleModal').modal('show');
+                    $('#exampleModalLabel').text('New Vehicle');
                     $('.billofsales').imageUploader({
                         maxFiles: 4,
                         imagesInputName: 'billofsales',
@@ -389,6 +391,7 @@
                 success: function(data) {
                     $('.modal-body').html(data);
                     $('#exampleModal').modal('show');
+                    $('#exampleModalLabel').text('New Shipment');
                     $('#shipment_vehicle_table').DataTable({
                         "lengthChange": false,
                         "info": false,
@@ -593,6 +596,11 @@
                 document.getElementById('load').style.visibility = "hidden";
                 $('.modal-body').html(data.view);
                 $('#exampleModal').modal('show');
+                $('#' + $tab_id + '_tab').removeClass('next-style');
+                $('#' + $tab_id + '_tab').addClass('tab_style');
+                $('#' + $next_tab).addClass('next-style');
+
+
                 $('.vehicle_auction_image').imageUploader({
                     maxFiles: 15,
                     imagesInputName: 'auction_images',
@@ -635,9 +643,7 @@
                     preloaded: warehouse_image,
                     preloadedInputName: 'warehouse_old'
                 });
-                $('#' + $tab_id + '_tab').removeClass('next-style');
-                $('#' + $tab_id + '_tab').addClass('tab_style');
-                $('#' + $next_tab).addClass('next-style');
+                
 
             },
             complete: function() {
@@ -979,13 +985,13 @@
                         $('#port_of_loading').val(data.shipments[0]['loading_port']);
                         $('#destination_port').val(data.shipments[0]['destination_port']);
                         $('#container_size').val(data.shipments[0]['container_size']);
+                        $('#inovice_shipment_table').empty();
                         var html = [];
+                        console.log(data.shipments[0]['vehicle']);
                         data.shipments[0]['vehicle'].forEach(element => {
                             output = "<tr><td>" + element.year + "</td><td>" + element.make +
                                 "</td><td>" + element.model + "</td><td>" + element.vin +
-                                "</td><td>" + element.vin + "</td><td>" + element.vin +
-                                "</td><td>" + element.vin + "</td><td>" + element.vin +
-                                "</td><td class='text-center'><input type='checkbox' value='" +
+                                "</td><td>" + element.customer_name + "</td><td class='text-center'><input type='checkbox' value='" +
                                 element.id + "' id='vehicle' name='vehicles[]'></td></tr>";
 
                             html.push(output);
@@ -2154,12 +2160,20 @@
 
     
     }
+
+    function Addnew_quotation(){
+        $.ajax({
+            method: "get",
+            url: "{{ route('customer.Addnew_quotation') }}",
+            success: function(data) {
+                $('#addnew_quotation').append(data);
+            }
+        });
+    }
 </script>
 <script>
-    // Play oscillators at certain frequency and for a certain time
-function playNote(frequency, startTime, duration) {
-    
-
-};
+    function removeQuotation(){
+        alert("here merge");
+    }
 
 </script>

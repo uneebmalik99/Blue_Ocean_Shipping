@@ -2,14 +2,14 @@
 <div>
     <div>
         <div class="bg-white">
-            
+           
             <div class="mt-3">
                 
                 <form method="POST" class="col-12" id="invoice_shipment_form" enctype="multipart/form-data">
                     @csrf
                     
-                    @if(@$shipment[0]['id'])
-                    <input type="hidden" id="id" name="id" value="{{@$shipment[0]['id']}}">
+                    @if(@$invoice[0]['id'])
+                    <input type="hidden" id="id" name="id" value="{{@$invoice[0]['id']}}">
                     @endif
                     
                     <div class="d-xl-flex border-shipment">
@@ -178,7 +178,7 @@
                                                             class="col-6 px-0 font-size font-bold">Balance</label>
                                                         <input type="text"
                                                             class="form-control-sm border border-0 rounded-pill bg col-6"
-                                                            name="balance" id="balance" value="">
+                                                            name="balance" id="balance" value="{{ @$invoice[0]['balance'] }}">
     
                                                     </div>
                                                 </div>
@@ -222,15 +222,26 @@
                                     <th>MAKE</th>
                                     <th>MODEL</th>
                                     <th>VIN</th>
-                                    <th>TITLE</th>
-                                    <th>TITLE STATE</th>
-                                    <th>TITLE NUMBER</th>
-                                    <th>CUSTOMER</th>
+                                    <th>Company Name</th>
                                     <th>ACTION</th>
                                 </tr>
                             </thead>
                             <tbody id="inovice_shipment_table">
-                               
+                                @isset($invoice[0])
+                                    @forelse ($invoice[0]['vehicle'] as $vehicle)
+                                    <tr>
+                                    <td>{{ @$vehicle['year'] }}</td>
+                                    <td>{{ @$vehicle['make'] }}</td>
+                                    <td>{{ @$vehicle['model'] }}</td>
+                                    <td>{{@$vehicle['vin'] }}</td>
+                                    <td>{{ @$vehicle['customer_name'] }}</td>
+                                    <td><input type='checkbox' id='vehicle' value="{{ @$vehicle['id'] }}" name='vehicles[]'/></td>
+                                    </tr>
+                                    @empty
+                            <tr>        <td>Empty</td></tr>
+                                @endforelse
+                                @endisset
+                                    
                             </tbody>
                         </table>
 

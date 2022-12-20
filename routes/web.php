@@ -23,7 +23,7 @@ use App\Http\Controllers\pdfController;
 
 Auth::routes();
 
-Route::prefix('/admin')->middleware('auth')->group(function () {
+Route::prefix('/admin')->middleware(['auth','login.status'])->group(function () {
     //Home
     Route::get('/', [HomeController::class, 'index']);
     // User Routes
@@ -69,6 +69,7 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
     Route::post('/customers/create/billing_customer', [CustomerController::class, 'general_create'])->name('customer.billing_create');
     Route::post('/customers/create/shipper_customer', [CustomerController::class, 'general_create'])->name('customer.shipper_create');
     Route::post('/customers/create/quotation_customer', [CustomerController::class, 'general_create'])->name('customer.quotation_create');
+    Route::get('/customers/add/qoutation_customer',[CustomerController::class,'addQoutation'])->name('customer.addQuotation');
     Route::get('/customers/edit/{id?}',                 [CustomerController::class, 'edit'])->name('customer.edit');
     Route::post('/customers/edit/{id?}',                [CustomerController::class, 'edit'])->name('customer.edit');
     Route::get('/customers/update/{id?}',               [CustomerController::class, 'edit'])->name('customer.edit');
@@ -93,6 +94,13 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
 
 
     Route::get('/customers/changeState/{state?}', [CustomerController::class, 'changeState'])->name('customer.changeState');
+
+
+
+    Route::get('/customers/AddnewQuotation/', [CustomerController::class, 'Addnew_quotation'])->name('customer.Addnew_quotation');
+
+
+
 
 
     //Vehicle Routes
@@ -284,6 +292,7 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
 
 
 
+    Route::post('/master/getbuyerids',       [MasterController::class, 'getbuyersids'])->name('importVehicle.get_buyerids');
 
 
     // master towing page routes 

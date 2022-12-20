@@ -19,12 +19,6 @@
         </tr>
     </thead>
     <tbody class="bg-white font-size" id="vehicle_tbody">
-        {{-- @dd($records) --}}
-        {{-- @if (@count($records) == 0)
-            <tr class="font-size">
-                <td colspan="19" class="h5 text-muted text-center">NO VEHICLES TO DISPLAY</td>
-            </tr>
-        @endif --}}
         <?php $i = 1; ?>
         @foreach ($records as $val)
             <tr>
@@ -33,7 +27,6 @@
                             {{ @$val['customer_name'] }}
                             
                 </td>
-                {{-- <td>{{ @$val['customer_name'] }}</td> --}}
                 <td>{{ @$val['year'] }}</td>
                 <td>{{ @$val['make'] }}</td>
                 <td>{{ @$val['model'] }}</td>
@@ -43,8 +36,8 @@
                 <td>{{ @$val['auction'] }}</td>
                 <td>{{ @$val['title'] }}</td>
                 <td>{{ @$val['key'] }}</td>
-                <td>{{ @$val['days'] }}</td>
-                <td>{{ @$val['shipper'] }}</td>
+                <td>{{ date_diff( new \DateTime(@$val['delivered']), new \DateTime())->format("%d") }}</td>
+                <td>{{ strtoupper(@$val['shipper_name']) }}</td>
                 <td>{{ @$val['port'] }}</td>
                 <td>{{ @$val['note'] }}</td>
                 <td>

@@ -742,16 +742,23 @@
                                 <div class="d-flex align-items-center">
                                     <label for="pickup_location" class="col-6 px-0 font-size font-bold">Pickup
                                         Location</label>
-                                    {{-- <select name="pickup_loaction" id="pickup_location" class="form-control-sm border border-0 rounded-pill bg col-6">
+                                    <select name="pickup_loaction" id="pickup_location" class="form-control-sm border border-0 rounded-pill bg col-6">
+                                    @if(@$user[0]['site'])
+                                    <option value="{{@$user[0]['pickup_location']}}" selected disabled>{{@$user[0]['pickup_location']}}</option>
+                                    @else
                                     <option value="" selected disabled>Select Location</option>
+                                    @endif
                                     @foreach ($location as $loc)
-                                    <option value="{{@$loc['name']}}">{{@$loc['name']}}</option>
+                                    @if(@$user[0]['pickup_location'] == $loc['state'])
+                                    @else
+                                    <option value="{{@$loc['state']}}">{{@$loc['state']}}</option>
+                                    @endif
                                     @endforeach
-                                    </select> --}}
-                                    <input type="text"
+                                    </select>
+                                    {{-- <input type="text"
                                         class="form-control-sm border border-0 rounded-pill bg col-6"
                                         name="pickup_location" id="pickup_location"
-                                        value="{{ @$user[0]['pickup_location'] }}">
+                                        value="{{ @$user[0]['pickup_location'] }}"> --}}
                                 </div>
                                 <div class="d-flex justify-content-end">
                                     <span class="text-danger">
