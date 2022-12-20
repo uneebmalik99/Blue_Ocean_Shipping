@@ -47,12 +47,23 @@
                     </li>
                 </ul>
                 <ul class="nav-right">
+                    <li class="header-notification change-loges.html">
+                        <a href="{{ route('importVehicles.list') }}">
+                            <span class="pcoded-micon"><i class="ti-calendar"></i></span>
+                            <span class="pcoded-mtext" data-i18n="nav.event-calendar.main">Imported
+                                Vehicles</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+
                     <li class="header-notification lng-dropdown">
                         <a href="#" id="dropdown-active-item">
                             <i class="m-r-5 ti-world"></i> Select Location
                         </a>
                         <ul class="show-notification"
                             style="border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;">
+                            
+
                                 <li>
                                     @if(@$module['type'] == 'Customers')
                                     <a href="{{route('customer.changeState', 'ALL')}}" data-tab="{{@$module['type']}}" style="cursor:pointer;">

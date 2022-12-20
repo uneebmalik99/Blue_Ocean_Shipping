@@ -332,7 +332,7 @@ Route::prefix('/admin')->middleware(['auth'])->group(function () {
  
     Route::get('/reporitng',                           [ReportingController::class, 'index']);
     Route::post('/reporitng/changetab',                           [ReportingController::class, 'changetab'])->name('reporting.changetab');
-    Route::get('/shipments/records/{state?}', [ReportingController::class, 'serverside'])->name('reporting.shipments');
+    Route::get('/reporting/shipments/{state?}', [ReportingController::class, 'serverside'])->name('reporting.shipments');
 
 
     //Inventory

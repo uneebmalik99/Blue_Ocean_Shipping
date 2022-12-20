@@ -369,14 +369,14 @@
                                     </a>
                                 </li>
 
-                                <li class="change-loges.html py-2">
+                                {{-- <li class="change-loges.html py-2">
                                     <a href="{{ route('importVehicles.list') }}">
                                         <span class="pcoded-micon"><i class="ti-calendar"></i></span>
                                         <span class="pcoded-mtext" data-i18n="nav.event-calendar.main">Imported
                                             Vehicles</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
-                                </li>
+                                </li> --}}
 
 
                                 <li class="change-loges.html">
