@@ -331,6 +331,7 @@ Route::prefix('/admin')->middleware(['auth'])->group(function () {
 //  < ============================================  Reporting ========================= >
  
     Route::get('/reporitng',                           [ReportingController::class, 'index']);
+    Route::post('/reporitng/changetab',                           [ReportingController::class, 'changetab'])->name('reporting.changetab');
 
 
     //Inventory

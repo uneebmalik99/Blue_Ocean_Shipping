@@ -46,8 +46,6 @@ use PDF;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
-// use Excel;
-
 class ReportingController extends Controller
 {
     private $type = "Reporting";
@@ -63,10 +61,7 @@ class ReportingController extends Controller
     private function Notification()
     {
         $data['notification'] = Notification::with('user')->paginate($this->perpage);
-        // $data['location'] = Location::all()->toArray();
         $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
-
-        // dd();
         if ($data['notification']->toArray()) {
             $current = Carbon::now();
             foreach ($data['notification'] as $key => $date_notification) {
@@ -92,7 +87,6 @@ class ReportingController extends Controller
         }
         return $data;
     }
-
     public function index()
     {
         $data = [];
@@ -109,14 +103,41 @@ class ReportingController extends Controller
                 'page' => 'list',
             ],
         ];
-
+        $data['vehicles'] = Vehicle::where('status', '1')->get()->toArray();
         $data['vehicles_cart'] = VehicleCart::with('vehicle')->get()->toArray();
-       
-
         $notification = $this->Notification();
         return view($this->view . 'list', $data, $notification);
     }
 
+    public function changetab(Request $req ,$id = null){
+        $output = [];
+        $data = [];
+
+        if($req->id == 'dispatch_tab'){
+            $data['vehicles'] = Vehicle::where('status', '2')->get()->toArray();
+            $output =  view('layouts.reporting.' . $req->id, $data)->render();
+        }
+        elseif($req->id == 'new_order_tab'){
+            $data['vehicles'] = Vehicle::where('status', '1')->get()->toArray();
+            $output =  view('layouts.reporting.' . $req->id, $data)->render();
+        }
+        elseif($req->id == 'on_hand_tab'){
+            $data['vehicles'] = Vehicle::where('status', '3')->get()->toArray();
+            $output =  view('layouts.reporting.' . $req->id, $data)->render();
+        }
+        elseif($req->id == 'shipment_tab'){
+            $data['vehicles'] = Vehicle::where('shipment_id', '!=',  null)->get()->toArray();
+            $output =  view('layouts.reporting.'. $req->id, $data)->render();
+        }
+        elseif($req->id == 'no_title_tab')
+        {
+            $data['vehicles'] = Vehicle::where('status', '4')->get()->toArray();
+            $output =  view('layouts.reporting.'. $req->id, $data)->render();
+        }
+        else{}
+
+        return Response($output);
+    }
 
 
 
