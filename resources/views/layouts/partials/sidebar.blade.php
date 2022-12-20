@@ -303,7 +303,7 @@
                         </a>
                     </li>
                     <li class="change-loges.html py-2">
-                        <a href="{{ url('/admin/inventory') }}" class="comingsoon">
+                        <a href="{{ url('/admin/reporitng') }}">
                             <span class="pcoded-micon"><i class="fas fa-warehouse"></i></span>
                             <span class="pcoded-mtext" data-i18n="nav.internationalize.main">Reporting</span>
 

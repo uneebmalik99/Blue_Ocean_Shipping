@@ -1,3 +1,4 @@
+{{-- {{ dd($importVehicles) }} --}}
 @extends('layouts.partials.mainlayout')
 @section('body')
 <style>
@@ -92,15 +93,17 @@
         <thead style="background: #3e5871 ;color:#fff">
             <tr>
                 <th class="font-bold-tr">Sr</th>
-                <th class="font-bold-tr">Customer Name</th>
-                <th class="font-bold-tr">VIN</th>
+                <th class="font-bold-tr">SALE DATE</th>
+                <th class="font-bold-tr">BUYER ID</th>
+                <th class="font-bold-tr">LOT #</th>
+                <th class="font-bold-tr">PICKUP LOCATION</th>
                 <th class="font-bold-tr">YEAR</th>
                 <th class="font-bold-tr">MAKE</th>
                 <th class="font-bold-tr">MODEL</th>
-                <th class="font-bold-tr">VEHICLE TYPE</th>
+                <th class="font-bold-tr">VIN</th>
                 <th class="font-bold-tr">VALUE</th>
-                <th class="font-bold-tr">STATUS</th>
-                <th class="font-bold-tr">BUYER</th>
+                <th class="font-bold-tr">AUCTION</th>
+                <th class="font-bold-tr">SITE</th>
                 <th class="font-bold-tr">ACTION</th>
             </tr>
         </thead>
@@ -108,25 +111,22 @@
             @foreach ($importVehicles as $vehicles)
                 <tr>
                     <td>{{@$vehicles['id']}}</td>
-                    <td>{{@$vehicles['customer_name']}}</td>
-                    <td>{{@$vehicles['vin']}}</td>
+                    <td>{{@$vehicles['sale_date']}}</td>
+                    <td>{{@$vehicles['buyer_id']}}</td>
+                    <td>{{@$vehicles['lot']}}</td>
+                    <td>{{@$vehicles['pickup_location']}}</td>
                     <td>{{@$vehicles['year']}}</td>
                     <td>{{@$vehicles['make']}}</td>
                     <td>{{@$vehicles['model']}}</td>
-                    <td>{{@$vehicles['vehicle_type']}}</td>
+                    <td>{{@$vehicles['vin']}}</td>
                     <td>{{@$vehicles['value']}}</td>
-                    <td>{{@$vehicles['status']}}</td>
-                    <td>{{@$vehicles['buery_id']}}</td>
+                    <td>{{@$vehicles['auction']}}</td>
+                    <td>{{@$vehicles['site']}}</td>
                     <td>
                         <button id="{{ @$vehicles['id'] }}" onclick="assigntocutomer(this.id)">Assign to Customer</button>
-                        {{-- <select name="assignTo_customer" id="{{@$vehicles['id']}}" onchange="assignToCustomer(this.id)">
-                            <option selected disabled>Select Customer</option>
-                            @foreach($customers as $customer)
-                            <option value="{{@$customer['id']}}" >{{@$customer['username']}}</option>
-                            @endforeach
-                        </select> --}}
                     </td>
                 </tr>
+                {{-- @break --}}
             @endforeach
         </tbody>
     </table>

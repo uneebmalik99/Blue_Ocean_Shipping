@@ -321,12 +321,6 @@
                     <span class="information_text">--</span>
                     @endif
                     </div>
-
-
-
-
-
-
                     {{-- <div class="d-flex justify-content-between my-2 py-1" style="border: 1px solid rgba(26, 88, 133, 0.17); border-radius: 10px;width: 90%;margin:4px auto;padding:5px; ">
                         <span class="infromation_mainText ">Order Date</span>
                         @if(@$vehicle['sale_date'])
@@ -343,7 +337,6 @@
                     <span class="information_text">--</span>
                     @endif
                     </div> --}}
-
                     {{-- <div class="mt-4 " style="width: 80%;margin:4px auto;padding:5px; ">
                         <p style="color:#6D8DA6; ">Note to department</p>
                     </div> --}}
@@ -352,7 +345,6 @@
                             <option value=" ">Please Select department</option>
                         </select>
                     </div> --}}
-
                     <div class="d-flex justify-content-start " style="width: 80%;margin:4px auto;padding:5px; ">
                         <p style="color:#6D8DA6 ">Note</p><br>
                     </div>
@@ -360,22 +352,17 @@
                         <textarea name=" " id=" " cols="40" rows="4" style="border: 1px solid rgba(26, 88, 133, 0.17); border-radius: 10px;font-size: 13px;
                     color: #6D8DA6; " disabled>@if(@$vehicle['note']){{@$vehicle['note']}}
                     @else 
-                    --@endif
+                    --
+                    @endif
                 </textarea>
-
                     </div>
-
                     {{-- <div style="width: 90%; " class="d-flex justify-content-end ">
-
                         <button class="send mt-3" style="background: #1CACD9; border-radius: 4px;transform: skew(-30deg) !important;font-size: 13px;border:none;color:white; ">
                         <div style="transform: skew(30deg) !important;padding:1px 12px ">
                             Send
                         </div>
                     </button>
-
                     </div> --}}
-
-
                 </div>
                 <div class="col-sm-12 col-md-7 col-lg-7 mb-4">
                     <div class="information_gallary" style="margin-top:8px!important;">
@@ -387,23 +374,16 @@
                                             <button class="img_active_button img_btn" id="vehicle_images" onclick="changeImages(this.id)" tab="{{@$vehicle['id']}}">
                                                 <div class="img_button" style="color:#4d89b5!important;font-size: 12px !important;font-weight:600;">Pickup Image</div>
                                             </button>
-        
                                             <button class="image_button mx-1 img_btn" style="color:#4d89b5!important;font-size: 12px !important;font-weight:600;margin-left:22px"  onclick="changeImages(this.id)" tab=" {{@$vehicle['id']}}" id="auction_images">
                                             <div class="img_button">
                                                 Auction Image
                                             </div>
                                         </button>
-
                                         <button class="image_button img_btn" onclick="changeImages(this.id)" tab=" {{@$vehicle['id']}}" id="warehouse_images" style="color:#4d89b5!important;font-size: 12px !important;font-weight:600;">Ware House Image
                                         </button>
-
                                         </div>
-                                       
-        
                                     </div>
-
                                 </div>
-
                                 @if(@$vehicle['pickupimages'])
                                 <div class="col-12 main_image">
                                     <div class="w-100  p-3" style="position: relative;">
@@ -426,10 +406,8 @@
                                                 <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/>
                                                 </filter>
                                                 </defs>
-                                                </svg>
-                                                
+                                                </svg>    
                                         </a>
-                                        
                                         <div class="left_button">
                                             <a href="" style="text-decoration: none">
                                                 <svg width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -493,8 +471,7 @@
                                                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/>
                                                     </filter>
                                                     </defs>
-                                                    </svg>
-                                                    
+                                                    </svg>                  
                                             </a>
                                         </div>
                                     </div>
@@ -502,9 +479,7 @@
                                 @else
                                 <h6 class="text-center mt-5 w-100" style="color:gray">No Image Found</h6>
                                 @endif
-
                                 <div class="image_section">
-
                                     <div class="col-11 mx-auto d-flex flex-wrap changeImages" style="">
                                         @if(@$vehicle['pickupimages'])
                                             @foreach(@$vehicle['pickupimages'] as $img)  
@@ -514,8 +489,6 @@
                                     </div>
                                 </div>
                             </div>
-                            
-                           
                         </div>
                     </div>
                     @if(@$vehicle['pickupimages'])

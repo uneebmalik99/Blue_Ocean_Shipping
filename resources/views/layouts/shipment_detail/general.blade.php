@@ -494,21 +494,19 @@
                 <div class="row px-3 mt-2">
                     <div class="mx-auto shipment_table w-100 scroll" style="background: rgba(255, 255, 255, 0.52);
                     box-shadow: 3px 5px 16px rgb(92 174 235 / 55%);height:388px!important">
-                        <table class="w-100 scroll table scroll"
+                        <table class="w-100 table scroll"
                             style="width:100%!important;border:none!important;overflow-x:scroll!important;">
                             <thead class="bg-custom text-white">
                                 <tr>
                                     <th>#</th>
-                                    <th>image</th>
                                     <th>Year</th>
                                     <th>Make</th>
                                     <th>Model</th>
                                     <th>Color</th>
                                     <th>Vin</th>
                                     <th>Status</th>
-                                    <th>Title No</th>
+                                    <th>LOT #</th>
                                     <th>Title State</th>
-                                    <th>Lot No</th>
                                     <th>View</th>
                                 </tr>
 
@@ -521,22 +519,14 @@
                                 @foreach ($shipments[0]['vehicle'] as $vehicles)
                                 <tr>
                                     <td>{{ $i }}</td>
-                                    <td>
-                                        {{-- {{@$vehicles['warehouse_image'][0]['name']}} --}}
-                                        @if(@$vehicles['warehouse_image'])
-                                        <img src="{{asset(@$vehicles['warehouse_image'][0]['name'])}}" alt=""
-                                            style="width:35px;height:35px;border-radius:50%;">
-                                            @endif
-                                    </td>
                                     <td>{{ @$vehicles['year'] }}</td>
                                     <td>{{ @$vehicles['make'] }}</td>
                                     <td>{{ @$vehicles['model'] }}</td>
                                     <td>{{ @$vehicles['color'] }}</td>
                                     <td>{{ @$vehicles['vin'] }}</td>
                                     <td>{{ @$vehicles['vehicle_status']['status_name'] }}</td>
-                                    <td>{{ @$vehicles['title_number'] }}</td>
+                                    <td>{{ @$vehicles['lot'] }}</td>
                                     <td>{{ @$vehicles['title_state'] }}</td>
-                                    <td>{{ @$vehicles['pickup_location'] }}</td>
                                     <td>
                                         <button class="profile-button">
                                             <a href="{{ route('vehicle.profile') . '/' . @$vehicles['id'] }}"

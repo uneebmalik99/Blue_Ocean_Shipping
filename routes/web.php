@@ -12,6 +12,7 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ShipmentController;
 use App\Http\Controllers\StickyController;
 use App\Http\Controllers\MasterTowing;
+use App\Http\Controllers\ReportingController;
 use App\Http\Controllers\ShipmentRateController;
 use App\Http\Controllers\MasterTowingController;
 use App\Http\Controllers\TicketController;
@@ -327,9 +328,11 @@ Route::prefix('/admin')->middleware(['auth'])->group(function () {
 
     Route::get('/dashboard/records/{state?}', [DashboardController::class, 'serverside'])->name('dashboard.records');
 
+//  < ============================================  Reporting ========================= >
+ 
+    Route::get('/reporitng',                           [ReportingController::class, 'index']);
 
 
-    Route::get('/inventory',                            function(){return "Coming Soon!";});
     //Inventory
     Route::get('/invoice',                              [InvoiceController::class, 'index'])->name('invoice.index');
     Route::get('/invoices/create',                      [InvoiceController::class, 'create_invoice'])->name('invoice.create');
