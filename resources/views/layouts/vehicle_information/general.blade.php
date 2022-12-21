@@ -593,12 +593,12 @@ a:not([href]):not([tabindex]) {
 
                                         <button class="image_button img_btn" onclick="changeImages(this.id)" tab=" {{@$vehicle['id']}}" id="warehouse_images" style="color:black;background-color:337fb8;font-size: 12px !important;font-weight:600;">Ware House Image
                                         </button>
-                                      <button class="image_button img_btn" onclick="changeImages(this.id)" tab=" {{@$vehicle['id']}}" id="warehouse_images" style="color:#4d89b5!important;font-size: 12px !important;font-weight:600;">Ware House Image
+                                      {{-- <button class="image_button img_btn" onclick="changeImages(this.id)" tab=" {{@$vehicle['id']}}" id="warehouse_images" style="color:#4d89b5!important;font-size: 12px !important;font-weight:600;">Ware House Image --}}
 
 
-                                        <button class="image_button img_btn" onclick="changeImages(this.id)" tab=" {{@$vehicle['id']}}" id="warehouse_images" style="color:black;background-color:337fb8;font-size: 12px !important;font-weight:600;">Ware House Image
+                                        {{-- <button class="image_button img_btn" onclick="changeImages(this.id)" tab=" {{@$vehicle['id']}}" id="warehouse_images" style="color:black;background-color:337fb8;font-size: 12px !important;font-weight:600;">Ware House Image
 
-                                        </button>
+                                        </button> --}}
                                         </div>
                                     </div>
                                 </div>
