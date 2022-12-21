@@ -1005,6 +1005,7 @@ class VehicleController extends Controller
     public function createpdf(){
         return view('vehicle.vehiclepdf');
     }
+
     public function exportpdf(){
             $pdf = PDF::LoadView('vehicle.vehiclepdf');
             return $pdf->stream('invoice.pdf', array("Attachment" => false));
@@ -1014,16 +1015,13 @@ class VehicleController extends Controller
         $data = [];
         $output = [];
         $data['buyerids'] = User::with('billings')->where('company_name', $request->company_name)->get()->toArray();
-        // dd($data['buyerids']);
         $output = view('layouts.vehicle_create.buyerIds' , $data)->render();
-        // dd($output);
         return Response($output);
     }
 
 
     public function assignToCustomer(Request $request){
         $data = [];
-        // dd($request->all());
         $customer_name = User::select('company_name')->where('id', $request->assignTo_customer)->get()->toArray();
         $assign_vehicle = ImportVehicle::where('id', $request->vehicle_id)->get()->toArray();
         // dd($customer_name[0]['company_name'], $request->all(), $assign_vehicle);
