@@ -425,7 +425,7 @@ a:not([href]):not([tabindex]) {
 
 
                 <div class="information_button d-flex justify-content-center mt-3" style="margin:50px">
-                    <a href="{{ route('vehicle.exportpdf')}} " target="_blank">
+                    <a href="{{ route('vehicle.exportpdf', @$vehicle['id'] )}} " target="_blank">
                     <button style="background: #1F689E;
                     transform: skew(-30deg) !important;border:none;
                     border-radius: 4px;color:white;margin-right: 6px;font-size: 12px;"><div style="transform: skew(30deg) !important;padding:1px 4px">
@@ -590,7 +590,7 @@ a:not([href]):not([tabindex]) {
                    
                         <div class="gallary_header d-flex">
                             <div class="row">
-                                <div class="col-12">
+                                {{-- <div class="col-12"> --}}
                                 <div  class="col-sm-12 col-md-4 col-lg-12" style="background-color:white;padding:0px!important"; >
                         <button class="img_active_button img_btn col-sm-12 col-md-4 col-lg-4 mb-4" style="color:black;background-color: #337fb8;font-size:12px!important; border:#e9e9e9;font-weight:600; border-top-left-radius: 8px; height:34px;" id="vehicle_images" onclick="changeImages(this.id)" tab="{{@$vehicle['id']}}">
                                                Pickup Images
@@ -601,15 +601,19 @@ a:not([href]):not([tabindex]) {
                                             
                                         </button>
 
-                                        <button class="image_button img_btn col-sm-12 col-md-4 col-lg-4 mb-4" onclick="changeImages(this.id)" tab=" {{@$vehicle['id']}}" id="warehouse_images" style="color:black;background-color:337fb8;font-size: 12px !important;  border-top-right-radius: 8px; font-weight:600;height:34px">Ware House Image
+                                        
+                                        
+
+                                        <button class="image_button img_btn col-sm-12 col-md-4 col-lg-4 mb-4" onclick="changeImages(this.id)" tab=" {{@$vehicle['id']}}" id="warehouse_images" style="color:black;background-color:337fb8;font-size: 12px !important;  border-top-right-radius: 8px; font-weight:600;height:34px">
+                                            Ware House Image
                                         </button>
-                                        <div>
+                                        {{-- <div>
                                     
-                                        </div>
+                                        </div> --}}
         
                                     </div>
 
-                                </div>
+                                {{-- </div> --}}
 
                                 @if(@$vehicle['pickupimages'])
                                 <div class="col-12 main_image">

@@ -135,7 +135,7 @@ Route::prefix('/admin')->middleware(['auth','login.status'])->group(function () 
     
     Route::get('/vehicle/pdf',                          [VehicleController::class, 'createpdf'])->name('vehicle.createpdf');
 
-    Route::get('/vehicle/export/pdf',                   [VehicleController::class, 'exportpdf'])->name('vehicle.exportpdf');
+    Route::get('/vehicle/export/pdf/{id?}',                   [VehicleController::class, 'exportpdf'])->name('vehicle.exportpdf');
 
     Route::get('/vehicle/vehicle_informationTab',       [VehicleController::class, 'profile_tab'])->name('customer.profile_tab');
     

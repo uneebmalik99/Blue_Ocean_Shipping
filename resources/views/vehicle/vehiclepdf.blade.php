@@ -94,10 +94,10 @@ tr{
         </table>
         <table style="margin-bottom:20px;float:right;width:40% !important;border-collapse: collapse;font-size:12px;">
             <td style="border:none"><strong> PICKUP DETAILS<strong></td>
-            <tr> <td style="width: 50%;height:25px;border:none">location</td><td style="width: 50%;height:25px;border:none">56456463</td> </tr>
-            <tr> <td style="width: 50%;height:25px;border:none ;background-color:white;">AUCTION</td><td style="width: 50%;height:25px;border:none;background-color:white;">Sep/30/2022 3:02 PM</td> </tr>
-            <tr> <td style="width: 50%;height:25px;border:none">BUYER ID</td><td style="width: 50%;height:25px;border:none">56456463</td> </tr>
-            <tr> <td style="width: 50%;height:25px;border:none;background-color:white;">LOT#</td><td style="width: 50%;height:25px;border:none;background-color:white;">56456463</td> </tr>
+            <tr> <td style="width: 50%;height:25px;border:none">location</td><td style="width: 50%;height:25px;border:none">{{ @$vehicle[0]['pickup_loaction'] }}</td> </tr>
+            <tr> <td style="width: 50%;height:25px;border:none ;background-color:white;">AUCTION</td><td style="width: 50%;height:25px;border:none;background-color:white;">{{ @$vehicle[0]['auction'] }}</td> </tr>
+            <tr> <td style="width: 50%;height:25px;border:none">BUYER ID</td><td style="width: 50%;height:25px;border:none">{{ @$vehicle[0]['buyer_id'] }}</td> </tr>
+            <tr> <td style="width: 50%;height:25px;border:none;background-color:white;">LOT#</td><td style="width: 50%;height:25px;border:none;background-color:white;">{{ @$vehicle[0]['lot'] }}</td> </tr>
             
         </table>
        
@@ -111,9 +111,9 @@ tr{
       <th>AMOUNT</th>
   </tr>
   <tr>
-    <td>2022 TOYOTA COOROLLA 121231231243235235346346456457567567</td>
+<td>{{ @$vehicle[0]['year'] }} {{ @$vehicle[0]['make'] }} {{ @$vehicle[0]['model'] }} {{ @$vehicle[0]['vin'] }}</td>
     <td>1.00</td>
-    <td>$300.00</td>
+    <td>{{ @$vehicle[0]['towing_charges'] }}</td>
     <td style="background-color: silver;border:none;" class="end-tr"> 
     <div>
         <span >
@@ -122,7 +122,7 @@ tr{
 </span>
 
          <span>
-        300.00
+          {{ @$vehicle[0]['towing_charges'] }}
 </span>
 </div>
     
@@ -131,7 +131,7 @@ tr{
   <tr>
     <td>LATE FEE</td>
     <td>1.00</td>
-    <td>$500.00</td>
+    <td>{{ @$vehicle[0]['late_fee'] }}</td>
     <td style="background-color: silver;border:none;" class="end-tr"><div>
         <span >
          $</span>
@@ -139,14 +139,15 @@ tr{
 </span>
 
          <span>
-        300.00
+          {{ @$vehicle[0]['late_fee'] }}
 </span>
 </div></td>
   </tr>
   <tr>
     <td>STORAGE FEE:</td>
     <td>1.00</td>
-    <td>$50</td>
+    <td>{{ @$vehicle[0]['fee'] }}
+    </td>
     <td style="background-color: silver;border:none;" class="end-tr"><div>
         <span >
          $</span>
@@ -154,14 +155,14 @@ tr{
 </span>
 
          <span>
-        300.00
+          {{ @$vehicle[0]['fee'] }}
 </span>
 </div></td>
   </tr>
   <tr>
     <td>ADDITIONAL CHARGES</td>
     <td>1.00</td>
-    <td>$60</td>
+    <td>{{ @$vehicle[0]['additional_fee'] }}</td>
     <td style="background-color: silver;border:none;" class="end-tr"><div>
         <span >
          $</span>
@@ -169,7 +170,7 @@ tr{
 </span>
 
          <span>
-        300.00
+          {{ @$vehicle[0]['additional_fee'] }}
 </span>
 </div></td>
   </tr>
@@ -185,7 +186,7 @@ tr{
 </span>
 
          <span>
-        300.00
+    {{   @$vehicle[0]['towing_charges']   +   @$vehicle[0]['additional_fee'] +   @$vehicle[0]['fee']  +  @$vehicle[0]['late_fee']  }}
 </span>
 </div></td>
     
@@ -200,7 +201,7 @@ tr{
 </span>
 
          <span>
-        300.00
+          {{   @$vehicle[0]['towing_charges']   +   @$vehicle[0]['additional_fee'] +   @$vehicle[0]['fee']  +  @$vehicle[0]['late_fee']  }}
 </span>
 </div></td>
     
@@ -215,7 +216,7 @@ tr{
 </span>
 
          <span>
-        300.00
+          --
 </span>
 </div></td>
     
@@ -230,7 +231,7 @@ tr{
 </span>
 
          <span>
-        300.00
+          --
 </span>
 </div></td>
     
@@ -245,7 +246,7 @@ tr{
 </span>
 
          <span>
-        300.00
+          {{   @$vehicle[0]['towing_charges']   +   @$vehicle[0]['additional_fee'] +   @$vehicle[0]['fee']  +  @$vehicle[0]['late_fee']  }}
 </span>
 </div></td>
     

@@ -1006,8 +1006,10 @@ class VehicleController extends Controller
         return view('vehicle.vehiclepdf');
     }
 
-    public function exportpdf(){
-            $pdf = PDF::LoadView('vehicle.vehiclepdf');
+    public function exportpdf($id){
+            $data = [];
+            $data['vehicle'] = Vehicle::where('id', $id)->get()->toArray();
+            $pdf = PDF::LoadView('vehicle.vehiclepdf', $data);
             return $pdf->stream('invoice.pdf', array("Attachment" => false));
     }
 
