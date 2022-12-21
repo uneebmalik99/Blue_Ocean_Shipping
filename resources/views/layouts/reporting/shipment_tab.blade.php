@@ -16,7 +16,7 @@
             <div class="d-flex py-3 px-0">
                 <div class="col-2 p-0">
                     <select class="form-control-sm border-style input-border-style rounded col-11 text-muted px-2"
-                        name="location" id="location">
+                        name="location"  id="location">
                         <option selected disabled>Select Location</option>
                         @foreach ($location as $loc)
                             <option value="{{ @$loc['state'] }}">{{ @$loc['state'] }}</option>
@@ -25,7 +25,7 @@
                 </div>
                 <div class="col-3 p-0">
                     <select class="form-control-sm border-style input-border-style rounded col-11 text-muted px-2"
-                        name="shipper" id="shipper">
+                        name="shipper" id="shipper" >
                         <option disabled selected>Select Shipper</option>
                         @foreach ($shippers as $shipper)
                             <option value="{{ @$shipper['name'] }}">{{ @$shipper['name'] }}</option>
@@ -34,7 +34,7 @@
                 </div>
                 <div class="col-3 p-0">
                     <select class="form-control-sm border-style input-border-style rounded col-11 text-muted px-2"
-                        name="status" id="status">
+                        name="status"  id="status">
                         <option disabled selected>Select Status</option>
                         <option value="1">Booked</option>
                         <option value="2">Shipped</option>
@@ -56,8 +56,11 @@
                     <button type="button" class="btn"
                         style="background:#2c3e50;color:white;font-size:11px!important;"
                         onclick="filter_shipment_reporting()">Filter Shipments</button>
+                        <button  type="button" class="mt-2 btn"
+                        style="background:#2c3e50;color:white;font-size:11px!important;"
+                        onclick="clear_reporting()">Clear</button>    
                 </div>
-
+                
 
             </div>
         </form>
@@ -143,8 +146,14 @@
                 processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span> ',
             },
             // ajax: "{{ route('reporting.shipments') }}" +"/"+formData,
-            data: formData,
+            
             ajax: {
+                data : {
+                    'status' : $('#status').val(),
+                    'location' : $('#location').val(),
+                    'shipper' : $('#shipper').val(),
+                    'company_name': $('#company_name').val()
+                },
                 url: "{{ route('reporting.shipments') }}",
                 type: 'POST',
             },
@@ -152,6 +161,7 @@
                     className: 'dt-control',
                     orderable: false,
                     defaultContent: '',
+                   
                 },
                 {
                     data: 'id'
@@ -232,6 +242,9 @@
             });
         });
 
+    }
+    function clear_reporting(){
+        $('#shipment_reporting').DataTable().clear().destroy();
     }
     // $(document).ready(function() {
     //     state = "{{ @$state }}";
