@@ -227,6 +227,7 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
                                     </div>
                                 </a>
                             </div>
+                            @role(['Super Admin','Sub Admin'])
                             <div class="col-5 px-0 d-flex justify-content-center">
                                 <button type="button"
                                     class="text-white form-control-sm border py-1 btn-info rounded modal_button px-2 col-12"
@@ -244,6 +245,7 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
                                     </div>
                                 </button>
                             </div>
+                            @endrole
                         </div>
                     </div>
                     {{-- <div>

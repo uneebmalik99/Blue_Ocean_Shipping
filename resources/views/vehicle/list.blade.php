@@ -352,6 +352,7 @@
                             style="width:100%!important;">
                             <thead class="bg-custom">
                                 <tr class="font-size">
+                                    @role(['Super Admin','Sub Admin'])
                                     <th>
                                         {{-- <input type="checkbox" name="main_checkbox"><label></label>
                                         <button class="delete-button d-none" id="deleteAllbtn">
@@ -367,6 +368,7 @@
                                         </button> --}}
                                         ADD
                                     </th>
+                                    @endrole
                                     <th class="font-bold-tr">IMAGE</th>
                                     <th class="font-bold-tr">CLIENTS</th>
                                     <th class="font-bold-tr">YEAR</th>
@@ -390,9 +392,11 @@
                                 <?php $i = 1; ?>
                                 @foreach ($records as $val)
                                     <tr>
+                                        @role(['Super Admin','Sub Admin'])
                                         <td>
                                             <input type="checkbox" name="checkboxes" id="{{ @$val['id'] }}" title="Add" onchange="addtoShipment(this.id)">
                                         </td>
+                                        @endrole 
                                         <td>
 
                                            
@@ -433,6 +437,7 @@
                                                     </svg>
                                                 </a>
                                             </button>
+                                            @role(['Super Admin','Sub Admin'])
                                             <button class="edit-button" onclick='updatevehicle(this.id)'
                                                 id={{ @$val['id'] }}>
                                                 <a>
@@ -457,6 +462,7 @@
 
                                                 </a>
                                             </button>
+                                            @endrole
                                         </td>
                                     </tr>
                                     <?php $i++; ?>

@@ -24,6 +24,7 @@
                                 <div class="d-flex align-items-center">
                                     <label for="customer_name" class="col-6 px-0 font-size font-bold">Company Name <span
                                             class="text-danger">*</span></label>
+                                    @role(['Super Admin','Sub Admin'])
                                     <select class="form-control-sm border border-0 rounded-pill bg col-6"
                                         name="customer_name" id="customer_name" value="{{ @$user[0]['customer_name'] }}" onchange="getbuyerids()">
                                         @if(@$user[0]['customer_name'])
@@ -38,6 +39,21 @@
                                         @endforeach
                                         @endif
                                     </select>
+                                    @endrole
+                                    @role(['Customer'])
+                                    <select class="form-control-sm border border-0 rounded-pill bg col-6"
+                                        name="customer_name" id="customer_name" value="{{ @$user[0]['customer_name'] }}" onchange="getbuyerids()">
+                                        @if(@$user[0]['customer_name'])
+                                        <option value="{{@$user[0]['customer_name']}}">{{@$user[0]['customer_name']}}</option>
+                                        @else
+                                        <option selected disabled>Select Company Name</option>
+                                        @endif
+                                        
+                                            <option value="{{ Auth::user()->company_name }}">
+                                                {{ Auth::user()->company_name }}</option>
+                                        
+                                    </select>
+                                    @endrole
                                     {{-- <input type="text" class="form-control-sm border border-0 rounded-pill bg col-6"
                                         name="customer_name" id="customer_name" value="{{ @$user[0]['customer_name'] }}"> --}}
                                 </div>
@@ -580,6 +596,7 @@
                                     </div> --}}
 
                             <div class="col-12 py-2">
+                                @role(['Super Admin','Sub Admin'])
                                 <div class="d-flex align-items-center">
                                     <label for="shipper_name" class="col-6 px-0 font-size font-bold">Shipper
                                         Name</label>
@@ -601,6 +618,20 @@
                                         class="form-control-sm border border-0 rounded-pill bg col-6"
                                         name="shipper_name" id="shipper_name" value="{{ @$user[0]['shipper_name'] }}"> --}}
                                 </div>
+                                @endrole
+                                @role('Customer')
+                                <div class="d-flex align-items-center">
+                                    <label for="shipper_name" class="col-6 px-0 font-size font-bold">Shipper
+                                        Name</label>
+                                    <select disabled class="form-control-sm border border-0 rounded-pill bg col-6"
+                                        name="shipper_name" id="shipper_name" value="{{ @$user[0]['shipper_name'] }}">
+                                        
+                                        <option >Select Shipper Name</option>
+                                       
+                                    </select>
+                                </div>
+                                @endrole
+                                
                                 <div class="d-flex justify-content-center">
                                     <span class="text-danger">
                                         @error('shipper_name')
@@ -611,6 +642,7 @@
                             </div>
 
                             <div class="col-12 py-2">
+                                @role(['Super Admin','Sub Admin'])
                                 <div class="d-flex align-items-center">
                                     <label for="status" class="col-6 px-0 font-size font-bold">Status<span
                                             class="text-danger">*</span></label>
@@ -630,10 +662,22 @@
                                         @endforeach
                                         @endif
                                     </select>
-                                    {{-- <input type="text"
-                                        class="form-control-sm border border-0 rounded-pill bg col-6" name="status"
-                                        id="status" value="{{ @$user[0]['status'] }}"> --}}
+                                    
                                 </div>
+                                @endrole
+                                @role(['Customer'])
+                                <div class="d-flex align-items-center">
+                                    <label for="status" class="col-6 px-0 font-size font-bold">Status<span
+                                            class="text-danger">*</span></label>
+                                    <select disabled class="form-control-sm border border-0 rounded-pill bg col-6"
+                                        name="status" id="status" value="1">
+                                        
+                                        <option selected disabled value="1">Select Status</option>
+                                        
+                                    </select>
+                                    
+                                </div>
+                                @endrole
                                 <div class="d-flex justify-content-center">
                                     <span class="text-danger" id="status_error">
 
@@ -828,6 +872,7 @@
                         </div>
 
                     </div>
+                    @role(['Super Admin','Sub Admin'])
                     <div class="tab_card my-3">
                         <div class="col-4 py-3">
                             <div class="text-color" style="cursor: pointer;" id="charges"
@@ -1020,6 +1065,7 @@
                             </div>
                         </div>
                     </div>
+                    @endrole
                 </div>
 
             </div>

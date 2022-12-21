@@ -47,14 +47,17 @@
                     </li>
                 </ul>
                 <ul class="nav-right">
-                    <li class="header-notification change-loges.html">
-                        <a href="{{ route('importVehicles.list') }}">
-                            <span class="pcoded-micon"><i class="ti-calendar"></i></span>
-                            <span class="pcoded-mtext" data-i18n="nav.event-calendar.main">Imported
-                                Vehicles</span>
-                            <span class="pcoded-mcaret"></span>
-                        </a>
-                    </li>
+                    @if (!auth()->user()->hasRole('Customer'))
+                        <li class="header-notification change-loges.html">
+                            <a href="{{ route('importVehicles.list') }}">
+                                <span class="pcoded-micon"><i class="ti-calendar"></i></span>
+                                <span class="pcoded-mtext" data-i18n="nav.event-calendar.main">Imported
+                                    Vehicles</span>
+                                <span class="pcoded-mcaret"></span>
+                            </a>
+                        </li>
+                    @endif
+                    
 
                     <li class="header-notification lng-dropdown">
                         <a href="#" id="dropdown-active-item">
@@ -190,6 +193,7 @@
 
 
                     {{-- add cart --}}
+                    @if(!Auth::user()->hasRole('Customer'))
                     <li class="header-notification">
                         <a style="cursor: pointer;">
                             <i class="fa-solid fa-cart-shopping"></i>
@@ -262,7 +266,7 @@
                             @endif
                         </ul>
                     </li>
-
+                    @endif
 
 
 

@@ -29,6 +29,7 @@
 </div>
 {{-- Modal End --}}
         <div class="d-flex justify-content-end">
+            @role(['Super Admin','Sub Admin'])
             <div>
                 
                 <button type="button"
@@ -41,6 +42,7 @@
                                         </div>
                                     </button>
             </div>
+            @endrole
         </div>
         <br>
         <div class="card">
