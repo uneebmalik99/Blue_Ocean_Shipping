@@ -86,39 +86,49 @@
                             </div>
 
                         </div>
+                        <form id="filter_vehicle_reporting">
                         <div class="d-flex py-3 px-0">
-                            <form id="filter_vehicle_reporting">
                             <div class="col-2 p-0">
-                                <select
-                                    class="form-control-sm border-style input-border-style rounded col-11 text-muted px-2">
-                                    <option>Select Location</option>
+                                <select class="form-control-sm border-style input-border-style rounded col-11 text-muted px-2" name="location" id="location">
+                                    <option selected disabled>Select Location</option>
+                                    @foreach ($location as $loc)
+                                    <option value="{{ @$loc['state'] }}">{{ @$loc['state'] }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-3 p-0">
-                                <select
-                                    class="form-control-sm border-style input-border-style rounded col-11 text-muted px-2">
-                                    <option value="" disabled selected>Select Shipper</option>
+                                <select class="form-control-sm border-style input-border-style rounded col-11 text-muted px-2" name="shipper" id="shipper">
+                                    <option disabled selected>Select Shipper</option>
+                                    @foreach ($shippers as $shipper)
+                                    <option value="{{ @$shipper['name'] }}">{{ @$shipper['name'] }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-3 p-0">
-                                <select
-                                    class="form-control-sm border-style input-border-style rounded col-11 text-muted px-2">
-                                    <option value="" disabled selected>Title Status</option>
+                                <select class="form-control-sm border-style input-border-style rounded col-11 text-muted px-2" name="status" id="status">
+                                    <option disabled selected>Title Status</option>
+                                    @foreach ($titletypes as $type)
+                                    <option value="{{ @$type['name'] }}">{{ @$type['name'] }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-2 p-0">
-                                <select class="form-control-sm border-style input-border-style rounded col-12 text-muted">
-                                    <option value="" disabled selected>Company Name</option>
+                                <select class="form-control-sm border-style input-border-style rounded col-12 text-muted" name="company_name" id="company_name">
+                                    <option disabled selected>Company Name</option>
+                                    @foreach ($companies as $company)
+                                    <option value="{{ @$company['company_name'] }}">{{ @$company['company_name'] }}</option>
+                                        
+                                    @endforeach
                                 </select>
                             </div>
 
                             <div class="col-2 ml-3">
-                               <button class="btn" style="background:#2c3e50;color:white;font-size:11px!important;">Filter Vehicle</button>
+                               <button type="button" class="btn" style="background:#2c3e50;color:white;font-size:11px!important;" id="1" onclick="filter_vehicle_reporting(this.id)">Filter Vehicle</button>
                             </div>
 
-                            </form>
-
+                            
                         </div>
+                    </form>
                     </div>
                     <div id="status_body" class="mt-2 bg-light">
 
@@ -147,7 +157,7 @@
                                     <th class="font-bold-tr">SHIPPER NAME</th>
                                 </tr>
                             </thead>
-                            <tbody class="bg-white font-size">
+                            <tbody class="bg-white font-size" id="filter_reporting_vehicles">
                                 {{-- @foreach ($vehicles as $vehicle)
                                     <tr>
                                         <td>{{ @$vehicle['customer_name'] }}</td>
@@ -306,27 +316,11 @@
                 },
             });
         </script>
-
         <script>
-            // $('#on_hand_table_main').DataTable({
-            //     scrollX: true,
-            //     "lengthMenu": [
-            //         [50, 100, 500],
-            //         [50, 100, 500]
-            //     ],
-            //     language: {
-            //         search: "",
-            //         sLengthMenu: "_MENU_",
-            //         searchPlaceholder: "Search"
-            //     },
-            // });
-
             function dismissmodal() {
                 $('#exampleModal2').modal('hide');
             }
         </script>
-
-
         <script>
             function change_reporting_tab(tab) {
                 $('.reporting_cls').removeClass('next-style');
@@ -516,9 +510,65 @@
                         });
 
 
+                        // $('#shipment_reporting').DataTable({
+                        //     scrollX: true,
+                        //     "lengthMenu": [
+                        //         [50, 100, 500],
+                        //         [50, 100, 500]
+                        //     ],
+                        //     columnDefs: [{
+                        //             orderable: true,
+                        //             targets: 8
+                        //         },
+                        //         {
+                        //             orderable: true,
+                        //             targets: 9
+                        //         },
+                        //         {
+                        //             orderable: true,
+                        //             targets: 10
+                        //         },
+                        //         {
+                        //             orderable: true,
+                        //             targets: 11
+                        //         },
+                        //         {
+                        //             orderable: false,
+                        //             targets: '_all'
+                        //         }
+                        //     ],
+                        //     language: {
+                        //         search: "",
+                        //         sLengthMenu: "_MENU_",
+                        //         searchPlaceholder: "Search"
+                        //     },
+                        // });
+
+
 
                     }
                 });
+            }
+
+
+
+
+            function filter_vehicle_reporting(status){
+        var formData = new FormData(jQuery('#filter_vehicle_reporting')[0]);
+        formData.append('status', status);
+        console.log(...formData);
+        $.ajax({
+            method: 'POST',
+            url: '{{ URL::to('admin/reporting/filter_vehicle') }}',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(data) {
+                $('#filter_reporting_vehicles').html(data);
+            }
+        });
+
+
             }
         </script>
     @endsection
