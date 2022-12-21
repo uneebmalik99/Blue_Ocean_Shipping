@@ -240,7 +240,9 @@
                                     <b>Search Filter</b>
                                 </span>
                             </div>
+                           
                             <div class="col-6 d-flex justify-content-end p-0">
+                                @role(['Super Admin','Sub Admin'])
                                 <div class="col-4 d-flex justify-content-end px-2">
                                     <a onclick="import_docs()"
                                         class="px-1 text-muted font-size form-contorl-sm border p-1 rounded col-12"
@@ -258,6 +260,7 @@
                                         </div>
                                     </a>
                                 </div>
+                                @endrole
                                 <div class="col-4 d-flex justify-content-end px-2">
                                     <a href="{{ route('vehicle.export') . '/'. 3 }}"
                                         class="px-1 text-muted font-size form-contorl-sm border p-1 rounded col-12"
@@ -291,6 +294,7 @@
                                     </button>
                                 </div>
                             </div>
+                            
                         </div>
                         <div class="d-flex py-3 px-0">
                             
