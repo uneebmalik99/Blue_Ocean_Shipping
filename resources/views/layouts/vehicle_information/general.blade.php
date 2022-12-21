@@ -10,6 +10,12 @@
         border-radius: 10px !important; 
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     }
+    @media screen and (max-width: 67%) {
+        .material-icons {
+    margin-left: 54px;
+    margin-top: 33px;
+  }
+}
     .bottom_button{
         position: absolute;
         top: 80%;
@@ -150,7 +156,7 @@ img {
 .next {
   cursor: pointer;
   position: absolute;
-  top: 25%;
+  top: 33%;
   width: auto;
   padding: 16px;
   margin-top: -50px;
@@ -536,7 +542,7 @@ a:not([href]):not([tabindex]) {
 
                     </div>
 
-                    {{-- <div style="width: 90%; " class="d-flex justify-content-end ">
+                    {{-- <div style="width: 90%; " class="d-flex justify-content-end col-sm-12 ">
 
                         <button class="send mt-3" style="background: #1CACD9; border-radius: 4px;transform: skew(-30deg) !important;font-size: 13px;border:none;color:white; ">
                         <div style="transform: skew(30deg) !important;padding:1px 12px ">
@@ -547,28 +553,28 @@ a:not([href]):not([tabindex]) {
                     </div> --}}
 
 
-                </div>
+                </div >
                 <div class="col-sm-12 col-md-7 col-lg-7 mb-4">
                     <div class="information_gallary" style="margin-top:8px!important;">
+                   
                         <div class="gallary_header d-flex">
                             <div class="row">
                                 <div class="col-12">
-                                    <div class="w-100">
-                                        <div class="w-100 d-flex" style="justify-content: space-around;height:auto;background-color: #e9e9e9;margin: 5px 1px; padding: 0 3px;height:38px;width:80%;">
-                                            <button class="img_active_button img_btn" style="color:black;background-color: #337fb8;font-size:12px!important; border:#e9e9e9;font-weight:600;margin-right:-15px!important" id="vehicle_images" onclick="changeImages(this.id)" tab="{{@$vehicle['id']}}">
+                                <div  class="col-sm-12 col-md-4 col-lg-12" style="background-color:white;padding:0px!important"; >
+                        <button class="img_active_button img_btn col-sm-12 col-md-4 col-lg-4 mb-4" style="color:black;background-color: #337fb8;font-size:12px!important; border:#e9e9e9;font-weight:600; border-top-left-radius: 8px; height:34px;" id="vehicle_images" onclick="changeImages(this.id)" tab="{{@$vehicle['id']}}">
                                                Pickup Images
         
-                                            <button class="image_button mx-1 img_btn" style="color:black;;font-size:12px!important;font-weight:600;margin-right:-24px!important;"  onclick="changeImages(this.id)" tab=" {{@$vehicle['id']}}" id="auction_images">
+                        <button class="image_button img_btn col-sm-12 col-md-4 col-lg-4 mb-4" style="color:black;;font-size:12px!important;font-weight:600;height:34px;"  onclick="changeImages(this.id)" tab=" {{@$vehicle['id']}}" id="auction_images">
                                             
                                                 Auction Image
                                             
                                         </button>
 
-                                        <button class="image_button img_btn" onclick="changeImages(this.id)" tab=" {{@$vehicle['id']}}" id="warehouse_images" style="color:black;background-color:337fb8;font-size: 12px !important;font-weight:600;">Ware House Image
+                                        <button class="image_button img_btn col-sm-12 col-md-4 col-lg-4 mb-4" onclick="changeImages(this.id)" tab=" {{@$vehicle['id']}}" id="warehouse_images" style="color:black;background-color:337fb8;font-size: 12px !important;  border-top-right-radius: 8px; font-weight:600;height:34px">Ware House Image
                                         </button>
-
+                                        <div>
+                                    
                                         </div>
-                                       
         
                                     </div>
 
