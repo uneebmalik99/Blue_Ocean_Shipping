@@ -199,26 +199,11 @@ class ReportingController extends Controller
     public function serverside(Request $request)
     {
         if ($request->ajax()) {
-            // dd($request->status);
+            
 
             
-        //     if($state != null){
-        //         if(Auth::user()->hasRole('Customer')){
-
-        //             $data = Shipment::with('vehicle', 'customer.billings')->where('customer_email', auth()->user()->email)->where('loading_state', $state)->get();
-        //         }
-        //         else{
-        //             $data = Shipment::with('vehicle', 'customer.billings')->get();
-        //         }
-        // }
-        // else{
-        //     if(Auth::user()->hasRole('Customer')){
-        //         $data = Shipment::with('vehicle', 'customer.billings')->where('customer_email', auth()->user()->email)->get();
-        //     }
-        //     else{
-        //         $data = Shipment::with('vehicle', 'customer.billings')->get();
-        //     }
-        // }
+       
+        
         $data = Shipment::with('vehicle', 'customer.billings')->when($request->filled('shipper'), function ($query) use ($request) {
             return $query->where('shipper', $request->shipper);
         })->when($request->filled('location'), function ($query) use ($request) {
@@ -229,7 +214,7 @@ class ReportingController extends Controller
             return $query->Where('customer_name', $request->company_name);
         })->get();
 
-
+        
         // $data = Shipment::with('vehicle', 'customer.billings')->get();
 
             
