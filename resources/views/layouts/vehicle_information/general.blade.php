@@ -230,6 +230,7 @@ a:not([href]):not([tabindex]) {
     color: white;
 }
 
+
 </style>
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
@@ -580,30 +581,23 @@ a:not([href]):not([tabindex]) {
                             <div class="row">
                                 <div class="col-12">
                                     <div class="w-100">
-<<<<<<< HEAD
-                                        <div class="w-100 d-flex" style="justify-content: space-around;margin: 5px 1px; padding: 0 3px;">
-                                            <button class="img_active_button img_btn" id="vehicle_images" onclick="changeImages(this.id)" tab="{{@$vehicle['id']}}">
-                                                <div class="img_button" style="color:#4d89b5!important;font-size: 12px !important;font-weight:600;">Pickup Image</div>
-                                            </button>
-                                            <button class="image_button mx-1 img_btn" style="color:#4d89b5!important;font-size: 12px !important;font-weight:600;margin-left:22px"  onclick="changeImages(this.id)" tab=" {{@$vehicle['id']}}" id="auction_images">
-                                            <div class="img_button">
-=======
                                         <div class="w-100 d-flex" style="justify-content: space-around;height:auto;background-color: #e9e9e9;margin: 5px 1px; padding: 0 3px;height:38px;width:80%;">
                                             <button class="img_active_button img_btn" style="color:black;background-color: #337fb8;font-size:12px!important; border:#e9e9e9;font-weight:600;margin-right:-15px!important" id="vehicle_images" onclick="changeImages(this.id)" tab="{{@$vehicle['id']}}">
                                                Pickup Images
         
                                             <button class="image_button mx-1 img_btn" style="color:black;;font-size:12px!important;font-weight:600;margin-right:-24px!important;"  onclick="changeImages(this.id)" tab=" {{@$vehicle['id']}}" id="auction_images">
                                             
->>>>>>> origin/AqibAzad
                                                 Auction Image
                                             
                                         </button>
-<<<<<<< HEAD
-                                        <button class="image_button img_btn" onclick="changeImages(this.id)" tab=" {{@$vehicle['id']}}" id="warehouse_images" style="color:#4d89b5!important;font-size: 12px !important;font-weight:600;">Ware House Image
-=======
 
                                         <button class="image_button img_btn" onclick="changeImages(this.id)" tab=" {{@$vehicle['id']}}" id="warehouse_images" style="color:black;background-color:337fb8;font-size: 12px !important;font-weight:600;">Ware House Image
->>>>>>> origin/AqibAzad
+                                        </button>
+                                      <button class="image_button img_btn" onclick="changeImages(this.id)" tab=" {{@$vehicle['id']}}" id="warehouse_images" style="color:#4d89b5!important;font-size: 12px !important;font-weight:600;">Ware House Image
+
+
+                                        <button class="image_button img_btn" onclick="changeImages(this.id)" tab=" {{@$vehicle['id']}}" id="warehouse_images" style="color:black;background-color:337fb8;font-size: 12px !important;font-weight:600;">Ware House Image
+
                                         </button>
                                         </div>
                                     </div>
@@ -639,13 +633,13 @@ a:not([href]):not([tabindex]) {
                                                 <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/>
                                                 </filter>
                                                 </defs>
-<<<<<<< HEAD
+
                                                 <i class="material-icons"  onclick="openModal();currentSlide(1)" style="background-color:#65686c;color:white;border-radius:inherit">fullscreen</i>
                                                 </svg>
                                                 
-=======
+
                                                 </svg>    
->>>>>>> origin/QaziKashif
+
                                         </a>
                                         <div class="left_button">
                                             <a href="" style="text-decoration: none">
@@ -719,16 +713,8 @@ a:not([href]):not([tabindex]) {
                                 <h6 class="text-center mt-5 w-100" style="color:gray">No Image Found</h6>
                                 @endif
                                 <div class="image_section">
-<<<<<<< HEAD
 
-<<<<<<< HEAD
-                                    <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12 " style="left:6%">
-=======
-                                    <div class="col-11 mx-auto d-flex flex-wrap changeImages" style="">
->>>>>>> origin/QaziKashif
-=======
                                     <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12 changeImages" style="left:6%">
->>>>>>> origin/AqibAzad
                                         @if(@$vehicle['pickupimages'])
                                             @foreach(@$vehicle['pickupimages'] as $img)  
                                             <img src="{{asset($img['name'])}}" alt=""class="item_1"  class="showMainImage" style="width:120px!important;height:80px!important;"  onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
