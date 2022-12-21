@@ -436,10 +436,10 @@
                                         <label for="state" class="col-5 px-0 font-size font-bold">State
                                             <span class="text-danger">*</span>
                                         </label>
-                                        {{-- <input type="text"
+                                        <input type="text"
                                             class="form-control-sm border border-0 rounded-pill bg col-7"
-                                            name="state" id="state" value="{{ @$documents[0]['state'] }}"> --}}
-                                        <select class="form-control-sm border border-0 rounded-pill bg col-7"
+                                            name="state" id="state" value="{{ @$documents[0]['state'] }}">
+                                        {{-- <select class="form-control-sm border border-0 rounded-pill bg col-7"
                                             name="state" id="state">
                                             @if(@$documents[0]['state'])
                                             <option value="{{ @$documents[0]['state'] }}">{{ @$documents[0]['state'] }}</option>
@@ -454,7 +454,7 @@
                                                 </option>
                                             @endforeach
                                             
-                                        </select>
+                                        </select> --}}
                                     </div>
                                     <div class="col-12 d-flex justify-content-center">
                                         <small id="state_error" class="text-danger"></small>

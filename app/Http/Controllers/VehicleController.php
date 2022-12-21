@@ -754,8 +754,14 @@ class VehicleController extends Controller
             foreach($value as $row){
                 if($i != 1){
                     // dd($row);
-                    if($row[5] != null && $row[6] != null && $row[7] != null && $row[8] != null ){
+                    if($row[4] != null && $row[5] != null && $row[6] != null && $row[7] != null ){
+                    $already_vin_import = ImportVehicle::wherevin($row[7])->first();
+                    $already_vin_vehicle = Vehicle::wherevin($row[7])->first();
+                    if($already_vin_import || $already_vin_vehicle){
+                    }
+                    else{
                         array_push($vehicle_array, $row);
+                    }
                     }
                     else{
                         dd('your file not according to revolution criteria');
@@ -769,24 +775,18 @@ class VehicleController extends Controller
         foreach($vehicle_array as $newValues){
             $import_vehicle = [
                 'customer_name' => '',
-                'entry_date' => $newValues[0],
-                'sale_date' => $newValues[1],
-                'buyer_id' => $newValues[2],
-                'lot' => $newValues[3],
-                'pickup_date' => $newValues[4],
-                'year' => $newValues[5],
-                'make' => $newValues[6],
-                'model' => $newValues[7],
-                'vin' => $newValues[8],
-                'title_state' => $newValues[9],
-                'value' => $newValues[10],
+                'sale_date' => $newValues[0],
+                'buyer_id' => $newValues[1],
+                'lot' => $newValues[2],
+                'pickup_location' => $newValues[3],
+                'year' => $newValues[4],
+                'make' => $newValues[5],
+                'model' => $newValues[6],
+                'vin' => $newValues[7],
+                'value' => $newValues[8],
+                'auction' => $newValues[9],
+                'site' => $newValues[10],
                 'vehicle_type' => '',
-                'color' => $newValues[12],
-                'auction' => $newValues[13],
-                'key' => $newValues[14],
-                'title' => $newValues[15],
-                'title_type' => $newValues[16],
-                'site' => $newValues[17],
                 'shipper_name' => null,
                 'status' => 1,
                 'port' => null,

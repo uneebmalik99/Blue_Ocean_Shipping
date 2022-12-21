@@ -228,10 +228,49 @@ a:not([href]):not([tabindex]) {
     color: white;
 }
 </style>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
+        style="z-index:99999;">
+        <div class="modal-dialog modal-fullscreen scrollable mw-100 m-2 px-3 py-2" role="document">
+            <div class="modal-content">
+                <div class="modal-header d-flex justify-content-between title_style">
+                    <div>
+                        <h5 class="modal-title text-white" id="exampleModalLabel">New {{ $module['singular'] }}</h5>
+                    </div>
+                    <div>
+                        <button type="button" class="close text-white h6" data-dismiss="modal" aria-label="Close"
+                            style="margin-top: -11px;
+                        font-size: 26px;">
+                            <span aria-hidden="true">x</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- Modal End --}}
 <div class="row my-4">
     <div class="col-sm-10 col-md-10 col-lg-4 pl-0" style="height:500px">
         <div class="information_card">
-            <h6>General Information</h6>
+            <div class="d-flex justify-content-between">
+                <h6>General Information</h6>
+            <button class="edit-button mr-3 mt-2" onclick='updatevehicle(this.id)'
+                id={{ @$vehicle['id'] }} style="height: 30px!important;">
+                <a>
+                    <svg width="14" height="10" viewBox="0 0 16 16"
+                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M2.66708 14.0004C2.72022 14.0068 2.77394 14.0068 2.82708 14.0004L5.49375 13.3338C5.61205 13.3056 5.7204 13.2457 5.80708 13.1604L14.0004 4.94042C14.2488 4.69061 14.3881 4.35267 14.3881 4.00042C14.3881 3.64818 14.2488 3.31024 14.0004 3.06042L12.9471 2.00042C12.8233 1.87646 12.6762 1.77811 12.5143 1.71101C12.3525 1.64391 12.179 1.60938 12.0037 1.60938C11.8285 1.60938 11.655 1.64391 11.4932 1.71101C11.3313 1.77811 11.1842 1.87646 11.0604 2.00042L2.86708 10.1938C2.78094 10.2808 2.71891 10.3888 2.68708 10.5071L2.02042 13.1738C1.99645 13.26 1.99011 13.3502 2.00177 13.439C2.01342 13.5277 2.04284 13.6133 2.08826 13.6904C2.13368 13.7676 2.19417 13.8348 2.26613 13.888C2.33808 13.9413 2.42003 13.9795 2.50708 14.0004C2.56022 14.0068 2.61394 14.0068 2.66708 14.0004ZM12.0004 2.94042L13.0604 4.00042L12.0004 5.06042L10.9471 4.00042L12.0004 2.94042ZM3.94042 11.0071L10.0004 4.94042L11.0604 6.00042L4.99375 12.0671L3.58708 12.4138L3.94042 11.0071Z"
+                            fill="#2C77E7" />
+                    </svg>
+
+                </a>
+            </button>
+            </div>
+            
             <div class="information_div mt-3">
                 <div class="d-flex justify-content-between my-2 py-1 " style="border: 1px solid rgba(26, 88, 133, 0.17);
                 border-radius: 10px;width: 90%;margin:6px auto">
@@ -489,12 +528,6 @@ a:not([href]):not([tabindex]) {
                     <span class="information_text">--</span>
                     @endif
                     </div>
-
-
-
-
-
-
                     {{-- <div class="d-flex justify-content-between my-2 py-1" style="border: 1px solid rgba(26, 88, 133, 0.17); border-radius: 10px;width: 90%;margin:4px auto;padding:5px; ">
                         <span class="infromation_mainText ">Order Date</span>
                         @if(@$vehicle['sale_date'])
@@ -511,7 +544,6 @@ a:not([href]):not([tabindex]) {
                     <span class="information_text">--</span>
                     @endif
                     </div> --}}
-
                     {{-- <div class="mt-4 " style="width: 80%;margin:4px auto;padding:5px; ">
                         <p style="color:#6D8DA6; ">Note to department</p>
                     </div> --}}
@@ -520,7 +552,6 @@ a:not([href]):not([tabindex]) {
                             <option value=" ">Please Select department</option>
                         </select>
                     </div> --}}
-
                     <div class="d-flex justify-content-start " style="width: 80%;margin:4px auto;padding:5px; ">
                         <p style="color:#6D8DA6 ">Note</p><br>
                     </div>
@@ -528,22 +559,17 @@ a:not([href]):not([tabindex]) {
                         <textarea name=" " id=" " cols="40" rows="4" style="border: 1px solid rgba(26, 88, 133, 0.17); border-radius: 10px;font-size: 13px;
                     color: #6D8DA6; " disabled>@if(@$vehicle['note']){{@$vehicle['note']}}
                     @else 
-                    --@endif
+                    --
+                    @endif
                 </textarea>
-
                     </div>
-
                     {{-- <div style="width: 90%; " class="d-flex justify-content-end ">
-
                         <button class="send mt-3" style="background: #1CACD9; border-radius: 4px;transform: skew(-30deg) !important;font-size: 13px;border:none;color:white; ">
                         <div style="transform: skew(30deg) !important;padding:1px 12px ">
                             Send
                         </div>
                     </button>
-
                     </div> --}}
-
-
                 </div>
                 <div class="col-sm-12 col-md-7 col-lg-7 mb-4">
                     <div class="information_gallary" style="margin-top:8px!important;">
@@ -555,23 +581,16 @@ a:not([href]):not([tabindex]) {
                                             <button class="img_active_button img_btn" id="vehicle_images" onclick="changeImages(this.id)" tab="{{@$vehicle['id']}}">
                                                 <div class="img_button" style="color:#4d89b5!important;font-size: 12px !important;font-weight:600;">Pickup Image</div>
                                             </button>
-        
                                             <button class="image_button mx-1 img_btn" style="color:#4d89b5!important;font-size: 12px !important;font-weight:600;margin-left:22px"  onclick="changeImages(this.id)" tab=" {{@$vehicle['id']}}" id="auction_images">
                                             <div class="img_button">
                                                 Auction Image
                                             </div>
                                         </button>
-
                                         <button class="image_button img_btn" onclick="changeImages(this.id)" tab=" {{@$vehicle['id']}}" id="warehouse_images" style="color:#4d89b5!important;font-size: 12px !important;font-weight:600;">Ware House Image
                                         </button>
-
                                         </div>
-                                       
-        
                                     </div>
-
                                 </div>
-
                                 @if(@$vehicle['pickupimages'])
                                 <div class="col-12 main_image">
                                
@@ -603,11 +622,14 @@ a:not([href]):not([tabindex]) {
                                                 <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/>
                                                 </filter>
                                                 </defs>
+<<<<<<< HEAD
                                                 <i class="material-icons"  onclick="openModal();currentSlide(1)" style="background-color:#65686c;color:white;border-radius:inherit">fullscreen</i>
                                                 </svg>
                                                 
+=======
+                                                </svg>    
+>>>>>>> origin/QaziKashif
                                         </a>
-                                        
                                         <div class="left_button">
                                             <a href="" style="text-decoration: none">
                                                 <svg width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -671,8 +693,7 @@ a:not([href]):not([tabindex]) {
                                                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/>
                                                     </filter>
                                                     </defs>
-                                                    </svg>
-                                                    
+                                                    </svg>                  
                                             </a>
                                         </div>
                                     </div>
@@ -680,10 +701,13 @@ a:not([href]):not([tabindex]) {
                                 @else
                                 <h6 class="text-center mt-5 w-100" style="color:gray">No Image Found</h6>
                                 @endif
-
                                 <div class="image_section">
+<<<<<<< HEAD
 
                                     <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12 " style="left:6%">
+=======
+                                    <div class="col-11 mx-auto d-flex flex-wrap changeImages" style="">
+>>>>>>> origin/QaziKashif
                                         @if(@$vehicle['pickupimages'])
                                             @foreach(@$vehicle['pickupimages'] as $img)  
                                             <img src="{{asset($img['name'])}}" alt=""class="item_1"  class="showMainImage" style="width:120px!important;height:80px!important;"  onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
@@ -692,8 +716,6 @@ a:not([href]):not([tabindex]) {
                                     </div>
                                 </div>
                             </div>
-                            
-                           
                         </div>
                     </div>
                     @if(@$vehicle['pickupimages'])

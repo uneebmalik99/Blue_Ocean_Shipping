@@ -38,7 +38,7 @@
                 <td>{{ $val['pickup_location'] }}</td>
                 <td>{{ $val['pickup_date'] }}</td>
                 <td>{{ $val['delivered'] }}</td>
-                <td>{{ date_diff( new \DateTime(@$val['delivered']), new \DateTime())->format("%d") }}</td>
+                <td>{{ (@$val['posted_date']) ? date_diff( new \DateTime(@$val['posted_date']), new \DateTime())->format("%d") + 1 : 0 }}</td>
                 <td>{{ $val['title'] }}</td>
                 <td>{{ $val['key'] }}</td>
                 <td>{{ $val['towing_charges'] }}</td>

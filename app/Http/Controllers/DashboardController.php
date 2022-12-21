@@ -77,7 +77,6 @@ class DashboardController extends Controller
     public function dashboard(){
         $data = [];
         $data = [
-            // "page_title" => $this->plural . " List",
             "page_heading" => $this->plural . ' List',
             "breadcrumbs" => array('#' => $this->plural . " List"),
             "module" => [
@@ -114,13 +113,13 @@ class DashboardController extends Controller
                 $onhand_count = $onhand->count();
                 // $onhand_value = $onhand->sum('value');
                 $data['onhand_count'] = $onhand_count;
-                $data['onhand_value'] = $onhand_value;
+                // $data['onhand_value'] = $onhand_value;
         
                 $dispatch =  Vehicle::where('added_by_user', auth()->user()->id)->where('status', '2');
                 $dispatch_count = $dispatch->count();
                 // $dispatch_value = $dispatch->sum('value'); 
                 $data['dispatch_count'] = $dispatch_count;
-                $data['dispatch_value'] = $dispatch_value;
+                // $data['dispatch_value'] = $dispatch_value;
 
 
                  // ======= shipments statuses  ====== 

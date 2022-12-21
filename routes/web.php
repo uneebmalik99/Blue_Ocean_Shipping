@@ -12,6 +12,7 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ShipmentController;
 use App\Http\Controllers\StickyController;
 use App\Http\Controllers\MasterTowing;
+use App\Http\Controllers\ReportingController;
 use App\Http\Controllers\ShipmentRateController;
 use App\Http\Controllers\MasterTowingController;
 use App\Http\Controllers\TicketController;
@@ -59,7 +60,7 @@ Route::prefix('/admin')->middleware(['auth','login.status'])->group(function () 
     Route::get('/user/allroles',[App\Http\Controllers\UserController::class,'roles'])->name('user.allroles');
 
 
- Route::get('/users/createUser',[App\Http\Controllers\UserController::class,'createUser'])->name('user.createUser');
+    Route::get('/users/createUser',[App\Http\Controllers\UserController::class,'createUser'])->name('user.createUser');
 
     // Customer Routes
     Route::get('/customers', [CustomerController::class, 'index'])->name('customer.list');
@@ -328,9 +329,13 @@ Route::prefix('/admin')->middleware(['auth','login.status'])->group(function () 
 
     Route::get('/dashboard/records/{state?}', [DashboardController::class, 'serverside'])->name('dashboard.records');
 
+//  < ============================================  Reporting ========================= >
+ 
+    Route::get('/reporitng',                           [ReportingController::class, 'index']);
+    Route::post('/reporitng/changetab',                           [ReportingController::class, 'changetab'])->name('reporting.changetab');
+    Route::get('/reporting/shipments/{state?}', [ReportingController::class, 'serverside'])->name('reporting.shipments');
 
 
-    Route::get('/inventory',                            function(){return "Coming Soon!";});
     //Inventory
     Route::get('/invoice',                              [InvoiceController::class, 'index'])->name('invoice.index');
     Route::get('/invoices/create',                      [InvoiceController::class, 'create_invoice'])->name('invoice.create');
