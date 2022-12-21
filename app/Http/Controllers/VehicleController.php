@@ -865,6 +865,8 @@ class VehicleController extends Controller
         }
         // return $data['images'];
         $output['main_image'] =view('layouts.vehicle_information.Vehicle_image',$data)->render();
+        $output['slide_image'] =view('layouts.vehicle_information.slide_main_image',$data)->render();
+        // dd($output['slide_image']);
         $output['images'] = view('layouts.vehicle_information.Vehicle_images', $data)->render();
 
         // foreach ($data['images'] as $img) {
