@@ -553,26 +553,25 @@ a:not([href]):not([tabindex]) {
                     </div> --}}
 
 
-                </div >
+                </div>
                 <div class="col-sm-12 col-md-7 col-lg-7 mb-4">
                     <div class="information_gallary" style="margin-top:8px!important;">
-                   
-                        <div class="gallary_header d-flex">
-                            <div class="row">
-                                <div class="col-12">
-                                <div  class="col-sm-12 col-md-4 col-lg-12" style="background-color:white;padding:0px!important"; >
-                        <button class="img_active_button img_btn col-sm-12 col-md-4 col-lg-4 mb-4" style="color:black;background-color: #337fb8;font-size:12px!important; border:#e9e9e9;font-weight:600; border-top-left-radius: 8px; height:34px;" id="vehicle_images" onclick="changeImages(this.id)" tab="{{@$vehicle['id']}}">
+                    <div>
+                    <button class="img_active_button img_btn col-sm-12 col-md-4 col-lg-4 mb-4" style="color:black;border-top-left-radius: 8px;background-color: #337fb8;font-size:12px!important; border:#e9e9e9;font-weight:600;height:34px;" id="vehicle_images" onclick="changeImages(this.id)" tab="{{@$vehicle['id']}}">
                                                Pickup Images
         
-                        <button class="image_button img_btn col-sm-12 col-md-4 col-lg-4 mb-4" style="color:black;;font-size:12px!important;font-weight:600;height:34px;"  onclick="changeImages(this.id)" tab=" {{@$vehicle['id']}}" id="auction_images">
+                                            <button class="image_button  img_btn col-sm-12 col-md-4 col-lg-4 mb-4" style="color:black;;font-size:12px!important;font-weight:600;margin-right:-24px!important;height:34px;"  onclick="changeImages(this.id)" tab=" {{@$vehicle['id']}}" id="auction_images">
                                             
                                                 Auction Image
                                             
                                         </button>
 
-                                        <button class="image_button img_btn col-sm-12 col-md-4 col-lg-4 mb-4" onclick="changeImages(this.id)" tab=" {{@$vehicle['id']}}" id="warehouse_images" style="color:black;background-color:337fb8;font-size: 12px !important;  border-top-right-radius: 8px; font-weight:600;height:34px">Ware House Image
+                                        <button class="image_button img_btn col-sm-12 col-md-4 col-lg-4 mb-3" onclick="changeImages(this.id)" tab=" {{@$vehicle['id']}}" id="warehouse_images" style="color:black;background-color:337fb8;font-size: 12px !important;border-top-right-radius: 8px;font-weight:600;height:34px;right:-19px">Ware House Image
                                         </button>
                                         <div>
+                        <div class="gallary_header d-flex">
+                            <div class="row">
+                                <div class="col-12">
                                     
                                         </div>
         
