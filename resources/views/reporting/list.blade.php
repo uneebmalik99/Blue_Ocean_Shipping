@@ -87,7 +87,8 @@
 
                         </div>
                         <div class="d-flex py-3 px-0">
-                            <div class="col-3 p-0">
+                            <form id="filter_vehicle_reporting">
+                            <div class="col-2 p-0">
                                 <select
                                     class="form-control-sm border-style input-border-style rounded col-11 text-muted px-2">
                                     <option>Select Location</option>
@@ -105,11 +106,18 @@
                                     <option value="" disabled selected>Title Status</option>
                                 </select>
                             </div>
-                            <div class="col-3 p-0">
+                            <div class="col-2 p-0">
                                 <select class="form-control-sm border-style input-border-style rounded col-12 text-muted">
                                     <option value="" disabled selected>Company Name</option>
                                 </select>
                             </div>
+
+                            <div class="col-2 ml-3">
+                               <button class="btn" style="background:#2c3e50;color:white;font-size:11px!important;">Filter Vehicle</button>
+                            </div>
+
+                            </form>
+
                         </div>
                     </div>
                     <div id="status_body" class="mt-2 bg-light">
@@ -140,7 +148,7 @@
                                 </tr>
                             </thead>
                             <tbody class="bg-white font-size">
-                                @foreach ($vehicles as $vehicle)
+                                {{-- @foreach ($vehicles as $vehicle)
                                     <tr>
                                         <td>{{ @$vehicle['customer_name'] }}</td>
                                         <td>{{ @$vehicle['year'] }}</td>
@@ -163,7 +171,7 @@
                                         <td>{{ @$vehicle['port'] }}</td>
                                         <td>{{ @$vehicle['shipper_name'] }}</td>
                                     </tr>
-                                @endforeach
+                                @endforeach --}}
 
                             </tbody>
                         </table>

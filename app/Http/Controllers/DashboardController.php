@@ -77,7 +77,6 @@ class DashboardController extends Controller
     public function dashboard(){
         $data = [];
         $data = [
-            // "page_title" => $this->plural . " List",
             "page_heading" => $this->plural . ' List',
             "breadcrumbs" => array('#' => $this->plural . " List"),
             "module" => [
