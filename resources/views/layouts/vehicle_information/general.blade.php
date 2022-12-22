@@ -1,5 +1,6 @@
 {{-- {{dd(@$vehicle)}} --}}
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
     .item_1 {
         transition: transform .2s;
@@ -236,51 +237,11 @@ a:not([href]):not([tabindex]) {
     color: white;
 }
 
-
 </style>
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
-        style="z-index:99999;">
-        <div class="modal-dialog modal-fullscreen scrollable mw-100 m-2 px-3 py-2" role="document">
-            <div class="modal-content">
-                <div class="modal-header d-flex justify-content-between title_style">
-                    <div>
-                        <h5 class="modal-title text-white" id="exampleModalLabel">New {{ $module['singular'] }}</h5>
-                    </div>
-                    <div>
-                        <button type="button" class="close text-white h6" data-dismiss="modal" aria-label="Close"
-                            style="margin-top: -11px;
-                        font-size: 26px;">
-                            <span aria-hidden="true">x</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="modal-body">
-                    ...
-                </div>
-            </div>
-        </div>
-    </div>
-    {{-- Modal End --}}
 <div class="row my-4">
     <div class="col-sm-10 col-md-10 col-lg-4 pl-0" style="height:500px">
         <div class="information_card">
-            <div class="d-flex justify-content-between">
-                <h6>General Information</h6>
-            <button class="edit-button mr-3 mt-2" onclick='updatevehicle(this.id)'
-                id={{ @$vehicle['id'] }} style="height: 30px!important;">
-                <a>
-                    <svg width="14" height="10" viewBox="0 0 16 16"
-                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M2.66708 14.0004C2.72022 14.0068 2.77394 14.0068 2.82708 14.0004L5.49375 13.3338C5.61205 13.3056 5.7204 13.2457 5.80708 13.1604L14.0004 4.94042C14.2488 4.69061 14.3881 4.35267 14.3881 4.00042C14.3881 3.64818 14.2488 3.31024 14.0004 3.06042L12.9471 2.00042C12.8233 1.87646 12.6762 1.77811 12.5143 1.71101C12.3525 1.64391 12.179 1.60938 12.0037 1.60938C11.8285 1.60938 11.655 1.64391 11.4932 1.71101C11.3313 1.77811 11.1842 1.87646 11.0604 2.00042L2.86708 10.1938C2.78094 10.2808 2.71891 10.3888 2.68708 10.5071L2.02042 13.1738C1.99645 13.26 1.99011 13.3502 2.00177 13.439C2.01342 13.5277 2.04284 13.6133 2.08826 13.6904C2.13368 13.7676 2.19417 13.8348 2.26613 13.888C2.33808 13.9413 2.42003 13.9795 2.50708 14.0004C2.56022 14.0068 2.61394 14.0068 2.66708 14.0004ZM12.0004 2.94042L13.0604 4.00042L12.0004 5.06042L10.9471 4.00042L12.0004 2.94042ZM3.94042 11.0071L10.0004 4.94042L11.0604 6.00042L4.99375 12.0671L3.58708 12.4138L3.94042 11.0071Z"
-                            fill="#2C77E7" />
-                    </svg>
-
-                </a>
-            </button>
-            </div>
-            
+            <h6>General Information</h6>
             <div class="information_div mt-3">
                 <div class="d-flex justify-content-between my-2 py-1 " style="border: 1px solid rgba(26, 88, 133, 0.17);
                 border-radius: 10px;width: 90%;margin:6px auto">
@@ -425,11 +386,11 @@ a:not([href]):not([tabindex]) {
 
 
                 <div class="information_button d-flex justify-content-center mt-3" style="margin:50px">
-                    <a href="{{ route('vehicle.exportpdf', @$vehicle['id'] )}} " target="_blank">
+                    <a href="{{ route('vehicle.exportpdf')}} " target="_blank">
                     <button style="background: #1F689E;
                     transform: skew(-30deg) !important;border:none;
-                    border-radius: 4px;color:white;margin-right: 6px;font-size: 12px;"><div style="transform: skew(30deg) !important;padding:1px 4px">
-                        Trucking PDF
+                    border-radius: 4px;color:white;margin-right: 6px;font-size: 13px;"><div style="transform: skew(30deg) !important;padding:1px 4px">
+                     <i class="fa fa-file-pdf-o" style="font-size:12px"></i>   Trucking PDF
                     </div></button>
                 </a>
                     {{-- <button style="background: #1CACD9;border:none;font-size:12px;
@@ -538,6 +499,12 @@ a:not([href]):not([tabindex]) {
                     <span class="information_text">--</span>
                     @endif
                     </div>
+
+
+
+
+
+
                     {{-- <div class="d-flex justify-content-between my-2 py-1" style="border: 1px solid rgba(26, 88, 133, 0.17); border-radius: 10px;width: 90%;margin:4px auto;padding:5px; ">
                         <span class="infromation_mainText ">Order Date</span>
                         @if(@$vehicle['sale_date'])
@@ -554,6 +521,7 @@ a:not([href]):not([tabindex]) {
                     <span class="information_text">--</span>
                     @endif
                     </div> --}}
+
                     {{-- <div class="mt-4 " style="width: 80%;margin:4px auto;padding:5px; ">
                         <p style="color:#6D8DA6; ">Note to department</p>
                     </div> --}}
@@ -562,6 +530,7 @@ a:not([href]):not([tabindex]) {
                             <option value=" ">Please Select department</option>
                         </select>
                     </div> --}}
+
                     <div class="d-flex justify-content-start " style="width: 80%;margin:4px auto;padding:5px; ">
                         <p style="color:#6D8DA6 ">Note</p><br>
                     </div>
@@ -569,9 +538,9 @@ a:not([href]):not([tabindex]) {
                         <textarea name=" " id=" " cols="40" rows="4" style="border: 1px solid rgba(26, 88, 133, 0.17); border-radius: 10px;font-size: 13px;
                     color: #6D8DA6; " disabled>@if(@$vehicle['note']){{@$vehicle['note']}}
                     @else 
-                    --
-                    @endif
+                    --@endif
                 </textarea>
+
                     </div>
 
                     {{-- <div style="width: 90%; " class="d-flex justify-content-end col-sm-12 ">
@@ -581,37 +550,35 @@ a:not([href]):not([tabindex]) {
                             Send
                         </div>
                     </button>
+
                     </div> --}}
+
+
                 </div>
                 <div class="col-sm-12 col-md-7 col-lg-7 mb-4">
                     <div class="information_gallary" style="margin-top:8px!important;">
-                    <div>
-                    <button class="img_active_button img_btn col-sm-12 col-md-4 col-lg-4 mb-4" style="color:black;border-top-left-radius: 8px;background-color: #337fb8;font-size:12px!important; border:#e9e9e9;font-weight:600;height:34px;" id="vehicle_images" onclick="changeImages(this.id)" tab="{{@$vehicle['id']}}">
+                    <div class="d-flex" style="width:100%">
+                    <button class="img_active_button img_btn col-sm-12 col-md-4 col-lg-4 mb-4" style="color:black;border-top-left-radius: 8px;background-color: #337fb8;font-size:12px!important; border:#e9e9e9;font-weight:600;height:41px;" id="vehicle_images" onclick="changeImages(this.id)" tab="{{@$vehicle['id']}}">
                                                Pickup Images
         
-                                            <button class="image_button  img_btn col-sm-12 col-md-4 col-lg-4 mb-4" style="color:black;;font-size:12px!important;font-weight:600;margin-right:-24px!important;height:34px;"  onclick="changeImages(this.id)" tab=" {{@$vehicle['id']}}" id="auction_images">
+                                            <button class="image_button  img_btn col-sm-12 col-md-4 col-lg-4 mb-4" style="color:black;;font-size:12px!important;font-weight:600;margin-right:-24px!important;height:41px;"  onclick="changeImages(this.id)" tab=" {{@$vehicle['id']}}" id="auction_images">
                                             
                                                 Auction Image
                                             
                                         </button>
 
-                                        <button class="image_button img_btn col-sm-12 col-md-4 col-lg-4 mb-3" onclick="changeImages(this.id)" tab=" {{@$vehicle['id']}}" id="warehouse_images" style="color:black;background-color:337fb8;font-size: 12px !important;border-top-right-radius: 8px;font-weight:600;height:34px;right:-19px">Ware House Image
+                                        <button class="image_button img_btn col-sm-12 col-md-4 col-lg-4 mb-3" onclick="changeImages(this.id)" tab=" {{@$vehicle['id']}}" id="warehouse_images" style="color:black;background-color:337fb8;font-size: 12px !important;border-top-right-radius: 8px;font-weight:600;height:41px;right:-25px">Ware House Image
                                         </button>
-                                        <div>
+                    </div>
                         <div class="gallary_header d-flex">
-                            <div class="row">
-                                <div class="col-12">
-                                    
-                                        </div>
-        
-                                    </div>
+                            
 
                                 </div>
 
                                 @if(@$vehicle['pickupimages'])
                                 <div class="col-12 main_image">
                                
-                                    <div class="w-100  p-3" style="position: relative;">
+                                    <div class="w-100  " style="position: relative;">
                                     
                                     <div>
                                         <img src="{{asset(@$vehicle['pickupimages'][0]['name'])}}" alt=""class="img_fluid mx-auto w-100" style="height:auto!important;border-radius: 10px!important;" id="main_image_box">
@@ -639,14 +606,11 @@ a:not([href]):not([tabindex]) {
                                                 <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/>
                                                 </filter>
                                                 </defs>
-
                                                 <i class="material-icons"  onclick="openModal();currentSlide(1)" style="background-color:#65686c;color:white;border-radius:inherit">fullscreen</i>
                                                 </svg>
                                                 
-
-                                                </svg>    
-
                                         </a>
+                                        
                                         <div class="left_button">
                                             <a href="" style="text-decoration: none">
                                                 <svg width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -710,7 +674,8 @@ a:not([href]):not([tabindex]) {
                                                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/>
                                                     </filter>
                                                     </defs>
-                                                    </svg>                  
+                                                    </svg>
+                                                    
                                             </a>
                                         </div>
                                     </div>
@@ -718,31 +683,35 @@ a:not([href]):not([tabindex]) {
                                 @else
                                 <h6 class="text-center mt-5 w-100" style="color:gray">No Image Found</h6>
                                 @endif
+
                                 <div class="image_section">
 
-                                    <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12 changeImages" style="left:6%">
+                                    <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12 changeImages" style="left:2%;margin-top:12px">
                                         @if(@$vehicle['pickupimages'])
                                             @foreach(@$vehicle['pickupimages'] as $img)  
-                                            <img src="{{asset($img['name'])}}" alt=""class="item_1"  class="showMainImage" style="width:120px!important;height:80px!important;"  onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+                                            <img src="{{asset($img['name'])}}" alt=""class="item_1"  class="changeImages " style="width:120px!important;height:80px!important;"   class="hover-shadow cursor">
                                             @endforeach
                                         @endif
                                     </div>
+                                    
                                 </div>
+                                
                             </div>
-                        </div>
-                    </div>
-                    @if(@$vehicle['pickupimages'])
+                            @if(@$vehicle['pickupimages'])
                     <div class="row mt-4 showhide">
                         <div class="col-12 d-flex justify-content-center ">
                         <a id="download_all" onclick="downloadAll()">
                             <button style="background: #3e5871;cursor:pointer; border-radius: 6px;border:none;color:white;transform: skew(-30deg);">
                                 <div style="transform: skew(30deg);padding:1px 10px;font-size: 13px;">
-                                Download Images in Zip
+                                <i class="fa fa-download"></i> Download Images in Zip
                             </div>
                         </button>
                         </div>
                     </div>
                     @endif
+                        </div>
+                    </div>
+                   
                 </div>
             </div>
 
