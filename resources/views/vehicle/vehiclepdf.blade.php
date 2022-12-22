@@ -95,7 +95,7 @@ span{
         <table style="margin-top:25px;float:right;width:50% !important;border-collapse: collapse; font-size:12px; left:20%;">
         <tr> <span><b>DATE:</b></span>       <span style="margin-left:22%;">  {{ \Carbon\Carbon::now()->format('Y-m-d') }}</span> </tr>
         <tr>  <span ><b>INVOICE #</b></span>      <span style="margin-left:16%;" >{{ random_int(1000, 9999) }}</span></tr>
-        <tr>  <span><b>FOR:</b></span>        <span style="margin-left:25%;" >{{ @$vehicle[0]['towing_charges'] }}</span> </tr>
+        <tr>  <span><b>FOR:</b></span>        <span style="margin-left:25%;" >TOWING CHARJES</span> </tr>
        <tr style="border:none"><td style="border:none; background-color:white"></td></tr><tr style="border:none"><td style="border:none; background-color:white"></td></tr><tr style="border:none"><td style="border:none; background-color:white"></td></tr><tr style="border:none"><td style="border:none; background-color:white"></td></tr><tr style="border:none"><td style="border:none; background-color:white"></td></tr><tr style="border:none"><td style="border:none; background-color:white"></td></tr>
        <tr style="border:none"><td style="border:none; background-color:white"></td></tr><tr style="border:none"><td style="border:none; background-color:white"></td></tr><tr style="border:none"><td style="border:none; background-color:white"></td></tr><tr style="border:none"><td style="border:none; background-color:white"></td></tr><tr style="border:none"><td style="border:none; background-color:white"></td></tr><tr style="border:none"><td style="border:none; background-color:white"></td></tr>
        <tr style="border:none"><td style="border:none; background-color:white"></td></tr><tr style="border:none"><td style="border:none; background-color:white"></td></tr><tr style="border:none"><td style="border:none; background-color:white"></td></tr><tr style="border:none"><td style="border:none; background-color:white"></td></tr><tr style="border:none"><td style="border:none; background-color:white"></td></tr><tr style="border:none"><td style="border:none; background-color:white"></td></tr>
@@ -198,7 +198,7 @@ span{
  
   <tr class="end-tr">
     
-    <td  colspan="3";  class="end-td" style="border:none;">SUBTOTAL</td>
+    <td  colspan="3";  class="end-td" style="border:none;height: 40px!important;">SUBTOTAL</td>
     <td style="background-color: silver;border:none;"><div>
         <span >
          $</span>
@@ -213,7 +213,7 @@ span{
   </tr>
   <tr class="end-tr">
     
-    <td  colspan="3";  class="end-td" style="border:none;">TAX RATE</td>
+    <td  colspan="3";  class="end-td" style="border:none;height: 40px!important;">TAX RATE</td>
     <td style="background-color: silver;border:none; border-left:2px;border-left:red"><div>
         <span >
          $</span>
@@ -221,29 +221,14 @@ span{
 </span>
 
          <span>
-          {{   @$vehicle[0]['towing_charges']   +   @$vehicle[0]['additional_fee'] +   @$vehicle[0]['port_detention_fee']  +  @$vehicle[0]['late_fee']  }}
+         --
 </span>
 </div></td>
     
   </tr>
   <tr class="end-tr">
     
-    <td  colspan="3";  class="end-td" style="border:none;">SALES TAX</td>
-    <td style="background-color: silver;border:none; border-left:2px;border-left:red"><div>
-        <span >
-         $</span>
-         <span>
-</span>
-
-         <span>
-          --
-</span>
-</div></td>
-    
-  </tr>
-  <tr class="end-tr">
-    
-    <td  colspan="3";  class="end-td" style="border:none;">OTHERS</td>
+    <td  colspan="3";  class="end-td" style="border:none;height: 40px!important;">SALES TAX</td>
     <td style="background-color: silver;border:none; border-left:2px;border-left:red"><div>
         <span >
          $</span>
@@ -258,7 +243,22 @@ span{
   </tr>
   <tr class="end-tr">
     
-    <td  colspan="3";  class="end-td" style="border:none;"><b>TOTAL</b></td>
+    <td  colspan="3";  class="end-td" style="border:none;height: 40px!important;">OTHERS</td>
+    <td style="background-color: silver;border:none; border-left:2px;border-left:red;"><div>
+        <span >
+         $</span>
+         <span>
+</span>
+
+         <span>
+          --
+</span>
+</div></td>
+    
+  </tr>
+  <tr class="end-tr">
+    
+    <td  colspan="3";  class="end-td" style="border:none;height: 40px!important;"><b>TOTAL</b></td>
     <td style="background-color: silver;border:none; border-left:2px;border-left:red"><div>
         <span >
          $</span>
