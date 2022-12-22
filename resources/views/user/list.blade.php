@@ -205,7 +205,7 @@
                             <th>Role</th>
                             <th>STATUS</th>
                             <th>PHONE</th>
-                            <th>Created At</th>
+                            
                             @if (@$role['name'] != 'Customer')
                                 <th>Action</th>
                             @endif

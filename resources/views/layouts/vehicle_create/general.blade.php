@@ -680,6 +680,7 @@
                                     </select>
                                     
                                 </div>
+                                <input type="hidden" name="status" value="1"/> 
                                 @endrole
                                 <div class="d-flex justify-content-center">
                                     <span class="text-danger" id="status_error">
