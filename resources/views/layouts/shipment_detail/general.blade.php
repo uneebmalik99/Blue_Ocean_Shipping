@@ -248,7 +248,7 @@ a:not([href]):not([tabindex]) {
      <div class="modal-content">
          <div class="modal-header d-flex justify-content-between title_style">
              <div>
-                 <h5 class="modal-title text-white" id="exampleModalLabel">New {{ $module['singular'] }}</h5>
+                 <h5 class="modal-title text-white" id="exampleModalLabel"></h5>
              </div>
              <div>
                  <button type="button" class="close text-white h6" data-dismiss="modal" aria-label="Close"

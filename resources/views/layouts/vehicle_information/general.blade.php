@@ -260,7 +260,7 @@
         <div class="modal-content">
             <div class="modal-header d-flex justify-content-between title_style">
                 <div>
-                    <h5 class="modal-title text-white" id="exampleModalLabel">New {{ $module['singular'] }}</h5>
+                    <h5 class="modal-title text-white" id="exampleModalLabel"></h5>
                 </div>
                 <div>
                     <button type="button" class="close text-white h6" data-dismiss="modal" aria-label="Close"
@@ -709,7 +709,6 @@
                                                                     in2="effect1_dropShadow_0_1" result="shape" />
                                                             </filter>
                                                         </defs>
-
                                                         <i class="material-icons"
                                                             onclick="openModal();currentSlide(1)"
                                                             style="background-color:#65686c;color:white;border-radius:inherit">fullscreen</i>
