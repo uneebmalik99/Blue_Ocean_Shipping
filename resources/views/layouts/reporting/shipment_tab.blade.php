@@ -121,11 +121,12 @@
             return html;
         }
         var table = $('#shipment_reporting').DataTable({
-            retrieve: true,
-            paging: false,
-            searching: false,
-            processing: true,
-            serverSide: true,
+            // retrieve: true,
+            // paging: false,
+            // searching: false,
+            // processing: true,
+            // serverSide: true,
+            
             responsive: {
                 details: {
                     type: 'column',
@@ -134,7 +135,8 @@
             },
             columnDefs: [{
                 orderable: false,
-                targets: '_all'
+                targets: '_all',
+                
             }],
             'scrollX': true,
             "lengthMenu": [
@@ -148,8 +150,16 @@
                 processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span> ',
             },
             // ajax: "{{ route('reporting.shipments') }}" +"/"+formData,
+            // data: formData,
+            
             
             ajax: {
+                data: {
+                    'status' : $('#status').val(),
+                    'location' : $('#location').val(),
+                    'shipper' : $('#shipper').val(),
+                    'company_name' : $('#company_name').val(),
+                },
                 data : {
                     'status' : $('#status').val(),
                     'location' : $('#location').val(),
@@ -163,6 +173,8 @@
                     className: 'dt-control',
                     orderable: false,
                     defaultContent: '',
+                   
+                    
                    
                 },
                 {

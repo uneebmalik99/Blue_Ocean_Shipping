@@ -17,7 +17,7 @@ class Vehicle extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\Models\User', 'buyer_id', 'id');
+        return $this->belongsTo('App\Models\User', 'customer_name', 'id');
     }
     public function invoice()
     {
