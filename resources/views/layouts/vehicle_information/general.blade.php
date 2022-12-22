@@ -115,7 +115,7 @@
     }
 
     /* The Modal (background) */
-    .modal {
+    .my_modal {
         display: none;
         position: fixed;
         z-index: 1;
@@ -129,7 +129,7 @@
     }
 
     /* Modal Content */
-    .modal-content {
+    .vehicle_modal_content {
         position: relative;
         background-color: #fefefe;
         margin: auto;
@@ -139,7 +139,7 @@
     }
 
     /* The Close Button */
-    .close {
+    .vehicle_close {
         color: red !important;
         position: absolute;
         top: 10px;
@@ -148,8 +148,8 @@
         font-weight: bold;
     }
 
-    .close:hover,
-    .close:focus {
+    .vehicle_close:hover,
+    .vehicle_close:focus {
         color: red !important;
         text-decoration: none;
         cursor: pointer;
@@ -839,8 +839,7 @@
                                                 @foreach (@$vehicle['pickupimages'] as $img)
                                                     <img src="{{ asset($img['name']) }}"
                                                         alt=""class="item_1" class="showMainImage"
-                                                        style="width:120px!important;height:80px!important;"
-                                                        onclick="openModal();currentSlide(1)"
+                                                        style="width:120px!important;height:80px!important;" onclick="showAsMainImage(this.src)"
                                                         class="hover-shadow cursor">
                                                 @endforeach
                                             @endif
@@ -870,10 +869,10 @@
     </div>
 </div>
 
-<div id="myModal" class="modal col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12"
+<div id="myModal" class="my_modal col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12"
     style="color:red;z-index:999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;background-color:#000000db">
-    <span class="close cursor" onclick="closeModal()">&times;</span>
-    <div class="modal-content">
+    <span class="close vehicle_close cursor" onclick="closeModal()">&times;</span>
+    <div class="modal-content vehicle_modal_content">
         <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12 "
             style="left:-2%;width:auto!important;height:455px!important" id="slider_image">
 

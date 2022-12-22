@@ -58,6 +58,7 @@
                         </li>
                     @endif
                     
+                    @if(@$module['type'] == 'Dashboard' || @$module['type'] == 'Vehicles' || @$module['type'] == 'Shipments')
 
                     <li class="header-notification lng-dropdown">
                         <a href="#" id="dropdown-active-item">
@@ -137,6 +138,10 @@
                             </li> --}}
                         </ul>
                     </li>
+                    @endif
+
+
+
                     <li class="header-notification">
                         <a style="cursor: pointer;">
                             <i class="ti-bell"></i>
