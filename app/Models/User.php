@@ -22,7 +22,7 @@ class User extends Authenticatable
 
     public function vehicles()
     {
-        return $this->hasMany('App\Models\Vehicle', 'buyer_id', 'id');
+        return $this->hasMany('App\Models\Vehicle', 'customer_name', 'id');
     }
 
     public function customer_documents()

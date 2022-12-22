@@ -108,7 +108,7 @@
 }
 
 /* The Modal (background) */
-.modal {
+.shipment_model_slider {
   display: none;
   position: fixed;
   z-index: 1;
@@ -122,7 +122,7 @@
 }
 
 /* Modal Content */
-.modal-content {
+.shipment_modal_content_slider {
   position: relative;
   background-color: #fefefe;
   margin: auto;
@@ -132,7 +132,7 @@
 }
 
 /* The Close Button */
-.close {
+.shipment_close_slider {
   color: red!important;
   position: absolute;
   top: 10px;
@@ -141,8 +141,8 @@
   font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+.shipment_close_slider:hover,
+.shipment_close_slider:focus {
     color: red!important;
   text-decoration: none;
   cursor: pointer;
@@ -794,9 +794,9 @@ a:not([href]):not([tabindex]) {
     </div>
 </div> --}}
 
-<div id="myModal" class="modal col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12" style= "color:red;z-index:999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;background-color:#000000db">
-  <span class="close cursor" onclick="closeModal()">&times;</span>
-  <div class="modal-content">
+<div id="myModal" class="modal shipment_model_slider col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12" style= "color:red;z-index:999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;background-color:#000000db">
+  <span class="close shipment_close_slider cursor" onclick="closeModal()">&times;</span>
+  <div class="modal-content shipment_modal_content_slider">
   <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12 " style="left:-2%;width:auto!important;height:455px!important">
   
   <div class="mySlides" style="width:auto!important";>

@@ -27,15 +27,18 @@
                                     @role(['Super Admin','Sub Admin'])
                                     <select class="form-control-sm border border-0 rounded-pill bg col-6"
                                         name="customer_name" id="customer_name" value="{{ @$user[0]['customer_name'] }}" onchange="getbuyerids()">
-                                        @if(@$user[0]['customer_name'])
-                                        <option value="{{@$user[0]['customer_name']}}">{{@$user[0]['customer_name']}}</option>
+                                        @if(@$user[0]['user'])
+                                        <option value="{{@$user[0]['user']['id']}}" disabled selected>{{@$user[0]['user']['company_name']}}</option>
                                         @else
                                         <option selected disabled>Select Company Name</option>
                                         @endif
                                         @if($customer_name)
                                         @foreach ($customer_name as $customer_names)
-                                            <option value="{{ @$customer_names['company_name'] }}">
+                                        @if(@$user[0]['user']['id'] == @$customer_names['id'])
+                                        @else
+                                            <option value="{{ @$customer_names['id'] }}">
                                                 {{ @$customer_names['company_name'] }}</option>
+                                        @endif
                                         @endforeach
                                         @endif
                                     </select>

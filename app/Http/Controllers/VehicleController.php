@@ -299,7 +299,8 @@ class VehicleController extends Controller
         ];
         if ($request->ajax()) {
             $id = $request->id;
-            $data['user'] = Vehicle::with('vehicle_status')->where('id', $id)->get()->toArray();
+            $data['user'] = Vehicle::with('user','vehicle_status')->where('id', $id)->get()->toArray();
+            // dd($data['user']);
             $data['update_buyer_id'] = User::with('billings')->wherecompany_name($data['user'][0]['customer_name'])->get()->toArray();
             // dd($data['update_buyer_id']);
             // $Obj_vehicle = new Vehicle;
@@ -865,6 +866,8 @@ class VehicleController extends Controller
         }
         // return $data['images'];
         $output['main_image'] =view('layouts.vehicle_information.Vehicle_image',$data)->render();
+        $output['slide_image'] =view('layouts.vehicle_information.slide_main_image',$data)->render();
+        // dd($output['slide_image']);
         $output['images'] = view('layouts.vehicle_information.Vehicle_images', $data)->render();
 
         // foreach ($data['images'] as $img) {
@@ -1008,7 +1011,8 @@ class VehicleController extends Controller
 
     public function exportpdf($id){
             $data = [];
-            $data['vehicle'] = Vehicle::where('id', $id)->get()->toArray();
+            $data['vehicle'] = Vehicle::with('user.billings', 'user.shippers')->where('id', $id)->get()->toArray();
+            // dd($data['vehicle']);
             $pdf = PDF::LoadView('vehicle.vehiclepdf', $data);
             return $pdf->stream('invoice.pdf', array("Attachment" => false));
     }
@@ -1016,7 +1020,7 @@ class VehicleController extends Controller
     public function getbuyersids(Request $request){
         $data = [];
         $output = [];
-        $data['buyerids'] = User::with('billings')->where('company_name', $request->company_name)->get()->toArray();
+        $data['buyerids'] = User::with('billings')->where('id', $request->company_name)->get()->toArray();
         $output = view('layouts.vehicle_create.buyerIds' , $data)->render();
         return Response($output);
     }
