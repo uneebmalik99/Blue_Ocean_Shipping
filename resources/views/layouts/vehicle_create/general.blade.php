@@ -332,7 +332,7 @@
                                         @if(@$user[0]['buyer_id'])
                                         <option value="{{@$user[0]['buyer_id']}}">{{@$user[0]['buyer_id']}}</option>
                                         @else
-                                        <option selected disabled>Select Buyer Id</option>
+                                        <option disabled>Select Buyer Id</option>
                                         @endif
                                         
                                         @if(@$update_buyer_id)
@@ -896,7 +896,7 @@
                                     <div
                                         class="d-flex align-items-center d-flex align-items-center form-control-sm border border-0 rounded-pill bg col-6">
                                         <span class="prefix text-dark">$</span>
-                                        <input type="text" class="col-11 general_input" name="dealer_fee"
+                                        <input type="number" class="col-11 general_input" name="dealer_fee"
                                             id="dealer_fee" value="{{ @$user[0]['dealer_fee'] }}">
                                     </div>
                                 </div>
@@ -916,7 +916,7 @@
                                     <div
                                         class="d-flex align-items-center d-flex align-items-center form-control-sm border border-0 rounded-pill bg col-6">
                                         <span class="prefix text-dark">$</span>
-                                        <input type="text" class="col-11 general_input" name="late_fee"
+                                        <input type="number" class="col-11 general_input" name="late_fee"
                                             id="late_fee" value="{{ @$user[0]['late_fee'] }}">
                                     </div>
                                 </div>
@@ -936,7 +936,7 @@
                                     <div
                                         class="d-flex align-items-center d-flex align-items-center form-control-sm border border-0 rounded-pill bg col-6">
                                         <span class="prefix text-dark">$</span>
-                                        <input type="text" class="general_input col-11" name="auction_storage"
+                                        <input type="number" class="general_input col-11" name="auction_storage"
                                             id="auction_storage" value="{{ @$user[0]['auction_storage'] }}">
                                     </div>
                                 </div>
@@ -956,7 +956,7 @@
                                     <div
                                         class="d-flex align-items-center d-flex align-items-center form-control-sm border border-0 rounded-pill bg col-6">
                                         <span class="prefix text-dark">$</span>
-                                        <input type="text" class="general_input col-11" name="towing_charges"
+                                        <input type="number" class="general_input col-11" name="towing_charges"
                                             id="towing_charges" value="{{ @$user[0]['towing_charges'] }}">
                                     </div>
                                 </div>
@@ -975,7 +975,7 @@
                                     <div
                                         class="d-flex align-items-center d-flex align-items-center form-control-sm border border-0 rounded-pill bg col-6">
                                         <span class="prefix text-dark">$</span>
-                                        <input type="text" class="col-11 general_input" name="title_fee"
+                                        <input type="number" class="col-11 general_input" name="title_fee"
                                             id="title_fee" value="{{ @$user[0]['title_fee'] }}">
                                     </div>
                                 </div>
@@ -995,7 +995,7 @@
                                     <div
                                         class="d-flex align-items-center d-flex align-items-center form-control-sm border border-0 rounded-pill bg col-6">
                                         <span class="prefix text-dark">$</span>
-                                        <input type="text" class="general_input col-11" name="port_detention_fee"
+                                        <input type="number" class="general_input col-11" name="port_detention_fee"
                                             id="port_detention_fee" value="{{ @$user[0]['port_detention_fee'] }}">
                                     </div>
                                 </div>
@@ -1015,7 +1015,7 @@
                                     <div
                                         class="d-flex align-items-center d-flex align-items-center form-control-sm border border-0 rounded-pill bg col-6">
                                         <span class="prefix text-dark">$</span>
-                                        <input type="text" class="general_input col-11" name="custom_inspection"
+                                        <input type="number" class="general_input col-11" name="custom_inspection"
                                             id="custom_inspection" value="{{ @$user[0]['custom_inspection'] }}">
                                     </div>
                                 </div>
@@ -1035,7 +1035,7 @@
                                     <div
                                         class="d-flex align-items-center d-flex align-items-center form-control-sm border border-0 rounded-pill bg col-6">
                                         <span class="prefix text-dark">$</span>
-                                        <input type="text" class="col-11 general_input" name="additional_fee"
+                                        <input type="number" class="col-11 general_input" name="additional_fee"
                                             id="additional_fee" value="{{ @$user[0]['additional_fee'] }}">
                                     </div>
                                 </div>
@@ -1054,7 +1054,7 @@
                                     <div
                                         class="d-flex align-items-center d-flex align-items-center form-control-sm border border-0 rounded-pill bg col-6">
                                         <span class="prefix text-dark">$</span>
-                                        <input type="text" class="general_input col-11" name="insurance"
+                                        <input type="number" class="general_input col-11" name="insurance"
                                             id="insurance" value="{{ @$user[0]['insurance'] }}">
                                     </div>
                                 </div>

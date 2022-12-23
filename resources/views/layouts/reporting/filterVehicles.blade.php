@@ -13,9 +13,9 @@
          <td>{{ @$vehicle['key'] }}</td>
          <td>{{ @$vehicle['title_type'] }}</td>
          <td>{{ @$vehicle['sale_date'] }}</td>
-         <td>{{ @$vehicle['sale_date'] }}</td>
+         <td>{{ (@$val['sale_date']) ? date_diff( new \DateTime(@$val['sale_date']), new \DateTime())->format("%d") + 1 : 0 }}</td>
          <td>{{ @$vehicle['delivered'] }}</td>
-         <td>{{ @$vehicle['posted_date'] }}</td>
+         <td>{{ (@$val['posted_date']) ? date_diff( new \DateTime(@$val['posted_date']), new \DateTime())->format("%d") + 1 : 0 }}</td>
          <td>{{ @$vehicle['status'] }}</td>
          <td>{{ @$vehicle['pickup_location'] }}</td>
          <td>{{ @$vehicle['port'] }}</td>

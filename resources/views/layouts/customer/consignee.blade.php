@@ -6,18 +6,48 @@
         <div class="text-muted text-left">
             <b>Consignee</b>
         </div>
-        <div class="d-flex justify-content-start py-3">
-            <div class="text-muted d-flex"><input type="radio" name="consignee" value="same as billing party"
+        <div class="d-flex justify-content-start flex-wrap">
+            {{-- <div class="text-muted d-flex"><input type="radio" name="consignee" value="same as billing party"
                     {{ @$shipper[0]['consignee'] == 'same as billing party' ? 'checked' : '' }}>
                 <span class="px-2">Same as Billing Party</span>
             </div>
             <div class="text-muted d-flex px-2"><input type="radio" name="consignee" value="new consignee"
                     {{ @$shipper[0]['consignee'] == 'new consignee' ? 'checked' : '' }}>
                 <span class="px-2"> Add New Consginee</span>
+            </div> --}}
+            <div class="col-xxl-4 col-lg-4 col-md-12 col-sm-12 col-12 text-left text-muted">
+                <label for="first_name">Name</label><br>
+                <input disabled class="form-control-sm border border-info rounded" type="text" name="first_name" id="first_name"
+                    value="{{ @$billing[0]['first_name'] }}">
+            </div>
+            <div class="col-xxl-4 col-lg-4 col-md-12 col-sm-12 col-12 text-left text-muted">
+                <label for="address">Address</label><br>
+                <input disabled class="form-control-sm border border-info rounded" type="text" name="address" id="address"
+                    value="{{ @$billing[0]['address'] }}">
+            </div>
+            <div class="col-xxl-4 col-lg-4 col-md-12 col-sm-12 col-12 text-left text-muted">
+                <label for="country">Country</label><br>
+                <input disabled class="form-control-sm border border-info rounded" type="text" name="country" id="country"
+                    value="{{ @$billing[0]['country'] }}">
+            </div>
+            <div class="col-xxl-4 col-lg-4 col-md-12 col-sm-12 col-12 text-left text-muted">
+                <label for="city">City</label><br>
+                <input disabled class="form-control-sm border border-info rounded" type="text" name="city" id="city"
+                    value="{{ @$billing[0]['city'] }}">
+            </div>
+            <div class="col-xxl-4 col-lg-4 col-md-12 col-sm-12 col-12 text-left text-muted">
+                <label for="zip_code">Zip Code</label><br>
+                <input disabled class="form-control-sm border border-info rounded" type="text" name="zip_code" id="zip_code"
+                    value="{{ @$billing[0]['zip_code'] }}">
+            </div>
+            <div class="col-xxl-4 col-lg-4 col-md-12 col-sm-12 col-12 text-left text-muted">
+                <label for="phone">Phone</label><br>
+                <input disabled class="form-control-sm border border-info rounded" type="text" name="phone" id="phone"
+                    value="{{ @$billing[0]['phone'] }}">
             </div>
         </div>
 
-        <div class="text-muted text-left">
+        <div class="text-muted text-left mt-4">
             <b>Consolidate</b>
         </div>
         <div class="d-flex justify-content-start py-3">

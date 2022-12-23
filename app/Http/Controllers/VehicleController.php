@@ -422,7 +422,6 @@ class VehicleController extends Controller
         $request->validate([
             'customer_name' => 'required',
             'vin' => 'required',
-            
             'auction' => 'required',
             'buyer_id' => 'required',
             'key' => 'required',
@@ -726,7 +725,15 @@ class VehicleController extends Controller
     
     public function export($id)
     {
-        return Excel::download(new VehicleExport($id), 'vehicles.xlsx');
+        $vehicles = Vehicle::with('vehicle_status')->where('status', $id)->get()->toArray();
+        // dd($vehicles);
+        if($vehicles){
+            return Excel::download(new VehicleExport($id), 'vehicles.xlsx');
+        }
+        else{
+            return back()->with('fail', 'OPPS! NO ANY VEHICLE FOUND');
+        }
+        
     }
 
     public function import(Request $request)

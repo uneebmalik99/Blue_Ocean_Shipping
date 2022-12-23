@@ -65,9 +65,8 @@
             </div>
         </form>
     </div>
-    <div class="shipment_table_body">
-        <table id="shipment_reporting" class="table row-border shipment_reporting"
-            style="width:100%!important;overflow-x:scroll!important;">
+    <div class="shipment_table_body" style="overflow: scroll">
+        <table id="shipment_reporting" class="table row-border" style="width:100%!important;">
             <thead class="bg-custom">
                 <tr class="font-size">
                     <th class="font-bold-tr">VIEW</th>
@@ -90,6 +89,7 @@
                 </tr>
             </thead>
             <tbody class="bg-white font-size" id="shipment_tbody">
+                
             </tbody>
         </table>
     </div>

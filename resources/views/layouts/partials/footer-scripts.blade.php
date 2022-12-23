@@ -546,30 +546,60 @@
             error: function(xhr, status, errorThrown) {
                 document.getElementById('load').style.visibility = "hidden";
 
-                iziToast.warning({
-                    message: 'Failed! Some fields are missing',
-                    position: 'topCenter',
-                    zindex: '9999999999999'
-                });
+                
 
                 //    console.log(xhr.responseJSON['errors']);
                 if (xhr.responseJSON['errors']['customer_name']) {
                     $('#customer_name_error').html('<small style="margin-left:72px">Please Fill*</small>');
+                    iziToast.warning({
+                    message: 'Failed! Customer name is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
                 }
-                if (xhr.responseJSON['errors']['buyer_id']) {
-                    $('#buyer_error').html('<small style="margin-left:72px">Please Fill*</small>');
-                }
-                if (xhr.responseJSON['errors']['vin']) {
+                else if(xhr.responseJSON['errors']['vin']) {
                     $('#vin_error').html('<small style="margin-left:72px">Please Fill*</small>');
+                    iziToast.warning({
+                    message: 'Failed! Vin number is missing or already exists',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
                 }
-                if (xhr.responseJSON['errors']['auction']) {
+                else if(xhr.responseJSON['errors']['buyer_id']) {
+                    $('#buyer_error').html('<small style="margin-left:72px">Please Fill*</small>');
+                    iziToast.warning({
+                    message: 'Failed! Buyer id is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
+                }
+                
+                else if(xhr.responseJSON['errors']['auction']) {
                     $('#auction_error').html('<small style="margin-left:72px">Please Fill*</small>');
+                    iziToast.warning({
+                    message: 'Failed! Auction is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
                 }
-                if (xhr.responseJSON['errors']['key']) {
+                else if (xhr.responseJSON['errors']['key']) {
                     $('#key_error').html('<small style="margin-left:72px">Please Fill*</small>');
+                    iziToast.warning({
+                    message: 'Failed! Key is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
                 }
-                if (xhr.responseJSON['errors']['status']) {
+                else if(xhr.responseJSON['errors']['status']) {
                     $('#status_error').html('<small style="margin-left:72px">Please Fill*</small>');
+                    iziToast.warning({
+                    message: 'Failed! Status is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
+                }
+                else{
+
                 }
 
             }
@@ -585,6 +615,7 @@
         $tab_id = id;
         $next_tab = $('#' + $tab_id).data('next');
         var formData = new FormData(jQuery('#vehicle_form')[0]);
+        console.log(...formData);
         $.ajax({
             method: 'POST',
             url: '{{ URL::to('admin/vehicles/create_form') }}',
@@ -652,32 +683,75 @@
             },
             error: function(xhr, status, errorThrown) {
                 document.getElementById('load').style.visibility = "hidden";
+                console.log(xhr.responseJSON['message']);
 
-                iziToast.warning({
-                    message: 'Failed! Some fields are missing',
+              
+                   
+                    if (xhr.responseJSON['errors']['customer_name']) {
+                    $('#customer_name_error').html('<small style="margin-left:72px">Please Fill*</small>');
+                    iziToast.warning({
+                    message: 'Failed! Customer name is missing',
                     position: 'topCenter',
                     zindex: '9999999999999'
                 });
-
-                console.log(xhr.responseJSON['errors']);
-                if (xhr.responseJSON['errors']['customer_name']) {
-                    $('#customer_name_error').html('<small style="margin-left:72px">Please Fill*</small>');
                 }
-                if (xhr.responseJSON['errors']['buyer_id']) {
-                    $('#buyer_error').html('<small style="margin-left:72px">Please Fill*</small>');
+                else if(xhr.responseJSON['errors']['vin']) {
+                   
+                        $('#vin_error').html('<small style="margin-left:72px">Please Fill*</small>');
+                        $('#customer_name_error').html('');
+                        iziToast.warning({
+                        message: 'Failed! Vin number is missing',
+                        position: 'topCenter',
+                        zindex: '9999999999999'
+                    });
                 }
-                if (xhr.responseJSON['errors']['vin']) {
-                    $('#vin_error').html('<small style="margin-left:72px">Please Fill*</small>');
-                }
-                if (xhr.responseJSON['errors']['auction']) {
+                else if(xhr.responseJSON['errors']['auction']) {
                     $('#auction_error').html('<small style="margin-left:72px">Please Fill*</small>');
+                    $('#vin_error').html('');
+                    iziToast.warning({
+                    message: 'Failed! Auction is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
                 }
-                if (xhr.responseJSON['errors']['key']) {
+                else if(xhr.responseJSON['errors']['buyer_id']) {
+                    $('#buyer_error').html('<small style="margin-left:72px">Please Fill*</small>');
+                    $('#auction_error').html('');
+                    iziToast.warning({
+                    message: 'Failed! Buyer id is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
+                }
+                else if (xhr.responseJSON['errors']['key']) {
                     $('#key_error').html('<small style="margin-left:72px">Please Fill*</small>');
+                    $('#buyer_error').html('');
+                    $('#auction_error').html('');
+
+                    iziToast.warning({
+                    message: 'Failed! Key is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
                 }
-                if (xhr.responseJSON['errors']['status']) {
+                else if(xhr.responseJSON['errors']['status']) {
                     $('#status_error').html('<small style="margin-left:72px">Please Fill*</small>');
+                    $('#key_error').html('');
+                    $('#auction_error').html('');
+
+                    iziToast.warning({
+                    message: 'Failed! Status is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
                 }
+                else{
+
+                }
+
+                    
+
+               
 
             }
         });
