@@ -636,8 +636,8 @@ a:not([href]):not([tabindex]) {
 
 
                 </div>
-                <div class="col-sm-12 col-md-6 col-lg-6 mb-5 mt-5" >
-                    <div class="information_gallary"style="margin-top:-85px">
+                <div class="col-sm-12 col-md-7 col-lg-7 mb-7 mt-7" >
+                    <div class="information_gallary"style=" width:97%">
                         <div class="gallary_header d-flex">
                             <div class="row">
                                 <div class="col-12">
@@ -665,12 +665,14 @@ a:not([href]):not([tabindex]) {
                                         <div class="col-12 main_image">
 
                                             <div class="w-100  p-3" style="position: relative;">
+                                            
 
                                                 <div>
                                                     <img src="{{ asset(@$vehicle['pickupimages'][0]['name']) }}"
                                                         alt=""class="img_fluid mx-auto w-100"
                                                         style="height:auto!important;border-radius: 10px!important;"
                                                         id="main_image_box">
+                                                           
                                                 </div>
 
                                                 <a class="bottom_button">
@@ -708,9 +710,7 @@ a:not([href]):not([tabindex]) {
                                                                     in2="effect1_dropShadow_0_1" result="shape" />
                                                             </filter>
                                                         </defs>
-                                                        <i class="material-icons"
-                                                            onclick="openModal();currentSlide(1)"
-                                                            style="background-color:#65686c;color:white;border-radius:inherit">fullscreen</i>
+                                                       
                                                     </svg>
 
 
@@ -822,6 +822,7 @@ a:not([href]):not([tabindex]) {
                                                         </svg>
                                                     </a>
                                                 </div>
+                                               
                                             </div>
                                         </div>
                                     @else
@@ -829,7 +830,7 @@ a:not([href]):not([tabindex]) {
                                     @endif
                                     <div class="image_section">
                                         <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12 changeImages"
-                                            style="left:6%">
+                                            style="left:6%;margin-top:15px;">
                                             @if (@$vehicle['pickupimages'])
                                                 @foreach (@$vehicle['pickupimages'] as $img)
                                                     <img src="{{ asset($img['name']) }}"

@@ -26,8 +26,8 @@
 
     .left_button {
         position: absolute;
-        top: 25px;
-        left: 20px;
+        top: 6px;
+        left: 16px;
         font-size: 10px;
         border: none;
         cursor: pointer;
@@ -234,24 +234,9 @@ a:not([href]):not([tabindex]) {
     text-decoration: none;
     color: white;
 }
-.material-icons {
-    font-family: 'Material Icons';
-    font-weight: normal;
-    font-style: normal;
-    font-size: 24px;
-    line-height: 1;
-    letter-spacing: normal;
-    text-transform: none;
-    display: inline-block;
-    white-space: nowrap;
-    word-wrap: normal;
-    direction: ltr;
-    -webkit-font-feature-settings: 'liga';
-    -webkit-font-smoothing: antialiased;
-    top: 2;
-    margin-top: 6px;
-    margin-right: 6px;
-}
+
+
+
 </style>
 <div class="row my-5">
     <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
@@ -399,13 +384,13 @@ a:not([href]):not([tabindex]) {
 
 
                 </div>
-                <div class="col-sm-12 col-md-5 col-lg-5 mb-5 mt-5" style="margin-top:46px">
-                    <div class="information_gallary">
+                <div class="col-sm-12 col-md-5 col-lg-5 mb-5 mt-5" >
+                    <div class="information_gallary" style="width:100%">
                         <div class="gallary_header d-flex">
                             <div class="row">
                                 <div class="col-12">
                                     <div class="w-100">
-                                    <div class="d-flex" style="width:100%">
+                                    <div class="d-flex" style="width:99%">
                     <button class="img_active_button img_btn col-sm-12 col-md-4 col-lg-4 mb-4" style="color:black;border-top-left-radius: 8px;background-color: #337fb8;font-size:12px!important; border:#e9e9e9;font-weight:600;height:41px;" id="vehicle_images" onclick="changeImages(this.id)" tab="{{@$vehicle['id']}}">
                                                Pickup Images
         
@@ -429,23 +414,21 @@ a:not([href]):not([tabindex]) {
                                
                                <div class="w-100  " style="position: relative;">
                                
-                               <div style="width: 97%;
-    left: 2%;
-    margin-left: 7px;
-}">
+                               <div style="width: 97%;left: 2%;margin-left: 7px;}">
                                    <img src="{{asset(@$vehicle['pickupimages'][0]['name'])}}" alt=""class="img_fluid mx-auto w-100" style="height:auto!important;border-radius: 10px!important;" id="main_image_box">
                </div>
               
                                    <a class="bottom_button">
                                        <svg width="34" height="0" viewBox="0 0 0 0" fill="none" xmlns="http://www.w3.org/2000/svg">
                                            <rect width="0" height="0" rx="0" fill="white" fill-opacity="0.3"/>
-                                       
+                                            
+
                                            <g filter="url(#filter0_d_0_1)">
                                            
                                            <path d="M10.2481 8.63636L10.4491 9.29091L10.2481 8.63636ZM29.7519 8.63636L29.9528 7.98045L29.7519 8.635V8.63636ZM15.7173 18.1164L16.3627 18.4436L15.7173 18.1164ZM24.2827 18.1164L24.9251 17.7905L24.2812 18.1177L24.2827 18.1164ZM13.3941 6.39591L12.7136 6.14364L13.3941 6.39591ZM11.9847 7.83727C11.917 8.00418 11.9224 8.1891 11.9997 8.35237C12.0769 8.51564 12.2199 8.64425 12.398 8.71062C12.5761 8.77699 12.7751 8.77583 12.9522 8.7074C13.1294 8.63896 13.2707 8.5087 13.3457 8.34454L11.9847 7.83727ZM26.6029 6.39591L27.2835 6.14364L26.6029 6.39591ZM26.6513 8.34454C26.6858 8.42944 26.7381 8.5071 26.8052 8.57297C26.8723 8.63884 26.9529 8.69159 27.0422 8.72813C27.1315 8.76467 27.2278 8.78428 27.3253 8.78579C27.4229 8.7873 27.5198 8.77069 27.6104 8.73693C27.701 8.70317 27.7834 8.65294 27.8528 8.58919C27.9223 8.52543 27.9773 8.44944 28.0148 8.36565C28.0522 8.28186 28.0713 8.19197 28.0709 8.10124C28.0705 8.01051 28.0506 7.92077 28.0124 7.83727L26.6513 8.34454ZM29.5319 9.27182V13.8318H30.9985V9.27045H29.5319V9.27182ZM25.4413 17.6364H24.6464V19H25.4413V17.6364ZM15.3536 17.6364H14.5587V19H15.3536V17.6364ZM10.4667 13.8318V9.27045H9V13.8318H10.4667ZM10.4491 9.29091C16.6914 7.63258 23.3086 7.63258 29.5509 9.29091L29.9528 7.98045C23.4477 6.25255 16.5523 6.25255 10.0472 7.98045L10.4491 9.29091ZM14.5587 17.6364C13.4734 17.6364 12.4326 17.2355 11.6652 16.522C10.8978 15.8085 10.4667 14.8408 10.4667 13.8318H9C9 15.2025 9.58564 16.5171 10.6281 17.4863C11.6705 18.4555 13.0844 19 14.5587 19V17.6364ZM15.0749 17.7905C15.1023 17.7439 15.1426 17.7051 15.1916 17.6779C15.2406 17.6508 15.2966 17.6365 15.3536 17.6364V19C15.5599 19.0003 15.7625 18.9488 15.9398 18.8509C16.1172 18.7529 16.2628 18.6122 16.3612 18.4436L15.0749 17.7905ZM16.3612 18.4436C17.932 15.7668 22.0665 15.7668 23.6388 18.4436L24.9251 17.7905C22.7984 14.1659 17.2001 14.1659 15.0749 17.7905L16.3612 18.4436ZM24.6464 17.6364C24.7637 17.6364 24.8693 17.695 24.9251 17.7905L23.6388 18.4436C23.7372 18.6122 23.8828 18.7529 24.0602 18.8509C24.2375 18.9488 24.4401 19.0003 24.6464 19V17.6364ZM29.5333 13.8318C29.5333 14.8408 29.1022 15.8085 28.3348 16.522C27.5674 17.2355 26.5266 17.6364 25.4413 17.6364V19C26.9156 19 28.3295 18.4555 29.3719 17.4863C30.4144 16.5171 31 15.2025 31 13.8318H29.5333ZM31 9.27045C30.9999 8.97884 30.8977 8.69518 30.7087 8.46242C30.5198 8.22966 30.2544 8.06047 29.9528 7.98045L29.5509 9.29091C29.546 9.28973 29.5416 9.2871 29.5385 9.28341C29.5353 9.27972 29.5335 9.27518 29.5333 9.27045H31ZM10.4667 9.27045C10.4665 9.27518 10.4647 9.27972 10.4615 9.28341C10.4584 9.2871 10.454 9.28973 10.4491 9.29091L10.0472 7.98182C9.74583 8.06177 9.48064 8.23076 9.29172 8.46324C9.10279 8.69573 9.00039 8.97907 9 9.27045H10.4667ZM12.7151 6.14364L11.9861 7.83727L13.3472 8.34454L14.0761 6.64955L12.7151 6.14364ZM25.9239 6.64818L26.6528 8.34454L28.0139 7.83727L27.2849 6.14364L25.9239 6.64818ZM16.1192 5.36364H23.8808V4H16.1192V5.36364ZM27.2849 6.14364C27.0129 5.51095 26.5432 4.96857 25.9364 4.58648C25.3296 4.20438 24.6136 4.0001 23.8808 4V5.36364C24.3206 5.36357 24.7503 5.48604 25.1145 5.71526C25.4786 5.94447 25.7606 6.2699 25.9239 6.64955L27.2849 6.14364ZM14.0761 6.64818C14.2397 6.26879 14.5217 5.94365 14.8859 5.71469C15.25 5.48573 15.6796 5.36346 16.1192 5.36364V4C15.3864 4.0001 14.6704 4.20438 14.0636 4.58648C13.4568 4.96857 12.9871 5.51095 12.7151 6.14364L14.0761 6.64818Z" fill="white"/>
                                               
                                        </g>
-                                           
+                                       
                                            <defs>
                                            <filter id="filter0_d_0_1" x="5" y="2" width="30" height="23" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
                                            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
@@ -458,8 +441,12 @@ a:not([href]):not([tabindex]) {
                                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/>
                                            </filter>
                                            </defs>
-                                           <i class="material-icons"  onclick="openModal();currentSlide(1)" style="background-color:#65686c;color:white;border-radius:inherit">fullscreen</i>
-                                           </svg>
+                                           <div class="icon" style="float:right;">
+                                                <i class="material-icons "
+                                                            onclick="openModal();currentSlide(1)"
+                                                            style="background-color:#65686c;color:white;border-radius:inherit">fullscreen</i>
+                                            </div>
+                            </svg>
                                            
                                    </a>
                                    
@@ -536,14 +523,12 @@ a:not([href]):not([tabindex]) {
                            <h6 class="text-center mt-5 w-100" style="color:gray">No Image Found</h6>
                            @endif
 
-                           <div class="image_section"style="
-    margin-left: 22px;
-">
+                           <div class="image_section"style="margin-left: 22px;">
 
                                <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12 changeImages" style="left:2%;margin-top:12px">
                                    @if(@$vehicle['pickupimages'])
                                        @foreach(@$vehicle['pickupimages'] as $img)  
-                                       <img src="{{asset($img['name'])}}" alt=""class="item_1"  class="showMainImage" style="width:120px!important;height:80px!important;"  onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+                                       <img src="{{asset($img['name'])}}" alt=""class="item_1"  class="showMainImage" style="width:120px!important;height:80px!important;"   onclick="showAsMainImage(this.src)" class="hover-shadow cursor">
                                        @endforeach
                                    @endif
                                </div>
