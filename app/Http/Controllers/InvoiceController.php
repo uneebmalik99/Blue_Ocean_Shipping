@@ -201,6 +201,7 @@ class InvoiceController extends Controller
         $data = [];
         $output = [];
         $data = $req->all();
+        
         if(isset($req->id)){
             if($req->invoice_document){
                 $file = $data['invoice_document'];

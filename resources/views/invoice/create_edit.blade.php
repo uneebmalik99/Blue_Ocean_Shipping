@@ -235,7 +235,7 @@
                                     <td>{{ @$vehicle['model'] }}</td>
                                     <td>{{@$vehicle['vin'] }}</td>
                                     <td>{{ @$vehicle['customer_name'] }}</td>
-                                    <td><input type='checkbox' id='vehicle' value="{{ @$vehicle['id'] }}" name='vehicles[]'/></td>
+                                    <td><i class='fa fa-minus' aria-hidden='true'></i><input type='hidden' checked id='vehicle' value="{{ @$vehicle['id'] }}" name='vehicles[]'/></td>
                                     </tr>
                                     @empty
                             <tr>        <td>Empty</td></tr>
