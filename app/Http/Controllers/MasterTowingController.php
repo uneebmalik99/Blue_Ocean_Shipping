@@ -46,7 +46,7 @@ class MasterTowingController extends Controller
                     $data['notification'][$key]['date'] = (int) $seconds . 's ';
                 }
             }
-            $unread = Notification::with('customer')->where('status', '0')->paginate($this->perpage);
+            $unread = Notification::with('user')->where('status', '0')->paginate($this->perpage);
             $data['notification_count'] = count($unread);
         } else {
             $data['notification'] = "asda";

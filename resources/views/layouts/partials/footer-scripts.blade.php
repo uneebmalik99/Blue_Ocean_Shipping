@@ -3,9 +3,8 @@
 <script type="text/javascript" src="{{ asset('assets/bower_components/popper.js/js/popper.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/bower_components/bootstrap/js/bootstrap.min.js') }}"></script>
 {{-- Firebase Notifications --}}
-<script src="{{ asset('assets/js/firebase/firebase-notification.js') }}"
-{{-- sortTable --}}
-<script src="{{ asset('assets/js/sorttable.js') }}"></script>
+<script src="{{ asset('assets/js/firebase/firebase-notification.js') }}" {{-- sortTable --}} <script
+    src="{{ asset('assets/js/sorttable.js') }}"></script>
 
 <!-- jquery slimscroll js -->
 <script type="text/javascript" src="{{ asset('assets/bower_components/jquery-slimscroll/js/jquery.slimscroll.js') }}">
@@ -64,33 +63,32 @@
 
 {{-- Pusher JS --}}
 <script>
-
     // Enable pusher logging - don't include this in production
     Pusher.logToConsole = true;
 
     var pusher = new Pusher('7b4eda220fb943405624', {
-      cluster: 'ap2'
+        cluster: 'ap2'
     });
 
     var channel = pusher.subscribe('notification-channel');
     channel.bind('user-assignment', function(data) {
-            
-            
-            var url = "{{ asset('assets/audio/negative_beeps-6008.mp3') }}";
-            var audio = new Audio(url);
-            audio.currentTime = 0;
-            audio.play();
-            
-      
-            iziToast.success({
-                                title: 'Notification',
-                                message: "Notification Assigned Successfully!",
-                                position: 'topCenter',
-                                zindex: '9999999999999',
-                                timeout:700
-                            });
+
+
+        var url = "{{ asset('assets/audio/negative_beeps-6008.mp3') }}";
+        var audio = new Audio(url);
+        audio.currentTime = 0;
+        audio.play();
+
+
+        iziToast.success({
+            title: 'Notification',
+            message: "Notification Assigned Successfully!",
+            position: 'topCenter',
+            zindex: '9999999999999',
+            timeout: 700
+        });
     });
-  </script>
+</script>
 
 
 
@@ -262,7 +260,7 @@
 <script>
     $('.notification_body').on('click', function() {
         $id = $(this).val();
-        
+
         $(this).addClass('bg-info border border-light rounded');
         $.ajax({
             type: 'get',
@@ -546,30 +544,53 @@
             error: function(xhr, status, errorThrown) {
                 document.getElementById('load').style.visibility = "hidden";
 
-                iziToast.warning({
-                    message: 'Failed! Some fields are missing',
-                    position: 'topCenter',
-                    zindex: '9999999999999'
-                });
+
 
                 //    console.log(xhr.responseJSON['errors']);
                 if (xhr.responseJSON['errors']['customer_name']) {
                     $('#customer_name_error').html('<small style="margin-left:72px">Please Fill*</small>');
-                }
-                if (xhr.responseJSON['errors']['buyer_id']) {
-                    $('#buyer_error').html('<small style="margin-left:72px">Please Fill*</small>');
-                }
-                if (xhr.responseJSON['errors']['vin']) {
+                    iziToast.warning({
+                        message: 'Failed! Customer name is missing',
+                        position: 'topCenter',
+                        zindex: '9999999999999'
+                    });
+                } else if (xhr.responseJSON['errors']['vin']) {
                     $('#vin_error').html('<small style="margin-left:72px">Please Fill*</small>');
-                }
-                if (xhr.responseJSON['errors']['auction']) {
+                    iziToast.warning({
+                        message: 'Failed! Vin number is missing or already exists',
+                        position: 'topCenter',
+                        zindex: '9999999999999'
+                    });
+                } else if (xhr.responseJSON['errors']['buyer_id']) {
+                    $('#buyer_error').html('<small style="margin-left:72px">Please Fill*</small>');
+                    iziToast.warning({
+                        message: 'Failed! Buyer id is missing',
+                        position: 'topCenter',
+                        zindex: '9999999999999'
+                    });
+                } else if (xhr.responseJSON['errors']['auction']) {
                     $('#auction_error').html('<small style="margin-left:72px">Please Fill*</small>');
-                }
-                if (xhr.responseJSON['errors']['key']) {
+                    iziToast.warning({
+                        message: 'Failed! Auction is missing',
+                        position: 'topCenter',
+                        zindex: '9999999999999'
+                    });
+                } else if (xhr.responseJSON['errors']['key']) {
                     $('#key_error').html('<small style="margin-left:72px">Please Fill*</small>');
-                }
-                if (xhr.responseJSON['errors']['status']) {
+                    iziToast.warning({
+                        message: 'Failed! Key is missing',
+                        position: 'topCenter',
+                        zindex: '9999999999999'
+                    });
+                } else if (xhr.responseJSON['errors']['status']) {
                     $('#status_error').html('<small style="margin-left:72px">Please Fill*</small>');
+                    iziToast.warning({
+                        message: 'Failed! Status is missing',
+                        position: 'topCenter',
+                        zindex: '9999999999999'
+                    });
+                } else {
+
                 }
 
             }
@@ -585,6 +606,7 @@
         $tab_id = id;
         $next_tab = $('#' + $tab_id).data('next');
         var formData = new FormData(jQuery('#vehicle_form')[0]);
+        console.log(...formData);
         $.ajax({
             method: 'POST',
             url: '{{ URL::to('admin/vehicles/create_form') }}',
@@ -643,7 +665,7 @@
                     preloaded: warehouse_image,
                     preloadedInputName: 'warehouse_old'
                 });
-                
+
 
             },
             complete: function() {
@@ -652,33 +674,77 @@
             },
             error: function(xhr, status, errorThrown) {
                 document.getElementById('load').style.visibility = "hidden";
+                console.log(xhr.responseJSON['message']);
 
-                iziToast.warning({
-                    message: 'Failed! Some fields are missing',
-                    position: 'topCenter',
-                    zindex: '9999999999999'
-                });
 
-                console.log(xhr.responseJSON['errors']);
+
                 if (xhr.responseJSON['errors']['customer_name']) {
                     $('#customer_name_error').html('<small style="margin-left:72px">Please Fill*</small>');
-                }
-                if (xhr.responseJSON['errors']['buyer_id']) {
-                    $('#buyer_error').html('<small style="margin-left:72px">Please Fill*</small>');
-                }
-                if (xhr.responseJSON['errors']['vin']) {
-                    $('#vin_error').html('<small style="margin-left:72px">Please Fill*</small>');
-                }
-                if (xhr.responseJSON['errors']['auction']) {
-                    $('#auction_error').html('<small style="margin-left:72px">Please Fill*</small>');
-                }
-                if (xhr.responseJSON['errors']['key']) {
-                    $('#key_error').html('<small style="margin-left:72px">Please Fill*</small>');
-                }
-                if (xhr.responseJSON['errors']['status']) {
-                    $('#status_error').html('<small style="margin-left:72px">Please Fill*</small>');
-                }
+                    iziToast.warning({
+                        message: 'Failed! Customer name is missing',
+                        position: 'topCenter',
+                        zindex: '9999999999999'
+                    });
+                } else if (xhr.responseJSON['errors']['vin']) {
 
+                    $('#vin_error').html('<small style="margin-left:72px">Please Fill*</small>');
+                    $('#customer_name_error').html('');
+                    $('#auction_error').html('');
+                    $('#buyer_error').html('');
+                    $('#key_error').html('');
+                    $('#status_error').html('');
+                    iziToast.warning({
+                        message: 'Failed! Vin number is missing',
+                        position: 'topCenter',
+                        zindex: '9999999999999'
+                    });
+                } else if (xhr.responseJSON['errors']['auction']) {
+                    $('#auction_error').html('<small style="margin-left:72px">Please Fill*</small>');
+                    $('#customer_name_error').html('');
+                    $('#buyer_error').html('');
+                    $('#key_error').html('');
+                    $('#status_error').html('');
+                    iziToast.warning({
+                        message: 'Failed! Auction is missing',
+                        position: 'topCenter',
+                        zindex: '9999999999999'
+                    });
+                } else if (xhr.responseJSON['errors']['buyer_id']) {
+                    $('#buyer_error').html('<small style="margin-left:72px">Please Fill*</small>');
+                    $('#customer_name_error').html('');
+                    $('#auction_error').html('');
+                    $('#key_error').html('');
+                    $('#status_error').html('');
+                    iziToast.warning({
+                        message: 'Failed! Buyer id is missing',
+                        position: 'topCenter',
+                        zindex: '9999999999999'
+                    });
+                } else if (xhr.responseJSON['errors']['key']) {
+                    $('#key_error').html('<small style="margin-left:72px">Please Fill*</small>');
+                    $('#customer_name_error').html('');
+                    $('#auction_error').html('');
+                    $('#buyer_error').html('');
+                    $('#status_error').html('');
+
+                    iziToast.warning({
+                        message: 'Failed! Key is missing',
+                        position: 'topCenter',
+                        zindex: '9999999999999'
+                    });
+                } else if (xhr.responseJSON['errors']['status']) {
+                    $('#status_error').html('<small style="margin-left:72px">Please Fill*</small>');
+                    $('#customer_name_error').html('');
+                    $('#auction_error').html('');
+                    $('#buyer_error').html('');
+                    $('#key_error').html('');
+
+                    iziToast.warning({
+                        message: 'Failed! Status is missing',
+                        position: 'topCenter',
+                        zindex: '9999999999999'
+                    });
+                } else {}
             }
         });
     }
@@ -735,33 +801,25 @@
                 $('#exampleModal').modal('show');
             }
         });
-
     }
 
     function addRole() {
-
         $.ajax({
             type: 'post',
             url: '{{ route('user.addRole') }}',
             data: $('form').serialize(),
             success: function(data) {
-                //    alert(data);
-
                 iziToast.success({
                     title: 'Vehicle',
                     message: data.name + " Added Successfully!",
                     position: 'topCenter',
                     zindex: '9999999999999',
-
                 });
-
                 $('#exampleModal').modal('hide');
                 location.reload();
-
             }
         });
     }
-
     function updateRole(id) {
         $id = id;
         $.ajax({
@@ -771,14 +829,11 @@
                 id: $id
             },
             success: function(data) {
-                // alert(data);
                 $('.modal-body').html(data);
                 $('#exampleModal').modal('show');
             }
         });
     }
-
-
     function billofsales() {
         var formData = new FormData(jQuery('#billofsales')[0]);
         formData.append('tab', 'billofsales');
@@ -808,12 +863,9 @@
         });
 
     }
-
     function originalTitle() {
-
         var formData = new FormData(jQuery('#billofsales')[0]);
         formData.append('tab', 'originalTitle');
-
         $.ajax({
             method: 'POST',
             url: '{{ URL::to('admin/vehicles/attachments') }}',
@@ -838,15 +890,10 @@
                 });
             }
         });
-
     }
-
-
     function pickup() {
-
         var formData = new FormData(jQuery('#billofsales')[0]);
         formData.append('tab', 'pickup');
-
         $.ajax({
             method: 'POST',
             url: '{{ URL::to('admin/vehicles/attachments') }}',
@@ -871,20 +918,13 @@
                 });
             }
         });
-
     }
 </script>
-
 <script>
     function getInfo(tab) {
-        // vin = KM8JUCAC4DU604504;
-        // tab = $('#getinfo').attr('tab');
-        // document.getElementById('contents').style.visibility = "hidden";
         document.getElementById('load').style.visibility = "visible";
-        // $("#load").css("display", "block");
         tab = tab;
         vin = $('#vin').val();
-        // alert(vin);
         var url = 'https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvaluesextended/' + vin + '?format=json';
         if (tab == 'getinfo') {
             if (vin == '') {
@@ -896,7 +936,6 @@
                     success: function(data) {
                         console.log(data.Results[0]);
                         vehicle = data.Results[0];
-
                         if (vehicle.Model == '' && vehicle.Make == '') {
                             iziToast.error({
                                 position: 'topCenter',
@@ -906,29 +945,20 @@
                                 message: 'No Vehicle Found!',
                             });
                         } else {
-
-
-
                             $('#year').val(vehicle.ModelYear);
                             $('#model').html('<option value="' + vehicle.Model + '">' + vehicle.Model +
                                 '</option>');
                             $('#make').html('<option value="' + vehicle.Make + '">' + vehicle.Make +
                                 '</option>');
-                            // $('#year').html('<option value="'+vehicle.ModelYear+'">'+vehicle.ModelYear+'</option>');
-                            // $('#vehicle_type').html('<option value="' + vehicle.VehicleType + '">' + vehicle
-                            //     .VehicleType + '</option>');
                             $('#getinfo').attr('id', 'reset');
                             $('#getinfo').text('Reset');
                         }
-
                     },
                     complete: function() {
                         document.getElementById('load').style.visibility = "hidden";
-
                     }
                 });
             }
-
         } else {
             $('#model').val('');
             $('#make').val('');
@@ -939,24 +969,16 @@
             $('.getinf').attr('id', 'getinfo');
             $('#getinfo').text('GetInfo');
             document.getElementById('load').style.visibility = "hidden";
-
-
-
         }
     }
 </script>
-{{-- - get Shipment Info --}}
 <script>
     function getshipmentInfo(tab) {
-
         document.getElementById('load').style.visibility = "visible";
-
         tab = tab;
         ar_number = $('#ar_number').val();
-
         if (tab == 'getshipmentinfo') {
             if (ar_number == '') {
-                // alert('Please Enter Container Number');
                 iziToast.warning({
                     message: 'Please Enter Container Number',
                     position: 'topCenter',
@@ -980,7 +1002,6 @@
                                 zindex: '9999999999999'
                             });
                         }
-
                         $('#company_name').val(data.shipments[0]['company_name']);
                         $('#port_of_loading').val(data.shipments[0]['loading_port']);
                         $('#destination_port').val(data.shipments[0]['destination_port']);
@@ -993,11 +1014,9 @@
                                 "</td><td>" + element.model + "</td><td>" + element.vin +
                                 "</td><td>" + element.customer_name + "</td><td onclick='removeVehicle()' class='text-center'><div><i class='fa fa-minus' aria-hidden='true'></i></div><input type='hidden' checked value='" +
                                 element.id + "' id='vehicle' name='vehicles[]'></td></tr>";
-
                             html.push(output);
                         });
                         $('#inovice_shipment_table').append(html);
-
                     },
                     complete: function() {
                         document.getElementById('load').style.visibility = "hidden";
@@ -1013,7 +1032,6 @@
                     }
                 });
             }
-
         } else {
             $('#model').val('');
             $('#make').val('');
@@ -1024,16 +1042,13 @@
             $('.getinf').attr('id', 'getinfo');
             $('#getinfo').text('GetInfo');
             document.getElementById('load').style.visibility = "hidden";
-
-
-
         }
     }
-        function removeVehicle(){
-            var td = event.target.parentNode;
-            var tr = td.parentNode; // the row to be removed
-            tr.parentNode.removeChild(tr);
-        }
+    function removeVehicle() {
+        var td = event.target.parentNode;
+        var tr = td.parentNode; // the row to be removed
+        tr.parentNode.removeChild(tr);
+    }
 </script>
 {{-- Edit invoices --}}
 <script>
@@ -1276,12 +1291,8 @@
                             });
                         }
                     });
-
-
                     $("#make_save").click(function() {
-
                         var formData = new FormData($('#make_fields')[0]);
-                        //  console.log(...formData);return
                         formData.append('tab', tab);
                         formData.append('id', data);
                         $.ajax({
@@ -1309,20 +1320,15 @@
                                         message: 'Record Already Exist'
                                     });
                                     $('#commonmodal').modal("hide");
-                                    // location.reload();
                                 }
                             },
                         });
                     });
-
-
                 });
             }
         });
     });
 </script>
-
-
 {{-- delete records --}}
 <script>
     function deletemaster(id, tab) {
@@ -1374,15 +1380,11 @@
                 console.info('closedBy: ' + closedBy); // tells if it was closed by 'drag' or 'button'
             }
         });
-
     }
 </script>
-
 {{-- update saved records --}}
 <script>
     function updatemaster(id, tab) {
-        // alert(id);
-        // alert(tab);
         $.ajax({
             type: 'post',
             url: '{{ route('update.master') }}',
@@ -1400,8 +1402,6 @@
                 $("#data_save").click(function() {
                     var name = $("#input_value").val();
                     var id = $(this).val();
-                    // alert(name);
-                    // alert(id);
                     $.ajax({
                         type: 'post',
                         url: '{{ route('update.save') }}',
@@ -1431,8 +1431,6 @@
                     var port = $("#port").val();
                     var terminal = $("#terminal").val();
                     var id = $(this).val();
-                    // alert(country);
-                    // alert(id);
                     $.ajax({
                         type: 'post',
                         url: '{{ route('update.save') }}',
@@ -1494,7 +1492,6 @@
         });
     }
 </script>
-
 {{-- status check --}}
 <script>
     $('input[type=checkbox].status_change').change(function() {
@@ -1524,8 +1521,6 @@
         });
     });
 </script>
-
-
 <script>
     document.onreadystatechange = function() {
         var state = document.readyState
@@ -1540,11 +1535,7 @@
         }
     }
 </script>
-
-
 {{-- towing rate and shipping rate --}}
-
-
 <script>
     document.onreadystatechange = function() {
         var state = document.readyState
@@ -1704,9 +1695,6 @@
                         title: 'OK',
                         message: 'Successfully Record Updated'
                     });
-                    //     setTimeout(function () {
-                    //     location.reload(true);
-                    // }, 5000);
                     location.reload();
                 }
                 if (data == 'success') {
@@ -1716,9 +1704,6 @@
                         title: 'OK',
                         message: 'Successfully Record Saved'
                     });
-                    //     setTimeout(function () {
-                    //     location.reload(true);
-                    // }, 5000);
                     location.reload();
                 }
             },
@@ -1819,7 +1804,6 @@
                 california,
                 seattle,
                 seattle,
-                // value,value,
                 id,
                 id,
             },
@@ -1886,9 +1870,6 @@
                 setTimeout(function() {
                     location.reload();
                 }, 1000);
-
-
-                // $('#towingrate_body').html(data);
             }
         });
 
@@ -1897,7 +1878,6 @@
 
     $('#vehicle_cart').DataTable({
         columnDefs: [{
-
             orderable: false,
             targets: '_all'
         }],
@@ -1909,8 +1889,6 @@
 
     });
 </script>
-
-
 <script>
     /**
      * Roles Profile Scripts
@@ -2160,13 +2138,13 @@
 
 
     function downloadAll() {
-     
-            $('.showMainImage').multiDownload();
 
-    
+        $('.showMainImage').multiDownload();
+
+
     }
 
-    function Addnew_quotation(){
+    function Addnew_quotation() {
         $.ajax({
             method: "get",
             url: "{{ route('customer.Addnew_quotation') }}",
@@ -2177,8 +2155,7 @@
     }
 </script>
 <script>
-    function removeQuotation(){
+    function removeQuotation() {
         alert("here merge");
     }
-
 </script>
