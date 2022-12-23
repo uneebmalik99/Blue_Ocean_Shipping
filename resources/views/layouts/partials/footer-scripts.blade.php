@@ -3,9 +3,8 @@
 <script type="text/javascript" src="{{ asset('assets/bower_components/popper.js/js/popper.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/bower_components/bootstrap/js/bootstrap.min.js') }}"></script>
 {{-- Firebase Notifications --}}
-<script src="{{ asset('assets/js/firebase/firebase-notification.js') }}"
-{{-- sortTable --}}
-<script src="{{ asset('assets/js/sorttable.js') }}"></script>
+<script src="{{ asset('assets/js/firebase/firebase-notification.js') }}" {{-- sortTable --}} <script
+    src="{{ asset('assets/js/sorttable.js') }}"></script>
 
 <!-- jquery slimscroll js -->
 <script type="text/javascript" src="{{ asset('assets/bower_components/jquery-slimscroll/js/jquery.slimscroll.js') }}">
@@ -64,33 +63,32 @@
 
 {{-- Pusher JS --}}
 <script>
-
     // Enable pusher logging - don't include this in production
     Pusher.logToConsole = true;
 
     var pusher = new Pusher('7b4eda220fb943405624', {
-      cluster: 'ap2'
+        cluster: 'ap2'
     });
 
     var channel = pusher.subscribe('notification-channel');
     channel.bind('user-assignment', function(data) {
-            
-            
-            var url = "{{ asset('assets/audio/negative_beeps-6008.mp3') }}";
-            var audio = new Audio(url);
-            audio.currentTime = 0;
-            audio.play();
-            
-      
-            iziToast.success({
-                                title: 'Notification',
-                                message: "Notification Assigned Successfully!",
-                                position: 'topCenter',
-                                zindex: '9999999999999',
-                                timeout:700
-                            });
+
+
+        var url = "{{ asset('assets/audio/negative_beeps-6008.mp3') }}";
+        var audio = new Audio(url);
+        audio.currentTime = 0;
+        audio.play();
+
+
+        iziToast.success({
+            title: 'Notification',
+            message: "Notification Assigned Successfully!",
+            position: 'topCenter',
+            zindex: '9999999999999',
+            timeout: 700
+        });
     });
-  </script>
+</script>
 
 
 
@@ -262,7 +260,7 @@
 <script>
     $('.notification_body').on('click', function() {
         $id = $(this).val();
-        
+
         $(this).addClass('bg-info border border-light rounded');
         $.ajax({
             type: 'get',
@@ -546,59 +544,52 @@
             error: function(xhr, status, errorThrown) {
                 document.getElementById('load').style.visibility = "hidden";
 
-                
+
 
                 //    console.log(xhr.responseJSON['errors']);
                 if (xhr.responseJSON['errors']['customer_name']) {
                     $('#customer_name_error').html('<small style="margin-left:72px">Please Fill*</small>');
                     iziToast.warning({
-                    message: 'Failed! Customer name is missing',
-                    position: 'topCenter',
-                    zindex: '9999999999999'
-                });
-                }
-                else if(xhr.responseJSON['errors']['vin']) {
+                        message: 'Failed! Customer name is missing',
+                        position: 'topCenter',
+                        zindex: '9999999999999'
+                    });
+                } else if (xhr.responseJSON['errors']['vin']) {
                     $('#vin_error').html('<small style="margin-left:72px">Please Fill*</small>');
                     iziToast.warning({
-                    message: 'Failed! Vin number is missing or already exists',
-                    position: 'topCenter',
-                    zindex: '9999999999999'
-                });
-                }
-                else if(xhr.responseJSON['errors']['buyer_id']) {
+                        message: 'Failed! Vin number is missing or already exists',
+                        position: 'topCenter',
+                        zindex: '9999999999999'
+                    });
+                } else if (xhr.responseJSON['errors']['buyer_id']) {
                     $('#buyer_error').html('<small style="margin-left:72px">Please Fill*</small>');
                     iziToast.warning({
-                    message: 'Failed! Buyer id is missing',
-                    position: 'topCenter',
-                    zindex: '9999999999999'
-                });
-                }
-                
-                else if(xhr.responseJSON['errors']['auction']) {
+                        message: 'Failed! Buyer id is missing',
+                        position: 'topCenter',
+                        zindex: '9999999999999'
+                    });
+                } else if (xhr.responseJSON['errors']['auction']) {
                     $('#auction_error').html('<small style="margin-left:72px">Please Fill*</small>');
                     iziToast.warning({
-                    message: 'Failed! Auction is missing',
-                    position: 'topCenter',
-                    zindex: '9999999999999'
-                });
-                }
-                else if (xhr.responseJSON['errors']['key']) {
+                        message: 'Failed! Auction is missing',
+                        position: 'topCenter',
+                        zindex: '9999999999999'
+                    });
+                } else if (xhr.responseJSON['errors']['key']) {
                     $('#key_error').html('<small style="margin-left:72px">Please Fill*</small>');
                     iziToast.warning({
-                    message: 'Failed! Key is missing',
-                    position: 'topCenter',
-                    zindex: '9999999999999'
-                });
-                }
-                else if(xhr.responseJSON['errors']['status']) {
+                        message: 'Failed! Key is missing',
+                        position: 'topCenter',
+                        zindex: '9999999999999'
+                    });
+                } else if (xhr.responseJSON['errors']['status']) {
                     $('#status_error').html('<small style="margin-left:72px">Please Fill*</small>');
                     iziToast.warning({
-                    message: 'Failed! Status is missing',
-                    position: 'topCenter',
-                    zindex: '9999999999999'
-                });
-                }
-                else{
+                        message: 'Failed! Status is missing',
+                        position: 'topCenter',
+                        zindex: '9999999999999'
+                    });
+                } else {
 
                 }
 
@@ -674,7 +665,7 @@
                     preloaded: warehouse_image,
                     preloadedInputName: 'warehouse_old'
                 });
-                
+
 
             },
             complete: function() {
@@ -685,73 +676,86 @@
                 document.getElementById('load').style.visibility = "hidden";
                 console.log(xhr.responseJSON['message']);
 
-              
-                   
-                    if (xhr.responseJSON['errors']['customer_name']) {
+
+
+                if (xhr.responseJSON['errors']['customer_name']) {
                     $('#customer_name_error').html('<small style="margin-left:72px">Please Fill*</small>');
                     iziToast.warning({
-                    message: 'Failed! Customer name is missing',
-                    position: 'topCenter',
-                    zindex: '9999999999999'
-                });
-                }
-                else if(xhr.responseJSON['errors']['vin']) {
-                   
-                        $('#vin_error').html('<small style="margin-left:72px">Please Fill*</small>');
-                        $('#customer_name_error').html('');
-                        iziToast.warning({
+                        message: 'Failed! Customer name is missing',
+                        position: 'topCenter',
+                        zindex: '9999999999999'
+                    });
+                } else if (xhr.responseJSON['errors']['vin']) {
+
+                    $('#vin_error').html('<small style="margin-left:72px">Please Fill*</small>');
+                    $('#customer_name_error').html('');
+                    $('#auction_error').html('');
+                    $('#buyer_error').html('');
+                    $('#key_error').html('');
+                    $('#status_error').html('');
+
+
+
+
+
+                    iziToast.warning({
                         message: 'Failed! Vin number is missing',
                         position: 'topCenter',
                         zindex: '9999999999999'
                     });
-                }
-                else if(xhr.responseJSON['errors']['auction']) {
+                } else if (xhr.responseJSON['errors']['auction']) {
                     $('#auction_error').html('<small style="margin-left:72px">Please Fill*</small>');
-                    $('#vin_error').html('');
-                    iziToast.warning({
-                    message: 'Failed! Auction is missing',
-                    position: 'topCenter',
-                    zindex: '9999999999999'
-                });
-                }
-                else if(xhr.responseJSON['errors']['buyer_id']) {
-                    $('#buyer_error').html('<small style="margin-left:72px">Please Fill*</small>');
-                    $('#auction_error').html('');
-                    iziToast.warning({
-                    message: 'Failed! Buyer id is missing',
-                    position: 'topCenter',
-                    zindex: '9999999999999'
-                });
-                }
-                else if (xhr.responseJSON['errors']['key']) {
-                    $('#key_error').html('<small style="margin-left:72px">Please Fill*</small>');
+                    $('#customer_name_error').html('');
                     $('#buyer_error').html('');
-                    $('#auction_error').html('');
-
-                    iziToast.warning({
-                    message: 'Failed! Key is missing',
-                    position: 'topCenter',
-                    zindex: '9999999999999'
-                });
-                }
-                else if(xhr.responseJSON['errors']['status']) {
-                    $('#status_error').html('<small style="margin-left:72px">Please Fill*</small>');
                     $('#key_error').html('');
+                    $('#status_error').html('');
+                    iziToast.warning({
+                        message: 'Failed! Auction is missing',
+                        position: 'topCenter',
+                        zindex: '9999999999999'
+                    });
+                } else if (xhr.responseJSON['errors']['buyer_id']) {
+                    $('#buyer_error').html('<small style="margin-left:72px">Please Fill*</small>');
+                    $('#customer_name_error').html('');
                     $('#auction_error').html('');
+                    $('#key_error').html('');
+                    $('#status_error').html('');
+                    iziToast.warning({
+                        message: 'Failed! Buyer id is missing',
+                        position: 'topCenter',
+                        zindex: '9999999999999'
+                    });
+                } else if (xhr.responseJSON['errors']['key']) {
+                    $('#key_error').html('<small style="margin-left:72px">Please Fill*</small>');
+                    $('#customer_name_error').html('');
+                    $('#auction_error').html('');
+                    $('#buyer_error').html('');
+                    $('#status_error').html('');
 
                     iziToast.warning({
-                    message: 'Failed! Status is missing',
-                    position: 'topCenter',
-                    zindex: '9999999999999'
-                });
-                }
-                else{
+                        message: 'Failed! Key is missing',
+                        position: 'topCenter',
+                        zindex: '9999999999999'
+                    });
+                } else if (xhr.responseJSON['errors']['status']) {
+                    $('#status_error').html('<small style="margin-left:72px">Please Fill*</small>');
+                    $('#customer_name_error').html('');
+                    $('#auction_error').html('');
+                    $('#buyer_error').html('');
+                    $('#key_error').html('');
+
+                    iziToast.warning({
+                        message: 'Failed! Status is missing',
+                        position: 'topCenter',
+                        zindex: '9999999999999'
+                    });
+                } else {
 
                 }
 
-                    
 
-               
+
+
 
             }
         });
@@ -1065,7 +1069,8 @@
                         data.shipments[0]['vehicle'].forEach(element => {
                             output = "<tr><td>" + element.year + "</td><td>" + element.make +
                                 "</td><td>" + element.model + "</td><td>" + element.vin +
-                                "</td><td>" + element.customer_name + "</td><td onclick='removeVehicle()' class='text-center'><i class='fa fa-minus' aria-hidden='true'></i><input type='hidden' checked value='" +
+                                "</td><td>" + element.customer_name +
+                                "</td><td onclick='removeVehicle()' class='text-center'><i class='fa fa-minus' aria-hidden='true'></i><input type='hidden' checked value='" +
                                 element.id + "' id='vehicle' name='vehicles[]'></td></tr>";
 
                             html.push(output);
@@ -1103,11 +1108,12 @@
 
         }
     }
-        function removeVehicle(){
-            var td = event.target.parentNode;
-            var tr = td.parentNode; // the row to be removed
-            tr.parentNode.removeChild(tr);
-        }
+
+    function removeVehicle() {
+        var td = event.target.parentNode;
+        var tr = td.parentNode; // the row to be removed
+        tr.parentNode.removeChild(tr);
+    }
 </script>
 {{-- Edit invoices --}}
 <script>
@@ -2234,13 +2240,13 @@
 
 
     function downloadAll() {
-     
-            $('.showMainImage').multiDownload();
 
-    
+        $('.showMainImage').multiDownload();
+
+
     }
 
-    function Addnew_quotation(){
+    function Addnew_quotation() {
         $.ajax({
             method: "get",
             url: "{{ route('customer.Addnew_quotation') }}",
@@ -2251,8 +2257,7 @@
     }
 </script>
 <script>
-    function removeQuotation(){
+    function removeQuotation() {
         alert("here merge");
     }
-
 </script>

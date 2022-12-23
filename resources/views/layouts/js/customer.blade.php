@@ -73,48 +73,239 @@
             error: function(response) {
                 document.getElementById('load').style.visibility = "hidden";
 
-                iziToast.warning({
-                    message: 'Failed! Some fields are missing',
+              
+                if (response.responseJSON['errors']['name']) {
+                    $('#name_error').html('<small>Please Fill*</small>');
+                    iziToast.warning({
+                    message: 'Failed! Name is missing',
                     position: 'topCenter',
                     zindex: '9999999999999'
                 });
+                }
 
-                console.log(response.responseJSON['errors']);
-                if (response.responseJSON['errors']['username']) {
+                else if (response.responseJSON['errors']['username']) {
                     $('#username_error').html('<small>Please Fill*</small>');
+                    $('#name_error').html('');
+                    $('#password_error').html('');
+                    $('#phone_error').html('');
+                    $('#email_error').html('');
+                    $('#company_name_error').html('');
+                    $('#company_email_error').html('');
+                    $('#location_number_error').html('');
+                    $('#country_error').html('');
+                    $('#zip_code_error').html('');
+                    $('#state_error').html('');
+
+
+
+
+
+
+                    
+                    iziToast.warning({
+                    message: 'Failed! Username is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
                 }
-                if (response.responseJSON['errors']['name']) {
-                    $('#name_error').html('<small>Please Fill*</small>');
-                }
-                if (response.responseJSON['errors']['password']) {
+                
+                else if (response.responseJSON['errors']['password']) {
                     $('#password_error').html('<small>Please Fill*</small>');
+                    $('#username_error').html('');
+                    $('#name_error').html('');
+                    $('#phone_error').html('');
+                    $('#email_error').html('');
+                    $('#company_name_error').html('');
+                    $('#company_email_error').html('');
+                    $('#location_number_error').html('');
+                    $('#country_error').html('');
+                    $('#zip_code_error').html('');
+                    $('#state_error').html('');
+
+                    iziToast.warning({
+                    message: 'Failed! Password is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
                 }
-                if (response.responseJSON['errors']['phone']) {
+                else if (response.responseJSON['errors']['phone']) {
                     $('#phone_error').html('<small>Please Fill*</small>');
+                    $('#password_error').html('');
+                    $('#name_error').html('');
+                    $('#email_error').html('');
+                    $('#company_name_error').html('');
+                    $('#company_email_error').html('');
+                    $('#location_number_error').html('');
+                    $('#country_error').html('');
+                    $('#zip_code_error').html('');
+                    $('#state_error').html('');
+                    $('#username_error').html('');
+
+
+                    iziToast.warning({
+                    message: 'Failed! Phone number is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
                 }
-                if (response.responseJSON['errors']['email']) {
+                else if (response.responseJSON['errors']['email']) {
                     $('#email_error').html('<small>Please Fill*</small>');
+                    $('#phone_error').html('');
+                    $('#name_error').html('');
+                    $('#password_error').html('');
+                    $('#company_name_error').html('');
+                    $('#company_email_error').html('');
+                    $('#location_number_error').html('');
+                    $('#country_error').html('');
+                    $('#zip_code_error').html('');
+                    $('#state_error').html('');
+                    $('#username_error').html('');
+
+
+                    iziToast.warning({
+                    message: 'Failed! Email is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
                 }
-                if (response.responseJSON['errors']['company_name']) {
+               else if (response.responseJSON['errors']['company_name']) {
                     $('#company_name_error').html('<small>Please Fill*</small>');
+                    $('#email_error').html('');
+                    $('#name_error').html('');
+                    $('#password_error').html('');
+                    $('#phone_error').html('');
+                    $('#company_email_error').html('');
+                    $('#location_number_error').html('');
+                    $('#country_error').html('');
+                    $('#zip_code_error').html('');
+                    $('#state_error').html('');
+                    $('#username_error').html('');
+
+
+                    iziToast.warning({
+                    message: 'Failed! Company Name is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
                 }
-                if (response.responseJSON['errors']['company_email']) {
+               else if (response.responseJSON['errors']['company_email']) {
                     $('#company_email_error').html('<small>Please Fill*</small>');
+                    $('#company_name_error').html('');
+                    $('#name_error').html('');
+                    $('#password_error').html('');
+                    $('#phone_error').html('');
+                    $('#email_error').html('');
+                    $('#location_number_error').html('');
+                    $('#country_error').html('');
+                    $('#zip_code_error').html('');
+                    $('#state_error').html('');
+                    $('#username_error').html('');
+
+
+                    iziToast.warning({
+                    message: 'Failed! Comany Email is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
                 }
-                if (response.responseJSON['errors']['location_number']) {
+               else if (response.responseJSON['errors']['location_number']) {
                     $('#location_number_error').html('<small>Please Fill*</small>');
+                    $('#company_email_error').html('');
+                    $('#name_error').html('');
+                    $('#password_error').html('');
+                    $('#phone_error').html('');
+                    $('#email_error').html('');
+                    $('#company_name_error').html('');
+                    $('#country_error').html('');
+                    $('#zip_code_error').html('');
+                    $('#state_error').html('');
+                    $('#username_error').html('');
+
+
+                    iziToast.warning({
+                    message: 'Failed! Location is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
                 }
-                if (response.responseJSON['errors']['country']) {
+               else if (response.responseJSON['errors']['country']) {
                     $('#country_error').html('<small>Please Fill*</small>');
+                    $('#location_number_error').html('');
+                    $('#company_email_error').html('');
+                    $('#name_error').html('');
+                    $('#password_error').html('');
+                    $('#phone_error').html('');
+                    $('#email_error').html('');
+                    $('#company_name_error').html('');
+                    $('#zip_code_error').html('');
+                    $('#state_error').html('');
+                    $('#username_error').html('');
+
+
+                    iziToast.warning({
+                    message: 'Failed! Country is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
                 }
-                if (response.responseJSON['errors']['zip_code']) {
+                else if (response.responseJSON['errors']['zip_code']) {
                     $('#zip_code_error').html('<small>Please Fill*</small>');
+                    $('#country_error').html('');
+                    $('#company_email_error').html('');
+                    $('#name_error').html('');
+                    $('#password_error').html('');
+                    $('#phone_error').html('');
+                    $('#email_error').html('');
+                    $('#company_name_error').html('');
+                    $('#state_error').html('');
+                    $('#username_error').html('');
+
+
+                    iziToast.warning({
+                    message: 'Failed! Zip Code missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
                 }
-                if (response.responseJSON['errors']['state']) {
+                else if (response.responseJSON['errors']['state']) {
                     $('#state_error').html('<small>Please Fill*</small>');
+                    $('#zip_code_error').html('');
+                    $('#company_email_error').html('');
+                    $('#name_error').html('');
+                    $('#password_error').html('');
+                    $('#phone_error').html('');
+                    $('#email_error').html('');
+                    $('#company_name_error').html('');
+                    $('#country_error').html('');
+                    $('#username_error').html('');
+
+
+                    iziToast.warning({
+                    message: 'Failed! State is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
                 }
-                if (response.responseJSON['errors']['address_line1']) {
+                else if (response.responseJSON['errors']['address_line1']) {
                     $('#address_line1_error').html('<small>Please Fill*</small>');
+                    $('#state_error').html('');
+                    $('#zip_code_error').html('');
+                    $('#company_email_error').html('');
+                    $('#name_error').html('');
+                    $('#password_error').html('');
+                    $('#phone_error').html('');
+                    $('#email_error').html('');
+                    $('#company_name_error').html('');
+                    $('#country_error').html('');
+                    $('#username_error').html('');
+                    iziToast.warning({
+                    message: 'Failed! Address Line 1 is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
+                }
+                else{
+
                 }
             }
         });
@@ -182,48 +373,239 @@
             error: function(response) {
                 document.getElementById('load').style.visibility = "hidden";
 
-                iziToast.warning({
-                    message: 'Failed! Some fields are missing',
+               
+                if (response.responseJSON['errors']['name']) {
+                    $('#name_error').html('<small>Please Fill*</small>');
+                    iziToast.warning({
+                    message: 'Failed! Name is missing',
                     position: 'topCenter',
                     zindex: '9999999999999'
                 });
+                }
 
-                console.log(response.responseJSON['errors']);
-                if (response.responseJSON['errors']['username']) {
+                else if (response.responseJSON['errors']['username']) {
                     $('#username_error').html('<small>Please Fill*</small>');
+                    $('#name_error').html('');
+                    $('#password_error').html('');
+                    $('#phone_error').html('');
+                    $('#email_error').html('');
+                    $('#company_name_error').html('');
+                    $('#company_email_error').html('');
+                    $('#location_number_error').html('');
+                    $('#country_error').html('');
+                    $('#zip_code_error').html('');
+                    $('#state_error').html('');
+
+
+
+
+
+
+                    
+                    iziToast.warning({
+                    message: 'Failed! Username is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
                 }
-                if (response.responseJSON['errors']['name']) {
-                    $('#name_error').html('<small>Please Fill*</small>');
-                }
-                if (response.responseJSON['errors']['password']) {
+                
+                else if (response.responseJSON['errors']['password']) {
                     $('#password_error').html('<small>Please Fill*</small>');
+                    $('#username_error').html('');
+                    $('#name_error').html('');
+                    $('#phone_error').html('');
+                    $('#email_error').html('');
+                    $('#company_name_error').html('');
+                    $('#company_email_error').html('');
+                    $('#location_number_error').html('');
+                    $('#country_error').html('');
+                    $('#zip_code_error').html('');
+                    $('#state_error').html('');
+
+                    iziToast.warning({
+                    message: 'Failed! Password is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
                 }
-                if (response.responseJSON['errors']['phone']) {
+                else if (response.responseJSON['errors']['phone']) {
                     $('#phone_error').html('<small>Please Fill*</small>');
+                    $('#password_error').html('');
+                    $('#name_error').html('');
+                    $('#email_error').html('');
+                    $('#company_name_error').html('');
+                    $('#company_email_error').html('');
+                    $('#location_number_error').html('');
+                    $('#country_error').html('');
+                    $('#zip_code_error').html('');
+                    $('#state_error').html('');
+                    $('#username_error').html('');
+
+
+                    iziToast.warning({
+                    message: 'Failed! Phone number is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
                 }
-                if (response.responseJSON['errors']['email']) {
+                else if (response.responseJSON['errors']['email']) {
                     $('#email_error').html('<small>Please Fill*</small>');
+                    $('#phone_error').html('');
+                    $('#name_error').html('');
+                    $('#password_error').html('');
+                    $('#company_name_error').html('');
+                    $('#company_email_error').html('');
+                    $('#location_number_error').html('');
+                    $('#country_error').html('');
+                    $('#zip_code_error').html('');
+                    $('#state_error').html('');
+                    $('#username_error').html('');
+
+
+                    iziToast.warning({
+                    message: 'Failed! Email is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
                 }
-                if (response.responseJSON['errors']['company_name']) {
+               else if (response.responseJSON['errors']['company_name']) {
                     $('#company_name_error').html('<small>Please Fill*</small>');
+                    $('#email_error').html('');
+                    $('#name_error').html('');
+                    $('#password_error').html('');
+                    $('#phone_error').html('');
+                    $('#company_email_error').html('');
+                    $('#location_number_error').html('');
+                    $('#country_error').html('');
+                    $('#zip_code_error').html('');
+                    $('#state_error').html('');
+                    $('#username_error').html('');
+
+
+                    iziToast.warning({
+                    message: 'Failed! Company Name is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
                 }
-                if (response.responseJSON['errors']['company_email']) {
+               else if (response.responseJSON['errors']['company_email']) {
                     $('#company_email_error').html('<small>Please Fill*</small>');
+                    $('#company_name_error').html('');
+                    $('#name_error').html('');
+                    $('#password_error').html('');
+                    $('#phone_error').html('');
+                    $('#email_error').html('');
+                    $('#location_number_error').html('');
+                    $('#country_error').html('');
+                    $('#zip_code_error').html('');
+                    $('#state_error').html('');
+                    $('#username_error').html('');
+
+
+                    iziToast.warning({
+                    message: 'Failed! Comany Email is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
                 }
-                if (response.responseJSON['errors']['location_number']) {
+               else if (response.responseJSON['errors']['location_number']) {
                     $('#location_number_error').html('<small>Please Fill*</small>');
+                    $('#company_email_error').html('');
+                    $('#name_error').html('');
+                    $('#password_error').html('');
+                    $('#phone_error').html('');
+                    $('#email_error').html('');
+                    $('#company_name_error').html('');
+                    $('#country_error').html('');
+                    $('#zip_code_error').html('');
+                    $('#state_error').html('');
+                    $('#username_error').html('');
+
+
+                    iziToast.warning({
+                    message: 'Failed! Location is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
                 }
-                if (response.responseJSON['errors']['country']) {
+               else if (response.responseJSON['errors']['country']) {
                     $('#country_error').html('<small>Please Fill*</small>');
+                    $('#location_number_error').html('');
+                    $('#company_email_error').html('');
+                    $('#name_error').html('');
+                    $('#password_error').html('');
+                    $('#phone_error').html('');
+                    $('#email_error').html('');
+                    $('#company_name_error').html('');
+                    $('#zip_code_error').html('');
+                    $('#state_error').html('');
+                    $('#username_error').html('');
+
+
+                    iziToast.warning({
+                    message: 'Failed! Country is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
                 }
-                if (response.responseJSON['errors']['zip_code']) {
+                else if (response.responseJSON['errors']['zip_code']) {
                     $('#zip_code_error').html('<small>Please Fill*</small>');
+                    $('#country_error').html('');
+                    $('#company_email_error').html('');
+                    $('#name_error').html('');
+                    $('#password_error').html('');
+                    $('#phone_error').html('');
+                    $('#email_error').html('');
+                    $('#company_name_error').html('');
+                    $('#state_error').html('');
+                    $('#username_error').html('');
+
+
+                    iziToast.warning({
+                    message: 'Failed! Zip Code missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
                 }
-                if (response.responseJSON['errors']['state']) {
+                else if (response.responseJSON['errors']['state']) {
                     $('#state_error').html('<small>Please Fill*</small>');
+                    $('#zip_code_error').html('');
+                    $('#company_email_error').html('');
+                    $('#name_error').html('');
+                    $('#password_error').html('');
+                    $('#phone_error').html('');
+                    $('#email_error').html('');
+                    $('#company_name_error').html('');
+                    $('#country_error').html('');
+                    $('#username_error').html('');
+
+
+                    iziToast.warning({
+                    message: 'Failed! State is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
                 }
-                if (response.responseJSON['errors']['address_line1']) {
+                else if (response.responseJSON['errors']['address_line1']) {
                     $('#address_line1_error').html('<small>Please Fill*</small>');
+                    $('#state_error').html('');
+                    $('#zip_code_error').html('');
+                    $('#company_email_error').html('');
+                    $('#name_error').html('');
+                    $('#password_error').html('');
+                    $('#phone_error').html('');
+                    $('#email_error').html('');
+                    $('#company_name_error').html('');
+                    $('#country_error').html('');
+                    $('#username_error').html('');
+                    iziToast.warning({
+                    message: 'Failed! Address Line 1 is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
+                }
+                else{
+
                 }
             }
         });
