@@ -201,6 +201,7 @@ class InvoiceController extends Controller
         $data = [];
         $output = [];
         $data = $req->all();
+        
         if(isset($req->id)){
             if($req->invoice_document){
                 $file = $data['invoice_document'];
@@ -211,6 +212,9 @@ class InvoiceController extends Controller
             }
             else{
                 unset($data['invoice_document']);
+            }
+            if(empty($data['vehicles'])){
+                return 'This Invoice has no Vehicles cannot be processed';
             }
             $output['vehicle'] = $data['vehicles'];
             $data['added_by_role'] = auth()->user()->id;

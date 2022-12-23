@@ -1,5 +1,6 @@
 {{-- {{dd(@$vehicle)}} --}}
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
     .item_1 {
         transition: transform .2s;
@@ -233,25 +234,23 @@
         transition: 0.3s;
     }
 
-    .hover-shadow:hover {
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    }
+.hover-shadow:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.showMainImagemodal{
+    width:100%;
+}
+.image_button{
+    background-color:337fb8;
+}
+element.style {
+}
+a:not([href]):not([tabindex]) {
+    /* color: inherit; */
+    text-decoration: none;
+    color: white;
+}
 
-    .showMainImagemodal {
-        width: 100%;
-    }
-
-    .image_button {
-        background-color: 337fb8;
-    }
-
-    element.style {}
-
-    a:not([href]):not([tabindex]) {
-        /* color: inherit; */
-        text-decoration: none;
-        color: white;
-    }
 </style>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
@@ -458,12 +457,10 @@
                         <button
                             style="background: #1F689E;
                     transform: skew(-30deg) !important;border:none;
-                    border-radius: 4px;color:white;margin-right: 6px;font-size: 12px;">
-                            <div style="transform: skew(30deg) !important;padding:1px 4px">
-                                Trucking PDF
-                            </div>
-                        </button>
-                    </a>
+                    border-radius: 4px;color:white;margin-right: 6px;font-size: 13px;"><div style="transform: skew(30deg) !important;padding:1px 4px">
+                     <i class="fa fa-file-pdf-o" style="font-size:12px"></i>   Trucking PDF
+                    </div></button>
+                </a>
                     {{-- <button style="background: #1CACD9;border:none;font-size:12px;
                     transform: skew(-30deg) !important;border-radius: 4px;color:white;margin-right: 3px;"><div style="transform: skew(30deg) !important;padding:1px 12px">Edit</div></button> --}}
 
@@ -579,6 +576,12 @@
                             <span class="information_text">--</span>
                         @endif
                     </div>
+
+
+
+
+
+
                     {{-- <div class="d-flex justify-content-between my-2 py-1" style="border: 1px solid rgba(26, 88, 133, 0.17); border-radius: 10px;width: 90%;margin:4px auto;padding:5px; ">
                         <span class="infromation_mainText ">Order Date</span>
                         @if (@$vehicle['sale_date'])
@@ -595,6 +598,7 @@
                     <span class="information_text">--</span>
                     @endif
                     </div> --}}
+
                     {{-- <div class="mt-4 " style="width: 80%;margin:4px auto;padding:5px; ">
                         <p style="color:#6D8DA6; ">Note to department</p>
                     </div> --}}
@@ -603,6 +607,7 @@
                             <option value=" ">Please Select department</option>
                         </select>
                     </div> --}}
+
                     <div class="d-flex justify-content-start " style="width: 80%;margin:4px auto;padding:5px; ">
                         <p style="color:#6D8DA6 ">Note</p><br>
                     </div>
@@ -626,41 +631,35 @@
                             Send
                         </div>
                     </button>
+
                     </div> --}}
+
+
                 </div>
-                <div class="col-sm-12 col-md-7 col-lg-7 mb-4">
-                    <div class="information_gallary" style="margin-top:8px!important;">
-                        <div>
-                            <button class="img_active_button img_btn col-sm-12 col-md-4 col-lg-4 mb-4"
-                                style="color:black;border-top-left-radius: 8px;background-color: #337fb8;font-size:12px!important; border:#e9e9e9;font-weight:600;height:34px;"
-                                id="vehicle_images" onclick="changeImages(this.id)" tab="{{ @$vehicle['id'] }}">
-                                Pickup Images
+                <div class="col-sm-12 col-md-6 col-lg-6 mb-5 mt-5" >
+                    <div class="information_gallary"style="margin-top:-85px">
+                        <div class="gallary_header d-flex">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="w-100">
+                                    <div class="d-flex" style="width:100%">
+                    <button class="img_active_button img_btn col-sm-12 col-md-4 col-lg-4 mb-4" style="color:black;border-top-left-radius: 8px;background-color: #337fb8;font-size:12px!important; border:#e9e9e9;font-weight:600;height:41px;" id="vehicle_images" onclick="changeImages(this.id)" tab="{{@$vehicle['id']}}">
+                                               Pickup Images
+        
+                                            <button class="image_button  img_btn col-sm-12 col-md-4 col-lg-4 mb-4" style="color:black;;font-size:12px!important;font-weight:600;margin-right:-24px!important;height:41px;"  onclick="changeImages(this.id)" tab=" {{@$vehicle['id']}}" id="auction_images">
+                                            
+                                                Auction Image
+                                            
+                                        </button>
 
-                                <button class="image_button  img_btn col-sm-12 col-md-4 col-lg-4 mb-4"
-                                    style="color:black;;font-size:12px!important;font-weight:600;margin-right:-24px!important;height:34px;"
-                                    onclick="changeImages(this.id)" tab=" {{ @$vehicle['id'] }}"
-                                    id="auction_images">
+                                        <button class="image_button img_btn col-sm-12 col-md-4 col-lg-4 mb-3" onclick="changeImages(this.id)" tab=" {{@$vehicle['id']}}" id="warehouse_images" style="color:black;background-color:337fb8;font-size: 12px !important;border-top-right-radius: 8px;font-weight:600;height:41px;right:-25px">Ware House Image
+                                        </button>
+                    </div>
 
-                                    Auction Image
-
-                                </button>
-
-                                <button class="image_button img_btn col-sm-12 col-md-4 col-lg-4 mb-3"
-                                    onclick="changeImages(this.id)" tab=" {{ @$vehicle['id'] }}"
-                                    id="warehouse_images"
-                                    style="color:black;background-color:337fb8;font-size: 12px !important;border-top-right-radius: 8px;font-weight:600;height:34px;right:-19px">Ware
-                                    House Image
-                                </button>
-                                <div>
-                                    <div class="gallary_header d-flex">
-                                        <div class="row">
-                                            <div class="col-12">
-
-                                            </div>
-
-                                        </div>
 
                                     </div>
+
+                                </div>
 
                                     @if (@$vehicle['pickupimages'])
                                         <div class="col-12 main_image">
@@ -860,11 +859,10 @@
                 </div>
             </div>
 
-        </div>
+   </div>
 
-    </div>
 </div>
-
+</div>
 <div id="myModal" class="my_modal col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12"
     style="color:red;z-index:999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;background-color:#000000db">
     <span class="close vehicle_close cursor" onclick="closeModal()">&times;</span>

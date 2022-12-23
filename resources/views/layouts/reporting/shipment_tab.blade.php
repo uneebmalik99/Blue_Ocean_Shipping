@@ -23,7 +23,7 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="col-3 p-0">
+                <div class="col-2 p-0">
                     <select class="form-control-sm border-style input-border-style rounded col-11 text-muted px-2"
                         name="shipper" id="shipper" >
                         <option disabled selected>Select Shipper</option>
@@ -32,7 +32,7 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="col-3 p-0">
+                <div class="col-2 p-0">
                     <select class="form-control-sm border-style input-border-style rounded col-11 text-muted px-2"
                         name="status"  id="status">
                         <option disabled selected>Select Status</option>
@@ -52,15 +52,17 @@
                     </select>
                 </div>
 
-                <div class="col-2 ml-3">
+                <div class="col-2 p-0 ml-2">
                     <button type="button" class="btn"
                         style="background:#2c3e50;color:white;font-size:11px!important;"
                         onclick="filter_shipment_reporting()">Filter Shipments</button>
-                        <button  type="button" class="mt-2 btn"
-                        style="background:#2c3e50;color:white;font-size:11px!important;"
-                        onclick="clear_reporting()">Clear</button>    
+                         
                 </div>
-                
+                <div class="col-2 p-0">
+                    <button  type="button" class="btn"
+                    style="background:#2c3e50;color:white;font-size:11px!important;"
+                    onclick="clear_reporting()">Clear</button>  
+                </div>
 
             </div>
         </form>
