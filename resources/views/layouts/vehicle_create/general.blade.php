@@ -28,7 +28,7 @@
                                     <select class="form-control-sm border border-0 rounded-pill bg col-6"
                                         name="customer_name" id="customer_name" value="{{ @$user[0]['customer_name'] }}" onchange="getbuyerids()">
                                         @if(@$user[0]['user'])
-                                        <option value="{{@$user[0]['user']['id']}}" disabled selected>{{@$user[0]['user']['company_name']}}</option>
+                                        <option value="{{@$user[0]['user']['id']}}" selected>{{@$user[0]['user']['company_name']}}</option>
                                         @else
                                         <option selected disabled>Select Company Name</option>
                                         @endif
@@ -792,7 +792,7 @@
                                         Location</label>
                                     <select name="pickup_location" id="pickup_location" class="form-control-sm border border-0 rounded-pill bg col-6">
                                     @if(@$user[0]['site'])
-                                    <option value="{{@$user[0]['pickup_location']}}" selected disabled>{{@$user[0]['pickup_location']}}</option>
+                                    <option value="{{@$user[0]['pickup_location']}}" selected>{{@$user[0]['pickup_location']}}</option>
                                     @else
                                     <option value="" selected disabled>Select Location</option>
                                     @endif
