@@ -503,10 +503,12 @@ a:not([href]):not([tabindex]) {
                 </div>
                 <div class="col-sm-12 col-md-7 col-lg-7 mb-4">
                     <div class="information_gallary">
+                        
                         <div class="gallary_header d-flex">
                             <div class="row">
                                 {{-- <div class="col-12">
                                     <div class="w-100">
+                                        
                                         <div class="w-100 d-flex"
                                             style="justify-content: space-around;margin: 5px 1px; padding: 0 3px;">
                                             <button class="img_active_button img_btn" id="vehicle_images"
@@ -532,6 +534,7 @@ a:not([href]):not([tabindex]) {
                                             </button>
 
                                         </div>
+                                        
 
 
                                     </div>
@@ -570,11 +573,11 @@ a:not([href]):not([tabindex]) {
                                                             in2="effect1_dropShadow_0_1" result="shape" />
                                                     </filter>
                                                 </defs>
-                                                <i class="material-icons"  onclick="openModal();currentSlide(1)" style="background-color:#65686c;color:white;border-radius:inherit">fullscreen</i>
+                                                
                                             </svg>
 
                                         </a>
-
+                                        @if($shipments[0]['loading_image'])
                                         <div class="left_button">
                                             <a href="" style="text-decoration: none">
                                                 <svg width="23" height="22" viewBox="0 0 23 22" fill="none"
@@ -675,6 +678,7 @@ a:not([href]):not([tabindex]) {
 
                                             </a>
                                         </div>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="image_section" style="margin-left:10px">
@@ -682,15 +686,20 @@ a:not([href]):not([tabindex]) {
                                     <div class="col-11 mx-auto d-flex flex-wrap">
                                         @if(@$shipments[0]['loading_image'])
                                         @foreach(@$shipments[0]['loading_image'] as $img)
-                                        <img src="{{asset($img['name'])}}" alt="" class="item_1 changeImage" style="width:120px!important;height:80px!important;" onclick="shipmentChangeImage(this.src)">
+                                        <img src="{{asset($img['name'])}}" alt="vehicle_img" class="item_1 changeImage" style="width:120px!important;height:80px!important;" onclick="shipmentChangeImage(this.src)">
                                         @endforeach
                                         @endif
+                                        <i class="text-center py-5"  style="font-size: 40px;font-style: initial;margin-left: 122px;font: bold;">Image Not Found</i>
+                                        
                                     </div>
                                 </div>
                             </div>
 
                         </div>
+                        
+                        
                     </div>
+                    @if($shipments[0]['loading_image'])
                     <div class="row mt-4">
                         <div class="col-12 d-flex justify-content-center ">
                             <a href="#" id="download_all">
@@ -702,6 +711,7 @@ a:not([href]):not([tabindex]) {
                                 </button>
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
             {{-- <div class="px-3"> --}}
