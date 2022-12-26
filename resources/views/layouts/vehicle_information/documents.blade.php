@@ -412,20 +412,16 @@
                                             style="color:black;background-color:337fb8;font-size: 12px !important;border-top-left-radius: 8px;font-weight:600;height:41px;">Ware
                                             House Image
                                         </button>
-
                                     <button class="image_button img_btn col-sm-12 col-md-4 col-lg-4 mb-4"
                                         style="color:black;background-color: #337fb8;font-size:12px!important; border:#e9e9e9;font-weight:600;height:41px;"
                                         id="vehicle_images" onclick="changeImages(this.id)"
                                         tab="{{ @$vehicle['id'] }}">
                                         Pickup Images
-
                                         <button class="image_button  img_btn col-sm-12 col-md-4 col-lg-4 mb-4"
                                             style="color:black;;font-size:12px!important;font-weight:600;margin-right:-24px!important;height:41px;"
                                             onclick="changeImages(this.id)" tab=" {{ @$vehicle['id'] }}"
                                             id="auction_images">
-
                                             Auction Image
-
                                         </button>
                                         </div>
 
