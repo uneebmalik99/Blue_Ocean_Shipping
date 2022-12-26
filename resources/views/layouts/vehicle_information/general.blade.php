@@ -648,8 +648,16 @@
                                     <div class="w-100">
                                         <div class="d-flex" style="width:100%">
 
-                                            <button class="img_active_button img_btn col-sm-12 col-md-4 col-lg-4 mb-4"
-                                                style="color:black;border-top-left-radius: 8px;background-color: #337fb8;font-size:12px!important; border:#e9e9e9;font-weight:600;height:41px;"
+
+                                            <button class="img_active_button img_btn col-sm-12 col-md-4 col-lg-4 mb-3"
+                                                    onclick="changeImages(this.id)" tab=" {{ @$vehicle['id'] }}"
+                                                    id="warehouse_images"
+                                                    style="color:black;background-color:337fb8;font-size: 12px !important;border-top-left-radius: 8px;font-weight:600;height:41px;">Ware
+                                                    House Image
+                                                </button>
+
+                                            <button class="image_button img_btn col-sm-12 col-md-4 col-lg-4 mb-4"
+                                                style="color:black;background-color: #337fb8;font-size:12px!important; border:#e9e9e9;font-weight:600;height:41px;"
                                                 id="vehicle_images" onclick="changeImages(this.id)"
                                                 tab="{{ @$vehicle['id'] }}">
                                                 Pickup Images
@@ -663,12 +671,7 @@
 
                                                 </button>
 
-                                                <button class="image_button img_btn col-sm-12 col-md-4 col-lg-4 mb-3"
-                                                    onclick="changeImages(this.id)" tab=" {{ @$vehicle['id'] }}"
-                                                    id="warehouse_images"
-                                                    style="color:black;background-color:337fb8;font-size: 12px !important;border-top-right-radius: 8px;font-weight:600;height:41px;right:-25px">Ware
-                                                    House Image
-                                                </button>
+                                                
                                         </div>
 
 
@@ -677,11 +680,11 @@
                                 </div>
 
                                 <div class="col-12 main_image">
-                                    @if (@$vehicle['pickupimages'])
+                                    @if (@$vehicle['warehouse_image'])
                                         <div class="w-100  p-3" style="position: relative;">
 
                                             <div>
-                                                <img src="{{ asset(@$vehicle['pickupimages'][0]['name']) }}"
+                                                <img src="{{ asset(@$vehicle['warehouse_image'][0]['name']) }}"
                                                     alt=""class="img_fluid mx-auto w-100"
                                                     style="height:auto!important;border-radius: 10px!important;"
                                                     id="main_image_box">
@@ -805,8 +808,8 @@
 
                                                 </a>
                                                 <br>
-                                                <a href="{{ asset(@$vehicle['pickupimages'][0]['name']) }}"
-                                                    download="{{ @$vehicle['pickupimages'][0]['thumbnail'] }}"
+                                                <a href="{{ asset(@$vehicle['warehouse_image'][0]['name']) }}"
+                                                    download="{{ @$vehicle['warehouse_image'][0]['thumbnail'] }}"
                                                     style="text-decoration: none" id="download_image">
                                                     <svg width="23" height="23" viewBox="0 0 23 23"
                                                         fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -851,7 +854,7 @@
                                     <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12 changeImages"
                                         style="left:6%; margin-top:15px;">
                                         {{-- @if (@$vehicle['pickupimages']) --}}
-                                        @foreach (@$vehicle['pickupimages'] as $img)
+                                        @foreach (@$vehicle['warehouse_image'] as $img)
                                             <img src="{{ asset($img['name']) }}" alt="" class="item_1"
                                                 class="showMainImage"
                                                 style="width:120px!important;height:80px!important;"
@@ -867,7 +870,7 @@
                             </div>
                         </div>
                     </div>
-                    @if (@$vehicle['pickupimages'])
+                    @if (@$vehicle['warehouse_image'])
                         <div class="row mt-4 showhide">
                             <div class="col-12 d-flex justify-content-center ">
                                 <a id="download_all" onclick="downloadAll()">
@@ -895,11 +898,11 @@
             style="left:-2%;width:auto!important;height:455px!important" id="slider_image">
 
             <div class="mySlides" style="width:auto!important"; id="slider_main">
-                <img src="{{ asset(@$vehicle['pickupimages'][0]['name']) }}" alt=""
+                <img src="{{ asset(@$vehicle['warehouse_image'][0]['name']) }}" alt=""
                     style="width:800px!important;height: 455px!important;">
             </div>
-            @if (@$vehicle['pickupimages'])
-                @foreach (@$vehicle['pickupimages'] as $img)
+            @if (@$vehicle['warehouse_image'])
+                @foreach (@$vehicle['warehouse_image'] as $img)
                     <div
                         class="mySlides col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12"style="left:-2%;width:80%!important">
                         <img src="{{ asset($img['name']) }}" alt=""
@@ -922,8 +925,8 @@
         </div>
 
         <div class="row" style="background-color: black;width: 798px;margin-left: 0px;" id="sliders_images">
-            @if (@$vehicle['pickupimages'])
-                @foreach (@$vehicle['pickupimages'] as $img)
+            @if (@$vehicle['warehouse_image'])
+                @foreach (@$vehicle['warehouse_image'] as $img)
                     {{-- <div class="column "> --}}
                     <img src="{{ asset($img['name']) }}" alt=""class="item_4" class="showMainImage"
                         style="width:25%!important" onclick="currentSlide(2)" class="hover-shadow cursor">
