@@ -511,8 +511,9 @@ a:not([href]):not([tabindex]) {
 
                                 </div>
                                 {{-- {{asset(@$shipments[0]['loading_image'][0]['name'])}} --}}
-                                @if($shipments)
-                                    <div class="col-12 main_image">
+                                
+                                <div class="col-12 main_image">
+                                        @if ($shipments[0]['loading_image'])
                                         <div class="w-100  p-3" style="position: relative;">
                                             <img src="{{asset(@$shipments[0]['loading_image'][0]['name'])}}"
                                                 alt="" class="slide img_fluid mx-auto w-100 main_image"
@@ -654,10 +655,12 @@ a:not([href]):not([tabindex]) {
                                                 </a>
                                             </div>
                                         </div>
+                                        @else
+                                        <p class="text-center py-5"
+                                            style="font-size: 22px;font-style: initial;margin-left: 115px;margin-top: 50px;">Image
+                                            Not Found</p>
+                                    @endif
                                     </div>
-                                @else
-                                    <h6 class="text-center mt-5 w-100" style="color:gray">No Image Found</h6>
-                                @endif
                                 <div class="image_section">
 
                                     <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12 changeImages">

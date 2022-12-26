@@ -745,9 +745,9 @@
                                             </div>
                                         </div>
                                     @else
-                                        <i class="text-center py-5"
-                                            style="font-size: 40px;font-style: initial;margin-left: 122px;font: bold;">Image
-                                            Not Found</i>
+                                        <p class="text-center py-5"
+                                            style="font-size: 22px;font-style: initial;margin-left: 115px;margin-top: 50px;">Image
+                                            Not Found</p>
                                     @endif
 
                                 </div>

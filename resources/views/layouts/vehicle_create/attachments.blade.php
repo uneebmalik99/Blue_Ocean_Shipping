@@ -157,7 +157,7 @@
                     <script>
                     $('.vehicle_auction_image_update').imageUploader({
                         imagesInputName: 'auction_images',
-                        maxFiles: 15,
+                        maxFiles: 30,
                     });
                     </script>
                     @endif
@@ -203,7 +203,7 @@
                     <script>
                     $('.vehicle_warehouse_image_update').imageUploader({
                         imagesInputName: 'warehouse_images',
-                        maxFiles: 15,
+                        maxFiles: 30,
                     });
                     </script>
                     @endif
@@ -261,7 +261,7 @@
             <script>
                 $('.pick_update').imageUploader({
                             imagesInputName: 'pickup',
-                            maxFiles: 15,  
+                            maxFiles: 30, 
                 });
             </script>
             @endif
