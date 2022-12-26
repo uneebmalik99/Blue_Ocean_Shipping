@@ -128,23 +128,20 @@
             width: 95%;
             margin-right: 2px;">
                 <button class="text-center form-control border next-style reporting_cls " id="users">
-                    <a href="{{ route('user.list') }}" style="text-decoration: none!important;color:#ffff!important"
-                    ><div class="unskew">Users</div></a>
+                    <a href="{{ route('user.list') }}" style="text-decoration: none!important;"
+                    ><div class="unskew" style="color:black;">Users</div></a>
                     
                 </button>
                 <button class="text-center form-control border tab_style reporting_cls" id="permissions"
-                onclick="showPermissions()">
+                onclick="showPermissions(this.id)">
                 <div class="unskew">Permissions</div>
                 </button>
                 <button class="text-center form-control border tab_style reporting_cls " id="roles"
-                    onclick="showRoles()">
+                    onclick="showRoles(this.id)">
                     <div class="unskew">Roles</div>
                 </button>
                 
-                <button class="text-center form-control border next-style reporting_cls" id="add_new_user"
-                    onclick="createUser()">
-                    <div class="unskew">Add New User</div>
-                </button>
+                
 
             </div>
             {{-- <div class="col-lg-12 col-md-12 col-12 w-100 d-flex justify-content-between align-items-center my-3">
@@ -197,10 +194,17 @@
 
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
+                
                 <div class="main-box">
+                   
                     <table class="table" id="table_id" style="border:none!important;">
+                        
                         <thead style="border:none!imporant;color:rgba(102,102,102,1); ">
-                            <th>User Name</th>
+                           
+                        
+
+    
+                           <th>User Name</th>
                             <th>STATE / CITY</th>
                             <th>Role</th>
                             <th>STATUS</th>
@@ -209,6 +213,14 @@
                             @if (@$role['name'] != 'Customer')
                                 <th>Action</th>
                             @endif
+                            <th>
+                                <div class="container m-2"><button class="float-right next-style reporting_cls" id="add_new_user"
+                                    onclick="createUser()">
+                                    <div class="unskew">Add New User</div>
+                                    </button>
+                                </div>
+                            </th>
+                            
                         </thead>
                         <tbody id="tbody">
                             @foreach ($records as $val)
