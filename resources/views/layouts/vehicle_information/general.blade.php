@@ -897,7 +897,7 @@
         <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12 "
             style="left:-2%;width:auto!important;height:455px!important" id="slider_image">
 
-            <div class="mySlides" style="width:auto!important"; id="slider_main">
+            <div class="mySlides" style="width:auto!important" id="slider_main">
                 <img src="{{ asset(@$vehicle['warehouse_image'][0]['name']) }}" alt=""
                     style="width:800px!important;height: 455px!important;">
             </div>
