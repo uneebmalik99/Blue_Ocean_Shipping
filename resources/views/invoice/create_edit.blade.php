@@ -235,7 +235,7 @@
                                     <td>{{ @$vehicle['model'] }}</td>
                                     <td>{{@$vehicle['vin'] }}</td>
                                     <td>{{ @$vehicle['customer_name'] }}</td>
-                                    <td><i class='fa fa-minus' aria-hidden='true'></i><input type='hidden' checked id='vehicle' value="{{ @$vehicle['id'] }}" name='vehicles[]'/></td>
+                                    <td onclick="removeVehicle()"><i class='fa fa-minus' aria-hidden='true'></i><input type='hidden' checked id='vehicle' value="{{ @$vehicle['id'] }}" name='vehicles[]'/></td>
                                     </tr>
                                     @empty
                             <tr>        <td>Empty</td></tr>
@@ -298,5 +298,12 @@
         var balance = Math.abs(Math.floor(invoice_amount)-Math.floor(received_amount))
         
         $('#balance').val(balance);
+    }
+</script>
+<script>
+    function removeVehicle() {
+        var td = event.target.parentNode;
+        var tr = td.parentNode; // the row to be removed
+        tr.parentNode.removeChild(tr);
     }
 </script>

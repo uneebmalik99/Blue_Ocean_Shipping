@@ -214,7 +214,7 @@ class InvoiceController extends Controller
                 unset($data['invoice_document']);
             }
             if(empty($data['vehicles'])){
-                return 'This Invoice has no Vehicles cannot be processed';
+                return 'No Vehicles';
             }
             $output['vehicle'] = $data['vehicles'];
             $data['added_by_role'] = auth()->user()->id;

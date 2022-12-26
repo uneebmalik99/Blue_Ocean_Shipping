@@ -81,7 +81,8 @@ class StickyController extends Controller
 
         $notification = $this->Notification();
         $data['location'] = Location::all();
-        $data['records'] = Sticky::with('user')->get()->toArray();
+        $data['records'] = Sticky::with('user')->where('customer_id',auth()->user()->id)->get()->toArray();
+        
         return view($this->view . 'list', $data, $notification);
     }
 

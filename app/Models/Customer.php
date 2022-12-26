@@ -15,9 +15,9 @@ class Customer extends Model
     protected $table = "customers";
     protected $guarded = [];
 
-    public function user()
+    public function customer()
     {
-        return $this->belongsTo('App\Models\User', 'id', 'id');
+        return $this->belongsTo('App\Models\Customer', 'id', 'id');
     }
 
     public function vehicles()
