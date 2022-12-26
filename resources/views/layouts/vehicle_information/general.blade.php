@@ -640,13 +640,14 @@
 
 
                 </div>
-                <div class="col-sm-12 col-md-6 col-lg-6 mb-5 mt-5">
-                    <div class="information_gallary"style="margin-top:-85px">
+                <div class="col-sm-12 col-md-7 col-lg-7 mb-7 mt-7">
+                    <div class="information_gallary">
                         <div class="gallary_header d-flex">
                             <div class="row">
                                 <div class="col-12">
                                     <div class="w-100">
                                         <div class="d-flex" style="width:100%">
+
                                             <button class="img_active_button img_btn col-sm-12 col-md-4 col-lg-4 mb-4"
                                                 style="color:black;border-top-left-radius: 8px;background-color: #337fb8;font-size:12px!important; border:#e9e9e9;font-weight:600;height:41px;"
                                                 id="vehicle_images" onclick="changeImages(this.id)"
@@ -676,8 +677,7 @@
                                 </div>
 
                                 <div class="col-12 main_image">
-                                        @if (@$vehicle['pickupimages'])
-
+                                    @if (@$vehicle['pickupimages'])
                                         <div class="w-100  p-3" style="position: relative;">
 
                                             <div>
@@ -721,8 +721,13 @@
                                                                 in2="effect1_dropShadow_0_1" result="shape" />
                                                         </filter>
                                                     </defs>
-                                                    <i class="material-icons" onclick="openModal();currentSlide(1)"
-                                                        style="background-color:#65686c;color:white;border-radius:inherit">fullscreen</i>
+                                                    {{-- <i class="material-icons" onclick="openModal();currentSlide(1)"
+                                                        style="background-color:#65686c;color:white;border-radius:inherit">fullscreen</i> --}}
+                                                    <div class="icon" style="float:right;">
+                                                        <i class="material-icons"
+                                                            onclick="openModal();currentSlide(1)"
+                                                            style="background-color:#65686c;color:white;border-radius:inherit">fullscreen</i>
+                                                    </div>
                                                 </svg>
 
 
@@ -837,26 +842,26 @@
                                                 </a>
                                             </div>
                                         </div>
-                                        @else
+                                    @else
                                         <h6 class="text-center mt-5 w-100" style="color:gray">No Image Found</h6>
                                     @endif
                                 </div>
-                                
+
                                 <div class="image_section">
                                     <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12 changeImages"
-                                        style="left:6%">
+                                        style="left:6%; margin-top:15px;">
                                         {{-- @if (@$vehicle['pickupimages']) --}}
-                                            @foreach (@$vehicle['pickupimages'] as $img)
-                                                <img src="{{ asset($img['name']) }}" alt="" class="item_1"
-                                                    class="showMainImage"
-                                                    style="width:120px!important;height:80px!important;"
-                                                    onclick="showAsMainImage(this.src)" class="hover-shadow cursor">
-                                            @endforeach
+                                        @foreach (@$vehicle['pickupimages'] as $img)
+                                            <img src="{{ asset($img['name']) }}" alt="" class="item_1"
+                                                class="showMainImage"
+                                                style="width:120px!important;height:80px!important;"
+                                                onclick="showAsMainImage(this.src)" class="hover-shadow cursor">
+                                        @endforeach
                                         {{-- @endif --}}
                                     </div>
                                 </div>
 
-                               
+
 
 
                             </div>
@@ -867,11 +872,11 @@
                             <div class="col-12 d-flex justify-content-center ">
                                 <a id="download_all" onclick="downloadAll()">
                                     <button
-                                        style="background: #3e5871;cursor:pointer; border-radius: 6px;border:none;color:white;transform: skew(-30deg);">
-                                        <div style="transform: skew(30deg);padding:1px 10px;font-size: 13px;">
-                                            Download Images in Zip
-                                        </div>
-                                    </button>
+                                    style="background: #3e5871;cursor:pointer; border-radius: 6px;border:none;color:white;transform: skew(-30deg);">
+                                    <div style="transform: skew(30deg);padding:1px 10px;font-size: 13px;">
+                                        <i class="fa fa-download"></i> Download Images in Zip
+                                    </div>
+                                </button>
                             </div>
                         </div>
                     @endif
@@ -919,10 +924,10 @@
         <div class="row" style="background-color: black;width: 798px;margin-left: 0px;" id="sliders_images">
             @if (@$vehicle['pickupimages'])
                 @foreach (@$vehicle['pickupimages'] as $img)
-                    <div class="column ">
-                        <img src="{{ asset($img['name']) }}" alt=""class="item_4" class="showMainImage"
-                            style="width:80%!important" onclick="currentSlide(2)" class="hover-shadow cursor">
-                    </div>
+                    {{-- <div class="column "> --}}
+                    <img src="{{ asset($img['name']) }}" alt=""class="item_4" class="showMainImage"
+                        style="width:25%!important" onclick="currentSlide(2)" class="hover-shadow cursor">
+                    {{-- </div> --}}
                 @endforeach
             @endif
 

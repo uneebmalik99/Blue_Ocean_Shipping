@@ -287,6 +287,7 @@
             },
             success: function(data) {
                 console.log(data.slide_image);
+               
 
                 $('.main_image').html(data.main_image);
                 $('.changeImages').html(data.images);
