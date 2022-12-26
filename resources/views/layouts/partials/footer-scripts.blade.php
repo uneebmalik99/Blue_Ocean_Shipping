@@ -633,6 +633,17 @@
                     imagesInputName: 'auction_images',
                     preloadedInputName: 'auction_old',
                 });
+                $('.vehicle_warehouse_image').imageUploader({
+                    maxFiles: 15,
+                    imagesInputName: 'warehouse_images',
+                });
+
+                $('.vehicle_warehouse_image_update').imageUploader({
+                    preloaded: warehouse_image,
+                    maxFiles: 15,
+                    imagesInputName: 'warehouse_images',
+                    preloadedInputName: 'warehouse_old'
+                });
                 $('.pick').imageUploader({
                     imagesInputName: 'pickup',
                     maxFiles: 15,
@@ -654,17 +665,7 @@
                     imagesInputName: 'originaltitle',
 
                 });
-                $('.vehicle_warehouse_image').imageUploader({
-                    maxFiles: 15,
-                    imagesInputName: 'warehouse_images',
-                });
-
-                $('.vehicle_warehouse_image_update').imageUploader({
-                    maxFiles: 15,
-                    imagesInputName: 'warehouse_images',
-                    preloaded: warehouse_image,
-                    preloadedInputName: 'warehouse_old'
-                });
+             
 
 
             },

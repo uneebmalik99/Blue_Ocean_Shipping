@@ -3,7 +3,7 @@
  
     </style>
 @if(count(@$images) > 0)
-<div class="  " style="position: relative;">
+<div class="" style="position: relative;">
     <img src="{{asset(@$images[0]['name'])}}" alt=""class="img_fluid " style="height:auto!important;border-radius: 10px!important;width:95%;margin-left:12px" id="main_image_box">
     <a class="bottom_button">
         <svg width="20" height="0" viewBox="0 0 39 25" fill="none" xmlns="http://www.w3.org/2000/svg">

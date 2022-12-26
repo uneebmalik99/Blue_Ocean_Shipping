@@ -591,18 +591,18 @@ a:not([href]):not([tabindex]) {
 <div class="caption-container">
  <p id="caption"></p>
 </div>
+<div class="row" style="background-color: black;width: 798px;margin-left: 0px;" id="sliders_images">
+            @if (@$vehicle['pickupimages'])
+                @foreach (@$vehicle['pickupimages'] as $img)
+                    
+                        <img src="{{ asset($img['name']) }}" alt=""class="item_4" class="showMainImage"
+                            style="width:25%!important; " onclick="currentSlide(2)" class="hover-shadow cursor">
+                   
+                @endforeach
+            @endif
 
-<div class="row"  style="background-color: black;width: 798px;margin-left: 0px;">
-@if(@$vehicle['pickupimages'])
-                                       @foreach(@$vehicle['pickupimages'] as $img)  
-                                       <div class="column ">
-                                       <img src="{{asset($img['name'])}}" alt=""class="item_4"  class="showMainImage"  style="width:80%!important"  onclick="currentSlide(2)" class="hover-shadow cursor">
-                                       </div>
-                                       @endforeach
-                                   @endif
 
-
-</div>
+        </div>
 </div>
 </div>
 <script>

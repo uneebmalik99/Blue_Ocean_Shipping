@@ -445,7 +445,6 @@ class VehicleController extends Controller
     }
     else{
         $vehicle['vehicles'] = Vehicle::with('pickupimages','originaltitles', 'billofsales','auction_image', 'warehouse_image')->where('id', $request->id)->get()->toArray();
-        // dd($vehicle['vehicles']);
         $obj = Vehicle::find($request->id);
         $obj->update($data);
         $Obj_vehicle = $obj->where('vin', $data['vin'])->get();
@@ -460,13 +459,7 @@ class VehicleController extends Controller
     }
     public function store_image(Request $request)
     {
-        // dd($request->all());
-
-
-        // $data = $request->all();
-        // if($request->auction_old){
-        //     dd($request->auction_old);
-        // }
+        
 
         $output = [];
         $auction_invoice = $request->file("auction_invoice");
@@ -480,7 +473,6 @@ class VehicleController extends Controller
 
         $Obj = new Vehicle;
         $Obj_vehicle = $Obj->where('vin', $request->vin)->get();
-        // dd($Obj_vehicle[0]['id']);
 
 
         if($request->auction_old){
@@ -519,12 +511,6 @@ class VehicleController extends Controller
             }
         }
 
-
-
-
-       
-
-    
         if($auction_invoice){
             $Obj_auctionInvoice = new AuctionInvoice;
             foreach ($auction_invoice as $auctiofile) {
@@ -560,9 +546,21 @@ class VehicleController extends Controller
             }
             
         }
-
-
         
+
+        // if(!$auction_images && !$request->auction_old){
+        //     $auction_image = AuctionImage::where('vehicle_id', $Obj_vehicle[0]['id'])->delete();
+        // }
+
+        // if(!$warehouse_images && !$request->warehouse_old){
+        //     $auction_image = WarehouseImage::where('vehicle_id', $Obj_vehicle[0]['id'])->delete();
+        // }
+
+        // if(!$pickup && !$request->pickup_old){
+        //     $auction_image = PickupImage::where('vehicle_id', $Obj_vehicle[0]['id'])->delete();
+        // }
+        
+
         if($auction_images){
             $Obj_auctionImages = new AuctionImage;
             foreach ($auction_images as $auctionImages) {
@@ -582,7 +580,6 @@ class VehicleController extends Controller
         }
 
         if($billofsales){
-            // dd($billofsales);
             $Obj_billofsales = new BillOfSale;
             foreach ($billofsales as $billofsales) {
                 $file_name = time() . '.' . $billofsales->extension();
@@ -653,72 +650,7 @@ class VehicleController extends Controller
             
         }
 
-        // $i = 0;
-        // if ($request->hasFile('images')) {
-            //     foreach ($images as $image) {
-                //         switch ($tab) {
-                    //             case ('auction'):
-                        //                 $Obj_image = new AuctionImage;
-                        //                 $this->directory = "/auction_images";
-        //                 break;
-        //             case ('warehouse'):
-        //                 $Obj_image = new WarehouseImage;
-        //                 $this->directory = "/warehouse_images";
-        //                 break;
-        //             case ('billofsales'):
-        //                 $Obj_image = new BillOfSale;
-        //                 $this->directory = "/billofsales_images";
-        //                 break;
-        //             case ('originalTitle'):
-        //                 $Obj_image = new OriginalTitle;
-        //                 $this->directory = "/OriginalTitle_images";
-        //                 break;
-        //             case ('pickup'):
-        //                 $Obj_image = new PickupImage;
-        //                 $this->directory = "/pickup_images";
-        //                 break;
-        //         }
-        //         $image_name = time() . '.' . $image->extension();
-        //         $filename = Storage::putFile($this->directory, $image);
-        //         $image->move(public_path($this->directory), $filename);
-        //         $Obj_image->vehicle_id = $Obj_vehicle[0]['id'];
-        //         $Obj_image->name = $filename;
-        //         $Obj_image->thumbnail = $image_name;
-        //         $Obj_image->save();
-        //         $output['result'] = "Success" . $i;
-        //         $i++;
-        //     }
-        // }
-
-        // if ($request->hasFile('name')) {
-        //     // dd($tab);
-        //     switch ($tab) {
-        //         case ('invoice'):
-        //             $Obj_file = new AuctionInvoice;
-        //             $this->directory = "/auction_invoices";
-
-        //             break;
-        //         case ('auction_copy'):
-        //             $Obj_file = new AuctionCopy;
-        //             $this->directory = "/auction_copies";
-        //             break;
-        //     }
-        //     $filename = Storage::putFile($this->directory, $documents);
-        //     $type = $documents->extension();
-        //     $doc = $documents->move(public_path($this->directory), $filename);
-        //     // dd($doc->getSize() / 1000);/
-        //     $size = $doc->getSize() / 1000;
-            
-        //     $Obj_file->vehicle_id = $Obj_vehicle[0]['id'];
-        //     $Obj_file->name = $filename;
-        //     $Obj_file->type = $type;
-        //     $Obj_file->size = $size . ' kb';
-            
-        //     $Obj_file->save();
-
-        //     $output['result'] = "Success";
-
-        // }
+       
         return Response($output);
         // return Response($output);
     }
@@ -871,10 +803,10 @@ class VehicleController extends Controller
             $data['images'] = PickupImage::where('vehicle_id', $request->id)->get()->toArray();
             $url = url('public/');
         }
-        // return $data['images'];
-        $output['main_image'] =view('layouts.vehicle_information.Vehicle_image',$data)->render();
-        $output['slide_image'] =view('layouts.vehicle_information.slide_main_image',$data)->render();
-        // dd($output['slide_image']);
+        // dd($data['images']);
+        $output['main_image'] = view('layouts.vehicle_information.Vehicle_image',$data)->render();
+        $output['slide_image'] = view('layouts.vehicle_information.slide_main_image',$data)->render();
+        // dd($output['main_image']);
         $output['images'] = view('layouts.vehicle_information.Vehicle_images', $data)->render();
 
         // foreach ($data['images'] as $img) {
