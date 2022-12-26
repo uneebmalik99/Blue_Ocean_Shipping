@@ -1012,7 +1012,7 @@
                         data.shipments[0]['vehicle'].forEach(element => {
                             output = "<tr><td>" + element.year + "</td><td>" + element.make +
                                 "</td><td>" + element.model + "</td><td>" + element.vin +
-                                "</td><td>" + element.customer_name + "</td><td onclick='removeVehicle()' class='text-center'><div><i class='fa fa-minus' aria-hidden='true'></i></div><input type='hidden' checked value='" +
+                                "</td><td>" + element.customer_name + "</td><td onclick='removeVehicle()' class='text-center'><i class='fa fa-minus' aria-hidden='true'></i><input type='hidden' checked value='" +
                                 element.id + "' id='vehicle' name='vehicles[]'></td></tr>";
                             html.push(output);
                         });
@@ -2031,8 +2031,12 @@
 </script>
 {{-- User List Profile dynamic Tabs of Permissions and Roles --}}
 <script>
-    function showPermissions() {
+    function showPermissions(id) {
         //alert("here is");
+        $('.reporting_cls').removeClass('next-style');
+        $('.reporting_cls').addClass('tab_style');
+        
+        $('#'+id).addClass('next-style');
         $.ajax({
             type: 'GET',
             url: '{{ route('user.allpermissions') }}',
@@ -2044,7 +2048,13 @@
         });
     }
 
-    function showRoles() {
+    function showRoles(id) {
+        $('.reporting_cls').removeClass('next-style');
+        $('.reporting_cls').addClass('tab_style');
+        
+        $('#'+id).addClass('next-style');
+
+        
         $.ajax({
             type: 'GET',
             url: '{{ route('user.allroles') }}',
@@ -2057,6 +2067,8 @@
     }
 
     function createUser() {
+
+        
         $.ajax({
             type: 'GET',
             url: '{{ route('user.createUser') }}',
@@ -2120,7 +2132,16 @@
             data: formData,
             success: function(data) {
                 $('#exampleModal').modal('hide');
+                if(data == 'Invoice can not be generated'){
+                    iziToast.warning({
+                    title: 'Invoice',
+                    message: data,
+                    position: 'topCenter',
+                    zindex: '9999999999999',
 
+                });
+                }
+                if(data == 'Invoice Updated!' || data == 'Invoice Created!'){
                 iziToast.success({
                     title: 'Invoice',
                     message: data,
@@ -2128,7 +2149,7 @@
                     zindex: '9999999999999',
 
                 });
-
+                }
                 setTimeout(function() {
                     location.reload();
                 }, 1000);

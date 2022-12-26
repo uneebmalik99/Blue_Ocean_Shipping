@@ -201,7 +201,9 @@ class InvoiceController extends Controller
         $data = [];
         $output = [];
         $data = $req->all();
-        
+        if(empty($data['vehicles'])){
+            return 'Invoice can not be generated';
+        }
         if(isset($req->id)){
             if($req->invoice_document){
                 $file = $data['invoice_document'];
@@ -213,9 +215,7 @@ class InvoiceController extends Controller
             else{
                 unset($data['invoice_document']);
             }
-            if(empty($data['vehicles'])){
-                return 'No Vehicles';
-            }
+           
             $output['vehicle'] = $data['vehicles'];
             $data['added_by_role'] = auth()->user()->id;
             $id = $data['id'];
@@ -228,17 +228,33 @@ class InvoiceController extends Controller
             if($invoice){
                 $invoice_id = $req->id;
                 if($output['vehicle']){
-                    foreach ($output['vehicle'] as $vehicle_id) {
-                        $get_vehicle = Vehicle::find($vehicle_id);
-                        $get_vehicle->inovice_id  = $invoice_id;
-                        $get_vehicle->update();
+
+                    // dd($output['vehicle']);
+                    $already_vehicles = Vehicle::whereinovice_id($invoice_id)->get()->toArray();
+                    // dd($already_vehicles[1]['id']);
+                    for($i = 0; $i<count($already_vehicles); $i++){
+                        foreach($output['vehicle'] as $vehicle_id){
+                            if($already_vehicles[$i]['id'] == $vehicle_id){
+                                
+                            }
+                            else{
+                                $get_vehicle = Vehicle::find($already_vehicles[$i]['id']);
+                                $get_vehicle->inovice_id  = null;
+                                $get_vehicle->update();
+                                
+                            }
+                        }
                     }
+
+                    
+                    
+                    
                 }
 
 
         }
 
-        return 'Invoice Updated Successfully!';
+        return 'Invoice Updated!';
 
         }
         $file = $data['invoice_document'];
@@ -267,7 +283,7 @@ class InvoiceController extends Controller
 
         }
 
-        return 'Invoice Added Successfully!';
+        return 'Invoice Created!';
 
 
         

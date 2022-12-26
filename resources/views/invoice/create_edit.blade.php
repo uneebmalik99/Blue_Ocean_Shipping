@@ -302,6 +302,7 @@
 </script>
 <script>
     function removeVehicle() {
+        event.preventDefault()
         var td = event.target.parentNode;
         var tr = td.parentNode; // the row to be removed
         tr.parentNode.removeChild(tr);
