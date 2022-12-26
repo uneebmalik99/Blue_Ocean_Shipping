@@ -417,6 +417,7 @@
                                         id="vehicle_images" onclick="changeImages(this.id)"
                                         tab="{{ @$vehicle['id'] }}">
                                         Pickup Images
+                                        
                                         <button class="image_button  img_btn col-sm-12 col-md-4 col-lg-4 mb-4"
                                             style="color:black;;font-size:12px!important;font-weight:600;margin-right:-24px!important;height:41px;"
                                             onclick="changeImages(this.id)" tab=" {{ @$vehicle['id'] }}"
