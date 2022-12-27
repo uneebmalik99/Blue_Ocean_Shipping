@@ -68,7 +68,7 @@
                         </a>
                     </button>
                     <button class="delete-button">
-                        <a href={{ url(@$module['action'] . '/delete/' . @$val[@$module['db_key']]) }}>
+                        <a href={{route('vehicle.delete', @$val['id'])}}>
                             <svg width="14" height="13" viewBox="0 0 12 12" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
