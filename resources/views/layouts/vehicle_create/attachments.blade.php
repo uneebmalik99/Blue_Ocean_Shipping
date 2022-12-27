@@ -207,13 +207,13 @@
                     });
                     </script>
                     @endif
-                    {{-- @else
+                    @else
                     <script>
                         $('.vehicle_warehouse_image').imageUploader({
                         imagesInputName: 'warehouse_images',
-                        maxFiles: 15,
+                        maxFiles: 30,
                     });
-                    </script> --}}
+                    </script>
                     @endif
                 </div>
             </div>
@@ -265,13 +265,13 @@
                 });
             </script>
             @endif
-            {{-- @else
+            @else
             <script>
                 $('.pick').imageUploader({
                         imagesInputName: 'pickup',
-                        maxFiles: 15,  
+                        maxFiles: 30,  
                     });
-            </script> --}}
+            </script>
             @endif
 
         </div>
