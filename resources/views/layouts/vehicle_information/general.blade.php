@@ -650,11 +650,11 @@
 
 
                                             <button class="img_active_button img_btn col-sm-12 col-md-4 col-lg-4 mb-3"
-                                                    onclick="changeImages(this.id)" tab=" {{ @$vehicle['id'] }}"
-                                                    id="warehouse_images"
-                                                    style="color:black;background-color:337fb8;font-size: 12px !important;border-top-left-radius: 8px;font-weight:600;height:41px;">Ware
-                                                    House Image
-                                                </button>
+                                                onclick="changeImages(this.id)" tab=" {{ @$vehicle['id'] }}"
+                                                id="warehouse_images"
+                                                style="color:black;background-color:337fb8;font-size: 12px !important;border-top-left-radius: 8px;font-weight:600;height:41px;">Ware
+                                                House Image
+                                            </button>
 
                                             <button class="image_button img_btn col-sm-12 col-md-4 col-lg-4 mb-4"
                                                 style="color:black;background-color: #337fb8;font-size:12px!important; border:#e9e9e9;font-weight:600;height:41px;"
@@ -671,7 +671,7 @@
 
                                                 </button>
 
-                                                
+
                                         </div>
 
 
@@ -873,13 +873,14 @@
                     @if (@$vehicle['warehouse_image'])
                         <div class="row mt-4 showhide">
                             <div class="col-12 d-flex justify-content-center ">
-                                <a id="download_all" onclick="downloadAll()">
+                                <a id="download_all" class="download_all" onclick="download_all()">
                                     <button
-                                    style="background: #3e5871;cursor:pointer; border-radius: 6px;border:none;color:white;transform: skew(-30deg);">
-                                    <div style="transform: skew(30deg);padding:1px 10px;font-size: 13px;">
-                                        <i class="fa fa-download"></i> Download Images in Zip
-                                    </div>
-                                </button>
+                                        style="background: #3e5871;cursor:pointer; border-radius: 6px;border:none;color:white;transform: skew(-30deg);">
+                                        <div style="transform: skew(30deg);padding:1px 10px;font-size: 13px;">
+                                            <i class="fa fa-download"></i> Download Images in Zip
+                                        </div>
+                                    </button>
+                                </a>
                             </div>
                         </div>
                     @endif
@@ -901,10 +902,10 @@
                 <img src="{{ asset(@$vehicle['warehouse_image'][0]['name']) }}" alt=""
                     style="width:800px!important;height: 455px!important;">
             </div>
+
             @if (@$vehicle['warehouse_image'])
                 @foreach (@$vehicle['warehouse_image'] as $img)
-                    <div
-                        class="mySlides col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12"style="left:-2%;width:80%!important">
+                    <div class="mySlides col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12"style="left:-2%;width:80%!important">
                         <img src="{{ asset($img['name']) }}" alt=""
                             style="width:137%!important;height: 455px!important;"
                             onclick="openModal();currentSlide(1)">
@@ -979,4 +980,10 @@
         dots[slideIndex - 1].className += " active";
         captionText.innerHTML = dots[slideIndex - 1].alt;
     }
+
+
+    function download_all(){
+        
+    }
+
 </script>
