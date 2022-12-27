@@ -895,23 +895,26 @@
     style="color:red;z-index:999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;background-color:#000000db">
     <span class="close vehicle_close cursor" onclick="closeModal()">&times;</span>
     <div class="modal-content vehicle_modal_content">
-        <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12 "
-            style="left:-2%;width:auto!important;height:455px!important" id="slider_image">
+        <div class="row">
 
-            <div class="mySlides" style="width:auto!important" id="slider_main">
-                <img src="{{ asset(@$vehicle['warehouse_image'][0]['name']) }}" alt=""
-                    style="width:800px!important;height: 455px!important;">
+            <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12"
+                style="left:-2%;width:auto!important;height:455px!important" id="slider_image">
+    
+                <div class="mySlides" style="width:auto!important" id="slider_main">
+                    <img src="{{ asset(@$vehicle['warehouse_image'][0]['name']) }}" alt=""
+                        style="width:800px!important;height: 455px!important;">
+                </div>
+    
+                @if (@$vehicle['warehouse_image'])
+                    @foreach (@$vehicle['warehouse_image'] as $img)
+                    
+                        <div class="mySlides col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12" style="left:-2%;width:80%!important">
+                            <img src="{{ asset($img['name']) }}" alt="" style="width:137%!important;height: 455px!important;"
+                                onclick="openModal();currentSlide(1)">
+                        </div>
+                    @endforeach
+                @endif
             </div>
-
-            @if (@$vehicle['warehouse_image'])
-                @foreach (@$vehicle['warehouse_image'] as $img)
-                    <div class="mySlides col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12"style="left:-2%;width:80%!important">
-                        <img src="{{ asset($img['name']) }}" alt=""
-                            style="width:137%!important;height: 455px!important;"
-                            onclick="openModal();currentSlide(1)">
-                    </div>
-                @endforeach
-            @endif
         </div>
 
 
@@ -928,14 +931,10 @@
         <div class="row" style="background-color: black;width: 798px;margin-left: 0px;" id="sliders_images">
             @if (@$vehicle['warehouse_image'])
                 @foreach (@$vehicle['warehouse_image'] as $img)
-                    {{-- <div class="column "> --}}
                     <img src="{{ asset($img['name']) }}" alt=""class="item_4" class="showMainImage"
-                        style="width:25%!important" onclick="currentSlide(2)" class="hover-shadow cursor">
-                    {{-- </div> --}}
+                    style="width:25%!important; " onclick="currentSlide(2)" class="hover-shadow cursor">
                 @endforeach
             @endif
-
-
         </div>
     </div>
 </div>
