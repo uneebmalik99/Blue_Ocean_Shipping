@@ -645,25 +645,27 @@
     style="color:red;z-index:999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;background-color:#000000db">
     <span class="close cursor" onclick="closeModal()">&times;</span>
     <div class="modal-content">
-        <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12 "
-            style="left:-2%;width:auto!important;height:455px!important" id="slider_image">
-
-            <div class="mySlides" style="width:auto!important" id="slider_main">
-
-                <img src="{{ asset(@$vehicle['warehouse_image'][0]['name']) }}" alt=""
-                    style="width:800px!important;height: 455px!important;">
-
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12 "
+                style="left:-2%;width:auto!important;height:455px!important" id="slider_image">
+    
+                <div class="mySlides" style="width:auto!important" id="slider_main">
+    
+                    <img src="{{ asset(@$vehicle['warehouse_image'][0]['name']) }}" alt=""
+                        style="width:800px!important;height: 455px!important;">
+    
+                </div>
+                @if (@$vehicle['warehouse_image'])
+                    @foreach (@$vehicle['warehouse_image'] as $img)
+                        <div
+                            class="mySlides col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12"style="left:-2%;width:80%!important">
+                            <img src="{{ asset($img['name']) }}" alt=""
+                                style="width:137%!important;height: 455px!important;"
+                                onclick="openModal();currentSlide(1)">
+                        </div>
+                    @endforeach
+                @endif
             </div>
-            @if (@$vehicle['warehouse_image'])
-                @foreach (@$vehicle['warehouse_image'] as $img)
-                    <div
-                        class="mySlides col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12"style="left:-2%;width:80%!important">
-                        <img src="{{ asset($img['name']) }}" alt=""
-                            style="width:137%!important;height: 455px!important;"
-                            onclick="openModal();currentSlide(1)">
-                    </div>
-                @endforeach
-            @endif
         </div>
 
 
