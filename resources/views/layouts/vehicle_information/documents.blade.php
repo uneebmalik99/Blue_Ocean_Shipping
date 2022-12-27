@@ -391,9 +391,6 @@
                                         style="background:#3e5871;color:white;border-radius:5px;outline:none;border:none;">Details</button>
                                 </span>
                             </div>
-
-
-
                         </div>
                     </div>
 
@@ -417,6 +414,7 @@
                                         id="vehicle_images" onclick="changeImages(this.id)"
                                         tab="{{ @$vehicle['id'] }}">
                                         Pickup Images
+                                        
                                         <button class="image_button  img_btn col-sm-12 col-md-4 col-lg-4 mb-4"
                                             style="color:black;;font-size:12px!important;font-weight:600;margin-right:-24px!important;height:41px;"
                                             onclick="changeImages(this.id)" tab=" {{ @$vehicle['id'] }}"
@@ -649,9 +647,9 @@
     <span class="close cursor" onclick="closeModal()">&times;</span>
     <div class="modal-content">
         <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12 "
-            style="left:-2%;width:auto!important;height:455px!important">
+            style="left:-2%;width:auto!important;height:455px!important" id="slider_image">
 
-            <div class="mySlides" style="width:auto!important";>
+            <div class="mySlides" style="width:auto!important" id="slider_main">
 
                 <img src="{{ asset(@$vehicle['warehouse_image'][0]['name']) }}" alt=""
                     style="width:800px!important;height: 455px!important;">
