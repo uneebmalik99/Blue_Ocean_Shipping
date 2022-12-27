@@ -474,6 +474,8 @@ class VehicleController extends Controller
         $Obj = new Vehicle;
         $Obj_vehicle = $Obj->where('vin', $request->vin)->get();
 
+        // dd($request->all());
+
 
         if($request->auction_old){
             $auction_old_images = AuctionImage::where('vehicle_id', $Obj_vehicle[0]['id'])->get();
@@ -573,7 +575,6 @@ class VehicleController extends Controller
                     'thumbnail' => $file_name,
                     'vehicle_id' => $Obj_vehicle[0]['id'],
                 ];
-                // dd($data);
                 $Obj_auctionImages->create($data);
                 $output['result'] = "Success";
             }   
