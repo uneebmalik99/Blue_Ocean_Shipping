@@ -278,21 +278,6 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
                                     id="loading_date" aria-describedby="loading_date" style="height: 31px!important;"
                                     required>
                             </div>
-
-                            {{-- <input placeholder="Loading Date"
-                                class="form-control-sm border-style input-border-style rounded shipment_filtering col-11 text-muted px-2"
-                                name="arrival_date" id="loading_date" type="text" onfocus="(this.type='date')"> --}}
-                            {{-- <select
-                                class="form-control-sm border-style input-border-style rounded shipment_filtering col-11 text-muted px-2"
-                                name="loading_date" id="loading_date">
-                                <option value="all" disabled selected>Loading Date</option>
-                                @for ($i = 0; $i < count($date); $i++)
-                                    <option value="{{ $date[$i] }}">{{ $date[$i] }}</option>
-                                @endfor
-
-
-                            </select> --}}
-                        </div>
                         <div class="col-3 p-0">
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -319,7 +304,6 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
                     </div>
                 </div>
 
-                {{-- search filter end --}}
                 <div class="shipment_table_body">
                     <table id="shipment_table" class="row-border"
                         style="width:100%!important;overflow-x:scroll!important;">

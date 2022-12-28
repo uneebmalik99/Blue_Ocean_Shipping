@@ -873,7 +873,7 @@
                     @if (@$vehicle['warehouse_image'])
                         <div class="row mt-4 showhide">
                             <div class="col-12 d-flex justify-content-center ">
-                                <a id="{{ @$vehicle['id'] }}" value="warehouse" onclick="download_all(this.id)">
+                                <a id="warehouse_images" class="downloadVehicles_zip" onclick="download_all(this.id)">
                                     <button
                                         style="background: #3e5871;cursor:pointer; border-radius: 6px;border:none;color:white;transform: skew(-30deg);">
                                         <div style="transform: skew(30deg);padding:1px 10px;font-size: 13px;">
@@ -981,8 +981,11 @@
     }
 
 
-    function download_all(id){
-        tab = $('#'+id).attr('value');
+    function download_all(tab){
+       id = "{{ @$vehicle['id'] }}";
+       
+    //    alert(id);
+    //    alert(tab);
 
         // alert(tab);
         

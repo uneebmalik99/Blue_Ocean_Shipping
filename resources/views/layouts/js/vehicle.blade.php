@@ -287,6 +287,7 @@
             },
             success: function(data) {
                 console.log(data.slide_image);
+                $('.downloadVehicles_zip').attr('id', id);
                
 
                 $('.main_image').html(data.main_image);
