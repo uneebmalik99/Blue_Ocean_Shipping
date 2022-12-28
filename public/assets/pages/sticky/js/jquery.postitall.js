@@ -2474,8 +2474,24 @@ var delay = (function(){
                         'sticky_id' : sticky_id,
                     },
                     success: function(data){
-                        alert(data);
-
+                        if(data=='created'){
+                            // iziToast.success({
+                            //     title: 'Sticky Note',
+                            //     message: "Sticky Notes Created Successfully!",
+                            //     position: 'topCenter',
+                            //     zindex: '9999999999999',
+                            //     timeout:700
+                            // });
+                        }
+                        if(data=='updated'){
+                            // iziToast.success({
+                            //     title: 'Sticky Note',
+                            //     message: "Sticky Notes Updated Successfully!",
+                            //     position: 'topCenter',
+                            //     zindex: '9999999999999',
+                            //     timeout:700
+                            // });
+                        }
                     }
 
                 })

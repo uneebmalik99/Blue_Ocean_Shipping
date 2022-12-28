@@ -1,4 +1,6 @@
 {{-- {{dd($shipments)}} --}}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
     .item_1 {
         transition: transform .2s;
@@ -60,6 +62,186 @@
             text-decoration: none !important;
         }
     }
+    img {
+        vertical-align: middle;
+        border-style: none;
+        width: 100%;
+    }
+
+    #main_image_box:hover {
+        opacity: 0.7;
+    }
+
+
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .full-screen:before {
+        width: .333em;
+        height: 1em;
+        left: .233em;
+        top: -.1em;
+    }
+
+    .full-screen:after {
+        width: 1em;
+        height: .333em;
+        top: .233em;
+        left: -.1em;
+    }
+
+    .row>.column {
+        padding: 0 8px;
+    }
+
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .column {
+        float: left;
+        width: 25%;
+    }
+
+    /* The Modal (background) */
+    .my_modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: black;
+    }
+
+    /* Modal Content */
+    .vehicle_modal_content {
+        position: relative;
+        background-color: #fefefe;
+        margin: auto;
+        padding: 0;
+        width: 90%;
+        max-width: 800px;
+    }
+
+    /* The Close Button */
+    .vehicle_close {
+        color: red !important;
+        position: absolute;
+        top: 10px;
+        right: 25px;
+        font-size: 35px;
+        font-weight: bold;
+    }
+
+    .vehicle_close:hover,
+    .vehicle_close:focus {
+        color: red !important;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .mySlides {
+        display: none;
+    }
+
+    .cursor {
+        cursor: pointer;
+    }
+
+    /* Next & previous buttons */
+    .prev,
+    .next {
+        cursor: pointer;
+        position: absolute;
+        top: 33%;
+        width: auto;
+        padding: 16px;
+        margin-top: -50px;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        -webkit-user-select: none;
+    }
+
+    .prev {
+        left: -8%;
+        border-radius: 3px 0 0 3px;
+        color: white;
+    }
+
+    /* Position the "next button" to the right */
+    .next {
+        right: -8%;
+        border-radius: 3px 0 0 3px;
+        color: white;
+    }
+
+    /* On hover, add a black background color with a little bit see-through */
+    .prev:hover,
+    .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    /* Number text (1/3 etc) */
+    .numbertext {
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+    }
+
+    img {
+        margin-bottom: -4px;
+    }
+
+    .caption-container {
+        text-align: center;
+        background-color: black;
+        padding: 2px 16px;
+        color: white;
+    }
+
+    .demo {
+        opacity: 0.6;
+    }
+
+    .active,
+    .demo:hover {
+        opacity: 1;
+    }
+
+    img.hover-shadow {
+        transition: 0.3s;
+    }
+
+.hover-shadow:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.showMainImagemodal{
+    width:100%;
+}
+.image_button{
+    background-color:337fb8;
+}
+element.style {
+}
+a:not([href]):not([tabindex]) {
+    /* color: inherit; */
+    text-decoration: none;
+    color: white;
+}
 </style>
 <div class="row my-5">
     <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
@@ -118,10 +300,9 @@
                             <h4>Documents</h4>
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="col-12">
-                            @if ($shipments)
+                            @if ($shipments[0]['shipment_invoice'] && $shipments[0]['stamp_titles'] && $shipments[0]['other_documents'])
                                 <div class="d-flex justify-content-between "
                                     style="border: 1px solid rgba(26, 88, 133, 0.17); border-radius: 10px;width: 90%;margin:4px auto;padding:5px; ">
                                     <div class="w-100 ml-4">
@@ -284,13 +465,11 @@
                             @else
                                 <div class="text-center py-4 mb-2"
                                     style="border: 1px solid rgba(26, 88, 133, 0.17); border-radius: 10px;width: 90%;margin:4px auto;padding:5px;color:gray;">
-                                    No Found
+                                    Documents not found
                                 </div>
                             @endif
-
                         </div>
                     </div>
-
 
                 </div>
                 <div class="col-sm-12 col-md-7 col-lg-5 mb-4 mt-5">
@@ -329,16 +508,17 @@
 
                                 </div>
                                 {{-- {{asset(@$shipments[0]['loading_image'][0]['name'])}} --}}
-                                @if($shipments)
-                                    <div class="col-12 main_image">
+                                
+                                <div class="col-12 main_image">
+                                        @if ($shipments[0]['loading_image'])
                                         <div class="w-100  p-3" style="position: relative;">
                                             <img src="{{asset(@$shipments[0]['loading_image'][0]['name'])}}"
                                                 alt="" class="slide img_fluid mx-auto w-100 main_image"
                                                 style="height:230px !important;border-radius: 10px!important;" id="main_image_box">
                                             <a class="bottom_button">
-                                                <svg width="39" height="25" viewBox="0 0 39 25" fill="none"
+                                                <svg width="34" height="0" viewBox="0 0 39 25" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
-                                                    <rect width="39" height="22" rx="5" fill="white" fill-opacity="0.3" />
+                                                    <rect width="30" height="23" rx="5" fill="white" fill-opacity="0.3" />
                                                     <g filter="url(#filter0_d_0_1)">
                                                         <path
                                                             d="M10.2481 8.63636L10.4491 9.29091L10.2481 8.63636ZM29.7519 8.63636L29.9528 7.98045L29.7519 8.635V8.63636ZM15.7173 18.1164L16.3627 18.4436L15.7173 18.1164ZM24.2827 18.1164L24.9251 17.7905L24.2812 18.1177L24.2827 18.1164ZM13.3941 6.39591L12.7136 6.14364L13.3941 6.39591ZM11.9847 7.83727C11.917 8.00418 11.9224 8.1891 11.9997 8.35237C12.0769 8.51564 12.2199 8.64425 12.398 8.71062C12.5761 8.77699 12.7751 8.77583 12.9522 8.7074C13.1294 8.63896 13.2707 8.5087 13.3457 8.34454L11.9847 7.83727ZM26.6029 6.39591L27.2835 6.14364L26.6029 6.39591ZM26.6513 8.34454C26.6858 8.42944 26.7381 8.5071 26.8052 8.57297C26.8723 8.63884 26.9529 8.69159 27.0422 8.72813C27.1315 8.76467 27.2278 8.78428 27.3253 8.78579C27.4229 8.7873 27.5198 8.77069 27.6104 8.73693C27.701 8.70317 27.7834 8.65294 27.8528 8.58919C27.9223 8.52543 27.9773 8.44944 28.0148 8.36565C28.0522 8.28186 28.0713 8.19197 28.0709 8.10124C28.0705 8.01051 28.0506 7.92077 28.0124 7.83727L26.6513 8.34454ZM29.5319 9.27182V13.8318H30.9985V9.27045H29.5319V9.27182ZM25.4413 17.6364H24.6464V19H25.4413V17.6364ZM15.3536 17.6364H14.5587V19H15.3536V17.6364ZM10.4667 13.8318V9.27045H9V13.8318H10.4667ZM10.4491 9.29091C16.6914 7.63258 23.3086 7.63258 29.5509 9.29091L29.9528 7.98045C23.4477 6.25255 16.5523 6.25255 10.0472 7.98045L10.4491 9.29091ZM14.5587 17.6364C13.4734 17.6364 12.4326 17.2355 11.6652 16.522C10.8978 15.8085 10.4667 14.8408 10.4667 13.8318H9C9 15.2025 9.58564 16.5171 10.6281 17.4863C11.6705 18.4555 13.0844 19 14.5587 19V17.6364ZM15.0749 17.7905C15.1023 17.7439 15.1426 17.7051 15.1916 17.6779C15.2406 17.6508 15.2966 17.6365 15.3536 17.6364V19C15.5599 19.0003 15.7625 18.9488 15.9398 18.8509C16.1172 18.7529 16.2628 18.6122 16.3612 18.4436L15.0749 17.7905ZM16.3612 18.4436C17.932 15.7668 22.0665 15.7668 23.6388 18.4436L24.9251 17.7905C22.7984 14.1659 17.2001 14.1659 15.0749 17.7905L16.3612 18.4436ZM24.6464 17.6364C24.7637 17.6364 24.8693 17.695 24.9251 17.7905L23.6388 18.4436C23.7372 18.6122 23.8828 18.7529 24.0602 18.8509C24.2375 18.9488 24.4401 19.0003 24.6464 19V17.6364ZM29.5333 13.8318C29.5333 14.8408 29.1022 15.8085 28.3348 16.522C27.5674 17.2355 26.5266 17.6364 25.4413 17.6364V19C26.9156 19 28.3295 18.4555 29.3719 17.4863C30.4144 16.5171 31 15.2025 31 13.8318H29.5333ZM31 9.27045C30.9999 8.97884 30.8977 8.69518 30.7087 8.46242C30.5198 8.22966 30.2544 8.06047 29.9528 7.98045L29.5509 9.29091C29.546 9.28973 29.5416 9.2871 29.5385 9.28341C29.5353 9.27972 29.5335 9.27518 29.5333 9.27045H31ZM10.4667 9.27045C10.4665 9.27518 10.4647 9.27972 10.4615 9.28341C10.4584 9.2871 10.454 9.28973 10.4491 9.29091L10.0472 7.98182C9.74583 8.06177 9.48064 8.23076 9.29172 8.46324C9.10279 8.69573 9.00039 8.97907 9 9.27045H10.4667ZM12.7151 6.14364L11.9861 7.83727L13.3472 8.34454L14.0761 6.64955L12.7151 6.14364ZM25.9239 6.64818L26.6528 8.34454L28.0139 7.83727L27.2849 6.14364L25.9239 6.64818ZM16.1192 5.36364H23.8808V4H16.1192V5.36364ZM27.2849 6.14364C27.0129 5.51095 26.5432 4.96857 25.9364 4.58648C25.3296 4.20438 24.6136 4.0001 23.8808 4V5.36364C24.3206 5.36357 24.7503 5.48604 25.1145 5.71526C25.4786 5.94447 25.7606 6.2699 25.9239 6.64955L27.2849 6.14364ZM14.0761 6.64818C14.2397 6.26879 14.5217 5.94365 14.8859 5.71469C15.25 5.48573 15.6796 5.36346 16.1192 5.36364V4C15.3864 4.0001 14.6704 4.20438 14.0636 4.58648C13.4568 4.96857 12.9871 5.51095 12.7151 6.14364L14.0761 6.64818Z"
@@ -362,6 +542,11 @@
                                                                 in2="effect1_dropShadow_0_1" result="shape" />
                                                         </filter>
                                                     </defs>
+                                                    <div class="icon" style="float:right;">
+                                                <i class="material-icons "
+                                                            onclick="openModal();currentSlide(1)"
+                                                            style="background-color:#65686c;color:white;border-radius:inherit">fullscreen</i>
+                                            </div>
                                                 </svg>
     
                                             </a>
@@ -467,13 +652,15 @@
                                                 </a>
                                             </div>
                                         </div>
+                                        @else
+                                        <p class="text-center py-5"
+                                            style="font-size: 22px;font-style: initial;margin-left: 115px;margin-top: 50px;">Image
+                                            Not Found</p>
+                                    @endif
                                     </div>
-                                @else
-                                    <h6 class="text-center mt-5 w-100" style="color:gray">No Image Found</h6>
-                                @endif
                                 <div class="image_section">
 
-                                    <div class="col-11 mx-auto d-flex flex-wrap changeImages">
+                                    <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12 changeImages">
                                         @if (@$shipments[0]['loading_image'])
                                             @foreach (@$shipments[0]['loading_image'] as $img)
                                                 <img src="{{ asset($img['name']) }}" alt=""class="item_1"
@@ -494,9 +681,9 @@
                             <div class="col-12 d-flex justify-content-center ">
                                 <a href="#" id="download_all">
                                     <button
-                                        style="background: rgba(37, 101, 4, 0.72); border-radius: 6px;border:none;color:white;transform: skew(-30deg);">
+                                        style="background: #3e5871;cursor:pointer; border-radius: 6px;border:none;color:white;transform: skew(-30deg);">
                                         <div style="transform: skew(30deg);padding:1px 10px;font-size: 13px;">
-                                            Download Images in Zip
+                                            <i class="fa fa-download"></i> Download Images in Zip
                                         </div>
                                     </button>
                             </div>
@@ -507,3 +694,93 @@
         </div>
     </div>
 </div>
+<div id="myModal" class="my_modal col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12"
+    style="color:red;z-index:999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;background-color:#000000db">
+    <span class="close vehicle_close cursor" onclick="closeModal()">&times;</span>
+    <div class="modal-content vehicle_modal_content">
+        <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12 "
+            style="left:-2%;width:auto!important;height:455px!important" id="slider_image">
+
+            <div class="mySlides" style="width:auto!important"; id="slider_main">
+                <img src="{{asset(@$shipments[0]['loading_image'][0]['name'])}}" alt=""
+                    style="width:800px!important;height: 455px!important;">
+            </div>
+            @if (@$shipments[0]['loading_image'])
+                                            @foreach (@$shipments[0]['loading_image'] as $img)
+                        <div class="mySlides col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12"style="left:-2%;width:80%!important">
+                            <img src="{{ asset($img['name']) }}" alt=""
+                                style="width:137%!important;height: 455px!important;"
+                                onclick="openModal();currentSlide(1)">
+                        </div>
+                    @endforeach
+                @endif
+        </div>
+
+
+
+
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+        <div class="caption-container">
+            <p id="caption"></p>
+        </div>
+
+        <div class="row" style="background-color: black;width: 798px;margin-left: 0px;" id="sliders_images">
+        <div class="row" style="background-color: black;width: 798px;margin-left: 0px;" id="sliders_images">
+        @if (@$shipments[0]['loading_image'])
+                                            @foreach (@$shipments[0]['loading_image'] as $img)
+                    
+                        <img src="{{ asset($img['name']) }}" alt=""class="item_4" class="showMainImage"
+                            style="width:25%!important; " onclick="currentSlide(2)" class="hover-shadow cursor">
+                   
+                @endforeach
+            @endif
+
+
+        </div>
+    </div>
+</div>
+<script>
+    function openModal() {
+        document.getElementById("myModal").style.display = "block";
+    }
+
+    function closeModal() {
+        document.getElementById("myModal").style.display = "none";
+    }
+
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("demo");
+        var captionText = document.getElementById("caption");
+        if (n > slides.length) {
+            slideIndex = 1
+        }
+        if (n < 1) {
+            slideIndex = slides.length
+        }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        captionText.innerHTML = dots[slideIndex - 1].alt;
+    }
+</script>

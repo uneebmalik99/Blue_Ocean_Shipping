@@ -30,6 +30,7 @@
             <label for="">added_by_role</label>
             <input type="text" name="added_by_role" value="1">
         </div>
-        <input type="submit" value="Submit">
+        <input id="submit" type="submit" value="Submit">
     </form>
+   
 @endsection

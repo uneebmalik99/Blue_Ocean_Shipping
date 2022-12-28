@@ -79,7 +79,9 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/jquery.mCustomScrollbar.css') }}">
 {{-- File uploader --}}
 <script src="https://js.upload.io/upload-js/v1"></script>
-
+{{-- Pusher JS --}}
+<script src="https://js.pusher.com/7.2/pusher.min.js"></script>
+  
 {{-- Datatable --}}
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
@@ -105,5 +107,9 @@
 <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
 <link rel="preconnect" href="https://fonts.gstatic.com"> --}}
 {{-- multipe input tag  --}}
+
+{{-- js zip cdn --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" integrity="sha512-XMVd28F1oH/O71fzwBnV7HucLxVwtxf26XV8P4wPk26EDxuGZ91N8bsOttmnomcCD3CS5ZMRL50H0GgOHvegtg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="http://cdn.jsdelivr.net/g/filesaver.js"></script>
 
     

@@ -39,20 +39,23 @@
         margin: auto;
         margin-top: 15px;
     }
-    #user_file{
+
+    #user_file {
         display: none;
-      }
-      label{
-        cursor:pointer;
-      }
-      #imageName{
-        color:green;
-      }
+    }
+
+    label {
+        cursor: pointer;
+    }
+
+    #imageName {
+        color: green;
+    }
 </style>
 
 <form method="POST" id="customer_general_form" enctype="multipart/form-data">
-    @if(@$documents[0]['id'])
-    <input type="hidden" id="id" name="id" value="{{@$documents[0]['id']}}">
+    @if (@$documents[0]['id'])
+        <input type="hidden" id="id" name="id" value="{{ @$documents[0]['id'] }}">
     @endif
     <div>
         <div class="row my-1">
@@ -84,14 +87,14 @@
                                         <input type="text"
                                             class="form-control-sm border border-0 rounded-pill bg col-7" name="name"
                                             id="name" value="{{ @$documents[0]['name'] }}">
-                                            
+
                                     </div>
                                     <div class="col-12 d-flex justify-content-center">
                                         <span id="name_error" class="text-danger"></span>
                                     </div>
 
                                     <div class="d-flex">
-                                        <label for="username" class="col-5 px-0 font-size font-bold">Username 
+                                        <label for="username" class="col-5 px-0 font-size font-bold">Username
                                             <span class="text-danger">*</span>
                                         </label>
                                         <input type="text"
@@ -104,7 +107,7 @@
                                     </div>
 
                                     <div class="d-flex">
-                                        <label for="username" class="col-5 px-0 font-size font-bold">Password 
+                                        <label for="username" class="col-5 px-0 font-size font-bold">Password
                                             <span class="text-danger">*</span>
                                         </label>
                                         <input type="text"
@@ -114,11 +117,11 @@
                                     <div class="col-12 d-flex justify-content-center">
                                         <small id="password_error" class="text-danger"></small>
                                     </div>
-                                    
+
                                     <input type="hidden" class="form-control-sm border border-0 rounded-pill bg col-12"
                                         name="status" id="status" value="1">
                                     <div class="d-flex">
-                                        <label for="phone" class="px-0 col-5 font-size font-bold">Main phone 
+                                        <label for="phone" class="px-0 col-5 font-size font-bold">Main phone
                                             <span class="text-danger">*</span>
                                         </label>
                                         <input type="phone" class="form-control-sm border border-0 rounded-pill col-7"
@@ -129,7 +132,7 @@
                                     </div>
 
                                     <div class=" d-flex">
-                                        <label for="fax" class="col-5 px-0 font-size font-bold">Main fax 
+                                        <label for="fax" class="col-5 px-0 font-size font-bold">Main fax
                                             {{-- <span class="text-danger" id="fax_error"></span> --}}
                                         </label>
                                         <input type="fax"
@@ -141,7 +144,7 @@
                                     </div>
 
                                     <div class=" d-flex">
-                                        <label for="email" class="col-5 px-0 font-size font-bold">Email 
+                                        <label for="email" class="col-5 px-0 font-size font-bold">Email
                                             <span class="text-danger">*</span>
                                         </label>
                                         <input type="email"
@@ -158,8 +161,8 @@
                                             {{-- <span class="text-danger" id="source_error"></span> --}}
                                         </label>
                                         <input type="text"
-                                            class="form-control-sm border border-0 rounded-pill bg col-7" name="source"
-                                            id="source" value="{{ @$documents[0]['source'] }}">
+                                            class="form-control-sm border border-0 rounded-pill bg col-7"
+                                            name="source" id="source" value="{{ @$documents[0]['source'] }}">
                                     </div>
                                     <div class="col-12 d-flex justify-content-center">
                                         <small></small>
@@ -167,7 +170,7 @@
 
                                     <div class=" d-flex">
                                         <label for="company_name" class="col-5 px-0 font-size font-bold">Company
-                                            Name 
+                                            Name
                                             <span class="text-danger">*</span>
                                         </label>
                                         <input type="text"
@@ -181,7 +184,7 @@
 
                                     <div class=" d-flex">
                                         <label for="company_email" class="col-5 px-0 font-size font-bold">Company
-                                            Email 
+                                            Email
                                             <span class="text-danger">*</span>
                                         </label>
                                         <input type="email"
@@ -216,7 +219,8 @@
                                         </label>
                                         <input type="text"
                                             class="form-control-sm border border-0 rounded-pill bg col-7"
-                                            name="sales_type" id="sales_type" value="{{ @$documents[0]['sales_type'] }}">
+                                            name="sales_type" id="sales_type"
+                                            value="{{ @$documents[0]['sales_type'] }}">
                                     </div>
                                     <div class="col-12 d-flex justify-content-center">
                                         <small></small>
@@ -380,8 +384,8 @@
                                 <div class="pb-3 px-2">
 
                                     <div class="d-flex">
-                                        <label for="location_number"
-                                            class="col-5 px-0 font-size font-bold">Location <span class="text-danger">*</span>
+                                        <label for="location_number" class="col-5 px-0 font-size font-bold">Location
+                                            <span class="text-danger">*</span>
                                         </label>
                                         <input type="text"
                                             class="form-control-sm border border-0 rounded-pill bg col-7"
@@ -389,13 +393,12 @@
                                             value="{{ @$documents[0]['location_number'] }}">
                                     </div>
                                     <div class="col-12 d-flex justify-content-center">
-                                        <small
-                                        id="location_number_error" class="text-danger"></small>
+                                        <small id="location_number_error" class="text-danger"></small>
                                     </div>
 
 
                                     <div class="d-flex">
-                                        <label for="country" class="col-5 px-0 font-size font-bold">Country  
+                                        <label for="country" class="col-5 px-0 font-size font-bold">Country
                                             <span class="text-danger">*</span>
                                         </label>
                                         <input type="text"
@@ -403,12 +406,12 @@
                                             name="country" id="country" value="{{ @$documents[0]['country'] }}">
                                     </div>
                                     <div class="col-12 d-flex justify-content-center">
-                                        <small  id="country_error" class="text-danger"></small>
+                                        <small id="country_error" class="text-danger"></small>
                                     </div>
 
 
                                     <div class="d-flex">
-                                        <label for="zip_code" class="col-5 px-0 font-size font-bold">Zip code 
+                                        <label for="zip_code" class="col-5 px-0 font-size font-bold">Zip code
                                             <span class="text-danger">*</span>
                                         </label>
                                         <input type="text"
@@ -425,12 +428,12 @@
                                         </select> --}}
                                     </div>
                                     <div class="col-12 d-flex justify-content-center">
-                                        <small  id="zip_code_error" class="text-danger"></small>
+                                        <small id="zip_code_error" class="text-danger"></small>
                                     </div>
 
 
                                     <div class="d-flex">
-                                        <label for="state" class="col-5 px-0 font-size font-bold">State 
+                                        <label for="state" class="col-5 px-0 font-size font-bold">State
                                             <span class="text-danger">*</span>
                                         </label>
                                         <input type="text"
@@ -438,14 +441,23 @@
                                             name="state" id="state" value="{{ @$documents[0]['state'] }}">
                                         {{-- <select class="form-control-sm border border-0 rounded-pill bg col-7"
                                             name="state" id="state">
-                                            @foreach ($location as $locations)
-                                                <option value="{{ $locations['name'] }}">{{ $locations['name'] }}
+                                            @if(@$documents[0]['state'])
+                                            <option value="{{ @$documents[0]['state'] }}">{{ @$documents[0]['state'] }}</option>
+                                            @else
+                                            <option Selected disabled>Select State</option>
+                                            @endif
+                                            @foreach ($states as $state)
+                                            @if(@$documents[0]['state'] == $state['state'])
+                                            @else
+                                                <option value="{{ $state['state'] }}">{{ $state['state'] }}
+                                            @endif
                                                 </option>
                                             @endforeach
+                                            
                                         </select> --}}
                                     </div>
                                     <div class="col-12 d-flex justify-content-center">
-                                        <small  id="state_error" class="text-danger"></small>
+                                        <small id="state_error" class="text-danger"></small>
                                     </div>
 
 
@@ -465,7 +477,7 @@
 
                                     <div class="d-flex">
                                         <label for="address_line2" class="col-5 px-0 font-size font-bold">Address
-                                            (2) 
+                                            (2)
                                             {{-- <span class="text-danger" id="address_line2_error"></span> --}}
                                         </label>
                                         <input type="text"
@@ -484,7 +496,8 @@
                                         </label>
                                         <input type="text"
                                             class="form-control-sm border border-0 rounded-pill bg col-7"
-                                            name="price_code" id="price_code" value="{{ @$documents[0]['price_code'] }}">
+                                            name="price_code" id="price_code"
+                                            value="{{ @$documents[0]['price_code'] }}">
                                     </div>
                                 </div>
                             </div>
@@ -497,35 +510,54 @@
                             <div class="col-6">
                                 {{-- <div class="user_image" style="padding-top: .5rem; border-radius: 15px!important;">
                                 </div> --}}
-                                <div class="profile-images-card" style="   border: 1px dotted black;padding: 1px 96px;">
+                                <div class="profile-images-card"
+                                    style="   border: 1px dotted black;padding: 1px 96px;">
                                     <div class="profile-images">
                                         <img src="{{ asset('images/profile.jpg') }}" id="upload-img">
                                     </div>
                                     <div class="custom-file">
-                                        <label for="fileupload" style="font-size:16px!important"><p>Upload Profile Image</p></label>
+                                        <label for="fileupload" style="font-size:16px!important">
+                                            <p>Upload Profile Image</p>
+                                        </label>
                                         <input type="file" id="fileupload" name="customer_image[]"
                                             onchange="loadFile(event)">
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-6 d-flex align-items-center">
+
+                            <div class="col-6 align-items-center">
+                                {{-- <div class="col-8">
+                                    @if (@$documents[0]['customer_documents'])
+                                    @foreach (@$documents[0]['customer_documents'] as $doc)
+                                        <table class="table">
+                                            <tr>
+                                                <td>{{ $doc['thumbnail'] }}</td>
+                                                <td style="cursor: pointer"><a id="{{ @$doc['id'] }}" onclick="removeDoc(this.id)" style="color:red">X</a></td>
+                                            </tr>
+                                        </table>
+                                    @endforeach
+                                @endif
+                                </div> --}}
+
                                 {{-- <input type="file" name="user_file[]"
                                     class="form-control border border-info rounded col-12 w-100" id="user_file"> --}}
-                                    <label for="user_file" style="cursor: pointer;
+                                <label for="user_file"
+                                    style="cursor: pointer;
                                     border: 1px dotted black;
                                     padding: 9px 96px;">
-                                        
-                                        <img src="{{asset('images/file.png')}}" alt="" style="width: 94px;">
 
-                                        <input id="user_file" class="user_file" type="file" name="user_file[]" multiple/>
-                                        <br/>
-                                        <div class="imageName">
+                                    <img src="{{ asset('images/file.png') }}" alt="" style="width: 94px;">
 
-                                        </div>
-                                        {{-- <span id="imageName"></span> --}}
-                                        <br>
-                                        <p>Upload Document</p> <br/>
-                                      </label>
+                                    <input id="user_file" class="user_file" type="file" name="user_file[]"
+                                        multiple />
+                                    <br />
+                                    <div class="imageName">
+                                       
+                                    </div>
+                                    {{-- <span id="imageName"></span> --}}
+                                    <br>
+                                    <p>Upload Document</p> <br />
+                                </label>
                             </div>
                         </div>
 
@@ -545,19 +577,18 @@
                 onclick="skip_view(this.id)" id="skip" nexttab="billing" skiptab="billing_customer_tab">
                 <div class="unskew">skip</div>
             </button> --}}
-            @if(@$documents[0]['id'])
-            <button type="button" class="btn next-style text-white col-1 py-1 mx-2" onclick="create_customer(this.id)"
-            id="general_customer" name="{{ $module['button'] }}" style="padding: 4px;"
-            data-next="billing_customer_tab">
-            <div class="unskew">Update</div>
-        </button>
-        @else
-        <button type="button" class="btn next-style text-white col-1 py-1 mx-2" onclick="create_customer(this.id)"
-            id="general_customer" name="{{ $module['button'] }}" style="padding: 4px;"
-            data-next="billing_customer_tab">
-            <div class="unskew">Save</div>
-        </button>
-            
+            @if (@$documents[0]['id'])
+                <button type="button" class="btn next-style text-white col-1 py-1 mx-2"
+                    onclick="create_customer(this.id)" id="general_customer" name="{{ $module['button'] }}"
+                    style="padding: 4px;" data-next="billing_customer_tab">
+                    <div class="unskew">Update</div>
+                </button>
+            @else
+                <button type="button" class="btn next-style text-white col-1 py-1 mx-2"
+                    onclick="create_customer(this.id)" id="general_customer" name="{{ $module['button'] }}"
+                    style="padding: 4px;" data-next="billing_customer_tab">
+                    <div class="unskew">Save</div>
+                </button>
             @endif
 
             <button type="button" class="btn next-style text-white col-1 py-1 mx-2" style="cursor:pointer;"
@@ -565,39 +596,38 @@
                 data-next="billing_customer_tab">
                 <div class="unskew">Next</div>
             </button>
-            
+
         </div>
     </div>
     {{-- {{dd(@$documents[0]['documents']['file'])}} --}}
 </form>
 
 {{-- {{dd($documents[0]['customer_documents'])}} --}}
-@if(@$documents[0]['customer_documents'])
-@foreach (@$documents[0]['customer_documents'] as $file)   
- 
-<script>
-    let inputImage = document.querySelector("#user_file").files[0];
-    // $('.imageName').append('<p>{{@$file["thumbnail"]}}</p>');
-        // imageName.innerText = "{{@$documents[0]['documents']['thumbnail']}}";
-</script>
-@endforeach
+@if (@$documents[0]['customer_documents'])
+    @foreach (@$documents[0]['customer_documents'] as $file)
+        <script>
+            let inputImage = document.querySelector("#user_file").files[0];
+            // $('.imageName').append('<p>{{ @$file['thumbnail'] }}</p>');
+            // imageName.innerText = "{{ @$documents[0]['documents']['thumbnail'] }}";
+        </script>
+    @endforeach
 @endif
 
-@if(@$documents[0]['user_image'])
-<script>
-    $('#upload-img').attr('src', '{{asset(@$documents[0]["user_image"])}}');
-</script>
+@if (@$documents[0]['user_image'])
+    <script>
+        $('#upload-img').attr('src', '{{ asset(@$documents[0]['user_image']) }}');
+    </script>
 @endif
 
 <script>
     let input = document.getElementById("user_file");
     let imageName = document.getElementById("imageName");
-    input.addEventListener("change", ()=>{
+    input.addEventListener("change", () => {
         let inputImage = document.querySelector(".user_file").files;
         // console.log(inputImage.length);
-        for(var i=0; i < inputImage.length; i++){
+        for (var i = 0; i < inputImage.length; i++) {
             console.log(inputImage[i].name);
-            $('.imageName').append('<p>'+inputImage[i].name+'</p>');
+            $('.imageName').append('<p>' + inputImage[i].name + '</p>');
         }
         // imageName.innerText = inputImage.length + 'files selected';
     })

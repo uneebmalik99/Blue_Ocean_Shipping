@@ -124,24 +124,47 @@
     {{-- Modal End --}}
     <div class="container bg-light border">
         <div class="row">
-            <div class="col-lg-12 col-md-12 col-12 w-100 d-flex justify-content-between align-items-center my-3">
+            <div class="d-flex m-2" style="
+            width: 95%;
+            margin-right: 2px;">
+                <button class="text-center form-control border next-style reporting_cls " id="users">
+                    <a href="{{ route('user.list') }}" style="text-decoration: none!important;"
+                    ><div class="unskew" style="color:black;">Users</div></a>
+                    
+                </button>
+                <button class="text-center form-control border tab_style reporting_cls" id="permissions"
+                onclick="showPermissions(this.id)">
+                <div class="unskew">Permissions</div>
+                </button>
+                <button class="text-center form-control border tab_style reporting_cls " id="roles"
+                    onclick="showRoles(this.id)">
+                    <div class="unskew">Roles</div>
+                </button>
+                
+                
+
+            </div>
+            {{-- <div class="col-lg-12 col-md-12 col-12 w-100 d-flex justify-content-between align-items-center my-3">
                 <div>
-                    <a href="{{ route('user.list') }}" class="btn text-white px-4" style="background: #3fd3f8;
-                    box-shadow: 0px 4px 4px rgba(241, 233, 233, 0.25);
-                    border-radius: 100px;font-size:12px;font-weight:400"><h5 class="font-bold">Users</h5></a>
-                </div>
-                <div>
-                    <button onclick="showPermissions()" id="permissions" style="background: #25e2f0;
-                    box-shadow: 0px 4px 4px rgba(241, 233, 233, 0.25);
-                    border-radius: 100px;font-size:12px;font-weight:400;border:none">
-                    <a class="btn text-white px-4"><h5 class="font-bold">Permissions</h5></a>
+                    
+                    
+                    <button class="text-center form-control border next-style reporting_cls " id="new_order_tab">
+                        <a href="{{ route('user.list') }}"><div class="unskew">Users</div></a>
+                    
                     </button>
                 </div>
                 <div>
-                    <button onclick="showRoles()" id="roles" style="background: #0ecff1;
-                    box-shadow: 0px 4px 4px rgba(126, 181, 190, 0.25);
-                    border-radius: 100px;font-size:12px;font-weight:400;border:none">
-                    <a class="btn text-white px-4"><h5 class="font-bold">Roles</h5></a>
+                    
+                    <button class="text-center form-control border next-style reporting_cls " id="new_order_tab"
+                    onclick="showPermissions()">
+                    <div class="unskew">Permissions</div>
+                    </button>
+                </div>
+                <div>
+                    
+                    <button class="text-center form-control border next-style reporting_cls " id="new_order_tab"
+                    onclick="showRoles()">
+                    <div class="unskew">Roles</div>
                     </button>
                 </div>
                 <div>
@@ -166,23 +189,38 @@
                             class="fa fa-plus" style="font-weight:400;"></i> New User</button>
 
                 </div>
-            </div>
+            </div> --}}
         </div>
 
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
+                
                 <div class="main-box">
+                   
                     <table class="table" id="table_id" style="border:none!important;">
+                        
                         <thead style="border:none!imporant;color:rgba(102,102,102,1); ">
-                            <th>User Name</th>
+                           
+                        
+
+    
+                           <th>User Name</th>
                             <th>STATE / CITY</th>
                             <th>Role</th>
                             <th>STATUS</th>
                             <th>PHONE</th>
-                            <th>Created At</th>
+                            
                             @if (@$role['name'] != 'Customer')
                                 <th>Action</th>
                             @endif
+                            <th>
+                                <div class="container m-2"><button class="float-right next-style reporting_cls" id="add_new_user"
+                                    onclick="createUser()">
+                                    <div class="unskew">Add New User</div>
+                                    </button>
+                                </div>
+                            </th>
+                            
                         </thead>
                         <tbody id="tbody">
                             @foreach ($records as $val)

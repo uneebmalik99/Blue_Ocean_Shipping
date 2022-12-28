@@ -29,6 +29,7 @@
 </div>
 {{-- Modal End --}}
         <div class="d-flex justify-content-end">
+            @role(['Super Admin','Sub Admin'])
             <div>
                 
                 <button type="button"
@@ -41,11 +42,12 @@
                                         </div>
                                     </button>
             </div>
+            @endrole
         </div>
         <br>
         <div class="card">
             <div class="card-body overflow-auto">
-                <table class="table" id="inovice_table">
+                <table class="table" id="inovice_table" style="width:100%!important;">
                     <thead>
                         <tr class="font-size">
                             <th class="font-bold-tr">VIEW VEHICLES</th>
@@ -94,7 +96,7 @@
         function format(d) {
             console.log(d);
             html =
-                '<table class="vehicle_shipment_table my-3" style="width:90%!important;"><thead style="background:#dbdbdb;color:#2c3e50;font-size:12px!important;"><th>ID</th><th>Customer Name</th><th>VIN</th><th>YEAR</th><th>MAKE</th><th>MODEL</th><th>VEHICLE TYPE</th><th>VALUE</th><th>Action</th></thead><tbody id="shipemt_vehicle">';
+                '<table class="vehicle_shipment_table my-3" style="width:100%!important;"><thead style="background:#dbdbdb;color:#2c3e50;font-size:12px!important;"><th>ID</th><th>Customer Name</th><th>VIN</th><th>YEAR</th><th>MAKE</th><th>MODEL</th><th>VEHICLE TYPE</th><th>VALUE</th><th>Action</th></thead><tbody id="shipemt_vehicle">';
             d.forEach(element => {
             $url_view = 'vehicle/profile/' + element.id;
                 html += '<tr><td>' + element.id + '</td><td>' + element.customer_name + '</td><td>' +

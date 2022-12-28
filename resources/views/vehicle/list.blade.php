@@ -1,21 +1,5 @@
 @extends('layouts.partials.mainlayout')
 @section('body')
-    {{-- <style>
-        .dataTables_scrollHead {
-            width: 100% !important;
-        }
-
-        .dataTables_scrollHeadInner {
-            width: 100% !important;
-        }
-
-        .modal-content {
-
-            width: 80% !important;
-            margin: 0 auto !important;
-            z-index: 99999999;
-        }
-    </style> --}}
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
         style="z-index:99999;">
@@ -53,7 +37,7 @@
                     <div>
                         <button type="button" class="close text-white h6" data-dismiss="modal" aria-label="Close"
                             style="margin-top: -11px;
-                font-size: 26px;">
+                font-size: 26px;"   onclick="dismissmodal()">
                             <span aria-hidden="true">x</span>
                         </button>
                     </div>
@@ -124,7 +108,6 @@
                                 <div class="col-2 p-2 d-flex justify-content-center align-items-center rounded"
                                     style="background: rgba(86, 138, 75, 0.2); !important">
                                     <img src="{{ asset('images/dispatched.png') }}" alt="dispatched.png" height="22">
-
                                 </div>
                             </div>
                             <div>
@@ -257,7 +240,9 @@
                                     <b>Search Filter</b>
                                 </span>
                             </div>
+                           
                             <div class="col-6 d-flex justify-content-end p-0">
+                                @role(['Super Admin','Sub Admin'])
                                 <div class="col-4 d-flex justify-content-end px-2">
                                     <a onclick="import_docs()"
                                         class="px-1 text-muted font-size form-contorl-sm border p-1 rounded col-12"
@@ -275,6 +260,7 @@
                                         </div>
                                     </a>
                                 </div>
+                                @endrole
                                 <div class="col-4 d-flex justify-content-end px-2">
                                     <a href="{{ route('vehicle.export') . '/'. 3 }}"
                                         class="px-1 text-muted font-size form-contorl-sm border p-1 rounded col-12"
@@ -308,27 +294,16 @@
                                     </button>
                                 </div>
                             </div>
+                            
                         </div>
-                        {{-- @dd($location) --}}
                         <div class="d-flex py-3 px-0">
-                            {{-- <div class="col-3 p-0">
-                            <select
-                                class="form-control-sm border-style input-border-style rounded vehicle_filtering col-11 text-muted px-2"
-                                name="warehouse" id="vehicle_warehouse">
-                                <option value="all">All</option>
-                                <option value="" disabled selected>WAREHOUSE</option>
-                                @foreach ($location as $locations)
-                                    <option value="{{ $locations['id'] }}">{{ $locations['name'] }}</option>
-                                @endforeach
-                            </select>
-                        </div> --}}
+                            
                             <div class="col-3 p-0">
                                 <select
                                     class="form-control-sm border-style input-border-style rounded vehicle_filtering col-11 text-muted px-2"
                                     name="year" id="vehicle_year">
                                     <option value="" disabled selected>YEAR</option>
                                     <option value="all">All</option>
-
                                     <option value="2013">2013</option>
                                     <option value="2014">2014</option>
                                     <option value="2015">2015</option>
@@ -347,7 +322,6 @@
                                     @foreach ($make as $makes)
                                         <option value="{{ @$makes['make'] }}">{{ @$makes['make'] }}</option>
                                     @endforeach
-                                    {{-- <option value="toyota">Toyota</option> --}}
                                 </select>
                             </div>
                             <div class="col-3 p-0">
@@ -358,8 +332,7 @@
                                     @foreach ($model as $models)
                                         <option value="{{ @$models['model'] }}">{{ @$models['model'] }}</option>
                                     @endforeach
-                                    {{-- <option value="civic">Civic</option> --}}
-                                    {{-- <option value="corolla">Corolla</option> --}}
+                                    
                                 </select>
                             </div>
                             <div class="col-3 p-0">
@@ -369,7 +342,6 @@
                                     <option value="" disabled selected>STATUS</option>
                                     <option value="all">All</option>
                                     @foreach ($status as $stat)
-                                        {{-- @dd($stat) --}}
                                         <option value="{{ $stat['id'] }}">
                                             {{ ucfirst($stat['status_name']) }}</option>
                                     @endforeach
@@ -379,30 +351,12 @@
                     </div>
                     {{-- search filter end --}}
                     <div id="status_body" class="mt-2 bg-light">
-                        {{-- <table id="vehicle_table" class="table row-border vehicle_table" style="width:100%!important;">
-                        <thead class="bg-custom" style="color:white!important;">
-                            <tr>
-                                <th class="font-bold-tr">Sr</th>
-                                <th class="font-bold-tr">Customer Name</th>
-                                <th class="font-bold-tr">VIN</th>
-                                <th class="font-bold-tr">YEAR</th>
-                                <th class="font-bold-tr">MAKE</th>
-                                <th class="font-bold-tr">MODEL</th>
-                                <th class="font-bold-tr">VEHICLE TYPE</th>
-                                <th class="font-bold-tr">VALUE</th>
-                                <th class="font-bold-tr">STATUS</th>
-                                <th class="font-bold-tr">BUYER</th>
-                                <th class="font-bold-tr">ACTION</th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-white font-size" id="vehicle_tbody">
-
-                        </tbody>
-                    </table> --}}
-                        <table id="on_hand_table_main" class="table vehicle_table row-border"
+                     
+                        <table id="on_hand_table_main" class="row-border"
                             style="width:100%!important;">
                             <thead class="bg-custom">
                                 <tr class="font-size">
+                                    @role(['Super Admin','Sub Admin'])
                                     <th>
                                         {{-- <input type="checkbox" name="main_checkbox"><label></label>
                                         <button class="delete-button d-none" id="deleteAllbtn">
@@ -418,6 +372,7 @@
                                         </button> --}}
                                         ADD
                                     </th>
+                                    @endrole
                                     <th class="font-bold-tr">IMAGE</th>
                                     <th class="font-bold-tr">CLIENTS</th>
                                     <th class="font-bold-tr">YEAR</th>
@@ -437,19 +392,15 @@
                                 </tr>
                             </thead>
                             <tbody class="bg-white font-size" id="vehicle_tbody">
-                                {{-- @dd($records) --}}
-                                {{-- @if (@count($records) == 0)
-                                    <tr class="font-size">
-                                        <td colspan="19" class="h5 text-muted text-center">NO VEHICLES TO DISPLAY</td>
-                                    </tr>
-                                @endif --}}
+                                
                                 <?php $i = 1; ?>
                                 @foreach ($records as $val)
-                                    {{-- @dd($val['images'][0]['name']) --}}
                                     <tr>
+                                        @role(['Super Admin','Sub Admin'])
                                         <td>
                                             <input type="checkbox" name="checkboxes" id="{{ @$val['id'] }}" title="Add" onchange="addtoShipment(this.id)">
                                         </td>
+                                        @endrole 
                                         <td>
 
                                            
@@ -457,14 +408,12 @@
                                                     style="color:#3e5871!important;"></i>
                                             
 
-                                            {{-- <img src="{{asset($records[0]['pickupimages'][0]['name'])}}" alt="" style="width: 25px;height:25px;border-radius:50%;"> --}}
                                         </td>
                                         <td>
 
-                                            {{ @$val['customer_name'] }}<br>
+                                            {{ @$val['user']['company_name'] }}<br>
 
                                         </td>
-                                        {{-- <td>{{ @$val['customer_name'] }}</td> --}}
                                         <td>{{ @$val['year'] }}</td>
                                         <td>{{ @$val['make'] }}</td>
                                         <td>{{ @$val['model'] }}</td>
@@ -474,10 +423,10 @@
                                         <td>{{ @$val['lot'] }}</td>
                                         <td>{{ @$val['title'] }}</td>
                                         <td>{{ @$val['title_type'] }}</td>
-                                        <td>{{ @$val['keys'] }}</td>
-                                        <td>{{ @$val['delivered_date'] }}</td>
-                                        <td>{{ @$val['age'] }}</td>
-                                        <td>{{ @$val['shipper'] }}</td>
+                                        <td>{{ @$val['key'] }}</td>
+                                        <td>{{ @$val['delivered'] }}</td>
+                                        <td>{{ (@$val['delivered']) ? date_diff( new \DateTime(@$val['delivered']), new \DateTime())->format("%d") + 1 : 0 }}</td>
+                                        <td>{{ strtoupper(@$val['shipper_name']) }}</td>
                                         <td>
                                             <button class='profile-button'><a
                                                     href={{ route('vehicle.profile', @$val['id']) }}>
@@ -492,6 +441,7 @@
                                                     </svg>
                                                 </a>
                                             </button>
+                                            @role(['Super Admin','Sub Admin'])
                                             <button class="edit-button" onclick='updatevehicle(this.id)'
                                                 id={{ @$val['id'] }}>
                                                 <a>
@@ -516,6 +466,7 @@
 
                                                 </a>
                                             </button>
+                                            @endrole
                                         </td>
                                     </tr>
                                     <?php $i++; ?>
@@ -682,5 +633,11 @@
             //         searchPlaceholder: "Search"
             //     },
             // });
+
+            function dismissmodal(){
+                $('#exampleModal2').modal('hide');
+            }
         </script>
+
+        
     @endsection

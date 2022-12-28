@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Console\Log;
 
 class Kernel extends ConsoleKernel
 {
@@ -24,7 +25,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('Shipments:Update')->daily();
+        $schedule->command('Shipments:Update')->everyThreeMinutes();
+        // Log::info("shipment:update command run");
     }
 
     /**

@@ -286,9 +286,15 @@
                 'id': $id,
             },
             success: function(data) {
+                console.log(data.slide_image);
+               
 
                 $('.main_image').html(data.main_image);
                 $('.changeImages').html(data.images);
+                $('#sliders_images').html(data.images);
+                $('#slider_image').html(data.slide_image);
+                // $('#slider_main').html(data.slide_image);
+
             }
         });
     }

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>shipment Us Custom</title>
+    <title>US CUSTOM</title>
 </head>
 <style>
     * {
@@ -188,57 +188,22 @@
             </tr>
         </thead>
         <tbody>
+            @foreach ($shipment[0]['vehicle'] as $vehicle)
+                
             <tr>
-                <td class="td_text">2013</td>
-                <td class="td_text">NISSAN</td>
-                <td class="td_text">VERSA</td>
-                <td class="td_text">3N1CN7APXDL882583</td>
-                <td class="td_text">19991970649</td>
-                <td class="td_text">VIRGINIA</td>
-                <td class="td_text">$</td>
+                <td class="td_text">{{ @$vehicle['year'] }}</td>
+                <td class="td_text">{{ @$vehicle['make'] }}</td>
+                <td class="td_text">{{ @$vehicle['model'] }}</td>
+                <td class="td_text">{{ @$vehicle['vin'] }}</td>
+                <td class="td_text"></td>
+                <td class="td_text">{{ @$vehicle['state'] }}</td>
+                <td class="td_text">{{ @$vehicle['value'] }}</td>
                 <td class="td_text">
                     <div class="td_last">X</div>
                 </td>
             </tr>
+            @endforeach
 
-            <tr>
-                <td class="td_text">2019</td>
-                <td class="td_text">TOYOTA</td>
-                <td class="td_text">CAMRY</td>
-                <td class="td_text">4T1BE46K59U798104</td>
-                <td class="td_text">19991970649</td>
-                <td class="td_text">VIRGINIA</td>
-                <td class="td_text">$</td>
-                <td class="td_text">
-                    <div class="td_last">X</div>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="td_text">2013</td>
-                <td class="td_text">NISSAN</td>
-                <td class="td_text">VERSA</td>
-                <td class="td_text">3N1CN7APXDL882583</td>
-                <td class="td_text">19991970649</td>
-                <td class="td_text">VIRGINIA</td>
-                <td class="td_text">$</td>
-                <td class="td_text">
-                    <div class="td_last">X</div>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="td_text">2019</td>
-                <td class="td_text">TOYOTA</td>
-                <td class="td_text">CAMRY</td>
-                <td class="td_text">4T1BE46K59U798104</td>
-                <td class="td_text">19991970649</td>
-                <td class="td_text">VIRGINIA</td>
-                <td class="td_text">$</td>
-                <td class="td_text">
-                    <div class="td_last">X</div>
-                </td>
-            </tr>
         </tbody>
     </table>
 

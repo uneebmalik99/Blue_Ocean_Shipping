@@ -1,4 +1,4 @@
-<table id="new_order_table" class="table row-border" style="width:100%!important;">
+<table id="new_order_table" class="row-border" style="width:100%!important;">
     <thead class="bg-custom">
         <tr class="font-size">
             <th class="font-bold-tr">CLIENT</th>
@@ -7,7 +7,6 @@
             <th class="font-bold-tr">MODEL</th>
             <th class="font-bold-tr">VIN</th>
             <th class="font-bold-tr">COLOR</th>
-
             <th class="font-bold-tr">AUCTION</th>
             <th class="font-bold-tr">BUYER ID</th>
             <th class="font-bold-tr">LOT #</th>
@@ -35,15 +34,15 @@
                 <td>{{ @$val['vin'] }}</td>
                 <td>{{ @$val['color'] }}</td>
                 <td>{{ @$val['auction'] }}</td>
-                <td>{{ @$val['bidder'] }}</td>
+                <td>{{ @$val['buyer_id'] }}</td>
                 <td>{{ @$val['lot'] }}</td>
                 <td>{{ @$val['pickup_location'] }}</td>
-                <td>{{ @$val['offsite'] }}</td>
+                <td>{{ @$val['site'] }}</td>
                 <td>{{ @$val['title'] }}</td>
                 <td>{{ @$val['title_type'] }}</td>
-                <td>{{ @$val['keys'] }}</td>
+                <td>{{ @$val['key'] }}</td>
                 <td>{{ @$val['sale_date'] }}</td>
-                <td>{{ @$val['age'] }}</td>
+                <td>{{ (@$val['sale_date']) ? date_diff( new \DateTime(@$val['sale_date']), new \DateTime())->format("%d") + 1 : 0 }}</td>
                 <td>
                     <button class='profile-button'><a href={{route('vehicle.profile', @$val['id'])}}>
                         <svg width='14' height='13' viewBox='0 0 16 14' fill='none'

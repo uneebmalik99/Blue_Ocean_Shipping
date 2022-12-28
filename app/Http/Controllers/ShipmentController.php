@@ -12,12 +12,15 @@ use App\Models\Other_Document;
 use App\Models\Shipment;
 use App\Models\VehicleCart;
 use App\Models\Shipment_Invice;
+use App\Models\ShipperName;
+use App\Models\PickupImage;
 use App\Models\Stamp_Title;
 use App\Models\Vehicle;
 use App\Models\Country;
 use App\Models\Shipper;
 use App\Models\DCountry;
 use App\Models\ShipmentType;
+use App\Models\WarehouseImage;
 use App\Models\User;
 use App\Models\Company;
 use App\Models\DestinationCountry;
@@ -41,6 +44,9 @@ use Spatie\Permission\Models\Permission;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ShipmentExport;
 
+use File;
+use ZipArchive;
+
 
 class ShipmentController extends Controller
 {
@@ -58,7 +64,9 @@ class ShipmentController extends Controller
     private function Notification()
     {
         $data['notification'] = Notification::with('user')->paginate($this->perpage);
-        $data['location'] = Location::all()->toArray();
+        // $data['location'] = Location::all()->toArray();
+        $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
+
         // dd();
         if ($data['notification']->toArray()) {
             $current = Carbon::now();
@@ -156,7 +164,7 @@ class ShipmentController extends Controller
 
 
     public function changeState($state){
-        if($state == 'All'){
+        if($state == 'ALL'){
             return redirect()->route('shipment.list');
         }
         $data = [];
@@ -256,7 +264,8 @@ class ShipmentController extends Controller
         // $data['companies'] = Company::where('status', '1')->get();
         $data['companies'] = User::role('Customer')->get();
         $data['destination_country'] = DCountry::select('country')->where('status', '1')->groupBy('country')->get()->toArray();
-        $data['shippers'] = Shipper::all();
+        // $data['shippers'] = Shipper::all();
+        $data['shippers'] = ShipperName::where('status', '1')->get();
         // $data['states'] = State::where('status', '1')->get();
         if($request->ajax()) {
             $tab = $request->tab;
@@ -295,7 +304,8 @@ class ShipmentController extends Controller
 
         $data['buyer_ids'] = User::with('billings')->get()->toArray();
         // dd($data['shipment']);
-        $data['shippers'] = Shipper::all();
+        $data['shippers'] = ShipperName::where('status', '1')->get();
+
 
         $notification = $this->Notification();
         $data['vehicles'] = Vehicle::where('shipment_id', null)->get();
@@ -311,7 +321,7 @@ class ShipmentController extends Controller
         $data['shipment_lines'] = ShipmentLine::where('status', '1')->get();
         $data['shipment_types'] = ShipmentType::where('status', '1')->get();
         // $data['companies'] = Company::where('status', '1')->get();
-        $data['companies'] = User::all();
+        $data['companies'] = User::role('Customer')->get();
         $data['destination_country'] = DCountry::select('country')->where('status', '1')->groupBy('country')->get()->toArray();
 
         $output = view('shipment.general', $data);
@@ -340,9 +350,9 @@ class ShipmentController extends Controller
         ];
         $data['buyer_ids'] = User::with('billings')->get()->toArray();
 
-        $data['shipment'] = Shipment::with('vehicle')->where('id', $req->id)->get()->toArray();
+        $data['shipment'] = Shipment::with('vehicle', 'customer.billings')->where('id', $req->id)->get()->toArray();
         // dd($data['shipment']);
-        $data['shippers'] = Shipper::all();
+        $data['shippers'] = ShipperName::where('status', '1')->get();
 
         $notification = $this->Notification();
         $data['vehicles'] = Vehicle::where('shipment_id', null)->get();
@@ -649,7 +659,8 @@ class ShipmentController extends Controller
         $notification = $this->Notification();
         $data['vehicles_cart'] = VehicleCart::with('vehicle')->get()->toArray();
 
-        $data['shipments'] = Shipment::with(['vehicle.warehouse_image', 'loading_image'])->where('id', $request->id)->get()->toArray();
+        $data['shipments'] = Shipment::with(['vehicle.warehouse_image', 'loading_image', 'vehicle.vehicle_status'])->where('id', $request->id)->get()->toArray();
+        // dd($data);
         if ($request->ajax()) {
             $tab = $request->tab;
             $output = view('layouts.shipment_detail.' . $tab, $data)->render();
@@ -744,7 +755,13 @@ class ShipmentController extends Controller
 
     public function delete($id)
     {
-        $data = ['shipment_id'=> null];
+        // $data = ['shipment_id'=> null];
+        // $data = ['status' => 1];
+        // $data = ['shipment_status' => 0];
+        $data = [];
+        $data['shipment_id'] = null;
+        $data['status'] = 1;
+        $data['shipment_status'] = '0';
         $vehicles =  Shipment::with('vehicle')->where('id',$id)->get();
            foreach($vehicles[0]['vehicle'] as $vehi){
             $Obj = Vehicle::find($vehi['id']);
@@ -847,6 +864,14 @@ class ShipmentController extends Controller
                     $vehicles = $totalVehicles;
                     return $vehicles;
                 })
+                ->addColumn('shipper', function($row){
+                    return strtoupper($row['shipper']);
+                })
+                ->addColumn('notes', function($row){
+                    $data['row'] = $row;
+                    $bol = view('layouts.shipment_filter.shipment_bol', $data)->render();
+                    return $bol;
+                })
                 ->addColumn('action', function ($row) {
                     $url_view = url('admin/shipments/profile/' . $row->id);
                     $url_delete = url('admin/shipments/delete/' . $row->id);
@@ -892,7 +917,7 @@ class ShipmentController extends Controller
                                         ";
                     return $btn;
                 })
-                ->rawColumns(['id','action','shipment_id'])
+                ->rawColumns(['id','action','shipment_id', 'notes', 'shipper'])
                 ->make(true);
         }
         if(Auth::user()->hasRole('Customer')){
@@ -914,22 +939,23 @@ class ShipmentController extends Controller
             
             if($state != null){
                 if(Auth::user()->hasRole('Customer')){
-                    $data = Shipment::with('vehicle')->where('customer_email', auth()->user()->email)->where('loading_state', $state)->get();
+
+                    $data = Shipment::with('vehicle', 'customer.billings')->where('customer_email', auth()->user()->email)->where('loading_state', $state)->get();
                 }
                 else{
-                    $data = Shipment::with('vehicle')->where('loading_state', $state)->get();
+                    $data = Shipment::with('vehicle', 'customer.billings')->where('loading_state', $state)->get();
                 }
         }
         else{
             if(Auth::user()->hasRole('Customer')){
-                $data = Shipment::with('vehicle')->where('customer_email', auth()->user()->email)->get();
+                $data = Shipment::with('vehicle', 'customer.billings')->where('customer_email', auth()->user()->email)->get();
             }
             else{
-                $data = Shipment::with('vehicle')->get();
+                $data = Shipment::with('vehicle', 'customer.billings')->get();
             }
         }
 
-
+     
 
             
             return Datatables::of($data)
@@ -949,8 +975,23 @@ class ShipmentController extends Controller
                     return $vehicles;
                 })
                 ->addColumn('notes', function($row){
-                    $bol = view('layouts.shipment_filter.shipment_bol', $row)->render();
+                    $data['row'] = $row;
+                    $bol = view('layouts.shipment_filter.shipment_bol', $data)->render();
                     return $bol;
+                })
+                ->addColumn('shipper', function($row){
+                    return strtoupper($row['shipper']);
+                })
+                ->addColumn('select_consignee', function($row){
+                    $data['row'] = $row;
+                    if($row['customer']['billings'][0]['company_name'] != null){
+                        return $row['customer']['billings'][0]['company_name'];
+                    }
+                    return '';
+
+
+                    // $bol = view('layouts.shipment_filter.shipment_consignee_detail', $data)->render();
+                    // return $bol;
                 })
                 ->addColumn('action', function ($row) {
                     $url_view = url('admin/shipments/profile/' . $row->id);
@@ -997,7 +1038,7 @@ class ShipmentController extends Controller
                                         ";
                     return $btn;
                 })
-                ->rawColumns(['id','action','shipment_id', 'notes'])
+                ->rawColumns(['id','action','shipment_id', 'notes','select_consignee', 'shipper'])
                 ->make(true);
         }
         if(Auth::user()->hasRole('Customer')){
@@ -1072,7 +1113,8 @@ class ShipmentController extends Controller
     }
 
     public function Customer_Details(Request $req){
-        $customer_details = User::with('shippers')->where('company_name', $req->company_name)->get();
+        $customer_details = User::with('billings')->where('company_name', $req->company_name)->get()->toArray();
+        // dd($customer_details);
         return $customer_details;
     }
 
@@ -1122,5 +1164,55 @@ class ShipmentController extends Controller
     public function export()
     {
         return Excel::download(new ShipmentExport, 'shipment.xlsx');
+    }
+
+
+    public function download_allImages(){
+        // dd('kashif');
+        $zip = new ZipArchive;
+   
+        $fileName = 'myNewFile.zip';
+   
+        if ($zip->open(public_path($fileName), ZipArchive::CREATE) === TRUE)
+        {
+
+
+            $vehicle = PickupImage::wherevehicle_id(13)->get()->toArray();
+            // dd($vehicle);
+            $files = File::files(public_path('vehicle_images'));
+            // $files = File::files(public_path('files'));
+            // dd($files);
+   
+            foreach ($files as $key => $value) {
+                // dd($value);
+                foreach ($vehicle as $v) {
+                    $image_real_name = basename($v['name']);
+
+                    $relativeNameInZipFile = basename($value);
+
+                    if($image_real_name == $relativeNameInZipFile) {
+                        $zip->addFile($value, $relativeNameInZipFile);
+                    }
+                }
+            }
+             
+            $zip->close();
+        }
+    
+        return response()->download(public_path($fileName));
+    }
+
+
+
+    function downloadImages_zip($id){
+        $data  = [];
+        $url_ima_path = [];
+        $data['loading_image'] = Shipment::with('loading_image')->whereid($id)->get()->toArray();
+        foreach($data['loading_image'][0]['loading_image'] as $img){
+            array_push($url_ima_path, url($img['name']));
+        }
+      
+
+        return Response($url_ima_path);
     }
 }

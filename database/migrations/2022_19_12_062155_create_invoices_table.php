@@ -17,14 +17,14 @@ class CreateInvoicesTable extends Migration
             $table->id();
             $table->string('ar_number');
             $table->string('company_name')->nullable();
-            $table->string('port_of_loading')->nullable;
+            $table->string('port_of_loading')->nullable();
             $table->string('destination_port')->nullable();
             $table->string('container_size')->nullable();
             $table->integer("invoice_no")->nullable();
             $table->integer("invoice_amount")->nullable();
-            $table->integer("invoice_date")->nullable();
-            $table->string("due_date")->nullable();
-            $table->string("payment_date")->nullable();
+            $table->date("invoice_date")->nullable();
+            $table->date("due_date")->nullable();
+            $table->date("payment_date")->nullable();
             $table->integer("received_amount")->nullable();
             $table->integer("balance")->nullable();
             $table->string("invoice_document")->nullable();

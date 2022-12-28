@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>shipment-pdf</title>
+    <title>NON-HAZARDOUR REPORT</title>
     <style>
         table {
             border: 1px solid gray;
@@ -63,31 +63,31 @@
                 <tbody>
                     <tr>
                         <td>CARRIER</td>
-                        <td>MAERSK</td>
+                        <td>{{ @$shipment[0]['shipping_line'] }}</td>
                     </tr>
                     <tr>
                         <td>VESSEL NAME / VOYAGE</td>
-                        <td>GUDRUN MAERSK 234 W</td>
+                        <td>{{ @$shipment[0]['vessel'] }} / {{ @$shipment[0]['voyage'] }}</td>
                     </tr>
                     <tr>
                         <td>ORIGIN</td>
-                        <td>8</td>
+                        <td>{{ @$shipment[0]['loading_port'] }}</td>
                     </tr>
                     <tr>
                         <td>DESTINATION</td>
-                        <td>JEBEL ALI</td>
+                        <td>{{ @$shipment[0]['destination_port'] }}</td>
                     </tr>
                     <tr>
                         <td>BOOKING NUMBER</td>
-                        <td>220434507C</td>
+                        <td>{{ @$shipment[0]['booking_number'] }}</td>
                     </tr>
                     <tr>
                         <td>CONTAINER NUMBER</td>
-                        <td>UETU5849585</td>
+                        <td>{{ @$shipment[0]['container_no'] }}</td>
                     </tr>
                     <tr>
                         <td>NUMBER OF VEHICLES</td>
-                        <td>4</td>
+                        <td>{{ count(@$shipment[0]['vehicle']) }}</td>
                     </tr>
                 </tbody>
             </table>

@@ -11,7 +11,14 @@
 #shipment_table1_length,
 #shipment_table2_length,
 #on_hand_table_main_length,
-#no_title_length {
+#no_title_length,
+#on_hand_report_length,
+#new_order_report_length,
+#dispatch_report_length,
+#onhand_report_length,
+#shipment_report_length,
+#notitle_report_length,
+#shipment_reporting_length {
     padding: 2% 0% 1% 2% !important;
 }
 
@@ -28,7 +35,14 @@
 #shipment_table1_length select,
 #shipment_table2_length select,
 #on_hand_table_main_length select,
-#no_title_length select {
+#no_title_length select,
+#on_hand_report_length select
+#new_order_report_length select
+#dispatch_report_length select
+#onhand_report_length select
+#shipment_report_length select,
+#notitle_report_length select
+#shipment_reporting_length select{
     height: calc(1.8125rem + 2px) !important;
     border: 1px solid rgba(189, 189, 189, 1) !important;
     border-radius: 0.25rem !important;
@@ -55,7 +69,14 @@
 #shipment_table1_filter,
 #shipment_table2_filter,
 #on_hand_table_main_filter,
-#no_title_filter {
+#no_title_filter,
+#on_hand_report_filter,
+#new_order_report_filter,
+#dispatch_report_filter,
+#onhand_report_filter,
+#shipment_report_filter,
+#notitle_report_filter,
+#shipment_reporting_filter {
     padding: 2% 2% 1% 0% !important;
 }
 
@@ -72,7 +93,14 @@
 #shipment_table1_filter input,
 #shipment_table2_filter input,
 #on_hand_table_main_filter input,
-#no_title_length input {
+#no_title_length input,
+#on_hand_report_length input
+#new_order_report_length input,
+#dispatch_report_length input
+#onhand_report_length input
+#shipment_report_length input,
+#notitle_report_length input
+#shipment_reporting_length input{
     border: 1px solid rgba(189, 189, 189, 1) !important;
     color: #2b3d51 !important;
     border-radius: 0.25rem !important;
@@ -91,10 +119,17 @@
 #shipment_vehicle_table_wrapper,
 #shipment_filtering_table_wrapper,
 #vehicle_filter_table_wrapper,
+#new_order_report_wrapper,
 
 /* #shipment_table1_wrapper, */
 
-#shipment_table2_wrapper {
+#shipment_table2_wrapper,
+#on_hand_report_wrapper,
+#dispatch_report_wrapper,
+#onhand_report_wrapper,
+#shipment_report_wrapper,
+#notitle_report_wrapper,
+#shipment_reporting_wrapper {
     background-color: white !important;
 }
 
@@ -170,6 +205,7 @@
     border: 1px solid #1c71b0 !important;
     box-shadow: 6px 6px 4px rgba(48, 148, 175, 0.47) !important;
     transform: skew(-30deg) !important;
+    /* color:black!important; */
 }
 
 .unskew {
@@ -490,16 +526,32 @@ border-bottom: 0.2px solid gray !important;
     z-index: 99999999;
 }
 
-#load {
-    position: fixed;
+#load{
     width: 100%;
     height: 100%;
-    background: url("http://code.jquery.com/mobile/1.3.1/images/ajax-loader.gif") no-repeat center center rgba(0, 0, 0, 0.25);
+    position: fixed;
+    background-color: rgba(4, 4, 4, 0.25) !important;
     z-index: 99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;
-    /* z-index: 99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;
-     */
-    /* z-index: 2147483648; */
 }
+#load #loader{
+    width:25%!important;
+    height:25%!important;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+}
+/* #load iframe{
+    background: none!important;
+    border: none!important;
+    width: 20%;
+    height: 20%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+} */
 
 table.dataTable thead .sorting_asc {
     background: none!important;

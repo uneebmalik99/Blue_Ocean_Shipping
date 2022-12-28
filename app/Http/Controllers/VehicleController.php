@@ -17,6 +17,7 @@ use App\Models\MMS;
 use App\Models\Make;
 use App\Models\VehicleModel;
 use App\Models\ImportVehicle;
+use App\Models\LoadingCountry;
 use App\Models\Color;
 use App\Models\Key;
 use App\Models\Title;
@@ -64,7 +65,9 @@ class VehicleController extends Controller
     private function Notification()
     {
         $data['notification'] = Notification::with('user')->paginate($this->perpage);
-        $data['location'] = Location::all()->toArray();
+        // $data['location'] = Location::all()->toArray();
+        $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
+
         // dd();
         if ($data['notification']->toArray()) {
             $current = Carbon::now();
@@ -125,7 +128,7 @@ class VehicleController extends Controller
             $data['on_hand'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '3')->get();
             $data['no_titles'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '4')->get();
             $data['towing'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '5')->get();
-            $data['location'] = Location::all();
+            $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
             $data['status'] = VehicleStatus::limit(3)->get()->toArray();
             $data['make'] = MMS::select('make')->where('status', '1')->groupBy('make')->get()->toArray();
             $data['model'] = MMS::select('model')->where('status', '1')->groupBy('model')->get()->toArray();
@@ -137,7 +140,7 @@ class VehicleController extends Controller
             $data['on_hand'] = Vehicle::where('status', '3')->get();
             $data['no_titles'] = Vehicle::where('status', '4')->get();
             $data['towing'] = Vehicle::where('status', '5')->get();
-            $data['location'] = Location::all();
+            $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
             $data['status'] = VehicleStatus::limit(3)->get()->toArray();
             $data['make'] = MMS::select('make')->where('status', '1')->groupBy('make')->get()->toArray();
             $data['model'] = MMS::select('model')->where('status', '1')->groupBy('model')->get()->toArray();
@@ -148,7 +151,7 @@ class VehicleController extends Controller
     }
 
     public function changeState($state){
-        if($state == 'All'){
+        if($state == 'ALL'){
             return redirect()->route('vehicle.list');
         }
         $data = [];
@@ -179,7 +182,7 @@ class VehicleController extends Controller
             $data['on_hand'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '3')->where('pickup_location', $state)->get();
             $data['no_titles'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '4')->where('pickup_location', $state)->get();
             $data['towing'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '5')->where('pickup_location', $state)->get();
-            $data['location'] = Location::all();
+            $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
             $data['status'] = VehicleStatus::limit(3)->get()->toArray();
             $data['make'] = MMS::select('make')->where('status', '1')->groupBy('make')->get()->toArray();
             $data['model'] = MMS::select('model')->where('status', '1')->groupBy('model')->get()->toArray();
@@ -191,7 +194,7 @@ class VehicleController extends Controller
             $data['on_hand'] = Vehicle::where('status', '3')->where('pickup_location', $state)->get();
             $data['no_titles'] = Vehicle::where('status', '4')->where('pickup_location', $state)->get();
             $data['towing'] = Vehicle::where('status', '5')->where('pickup_location', $state)->get();
-            $data['location'] = Location::all();
+            $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
             $data['status'] = VehicleStatus::limit(3)->get()->toArray();
             $data['make'] = MMS::select('make')->where('status', '1')->groupBy('make')->get()->toArray();
             $data['model'] = MMS::select('model')->where('status', '1')->groupBy('model')->get()->toArray();
@@ -244,6 +247,7 @@ class VehicleController extends Controller
         $data['warehouses'] = Warehouse::where('status', '1')->get();
         $data['sites'] = Site::where('status', '1')->get();
         $data['vehicle_types'] = VehicleType::where('status', '1')->get();
+        $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
         if ($request->ajax()) {
             $tab = $request->tab;
             $output = view('layouts.vehicle_create.' . $tab, $data)->render();
@@ -295,14 +299,16 @@ class VehicleController extends Controller
         ];
         if ($request->ajax()) {
             $id = $request->id;
-            $data['user'] = Vehicle::with('vehicle_status')->where('id', $id)->get()->toArray();
+            $data['user'] = Vehicle::with('user','vehicle_status')->where('id', $id)->get()->toArray();
+            // dd($data['user']);
             $data['update_buyer_id'] = User::with('billings')->wherecompany_name($data['user'][0]['customer_name'])->get()->toArray();
             // dd($data['update_buyer_id']);
             // $Obj_vehicle = new Vehicle;
             // $data['user'] = $Obj_vehicle->find($id)->toArray();
             $data['buyers'] = BillingParty::all();
             $data['buyers_number'] = BillingParty::with('customer.vehicles')->get()->toArray();
-            $data['location'] = Location::all();
+            // $data['location'] = Location::all();
+            $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
             $data['shipment'] = Shipment::all();
             $data['vehicle_make'] = MMS::select('make')->where('status', '1')->groupBy('make')->get()->toArray();
             $data['auctions'] = Auction::where('status', '1')->get();
@@ -416,7 +422,6 @@ class VehicleController extends Controller
         $request->validate([
             'customer_name' => 'required',
             'vin' => 'required',
-            
             'auction' => 'required',
             'buyer_id' => 'required',
             'key' => 'required',
@@ -440,7 +445,6 @@ class VehicleController extends Controller
     }
     else{
         $vehicle['vehicles'] = Vehicle::with('pickupimages','originaltitles', 'billofsales','auction_image', 'warehouse_image')->where('id', $request->id)->get()->toArray();
-        // dd($vehicle['vehicles']);
         $obj = Vehicle::find($request->id);
         $obj->update($data);
         $Obj_vehicle = $obj->where('vin', $data['vin'])->get();
@@ -455,13 +459,7 @@ class VehicleController extends Controller
     }
     public function store_image(Request $request)
     {
-        // dd($request->all());
-
-
-        // $data = $request->all();
-        // if($request->auction_old){
-        //     dd($request->auction_old);
-        // }
+        
 
         $output = [];
         $auction_invoice = $request->file("auction_invoice");
@@ -475,7 +473,8 @@ class VehicleController extends Controller
 
         $Obj = new Vehicle;
         $Obj_vehicle = $Obj->where('vin', $request->vin)->get();
-        // dd($Obj_vehicle[0]['id']);
+
+        // dd($request->all());
 
 
         if($request->auction_old){
@@ -514,12 +513,6 @@ class VehicleController extends Controller
             }
         }
 
-
-
-
-       
-
-    
         if($auction_invoice){
             $Obj_auctionInvoice = new AuctionInvoice;
             foreach ($auction_invoice as $auctiofile) {
@@ -555,9 +548,21 @@ class VehicleController extends Controller
             }
             
         }
-
-
         
+
+        // if(!$auction_images && !$request->auction_old){
+        //     $auction_image = AuctionImage::where('vehicle_id', $Obj_vehicle[0]['id'])->delete();
+        // }
+
+        // if(!$warehouse_images && !$request->warehouse_old){
+        //     $auction_image = WarehouseImage::where('vehicle_id', $Obj_vehicle[0]['id'])->delete();
+        // }
+
+        // if(!$pickup && !$request->pickup_old){
+        //     $auction_image = PickupImage::where('vehicle_id', $Obj_vehicle[0]['id'])->delete();
+        // }
+        
+
         if($auction_images){
             $Obj_auctionImages = new AuctionImage;
             foreach ($auction_images as $auctionImages) {
@@ -570,14 +575,12 @@ class VehicleController extends Controller
                     'thumbnail' => $file_name,
                     'vehicle_id' => $Obj_vehicle[0]['id'],
                 ];
-                // dd($data);
                 $Obj_auctionImages->create($data);
                 $output['result'] = "Success";
             }   
         }
 
         if($billofsales){
-            // dd($billofsales);
             $Obj_billofsales = new BillOfSale;
             foreach ($billofsales as $billofsales) {
                 $file_name = time() . '.' . $billofsales->extension();
@@ -648,79 +651,22 @@ class VehicleController extends Controller
             
         }
 
-        // $i = 0;
-        // if ($request->hasFile('images')) {
-            //     foreach ($images as $image) {
-                //         switch ($tab) {
-                    //             case ('auction'):
-                        //                 $Obj_image = new AuctionImage;
-                        //                 $this->directory = "/auction_images";
-        //                 break;
-        //             case ('warehouse'):
-        //                 $Obj_image = new WarehouseImage;
-        //                 $this->directory = "/warehouse_images";
-        //                 break;
-        //             case ('billofsales'):
-        //                 $Obj_image = new BillOfSale;
-        //                 $this->directory = "/billofsales_images";
-        //                 break;
-        //             case ('originalTitle'):
-        //                 $Obj_image = new OriginalTitle;
-        //                 $this->directory = "/OriginalTitle_images";
-        //                 break;
-        //             case ('pickup'):
-        //                 $Obj_image = new PickupImage;
-        //                 $this->directory = "/pickup_images";
-        //                 break;
-        //         }
-        //         $image_name = time() . '.' . $image->extension();
-        //         $filename = Storage::putFile($this->directory, $image);
-        //         $image->move(public_path($this->directory), $filename);
-        //         $Obj_image->vehicle_id = $Obj_vehicle[0]['id'];
-        //         $Obj_image->name = $filename;
-        //         $Obj_image->thumbnail = $image_name;
-        //         $Obj_image->save();
-        //         $output['result'] = "Success" . $i;
-        //         $i++;
-        //     }
-        // }
-
-        // if ($request->hasFile('name')) {
-        //     // dd($tab);
-        //     switch ($tab) {
-        //         case ('invoice'):
-        //             $Obj_file = new AuctionInvoice;
-        //             $this->directory = "/auction_invoices";
-
-        //             break;
-        //         case ('auction_copy'):
-        //             $Obj_file = new AuctionCopy;
-        //             $this->directory = "/auction_copies";
-        //             break;
-        //     }
-        //     $filename = Storage::putFile($this->directory, $documents);
-        //     $type = $documents->extension();
-        //     $doc = $documents->move(public_path($this->directory), $filename);
-        //     // dd($doc->getSize() / 1000);/
-        //     $size = $doc->getSize() / 1000;
-            
-        //     $Obj_file->vehicle_id = $Obj_vehicle[0]['id'];
-        //     $Obj_file->name = $filename;
-        //     $Obj_file->type = $type;
-        //     $Obj_file->size = $size . ' kb';
-            
-        //     $Obj_file->save();
-
-        //     $output['result'] = "Success";
-
-        // }
+       
         return Response($output);
         // return Response($output);
     }
     
     public function export($id)
     {
-        return Excel::download(new VehicleExport($id), 'vehicles.xlsx');
+        $vehicles = Vehicle::with('vehicle_status')->where('status', $id)->get()->toArray();
+        // dd($vehicles);
+        if($vehicles){
+            return Excel::download(new VehicleExport($id), 'vehicles.xlsx');
+        }
+        else{
+            return back()->with('fail', 'OPPS! NO ANY VEHICLE FOUND');
+        }
+        
     }
 
     public function import(Request $request)
@@ -749,8 +695,14 @@ class VehicleController extends Controller
             foreach($value as $row){
                 if($i != 1){
                     // dd($row);
-                    if($row[0] != null && $row[1] != null && $row[2] != null && $row[3] != null && $row[4] != null && $row[5] != null && $row[6] != null && $row[7] != null && $row[8] != null && $row[9] != null && $row[10] != null && $row[11] != null && $row[20] != null ){
+                    if($row[4] != null && $row[5] != null && $row[6] != null && $row[7] != null ){
+                    $already_vin_import = ImportVehicle::wherevin($row[7])->first();
+                    $already_vin_vehicle = Vehicle::wherevin($row[7])->first();
+                    if($already_vin_import || $already_vin_vehicle){
+                    }
+                    else{
                         array_push($vehicle_array, $row);
+                    }
                     }
                     else{
                         dd('your file not according to revolution criteria');
@@ -764,60 +716,22 @@ class VehicleController extends Controller
         foreach($vehicle_array as $newValues){
             $import_vehicle = [
                 'customer_name' => '',
-                'vin' => $newValues[1],
-                'year' => $newValues[2],
-                'make' => $newValues[3],
-                'model' => $newValues[4],
-                'vehicle_type' => $newValues[5],
-                'color' => $newValues[6],
-                'weight' => $newValues[7],
+                'sale_date' => $newValues[0],
+                'buyer_id' => $newValues[1],
+                'lot' => $newValues[2],
+                'pickup_location' => $newValues[3],
+                'year' => $newValues[4],
+                'make' => $newValues[5],
+                'model' => $newValues[6],
+                'vin' => $newValues[7],
                 'value' => $newValues[8],
                 'auction' => $newValues[9],
-                'buyer_id' => $newValues[10],
-                'key' => $newValues[11],
-                'note' => $newValues[12],
-                'hat_number' => $newValues[13],
-                'title_type' => $newValues[14],
-                'title' => $newValues[15],
-                'title_rec_date' => $newValues[16],
-                'title_state' => $newValues[17],
-                'title_number' => $newValues[18],
+                'site' => $newValues[10],
+                'vehicle_type' => '',
                 'shipper_name' => null,
                 'status' => 1,
-                'sale_date' => $newValues[21],
-                'paid_date' => $newValues[22],
-                'days' => $newValues[23],
-                'posted_date' => $newValues[24],
-                'pickup_date' => $newValues[25],
-                'delivered' => $newValues[26],
-                'delivered_date' => $newValues[27],
-                'pickup_location' => $newValues[28],
-                'site' => $newValues[29],
-                'dealer_fee' => $newValues[30],
-                'late_fee' => $newValues[31],
-                'auction_storage' => $newValues[32],
-                'towing_charges' => $newValues[33],
-                'warehouse_storage' => $newValues[34],
-                'title_fee' => $newValues[34],
-                'port_detention_fee' => $newValues[35],
-                'custom_inspection' => $newValues[36],
-                'additional_fee' => $newValues[37],
-                'insurance' => $newValues[38],
-                'fee' => $newValues[39],
-                'customer_paying_fee' => $newValues[40],
-                'profit' => $newValues[41],
-                'paid_by' => $newValues[42],
-                'bidder' => $newValues[43],
-                'lot' => $newValues[44],
-                'entry_date' => $newValues[45],
-                'age' => $newValues[46],
-                'assign_date' => $newValues[47],
-                'description' => $newValues[48],
-                'dispatch_date' => $newValues[49],
                 'port' => null,
-                'vehicle_is_deleted' => $newValues[51],
-                'shipment_id' => $newValues[52],
-                'added_by_user' => $newValues[53],
+               
             ];
             ImportVehicle::create($import_vehicle);
          }
@@ -831,7 +745,7 @@ class VehicleController extends Controller
     {
         $action = url($this->action . '/profile/');
         $data = [
-            'vehicle' => Vehicle::with(['pickupimages', 'vehicle_status', 'billofsales'])->find($id)->toArray(),
+            'vehicle' => Vehicle::with(['pickupimages', 'warehouse_image', 'vehicle_status', 'billofsales'])->find($id)->toArray(),
             "page_title" => "Vehicle Detail",
             "page_heading" => "Profile " . $this->singular,
             "button_text" => "Update ",
@@ -864,7 +778,7 @@ class VehicleController extends Controller
 
         $data = [];
 
-        $data['vehicle'] = Vehicle::with(['pickupimages', 'vehicle_status', 'billofsales', 'originaltitles'])->find($id)->toArray();
+        $data['vehicle'] = Vehicle::with(['pickupimages', 'warehouse_image', 'vehicle_status', 'billofsales', 'originaltitles'])->find($id)->toArray();
         // dd($data['vehicle']);
 
         $output = view('layouts.vehicle_information.' . $tab, $data)->render();
@@ -890,8 +804,10 @@ class VehicleController extends Controller
             $data['images'] = PickupImage::where('vehicle_id', $request->id)->get()->toArray();
             $url = url('public/');
         }
-        // return $data['images'];
-        $output['main_image'] =view('layouts.vehicle_information.Vehicle_image',$data)->render();
+        // dd($data['images']);
+        $output['main_image'] = view('layouts.vehicle_information.Vehicle_image',$data)->render();
+        $output['slide_image'] = view('layouts.vehicle_information.slide_main_image',$data)->render();
+        // dd($output['main_image']);
         $output['images'] = view('layouts.vehicle_information.Vehicle_images', $data)->render();
 
         // foreach ($data['images'] as $img) {
@@ -1012,6 +928,8 @@ class VehicleController extends Controller
 
         // $data['state'] = MMS::where('make', $req->make_id)->where('status', '1')->get()->toArray();
         $data['state'] = MMS::select('model')->where('make', $req->make_id)->where('status', '1')->groupBy('model')->get()->toArray();
+        // $data['state'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
+
 
         // dd($data['state']);
 
@@ -1030,34 +948,45 @@ class VehicleController extends Controller
     public function createpdf(){
         return view('vehicle.vehiclepdf');
     }
-    public function exportpdf(){
-            $pdf = PDF::LoadView('vehicle.vehiclepdf');
+
+    public function exportpdf($id){
+            $data = [];
+            $data['vehicle'] = Vehicle::with('user.billings', 'user.shippers')->where('id', $id)->get()->toArray();
+            // dd($data['vehicle']);
+            $pdf = PDF::LoadView('vehicle.vehiclepdf', $data);
             return $pdf->stream('invoice.pdf', array("Attachment" => false));
     }
 
     public function getbuyersids(Request $request){
         $data = [];
         $output = [];
-        $data['buyerids'] = User::with('billings')->where('company_name', $request->company_name)->get()->toArray();
-        // dd($data['buyerids']);
+        $data['buyerids'] = User::with('billings')->where('id', $request->company_name)->get()->toArray();
         $output = view('layouts.vehicle_create.buyerIds' , $data)->render();
-        // dd($output);
         return Response($output);
     }
 
 
     public function assignToCustomer(Request $request){
         $data = [];
+        $customer_name = User::select('company_name')->where('id', $request->assignTo_customer)->get()->toArray();
         $assign_vehicle = ImportVehicle::where('id', $request->vehicle_id)->get()->toArray();
-        $assign_vehicle[0]['added_by_user'] = $request->customer_id;
+        // dd($customer_name[0]['company_name'], $request->all(), $assign_vehicle);
+        $assign_vehicle[0]['customer_name'] = $customer_name[0]['company_name'];
+        $assign_vehicle[0]['buyer_id'] = $request->buyer_id;
+        $assign_vehicle[0]['key'] = $request->key;
+        $assign_vehicle[0]['shipper_name'] = $request->shipper;
+        $assign_vehicle[0]['pickup_location'] = $request->pickup_location;
+        $assign_vehicle[0]['added_by_user'] = $request->assignTo_customer;
         unset($assign_vehicle[0]['id']);
         $data = $assign_vehicle;
+        // dd($data[0]);
+        // dd();
         $obj = new Vehicle;
         $obj->create($data[0]);
         if($obj){
             // $assign_vehicle->delete();
             ImportVehicle::find($request->vehicle_id)->delete();
-            return 'Assign To Customer Successfully';
+            return back()->with('success', 'Assign To Customer Successfully');
         }
 
     }

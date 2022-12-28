@@ -241,6 +241,7 @@
                         </div>
                         @endif
                     </td>
+                    @role(['Super Admin','Sub Admin'])
                     <td>
                         <input class="form-check-input" id="{{$ShipRecord['id']}}"
                             onchange="statusshipmentrate(this.id,this.value)" {{$ShipRecord['status']==1 ?'checked':''}}
@@ -263,6 +264,7 @@
                             </svg>
                         </button>
                     </td>
+                    @endrole
                 </tr>
                 <?php $i++?>
                 @endforeach

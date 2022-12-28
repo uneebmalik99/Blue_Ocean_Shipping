@@ -1,4 +1,4 @@
-<table id="towing_table" class="table row-border" style="width:100%!important;">
+<table id="towing_table" class="row-border" style="width:100%!important;">
     <thead class="bg-custom">
         <tr class="font-size">
             <th class="font-bold-tr">DELIVER DATE</th>
@@ -36,14 +36,14 @@
                 <td>{{ @$val['vin'] }}</td>
                 <td>{{ @$val['lot'] }}</td>
                 <td>{{ @$val['status'] }}</td>
-                <td>{{ @$val['age'] }}</td>
+                <td>{{(@$val['delivered']) ? date_diff( new \DateTime(@$val['delivered']), new \DateTime())->format("%d") + 1 : 0 }}</td>
                 <td>{{ @$val['towing_fee'] }}</td>
                 <td>{{ @$val['customer_paying_fee'] }}</td>
                 <td>{{ @$val['fee'] }}</td>
                 <td>{{ @$val['profit'] }}</td>
                 <td>{{ @$val['posted_date'] }}</td>
                 <td>{{ @$val['paid_by'] }}</td>
-                <td>{{ @$val['shipper'] }}</td>
+                <td>{{ strtoupper(@$val['shipper_name']) }}</td>
                 <td>{{ @$val['port'] }}</td>
                 <td>
                     <button class='profile-button'><a href={{ route('vehicle.profile', @$val['id']) }}>

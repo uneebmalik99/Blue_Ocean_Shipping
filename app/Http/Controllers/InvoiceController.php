@@ -197,10 +197,66 @@ class InvoiceController extends Controller
 
     }
     public function saveInovice(Request $req){
+        
         $data = [];
         $output = [];
         $data = $req->all();
-        
+        if(empty($data['vehicles'])){
+            return 'Invoice can not be generated';
+        }
+        if(isset($req->id)){
+            if($req->invoice_document){
+                $file = $data['invoice_document'];
+                $file_name = time() . '.' . $file->extension();
+                $docname = Storage::putFile($this->directory, $file);
+                $file->move(public_path($this->directory), $docname);
+                $data['invoice_document'] = $docname;        
+            }
+            else{
+                unset($data['invoice_document']);
+            }
+           
+            $output['vehicle'] = $data['vehicles'];
+            $data['added_by_role'] = auth()->user()->id;
+            $id = $data['id'];
+            unset($data['vehicles']);
+            unset($data['id']);
+            unset($data['_token']);
+            $invoice = Invoice::whereid($req->id)->update($data);
+
+                
+            if($invoice){
+                $invoice_id = $req->id;
+                if($output['vehicle']){
+
+                    // dd($output['vehicle']);
+                    $already_vehicles = Vehicle::whereinovice_id($invoice_id)->get()->toArray();
+                    // dd($already_vehicles[1]['id']);
+                    for($i = 0; $i<count($already_vehicles); $i++){
+                        foreach($output['vehicle'] as $vehicle_id){
+                            if($already_vehicles[$i]['id'] == $vehicle_id){
+                                
+                            }
+                            else{
+                                $get_vehicle = Vehicle::find($already_vehicles[$i]['id']);
+                                $get_vehicle->inovice_id  = null;
+                                $get_vehicle->update();
+                                
+                            }
+                        }
+                    }
+
+                    
+                    
+                    
+                }
+
+
+        }
+
+        return 'Invoice Updated!';
+
+        }
         $file = $data['invoice_document'];
         $file_name = time() . '.' . $file->extension();
         $docname = Storage::putFile($this->directory, $file);
@@ -209,7 +265,7 @@ class InvoiceController extends Controller
         $output['vehicle'] = $data['vehicles'];
         $data['added_by_role'] = auth()->user()->id;
         unset($data['vehicles']);
-
+        
         $obj = new Invoice;
         
         $id = $obj->create($data);
@@ -227,7 +283,7 @@ class InvoiceController extends Controller
 
         }
 
-        return 'Invoice Added Successfully!';
+        return 'Invoice Created!';
 
 
         

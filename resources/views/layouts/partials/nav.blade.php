@@ -47,33 +47,73 @@
                     </li>
                 </ul>
                 <ul class="nav-right">
+                    @if (!auth()->user()->hasRole('Customer'))
+                        <li class="header-notification change-loges.html">
+                            <a href="{{ route('importVehicles.list') }}">
+                                <span class="pcoded-micon"><i class="ti-calendar"></i></span>
+                                <span class="pcoded-mtext" data-i18n="nav.event-calendar.main">Imported
+                                    Vehicles</span>
+                                <span class="pcoded-mcaret"></span>
+                            </a>
+                        </li>
+                    @endif
+                    
+                    @if(@$module['type'] == 'Dashboard' || @$module['type'] == 'Vehicles' || @$module['type'] == 'Shipments')
+
                     <li class="header-notification lng-dropdown">
                         <a href="#" id="dropdown-active-item">
                             <i class="m-r-5 ti-world"></i> Select Location
                         </a>
                         <ul class="show-notification"
                             style="border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;">
-                            @foreach ($location as $locations)
+                            
+
                                 <li>
                                     @if(@$module['type'] == 'Customers')
-                                    <a href="{{route('customer.changeState', @$locations['name'])}}" data-tab="{{@$module['type']}}" style="cursor:pointer;">
-                                        {{ @$locations['name'] }}
+                                    <a href="{{route('customer.changeState', 'ALL')}}" data-tab="{{@$module['type']}}" style="cursor:pointer;">
+                                        ALL
                                     </a>
                                     @elseif (@$module['type'] == 'Vehicles')
 
-                                    <a href="{{route('vehicle.changeState', @$locations['name'])}}" data-tab="{{@$module['type']}}"  style="cursor:pointer;">
-                                        {{ @$locations['name'] }}
+                                    <a href="{{route('vehicle.changeState', 'ALL')}}" data-tab="{{@$module['type']}}"  style="cursor:pointer;">
+                                        ALL
                                     </a>
 
                                     @elseif (@$module['type'] == 'Shipments')
 
-                                    <a href="{{route('shipment.changeState', @$locations['name'])}}" data-tab="{{@$module['type']}}" style="cursor:pointer;">
-                                        {{ @$locations['name'] }}
+                                    <a href="{{route('shipment.changeState', 'ALL')}}" data-tab="{{@$module['type']}}" style="cursor:pointer;">
+                                        ALL
                                     </a>
 
                                     @elseif (@$module['type'] == 'Dashboard')
-                                    <a href="{{route('dashboard.changeState', @$locations['name'])}}" data-tab="{{@$module['type']}}" style="cursor:pointer;">
-                                        {{ @$locations['name'] }}
+                                    <a href="{{route('dashboard.changeState', 'ALL')}}" data-tab="{{@$module['type']}}" style="cursor:pointer;">
+                                        ALL
+                                    </a>
+                                    {{-- @else --}}
+                                    @endif
+                                </li>
+                        
+                            @foreach ($location as $locations)
+                                <li>
+                                    @if(@$module['type'] == 'Customers')
+                                    <a href="{{route('customer.changeState', @$locations['state'])}}" data-tab="{{@$module['type']}}" style="cursor:pointer;">
+                                        {{ @$locations['state'] }}
+                                    </a>
+                                    @elseif (@$module['type'] == 'Vehicles')
+
+                                    <a href="{{route('vehicle.changeState', @$locations['state'])}}" data-tab="{{@$module['type']}}"  style="cursor:pointer;">
+                                        {{ @$locations['state'] }}
+                                    </a>
+
+                                    @elseif (@$module['type'] == 'Shipments')
+
+                                    <a href="{{route('shipment.changeState', @$locations['state'])}}" data-tab="{{@$module['type']}}" style="cursor:pointer;">
+                                        {{ @$locations['state'] }}
+                                    </a>
+
+                                    @elseif (@$module['type'] == 'Dashboard')
+                                    <a href="{{route('dashboard.changeState', @$locations['state'])}}" data-tab="{{@$module['type']}}" style="cursor:pointer;">
+                                        {{ @$locations['state'] }}
                                     </a>
                                     @else
 
@@ -98,6 +138,10 @@
                             </li> --}}
                         </ul>
                     </li>
+                    @endif
+
+
+
                     <li class="header-notification">
                         <a style="cursor: pointer;">
                             <i class="ti-bell"></i>
@@ -154,6 +198,7 @@
 
 
                     {{-- add cart --}}
+                    @if(!Auth::user()->hasRole('Customer'))
                     <li class="header-notification">
                         <a style="cursor: pointer;">
                             <i class="fa-solid fa-cart-shopping"></i>
@@ -226,7 +271,7 @@
                             @endif
                         </ul>
                     </li>
-
+                    @endif
 
 
 

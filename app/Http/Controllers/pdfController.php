@@ -7,6 +7,7 @@ use App\Models\Invoice;
 use App\Models\Location;
 use App\Models\Vehicle;
 use App\Models\Notification;
+use App\Models\Shipment;
 use Carbon\Carbon;
 use PDF;
 
@@ -101,39 +102,39 @@ class pdfController extends Controller
 
     }
 
-    public function shipmentview(){
-        // $data = [];
-        // $data['shipment']=Shipment::find($id)->toArray();
-        $pdf = PDF::loadview('layouts.shipment_detail.shipment_Hazard_pdf');
+    public function shipmentview($id){
+        $data = [];
+        $data['shipment']=Shipment::with('vehicle', 'customer.billings')->whereid($id)->get()->toArray();
+        $pdf = PDF::loadview('layouts.shipment_detail.shipment_Hazard_pdf', $data);
         return $pdf->stream(); 
     }
 
-    public function shipmentHouston(){
-        // $data = [];
-        // $data['shipment']=Shipment::find($id)->toArray();
-        $pdf = PDF::loadview('layouts.shipment_detail.shipment_Houston_pdf');
+    public function shipmentHouston($id){
+        $data = [];
+        $data['shipment']=Shipment::with('vehicle')->whereid($id)->get()->toArray();
+        $pdf = PDF::loadview('layouts.shipment_detail.shipment_Houston_pdf', $data);
         return $pdf->stream(); 
     }
 
-    public function shipmentLanding(){
-        // $data = [];
-        // $data['shipment']=Shipment::find($id)->toArray();
-        $pdf = PDF::loadview('layouts.shipment_detail.shipment__Landing_pdf');
+    public function shipmentLanding($id){
+        $data = [];
+        $data['shipment']=Shipment::with('vehicle')->whereid($id)->get()->toArray();
+        $pdf = PDF::loadview('layouts.shipment_detail.shipment__Landing_pdf', $data);
         return $pdf->stream(); 
     }
 
-    public function shipmentCustom(){
-        // $data = [];
-        // $data['shipment']=Shipment::find($id)->toArray();
-        $pdf = PDF::loadview('layouts.shipment_detail.shipment__Custom_pdf');
+    public function shipmentCustom($id){
+        $data = [];
+        $data['shipment']=Shipment::with('vehicle')->whereid($id)->get()->toArray();
+        $pdf = PDF::loadview('layouts.shipment_detail.shipment__Custom_pdf', $data);
         return $pdf->stream(); 
     }
 
 
-    public function shipmentDock(){
-        // $data = [];
-        // $data['shipment']=Shipment::find($id)->toArray();
-        $pdf = PDF::loadview('layouts.shipment_detail.shipment__Dock_pdf');
+    public function shipmentDock($id){
+        $data = [];
+        $data['shipment']=Shipment::with('vehicle')->whereid($id)->get()->toArray();
+        $pdf = PDF::loadview('layouts.shipment_detail.shipment__Dock_pdf', $data);
         return $pdf->stream(); 
     }
     

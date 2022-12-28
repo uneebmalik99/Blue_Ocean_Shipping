@@ -33,8 +33,8 @@ class CreateShipmentsTable extends Migration
             $table->string('ase-itn_number')->nullable();
             $table->string('xtn_number')->nullable();
             $table->string('oti_number')->nullable();
-            // $table->foreignId('select_consignee')->nullable()->constrained('user')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('select_consignee')->nullable();
+            $table->foreignId('select_consignee')->nullable()->constrained('user')->onUpdate('cascade')->onDelete('cascade');
+            // $table->string('select_consignee')->nullable();
             $table->string('shipper')->nullable();
             $table->string('loading_terminal')->nullable();
             $table->string('loading_port')->nullable();

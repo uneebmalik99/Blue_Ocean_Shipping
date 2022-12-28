@@ -51,7 +51,8 @@
     <div class="bg-white rounded p-2">
         {{-- badges start --}}
         <div class="d-flex m-2">
-            <div class="col-3 p-1">
+        <div class="row"style="width:100%;margin-left:2px">
+            <div class="col-lg-3 col-md-3 order-sm-12 col-12"style="margin-top: 10px;">
                 <div class="col-12 py-0 px-1">
                     <div class="col-12 border-style card-rounded py-2 px-3">
                         <div class="d-flex">
@@ -82,7 +83,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-3 p-1">
+            <div class="col-lg-3 col-md-3 order-sm-12 col-12"style="margin-top: 10px;">
                 <div class="col-12 py-0 px-1">
                     <div class="col-12 border-style card-rounded py-2 px-3">
                         <div class="d-flex">
@@ -109,7 +110,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-3 p-1">
+            <div class="col-lg-3 col-md-3 order-sm-12 col-12"style="margin-top: 10px;">
                 <div class="col-12 py-0 px-1">
                     <div class="col-12 border-style card-rounded py-2 px-3">
                         <div class="d-flex">
@@ -140,7 +141,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-3 p-1">
+            <div class="col-lg-3 col-md-3 order-sm-12 col-12"style="margin-top: 10px;">
                 <div class="col-12 py-0 px-1">
                     <div class="col-12 border-style card-rounded py-2 px-3">
                         <div class="d-flex">
@@ -171,6 +172,7 @@
                     </div>
                 </div>
             </div>
+            </div>
 
         </div>
         {{-- badges end --}}
@@ -195,13 +197,13 @@
                 {{-- search filter start --}}
                 <div class="px-4 pt-2 mt-4">
                     <div class="d-flex justify-content-between">
-                        <div class="col-6 p-0">
+                        <div class="col-4 p-0">
                             <span class="h5 text-muted">
                                 {{-- <b>Search Filter</b> --}}
                             </span>
                         </div>
-                        <div class="col-6 d-flex justify-content-end p-0">
-                            <div class="col-4 d-flex justify-content-end px-2">
+                        <div class="col-md-6 col-sm-6 col-6 d-flex justify-content-end p-0">
+                            <div class="col-md-6 col-sm-8 col-8 d-flex justify-content-end px-2">
                                 <a href="{{ route('customer.export') }}"
                                     class="px-1 text-muted font-size form-contorl-sm border p-1 rounded col-12"
                                     style="background: #DBDBDB; cursor: pointer;">
@@ -219,7 +221,7 @@
                                     </div>
                                 </a>
                             </div>
-                            <div class="col-5 px-0 d-flex justify-content-center">
+                            <div class="col-md-6 col-sm-8 col-8 px-0 d-flex justify-content-center">
                                 <button type="button"
                                     class="text-white form-control-sm border py-1 btn-info rounded modal_button col-12"
                                     id="customer" style="background: #3e5871;" data-target="#exampleModal">

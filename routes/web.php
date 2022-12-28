@@ -12,6 +12,7 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ShipmentController;
 use App\Http\Controllers\StickyController;
 use App\Http\Controllers\MasterTowing;
+use App\Http\Controllers\ReportingController;
 use App\Http\Controllers\ShipmentRateController;
 use App\Http\Controllers\MasterTowingController;
 use App\Http\Controllers\TicketController;
@@ -23,7 +24,7 @@ use App\Http\Controllers\pdfController;
 
 Auth::routes();
 
-Route::prefix('/admin')->middleware('auth')->group(function () {
+Route::prefix('/admin')->middleware(['auth','login.status'])->group(function () {
     //Home
     Route::get('/', [HomeController::class, 'index']);
     // User Routes
@@ -59,7 +60,7 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
     Route::get('/user/allroles',[App\Http\Controllers\UserController::class,'roles'])->name('user.allroles');
 
 
- Route::get('/users/createUser',[App\Http\Controllers\UserController::class,'createUser'])->name('user.createUser');
+    Route::get('/users/createUser',[App\Http\Controllers\UserController::class,'createUser'])->name('user.createUser');
 
     // Customer Routes
     Route::get('/customers', [CustomerController::class, 'index'])->name('customer.list');
@@ -69,6 +70,7 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
     Route::post('/customers/create/billing_customer', [CustomerController::class, 'general_create'])->name('customer.billing_create');
     Route::post('/customers/create/shipper_customer', [CustomerController::class, 'general_create'])->name('customer.shipper_create');
     Route::post('/customers/create/quotation_customer', [CustomerController::class, 'general_create'])->name('customer.quotation_create');
+    Route::get('/customers/add/qoutation_customer',[CustomerController::class,'addQoutation'])->name('customer.addQuotation');
     Route::get('/customers/edit/{id?}',                 [CustomerController::class, 'edit'])->name('customer.edit');
     Route::post('/customers/edit/{id?}',                [CustomerController::class, 'edit'])->name('customer.edit');
     Route::get('/customers/update/{id?}',               [CustomerController::class, 'edit'])->name('customer.edit');
@@ -93,6 +95,13 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
 
 
     Route::get('/customers/changeState/{state?}', [CustomerController::class, 'changeState'])->name('customer.changeState');
+
+
+
+    Route::get('/customers/AddnewQuotation/', [CustomerController::class, 'Addnew_quotation'])->name('customer.Addnew_quotation');
+
+
+
 
 
     //Vehicle Routes
@@ -126,7 +135,7 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
     
     Route::get('/vehicle/pdf',                          [VehicleController::class, 'createpdf'])->name('vehicle.createpdf');
 
-    Route::get('/vehicle/export/pdf',                   [VehicleController::class, 'exportpdf'])->name('vehicle.exportpdf');
+    Route::get('/vehicle/export/pdf/{id?}',                   [VehicleController::class, 'exportpdf'])->name('vehicle.exportpdf');
 
     Route::get('/vehicle/vehicle_informationTab',       [VehicleController::class, 'profile_tab'])->name('customer.profile_tab');
     
@@ -192,7 +201,13 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
     Route::get('/shipment/export',                     [ShipmentController::class, 'export'])->name('shipment.export');
 
 
+    Route::get('shipment/mulityImages/download',                     [ShipmentController::class, 'download_allImages'])->name('shipment/mulityImages/download');
+
+
     Route::get('/shipment/changeState/{state?}',                     [ShipmentController::class, 'changeState'])->name('shipment.changeState');
+
+
+    Route::get('/shipment/downloadImages/zipfile/{id?}', [ShipmentController::class, 'downloadImages_zip'])->name('shipment/downloadImages/zipfile');
 
 
 
@@ -201,6 +216,9 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
     Route::post('/invoice/saveData',                     [InvoiceController::class, 'saveInovice'])->name('inovice.save');
 
     Route::get('/invoice/records', [InvoiceController::class, 'serverside'])->name('invoice.records');
+
+
+
 
 
     // destination countries 
@@ -214,15 +232,15 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
 
 
 
-    Route::get('/shipment_detail/shipment_Hazard_pdf', [pdfController::class, 'shipmentview'])->name('shipment_detail.shipment_Hazard_pdf');
+    Route::get('/shipment_detail/shipment_Hazard_pdf/{id?}', [pdfController::class, 'shipmentview'])->name('shipment_detail.shipment_Hazard_pdf');
 
-    Route::get('/shipment_detail/shipment_Houston_pdf', [pdfController::class, 'shipmentHouston'])->name('shipment_detail.shipment_Houston_pdf');
+    Route::get('/shipment_detail/shipment_Houston_pdf/{id?}', [pdfController::class, 'shipmentHouston'])->name('shipment_detail.shipment_Houston_pdf');
 
-    Route::get('/shipment_detail/shipment_Landing_pdf', [pdfController::class, 'shipmentLanding'])->name('shipment_detail.shipment_Landing_pdf');
+    Route::get('/shipment_detail/shipment_Landing_pdf/{id?}', [pdfController::class, 'shipmentLanding'])->name('shipment_detail.shipment_Landing_pdf');
 
-    Route::get('/shipment_detail/shipment_Custom_pdf', [pdfController::class, 'shipmentCustom'])->name('shipment_detail.shipment_Custom_pdf');
+    Route::get('/shipment_detail/shipment_Custom_pdf/{id?}', [pdfController::class, 'shipmentCustom'])->name('shipment_detail.shipment_Custom_pdf');
 
-    Route::get('/shipment_detail/shipment_Dock_pdf', [pdfController::class, 'shipmentDock'])->name('shipment_detail.shipment_Dock_pdf');   
+    Route::get('/shipment_detail/shipment_Dock_pdf/{id?}', [pdfController::class, 'shipmentDock'])->name('shipment_detail.shipment_Dock_pdf');   
 
 
     //Notification Routes`
@@ -284,6 +302,7 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
 
 
 
+    Route::post('/master/getbuyerids',       [MasterController::class, 'getbuyersids'])->name('importVehicle.get_buyerids');
 
 
     // master towing page routes 
@@ -317,8 +336,16 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
 
     Route::get('/dashboard/changeState/{state?}', [DashboardController::class, 'changeState'])->name('dashboard.changeState');
 
+    Route::get('/dashboard/records/{state?}', [DashboardController::class, 'serverside'])->name('dashboard.records');
 
-    Route::get('/inventory',                            function(){return "Coming Soon!";});
+//  < ============================================  Reporting ========================= >
+ 
+    Route::get('/reporitng',                           [ReportingController::class, 'index']);
+    Route::post('/reporitng/changetab',                           [ReportingController::class, 'changetab'])->name('reporting.changetab');
+    Route::post('/reporting/shipments', [ReportingController::class, 'serverside'])->name('reporting.shipments');
+    Route::post('/reporting/filter_vehicle', [ReportingController::class, 'fitlerVehicles'])->name('reporting.fitlerVehicles');
+
+
     //Inventory
     Route::get('/invoice',                              [InvoiceController::class, 'index'])->name('invoice.index');
     Route::get('/invoices/create',                      [InvoiceController::class, 'create_invoice'])->name('invoice.create');

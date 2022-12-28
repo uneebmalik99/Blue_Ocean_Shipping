@@ -1,5 +1,5 @@
 @if(@$buyerids[0]['billings'][0]['buyer_number'])
-<option selected disable>Select Buyer Id</option>
+<option selected disabled>Select Buyer Id</option>
 @foreach ($buyerids as $buyer)
 @php
     $buyerid = explode(',', $buyer['billings'][0]['buyer_number']);

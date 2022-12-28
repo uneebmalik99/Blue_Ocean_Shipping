@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>shipment Landing</title>
+    <title>Bill Of Landing</title>
     <style>
         #t_pad {
             padding: 25px;
@@ -82,7 +83,7 @@
             <tbody>
                 <tr>
                     
-                    <td  class="t_data"><b>ARIANA MARTIME </b></td>
+                    <td  class="t_data"><b>Blue Ocean Shipping</b></td>
                     <td class="t_img" style="text-align:center ;"><img src="{{asset('images/logo_2.png')}}"  class="img_w" alt=""></td>
                     <td class="t_data"><b>BILL OF LADING</b></td>
                 </tr>
@@ -100,9 +101,9 @@
                     <td class="td3_data">REFERENCE #</td>
                 </tr>
                 <tr>
-                    <td rowspan="4" class="td3_data">MARHABA USED CARS TR SHARJAH IND # 2</td>
-                    <td class="td3_data">220434507C</td>
-                    <td class="td3_data">ASLB087622MARHABA215</td>
+                    <td rowspan="4" class="td3_data">{{ @$shipment[0]['shipper'] }}</td>
+                    <td class="td3_data">{{ @$shipment[0]['booking_number'] }}</td>
+                    <td class="td3_data">{{ @$shipment[0]['shipping_reference'] }}</td>
                 </tr>
                 <tr>
                     <!-- <td class="td3_data">BoL/AWB/BOOKING # : 220434507C</td> -->
@@ -131,8 +132,7 @@
                     <td class="td3_data">VESSEL #</td>
                 </tr>
                 <tr>
-                    <td rowspan="4" class="td3_data">AMAYA SHIPPING LINE LLC
-                        1207 CENTURION STAR TOWER, DEIRA</td>
+                    <td rowspan="4" class="td3_data">{{ @$shipment[0]['select_consignee'] }}</td>
                     <td class="td3_data">SEAGIRT</td>
                     <td class="td3_data">GUDRUN MAERSK</td>
                 </tr>
@@ -159,10 +159,10 @@
             <tbody>
                 <tr>
                     <td colspan="2" class="td3_p">NOTIFY</td>
-                    <td class="td3_data">FOR RELEASE OF CARGO PLEASE CONTACT:</td>
+                    <td class="td3_data"></td>
                 </tr>
                 <tr>
-                    <td colspan="2" rowspan="2" class="td3_p" id="t_pad"></td>
+                    <td colspan="2" rowspan="2" class="td3_p" id="t_pad">{{ @$shipment[0]['notifier'] }}</td>
                     <td class="td3_data"></td>
 
                 </tr>
@@ -184,8 +184,8 @@
                     <td class="td3_data">SPECIAL INSTRUCTIONS</td>
                 </tr>
                 <tr>
-                    <td class="td3_data">UETU5849585</td>
-                    <td class="td3_data">1 X 40'HC DRY VAN</td>
+                    <td class="td3_data">{{ @$shipment[0]['container_no'] }}</td>
+                    <td class="td3_data">{{ @$shipment[0]['container_type'] }}</td>
                     <td class="td3_data">29658206</td>
                     <td class="td3_data"></td>
 
@@ -204,7 +204,7 @@
                 </tr>
                 <tr>
                     <td class="td3_data">4 UNITS USED VEHICLES</td>
-                    <td class="td3_data"></td>
+                    <td class="td3_data">32</td>
                     <td class="td3_data">55 M3 </td>
                     <!-- <td class="td3_data"></td> -->
 
@@ -224,42 +224,18 @@
                     <td class="td3_data">WEIGHT </td>
                     <td class="td3_data">CUBE </td>
                 </tr>
+                @foreach ($shipment[0]['vehicle'] as $vehicle)
                 <tr>
-                    <td class="td3_data">2013</td>
-                    <td class="td3_data">NISSAN</td>
-                    <td class="td3_data">VERSA / SILVER</td>
-                    <td class="td3_data">3N1CN7APXDL882583</td>
-                    <td class="td3_data">1573 KG</td>
+                    <td class="td3_data">{{ @$vehicle['year'] }}</td>
+                    <td class="td3_data">{{ @$vehicle['make'] }}</td>
+                    <td class="td3_data">{{ @$vehicle['model'] }} / {{ @$vehicle['color'] }}</td>
+                    <td class="td3_data">{{ @$vehicle['vin'] }}</td>
+                    <td class="td3_data">{{ @$vehicle['weight'] }}</td>
                     <td class="td3_data"> </td>
-
+                    
                 </tr>
-                <tr>
-                    <td class="td3_data">2019</td>
-                    <td class="td3_data">TOYOTA</td>
-                    <td class="td3_data">CAMRY / BLUE</td>
-                    <td class="td3_data">4T1BE46K59U798104 </td>
-                    <td class="td3_data">1719 KG</td>
-                    <td class="td3_data"> </td>
-
-                </tr>
-                <tr>
-                    <td class="td3_data">2013</td>
-                    <td class="td3_data">NISSAN</td>
-                    <td class="td3_data">VERSA / SILVER</td>
-                    <td class="td3_data">3N1CN7APXDL882583</td>
-                    <td class="td3_data">1573 KG</td>
-                    <td class="td3_data"> </td>
-
-                </tr>
-                <tr>
-                    <td class="td3_data">2019</td>
-                    <td class="td3_data">TOYOTA</td>
-                    <td class="td3_data">CAMRY / BLUE</td>
-                    <td class="td3_data">4T1BE46K59U798104 </td>
-                    <td class="td3_data">1719 KG</td>
-                    <td class="td3_data"> </td>
-
-                </tr>
+                @endforeach
+               
             </tbody>
         </table>
     </div>

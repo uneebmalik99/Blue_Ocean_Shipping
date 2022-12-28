@@ -19,4 +19,8 @@ class Notification extends Model
     {
         return $this->belongsTo('App\Models\User', 'user_id', 'id');
     }
+    public function setDataAttribute($data) 
+    { 
+        $this->attributes['data'] = json_encode($data); 
+    } 
 }

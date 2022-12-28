@@ -1,6 +1,4 @@
-{{-- {{dd($records[0]['pickupimages'][0]['name'])}} --}}
-
-<table id="on_hand_table" class="table row-border" style="width:100%!important;">
+<table id="on_hand_table" class="row-border" style="width:100%!important;">
     <thead class="bg-custom">
         <tr class="font-size">
             <th>ADD
@@ -36,33 +34,23 @@
         </tr>
     </thead>
     <tbody class="bg-white font-size" id="vehicle_tbody">
-        {{-- @dd($records) --}}
-        {{-- @if (@count($records) == 0)
-            <tr class="font-size">
-                <td colspan="19" class="h5 text-muted text-center">NO VEHICLES TO DISPLAY</td>
-            </tr>
-        @endif --}}
+        
         <?php $i = 1; ?>
         @foreach ($records as $val)
-            {{-- @dd($val['images'][0]['name']) --}}
+         
             <tr>
                 <td>
-                    {{-- <input type="checkbox" name="checkboxes" data-id="{{@$val['id']}}"> --}}
                     <input type="checkbox" name="checkboxes" id="{{ @$val['id'] }}" title="Add" onchange="addtoShipment(this.id)">
                 </td>
                 <td>
-                    {{-- @if($records[0]['pickupimages'][0]['name']) --}}
                     <i class="fa fa-camera" aria-hidden="true" style="color:#3e5871!important;"></i>
-                    {{-- @endif --}}
                     
-                    {{-- <img src="{{asset($records[0]['pickupimages'][0]['name'])}}" alt="" style="width: 25px;height:25px;border-radius:50%;"> --}}
                 </td>
                 <td>
                         
                             {{ @$val['customer_name'] }}<br>
                             
                 </td>
-                {{-- <td>{{ @$val['customer_name'] }}</td> --}}
                 <td>{{ @$val['year'] }}</td>
                 <td>{{ @$val['make'] }}</td>
                 <td>{{ @$val['model'] }}</td>
@@ -72,10 +60,10 @@
                 <td>{{ @$val['lot'] }}</td>
                 <td>{{ @$val['title'] }}</td>
                 <td>{{ @$val['title_type'] }}</td>
-                <td>{{ @$val['keys'] }}</td>
-                <td>{{ @$val['delivered_date'] }}</td>
-                <td>{{ @$val['age'] }}</td>
-                <td>{{ @$val['shipper'] }}</td>
+                <td>{{ @$val['key'] }}</td>
+                <td>{{ @$val['delivered'] }}</td>
+                <td>{{ (@$val['delivered']) ? date_diff( new \DateTime(@$val['delivered']), new \DateTime())->format("%d") + 1 : 0 }}</td>
+                <td>{{ strtoupper(@$val['shipper_name']) }}</td>
                 <td>
                     <button class='profile-button'><a href={{route('vehicle.profile', @$val['id'])}}>
                         <svg width='14' height='13' viewBox='0 0 16 14' fill='none'

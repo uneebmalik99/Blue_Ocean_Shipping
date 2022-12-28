@@ -1945,11 +1945,24 @@ class MasterController extends Controller
         ];
 
         $notification = $this->Notification();
-        $data['importVehicles'] = ImportVehicle::all();
+        $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
+        $data['importVehicles'] = ImportVehicle::orderByDesc('id')->get();
         $data['customers'] = User::role('Customer')->get()->toArray();
         $data['vehicles_cart'] = VehicleCart::with('vehicle')->get()->toArray();
+        $data['shipper'] = ShipperName::where('status', '1')->get()->toArray();
+        $data['keys'] = Key::where('status', '1')->get()->toArray();
+
 
         return view($this->view . 'import_vehicles', $data, $notification);
+    }
+
+
+    public function getbuyersids(Request $request){
+        $data = [];
+        $output = [];
+        $data['buyerids'] = User::with('billings')->where('id', $request->customer_id)->get()->toArray();
+        $output = view('layouts.vehicle_create.buyerIds' , $data)->render();
+        return Response($output);
     }
 }
 

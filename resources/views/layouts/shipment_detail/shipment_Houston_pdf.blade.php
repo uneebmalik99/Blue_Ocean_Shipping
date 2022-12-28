@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>shipment Houston</title>
+    <title>Houston Cover Letter</title>
     <style>
         .tbl_2{
             margin-top:15px;
@@ -118,42 +118,18 @@
                     <th>STATE</th>
                     <th>VALUE</th>
                 </tr>
+                @foreach ($shipment[0]['vehicle'] as $vehicle)
                 <tr>
-                    <td class="t_data">2013</td>
-                    <td class="t_data">NISSAN </td>
-                    <td class="t_data">VERSA</td>
-                    <td class="t_data">3N1CN7APXDL882583</td>
-                    <td class="t_data">19991970649 </td>
-                    <td class="t_data">VIRGINIA</td>
-                    <td class="t_data">$</td>
+                    <td class="td3_data">{{ @$vehicle['year'] }}</td>
+                    <td class="td3_data">{{ @$vehicle['make'] }}</td>
+                    <td class="td3_data">{{ @$vehicle['model'] }} </td>
+                    <td class="td3_data">{{ @$vehicle['vin'] }}</td>
+                    <td class="td3_data">{{ @$vehicle['title_number'] }}</td>
+                    <td class="td3_data"> {{ @$vheicle['state'] }}</td>
+                    <td class="td3_data"> {{ @$vheicle['value'] }}</td>
+                    
                 </tr>
-                <tr>
-                    <td class="t_data">2019</td>
-                    <td class="t_data">NISSAN </td>
-                    <td class="t_data">VERSA</td>
-                    <td class="t_data">3N1CN7APXDL882583</td>
-                    <td class="t_data">19991970649 </td>
-                    <td class="t_data">VIRGINIA</td>
-                    <td class="t_data">$</td>
-                </tr>
-                <tr>
-                    <td class="t_data">2013</td>
-                    <td class="t_data">NISSAN </td>
-                    <td class="t_data">VERSA</td>
-                    <td class="t_data">3N1CN7APXDL882583</td>
-                    <td class="t_data">19991970649 </td>
-                    <td class="t_data">VIRGINIA</td>
-                    <td class="t_data">$</td>
-                </tr>
-                <tr>
-                    <td class="t_data">2019</td>
-                    <td class="t_data">NISSAN </td>
-                    <td class="t_data">VERSA</td>
-                    <td class="t_data">3N1CN7APXDL882583</td>
-                    <td class="t_data">19991970649 </td>
-                    <td class="t_data">VIRGINIA</td>
-                    <td class="t_data">$</td>
-                </tr>
+                @endforeach
             </thead>
         </table>
     </div>
@@ -183,10 +159,10 @@
                     <td class="td3_data">PORT OF UNLADING :</td>
                 </tr>
                 <tr>
-                    <td colspan="2" class="td3_data">ULTIMATE DESTINATION : JEBEL ALI</td>
+                    <td colspan="2" class="td3_data">ULTIMATE DESTINATION : {{ @$shipment[0]['destination_port'] }}</td>
                 </tr>
                 <tr>
-                    <td colspan="2" class="td3_data">VEHICLE LOCATION :</td>
+                    <td colspan="2" class="td3_data">VEHICLE LOCATION : </td>
                 </tr>
             </tbody>
         </table>
@@ -202,7 +178,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td colspan="2" class="td4_data">NAME : MARHABA USED CARS TR</td>
+                    <td colspan="2" class="td4_data">NAME : {{ @$shipment[0]['shipper'] }}</td>
                     <td class="td4_data">DOB :</td>
                 </tr>
                 <tr>
@@ -248,7 +224,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td colspan="4" class="td4_data">NAME : ASL Shipping Line</td>
+                    <td colspan="4" class="td4_data">NAME : Blue Ocean Shipping</td>
                     <!-- <td class="td4_data">DOB :</td> -->
                 </tr>
                 <tr>
@@ -256,7 +232,7 @@
                     <!-- <td class="td4_data"></td> -->
                 </tr>
                 <tr>
-                    <td colspan="2" class="td4_data">CITY : HOUSTON  :</td>
+                    <td colspan="2" class="td4_data">CITY : HOUSTON </td>
                     <td  colspan="2" class="td4_data">STATE : TX</td>
                     <!-- <td class="td4_data">ZIP CODE : 000000</td> -->
                     
