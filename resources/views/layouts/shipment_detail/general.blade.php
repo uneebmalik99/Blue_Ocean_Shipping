@@ -980,7 +980,6 @@
     }
 
     async function downloadImages_zip(id) {
-        alert(id);
 
         $.ajax({
             method: 'get',
