@@ -205,7 +205,7 @@
     border: 1px solid #1c71b0 !important;
     box-shadow: 6px 6px 4px rgba(48, 148, 175, 0.47) !important;
     transform: skew(-30deg) !important;
-    color:black!important;
+    /* color:black!important; */
 }
 
 .unskew {

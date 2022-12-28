@@ -163,6 +163,7 @@ class CustomerController extends Controller
         $data['shipper'] = Shipper::all();
         // $data['consignees'] = Consignee::all();
         return view($this->view . 'list', $data, $notification);
+
     }
 
 
@@ -896,6 +897,9 @@ class CustomerController extends Controller
                     unset($data['password']);
                 }
             }
+            else{
+                $data['password'] = Hash::make($request->password);
+            }
 
             // dd($data);
             unset($data['user_file']);
@@ -974,7 +978,6 @@ class CustomerController extends Controller
                     $request->validate([
                         'name' => 'required',
                         'username' => 'required',
-                        // 'password' => 'required',
                         'phone' => 'required',
                         'email' => 'required',
                         'company_name' => 'required',
@@ -1016,7 +1019,8 @@ class CustomerController extends Controller
                 // $Obj = new User;
                 // $Obj->create($data);
                 // dd($data['id']);
-                $data['password'] = Hash::make($request->password);
+                // $data['password'] = Hash::make($request->password);
+                // dd($data);
                 $Obj = User::updateOrCreate(['id' => $request->id], $data);
                 // $email = $data['email'];
                 $user = User::where('email', $email)->get();

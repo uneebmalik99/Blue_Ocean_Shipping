@@ -258,6 +258,7 @@
 
     }
     function clear_reporting(){
+        $('#filter_vehicle_reporting')[0].reset();
         $('#shipment_reporting').DataTable().clear().destroy();
     }
     // $(document).ready(function() {

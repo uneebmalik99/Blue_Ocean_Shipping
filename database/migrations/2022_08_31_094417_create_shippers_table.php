@@ -29,7 +29,7 @@ class CreateShippersTable extends Migration
             $table->string('insurance')->nullable();
             $table->string('destination_port')->nullable();
             $table->foreignId('customer_id')->constrained('user')->onDelete('cascade')->onUpdate('cascade')->nullable();
-            $table->softDeletes();
+            // $table->softDeletes();
             $table->timestamps();
 
         });

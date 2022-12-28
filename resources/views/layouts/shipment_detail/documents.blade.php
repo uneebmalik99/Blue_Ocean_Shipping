@@ -300,10 +300,9 @@ a:not([href]):not([tabindex]) {
                             <h4>Documents</h4>
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="col-12">
-                            @if ($shipments)
+                            @if ($shipments[0]['shipment_invoice'] && $shipments[0]['stamp_titles'] && $shipments[0]['other_documents'])
                                 <div class="d-flex justify-content-between "
                                     style="border: 1px solid rgba(26, 88, 133, 0.17); border-radius: 10px;width: 90%;margin:4px auto;padding:5px; ">
                                     <div class="w-100 ml-4">
@@ -466,13 +465,11 @@ a:not([href]):not([tabindex]) {
                             @else
                                 <div class="text-center py-4 mb-2"
                                     style="border: 1px solid rgba(26, 88, 133, 0.17); border-radius: 10px;width: 90%;margin:4px auto;padding:5px;color:gray;">
-                                    No Found
+                                    Documents not found
                                 </div>
                             @endif
-
                         </div>
                     </div>
-
 
                 </div>
                 <div class="col-sm-12 col-md-7 col-lg-5 mb-4 mt-5">

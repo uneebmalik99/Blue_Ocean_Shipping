@@ -201,7 +201,13 @@ Route::prefix('/admin')->middleware(['auth','login.status'])->group(function () 
     Route::get('/shipment/export',                     [ShipmentController::class, 'export'])->name('shipment.export');
 
 
+    Route::get('shipment/mulityImages/download',                     [ShipmentController::class, 'download_allImages'])->name('shipment/mulityImages/download');
+
+
     Route::get('/shipment/changeState/{state?}',                     [ShipmentController::class, 'changeState'])->name('shipment.changeState');
+
+
+    Route::get('/shipment/downloadImages/zipfile/{id?}', [ShipmentController::class, 'downloadImages_zip'])->name('shipment/downloadImages/zipfile');
 
 
 
@@ -210,6 +216,9 @@ Route::prefix('/admin')->middleware(['auth','login.status'])->group(function () 
     Route::post('/invoice/saveData',                     [InvoiceController::class, 'saveInovice'])->name('inovice.save');
 
     Route::get('/invoice/records', [InvoiceController::class, 'serverside'])->name('invoice.records');
+
+
+
 
 
     // destination countries 
