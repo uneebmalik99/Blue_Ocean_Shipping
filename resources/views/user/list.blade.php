@@ -196,7 +196,13 @@
             <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
                 
                 <div class="main-box">
-                   
+                    
+                        <div class="container m-2"><button class="float-right next-style reporting_cls" id="add_new_user"
+                            onclick="createUser()">
+                            <div class="unskew">Add New User</div>
+                            </button>
+                        </div>
+                    
                     <table class="table" id="table_id" style="border:none!important;">
                         
                         <thead style="border:none!imporant;color:rgba(102,102,102,1); ">
@@ -213,13 +219,7 @@
                             @if (@$role['name'] != 'Customer')
                                 <th>Action</th>
                             @endif
-                            <th>
-                                <div class="container m-2"><button class="float-right next-style reporting_cls" id="add_new_user"
-                                    onclick="createUser()">
-                                    <div class="unskew">Add New User</div>
-                                    </button>
-                                </div>
-                            </th>
+                            
                             
                         </thead>
                         <tbody id="tbody">
