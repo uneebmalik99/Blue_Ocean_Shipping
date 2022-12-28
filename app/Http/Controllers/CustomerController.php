@@ -889,17 +889,7 @@ class CustomerController extends Controller
             $tab = $request->tab;
             $image = $request->file('customer_image');
             $file = $request->file('user_file');
-            if($request->id){
-                if($request->password){
-                    $data['password'] = Hash::make($request->password);
-                }
-                else{
-                    unset($data['password']);
-                }
-            }
-            else{
-                $data['password'] = Hash::make($request->password);
-            }
+            
 
             // dd($data);
             unset($data['user_file']);
@@ -988,6 +978,8 @@ class CustomerController extends Controller
                         'state' => 'required',
                         'address_line1' => 'required',
                     ]);
+
+
                 }
                 else{
                     $request->validate([
@@ -1015,6 +1007,18 @@ class CustomerController extends Controller
                         $data['password'] = Hash::make($request->password);
                         unset($data['customer_image']);
                     }
+                }
+
+                if($request->id){
+                    if($request->password){
+                        $data['password'] = Hash::make($request->password);
+                    }
+                    else{
+                        unset($data['password']);
+                    }
+                }
+                else{
+                    $data['password'] = Hash::make($request->password);
                 }
                 // $Obj = new User;
                 // $Obj->create($data);

@@ -991,8 +991,9 @@
                 var count = 0;
                 var zipFilename = "images_bundle.zip";
                 // we will download these images in zip file
-                console.log('{{ asset('images/blueocean.png') }}');
+                // console.log('{{ asset('images/blueocean.png') }}');
                 var images = data;
+                console.log(data);
                 images.forEach(async function(imgURL, i) {
                     console.log(i)
                     var filename = "image" + i + '.jpg'

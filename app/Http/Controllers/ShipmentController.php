@@ -43,6 +43,7 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ShipmentExport;
+use URL;
 
 use File;
 use ZipArchive;
@@ -1209,9 +1210,9 @@ class ShipmentController extends Controller
         $url_ima_path = [];
         $data['loading_image'] = Shipment::with('loading_image')->whereid($id)->get()->toArray();
         foreach($data['loading_image'][0]['loading_image'] as $img){
-            array_push($url_ima_path, url($img['name']));
+            array_push($url_ima_path, URL::asset(($img['name'])));
         }
-      
+    //    dd($url_ima_path);
 
         return Response($url_ima_path);
     }
