@@ -195,14 +195,14 @@
 
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
-                
+                <div class="container m-2"><button class="float-right next-style reporting_cls" id="add_new_user"
+                    onclick="createUser()">
+                    <div class="unskew">Add New User</div>
+                    </button>
+                </div>
                 <div class="main-box">
                     
-                        <div class="container m-2"><button class="float-right next-style reporting_cls" id="add_new_user"
-                            onclick="createUser()">
-                            <div class="unskew">Add New User</div>
-                            </button>
-                        </div>
+                        
                     
                     <table class="table" id="table_id" style="border:none!important;">
                         
