@@ -366,7 +366,7 @@ class UserController extends Controller
     }
     public function createUser(Request $req){
         $data['roles'] = role::get();
-        $output = view('user.createUser',$data)->render();
+        $output = view('user.createuser',$data)->render();
         return Response($output);
     }
     public function addUsers(Request $req){
