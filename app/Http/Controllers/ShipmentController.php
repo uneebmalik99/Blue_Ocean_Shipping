@@ -19,6 +19,7 @@ use App\Models\Vehicle;
 use App\Models\Country;
 use App\Models\Shipper;
 use App\Models\DCountry;
+use App\Models\Warehouse;
 use App\Models\ShipmentType;
 use App\Models\WarehouseImage;
 use App\Models\User;
@@ -66,7 +67,8 @@ class ShipmentController extends Controller
     {
         $data['notification'] = Notification::with('user')->paginate($this->perpage);
         // $data['location'] = Location::all()->toArray();
-        $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
+        // $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
+        $data['location'] = Warehouse::where('status', '1')->get()->toArray();
 
         // dd();
         if ($data['notification']->toArray()) {
@@ -676,6 +678,7 @@ class ShipmentController extends Controller
         $id = $request->id;
         $data = [];
         $data['shipments'] = Shipment::with('vehicle.warehouse_image', 'loading_image', 'shipment_invoice', 'stamp_titles','other_documents')->where('id', $request->id)->get()->toArray();
+        // dd($data['shipments']);
         if ($request->tab) {
             $tab = $request->tab;
             $output = view('layouts.shipment_detail.' . $tab, $data)->render();

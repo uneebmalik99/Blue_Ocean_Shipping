@@ -499,6 +499,9 @@
             case ('shipment_units'):
                 $("#shipment_units_body").slideToggle();
                 break;
+            case ('towby'):
+                $("#towby_body").slideToggle();
+                break;
             case ('note'):
                 $("#note_body").slideToggle();
                 break;

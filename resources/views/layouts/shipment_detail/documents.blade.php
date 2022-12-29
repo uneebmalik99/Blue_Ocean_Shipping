@@ -1,4 +1,6 @@
-{{-- {{dd($shipments)}} --}}
+{{-- @if($shipments[0]['stamp_titles'])
+{{dd($shipments[0]['stamp_titles'])}}
+@endif --}}
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
@@ -302,7 +304,7 @@ a:not([href]):not([tabindex]) {
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            @if ($shipments[0]['shipment_invoice'] && $shipments[0]['stamp_titles'] && $shipments[0]['other_documents'])
+                            @if($shipments[0]['shipment_invoice'] || $shipments[0]['stamp_titles'] || $shipments[0]['other_documents'])
                                 <div class="d-flex justify-content-between "
                                     style="border: 1px solid rgba(26, 88, 133, 0.17); border-radius: 10px;width: 90%;margin:4px auto;padding:5px; ">
                                     <div class="w-100 ml-4">

@@ -170,7 +170,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-4 p-1" value="{{@$state}}" id="5" tab="Towing" onclick="fetchVehicles(this.id)"
+                <div class="col-4 p-1" value="{{@$state}}" id="5" tab="Towing"
                     style="cursor:pointer;">
                     <div class="col-12 py-0 px-1">
                         <div class="col-12 border-style card-rounded py-2 px-3">
@@ -185,7 +185,7 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="font-bold"><span class="px-1">{{ @$towing->count() }}</span>
+                                <div class="font-bold"><span class="px-1">${{ @$towing }}</span>
                                     {{-- <span class="percent_size">(-14%)</span> --}}
                                 </div>
                                 <div class="py-1 col-12 text-muted p-0 font-size">
@@ -210,7 +210,7 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="font-bold"><span class="px-1">$40,0000</span>
+                        <div class="font-bold"><span class="px-1">${{ @$inventory_value }}</span>
                                 </div>
                                 <div class="py-1 col-12 text-muted p-0 font-size">
                                     {{-- <span>Last week Analytics</span> --}}
