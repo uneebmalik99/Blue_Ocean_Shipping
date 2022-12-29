@@ -61,7 +61,7 @@ Route::prefix('/admin')->middleware(['auth','login.status'])->group(function () 
     Route::get('/user/allroles',[App\Http\Controllers\UserController::class,'roles'])->name('user.allroles');
 
 
-    Route::get('/users/createUser',[App\Http\Controllers\UserController::class,'createUser'])->name('user.createUser');
+    Route::get('/users/createUser',[App\Http\Controllers\UserController::class,'createUser'])->name('user.createuser');
 
     // Customer Routes
     Route::get('/customers', [CustomerController::class, 'index'])->name('customer.list');

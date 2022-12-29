@@ -2075,7 +2075,7 @@
         
         $.ajax({
             type: 'GET',
-            url: '{{ route('user.createUser') }}',
+            url: '{{ route('user.createuser') }}',
             success: function(data) {
                 $('.modal-body').html(data);
                 $('#exampleModal').modal('show');
