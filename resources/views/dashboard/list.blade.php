@@ -486,7 +486,7 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
                                     </div>
                                 </div>
                                 <div>
-                                    <div class="font-bold"><span>{{ @$TotalCustomers }}</span> </div>
+                                    <div class="font-bold"><span>{{@$consignee}}</span> </div>
                                     <div class="py-1 col-12 text-muted p-0 font-size">
                                         {{-- <span>Total Customers
                                             <b>{{ @$TotalCustomers }}</b>

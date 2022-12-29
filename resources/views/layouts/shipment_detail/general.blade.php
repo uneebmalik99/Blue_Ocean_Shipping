@@ -750,7 +750,8 @@
                                         </div>
                                     @else
                                         <p class="text-center py-5"
-                                            style="font-size: 22px;font-style: initial;margin-left: 115px;margin-top: 50px;">Image
+                                            style="font-size: 22px;font-style: initial;margin-left: 115px;margin-top: 50px;">
+                                            Image
                                             Not Found</p>
                                     @endif
 
@@ -777,14 +778,14 @@
                     </div>
                     @if ($shipments[0]['loading_image'])
                         <div class="row mt-4">
-                            <div class="col-12 d-flex justify-content-center ">
-                                <a href="#" id="download_all">
+                            <div class="col-12 d-flex justify-contjent-center ">
+                                <a id="{{@$shipments[0]['id']}}" onclick="downloadImages_zip(this.id)">
                                     <button
-                                    style="background: #3e5871;cursor:pointer; border-radius: 6px;border:none;color:white;transform: skew(-30deg);">
-                                    <div style="transform: skew(30deg);padding:1px 10px;font-size: 13px;">
-                                        <i class="fa fa-download"></i> Download Images in Zip
-                                    </div>
-                                </button>
+                                        style="background: #3e5871;cursor:pointer; border-radius: 6px;border:none;color:white;transform: skew(-30deg);">
+                                        <div style="transform: skew(30deg);padding:1px 10px;font-size: 13px;">
+                                            <i class="fa fa-download"></i> Download Images in Zip
+                                        </div>
+                                    </button>
                             </div>
                         </div>
                     @endif
@@ -897,7 +898,8 @@
 
             @if (@$shipments[0]['loading_image'])
                 @foreach (@$shipments[0]['loading_image'] as $img)
-                    <div class="mySlides col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12"style="left:-2%;width:80%!important">
+                    <div
+                        class="mySlides col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12"style="left:-2%;width:80%!important">
                         <img src="{{ asset($img['name']) }}" alt=""
                         style="width: 137%!important;height: 100%;margin-left: -15px;"
                             onclick="openModal();currentSlide(1)">
@@ -921,8 +923,8 @@
             @if (@$shipments[0]['loading_image'])
                 @foreach (@$shipments[0]['loading_image'] as $img)
                     {{-- <div class="column "> --}}
-                        <img src="{{ asset($img['name']) }}" alt=""class="item_4" class="showMainImage"
-                            style="width:25%!important" onclick="currentSlide(2)" class="hover-shadow cursor">
+                    <img src="{{ asset($img['name']) }}" alt=""class="item_4" class="showMainImage"
+                        style="width:25%!important" onclick="currentSlide(2)" class="hover-shadow cursor">
                     {{-- </div> --}}
                 @endforeach
             @endif
@@ -980,4 +982,74 @@
         $('#main_image_box').attr('src', src);
         $('#download_shipment_image').attr('href', src);
     }
+
+    async function downloadImages_zip(id) {
+
+        $.ajax({
+            method: 'get',
+            url: '{{ route("shipment/downloadImages/zipfile") }}' +'/'+id,
+          
+            success: function(data) {
+
+                var zip = new JSZip();
+                var count = 0;
+                var zipFilename = "images_bundle.zip";
+                // we will download these images in zip file
+                // console.log('{{ asset('images/blueocean.png') }}');
+                var images = data;
+                console.log(data);
+                images.forEach(async function(imgURL, i) {
+                    console.log(i)
+                    var filename = "image" + i + '.jpg'
+                    var image = await fetch(imgURL)
+                    var imageBlog = await image.blob()
+                    var img = zip.folder("images");
+                    // loading a file and add it in a zip file
+                    img.file(filename, imageBlog, {
+                        binary: true
+                    });
+                    count++
+                    if (count == images.length) {
+                        zip.generateAsync({
+                            type: 'blob'
+                        }).then(function(content) {
+                            saveAs(content, zipFilename);
+                        });
+                    }
+                })
+
+
+
+
+            }
+        });
+
+
+
+
+    }
+
+    // function downloadImages_zip() {
+    //     var zip = new JSZip();
+
+    //     // Add an top-level, arbitrary text file with contents
+    //     zip.file("Hello.txt", "Hello World\n");
+
+    //     // Generate a directory within the Zip file structure
+    //     var img = zip.folder("images");
+    //     const data = "<img src={{ asset('images/blueocean.png') }}>";
+    //     imgdata = "anything"
+    //     console.log('{{ asset('images/blueocean.png') }}');
+    //     // Add a file to the directory, in this case an image with data URI as contents
+    //     img.file(data);
+
+    //     // Generate the zip file asynchronously
+    //     zip.generateAsync({
+    //             type: "blob"
+    //         })
+    //         .then(function(content) {
+    //             // Force down of the Zip file
+    //             saveAs(content, "archive.zip");
+    //         });
+    // }
 </script>

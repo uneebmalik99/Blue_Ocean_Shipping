@@ -21,11 +21,11 @@
             </div>
             <div class="col-sm-10 col-md-6 mx-auto">
                 <label for="role_name">User Name</label>
-                <input type="text" name="user_name" id="user_name" class="form-control" value="{{@$user['user_name']}}">
+                <input type="text" name="user_name" id="user_name" class="form-control" value="{{@$user['username']}}">
             </div>
             <div class="col-sm-10 col-md-6 mx-auto">
                 <label for="description">Password</label>
-                <input type="password" name="password" id="password" class="form-control" value="{{@$user['password']}}">
+                <input type="password" name="password" id="password" class="form-control">
             </div>
             <div class="col-sm-10 col-md-6 mx-auto">
                 <label for="date">Email</label>

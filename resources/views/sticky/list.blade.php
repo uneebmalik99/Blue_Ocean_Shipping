@@ -52,8 +52,9 @@
                                             href="#" id="pia_new"
                                             class="icofont icofont-copy-alt PIAicon"
                                             style="opacity: 1; display: inline;"></a></div>
-                                    <div id=""
-                                        class="PIAdelete icofont icofont-close PIAicon" style="opacity: 1; display: block;">
+                                    <div id="{{ $record['sticky_id'] }}"
+                                        class="PIAdelete icofont icofont-close PIAicon" style="opacity: 1; display: block;" onclick="deleteSticky(this.id)">
+                                        
                                     </div>
                                     <div id=""
                                         class="icofont icofont-minus PIAicon" style="opacity: 1; display: block;"></div>
@@ -103,4 +104,32 @@
             <!-- Sticky Notes card end -->
         </div>
     </div>
+    <script>
+        //Delete Sticky notes from the pages
+        function deleteSticky(id){
+            var $id = id;
+            $.ajax({
+            type: 'GET',
+            url: '{{ route('sticky.delete') }}',
+            data: {
+                id: $id
+            },
+            success: function(data) {
+
+                if (data == "Deleted") {
+                    iziToast.success({
+                        timeout: 1000,
+                        icon: 'fa fa-check',
+                        title: 'OK',
+                        message: 'Successfully Assigned Route'
+                    });
+
+                    setTimeout(function() {
+                        location.reload(true);
+                    }, 1000);
+                }
+            }
+        });
+        }
+    </script>
 @endsection

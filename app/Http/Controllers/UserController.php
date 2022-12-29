@@ -372,6 +372,7 @@ class UserController extends Controller
     public function addUsers(Request $req){
         $role = role::where('id',$req['role_id'])->select('name')->first();
         
+        
         $user = User::updateOrCreate(
             ['id' => $req->id],
             [

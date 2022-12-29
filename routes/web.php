@@ -21,6 +21,7 @@ use App\Http\Controllers\VehicleController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\pdfController;
+use App\Models\Sticky;
 
 Auth::routes();
 
@@ -163,7 +164,7 @@ Route::prefix('/admin')->middleware(['auth','login.status'])->group(function () 
     //Sticky Notes Routes
     Route::get('/stickynotes', [StickyController::class, 'index'])->name('sticky.list');
     Route::post('/stickynotes', [StickyController::class, 'create'])->name('sticky.create');
-
+    Route::get('/stickynotes/delete',[StickyController::class,'delete'])->name(('sticky.delete'));
     // Shipment Routes
     Route::get('/shipment', [ShipmentController::class, 'index'])->name('shipment.list');
     Route::get('/shipments/create', [ShipmentController::class, 'create'])->name('shipment.create');
@@ -201,7 +202,13 @@ Route::prefix('/admin')->middleware(['auth','login.status'])->group(function () 
     Route::get('/shipment/export',                     [ShipmentController::class, 'export'])->name('shipment.export');
 
 
+    Route::get('shipment/mulityImages/download',                     [ShipmentController::class, 'download_allImages'])->name('shipment/mulityImages/download');
+
+
     Route::get('/shipment/changeState/{state?}',                     [ShipmentController::class, 'changeState'])->name('shipment.changeState');
+
+
+    Route::get('/shipment/downloadImages/zipfile/{id?}', [ShipmentController::class, 'downloadImages_zip'])->name('shipment/downloadImages/zipfile');
 
 
 
@@ -210,6 +217,9 @@ Route::prefix('/admin')->middleware(['auth','login.status'])->group(function () 
     Route::post('/invoice/saveData',                     [InvoiceController::class, 'saveInovice'])->name('inovice.save');
 
     Route::get('/invoice/records', [InvoiceController::class, 'serverside'])->name('invoice.records');
+
+
+
 
 
     // destination countries 

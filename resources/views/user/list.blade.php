@@ -1,6 +1,7 @@
 @extends('layouts.partials.mainlayout')
 
 @section('body')
+
     <style>
         table.dataTable thead th,
         table.dataTable tfoot th {
@@ -195,8 +196,14 @@
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
                 
-                <div class="main-box" style="width:auto">
-                   
+                <div class="main-box">
+                    
+                        <div class="container m-2"><button class="float-right next-style reporting_cls" id="add_new_user"
+                            onclick="createUser()">
+                            <div class="unskew">Add New User</div>
+                            </button>
+                        </div>
+                    
                     <table class="table" id="table_id" style="border:none!important;">
                         
                         <thead style="border:none!imporant;color:rgba(102,102,102,1); ">
@@ -210,16 +217,10 @@
                             <th>STATUS</th>
                             <th>PHONE</th>
                             
-                            @if (@$role['name'] != 'Customer')
+                           @role(['Sub Admin','Super Admin'])
                                 <th>Action</th>
-                            @endif
-                            <th>
-                                <div class="container m-2"><button class="float-right next-style reporting_cls" id="add_new_user"
-                                    onclick="createUser()">
-                                    <div class="unskew">Add New User</div>
-                                    </button>
-                                </div>
-                            </th>
+                            @endrole
+                            
                             
                         </thead>
                         <tbody id="tbody">
@@ -270,13 +271,13 @@
                                         </div>
                                     </td>
                                     <td>
-                                        @if (@$val['status'] == 0)
+                                        @if (@$val['status'] == 1)
                                             <button class="text-white"
                                                 style="background: #53A24C;
                                     border-radius: 5px;width: 60px;border:none!important;outline:none">Active</button>
                                         @endif
 
-                                        @if (@$val['status'] == 1)
+                                        @if (@$val['status'] == 0)
                                             <button class="text-white btn-danger"
                                                 style="
                                     border-radius: 5px;width: 60px;border:none!important;outline:none">In

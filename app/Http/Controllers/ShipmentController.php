@@ -13,12 +13,14 @@ use App\Models\Shipment;
 use App\Models\VehicleCart;
 use App\Models\Shipment_Invice;
 use App\Models\ShipperName;
+use App\Models\PickupImage;
 use App\Models\Stamp_Title;
 use App\Models\Vehicle;
 use App\Models\Country;
 use App\Models\Shipper;
 use App\Models\DCountry;
 use App\Models\ShipmentType;
+use App\Models\WarehouseImage;
 use App\Models\User;
 use App\Models\Company;
 use App\Models\DestinationCountry;
@@ -41,6 +43,10 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ShipmentExport;
+use URL;
+
+use File;
+use ZipArchive;
 
 
 class ShipmentController extends Controller
@@ -1159,5 +1165,55 @@ class ShipmentController extends Controller
     public function export()
     {
         return Excel::download(new ShipmentExport, 'shipment.xlsx');
+    }
+
+
+    public function download_allImages(){
+        // dd('kashif');
+        $zip = new ZipArchive;
+   
+        $fileName = 'myNewFile.zip';
+   
+        if ($zip->open(public_path($fileName), ZipArchive::CREATE) === TRUE)
+        {
+
+
+            $vehicle = PickupImage::wherevehicle_id(13)->get()->toArray();
+            // dd($vehicle);
+            $files = File::files(public_path('vehicle_images'));
+            // $files = File::files(public_path('files'));
+            // dd($files);
+   
+            foreach ($files as $key => $value) {
+                // dd($value);
+                foreach ($vehicle as $v) {
+                    $image_real_name = basename($v['name']);
+
+                    $relativeNameInZipFile = basename($value);
+
+                    if($image_real_name == $relativeNameInZipFile) {
+                        $zip->addFile($value, $relativeNameInZipFile);
+                    }
+                }
+            }
+             
+            $zip->close();
+        }
+    
+        return response()->download(public_path($fileName));
+    }
+
+
+
+    function downloadImages_zip($id){
+        $data  = [];
+        $url_ima_path = [];
+        $data['loading_image'] = Shipment::with('loading_image')->whereid($id)->get()->toArray();
+        foreach($data['loading_image'][0]['loading_image'] as $img){
+            array_push($url_ima_path, URL::asset(($img['name'])));
+        }
+    //    dd($url_ima_path);
+
+        return Response($url_ima_path);
     }
 }

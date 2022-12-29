@@ -412,8 +412,7 @@
                                         id="vehicle_images" onclick="changeImages(this.id)"
                                         tab="{{ @$vehicle['id'] }}">
                                         Pickup Images
-                                        
-                                        <button class="image_button  img_btn col-sm-4 col-md-4 col-lg-4 mb-4"
+                                        <button class="image_button  img_btn col-sm-12 col-md-4 col-lg-4 mb-4"
                                             style="color:black;;font-size:12px!important;font-weight:600;margin-right:-24px!important;height:41px;"
                                             onclick="changeImages(this.id)" tab=" {{ @$vehicle['id'] }}"
                                             id="auction_images">
@@ -648,7 +647,7 @@
             <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12 "
                 style="width:100%!important;height:100%!important" id="slider_image">
     
-                <div class="mySlides" style="width:100%!important" id="slider_main">
+                <div class="mySlides" id="slider_main">
     
                     <img src="{{ asset(@$vehicle['warehouse_image'][0]['name']) }}" alt=""
                         style="width:100%!important;height: 100%!important;">
@@ -657,11 +656,9 @@
                 @if (@$vehicle['warehouse_image'])
                     @foreach (@$vehicle['warehouse_image'] as $img)
                         <div
-                            class="mySlides col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12"style="left:-2%;width:80%!important">
+                            class="mySlides col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12" style="left:-2%;width:80%!important">
                             <img src="{{ asset($img['name']) }}" alt=""
-                            style="    width: 132%!important;
-                            height: 100%!important;
-                            "
+                                style="width:132%!important;height: 100%!important;"
                                 onclick="openModal();currentSlide(1)">
                         </div>
                     @endforeach
