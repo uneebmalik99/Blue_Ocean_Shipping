@@ -200,12 +200,17 @@
     border-radius: 2px !important;
     color: #fff !important;
 }
+.next-style i{
+    
+    color:white!important;
+}
+
 
 .tab_style {
     border: 1px solid #1c71b0 !important;
     box-shadow: 6px 6px 4px rgba(48, 148, 175, 0.47) !important;
     transform: skew(-30deg) !important;
-    /* color:black!important; */
+    
 }
 
 .unskew {

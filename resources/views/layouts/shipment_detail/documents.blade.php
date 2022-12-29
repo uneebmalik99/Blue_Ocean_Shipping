@@ -175,7 +175,11 @@
         user-select: none;
         -webkit-user-select: none;
     }
-
+    .icon {
+    width: 20px !important;
+    height: 22px !important;
+    background: #e93f7800 !important;
+}
     .prev {
         left: -8%;
         border-radius: 3px 0 0 3px;
@@ -544,10 +548,10 @@ a:not([href]):not([tabindex]) {
                                                                 in2="effect1_dropShadow_0_1" result="shape" />
                                                         </filter>
                                                     </defs>
-                                                    <div class="icon" style="float:right;">
+                                                    <div class="icon" style="float:right; background-color:#e93f7800;">
                                                 <i class="material-icons "
                                                             onclick="openModal();currentSlide(1)"
-                                                            style="background-color:#65686c;color:white;border-radius:inherit">fullscreen</i>
+                                                            style="background-color:#65686c;color:white;border-radius:inherit;margin-left:-21px">fullscreen</i>
                                             </div>
                                                 </svg>
     

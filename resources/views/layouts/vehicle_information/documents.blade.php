@@ -202,9 +202,7 @@
         top: 0;
     }
 
-    img {
-        margin-bottom: -4px;
-    }
+   
 
     .caption-container {
         text-align: center;
@@ -257,7 +255,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-9 ml-3">
+                        <div class="col-12 ">
 
                             <div class="d-flex justify-content-between "
                                 style="border: 1px solid rgba(26, 88, 133, 0.17); border-radius: 10px;width: 90%;margin:4px auto;padding:5px;  ">
@@ -396,20 +394,20 @@
 
 
                 </div>
-                <div class="col-sm-12 col-md-5 col-lg-5 mb-5 mt-5">
+                <div class="col-sm-12 col-md-4 col-lg-4 mb-5 mt-5" style="margin-right:12px">
                     <div class="information_gallary" style="width:100%">
                         <div class="gallary_header d-flex">
                             <div class="row">
                                 <div class="col-12">
                                     <div class="w-100">
-                                        <div class="d-flex" style="width:99%">
-                                            <button class="img_active_button img_btn col-sm-12 col-md-4 col-lg-4 mb-3"
+                                        <div class="d-flex " style="width:99%">
+                                            <button class="img_active_button img_btn col-sm-4 col-md-4 col-lg-4 mb-3"
                                             onclick="changeImages(this.id)" tab=" {{ @$vehicle['id'] }}"
                                             id="warehouse_images"
                                             style="color:black;background-color:337fb8;font-size: 12px !important;border-top-left-radius: 8px;font-weight:600;height:41px;">Ware
                                             House Image
                                         </button>
-                                    <button class="image_button img_btn col-sm-12 col-md-4 col-lg-4 mb-4"
+                                    <button class="image_button img_btn col-sm-4 col-md-4 col-lg-4 mb-4"
                                         style="color:black;background-color: #337fb8;font-size:12px!important; border:#e9e9e9;font-weight:600;height:41px;"
                                         id="vehicle_images" onclick="changeImages(this.id)"
                                         tab="{{ @$vehicle['id'] }}">
