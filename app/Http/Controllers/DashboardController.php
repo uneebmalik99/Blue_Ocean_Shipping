@@ -12,6 +12,7 @@ use App\Models\Vehicle;
 use App\Models\Shipment;
 use App\Models\LoadingCountry;
 use App\Models\Shipper;
+use App\Models\Warehouse;
 use App\Models\Customer;
 use Carbon\Carbon;
 // use App\Http\Controllers\Auth;
@@ -41,8 +42,8 @@ class DashboardController extends Controller
     
         $data['notification'] = Notification::with('user')->paginate($this->perpage);
         // $data['location'] = Location::all()->toArray();
-        $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
-
+        // $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
+        $data['location'] = Warehouse::where('status', '1')->get()->toArray();
         if ($data['notification']->toArray()) {
             $current = Carbon::now();
             foreach ($data['notification'] as $key => $date_notification) {
@@ -208,25 +209,9 @@ class DashboardController extends Controller
                 $data['completed_count'] = $completed_count;
                 $data['completed_total'] = $completed_value;
         }
-    
-
-
-
-
-
-
-        
-
-
         $notification = $this->Notification();
         return view($this->view . 'list', $data, $notification);
     }
-
-
-
-
-
-
 
     public function changeState($state){
         if($state == 'ALL'){
@@ -259,23 +244,23 @@ class DashboardController extends Controller
         if(Auth::user()->hasRole('Customer')){
             $data['shipments'] = Shipment::where('customer_email', auth()->user()->email)->where('loading_state', $state);
                 $data['consignee'] = Shipper::where('consignee', '!=' , Null)->where('customer_id', auth()->user()->id)->where('address', $state)->count();
-                $data['TotalVehicles'] = Vehicle::where('added_by_user', auth()->user()->id)->where('pickup_location', $state)->count();
-                $data['NewOrders'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', 1)->where('pickup_location', $state)->count();
-                $data['Dispatched'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', 2)->where('pickup_location', $state)->count();
-                $data['onHand'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', 3)->where('pickup_location', $state)->count();
-                $data['noTitle'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', 4)->where('pickup_location', $state)->count();
-                $all_vehicles = Vehicle::where('added_by_user', auth()->user()->id)->where('pickup_location', $state)->get();
+                $data['TotalVehicles'] = Vehicle::where('added_by_user', auth()->user()->id)->where('port', $state)->count();
+                $data['NewOrders'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', 1)->where('port', $state)->count();
+                $data['Dispatched'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', 2)->where('port', $state)->count();
+                $data['onHand'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', 3)->where('port', $state)->count();
+                $data['noTitle'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', 4)->where('port', $state)->count();
+                $all_vehicles = Vehicle::where('added_by_user', auth()->user()->id)->where('port', $state)->get();
                 // $allVehicles_value = Vehicle::where('added_by_user', auth()->user()->id)->where('pickup_location', $state)->get()->sum('value');
                 $data['all_vehicles'] = $all_vehicles;
                 // $data['allVehicles_value'] = $allVehicles_value;
 
-                $onhand = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '1')->where('pickup_location', $state);
+                $onhand = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '1')->where('port', $state);
                 $onhand_count = $onhand->count();
                 // $onhand_value = $onhand->sum('value');
                 $data['onhand_count'] = $onhand_count;
                 $data['onhand_value'] = $onhand_value;
         
-                $dispatch =  Vehicle::where('added_by_user', auth()->user()->id)->where('status', '2')->where('pickup_location', $state);
+                $dispatch =  Vehicle::where('added_by_user', auth()->user()->id)->where('status', '2')->where('port', $state);
                 $dispatch_count = $dispatch->count();
                 // $dispatch_value = $dispatch->sum('value'); 
                 $data['dispatch_count'] = $dispatch_count;
@@ -317,29 +302,29 @@ class DashboardController extends Controller
             
             // ===========================  vehicle status ================
         
-                $data['TotalVehicles'] = Vehicle::where('pickup_location', $state)->count();
-                $data['NewOrders'] = Vehicle::where('status', 1)->where('pickup_location', $state)->count();
-                $data['Dispatched'] = Vehicle::where('status', 2)->where('pickup_location', $state)->count();
-                $data['onHand'] = Vehicle::where('status', 3)->where('pickup_location', $state)->count();
-                $data['noTitle'] = Vehicle::where('status', 4)->where('pickup_location', $state)->count();
-                $all_vehicles = Vehicle::where('pickup_location', $state)->get();
+                $data['TotalVehicles'] = Vehicle::where('port', $state)->count();
+                $data['NewOrders'] = Vehicle::where('status', 1)->where('port', $state)->count();
+                $data['Dispatched'] = Vehicle::where('status', 2)->where('port', $state)->count();
+                $data['onHand'] = Vehicle::where('status', 3)->where('port', $state)->count();
+                $data['noTitle'] = Vehicle::where('status', 4)->where('port', $state)->count();
+                $all_vehicles = Vehicle::where('port', $state)->get();
                 // $allVehicles_value = Vehicle::get()->sum('value');
                 $data['all_vehicles'] = $all_vehicles;
                 // $data['allVehicles_value'] = $allVehicles_value;
         
         
         
-                $onhand = Vehicle::where('status', '1')->where('pickup_location', $state);
+                $onhand = Vehicle::where('status', '1')->where('port', $state);
                 $onhand_count = $onhand->count();
                 // $onhand_value = $onhand->sum('value');
-                $data['onhand_count'] = $onhand_count;
-                $data['onhand_value'] = $onhand_value;
+                // $data['onhand_count'] = $onhand_count;
+                // $data['onhand_value'] = $onhand_value;
         
-                $dispatch =  Vehicle::where('status', '2')->where('pickup_location', $state);
+                $dispatch =  Vehicle::where('status', '2')->where('port', $state);
                 $dispatch_count = $dispatch->count();
                 // $dispatch_value = $dispatch->sum('value'); 
-                $data['dispatch_count'] = $dispatch_count;
-                $data['dispatch_value'] = $dispatch_value;
+                // $data['dispatch_count'] = $dispatch_count;
+                // $data['dispatch_value'] = $dispatch_value;
 
 
 
@@ -368,22 +353,9 @@ class DashboardController extends Controller
                 $data['completed_count'] = $completed_count;
                 $data['completed_total'] = $completed_value;
         }
-    
-
-
-
-
-
-
-        
-
-
         $notification = $this->Notification();
         return view($this->view . 'list', $data, $notification);
-
     }
-
-
 
     public function serverside(Request $request, $state = null)
     {
@@ -405,10 +377,6 @@ class DashboardController extends Controller
                 $data = Shipment::with('vehicle')->get();
             }
         }
-
-
-
-            
             return Datatables::of($data)
                 ->addIndexColumn()
                 // ->addColumn('id', function($row){

@@ -33,7 +33,7 @@
                     <select class="form-control"name="assignTo_customer" id="assignTo_customer" onchange="getbuyerid()">
                         <option selected disabled>Select Customer</option>
                         @foreach($customers as $customer)
-                        <option value="{{@$customer['id']}}" >{{@$customer['username']}}</option>
+                        <option value="{{@$customer['id']}}">{{@$customer['username']}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -67,10 +67,10 @@
 
                 <div class="form-group">
                     {{-- <label for="assignTo_customer">Example select</label> --}}
-                    <select class="form-control"name="pickup_location" id="pickup_location">
+                    <select class="form-control"name="warehouse" id="warehouse">
                         <option selected disabled>Select Location</option>
                         @foreach($location as $location)
-                        <option value="{{@$location['state']}}" >{{@$location['state']}}</option>
+                        <option value="{{@$location['name']}}" >{{@$location['name']}}</option>
                         @endforeach
                     </select>
                 </div>

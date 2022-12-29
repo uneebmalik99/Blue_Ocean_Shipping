@@ -159,6 +159,9 @@ Route::prefix('/admin')->middleware(['auth','login.status'])->group(function () 
     Route::get('/vehicle/changeState/{state?}',       [VehicleController::class, 'changeState'])->name('vehicle.changeState');
 
 
+    Route::post('vehicle/downloadImages/zipfile',       [VehicleController::class, 'vehicleImages_zip'])->name('vehicle/downloadImages/zipfile');
+
+
 
     //Sticky Notes Routes
     Route::get('/stickynotes', [StickyController::class, 'index'])->name('sticky.list');

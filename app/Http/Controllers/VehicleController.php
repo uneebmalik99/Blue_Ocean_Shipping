@@ -48,6 +48,7 @@ use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 // use Excel;
+use URL;
 
 class VehicleController extends Controller
 {
@@ -126,25 +127,58 @@ class VehicleController extends Controller
             $data['new_orders'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '1')->get();
             $data['dispatched'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '2')->get();
             $data['on_hand'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '3')->get();
-            $data['no_titles'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '4')->get();
-            $data['towing'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '5')->get();
-            $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
+            $data['no_titles'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '4')->orwhere('title_type', '!=', 'Exportable')->get();
+            $data['towing_value'] = Vehicle::select('towing_charges')->where('status', '3')->get()->toArray();
+            $data['towing'] = 0;
+            foreach($data['towing_value'] as $towing_charges){
+                if($towing_charges['towing_charges'] != null){
+                   $data['towing'] += $towing_charges['towing_charges'];
+                }
+                
+            }
+            // $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
             $data['status'] = VehicleStatus::limit(3)->get()->toArray();
             $data['make'] = MMS::select('make')->where('status', '1')->groupBy('make')->get()->toArray();
             $data['model'] = MMS::select('model')->where('status', '1')->groupBy('model')->get()->toArray();
+
+            $data['inventory'] = Vehicle::select('value')->where('added_by_user', auth()->user()->id)->where('status', '3')->get()->toArray();
+            $data['inventory_value'] = 0;
+            foreach($data['inventory'] as $inventory){
+                $value = str_replace( array( '\'', '"', ',' , ';', '<', '>',  '$'),'', $inventory['value']);
+               $data['inventory_value'] += $value;
+                
+            }
         }
         else{
             $data['records'] = Vehicle::with('user','pickupimages')->where('status', 3)->get()->toArray();
             $data['new_orders'] = Vehicle::where('status', '1')->get();
             $data['dispatched'] = Vehicle::where('status', '2')->get();
             $data['on_hand'] = Vehicle::where('status', '3')->get();
-            $data['no_titles'] = Vehicle::where('status', '4')->get();
-            $data['towing'] = Vehicle::where('status', '5')->get();
-            $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
+            $data['no_titles'] = Vehicle::where('status', '4')->orwhere('title_type', '!=', 'Exportable')->get();
+            $data['towing_value'] = Vehicle::select('towing_charges')->where('status', '3')->get()->toArray();
+            $data['towing'] = 0;
+            foreach($data['towing_value'] as $towing_charges){
+                if($towing_charges['towing_charges'] != null){
+                   $data['towing'] += $towing_charges['towing_charges'];
+                }
+                
+            }
+            // dd($data['towing']);
+            // $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
             $data['status'] = VehicleStatus::limit(3)->get()->toArray();
             $data['make'] = MMS::select('make')->where('status', '1')->groupBy('make')->get()->toArray();
             $data['model'] = MMS::select('model')->where('status', '1')->groupBy('model')->get()->toArray();
+            $data['inventory'] = Vehicle::select('value')->where('status', '3')->get()->toArray();
+            $data['inventory_value'] = 0;
+            foreach($data['inventory'] as $inventory){
+                if($inventory['value'] != null){
+                    $value = str_replace( array( '\'', '"', ',' , ';', '<', '>',  '$'),'', $inventory['value']);
+                   $data['inventory_value'] += $value;
+                }
+                
+            }
         }
+        $data['location'] = Warehouse::where('status', '1')->get()->toArray();
 
         $notification = $this->Notification();
         return view($this->view . 'list', $data, $notification);
@@ -176,29 +210,64 @@ class VehicleController extends Controller
 
         if(Auth::user()->hasRole('Customer')){
 
-            $data['records'] = Vehicle::with('user','pickupimages')->where('added_by_user', auth()->user()->id)->where('status', 3)->where('pickup_location', $state)->get()->toArray();
-            $data['new_orders'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '1')->where('pickup_location', $state)->get();
-            $data['dispatched'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '2')->where('pickup_location', $state)->get();
-            $data['on_hand'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '3')->where('pickup_location', $state)->get();
-            $data['no_titles'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '4')->where('pickup_location', $state)->get();
-            $data['towing'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '5')->where('pickup_location', $state)->get();
-            $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
+            $data['records'] = Vehicle::with('user','pickupimages')->where('added_by_user', auth()->user()->id)->where('status', 3)->where('port', $state)->get()->toArray();
+            $data['new_orders'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '1')->where('port', $state)->get();
+            $data['dispatched'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '2')->where('port', $state)->get();
+            $data['on_hand'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '3')->where('port', $state)->get();
+            $data['no_titles'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '4')->where('port', $state)->get();
+            $data['towing_value'] = Vehicle::select('towing_charges')->where('status', '3')->get()->toArray();
+            $data['towing'] = 0;
+            foreach($data['towing_value'] as $towing_charges){
+                if($towing_charges['towing_charges'] != null){
+                   $data['towing'] += $towing_charges['towing_charges'];
+                }
+                
+            }
+
+            $data['inventory'] = Vehicle::select('value')->where('status', '3')->get()->toArray();
+            $data['inventory_value'] = 0;
+            foreach($data['inventory'] as $inventory){
+                if($inventory['value'] != null){
+                    $value = str_replace( array( '\'', '"', ',' , ';', '<', '>',  '$'),'', $inventory['value']);
+                   $data['inventory_value'] += $value;
+                }
+                
+            }
+            // $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
             $data['status'] = VehicleStatus::limit(3)->get()->toArray();
             $data['make'] = MMS::select('make')->where('status', '1')->groupBy('make')->get()->toArray();
             $data['model'] = MMS::select('model')->where('status', '1')->groupBy('model')->get()->toArray();
         }
         else{
-            $data['records'] = Vehicle::with('user','pickupimages')->where('status', 3)->where('pickup_location', $state)->get()->toArray();
-            $data['new_orders'] = Vehicle::where('status', '1')->where('pickup_location', $state)->get();
-            $data['dispatched'] = Vehicle::where('status', '2')->where('pickup_location', $state)->get();
-            $data['on_hand'] = Vehicle::where('status', '3')->where('pickup_location', $state)->get();
-            $data['no_titles'] = Vehicle::where('status', '4')->where('pickup_location', $state)->get();
-            $data['towing'] = Vehicle::where('status', '5')->where('pickup_location', $state)->get();
-            $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
+            $data['records'] = Vehicle::with('user','pickupimages')->where('status', 3)->where('port', $state)->get()->toArray();
+            $data['new_orders'] = Vehicle::where('status', '1')->where('port', $state)->get();
+            $data['dispatched'] = Vehicle::where('status', '2')->where('port', $state)->get();
+            $data['on_hand'] = Vehicle::where('status', '3')->where('port', $state)->get();
+            $data['no_titles'] = Vehicle::where('status', '4')->where('port', $state)->get();
+            $data['towing_value'] = Vehicle::select('towing_charges')->where('status', '3')->get()->toArray();
+            $data['towing'] = 0;
+            foreach($data['towing_value'] as $towing_charges){
+                if($towing_charges['towing_charges'] != null){
+                   $data['towing'] += $towing_charges['towing_charges'];
+                }
+                
+            }
+            // $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
             $data['status'] = VehicleStatus::limit(3)->get()->toArray();
             $data['make'] = MMS::select('make')->where('status', '1')->groupBy('make')->get()->toArray();
             $data['model'] = MMS::select('model')->where('status', '1')->groupBy('model')->get()->toArray();
+
+            $data['inventory'] = Vehicle::select('value')->where('status', '3')->get()->toArray();
+            $data['inventory_value'] = 0;
+            foreach($data['inventory'] as $inventory){
+                if($inventory['value'] != null){
+                    $value = str_replace( array( '\'', '"', ',' , ';', '<', '>',  '$'),'', $inventory['value']);
+                   $data['inventory_value'] += $value;
+                }
+                
+            }
         }
+        $data['location'] = Warehouse::where('status', '1')->get()->toArray();
 
         $notification = $this->Notification();
         return view($this->view . 'list', $data, $notification);
@@ -418,6 +487,7 @@ class VehicleController extends Controller
 
     public function create_form(Request $request)
     {
+        // dd($request->all());
         $vehicle = [];
         $request->validate([
             'customer_name' => 'required',
@@ -457,6 +527,7 @@ class VehicleController extends Controller
     }
         
     }
+
     public function store_image(Request $request)
     {
         
@@ -890,12 +961,12 @@ class VehicleController extends Controller
 
             if($req->state){
                 if(Auth::user()->hasRole('Customer')){  
-                    $total = Vehicle::where('added_by_user', auth()->user()->id)->where('pickup_location', $req->state)->get();
+                    $total = Vehicle::where('added_by_user', auth()->user()->id)->where('port', $req->state)->get();
                     $records = Vehicle::with('user')->where('added_by_user', auth()->user()->id);
                 }
                 else{
-                    $total = Vehicle::where('pickup_location', $req->state)->get()->toArray();
-                    $records = Vehicle::with('user','pickupimages')->where('pickup_location', $req->state);
+                    $total = Vehicle::where('port', $req->state)->get()->toArray();
+                    $records = Vehicle::with('user','pickupimages')->where('port', $req->state);
                 }
             }
             else{
@@ -908,15 +979,19 @@ class VehicleController extends Controller
                     $records = Vehicle::with('user','pickupimages');
                 }
             }
-
-
-
-          
             if ($status) {
-                $records = $records->where('status', $status)->paginate($this->perpage);
-                $data['records'] = $records;
-                $output['view'] = view('vehicle.' . $status_name, $data)->render();
-                return Response($output);
+                if($status == '4'){
+                    $records = $records->where('status', $status)->orwhere('title_type', '!=', 'Exportable')->paginate($this->perpage);
+                    $data['records'] = $records;
+                    $output['view'] = view('vehicle.' . $status_name, $data)->render();
+                    return Response($output);
+                }
+                else{
+                    $records = $records->where('status', $status)->paginate($this->perpage);
+                    $data['records'] = $records;
+                    $output['view'] = view('vehicle.' . $status_name, $data)->render();
+                    return Response($output);
+                }
             }
 
         }
@@ -967,15 +1042,17 @@ class VehicleController extends Controller
 
 
     public function assignToCustomer(Request $request){
+        // dd($request->all());
         $data = [];
-        $customer_name = User::select('company_name')->where('id', $request->assignTo_customer)->get()->toArray();
+        $customer_name = User::select('id')->where('id', $request->assignTo_customer)->get()->toArray();
         $assign_vehicle = ImportVehicle::where('id', $request->vehicle_id)->get()->toArray();
+        // dd($customer_name);
         // dd($customer_name[0]['company_name'], $request->all(), $assign_vehicle);
-        $assign_vehicle[0]['customer_name'] = $customer_name[0]['company_name'];
+        $assign_vehicle[0]['customer_name'] = $customer_name[0]['id'];
         $assign_vehicle[0]['buyer_id'] = $request->buyer_id;
         $assign_vehicle[0]['key'] = $request->key;
         $assign_vehicle[0]['shipper_name'] = $request->shipper;
-        $assign_vehicle[0]['pickup_location'] = $request->pickup_location;
+        $assign_vehicle[0]['port'] = $request->warehouse;
         $assign_vehicle[0]['added_by_user'] = $request->assignTo_customer;
         unset($assign_vehicle[0]['id']);
         $data = $assign_vehicle;
@@ -1020,6 +1097,35 @@ class VehicleController extends Controller
 
        
 
+
+    }
+
+
+    public function vehicleImages_zip(Request $request){
+        // dd($request->all());
+        $url_ima_path = [];
+        if($request->tab == 'warehouse_images'){
+            $data['images'] = Vehicle::with('warehouse_image')->whereid($request->id)->get()->toArray();
+            foreach($data['images'][0]['warehouse_image'] as $img){
+                array_push($url_ima_path, URL::asset(($img['name'])));
+            }
+        }
+        else if($request->tab == 'vehicle_images'){
+            $data['images'] = Vehicle::with('pickupimages')->whereid($request->id)->get()->toArray();
+            foreach($data['images'][0]['pickupimages'] as $img){
+                array_push($url_ima_path, URL::asset(($img['name'])));
+            }
+        }
+        else if($request->tab == 'auction_images'){
+            $data['images'] = Vehicle::with('auction_image')->whereid($request->id)->get()->toArray();
+            foreach($data['images'][0]['auction_image'] as $img){
+                array_push($url_ima_path, URL::asset(($img['name'])));
+            }
+        }
+        else{}
+
+        // dd($url_ima_path);
+        return Response($url_ima_path);
 
     }
 

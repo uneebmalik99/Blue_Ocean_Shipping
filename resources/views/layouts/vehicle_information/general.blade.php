@@ -981,13 +981,41 @@
     }
 
 
-    function download_all(tab){
+    async function download_all(tab){
        id = "{{ @$vehicle['id'] }}";
-       
-    //    alert(id);
-    //    alert(tab);
-
-        // alert(tab);
+       $.ajax({
+            method: 'post',
+            url: '{{ route("vehicle/downloadImages/zipfile") }}',
+            data:{
+                'id':id,
+                'tab':tab,
+            },
+            success: function(data) {
+                var zip = new JSZip();
+                var count = 0;
+                var zipFilename = "images_bundle.zip";
+                var images = data;
+                console.log(data);
+                images.forEach(async function(imgURL, i) {
+                    console.log(i)
+                    var filename = "image" + i + '.jpg'
+                    var image = await fetch(imgURL)
+                    var imageBlog = await image.blob()
+                    var img = zip.folder("images");
+                    img.file(filename, imageBlog, {
+                        binary: true
+                    });
+                    count++
+                    if (count == images.length) {
+                        zip.generateAsync({
+                            type: 'blob'
+                        }).then(function(content) {
+                            saveAs(content, zipFilename);
+                        });
+                    }
+                })
+            }
+        });
         
     }
 

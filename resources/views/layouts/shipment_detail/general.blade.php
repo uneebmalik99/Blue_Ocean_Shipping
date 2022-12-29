@@ -285,7 +285,7 @@
                 <button class='edit-button mr-3 mt-1' id='{{ @$shipments[0]['id'] }}' onclick='editShipment(this.id)'
                     style="height: 30px!important;">
                     <a>
-                        <svg width='14' height='13' viewBox='0 0 16 16' fill='none'
+                        <svg width='16' height='14' viewBox='0 0 16 16' fill='none'
                             xmlns='http://www.w3.org/2000/svg'>
                             <path
                                 d='M2.66708 14.0004C2.72022 14.0068 2.77394 14.0068 2.82708 14.0004L5.49375 13.3338C5.61205 13.3056 5.7204 13.2457 5.80708 13.1604L14.0004 4.94042C14.2488 4.69061 14.3881 4.35267 14.3881 4.00042C14.3881 3.64818 14.2488 3.31024 14.0004 3.06042L12.9471 2.00042C12.8233 1.87646 12.6762 1.77811 12.5143 1.71101C12.3525 1.64391 12.179 1.60938 12.0037 1.60938C11.8285 1.60938 11.655 1.64391 11.4932 1.71101C11.3313 1.77811 11.1842 1.87646 11.0604 2.00042L2.86708 10.1938C2.78094 10.2808 2.71891 10.3888 2.68708 10.5071L2.02042 13.1738C1.99645 13.26 1.99011 13.3502 2.00177 13.439C2.01342 13.5277 2.04284 13.6133 2.08826 13.6904C2.13368 13.7676 2.19417 13.8348 2.26613 13.888C2.33808 13.9413 2.42003 13.9795 2.50708 14.0004C2.56022 14.0068 2.61394 14.0068 2.66708 14.0004ZM12.0004 2.94042L13.0604 4.00042L12.0004 5.06042L10.9471 4.00042L12.0004 2.94042ZM3.94042 11.0071L10.0004 4.94042L11.0604 6.00042L4.99375 12.0671L3.58708 12.4138L3.94042 11.0071Z'
@@ -984,14 +984,10 @@
         $.ajax({
             method: 'get',
             url: '{{ route("shipment/downloadImages/zipfile") }}' +'/'+id,
-          
             success: function(data) {
-
                 var zip = new JSZip();
                 var count = 0;
                 var zipFilename = "images_bundle.zip";
-                // we will download these images in zip file
-                // console.log('{{ asset('images/blueocean.png') }}');
                 var images = data;
                 console.log(data);
                 images.forEach(async function(imgURL, i) {
@@ -1000,7 +996,6 @@
                     var image = await fetch(imgURL)
                     var imageBlog = await image.blob()
                     var img = zip.folder("images");
-                    // loading a file and add it in a zip file
                     img.file(filename, imageBlog, {
                         binary: true
                     });
@@ -1013,39 +1008,8 @@
                         });
                     }
                 })
-
-
-
-
             }
         });
-
-
-
-
     }
 
-    // function downloadImages_zip() {
-    //     var zip = new JSZip();
-
-    //     // Add an top-level, arbitrary text file with contents
-    //     zip.file("Hello.txt", "Hello World\n");
-
-    //     // Generate a directory within the Zip file structure
-    //     var img = zip.folder("images");
-    //     const data = "<img src={{ asset('images/blueocean.png') }}>";
-    //     imgdata = "anything"
-    //     console.log('{{ asset('images/blueocean.png') }}');
-    //     // Add a file to the directory, in this case an image with data URI as contents
-    //     img.file(data);
-
-    //     // Generate the zip file asynchronously
-    //     zip.generateAsync({
-    //             type: "blob"
-    //         })
-    //         .then(function(content) {
-    //             // Force down of the Zip file
-    //             saveAs(content, "archive.zip");
-    //         });
-    // }
 </script>
