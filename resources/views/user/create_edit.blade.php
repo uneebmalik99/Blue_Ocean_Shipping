@@ -1,8 +1,9 @@
 @extends('layouts.partials.mainlayout')
 @section('body')
+
     <div class="d-flex justify-content-center mt-3">
         <div class="col-10 card border-light rounded mt-3">
-            {{-- @dd($user) --}}
+           
             <form action={{ $action }} method="POST">
                 @csrf
                 @if (Session::get('success'))

@@ -1,6 +1,7 @@
 @extends('layouts.partials.mainlayout')
 
 @section('body')
+
     <style>
         table.dataTable thead th,
         table.dataTable tfoot th {
@@ -216,9 +217,9 @@
                             <th>STATUS</th>
                             <th>PHONE</th>
                             
-                            @if (@$role['name'] != 'Customer')
+                           @role(['Sub Admin','Super Admin'])
                                 <th>Action</th>
-                            @endif
+                            @endrole
                             
                             
                         </thead>
@@ -270,13 +271,13 @@
                                         </div>
                                     </td>
                                     <td>
-                                        @if (@$val['status'] == 0)
+                                        @if (@$val['status'] == 1)
                                             <button class="text-white"
                                                 style="background: #53A24C;
                                     border-radius: 5px;width: 60px;border:none!important;outline:none">Active</button>
                                         @endif
 
-                                        @if (@$val['status'] == 1)
+                                        @if (@$val['status'] == 0)
                                             <button class="text-white btn-danger"
                                                 style="
                                     border-radius: 5px;width: 60px;border:none!important;outline:none">In

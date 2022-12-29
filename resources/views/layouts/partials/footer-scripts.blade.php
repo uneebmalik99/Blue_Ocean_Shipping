@@ -2103,7 +2103,7 @@
             url: '{{ route('user.addUser') }}',
             data: $('form').serialize(),
             success: function(data) {
-                //    alert(data);
+                   
 
                 iziToast.success({
                     title: 'User',
