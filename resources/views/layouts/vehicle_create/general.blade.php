@@ -1093,39 +1093,59 @@
                                 </div>
 
 
-                                <div class="col-12 py-2">
-                                    <div class="d-flex align-items-center">
-                                        <label for="insurance" class="col-2 px-0 font-size font-bold">Tow By</label>
-                                        <div class="d-flex align-items-center justify-content-around form-control-sm border border-0 rounded-pill bg col-10">
-                                           <div>
-                                               <input type="radio" id="customer" name="tow" value="By Customer" style="margin-bottom: 6px"  {{ (@$user[0]['tow']) == 'By Customer' ? 'checked':"" }}>
-                                               <label for="customer">By Customer</label>
-                                           </div>
-                                           <div>
-                                               <input type="radio" id="escap_shipping" name="tow" value="By escap Shipping" style="margin-bottom: 6px" {{ (@$user[0]['tow']) == 'By escap Shipping' ? 'checked':"" }} >
-                                               <label for="escap_shipping">By escap Shipping</label>
-                                           </div>
-                                           <div>
-                                               <input type="radio" id="shipping_line" name="tow" value="By Shipping Line" style="margin-bottom: 6px" {{ (@$user[0]['tow']) == 'By Shipping Line' ? 'checked':"" }}>
-                                               <label for="shipping_line">By Shipping Line</label>
-                                           </div>
-                                            
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-end">
-                                        <span class="text-danger">
-                                            @error('insurance')
-                                                {{ $message }}
-                                            @enderror
-                                        </span>
-                                    </div>
-                                </div>
+                                
 
 
 
                             </div>
                         </div>
                     @endrole
+
+                    <div class="tab_card my-3">
+                        <div class="col-4 py-3">
+                            <div class="text-color" style="cursor: pointer;" id="towby"
+                                onclick="slide(this.id)">
+                                <svg width="8" height="6" viewBox="0 0 8 6" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 1.36328L4 4.82148L7 1.36328" stroke="#FF8514" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <span class="p-2 ">Tow</span>
+                            </div>
+                        </div>
+
+                        <div id="towby_body">
+                        
+                        <div class="col-12 py-2">
+                            <div class="d-flex align-items-center">
+                                <label for="insurance" class="col-2 px-0 font-size font-bold">Tow By</label>
+                                <div class="d-flex align-items-center justify-content-around form-control-sm border border-0 col-10">
+                                   <div>
+                                       <input type="radio" id="customer" name="tow" value="By Customer" style="margin-bottom: 6px"  {{ (@$user[0]['tow']) == 'By Customer' ? 'checked':"" }}>
+                                       <label for="customer">By Customer</label>
+                                   </div>
+                                   <div>
+                                       <input type="radio" id="escap_shipping" name="tow" value="By escap Shipping" style="margin-bottom: 6px" {{ (@$user[0]['tow']) == 'By escap Shipping' ? 'checked':"" }} >
+                                       <label for="escap_shipping">By escap Shipping</label>
+                                   </div>
+                                   <div>
+                                       <input type="radio" id="shipping_line" name="tow" value="By Shipping Line" style="margin-bottom: 6px" {{ (@$user[0]['tow']) == 'By Shipping Line' ? 'checked':"" }}>
+                                       <label for="shipping_line">By Shipping Line</label>
+                                   </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <span class="text-danger">
+                                    @error('insurance')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                    </div>
                 </div>
 
             </div>
