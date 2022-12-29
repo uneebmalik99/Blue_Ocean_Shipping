@@ -126,7 +126,7 @@
     <div class="container bg-light border">
         <div class="row">
             <div class="d-flex m-2" style="
-            width: 95%;
+            width: 94%;
             margin-right: 2px;">
                 <button class="text-center form-control border next-style reporting_cls " id="users">
                     <a href="{{ route('user.list') }}" style="text-decoration: none!important;"
@@ -192,20 +192,22 @@
                 </div>
             </div> --}}
         </div>
-
+        <button class="float-right next-style reporting_cls" id="add_new_user"
+        onclick="createUser()">
+        <div class="unskew">Add New User</div>
+        </button>
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
+
                 
                 <div class="main-box">
                     
-                        <div class="container m-2"><button class="float-right next-style reporting_cls" id="add_new_user"
-                            onclick="createUser()">
-                            <div class="unskew">Add New User</div>
-                            </button>
-                        </div>
-                    
+                       
+                   
                     <table class="table" id="table_id" style="border:none!important;">
-                        
+                      
+                          
+                       
                         <thead style="border:none!imporant;color:rgba(102,102,102,1); ">
                            
                         
