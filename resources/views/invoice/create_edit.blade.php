@@ -19,7 +19,10 @@
                                     
                                     <div class="row">
 
-                                        <div class="tab_card col-6">
+                                        <div class="tab_card my-3 col-md-5  col-lg-5 col-sm-12"style="
+                                        
+                                        left: 3%;
+                                    ">
                                             <div class="col-12 py-3">
                                                 <div class="text-color" style="cursor: pointer;" id="invoice_calendar"
                                                     onclick="slide(this.id)">
@@ -99,7 +102,10 @@
                                             </div>
                                         </div>
     
-                                        <div class="tab_card my-3 col-6">
+                                        <div class="tab_card my-3 col-md-6  col-lg-6 col-sm-12" style="
+                                        float: left;
+                                        left: 5%;
+                                    ">
                                             <div class="col-12 py-3">
                                                 <div class="text-color" style="cursor: pointer;" id="invoice_calendar"
                                                     onclick="slide(this.id)">

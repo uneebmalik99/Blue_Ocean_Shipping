@@ -195,7 +195,7 @@
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
                 
-                <div class="main-box">
+                <div class="main-box" style="width:auto">
                    
                     <table class="table" id="table_id" style="border:none!important;">
                         

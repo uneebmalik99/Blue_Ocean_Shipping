@@ -69,6 +69,17 @@
             text-decoration: none !important;
         }
     }
+    @media screen and (max-width: 991px) {
+        .information_second_div {
+            margin-top: 248px;
+  }
+}
+@media screen and (max-width: 991px) {
+        ..information_button {
+            margin: 50px;
+            margin-left: 238px;
+  }
+}
 
     img {
         vertical-align: middle;
@@ -210,10 +221,7 @@
         top: 0;
     }
 
-    img {
-        margin-bottom: -4px;
-    }
-
+    
     .caption-container {
         text-align: center;
         background-color: black;
@@ -279,7 +287,7 @@
 </div>
 {{-- Modal End --}}
 <div class="row my-4">
-    <div class="col-sm-10 col-md-10 col-lg-4 pl-0" style="height:500px">
+    <div class="col-sm-12 col-md-10 col-lg-4 pl-0" style="height:500px">
         <div class="information_card">
             <div class="d-flex justify-content-between">
                 <h6>General Information</h6>
@@ -450,24 +458,21 @@
                         <span class="information_text">--</span>
                     @endif
                 </div>
-
-
-
-
-                <div class="information_button d-flex justify-content-center mt-3" style="margin:50px">
+<div class="row">
+                        <div class="information_button d-flex justify-content-center mt-3" style="margin:50px; margin-left:130px">
                     <a href="{{ route('vehicle.exportpdf', @$vehicle['id']) }} " target="_blank">
                         <button
                             style="background: #1F689E;
                     transform: skew(-30deg) !important;border:none;
                     border-radius: 4px;color:white;margin-right: 6px;font-size: 13px;">
                             <div style="transform: skew(30deg) !important;padding:1px 4px">
-                                <i class="fa fa-file-pdf-o" style="font-size:12px"></i> Trucking PDF
+                                <i class="fa fa-file-pdf-o" style="font-size:12px;"></i> Trucking PDF
                             </div>
                         </button>
                     </a>
                     {{-- <button style="background: #1CACD9;border:none;font-size:12px;
                     transform: skew(-30deg) !important;border-radius: 4px;color:white;margin-right: 3px;"><div style="transform: skew(30deg) !important;padding:1px 12px">Edit</div></button> --}}
-
+                </div>
                 </div>
                 <div>
                     <br>
@@ -482,7 +487,7 @@
 
         </div>
     </div>
-    <div class="col-sm-10 col-md-10 col-lg-8 pl-0">
+    <div class="col-sm-12 col-md-10 col-lg-8 pl-0">
 
         <div class="information_second_div">
 
@@ -649,20 +654,20 @@
                                         <div class="d-flex" style="width:100%">
 
 
-                                            <button class="img_active_button img_btn col-sm-12 col-md-4 col-lg-4 mb-3"
+                                            <button class="img_active_button img_btn col-sm-4 col-md-4 col-lg-4 mb-3"
                                                 onclick="changeImages(this.id)" tab=" {{ @$vehicle['id'] }}"
                                                 id="warehouse_images"
                                                 style="color:black;background-color:337fb8;font-size: 12px !important;border-top-left-radius: 8px;font-weight:600;height:41px;">Ware
                                                 House Image
                                             </button>
 
-                                            <button class="image_button img_btn col-sm-12 col-md-4 col-lg-4 mb-4"
+                                            <button class="image_button img_btn col-sm-4 col-md-4 col-lg-4 mb-4"
                                                 style="color:black;background-color: #337fb8;font-size:12px!important; border:#e9e9e9;font-weight:600;height:41px;"
                                                 id="vehicle_images" onclick="changeImages(this.id)"
                                                 tab="{{ @$vehicle['id'] }}">
                                                 Pickup Images
 
-                                                <button class="image_button  img_btn col-sm-12 col-md-4 col-lg-4 mb-4"
+                                                <button class="image_button  img_btn col-sm-4 col-md-4 col-lg-4 mb-4"
                                                     style="color:black;;font-size:12px!important;font-weight:600;margin-right:-24px!important;height:41px;"
                                                     onclick="changeImages(this.id)" tab=" {{ @$vehicle['id'] }}"
                                                     id="auction_images">
@@ -898,18 +903,21 @@
         <div class="row">
 
             <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12"
-                style="left:-2%;width:auto!important;height:455px!important" id="slider_image">
+                style="width:100%!important;height:100%!important" id="slider_image">
     
                 <div class="mySlides" style="width:auto!important" id="slider_main">
                     <img src="{{ asset(@$vehicle['warehouse_image'][0]['name']) }}" alt=""
-                        style="width:800px!important;height: 455px!important;">
+                        style="width:100%!important;height: 100%!important;">
                 </div>
     
                 @if (@$vehicle['warehouse_image'])
                     @foreach (@$vehicle['warehouse_image'] as $img)
                     
-                        <div class="mySlides col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12" style="left:-2%;width:80%!important">
-                            <img src="{{ asset($img['name']) }}" alt="" style="width:137%!important;height: 455px!important;"
+                        <div class="mySlides col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12" style="width:100%!important">
+                            <img src="{{ asset($img['name']) }}" alt="" style="    width: 104%!important;
+                            height: 100%!important;
+                            
+                            margin-left: -15px;"
                                 onclick="openModal();currentSlide(1)">
                         </div>
                     @endforeach

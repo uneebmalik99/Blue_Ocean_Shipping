@@ -202,8 +202,8 @@
                                 {{-- <b>Search Filter</b> --}}
                             </span>
                         </div>
-                        <div class="col-md-6 col-sm-6 col-6 d-flex justify-content-end p-0">
-                            <div class="col-md-6 col-sm-8 col-8 d-flex justify-content-end px-2">
+                        <div class=" col-6 d-flex justify-content-end p-0">
+                            <div class="col-8 d-flex justify-content-end px-2">
                                 <a href="{{ route('customer.export') }}"
                                     class="px-1 text-muted font-size form-contorl-sm border p-1 rounded col-12"
                                     style="background: #DBDBDB; cursor: pointer;">
@@ -221,7 +221,7 @@
                                     </div>
                                 </a>
                             </div>
-                            <div class="col-md-6 col-sm-8 col-8 px-0 d-flex justify-content-center">
+                            <div class=" col-8 px-0 d-flex justify-content-center">
                                 <button type="button"
                                     class="text-white form-control-sm border py-1 btn-info rounded modal_button col-12"
                                     id="customer" style="background: #3e5871;" data-target="#exampleModal">

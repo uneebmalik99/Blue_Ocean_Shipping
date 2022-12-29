@@ -13,8 +13,10 @@
 </a>
 <a href={{ asset('/'.@$row->invoice_document) }} download="invoice" target="_blank">
     <button class="profile-button" style="cursor: pointer !important;">
-        <svg width="16" height="14" viewBox="0 0 16 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M17.5 7.5H12.5V0H5V7.5H0L8.75 16.25L17.5 7.5ZM7.5 10V2.5H10V10H11.4625L8.75 12.7125L6.0375 10H7.5ZM0 18.75H17.5V21.25H0V18.75Z" fill="#214986"></path>
+        <svg width="16" height="14" viewBox="0 0 16 22" fill="none" xmlns="http://www.w3.org/2000/svg" style="
+        margin-bottom: -2px;
+    ">
+        <path d="M17.5 7.5H12.5V0H5V7.5H0L8.75 16.25L17.5 7.5ZM7.5 10V2.5H10V10H11.4625L8.75 12.7125L6.0375 10H7.5ZM0 18.75H17.5V21.25H0V18.75Z" fill="#63b793"></path>
         </svg>
         
     </button>

@@ -24,7 +24,7 @@
         <div class="col-6 px-0 py-0 pl-1 billing">
             <button class="text-center form-control border navbar_tab next-style" style="cursor: pointer;"
                 id="general_customer_tab">
-                <div class="unskew">
+                <div class="unskew"> <i class="fa fa-folder" style="color:#337fb8"></i>
                     General
                 </div>
             </button>
@@ -32,14 +32,14 @@
         <div class="col-6 px-0 py-0 pl-1 billing">
             <button class="text-center form-control border navbar_tab tab_style" style="cursor: pointer;"
                 id="billing_customer_tab">
-                <div class="unskew">Billing
+                <div class="unskew"> <i class="fa fa-file-invoice-dollar" style="color:#337fb8"></i> Billing
                     Party</div>
             </button>
         </div>
         <div class="col-6 px-0 py-0 pl-1">
             <button class="text-center form-control border navbar_tab  tab_style" style="cursor: pointer;"
                 id="shipper_customer_tab">
-                <div class="unskew">
+                <div class="unskew"><i class="fa fa-truck-fast"style="color:#337fb8"></i>
                     Shipper
                 </div>
             </button>
@@ -48,6 +48,7 @@
             <button class="text-center form-control border navbar_tab  tab_style" style="cursor: pointer;"
                 id="quotation_customer_tab">
                 <div class="unskew">
+                    <i class="fa fa-quote-right" aria-hidden="true" style="color:#337fb8"></i>
                     Quotation
 
                 </div>
