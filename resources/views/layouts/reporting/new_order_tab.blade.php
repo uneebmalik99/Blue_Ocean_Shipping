@@ -22,7 +22,7 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="col-3 p-0">
+                <div class="col-2 p-0">
                     <select class="form-control-sm border-style input-border-style rounded col-11 text-muted px-2" name="shipper" id="shipper">
                         <option disabled selected>Select Shipper</option>
                         @foreach ($shippers as $shipper)
@@ -30,7 +30,7 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="col-3 p-0">
+                <div class="col-2 p-0">
                     <select class="form-control-sm border-style input-border-style rounded col-11 text-muted px-2" name="status" id="status">
                         <option disabled selected>Title Status</option>
                         @foreach ($titletypes as $type)
@@ -48,7 +48,7 @@
                     </select>
                 </div>
 
-                <div class="col-2 ml-3">
+                <div class="col-2">
                    <button type="button" class="btn" style="background:#2c3e50;color:white;font-size:11px!important;" id="{{ @$status }}" onclick="filter_vehicle_reporting(this.id)">Filter Vehicle</button>
                 </div>
 

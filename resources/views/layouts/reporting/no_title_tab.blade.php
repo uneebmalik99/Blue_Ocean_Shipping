@@ -48,7 +48,7 @@
                     </select>
                 </div>
 
-                <div class="col-2 ml-3">
+                <div class="col-2">
                    <button type="button" class="btn" style="background:#2c3e50;color:white;font-size:11px!important;" id="{{ @$status }}" onclick="filter_vehicle_reporting(this.id)">Filter Vehicle</button>
                 </div>
 

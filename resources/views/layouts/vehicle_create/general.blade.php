@@ -810,7 +810,7 @@
                                 <div class="d-flex align-items-center">
                                     <label for="pickup_location" class="col-6 px-0 font-size font-bold">Pickup
                                         Location</label>
-                                    <select name="pickup_location" id="pickup_location"
+                                    {{-- <select name="pickup_location" id="pickup_location"
                                         class="form-control-sm border border-0 rounded-pill bg col-6">
                                         @if (@$user[0]['site'])
                                             <option value="{{ @$user[0]['pickup_location'] }}" selected>
@@ -824,11 +824,11 @@
                                                 <option value="{{ @$loc['state'] }}">{{ @$loc['state'] }}</option>
                                             @endif
                                         @endforeach
-                                    </select>
-                                    {{-- <input type="text"
+                                    </select> --}}
+                                    <input type="text"
                                         class="form-control-sm border border-0 rounded-pill bg col-6"
                                         name="pickup_location" id="pickup_location"
-                                        value="{{ @$user[0]['pickup_location'] }}"> --}}
+                                        value="{{ @$user[0]['pickup_location'] }}">
                                 </div>
                                 <div class="d-flex justify-content-end">
                                     <span class="text-danger">
