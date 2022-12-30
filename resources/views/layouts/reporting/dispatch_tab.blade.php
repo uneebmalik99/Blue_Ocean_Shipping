@@ -1,16 +1,13 @@
 <div class="border-style card-rounded">
-
     <div class="row d-flex justify-content-between">
     </div>
-   
     <div class="px-4 pt-2 mt-4">
         <div class="d-flex justify-content-between">
             <div class="col-6 p-0">
                 <span class="h5 text-muted">
                     <b>Search Filter</b>
                 </span>
-            </div>
-            
+            </div>  
         </div>
         <form id="filter_vehicle_reporting">
             <div class="d-flex py-3 px-0">
@@ -47,23 +44,18 @@
                         @endforeach
                     </select>
                 </div>
-
                 <div class="col-2">
                    <button type="button" class="btn" style="background:#2c3e50;color:white;font-size:11px!important;" id="{{ @$status }}" onclick="filter_vehicle_reporting(this.id)">Filter Vehicle</button>
                 </div>
-
                 <div class="col-2 p-0">
                     <button  type="button" class="btn"
                     style="background:#2c3e50;color:white;font-size:11px!important;"
                     onclick="clear_reporting_dispatch()">Clear</button>  
                 </div>
-
-                
             </div>
         </form>
     </div>
     <div id="status_body" class="mt-2 bg-light">
-     
         <table id="dispatch_report" class="row-border"
             style="width:100%!important;">
             <thead class="bg-custom">
@@ -115,7 +107,6 @@
                         <td>{{ @$vehicle['shipper_name'] }}</td>
                     </tr>
                 @endforeach --}}
-               
             </tbody>
         </table>
     </div>
@@ -125,6 +116,5 @@
      function clear_reporting_dispatch(){
         $('#filter_vehicle_reporting')[0].reset();
         $('#filter_reporting_vehicles').html('');
-
     }
 </script>
