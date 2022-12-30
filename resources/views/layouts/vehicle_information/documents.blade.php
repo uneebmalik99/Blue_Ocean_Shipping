@@ -314,7 +314,7 @@
                         <div class="col-12">
 
 
-                            @if (@$vehicle['billofsales'])
+                            @if (@$vehicle['billofsales'] || @$vehicle['originaltitles'] || @$vehicle['auction_invoice'] || @$vehicle['auction_copy'])
                                 <div class="d-flex justify-content-between "
                                     style="border: 1px solid rgba(26, 88, 133, 0.17); border-radius: 10px;width: 90%;margin:4px auto;padding:5px; ">
                                     <div class="w-100 ml-4">
@@ -325,6 +325,7 @@
                                                 <td class="text-center">Documents</td>
                                             </thead>
                                             <tbody>
+                                                @if(@$vehicle['billofsales'])
                                                 <tr>
                                                     <td>Bill Of Sale</td>
                                                     <td>{{ @$vehicle['billofsales'][0]['thumbnail'] }}</td>
@@ -341,6 +342,8 @@
                                                         </button>
                                                     </td>
                                                 </tr>
+                                                @endif
+                                                @if(@$vehicle['originaltitles'])
                                                 <tr>
                                                     <td>Original Title</td>
                                                     <td>{{ @$vehicle['originaltitles'][0]['thumbnail'] }}</td>
@@ -356,6 +359,39 @@
                                                         </button>
                                                     </td>
                                                 </tr>
+                                                @endif
+
+                                                {{-- <tr>
+                                                    <td>Auction Invoice</td>
+                                                    <td>auction.pdf</td>
+                                                    <td
+                                                        style="text-align: center;
+                                                width: 33%;">
+                                                        <button
+                                                            style="background: #3e5871;color:white;border-radius:5px;outline:none;border:none;padding: 0 5px;">
+                                                            <a href="{{ asset(@$vehicle['auction_invoice'][0]['name']) }}"
+                                                                download="{{ @$vehicle['auction_invoice'][0]['name'] }}"
+                                                                target="_blank"
+                                                                style="color:white;text-decoration:none;border:none">download</a>
+                                                        </button>
+                                                    </td>
+                                                </tr> --}}
+
+                                                {{-- <tr>
+                                                    <td>Auction Invoice</td>
+                                                    <td>auction.pdf</td>
+                                                    <td
+                                                        style="text-align: center;
+                                                width: 33%;">
+                                                        <button
+                                                            style="background: #3e5871;color:white;border-radius:5px;outline:none;border:none;padding: 0 5px;">
+                                                            <a href="{{ asset(@$vehicle['auction_copy'][0]['name']) }}"
+                                                                download="{{ @$vehicle['auction_copy'][0]['name'] }}"
+                                                                target="_blank"
+                                                                style="color:white;text-decoration:none;border:none">download</a>
+                                                        </button>
+                                                    </td>
+                                                </tr> --}}
 
                                             </tbody>
                                         </table>
@@ -372,6 +408,9 @@
                                     No Found
                                 </div>
                             @endif
+
+
+
                             <div class="d-flex justify-content-between "
                                 style="border: 1px solid rgba(26, 88, 133, 0.17); border-radius: 10px;width: 90%;margin:4px auto;padding:5px;  ">
                                 <span class="infromation_mainText ml-4">Shipper</span>

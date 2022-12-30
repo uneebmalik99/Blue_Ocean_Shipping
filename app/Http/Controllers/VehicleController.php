@@ -849,7 +849,7 @@ class VehicleController extends Controller
 
         $data = [];
 
-        $data['vehicle'] = Vehicle::with(['pickupimages', 'warehouse_image', 'vehicle_status', 'billofsales', 'originaltitles'])->find($id)->toArray();
+        $data['vehicle'] = Vehicle::with(['pickupimages', 'warehouse_image', 'vehicle_status', 'billofsales', 'originaltitles', 'auction_invoice', 'auction_copy'])->find($id)->toArray();
         // dd($data['vehicle']);
 
         $output = view('layouts.vehicle_information.' . $tab, $data)->render();
