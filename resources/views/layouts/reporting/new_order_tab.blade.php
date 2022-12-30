@@ -47,18 +47,17 @@
                         @endforeach
                     </select>
                 </div>
-
-                <div class="col-2">
-                   <button type="button" class="btn" style="background:#2c3e50;color:white;font-size:11px!important;" id="{{ @$status }}" onclick="filter_vehicle_reporting(this.id)">Filter Vehicle</button>
+                <div class="col-4 d-flex">
+                   <button type="button" class="btn" style="background:#2c3e50;color:white;font-size:11px!important;" id="{{ @$status }}" onclick="filter_vehicle_reporting(this.id)">Search</button>
+                   <button  type="button" class="btn ml-2"
+                   style="background:#2c3e50;color:white;font-size:11px!important;"
+                   onclick="clear_reporting_neworder()">Clear</button>
                 </div>
-
-                <div class="col-2 p-0">
+                {{-- <div class="col-2 p-0">
                     <button  type="button" class="btn"
                     style="background:#2c3e50;color:white;font-size:11px!important;"
                     onclick="clear_reporting_neworder()">Clear</button>  
-                </div>
-
-                
+                </div> --}}
             </div>
         </form>
     </div>

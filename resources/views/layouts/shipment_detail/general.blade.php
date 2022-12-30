@@ -1,5 +1,6 @@
 {{-- {{ dd($shipments) }} --}}
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 <style>
     #shipment_details thead th {
         position: sticky !important;
@@ -425,7 +426,7 @@
                             style="background: #1F689E; transform: skew(-30deg) !important;border:none;
                     border-radius: 4px;color:white;margin-right: 6px;font-size: 12px;">
                             <div style="transform: skew(30deg) !important;padding:1px 4px">
-                                <a href="{{ route('shipment_detail.shipment_Hazard_pdf', @$shipments[0]['id']) }}"
+                                <a onclick="Openpdf(this.id)" id="{{ @$shipments[0]['id'] }}"
                                     style="color:white;text-decoration:none;font-size: 12px;" target="_blank">Non Hazard
                                     Report</a>
                             </div>
@@ -775,7 +776,7 @@
                     @if ($shipments[0]['loading_image'])
                         <div class="row mt-4">
                             <div class="col-12 d-flex justify-contjent-center ">
-                                <a id="{{@$shipments[0]['id']}}" onclick="downloadImages_zip(this.id)">
+                                <a id="{{ @$shipments[0]['id'] }}" onclick="downloadImages_zip(this.id)">
                                     <button
                                         style="background: #3e5871;cursor:pointer; border-radius: 6px;border:none;color:white;transform: skew(-30deg);">
                                         <div style="transform: skew(30deg);padding:1px 10px;font-size: 13px;">
@@ -983,7 +984,7 @@
 
         $.ajax({
             method: 'get',
-            url: '{{ route("shipment/downloadImages/zipfile") }}' +'/'+id,
+            url: '{{ route('shipment/downloadImages/zipfile') }}' + '/' + id,
             success: function(data) {
                 var zip = new JSZip();
                 var count = 0;
@@ -1012,4 +1013,18 @@
         });
     }
 
+
+  
+    function printthis(){
+        $("#thissection").printThis({
+            "debug": false,
+            "importCSS": true,
+            "importStyle": false,
+            "pageTitle": "NON HAZARDOUS MATERIAL",
+            "removeInline": false,
+            "printDelay": 200,
+            "header": null,
+            "formValues": true
+        });
+    }
 </script>

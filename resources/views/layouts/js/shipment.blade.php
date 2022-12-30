@@ -433,4 +433,17 @@
             }
         });
     });
+
+
+    function Openpdf(id){
+        $.ajax({
+            type: 'get',
+            url: '{{ route("shipment.pdf") }}'+'/'+id,
+            success: function(data) {
+                // alert('kashif');
+                $('#exampleModal').modal('show');
+                $('.modal-body').html(data);
+            }
+        });
+    }
 </script>
