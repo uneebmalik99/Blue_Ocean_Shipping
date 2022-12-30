@@ -27,5 +27,8 @@ class roleSeeder extends Seeder
         SpatieRole::create([
             'name' => 'Customer',
         ]);
+
+
+        
     }
 }

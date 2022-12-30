@@ -343,7 +343,7 @@
                                             <option value="{{ @$user[0]['buyer_id'] }}">{{ @$user[0]['buyer_id'] }}
                                             </option>
                                         @else
-                                            <option disabled>Select Buyer Id</option>
+                                            <option selected disabled>Select Buyer Id</option>
                                         @endif
 
                                         @if (@$update_buyer_id)
@@ -1122,15 +1122,15 @@
                                 <div class="d-flex align-items-center justify-content-around form-control-sm border border-0 col-10">
                                    <div>
                                        <input type="radio" id="customer" name="tow" value="By Customer" style="margin-bottom: 6px"  {{ (@$user[0]['tow']) == 'By Customer' ? 'checked':"" }}>
-                                       <label for="customer">By Customer</label>
+                                       <label for="customer">Customer</label>
                                    </div>
                                    <div>
                                        <input type="radio" id="escap_shipping" name="tow" value="By escap Shipping" style="margin-bottom: 6px" {{ (@$user[0]['tow']) == 'By escap Shipping' ? 'checked':"" }} >
-                                       <label for="escap_shipping">By escap Shipping</label>
+                                       <label for="escap_shipping">Escap Shipping</label>
                                    </div>
                                    <div>
                                        <input type="radio" id="shipping_line" name="tow" value="By Shipping Line" style="margin-bottom: 6px" {{ (@$user[0]['tow']) == 'By Shipping Line' ? 'checked':"" }}>
-                                       <label for="shipping_line">By Shipping Line</label>
+                                       <label for="shipping_line">Shipping Line</label>
                                    </div>
                                     
                                 </div>

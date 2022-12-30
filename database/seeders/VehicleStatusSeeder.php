@@ -18,28 +18,19 @@ class VehicleStatusSeeder extends Seeder
             'status_name' => 'New Order',
         ]);
         VehicleStatus::create([
-            'status_name' => 'Posted',
-        ]);
-        VehicleStatus::create([
             'status_name' => 'Dispatched',
         ]);
         VehicleStatus::create([
             'status_name' => 'On Hand',
         ]);
         VehicleStatus::create([
-            'status_name' => 'No Titles',
+            'status_name' => 'No Title',
         ]);
         VehicleStatus::create([
             'status_name' => 'Towing',
         ]);
         VehicleStatus::create([
-            'status_name' => 'Manifest',
-        ]);
-        VehicleStatus::create([
-            'status_name' => 'Shipped',
-        ]);
-        VehicleStatus::create([
-            'status_name' => 'Arrived',
+            'status_name' => 'Inventory Value',
         ]);
         VehicleStatus::create([
             'status_name' => 'Booked',
