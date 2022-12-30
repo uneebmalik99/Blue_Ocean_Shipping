@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\role;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role as SpatieRole;
 
 class roleSeeder extends Seeder
 {
@@ -14,16 +15,16 @@ class roleSeeder extends Seeder
      */
     public function run()
     {
-        role::create([
+        SpatieRole::create([
             'name' => 'Super Admin',
         ]);
-        role::create([
+        SpatieRole::create([
             'name' => 'Sub Admin',
         ]);
-        role::create([
+        SpatieRole::create([
             'name' => 'Location Admin',
         ]);
-        role::create([
+        SpatieRole::create([
             'name' => 'Customer',
         ]);
     }
