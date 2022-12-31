@@ -49,9 +49,9 @@
                     </select>
                 </div>
 
-                <div class="col-4 d-flex">
-                   <button type="button" class="btn" style="background:#2c3e50;color:white;font-size:11px!important;" id="{{ @$status }}" onclick="filter_vehicle_reporting(this.id)">Search</button>
-                   <button  type="button" class="btn ml-2"
+                <div class="col-4" style="margin-left:13px">
+                   <button type="button" class="btn col-5" style="background:#2c3e50;color:white;font-size:11px!important;" id="{{ @$status }}" onclick="filter_vehicle_reporting(this.id)">Search</button>
+                   <button  type="button" class="btn ml-2 col-3"
                    style="background:#2c3e50;color:white;font-size:11px!important;"
                    onclick="clear_reporting_onhand()">Clear</button>  
                 </div>
