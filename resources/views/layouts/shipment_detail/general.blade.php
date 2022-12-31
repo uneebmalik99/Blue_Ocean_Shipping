@@ -1,6 +1,5 @@
 {{-- {{ dd($shipments) }} --}}
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
 <style>
     #shipment_details thead th {
         position: sticky !important;
@@ -441,7 +440,7 @@
                             style="background: #1F689E; transform: skew(-30deg) !important;border:none;
                     border-radius: 4px;color:white;margin-right: 6px;font-size: 12px;">
                             <div style="transform: skew(30deg) !important;padding:1px 4px">
-                                <a onclick="Openpdf(this.id)" id="{{ @$shipments[0]['id'] }}"
+                                <a id="{{ @$shipments[0]['id'] }}" onclick="Openpdf(this.id)"
                                     style="color:white;text-decoration:none;font-size: 12px;" target="_blank">Non Hazard
                                     Report</a>
                             </div>
@@ -611,12 +610,12 @@
 
                                 <div class="col-12">
                                     @if ($shipments[0]['loading_image'])
-                                        <div class="w-100  p-2" style="position: relative;">
+                                        <div class="w-100 p-2" style="position: relative;">
                                             <img src="{{ asset(@$shipments[0]['loading_image'][0]['name']) }}"
                                                 alt="" class="slide img_fluid mx-auto w-100 main_image"
                                                 style="height:200px!important; object-fit: fill;border-radius: 10px!important;width:auto%;"
                                                 id="main_image_box">
-                                            <a class="bottom_button">
+                                            <a class="bottom_button p-2">
                                                 <svg width="39" height="0" viewBox="0 0 39 25"
                                                     fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <rect width="39" height="0" rx="5"
@@ -763,8 +762,7 @@
                                     @else
                                         <p class="text-center py-5"
                                             style="font-size: 22px;font-style: initial;margin-left: 115px;margin-top: 50px;">
-                                            Image
-                                            Not Found</p>
+                                            Image Not Found</p>
                                     @endif
 
                                 </div>
@@ -791,7 +789,7 @@
                     @if ($shipments[0]['loading_image'])
                         <div class="row mt-4">
                             <div class="col-12 d-flex justify-contjent-center ">
-                                <a id="{{ @$shipments[0]['id'] }}" onclick="downloadImages_zip(this.id)">
+                                <a id="{{@$shipments[0]['id']}}" onclick="downloadImages_zip(this.id)">
                                     <button
                                         style="background: #3e5871;cursor:pointer; border-radius: 6px;border:none;color:white;transform: skew(-30deg);">
                                         <div style="transform: skew(30deg);padding:1px 10px;font-size: 13px;">
@@ -999,7 +997,7 @@
 
         $.ajax({
             method: 'get',
-            url: '{{ route('shipment/downloadImages/zipfile') }}' + '/' + id,
+            url: '{{ route("shipment/downloadImages/zipfile") }}' +'/'+id,
             success: function(data) {
                 var zip = new JSZip();
                 var count = 0;
@@ -1028,8 +1026,6 @@
         });
     }
 
-
-  
     function printthis(){
         $("#thissection").printThis({
             "debug": false,
@@ -1042,4 +1038,5 @@
             "formValues": true
         });
     }
+
 </script>
