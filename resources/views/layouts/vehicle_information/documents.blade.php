@@ -50,17 +50,18 @@
         }
 
         .left_button {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 10px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            text-align: center;
-            text-decoration: none !important;
-        }
-    }
+    position: absolute;
+    top: 0px!important;
+    left: 0px!important;
+    font-size: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none !important;
+}
+
+
 
     img {
         vertical-align: middle;
@@ -467,16 +468,16 @@
                                 <div class="col-12 main_image">
                                         @if (@$vehicle['warehouse_image'])
 
-                                        <div class="w-100  " style="position: relative;">
+                                        <div class="w-100 p-1  " style="position: relative;">
 
-                                            <div style="width: 97%;left: 2%;margin-left: 7px;}">
+                                            <div style="width: 100%">
                                                 <img src="{{ asset(@$vehicle['warehouse_image'][0]['name']) }}"
                                                     alt=""class="img_fluid mx-auto w-100"
-                                                    style="height:auto!important;border-radius: 10px!important;"
+                                                    style="height:200px!important; object-fit: fill;border-radius: 10px!important;width:auto%;"
                                                     id="main_image_box">
                                             </div>
 
-                                            <a class="bottom_button">
+                                            <a class="bottom_button p1">
                                                 <svg width="34" height="0" viewBox="0 0 0 0" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <rect width="0" height="0" rx="0"
@@ -520,7 +521,7 @@
 
                                             </a>
 
-                                            <div class="left_button">
+                                            <div class="left_button p-1 " style="top:0%!important;left:0%!important">
                                                 <a href="" style="text-decoration: none">
                                                     <svg width="23" height="22" viewBox="0 0 23 22"
                                                         fill="none" xmlns="http://www.w3.org/2000/svg">

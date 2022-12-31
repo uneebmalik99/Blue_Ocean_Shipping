@@ -1,10 +1,20 @@
 <link rel="stylesheet" media="mediatype and|not|only (expressions)" href="print.css">
 <style>
- 
+ .left_button {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-size: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none !important;
+}
     </style>
 @if(count(@$images) > 0)
-<div class="" style="position: relative;">
-    <img src="{{asset(@$images[0]['name'])}}" alt=""class="img_fluid " style="height:auto!important;border-radius: 10px!important;width:95%;margin-left:12px" id="main_image_box">
+<div class="p-2" style="position: relative;">
+    <img src="{{asset(@$images[0]['name'])}}" alt=""class="img_fluid " style="height:200px!important; object-fit: fill;border-radius: 10px!important;width:auto%;" id="main_image_box">
     <a class="bottom_button">
         <svg width="20" height="0" viewBox="0 0 39 25" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="39" height="22" rx="5" fill="white" fill-opacity="0.3"/>
@@ -34,7 +44,7 @@
             
     </a>
     
-    <div class="left_button">
+    <div class="left_button p-2">
         <a href="" style="text-decoration: none">
             <svg width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="23" height="22" rx="5" fill="white" fill-opacity="0.3"/>

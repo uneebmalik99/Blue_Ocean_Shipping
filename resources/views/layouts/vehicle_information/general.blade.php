@@ -261,6 +261,17 @@
         text-decoration: none;
         color: white;
     }
+    .left_button {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-size: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none !important;
+}
 </style>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
@@ -686,16 +697,16 @@
 
                                 <div class="col-12 main_image">
                                     @if (@$vehicle['warehouse_image'])
-                                        <div class="w-100  p-3" style="position: relative;">
+                                        <div class="w-100 p-2 " style="position: relative;">
 
                                             <div>
                                                 <img src="{{ asset(@$vehicle['warehouse_image'][0]['name']) }}"
                                                     alt=""class="img_fluid mx-auto w-100"
-                                                    style="height:auto!important;border-radius: 10px!important;"
-                                                    id="main_image_box">
+                                                    style="height:200px!important; object-fit: fill;border-radius: 10px!important;width:auto%;"
+                                                    id="main_image_box" >
                                             </div>
 
-                                            <a class="bottom_button">
+                                            <a class="bottom_button p-3">
                                                 <svg width="34" height="0" viewBox="0 0 0 0" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <rect width="0" height="0" rx="0"
@@ -742,7 +753,7 @@
                                                 </svg>
 
                                             </a>
-                                            <div class="left_button">
+                                            <div class="left_button p-2 ">
                                                 <a href="" style="text-decoration: none">
                                                     <svg width="23" height="22" viewBox="0 0 23 22"
                                                         fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -857,7 +868,7 @@
 
                                 <div class="image_section">
                                     <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12 changeImages"
-                                        style="left:6%; margin-top:15px;">
+                                        style=" margin-top:15px; margin-left:6%">
                                         {{-- @if (@$vehicle['pickupimages']) --}}
                                         @foreach (@$vehicle['warehouse_image'] as $img)
                                             <img src="{{ asset($img['name']) }}" alt="" class="item_1"
@@ -908,7 +919,7 @@
                 <div class="mySlides" style="width:auto!important" id="slider_main">
                     <img src="{{ asset(@$vehicle['warehouse_image'][0]['name']) }}" alt=""
                         style="width:100%!important;height: 100%!important;">
-                        style="width:100%!important;height: 100%!important;">
+                        
                 </div>
     
                 @if (@$vehicle['warehouse_image'])
