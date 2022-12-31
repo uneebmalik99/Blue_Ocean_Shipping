@@ -49,7 +49,10 @@
             <div class="card-body overflow-auto">
                 <table class="table" id="inovice_table" style="width:100%!important;">
                     <thead>
-                        <tr class="font-size">
+                        <tr class="font-size"style="
+                        background-color: #2c3e50;
+                        color: white;
+                    ">
                             <th class="font-bold-tr">VIEW VEHICLES</th>
                             <th class="font-bold-tr">CONTAINER NUMBER</th>
                             <th class="font-bold-tr">COMPANY NAME</th>

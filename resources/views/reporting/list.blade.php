@@ -122,11 +122,12 @@
                                 </select>
                             </div>
 
-                            <div class="col-4 d-flex">
+                            <div class="col-4" style="margin-left:13px">
                                
-                                <button type="button" class="btn" style="background:#2c3e50;color:white;font-size:11px!important;" id="1" onclick="filter_vehicle_reporting(this.id)">Search</button>
-                                <button  type="button" class="btn ml-2"
-                                style="background:#2c3e50;color:white;font-size:11px!important;"
+                                <button type="button" class="btn col-5" style="background:#2c3e50;color:white;font-size:11px!important;" id="1" onclick="filter_vehicle_reporting(this.id)">Search</button>
+                                
+                                <button  type="button" class="btn ml-2 col-3"
+                                style="background:#2c3e50;color:white;font-size:11px!important;text-align:center;"
                                 onclick="clear_reporting_neworder()">Clear</button> 
                             </div>
 

@@ -200,6 +200,9 @@
     border-radius: 2px !important;
     color: #fff !important;
 }
+.next-style i{
+    color:white!important;
+}
 
 .tab_style {
     border: 1px solid #1c71b0 !important;

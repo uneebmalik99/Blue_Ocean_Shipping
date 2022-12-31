@@ -25,6 +25,9 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
     border-top: none!important;
     border-bottom: none!important;
 }
+/* .loading_image_update .uploaded .uploaded-image img:hover{
+    transform: scale(8.5);
+} */
 </style>
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
@@ -70,9 +73,11 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
 
     <div class="bg-white rounded p-2">
         {{-- badges start --}}
-        <div class="d-flex m-2">
-            <div class="col-3 p-1" value="{{@$state}}" id="1" tab="Booked" onclick="fetchCustomers(this.id)" style="cursor: pointer;">
-                <div class="col-12 py-0 px-1">
+        <div class="d-flex m-2" style="width: 100%">
+            <div class="row"style="width:103%;margin-left:-18px">
+                <div class="col-lg-3 col-md-3 order-sm-12 col-12" value="{{@$state}}" id="1" tab="Booked" onclick="fetchCustomers(this.id)"style="margin-top: 10px;">
+          
+                <div class="col-12 py-0 px-0"style="margin-left: 13px">
                     <div class="col-12 border-style card-rounded py-2 px-3">
                         <div class="d-flex">
                             <div class="col-10 text-muted p-0 d-flex align-items-center">
@@ -99,8 +104,9 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
                     </div>
                 </div>
             </div>
-            <div class="col-3 p-1" value="{{@$state}}" id="2" tab="Shipped" onclick="fetchCustomers(this.id)" style="cursor: pointer;">
-                <div class="col-12 py-0 px-1">
+            <div class="col-lg-3 col-md-3 order-sm-12 col-12" value="{{@$state}}" id="2" tab="Shipped" onclick="fetchCustomers(this.id)" style="margin-top: 10px;margin-left:-21px">
+           
+                <div class="col-12 py-0 px-0" style="margin-left:21px">
                     <div class="col-12 border-style card-rounded py-2 px-3">
                         <div class="d-flex">
                             <div class="col-10 text-muted p-0 d-flex align-items-center">
@@ -126,8 +132,9 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
                     </div>
                 </div>
             </div>
-            <div class="col-3 p-1" value="{{@$state}}" id="3" tab="Arrived" onclick="fetchCustomers(this.id)" style="cursor: pointer;">
-                <div class="col-12 py-0 px-1">
+      
+            <div class="col-lg-3 col-md-3 order-sm-12 col-12" value="{{@$state}}" id="3" tab="Arrived" onclick="fetchCustomers(this.id)" style="margin-top: 10px;margin-left:9px">
+                <div class="col-12 py-0 px-0"margin-left:31px>
                     <div class="col-12 border-style card-rounded py-2 px-3">
                         <div class="d-flex">
                             <div class="col-10 text-muted p-0 d-flex align-items-center">
@@ -153,9 +160,9 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
                     </div>
                 </div>
             </div>
-            <div class="col-3 p-1" value="{{@$state}}" id="4" tab="Completed" onclick="fetchCustomers(this.id)"
-                style="cursor: pointer;">
-                <div class="col-12 py-0 px-1">
+            <div class="col-lg-3 col-md-3 order-sm-12 col-12" value="{{@$state}}" id="4" tab="Completed" onclick="fetchCustomers(this.id)"
+            style="margin-top: 10px;margin-left:-11px;">
+                <div class="col-12 py-0 px-0" margin-left:39px>
                     <div class="col-12 border-style card-rounded py-2 px-3">
                         <div class="d-flex">
                             <div class="col-10 text-muted p-0 d-flex align-items-center">
@@ -181,7 +188,7 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
                     </div>
                 </div>
             </div>
-
+        </div>
         </div>
         {{-- badges end --}}
 
@@ -224,7 +231,8 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
                                     </div>
                                 </a>
                             </div>
-                            <div class="col-5 px-0 d-flex justify-content-center">
+                            @role(['Super Admin','Sub Admin'])
+                            <div class="col-6-px-0 d-flex justify-content-center">
                                 <button type="button"
                                     class="text-white form-control-sm border py-1 btn-info rounded modal_button px-2 col-12"
                                     style="background: #2c3e50;" data-target="#exampleModal" id="shipment">
@@ -237,10 +245,11 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
                                                     fill="#FBFBFB" />
                                             </svg> --}}
                                             <i class="fas fa-shipping-fast"></i>
-                                            <span class="pl-2 font-size">Add New Shippment</span></a>
+                                            <span class=" pl-2 font-size">Add New Shippment</span></a>
                                     </div>
                                 </button>
                             </div>
+                            @endrole
                         </div>
                     </div>
                     {{-- <div>
@@ -248,11 +257,16 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
                             <b>Search Filter</b>
                         </span>
                     </div> --}}
+                    
                     <div class="d-flex py-3 px-0">
-                        <div class="col-3 p-0">
+                        <div class="row" style="width:100%;margin-left:18px">
+                        <div class="col-md-3 col-lg-3 col-sm-12 p-0">
                             <select
                                 class="form-control-sm border-style input-border-style rounded shipment_filtering col-11 text-muted px-2"
-                                name="port_of_loading" id="port_of_loading">
+                                name="port_of_loading" id="port_of_loading" style="
+                                width: 85%;margin-top: 22px;
+                            ">
+                             
                                 <option value="all" disabled selected>Port of Loading</option>
                                 <option value="all">All Ports</option>
                                 @foreach ($loading_port as $port)
@@ -261,9 +275,12 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
                                 {{-- <option value="2">Swiss</option> --}}
                             </select>
                         </div>
-                        <div class="col-3 p-0">
+                        <div class="col-md-3 col-lg-3 col-sm-12 p-0">
 
-                            <div class="input-group">
+                            <div class="input-group" style="
+                            width: 101%;margin-top: 22px;
+                        ">
+                         
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="loading_date"
                                         style="height: 31px!important;font-size:12px!important;background:white!important;">Loading</span>
@@ -288,8 +305,11 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
 
                             </select> --}}
                         </div>
-                        <div class="col-3 p-0">
-                            <div class="input-group">
+                        <div class="col-md-3 col-lg-3 col-sm-12 p-0">
+                            <div class="input-group"style="
+                            width: 105%;margin-top: 22px;
+                        ">
+                         
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="arrival_date"
                                         style="height: 31px!important;font-size:12px!important;background:white!important">Arrival</span>
@@ -300,10 +320,13 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
                                     required>
                             </div>
                         </div>
-                        <div class="col-3 p-0">
+                        <div class="col-md-3 col-lg-3 col-sm-12 p-0">
                             <select
                                 class="form-control-sm border-style input-border-style rounded shipment_filtering col-12 text-muted px-2"
-                                name="destination_port" id="destination_port">
+                                name="destination_port" id="destination_port"style="
+                                width: 85%;margin-top: 22px;
+                            ">
+                             
                                 <option value="all" disabled selected>Destination Port</option>
                                 <option value="all">All Ports</option>
                                 @foreach ($destination_port as $port)
@@ -313,10 +336,11 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
                         </div>
                     </div>
                 </div>
+            </div>
 
                 {{-- search filter end --}}
                 <div class="shipment_table_body">
-                    <table id="shipment_table" class="table row-border"
+                    <table id="shipment_table" class="row-border"
                         style="width:100%!important;overflow-x:scroll!important;">
                         <thead class="bg-custom">
                             <tr class="font-size">
@@ -424,13 +448,13 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
                         data: 'loading_date'
                     },
                     {
+                        data: 'cut_off_date'
+                    },
+                    {
                         data: 'sale_date'
                     },
                     {
                         data: 'est_arrival_date'
-                    },
-                    {
-                        data: 'ship_date'
                     },
                     {
                         data: 'shipper'
@@ -506,4 +530,7 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
             });
         </script>
     @endif
+
+
+   
 @endsection
