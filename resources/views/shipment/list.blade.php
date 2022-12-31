@@ -479,11 +479,14 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
             $('#shipment_table tbody').on('click', 'td.dt-control', function() {
                 var tr = $(this).closest('tr');
                 var row = table.row(tr);
+                
                 console.log(row.data()['vehicle']);
+
                 if (row.child.isShown()) {
                     row.child.hide();
                     tr.removeClass('dt-hasChild shown');
                 } else {
+                    
                     row.child(format(row.data()['vehicle'])).show();
                     tr.addClass('dt-hasChild shown');
                 }

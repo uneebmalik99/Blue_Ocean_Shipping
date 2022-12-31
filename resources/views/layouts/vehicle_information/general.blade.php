@@ -303,7 +303,7 @@
                 border-radius: 10px;width: 90%;margin:6px auto">
                     <span class="infromation_mainText">Customer Name</span>
                     @if (@$vehicle['customer_name'])
-                        <span class="information_text">{{ @$vehicle['customer_name'] }}</span>
+                        <span class="information_text">{{ @$vehicle['user']['name'] }}</span>
                     @else
                         <span class="information_text">--</span>
                     @endif

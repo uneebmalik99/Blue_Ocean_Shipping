@@ -1043,10 +1043,10 @@ class ShipmentController extends Controller
                 ->make(true);
         }
         if(Auth::user()->hasRole('Customer')){
-            $data['data'] = Shipment::with('vehicle')->where('customer_email', auth()->user()->email)->get()->toArray();
+            $data['data'] = Shipment::with('vehicle.user')->where('customer_email', auth()->user()->email)->get()->toArray();
         }
         else{
-            $data['data'] = Shipment::with('vehicle')->get()->toArray();
+            $data['data'] = Shipment::with('vehicle.user')->get()->toArray();
         }
         $action = ['action'=>''];
         array_push($data['data'], $action);
