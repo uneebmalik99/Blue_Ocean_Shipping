@@ -941,18 +941,18 @@ class ShipmentController extends Controller
             if($state != null){
                 if(Auth::user()->hasRole('Customer')){
 
-                    $data = Shipment::with('vehicle', 'customer.billings')->where('customer_email', auth()->user()->email)->where('loading_state', $state)->get();
+                    $data = Shipment::with('vehicle.user', 'customer.billings')->where('customer_email', auth()->user()->email)->where('loading_state', $state)->get();
                 }
                 else{
-                    $data = Shipment::with('vehicle', 'customer.billings')->where('loading_state', $state)->get();
+                    $data = Shipment::with('vehicle.user', 'customer.billings')->where('loading_state', $state)->get();
                 }
         }
         else{
             if(Auth::user()->hasRole('Customer')){
-                $data = Shipment::with('vehicle', 'customer.billings')->where('customer_email', auth()->user()->email)->get();
+                $data = Shipment::with('vehicle.user', 'customer.billings')->where('customer_email', auth()->user()->email)->get();
             }
             else{
-                $data = Shipment::with('vehicle', 'customer.billings')->get();
+                $data = Shipment::with('vehicle.user', 'customer.billings')->get();
             }
         }
 
@@ -1034,22 +1034,23 @@ class ShipmentController extends Controller
                                                     fill='#EF5757' />
                                             </svg>
                                         </a>
-                                    </button>
-                                    
-                                        ";
+                                    </button>";
                     return $btn;
                 })
                 ->rawColumns(['id','action','shipment_id', 'notes','select_consignee', 'shipper'])
                 ->make(true);
         }
         if(Auth::user()->hasRole('Customer')){
-            $data['data'] = Shipment::with('vehicle')->where('customer_email', auth()->user()->email)->get()->toArray();
+            $data['data'] = Shipment::with('vehicle.user')->where('customer_email', auth()->user()->email)->get()->toArray();
         }
         else{
-            $data['data'] = Shipment::with('vehicle')->get()->toArray();
+            $data['data'] = Shipment::with('vehicle.user')->get()->toArray();
         }
         $action = ['action'=>''];
         array_push($data['data'], $action);
+
+        dd($data);
+
         return $data;
     }
 
