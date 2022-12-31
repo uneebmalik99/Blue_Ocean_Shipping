@@ -125,7 +125,7 @@
     {{-- Modal End --}}
     <div class="container bg-light border">
         <div class="row">
-            <div class="d-flex m-2" style="
+            <div class="d-flex m-4" style="
             width: 94%;
             margin-right: 2px;">
                 <button class="text-center form-control border next-style reporting_cls " id="users">

@@ -73,11 +73,11 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
 
     <div class="bg-white rounded p-2">
         {{-- badges start --}}
-        <div class="d-flex m-2">
-            <div class="row"style="width:100%;margin-left:2px">
+        <div class="d-flex m-2" style="width: 100%">
+            <div class="row"style="width:103%;margin-left:-18px">
                 <div class="col-lg-3 col-md-3 order-sm-12 col-12" value="{{@$state}}" id="1" tab="Booked" onclick="fetchCustomers(this.id)"style="margin-top: 10px;">
           
-                <div class="col-12 py-0 px-1">
+                <div class="col-12 py-0 px-0"style="margin-left: 13px">
                     <div class="col-12 border-style card-rounded py-2 px-3">
                         <div class="d-flex">
                             <div class="col-10 text-muted p-0 d-flex align-items-center">
@@ -104,9 +104,9 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-3 order-sm-12 col-12" value="{{@$state}}" id="2" tab="Shipped" onclick="fetchCustomers(this.id)" style="margin-top: 10px;">
+            <div class="col-lg-3 col-md-3 order-sm-12 col-12" value="{{@$state}}" id="2" tab="Shipped" onclick="fetchCustomers(this.id)" style="margin-top: 10px;margin-left:-21px">
            
-                <div class="col-12 py-0 px-1">
+                <div class="col-12 py-0 px-0" style="margin-left:21px">
                     <div class="col-12 border-style card-rounded py-2 px-3">
                         <div class="d-flex">
                             <div class="col-10 text-muted p-0 d-flex align-items-center">
@@ -133,8 +133,8 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
                 </div>
             </div>
       
-            <div class="col-lg-3 col-md-3 order-sm-12 col-12" value="{{@$state}}" id="3" tab="Arrived" onclick="fetchCustomers(this.id)" style="margin-top: 10px;">
-                <div class="col-12 py-0 px-1">
+            <div class="col-lg-3 col-md-3 order-sm-12 col-12" value="{{@$state}}" id="3" tab="Arrived" onclick="fetchCustomers(this.id)" style="margin-top: 10px;margin-left:9px">
+                <div class="col-12 py-0 px-0"margin-left:31px>
                     <div class="col-12 border-style card-rounded py-2 px-3">
                         <div class="d-flex">
                             <div class="col-10 text-muted p-0 d-flex align-items-center">
@@ -161,8 +161,8 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 order-sm-12 col-12" value="{{@$state}}" id="4" tab="Completed" onclick="fetchCustomers(this.id)"
-            style="margin-top: 10px;">
-                <div class="col-12 py-0 px-1">
+            style="margin-top: 10px;margin-left:-11px;">
+                <div class="col-12 py-0 px-0" margin-left:39px>
                     <div class="col-12 border-style card-rounded py-2 px-3">
                         <div class="d-flex">
                             <div class="col-10 text-muted p-0 d-flex align-items-center">
@@ -259,12 +259,12 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
                     </div> --}}
                     
                     <div class="d-flex py-3 px-0">
-                        <div class="row" style="width:100%">
+                        <div class="row" style="width:100%;margin-left:18px">
                         <div class="col-md-3 col-lg-3 col-sm-12 p-0">
                             <select
                                 class="form-control-sm border-style input-border-style rounded shipment_filtering col-11 text-muted px-2"
                                 name="port_of_loading" id="port_of_loading" style="
-                                width: 74%;margin-top: 22px;
+                                width: 85%;margin-top: 22px;
                             ">
                              
                                 <option value="all" disabled selected>Port of Loading</option>
@@ -324,7 +324,7 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
                             <select
                                 class="form-control-sm border-style input-border-style rounded shipment_filtering col-12 text-muted px-2"
                                 name="destination_port" id="destination_port"style="
-                                width: 74%;margin-top: 22px;
+                                width: 85%;margin-top: 22px;
                             ">
                              
                                 <option value="all" disabled selected>Destination Port</option>

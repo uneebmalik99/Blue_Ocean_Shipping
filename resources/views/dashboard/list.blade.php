@@ -798,8 +798,8 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
 
 
 
-                        <div class="row">
-                            <div class="col-12 dispatched_vehicles">
+                        <div class="row" style="width:1071px">
+                            <div class="col-12 dispatched_vehicles" style="margin-left: -1px">
                                 <p>Shipments</p>
                             </div>
                         </div>

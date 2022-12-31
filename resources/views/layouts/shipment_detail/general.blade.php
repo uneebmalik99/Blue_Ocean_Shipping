@@ -1,5 +1,6 @@
 {{-- {{ dd($shipments) }} --}}
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 <style>
     #shipment_details thead th {
         position: sticky !important;
@@ -254,6 +255,17 @@
             margin-top: 50px;
   }
 }
+.left_button {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-size: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none !important;
+}
     
 </style>
 <!-- Modal -->
@@ -429,7 +441,7 @@
                             style="background: #1F689E; transform: skew(-30deg) !important;border:none;
                     border-radius: 4px;color:white;margin-right: 6px;font-size: 12px;">
                             <div style="transform: skew(30deg) !important;padding:1px 4px">
-                                <a href="{{ route('shipment_detail.shipment_Hazard_pdf', @$shipments[0]['id']) }}"
+                                <a onclick="Openpdf(this.id)" id="{{ @$shipments[0]['id'] }}"
                                     style="color:white;text-decoration:none;font-size: 12px;" target="_blank">Non Hazard
                                     Report</a>
                             </div>
@@ -599,10 +611,10 @@
 
                                 <div class="col-12">
                                     @if ($shipments[0]['loading_image'])
-                                        <div class="w-100  p-3" style="position: relative;">
+                                        <div class="w-100  p-2" style="position: relative;">
                                             <img src="{{ asset(@$shipments[0]['loading_image'][0]['name']) }}"
                                                 alt="" class="slide img_fluid mx-auto w-100 main_image"
-                                                style="height:auto!important;border-radius: 10px!important;"
+                                                style="height:200px!important; object-fit: fill;border-radius: 10px!important;width:auto%;"
                                                 id="main_image_box">
                                             <a class="bottom_button">
                                                 <svg width="39" height="0" viewBox="0 0 39 25"
@@ -639,7 +651,7 @@
                                                 </svg>
 
                                             </a>
-                                            <div class="left_button">
+                                            <div class="left_button p-2">
                                                 <a href="" style="text-decoration: none">
                                                     <svg width="23" height="22" viewBox="0 0 23 22"
                                                         fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -779,7 +791,7 @@
                     @if ($shipments[0]['loading_image'])
                         <div class="row mt-4">
                             <div class="col-12 d-flex justify-contjent-center ">
-                                <a id="{{@$shipments[0]['id']}}" onclick="downloadImages_zip(this.id)">
+                                <a id="{{ @$shipments[0]['id'] }}" onclick="downloadImages_zip(this.id)">
                                     <button
                                         style="background: #3e5871;cursor:pointer; border-radius: 6px;border:none;color:white;transform: skew(-30deg);">
                                         <div style="transform: skew(30deg);padding:1px 10px;font-size: 13px;">
@@ -987,7 +999,7 @@
 
         $.ajax({
             method: 'get',
-            url: '{{ route("shipment/downloadImages/zipfile") }}' +'/'+id,
+            url: '{{ route('shipment/downloadImages/zipfile') }}' + '/' + id,
             success: function(data) {
                 var zip = new JSZip();
                 var count = 0;
@@ -1016,4 +1028,18 @@
         });
     }
 
+
+  
+    function printthis(){
+        $("#thissection").printThis({
+            "debug": false,
+            "importCSS": true,
+            "importStyle": false,
+            "pageTitle": "NON HAZARDOUS MATERIAL",
+            "removeInline": false,
+            "printDelay": 200,
+            "header": null,
+            "formValues": true
+        });
+    }
 </script>

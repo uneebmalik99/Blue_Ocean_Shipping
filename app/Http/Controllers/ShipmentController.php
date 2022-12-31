@@ -533,12 +533,9 @@ class ShipmentController extends Controller
                         $get_vehicle->shipment_id = $data['id'];
                         $get_vehicle->update();
                     }
-
-
                     $shipment = Shipment::find($data['id']);
                     $shipment->update($data);
                 }
-
                 $data['shipment_id'] = $request->id;
                 $data['loading_images'] = Shipment::with('loading_image')->where('id', $request->id)->get()->toArray();
                 // dd($request->id);

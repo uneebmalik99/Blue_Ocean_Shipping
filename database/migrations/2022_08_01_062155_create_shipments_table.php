@@ -34,6 +34,7 @@ class CreateShipmentsTable extends Migration
             $table->string('xtn_number')->nullable();
             $table->string('oti_number')->nullable();
             $table->foreignId('select_consignee')->nullable()->constrained('user')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('notifier')->nullable()->constrained('user')->onUpdate('cascade')->onDelete('cascade');
             // $table->string('select_consignee')->nullable();
             $table->string('shipper')->nullable();
             $table->string('loading_terminal')->nullable();
@@ -58,8 +59,8 @@ class CreateShipmentsTable extends Migration
             $table->string('insurance')->nullable();
             $table->string('fmc_license_number')->nullable();
             $table->string('select_notify_party')->nullable();
-            $table->foreignId('status')->nullable()->constrained('shipment_statuses')->onUpdate('cascade')->onDelete('cascade');
-            // $table->string('status')->nullable();
+            // $table->foreignId('status')->nullable()->constrained('shipment_statuses')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('status')->nullable();
             $table->string('notes')->nullable();
             $table->timestamps();
             $table->softDeletes();
