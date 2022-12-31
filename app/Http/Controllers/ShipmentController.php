@@ -941,18 +941,18 @@ class ShipmentController extends Controller
             if($state != null){
                 if(Auth::user()->hasRole('Customer')){
 
-                    $data = Shipment::with('vehicle', 'customer.billings')->where('customer_email', auth()->user()->email)->where('loading_state', $state)->get();
+                    $data = Shipment::with('vehicle.user', 'customer.billings')->where('customer_email', auth()->user()->email)->where('loading_state', $state)->get();
                 }
                 else{
-                    $data = Shipment::with('vehicle', 'customer.billings')->where('loading_state', $state)->get();
+                    $data = Shipment::with('vehicle.user', 'customer.billings')->where('loading_state', $state)->get();
                 }
         }
         else{
             if(Auth::user()->hasRole('Customer')){
-                $data = Shipment::with('vehicle', 'customer.billings')->where('customer_email', auth()->user()->email)->get();
+                $data = Shipment::with('vehicle.user', 'customer.billings')->where('customer_email', auth()->user()->email)->get();
             }
             else{
-                $data = Shipment::with('vehicle', 'customer.billings')->get();
+                $data = Shipment::with('vehicle.user', 'customer.billings')->get();
             }
         }
 
@@ -1034,9 +1034,7 @@ class ShipmentController extends Controller
                                                     fill='#EF5757' />
                                             </svg>
                                         </a>
-                                    </button>
-                                    
-                                        ";
+                                    </button>";
                     return $btn;
                 })
                 ->rawColumns(['id','action','shipment_id', 'notes','select_consignee', 'shipper'])
@@ -1050,6 +1048,9 @@ class ShipmentController extends Controller
         }
         $action = ['action'=>''];
         array_push($data['data'], $action);
+
+        dd($data);
+
         return $data;
     }
 
