@@ -43,7 +43,7 @@
                                                         <div
                                                             class="d-flex align-items-center d-flex align-items-center form-control-sm border border-0 rounded-pill bg col-6">
                                                             
-                                                            <input type="text" class="col-8 general_input" name="ar_number" id="ar_number"
+                                                            <input type="text" class="col-7 general_input" name="ar_number" id="ar_number"
                                                                 value="{{ @$invoice[0]['ar_number'] }}">
                     
                                                             <a class="prefix text-dark px-2 getinf"

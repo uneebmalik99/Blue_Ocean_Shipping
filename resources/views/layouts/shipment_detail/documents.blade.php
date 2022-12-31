@@ -52,8 +52,8 @@
 
         .left_button {
             position: absolute;
-            top: 20px;
-            left: 20px;
+            top: 0px;
+            left: 0px;
             font-size: 10px;
             border: none;
             cursor: pointer;
@@ -515,10 +515,10 @@ a:not([href]):not([tabindex]) {
                                 
                                 <div class="col-12 main_image">
                                         @if ($shipments[0]['loading_image'])
-                                        <div class="w-100  p-3" style="position: relative;">
+                                        <div class="w-100  p-2" style="position: relative;">
                                             <img src="{{asset(@$shipments[0]['loading_image'][0]['name'])}}"
                                                 alt="" class="slide img_fluid mx-auto w-100 main_image"
-                                                style="height:230px !important;border-radius: 10px!important;" id="main_image_box">
+                                                style="height:200px!important; object-fit: fill;border-radius: 10px!important;width:auto%;" id="main_image_box">
                                             <a class="bottom_button">
                                                 <svg width="34" height="0" viewBox="0 0 39 25" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -555,7 +555,7 @@ a:not([href]):not([tabindex]) {
     
                                             </a>
     
-                                            <div class="left_button">
+                                            <div class="left_button p-2" style="top: 0%!important;left:0%!important">
                                                 <a href="" style="text-decoration: none">
                                                     <svg width="23" height="22" viewBox="0 0 23 22" fill="none"
                                                         xmlns="http://www.w3.org/2000/svg">
@@ -662,7 +662,7 @@ a:not([href]):not([tabindex]) {
                                             Not Found</p>
                                     @endif
                                     </div>
-                                <div class="image_section">
+                                <div class="image_section p-2">
 
                                     <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12 changeImages">
                                         @if (@$shipments[0]['loading_image'])
