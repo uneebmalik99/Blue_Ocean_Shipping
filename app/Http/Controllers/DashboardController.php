@@ -363,18 +363,18 @@ class DashboardController extends Controller
 
             if($state != null){
                 if(Auth::user()->hasRole('Customer')){
-                    $data = Shipment::with('vehicle')->where('customer_email', auth()->user()->email)->where('loading_state', $state)->get();
+                    $data = Shipment::with('vehicle.user')->where('customer_email', auth()->user()->email)->where('loading_state', $state)->get();
                 }
                 else{
-                    $data = Shipment::with('vehicle')->where('loading_state', $state)->get();
+                    $data = Shipment::with('vehicle.user')->where('loading_state', $state)->get();
                 }
         }
         else{
             if(Auth::user()->hasRole('Customer')){
-                $data = Shipment::with('vehicle')->where('customer_email', auth()->user()->email)->get();
+                $data = Shipment::with('vehicle.user')->where('customer_email', auth()->user()->email)->get();
             }
             else{
-                $data = Shipment::with('vehicle')->get();
+                $data = Shipment::with('vehicle.user')->get();
             }
         }
             return Datatables::of($data)

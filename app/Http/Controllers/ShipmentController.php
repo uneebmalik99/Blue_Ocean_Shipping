@@ -1099,11 +1099,11 @@ class ShipmentController extends Controller
         $data = [];
         if ($req->searchText) {
             if(Auth::user()->hasRole('Customer')){
-                $data['vehicles'] = Vehicle::where('added_by_user', auth()->user()->id)->where('vin', 'LIKE', '%' . $search_text . "%")->where('shipment_id', null)->whereshipment_status('0')->get()->toArray();
+                $data['vehicles'] = Vehicle::with('user')->where('added_by_user', auth()->user()->id)->where('vin', 'LIKE', '%' . $search_text . "%")->where('shipment_id', null)->whereshipment_status('0')->wherevehicle_active_shipment('0')->get()->toArray();
                 // dd($data['vehicles']);
 
             }else{
-                $data['vehicles'] = Vehicle::where('vin', 'LIKE', '%' . $search_text . "%")->where('shipment_id', null)->whereshipment_status('0')->get()->toArray();
+                $data['vehicles'] = Vehicle::with('user')->where('vin', 'LIKE', '%' . $search_text . "%")->where('shipment_id', null)->whereshipment_status('0')->wherevehicle_active_shipment('0')->get()->toArray();
                 // dd($data['vehicles']);
             }
                 
@@ -1124,13 +1124,13 @@ class ShipmentController extends Controller
         // return $req->id;
 
         $vehicle = Vehicle::find($req->id);
-        $vehicle->shipment_status = '1';
+        $vehicle->vehicle_active_shipment = '1';
         $vehicle->save();
 
 
         $data  = [];
 
-        $data['vehicles'] = Vehicle::where('id', $req->id)->get()->toArray();
+        $data['vehicles'] = Vehicle::with('user')->where('id', $req->id)->get()->toArray();
 
         // $data['records'] = $records;
         $output = view('layouts.shipment_filter.checkVehicle', $data)->render();
@@ -1144,6 +1144,7 @@ class ShipmentController extends Controller
 
         $vehicle = Vehicle::find($req->value);
         $vehicle->shipment_status = '0';
+        $vehicle->vehicle_active_shipment = '0';
         $vehicle->save();
 
 
@@ -1161,6 +1162,21 @@ class ShipmentController extends Controller
         }
 
 
+    }
+
+    public function closeModal(){
+        $vehicles = Vehicle::where('shipment_id', null)->get()->toArray();
+        if($vehicles){
+            foreach($vehicles as $vehicle){
+                
+                $vehicle['vehicle_active_shipment'] = '0';
+
+                // dd($vehicle);
+                Vehicle::whereid($vehicle['id'])->update($vehicle);
+            }
+        }
+        return true;
+        
     }
 
     public function export()

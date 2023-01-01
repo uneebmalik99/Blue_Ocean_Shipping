@@ -223,6 +223,7 @@ Route::prefix('/admin')->middleware(['auth','login.status'])->group(function () 
     Route::get('/shipment/pdf/{id?}', [pdfController::class, 'OpenPdf'])->name('shipment.pdf');
 
 
+    Route::get('/shipments/closeModal',                     [ShipmentController::class, 'closeModal'])->name('shipments.closeModal');
 
 
 
