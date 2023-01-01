@@ -781,6 +781,7 @@
                                             <i class="fa fa-download"></i> Download Images in Zip
                                         </div>
                                     </button>
+                                </a>
                             </div>
                         </div>
                     @endif
