@@ -48,8 +48,10 @@ class ShipmentUpdate extends Command
         $shipments = Shipment::all();
         foreach($shipments as $shipment){
             $days = (strtotime($shipment['est_arrival_date']) - strtotime($current_date)) / (60 * 60 * 24);
-
-            if($shipment['sale_date'] == $current_date){
+            if($current_date < $shipment['sale_date'] || $current_date < $shipment['export_date']){
+                DB::update('update shipments set status = ? where id = ?',[1,$shipment['id']]);
+            }
+            if($current_date >= $shipment['sale_date'] || $current_date >= $shipment['export_date']){
                 DB::update('update shipments set status = ? where id = ?',[2,$shipment['id']]);
             }
             if($days < 10){
