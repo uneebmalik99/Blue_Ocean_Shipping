@@ -1,6 +1,4 @@
-{{-- @if($shipments[0]['stamp_titles'])
-{{dd($shipments[0]['stamp_titles'])}}
-@endif --}}
+{{-- {{dd($shipments)}} --}}
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
@@ -54,8 +52,8 @@
 
         .left_button {
             position: absolute;
-            top: 0px;
-            left: 0px;
+            top: 20px;
+            left: 20px;
             font-size: 10px;
             border: none;
             cursor: pointer;
@@ -175,11 +173,7 @@
         user-select: none;
         -webkit-user-select: none;
     }
-    .icon {
-    width: 20px !important;
-    height: 22px !important;
-    background: #e93f7800 !important;
-}
+
     .prev {
         left: -8%;
         border-radius: 3px 0 0 3px;
@@ -248,142 +242,6 @@ a:not([href]):not([tabindex]) {
     text-decoration: none;
     color: white;
 }
-@media screen and (min-width: 1600px) {
-        .img_fluid {
-            height: 300px!important;
-            
-  }
-  .material-icons {
-    background-color: #65686c;
-    color: white;
-    border-radius: inherit;
-    margin-top: 22px!important;
-    margin-left: 15px!important;
-}
-.icon{
-background-color: #e93f7800!important;
-}
-}
-@media screen and (min-width: 1800px) {
-        .img_fluid {
-            height: 350px!important;
-            
-  }
-  .item_1{
-    width: 166px!important;
-    height: 112px!important;
-    
-  }
-  .material-icons {
-    background-color: #65686c;
-    color: white;
-    border-radius: inherit;
-    margin-top: 30px!important;
-    margin-left: 31px!important;
-}
-
-  .changeImages{
-    left:-2%!important;
-  }
-}
-@media screen and (min-width: 1920px) {
-        .img_fluid {
-            height: 350px!important;
-            
-  }
-  .item_1{
-    width: 182px!important;
-    height: 133px!important;
-   
-  }
-  .changeImages{
-    left:-2%!important;
-  }
-  .material-icons {
-    background-color: #65686c;
-    color: white;
-    border-radius: inherit;
-    margin-top: 23px!important;
-    margin-left: 25px!important;
-}
-
-
-@media screen and (min-width: 2160px) {
-        .img_fluid {
-            height: 350px!important;
-            
-  }
-  .item_1{
-    width: 290px!important;
-    height: 133px!important;
-   
-  }
-  .changeImages{
-    left:-2%!important;
-  }
-  .material-icons {
-    background-color: #65686c;
-    color: white;
-    border-radius: inherit;
-    margin-top: 30px!important;
-    margin-left: 40px!important;
-}
-
-}
-@media screen and (min-width: 2000px) {
-        .img_fluid {
-            height: 400px!important;
-            
-  }
-}
-@media screen and (min-width: 2200px) {
-        .img_fluid {
-            height: 450px!important;
-            
-  }
-}
-@media screen and (min-width: 2880px) {
-        .img_fluid {
-            height: 500px!important;
-            
-  }
-  .material-icons {
-    background-color: #65686c;
-    color: white;
-    border-radius: inherit;
-    margin-top: 43px!important;
-    margin-left: 80px!important;
-}
-
-}
-@media screen and (min-width: 4320px) {
-        .img_fluid {
-            height: 850px!important;
-            
-  }
-  .item_1{
-    width: 446px!important;
-    height: 262px!important;
-   
-  }
-  .changeImages{
-    left:-2%!important;
-  }
-}
-}
-@media screen and (min-width: 5760px) {
-        .img_fluid {
-            height: 1300px!important;
-            
-  }
-}
-@media screen and (min-width: 5760px) {
-        .img_fluid {
-            height: 1300px!important;
-            
-  }
-}
-
 </style>
 <div class="row my-5">
     <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
@@ -442,9 +300,10 @@ background-color: #e93f7800!important;
                             <h4>Documents</h4>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col-12">
-                            @if($shipments[0]['shipment_invoice'] || $shipments[0]['stamp_titles'] || $shipments[0]['other_documents'])
+                            @if ($shipments)
                                 <div class="d-flex justify-content-between "
                                     style="border: 1px solid rgba(26, 88, 133, 0.17); border-radius: 10px;width: 90%;margin:4px auto;padding:5px; ">
                                     <div class="w-100 ml-4">
@@ -607,11 +466,13 @@ background-color: #e93f7800!important;
                             @else
                                 <div class="text-center py-4 mb-2"
                                     style="border: 1px solid rgba(26, 88, 133, 0.17); border-radius: 10px;width: 90%;margin:4px auto;padding:5px;color:gray;">
-                                    Documents not found
+                                    No Found
                                 </div>
                             @endif
+
                         </div>
                     </div>
+
 
                 </div>
                 <div class="col-sm-12 col-md-7 col-lg-5 mb-4 mt-5">
@@ -650,13 +511,12 @@ background-color: #e93f7800!important;
 
                                 </div>
                                 {{-- {{asset(@$shipments[0]['loading_image'][0]['name'])}} --}}
-                                
-                                <div class="col-12 main_image">
-                                        @if ($shipments[0]['loading_image'])
-                                        <div class="w-100  p-2" style="position: relative;">
+                                @if($shipments)
+                                    <div class="col-12 main_image">
+                                        <div class="w-100  p-3" style="position: relative;">
                                             <img src="{{asset(@$shipments[0]['loading_image'][0]['name'])}}"
                                                 alt="" class="slide img_fluid mx-auto w-100 main_image"
-                                                style="height:200px; object-fit: fill;border-radius: 10px!important;width:auto;" id="main_image_box">
+                                                style="height:230px !important;border-radius: 10px!important;" id="main_image_box">
                                             <a class="bottom_button">
                                                 <svg width="34" height="0" viewBox="0 0 39 25" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -684,16 +544,16 @@ background-color: #e93f7800!important;
                                                                 in2="effect1_dropShadow_0_1" result="shape" />
                                                         </filter>
                                                     </defs>
-                                                    <div class="icon" style="float:right; background-color:#e93f7800;">
+                                                    <div class="icon" style="float:right;">
                                                 <i class="material-icons "
                                                             onclick="openModal();currentSlide(1)"
-                                                            style="background-color:#65686c;color:white;border-radius:inherit;margin-left:-21px">fullscreen</i>
+                                                            style="background-color:#65686c;color:white;border-radius:inherit">fullscreen</i>
                                             </div>
                                                 </svg>
     
                                             </a>
     
-                                            <div class="left_button p-2" style="top: 0%!important;left:0%!important">
+                                            <div class="left_button">
                                                 <a href="" style="text-decoration: none">
                                                     <svg width="23" height="22" viewBox="0 0 23 22" fill="none"
                                                         xmlns="http://www.w3.org/2000/svg">
@@ -794,19 +654,17 @@ background-color: #e93f7800!important;
                                                 </a>
                                             </div>
                                         </div>
-                                        @else
-                                        <p class="text-center py-5"
-                                            style="font-size: 22px;font-style: initial;margin-left: 115px;margin-top: 50px;">Image
-                                            Not Found</p>
-                                    @endif
                                     </div>
-                                <div class="image_section p-2">
+                                @else
+                                    <h6 class="text-center mt-5 w-100" style="color:gray">No Image Found</h6>
+                                @endif
+                                <div class="image_section">
 
-                                    <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12 changeImages">
+                                    <div class="col-11 mx-auto d-flex flex-wrap changeImages">
                                         @if (@$shipments[0]['loading_image'])
                                             @foreach (@$shipments[0]['loading_image'] as $img)
                                                 <img src="{{ asset($img['name']) }}" alt=""class="item_1"
-                                                    style="width:120px;height:80px;"
+                                                    style="width:120px!important;height:80px!important;"
                                                     onclick="showAsMainImage(this.src)">
                                             @endforeach
                                         @endif
@@ -823,9 +681,9 @@ background-color: #e93f7800!important;
                             <div class="col-12 d-flex justify-content-center ">
                                 <a href="#" id="download_all">
                                     <button
-                                        style="background: #3e5871;cursor:pointer; border-radius: 6px;border:none;color:white;transform: skew(-30deg);">
+                                        style="background: rgba(37, 101, 4, 0.72); border-radius: 6px;border:none;color:white;transform: skew(-30deg);">
                                         <div style="transform: skew(30deg);padding:1px 10px;font-size: 13px;">
-                                            <i class="fa fa-download"></i> Download Images in Zip
+                                            Download Images in Zip
                                         </div>
                                     </button>
                             </div>

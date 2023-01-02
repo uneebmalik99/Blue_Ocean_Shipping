@@ -189,7 +189,7 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="font-bold"><span class="px-1">{{ @$towing->count() }}</span>
+                                <div class="font-bold"><span class="px-1">${{ @$towing }}</span>
                                     {{-- <span class="percent_size">(-14%)</span> --}}
                                 </div>
                                 <div class="py-1 col-12 text-muted p-0 font-size">
@@ -214,7 +214,7 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="font-bold"><span class="px-1">$40,0000</span>
+                        <div class="font-bold"><span class="px-1">${{ @$inventory_value }}</span>
                                 </div>
                                 <div class="py-1 col-12 text-muted p-0 font-size">
                                     {{-- <span>Last week Analytics</span> --}}

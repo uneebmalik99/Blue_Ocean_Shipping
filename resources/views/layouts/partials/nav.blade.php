@@ -5,9 +5,6 @@
             <a class="mobile-menu" id="mobile-collapse" href="#!">
                 <i class="ti-menu"></i>
             </a>
-            {{-- <a class="mobile-search morphsearch-search" href="#">
-                <i class="ti-search"></i>
-            </a> --}}
             <a href="index.html">
                 <div class="d-flex align-items-end">
                     <img class="img-fluid" src="{{ asset('images/blueocean.png') }}" alt="Theme-Logo"
@@ -16,9 +13,7 @@
                         Blue Ocean Shipping
                     </span>
                 </div>
-
             </a>
-
             <a class="mobile-options">
                 <i class="ti-more"></i>
             </a>
@@ -31,13 +26,6 @@
                             <a href="javascript:void(0)"><i class="ti-menu"></i></a>
                         </div>
                     </li>
-                    {{-- <li>
-                        <div class="main-search morphsearch-search p-0">
-                            <a href="#">
-                                <i class="ti-search"></i>
-                            </a>
-                        </div>
-                    </li> --}}
                     <li>
                         <div>
                             <a href="#!" class="p-0" onclick="javascript:toggleFullScreen()">
@@ -66,59 +54,45 @@
                         </a>
                         <ul class="show-notification"
                             style="border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;">
-                            
-
                                 <li>
                                     @if(@$module['type'] == 'Customers')
                                     <a href="{{route('customer.changeState', 'ALL')}}" data-tab="{{@$module['type']}}" style="cursor:pointer;">
                                         ALL
                                     </a>
                                     @elseif (@$module['type'] == 'Vehicles')
-
                                     <a href="{{route('vehicle.changeState', 'ALL')}}" data-tab="{{@$module['type']}}"  style="cursor:pointer;">
                                         ALL
                                     </a>
-
                                     @elseif (@$module['type'] == 'Shipments')
-
                                     <a href="{{route('shipment.changeState', 'ALL')}}" data-tab="{{@$module['type']}}" style="cursor:pointer;">
                                         ALL
                                     </a>
-
                                     @elseif (@$module['type'] == 'Dashboard')
                                     <a href="{{route('dashboard.changeState', 'ALL')}}" data-tab="{{@$module['type']}}" style="cursor:pointer;">
                                         ALL
                                     </a>
-                                    {{-- @else --}}
                                     @endif
-                                </li>
-                        
+                                </li>                        
                             @foreach ($location as $locations)
                                 <li>
                                     @if(@$module['type'] == 'Customers')
-                                    <a href="{{route('customer.changeState', @$locations['state'])}}" data-tab="{{@$module['type']}}" style="cursor:pointer;">
-                                        {{ @$locations['state'] }}
+                                    <a href="{{route('customer.changeState', @$locations['name'])}}" data-tab="{{@$module['type']}}" style="cursor:pointer;">
+                                        {{ @$locations['name'] }}
                                     </a>
                                     @elseif (@$module['type'] == 'Vehicles')
-
-                                    <a href="{{route('vehicle.changeState', @$locations['state'])}}" data-tab="{{@$module['type']}}"  style="cursor:pointer;">
-                                        {{ @$locations['state'] }}
+                                    <a href="{{route('vehicle.changeState', @$locations['name'])}}" data-tab="{{@$module['type']}}"  style="cursor:pointer;">
+                                        {{ @$locations['name'] }}
                                     </a>
-
                                     @elseif (@$module['type'] == 'Shipments')
-
-                                    <a href="{{route('shipment.changeState', @$locations['state'])}}" data-tab="{{@$module['type']}}" style="cursor:pointer;">
-                                        {{ @$locations['state'] }}
+                                    <a href="{{route('shipment.changeState', @$locations['name'])}}" data-tab="{{@$module['type']}}" style="cursor:pointer;">
+                                        {{ @$locations['name'] }}
                                     </a>
-
                                     @elseif (@$module['type'] == 'Dashboard')
-                                    <a href="{{route('dashboard.changeState', @$locations['state'])}}" data-tab="{{@$module['type']}}" style="cursor:pointer;">
-                                        {{ @$locations['state'] }}
+                                    <a href="{{route('dashboard.changeState', @$locations['name'])}}" data-tab="{{@$module['type']}}" style="cursor:pointer;">
+                                        {{ @$locations['name'] }}
                                     </a>
                                     @else
-
                                     @endif
-
                                 </li>
                             @endforeach
                             {{-- <li>

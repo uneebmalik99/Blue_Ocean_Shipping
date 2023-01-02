@@ -137,5 +137,14 @@ class pdfController extends Controller
         $pdf = PDF::loadview('layouts.shipment_detail.shipment__Dock_pdf', $data);
         return $pdf->stream(); 
     }
+
+
+    public function OpenPdf($id){
+        $data = [];
+        $data['shipment']=Shipment::with('vehicle', 'customer.billings')->whereid($id)->get()->toArray();
+        $output = view('layouts.shipment_detail.shipment_Hazard_pdf', $data)->render();
+        // dd($output);
+        return Response($output);
+    }
     
 }

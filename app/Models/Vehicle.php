@@ -79,6 +79,11 @@ class Vehicle extends Model
         return $this->hasOne('App\Models\AuctionInvoice', 'vehicle_id', 'id');
     }
 
+    public function auction_copy()
+    {
+        return $this->hasOne('App\Models\AuctionCopy', 'vehicle_id', 'id');
+    }
+
     public function shipment()
     {
         return $this->belongsTo('App\Models\Shipment');

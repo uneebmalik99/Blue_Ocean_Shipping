@@ -499,6 +499,9 @@
             case ('shipment_units'):
                 $("#shipment_units_body").slideToggle();
                 break;
+            case ('towby'):
+                $("#towby_body").slideToggle();
+                break;
             case ('note'):
                 $("#note_body").slideToggle();
                 break;
@@ -2072,7 +2075,7 @@
         
         $.ajax({
             type: 'GET',
-            url: '{{ route('user.createUser') }}',
+            url: '{{ route('user.createuser') }}',
             success: function(data) {
                 $('.modal-body').html(data);
                 $('#exampleModal').modal('show');

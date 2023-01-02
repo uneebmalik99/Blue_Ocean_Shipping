@@ -460,7 +460,7 @@ background-color: #e93f7800!important;
                 border-radius: 10px;width: 90%;margin:6px auto">
                     <span class="infromation_mainText">Customer Name</span>
                     @if (@$vehicle['customer_name'])
-                        <span class="information_text">{{ @$vehicle['customer_name'] }}</span>
+                        <span class="information_text">{{ @$vehicle['user']['company_name'] }}</span>
                     @else
                         <span class="information_text">--</span>
                     @endif
@@ -835,7 +835,7 @@ background-color: #e93f7800!important;
 
                                 <div class="col-12 main_image">
                                     @if (@$vehicle['warehouse_image'])
-                                        <div class="w-100 p-2 " style="position: relative;">
+                                        <div class="w-100 p-2" style="position: relative;">
 
                                             <div>
                                                 <img src="{{ asset(@$vehicle['warehouse_image'][0]['name']) }}"
@@ -844,6 +844,7 @@ background-color: #e93f7800!important;
                                                     id="main_image_box" >
                                             </div>
 
+                                            <a class="bottom_button p-2">
                                             <a class="bottom_button p-2">
                                                 <svg width="34" height="0" viewBox="0 0 0 0" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -891,7 +892,7 @@ background-color: #e93f7800!important;
                                                 </svg>
 
                                             </a>
-                                            <div class="left_button p-2 ">
+                                            <div class="left_button p-2">
                                                 <a href="" style="text-decoration: none">
                                                     <svg width="23" height="22" viewBox="0 0 23 22"
                                                         fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1017,10 +1018,6 @@ background-color: #e93f7800!important;
                                         {{-- @endif --}}
                                     </div>
                                 </div>
-
-
-
-
                             </div>
                         </div>
                     </div>
@@ -1054,7 +1051,7 @@ background-color: #e93f7800!important;
             <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12"
                 style="width:100%!important;height:100%!important" id="slider_image">
     
-                <div class="mySlides" style="width:auto!important" id="slider_main">
+                <div class="mySlides" style="width:100%!important;height: 100%!important;" id="slider_main">
                     <img src="{{ asset(@$vehicle['warehouse_image'][0]['name']) }}" alt=""
                         style="width:100%!important;height: 100%!important;">
                         
@@ -1139,13 +1136,41 @@ background-color: #e93f7800!important;
     }
 
 
-    function download_all(tab){
+    async function download_all(tab){
        id = "{{ @$vehicle['id'] }}";
-       
-    //    alert(id);
-    //    alert(tab);
-
-        // alert(tab);
+       $.ajax({
+            method: 'post',
+            url: '{{ route("vehicle/downloadImages/zipfile") }}',
+            data:{
+                'id':id,
+                'tab':tab,
+            },
+            success: function(data) {
+                var zip = new JSZip();
+                var count = 0;
+                var zipFilename = "images_bundle.zip";
+                var images = data;
+                console.log(data);
+                images.forEach(async function(imgURL, i) {
+                    console.log(i)
+                    var filename = "image" + i + '.jpg'
+                    var image = await fetch(imgURL)
+                    var imageBlog = await image.blob()
+                    var img = zip.folder("images");
+                    img.file(filename, imageBlog, {
+                        binary: true
+                    });
+                    count++
+                    if (count == images.length) {
+                        zip.generateAsync({
+                            type: 'blob'
+                        }).then(function(content) {
+                            saveAs(content, zipFilename);
+                        });
+                    }
+                })
+            }
+        });
         
     }
 

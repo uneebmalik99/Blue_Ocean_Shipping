@@ -244,61 +244,74 @@ background-color: #e93f7800!important;
                 </filter>
                 </defs>
                 </svg>
-                
-        </a>
-        <br>
-        <a href="" style="text-decoration: none">
-            <svg width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="23" height="22" rx="5" fill="white" fill-opacity="0.3"/>
-                <g filter="url(#filter0_d_0_1)">
-                <path d="M14.8182 8.25L12.6364 10.5H14.2727C14.2727 12.3619 12.8055 13.875 11 13.875C10.4491 13.875 9.92545 13.7344 9.47273 13.4812L8.67636 14.3025C9.34727 14.7413 10.1436 15 11 15C13.4109 15 15.3636 12.9862 15.3636 10.5H17L14.8182 8.25ZM7.72727 10.5C7.72727 8.63812 9.19455 7.125 11 7.125C11.5509 7.125 12.0745 7.26562 12.5273 7.51875L13.3236 6.6975C12.6527 6.25875 11.8564 6 11 6C8.58909 6 6.63636 8.01375 6.63636 10.5H5L7.18182 12.75L9.36364 10.5H7.72727Z" fill="white"/>
-                </g>
-                <defs>
-                <filter id="filter0_d_0_1" x="1" y="4" width="20" height="17" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                <feOffset dy="2"/>
-                <feGaussianBlur stdDeviation="2"/>
-                <feComposite in2="hardAlpha" operator="out"/>
-                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.74 0"/>
-                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1"/>
-                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/>
-                </filter>
-                </defs>
-                </svg>
-                
-        </a>
-        <br>
-        <a href="{{asset(@$images[0]['name'])}}" download="{{@$images[0]['thumbnail']}}" style="text-decoration: none" id="download_image">
-            <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="23" height="22" rx="5" fill="white" fill-opacity="0.3"/>
-                <g filter="url(#filter0_d_0_1)">
-                <path d="M11 11.4L14 8.2H11.75V5H10.25V8.2H8L11 11.4ZM13.727 10.0912L12.8863 10.988L15.9342 12.2L11 14.1624L6.06575 12.2L9.11375 10.988L8.273 10.0912L5 11.4V14.6L11 17L17 14.6V11.4L13.727 10.0912Z" fill="white"/>
-                </g>
-                <defs>
-                <filter id="filter0_d_0_1" x="1" y="3" width="20" height="20" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                <feOffset dy="2"/>
-                <feGaussianBlur stdDeviation="2"/>
-                <feComposite in2="hardAlpha" operator="out"/>
-                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.53 0"/>
-                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1"/>
-                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/>
-                </filter>
-                </defs>
-                </svg>
-                
-        </a>
-    </div>
-</div>
 
-<script>
-    $('.showhide').css('display', 'block');
-</script>
+            </a>
+            <br>
+            <a href="" style="text-decoration: none">
+                <svg width="23" height="22" viewBox="0 0 23 22" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <rect width="23" height="22" rx="5" fill="white" fill-opacity="0.3" />
+                    <g filter="url(#filter0_d_0_1)">
+                        <path
+                            d="M14.8182 8.25L12.6364 10.5H14.2727C14.2727 12.3619 12.8055 13.875 11 13.875C10.4491 13.875 9.92545 13.7344 9.47273 13.4812L8.67636 14.3025C9.34727 14.7413 10.1436 15 11 15C13.4109 15 15.3636 12.9862 15.3636 10.5H17L14.8182 8.25ZM7.72727 10.5C7.72727 8.63812 9.19455 7.125 11 7.125C11.5509 7.125 12.0745 7.26562 12.5273 7.51875L13.3236 6.6975C12.6527 6.25875 11.8564 6 11 6C8.58909 6 6.63636 8.01375 6.63636 10.5H5L7.18182 12.75L9.36364 10.5H7.72727Z"
+                            fill="white" />
+                    </g>
+                    <defs>
+                        <filter id="filter0_d_0_1" x="1" y="4" width="20" height="17"
+                            filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                            <feColorMatrix in="SourceAlpha" type="matrix"
+                                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                            <feOffset dy="2" />
+                            <feGaussianBlur stdDeviation="2" />
+                            <feComposite in2="hardAlpha" operator="out" />
+                            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.74 0" />
+                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1" />
+                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1"
+                                result="shape" />
+                        </filter>
+                    </defs>
+                </svg>
+
+            </a>
+            <br>
+            <a href="{{ asset(@$images[0]['name']) }}" download="{{ @$images[0]['thumbnail'] }}"
+                style="text-decoration: none" id="download_image">
+                <svg width="23" height="23" viewBox="0 0 23 23" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <rect width="23" height="22" rx="5" fill="white" fill-opacity="0.3" />
+                    <g filter="url(#filter0_d_0_1)">
+                        <path
+                            d="M11 11.4L14 8.2H11.75V5H10.25V8.2H8L11 11.4ZM13.727 10.0912L12.8863 10.988L15.9342 12.2L11 14.1624L6.06575 12.2L9.11375 10.988L8.273 10.0912L5 11.4V14.6L11 17L17 14.6V11.4L13.727 10.0912Z"
+                            fill="white" />
+                    </g>
+                    <defs>
+                        <filter id="filter0_d_0_1" x="1" y="3" width="20" height="20"
+                            filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                            <feColorMatrix in="SourceAlpha" type="matrix"
+                                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                            <feOffset dy="2" />
+                            <feGaussianBlur stdDeviation="2" />
+                            <feComposite in2="hardAlpha" operator="out" />
+                            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.53 0" />
+                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1" />
+                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1"
+                                result="shape" />
+                        </filter>
+                    </defs>
+                </svg>
+
+            </a>
+        </div>
+    </div>
+
+    <script>
+        $('.showhide').css('display', 'block');
+    </script>
 @else
-<h6 class="text-center mt-5" style="color:gray">No Image Found</h6>
-<script>
-    $('.showhide').css('display', 'none');
-</script>
+    <h6 class="text-center mt-5" style="color:gray">No Image Found</h6>
+    <script>
+        $('.showhide').css('display', 'none');
+    </script>
 @endif

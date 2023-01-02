@@ -19,6 +19,7 @@ use App\Models\Vehicle;
 use App\Models\Country;
 use App\Models\Shipper;
 use App\Models\DCountry;
+use App\Models\Warehouse;
 use App\Models\ShipmentType;
 use App\Models\WarehouseImage;
 use App\Models\User;
@@ -66,7 +67,8 @@ class ShipmentController extends Controller
     {
         $data['notification'] = Notification::with('user')->paginate($this->perpage);
         // $data['location'] = Location::all()->toArray();
-        $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
+        // $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
+        $data['location'] = Warehouse::where('status', '1')->get()->toArray();
 
         // dd();
         if ($data['notification']->toArray()) {
@@ -247,6 +249,16 @@ class ShipmentController extends Controller
                 'page' => 'create',
             ],
         ];
+
+        $vehicles = Vehicle::where('shipment_id', null)->get()->toArray();
+        if($vehicles){
+            foreach($vehicles as $vehicle){
+                $vehicle['vehicle_active_shipment'] = '0';
+                Vehicle::whereid($vehicle['id'])->update($vehicle);
+            }
+        }
+
+
         $data['buyer_ids'] = User::with('billings')->get()->toArray();
         // dd($data['buyer_ids']);
         $notification = $this->Notification();
@@ -349,10 +361,19 @@ class ShipmentController extends Controller
                 'page' => 'create',
             ],
         ];
+
+        $vehicles = Vehicle::where('shipment_id', null)->get()->toArray();
+        if($vehicles){
+            foreach($vehicles as $vehicle){
+                $vehicle['vehicle_active_shipment'] = '0';
+                Vehicle::whereid($vehicle['id'])->update($vehicle);
+            }
+        }
+
+
         $data['buyer_ids'] = User::with('billings')->get()->toArray();
 
         $data['shipment'] = Shipment::with('vehicle', 'customer.billings')->where('id', $req->id)->get()->toArray();
-        // dd($data['shipment']);
         $data['shippers'] = ShipperName::where('status', '1')->get();
 
         $notification = $this->Notification();
@@ -531,12 +552,9 @@ class ShipmentController extends Controller
                         $get_vehicle->shipment_id = $data['id'];
                         $get_vehicle->update();
                     }
-
-
                     $shipment = Shipment::find($data['id']);
                     $shipment->update($data);
                 }
-
                 $data['shipment_id'] = $request->id;
                 $data['loading_images'] = Shipment::with('loading_image')->where('id', $request->id)->get()->toArray();
                 // dd($request->id);
@@ -676,6 +694,7 @@ class ShipmentController extends Controller
         $id = $request->id;
         $data = [];
         $data['shipments'] = Shipment::with('vehicle.warehouse_image', 'loading_image', 'shipment_invoice', 'stamp_titles','other_documents')->where('id', $request->id)->get()->toArray();
+        // dd($data['shipments']);
         if ($request->tab) {
             $tab = $request->tab;
             $output = view('layouts.shipment_detail.' . $tab, $data)->render();
@@ -941,24 +960,21 @@ class ShipmentController extends Controller
             if($state != null){
                 if(Auth::user()->hasRole('Customer')){
 
-                    $data = Shipment::with('vehicle', 'customer.billings')->where('customer_email', auth()->user()->email)->where('loading_state', $state)->get();
+                    $data = Shipment::with('vehicle.user', 'customer.billings')->where('customer_email', auth()->user()->email)->where('loading_state', $state)->get();
                 }
                 else{
-                    $data = Shipment::with('vehicle', 'customer.billings')->where('loading_state', $state)->get();
+                    $data = Shipment::with('vehicle.user', 'customer.billings')->where('loading_state', $state)->get();
                 }
         }
         else{
             if(Auth::user()->hasRole('Customer')){
-                $data = Shipment::with('vehicle', 'customer.billings')->where('customer_email', auth()->user()->email)->get();
+                $data = Shipment::with('vehicle.user', 'customer.billings')->where('customer_email', auth()->user()->email)->get();
             }
             else{
-                $data = Shipment::with('vehicle', 'customer.billings')->get();
+                $data = Shipment::with('vehicle.user', 'customer.billings')->get();
             }
         }
 
-     
-
-            
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('id', function($row){
@@ -982,6 +998,16 @@ class ShipmentController extends Controller
                 })
                 ->addColumn('shipper', function($row){
                     return strtoupper($row['shipper']);
+                })
+                ->addColumn('vin', function($row){
+                  
+                    return @$row['vehicle'][0]['vin'];
+
+                })
+                ->addColumn('lot', function($row){
+                  
+                    return @$row['vehicle'][0]['lot'];
+
                 })
                 ->addColumn('select_consignee', function($row){
                     $data['row'] = $row;
@@ -1034,23 +1060,23 @@ class ShipmentController extends Controller
                                                     fill='#EF5757' />
                                             </svg>
                                         </a>
-                                    </button>
-                                    
-                                        ";
+                                    </button>";
                     return $btn;
                 })
-                ->rawColumns(['id','action','shipment_id', 'notes','select_consignee', 'shipper'])
+                ->rawColumns(['id','action','shipment_id', 'notes','select_consignee', 'shipper', 'vin', 'lot'])
                 ->make(true);
         }
-        if(Auth::user()->hasRole('Customer')){
-            $data['data'] = Shipment::with('vehicle')->where('customer_email', auth()->user()->email)->get()->toArray();
-        }
-        else{
-            $data['data'] = Shipment::with('vehicle')->get()->toArray();
-        }
-        $action = ['action'=>''];
-        array_push($data['data'], $action);
-        return $data;
+        // if(Auth::user()->hasRole('Customer')){
+        //     $data['data'] = Shipment::with('vehicle.user')->where('customer_email', auth()->user()->email)->get()->toArray();
+        // }
+        // else{
+        //     $data['data'] = Shipment::with('vehicle.user')->get()->toArray();
+        // }
+        // $action = ['action'=>''];
+        // array_push($data['data'], $action);
+
+
+        // return $data;
     }
 
     public function filterShipmentt(Request $req)
@@ -1098,11 +1124,11 @@ class ShipmentController extends Controller
         $data = [];
         if ($req->searchText) {
             if(Auth::user()->hasRole('Customer')){
-                $data['vehicles'] = Vehicle::where('added_by_user', auth()->user()->id)->where('vin', 'LIKE', '%' . $search_text . "%")->where('shipment_id', null)->whereshipment_status('0')->get()->toArray();
+                $data['vehicles'] = Vehicle::with('user')->where('added_by_user', auth()->user()->id)->where('vin', 'LIKE', '%' . $search_text . "%")->where('shipment_id', null)->whereshipment_status('0')->wherevehicle_active_shipment('0')->get()->toArray();
                 // dd($data['vehicles']);
 
             }else{
-                $data['vehicles'] = Vehicle::where('vin', 'LIKE', '%' . $search_text . "%")->where('shipment_id', null)->whereshipment_status('0')->get()->toArray();
+                $data['vehicles'] = Vehicle::with('user')->where('vin', 'LIKE', '%' . $search_text . "%")->where('shipment_id', null)->whereshipment_status('0')->wherevehicle_active_shipment('0')->get()->toArray();
                 // dd($data['vehicles']);
             }
                 
@@ -1123,13 +1149,13 @@ class ShipmentController extends Controller
         // return $req->id;
 
         $vehicle = Vehicle::find($req->id);
-        $vehicle->shipment_status = '1';
+        $vehicle->vehicle_active_shipment = '1';
         $vehicle->save();
 
 
         $data  = [];
 
-        $data['vehicles'] = Vehicle::where('id', $req->id)->get()->toArray();
+        $data['vehicles'] = Vehicle::with('user')->where('id', $req->id)->get()->toArray();
 
         // $data['records'] = $records;
         $output = view('layouts.shipment_filter.checkVehicle', $data)->render();
@@ -1143,6 +1169,7 @@ class ShipmentController extends Controller
 
         $vehicle = Vehicle::find($req->value);
         $vehicle->shipment_status = '0';
+        $vehicle->vehicle_active_shipment = '0';
         $vehicle->save();
 
 
@@ -1160,6 +1187,21 @@ class ShipmentController extends Controller
         }
 
 
+    }
+
+    public function closeModal(){
+        $vehicles = Vehicle::where('shipment_id', null)->get()->toArray();
+        if($vehicles){
+            foreach($vehicles as $vehicle){
+                
+                $vehicle['vehicle_active_shipment'] = '0';
+
+                // dd($vehicle);
+                Vehicle::whereid($vehicle['id'])->update($vehicle);
+            }
+        }
+        return true;
+        
     }
 
     public function export()

@@ -1945,7 +1945,8 @@ class MasterController extends Controller
         ];
 
         $notification = $this->Notification();
-        $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
+        // $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
+        $data['location'] = Warehouse::where('status', '1')->get()->toArray();
         $data['importVehicles'] = ImportVehicle::orderByDesc('id')->get();
         $data['customers'] = User::role('Customer')->get()->toArray();
         $data['vehicles_cart'] = VehicleCart::with('vehicle')->get()->toArray();

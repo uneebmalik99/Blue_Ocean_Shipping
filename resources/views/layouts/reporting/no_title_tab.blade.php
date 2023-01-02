@@ -48,15 +48,18 @@
                     </select>
                 </div>
 
-                <div class="col-2 ml-3">
-                   <button type="button" class="btn" style="background:#2c3e50;color:white;font-size:11px!important;" id="{{ @$status }}" onclick="filter_vehicle_reporting(this.id)">Filter Vehicle</button>
+                <div class="col-4" style="margin-left:13px">
+                   <button type="button" class="btn col-5" style="background:#2c3e50;color:white;font-size:11px!important;" id="{{ @$status }}" onclick="filter_vehicle_reporting(this.id)">Search</button>
+                   <button  type="button" class="btn ml-2 col-3"
+                   style="background:#2c3e50;color:white;font-size:11px!important;"
+                   onclick="clear_reporting_notitle()">Clear</button>  
                 </div>
 
-                <div class="col-2 p-0">
+                {{-- <div class="col-2 p-0">
                     <button  type="button" class="btn"
                     style="background:#2c3e50;color:white;font-size:11px!important;"
                     onclick="clear_reporting_notitle()">Clear</button>  
-                </div>
+                </div> --}}
 
                 
             </div>

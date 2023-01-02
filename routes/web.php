@@ -61,7 +61,7 @@ Route::prefix('/admin')->middleware(['auth','login.status'])->group(function () 
     Route::get('/user/allroles',[App\Http\Controllers\UserController::class,'roles'])->name('user.allroles');
 
 
-    Route::get('/users/createUser',[App\Http\Controllers\UserController::class,'createUser'])->name('user.createUser');
+    Route::get('/users/createUser',[App\Http\Controllers\UserController::class,'createUser'])->name('user.createuser');
 
     // Customer Routes
     Route::get('/customers', [CustomerController::class, 'index'])->name('customer.list');
@@ -160,6 +160,9 @@ Route::prefix('/admin')->middleware(['auth','login.status'])->group(function () 
     Route::get('/vehicle/changeState/{state?}',       [VehicleController::class, 'changeState'])->name('vehicle.changeState');
 
 
+    Route::post('vehicle/downloadImages/zipfile',       [VehicleController::class, 'vehicleImages_zip'])->name('vehicle/downloadImages/zipfile');
+
+
 
     //Sticky Notes Routes
     Route::get('/stickynotes', [StickyController::class, 'index'])->name('sticky.list');
@@ -218,6 +221,10 @@ Route::prefix('/admin')->middleware(['auth','login.status'])->group(function () 
 
     Route::get('/invoice/records', [InvoiceController::class, 'serverside'])->name('invoice.records');
 
+    Route::get('/shipment/pdf/{id?}', [pdfController::class, 'OpenPdf'])->name('shipment.pdf');
+
+
+    Route::get('/shipments/closeModal',                     [ShipmentController::class, 'closeModal'])->name('shipments.closeModal');
 
 
 

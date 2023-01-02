@@ -376,9 +376,21 @@
         });
     }
 
+    function modalClose(){
+        $.ajax({
+            method: 'get',
+            url: '{{ route('shipments.closeModal') }}',
+            success: function(data) {
+                setTimeout(function () {
+                    $('#exampleModal').modal('hide');
+
+            }, 2000);
+            }
+        });
+    }
+
     function editShipment(id) {
         $id = id;
-
         $.ajax({
             method: 'POST',
             url: '{{ route('shipments.edit') }}',
@@ -433,4 +445,17 @@
             }
         });
     });
+
+
+    function Openpdf(id){
+        $.ajax({
+            type: 'get',
+            url: '{{ route("shipment.pdf") }}'+'/'+id,
+            success: function(data) {
+                // alert('kashif');
+                $('#exampleModal').modal('show');
+                $('.modal-body').html(data);
+            }
+        });
+    }
 </script>

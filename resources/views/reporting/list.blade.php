@@ -48,7 +48,7 @@
     ">
             {{-- badges start --}}
 
-            <div class="d-flex m-2 ml-3">
+            <div class="d-flex m-2 ml-3 px-3">
                 <button class="text-center form-control border next-style reporting_cls " id="new_order_tab"
                     onclick="change_reporting_tab(this.id)" style="margin-left: 25px">
                     <div class="unskew">NEW ORDER REPORT</div>
@@ -127,11 +127,13 @@
                                 </select>
                             </div>
 
-                            <div class="col-5" style="margin-left: 13px">
-                               <button type="button" class="btn col-5" style="background:#2c3e50;color:white;font-size:11px!important;" id="1" onclick="filter_vehicle_reporting(this.id)">Filter Vehicle</button>
-                               <button  type="button" class="btn ml-2 col-2"
-                                style="background:#2c3e50;color:white;font-size:11px!important;"
-                                onclick="clear_reporting_neworder()">Clear</button>
+                            <div class="col-4" style="margin-left:13px">
+                               
+                                <button type="button" class="btn col-5" style="background:#2c3e50;color:white;font-size:11px!important;" id="1" onclick="filter_vehicle_reporting(this.id)">Search</button>
+                                
+                                <button  type="button" class="btn ml-2 col-3"
+                                style="background:#2c3e50;color:white;font-size:11px!important;text-align:center;"
+                                onclick="clear_reporting_neworder()">Clear</button> 
                             </div>
 
                             {{-- <div class="col-2 p-0">
@@ -222,6 +224,8 @@
 
                 $('#on_hand_report').DataTable({
                     scrollX: true,
+                    bFilter: false,
+                    bInfo: false,
                     "lengthMenu": [
                         [50, 100, 500],
                         [50, 100, 500]
@@ -284,6 +288,8 @@
         <script>
             $('#dispatched_table').DataTable({
                 scrollX: true,
+                bFilter: false,
+                bInfo: false,
                 "lengthMenu": [
                     [50, 100, 500],
                     [50, 100, 500]
@@ -298,6 +304,8 @@
 
             $('#dispatch_report').DataTable({
                 scrollX: true,
+                bFilter: false,
+                bInfo: false,
                 "lengthMenu": [
                     [50, 100, 500],
                     [50, 100, 500]
@@ -350,6 +358,8 @@
                         $('#reporting_tabs').html(data);
                         $('#dispatch_report').DataTable({
                             scrollX: true,
+                            bFilter: false,
+                            bInfo: false,
                             "lengthMenu": [
                                 [50, 100, 500],
                                 [50, 100, 500]
@@ -384,6 +394,8 @@
 
                         $('#new_order_report').DataTable({
                             scrollX: true,
+                            bFilter: false,
+                            bInfo: false,
                             "lengthMenu": [
                                 [50, 100, 500],
                                 [50, 100, 500]
@@ -420,6 +432,8 @@
 
                         $('#onhand_report').DataTable({
                             scrollX: true,
+                            bFilter: false,
+                            bInfo: false,
                             "lengthMenu": [
                                 [50, 100, 500],
                                 [50, 100, 500]
@@ -457,6 +471,8 @@
 
                         $('#shipment_report').DataTable({
                             scrollX: true,
+                            bFilter: false,
+                            bInfo: false,
                             "lengthMenu": [
                                 [50, 100, 500],
                                 [50, 100, 500]
@@ -491,6 +507,8 @@
 
                         $('#notitle_report').DataTable({
                             scrollX: true,
+                            bFilter: false,
+                            bInfo: false,
                             "lengthMenu": [
                                 [50, 100, 500],
                                 [50, 100, 500]
