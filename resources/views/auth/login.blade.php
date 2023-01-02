@@ -216,8 +216,16 @@ text-transform: capitalize;
         </div> --}}
            
                 <div class="copyright">
-                    <p><h2>copyright@ 2022 all right reserved <br>
-                    Developed by <a href="https://therevolutiontechnologies.com/" target="__blank">The Revolution Technologies</h2></a></p>
+                    <p><h2>
+                      ECSAP Global Shipping 
+                      Wonkai K. Momolu
+                      1851 Edison Highway 
+                      Baltimore MD 21213
+                      wm@ecsapshipping.com  
+                    copyright@ 2022 all right reserved <br>
+                    Developed by <a href="https://therevolutiontechnologies.com/" target="__blank">The Revolution Technologies</h2></a>
+                    
+                  </p>
                 </div>
             </div>
 		</div>
