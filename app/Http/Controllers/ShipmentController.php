@@ -249,6 +249,16 @@ class ShipmentController extends Controller
                 'page' => 'create',
             ],
         ];
+
+        $vehicles = Vehicle::where('shipment_id', null)->get()->toArray();
+        if($vehicles){
+            foreach($vehicles as $vehicle){
+                $vehicle['vehicle_active_shipment'] = '0';
+                Vehicle::whereid($vehicle['id'])->update($vehicle);
+            }
+        }
+
+
         $data['buyer_ids'] = User::with('billings')->get()->toArray();
         // dd($data['buyer_ids']);
         $notification = $this->Notification();
@@ -351,10 +361,19 @@ class ShipmentController extends Controller
                 'page' => 'create',
             ],
         ];
+
+        $vehicles = Vehicle::where('shipment_id', null)->get()->toArray();
+        if($vehicles){
+            foreach($vehicles as $vehicle){
+                $vehicle['vehicle_active_shipment'] = '0';
+                Vehicle::whereid($vehicle['id'])->update($vehicle);
+            }
+        }
+
+
         $data['buyer_ids'] = User::with('billings')->get()->toArray();
 
         $data['shipment'] = Shipment::with('vehicle', 'customer.billings')->where('id', $req->id)->get()->toArray();
-        // dd($data['shipment']);
         $data['shippers'] = ShipperName::where('status', '1')->get();
 
         $notification = $this->Notification();
@@ -956,9 +975,6 @@ class ShipmentController extends Controller
             }
         }
 
-     
-
-            
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('id', function($row){
@@ -982,6 +998,16 @@ class ShipmentController extends Controller
                 })
                 ->addColumn('shipper', function($row){
                     return strtoupper($row['shipper']);
+                })
+                ->addColumn('vin', function($row){
+                  
+                    return @$row['vehicle'][0]['vin'];
+
+                })
+                ->addColumn('lot', function($row){
+                  
+                    return @$row['vehicle'][0]['lot'];
+
                 })
                 ->addColumn('select_consignee', function($row){
                     $data['row'] = $row;
@@ -1037,21 +1063,20 @@ class ShipmentController extends Controller
                                     </button>";
                     return $btn;
                 })
-                ->rawColumns(['id','action','shipment_id', 'notes','select_consignee', 'shipper'])
+                ->rawColumns(['id','action','shipment_id', 'notes','select_consignee', 'shipper', 'vin', 'lot'])
                 ->make(true);
         }
-        if(Auth::user()->hasRole('Customer')){
-            $data['data'] = Shipment::with('vehicle.user')->where('customer_email', auth()->user()->email)->get()->toArray();
-        }
-        else{
-            $data['data'] = Shipment::with('vehicle.user')->get()->toArray();
-        }
-        $action = ['action'=>''];
-        array_push($data['data'], $action);
+        // if(Auth::user()->hasRole('Customer')){
+        //     $data['data'] = Shipment::with('vehicle.user')->where('customer_email', auth()->user()->email)->get()->toArray();
+        // }
+        // else{
+        //     $data['data'] = Shipment::with('vehicle.user')->get()->toArray();
+        // }
+        // $action = ['action'=>''];
+        // array_push($data['data'], $action);
 
-        dd($data);
 
-        return $data;
+        // return $data;
     }
 
     public function filterShipmentt(Request $req)

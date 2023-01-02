@@ -29,12 +29,12 @@
         }
 
         /* .loading_image_update .uploaded .uploaded-image img:hover{
-        transform: scale(8.5);
-    } */
+                    transform: scale(8.5);
+                } */
     </style>
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
-        style="z-index:999999" >
+        style="z-index:999999">
         <div class="modal-dialog modal-fullscreen scrollable mw-100 m-2 px-3 py-2" role="document">
             <div class="modal-content">
                 <div class="modal-header d-flex justify-content-between title_style">
@@ -42,8 +42,8 @@
                         <h5 class="modal-title text-white" id="exampleModalLabel">New {{ $module['singular'] }}</h5>
                     </div>
                     <div>
-                        <button type="button" class="close text-white h6" data-dismiss="modal" aria-label="Close" onclick="modalClose()"
-                            style="margin-top: -11px;
+                        <button type="button" class="close text-white h6" data-dismiss="modal" aria-label="Close"
+                            onclick="modalClose()" style="margin-top: -11px;
                         font-size: 26px;">
                             <span aria-hidden="true">x</span>
                         </button>
@@ -241,7 +241,8 @@
                                     <div class="col-6-px-0 d-flex justify-content-center">
                                         <button type="button"
                                             class="text-white form-control-sm border py-1 btn-info rounded modal_button px-2 col-12"
-                                            style="background: #2c3e50;" data-target="#exampleModal" id="shipment"  data-backdrop="static" data-keyboard="false" >
+                                            style="background: #2c3e50;" data-target="#exampleModal" id="shipment"
+                                            data-backdrop="static" data-keyboard="false">
                                             <div class="d-flex justify-content-center align-items-center">
                                                 <a class="text-white d-flex align-items-center">
                                                     {{-- <svg width="18" height="24" viewBox="0 0 24 24" fill="none"
@@ -371,6 +372,8 @@
                                     <th class="font-bold-tr">P.O.D</th>
                                     <th class="font-bold-tr">BAL</th>
                                     <th class="font-bold-tr">ACTIONS</th>
+                                    <th>vin</th>
+                                    <th>lot</th>
                                 </tr>
                             </thead>
                             <tbody class="bg-white font-size" id="shipment_tbody">
@@ -404,16 +407,23 @@
                 var table = $('#shipment_table').DataTable({
                     processing: true,
                     serverSide: true,
+                    autoWidth: false,
                     responsive: {
                         details: {
                             type: 'column',
                             target: -1
                         }
                     },
-                    columnDefs: [{
+                    columnDefs: [
+                        {
                         orderable: false,
                         targets: '_all'
-                    }],
+                    },
+                    {
+                target: 17,
+                visible: false
+            },
+                ],
                     'scrollX': true,
                     "lengthMenu": [
                         [50, 100, 500],
@@ -482,11 +492,17 @@
                         {
                             data: 'action'
                         },
+                        {
+                            data: 'vin'
+                        },
+                        {
+                            data: 'lot'
+                        },
                     ],
                     order: [
                         [1, 'asc']
-                    ],
-                });
+                    ]
+                }).column(17).visible(false).column(18).visible(false);
                 $('#shipment_table tbody').on('click', 'td.dt-control', function() {
                     var tr = $(this).closest('tr');
                     var row = table.row(tr);
@@ -544,11 +560,11 @@
             </script>
         @endif
         <script>
-            $(document).ready(function () {
-    $('#exampleModal').modal({
-           backdrop: 'static',
-           keyboard: false
-    })
-   });
+            $(document).ready(function() {
+                $('#exampleModal').modal({
+                    backdrop: 'static',
+                    keyboard: false
+                })
+            });
         </script>
     @endsection
