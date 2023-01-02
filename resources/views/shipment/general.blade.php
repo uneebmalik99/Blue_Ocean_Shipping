@@ -81,7 +81,7 @@
                                             <td>{{ @$vehicle['title'] }}</td>
                                             <td>{{ @$vehicle['title_state'] }}</td>
                                             <td>{{ @$vehicle['title_number'] }}</td>
-                                            <td>{{ @$vehicle['customer_name'] }}</td>
+                                            <td>{{ @$vehicle['user']['company_name'] }}</td>
                                             <td class="text-center"><input type="checkbox" value="{{ @$vehicle['id'] }}"
                                                     id="{{ @$vehicle['id'] }}" tab="{{ @$vehicle['id'] }}"
                                                     name="vehicle[]" onclick="removerow(this.id)" checked></td>
