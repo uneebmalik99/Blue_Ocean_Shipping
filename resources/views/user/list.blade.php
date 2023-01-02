@@ -167,10 +167,13 @@
 
                 
                 <div class="main-box">
-                    <button class="float-right next-style reporting_cls" id="add_new_user"
+                    <div class="row mb-4  float-right">
+                        <button class="text-center form-control border next-style reporting_cls" id="add_new_user"
                         onclick="createUser()">
                         <div class="unskew">Add New User</div>
-                    </button>
+                        </button>
+                    </div>
+                    
                            
                    
                     <table class="table" id="table_id" style="border:none!important;">
