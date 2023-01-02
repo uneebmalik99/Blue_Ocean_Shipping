@@ -7,7 +7,8 @@
         outline: none;
         border: none;
         padding: 5px 10px;
-        float: right;
+        float: right!important;
+        margin-left: 1011px;
     }
 
     .showRole {
