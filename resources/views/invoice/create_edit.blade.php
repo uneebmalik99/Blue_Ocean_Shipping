@@ -123,7 +123,7 @@
                                                     <div class="d-flex align-items-center">
                                                         <label for="invoice_no"
                                                             class="col-6 px-0 font-size font-bold">Invoice#</label>
-                                                        <input type="text"
+                                                        <input type="text" required
                                                             class="form-control-sm border border-0 rounded-pill bg col-6"
                                                             name="invoice_no" id="invoice_no" value="{{ @$invoice[0]['invoice_no'] }}">
                                                     </div>
