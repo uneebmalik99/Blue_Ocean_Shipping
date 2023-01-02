@@ -61,6 +61,12 @@
 {{-- <script type="text/javascript" src="{{ asset('js/jquery-latest.min.js') }}"></script> --}}
 <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 
+
+{{-- printthis cdn --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/printThis/1.15.0/printThis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/printThis/1.15.0/printThis.js"></script>
+
+
 {{-- Pusher JS --}}
 <script>
     // Enable pusher logging - don't include this in production

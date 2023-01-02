@@ -425,7 +425,7 @@
                             style="background: #1F689E; transform: skew(-30deg) !important;border:none;
                     border-radius: 4px;color:white;margin-right: 6px;font-size: 12px;">
                             <div style="transform: skew(30deg) !important;padding:1px 4px">
-                                <a id="{{ @$shipments[0]['id'] }}" onclick="Openpdf(this.id)"
+                                <a id="non_hazard" onclick="Openpdf(this.id)"
                                     style="color:white;text-decoration:none;font-size: 12px;" target="_blank">Non Hazard
                                     Report</a>
                             </div>
@@ -435,7 +435,7 @@
                             style="background: #1F689E; transform: skew(-30deg) !important;border:none;
                     border-radius: 4px;color:white;margin-right: 6px;font-size: 12px;">
                             <div style="transform: skew(30deg) !important;padding:1px 4px">
-                                <a href="{{ route('shipment_detail.shipment_Houston_pdf', @$shipments[0]['id']) }}"
+                                <a id="houston" onclick="Openpdf(this.id)"
                                     style="color:white;text-decoration:none;font-size: 12px;" target="_blank">Houston
                                     Cover Letter</a>
                             </div>
@@ -449,7 +449,7 @@
                         style="background: #1F689E; transform: skew(-30deg) !important;border:none;
                     border-radius: 4px;color:white;margin-right: 6px;font-size: 12px;">
                         <div style="transform: skew(30deg) !important;padding:1px 4px">
-                            <a href="{{ route('shipment_detail.shipment_Landing_pdf', @$shipments[0]['id']) }}"
+                            <a id="bol" onclick="Openpdf(this.id)"
                                 style="color:white;text-decoration:none;font-size: 12px;" target="_blank">BOL</a>
                         </div>
                     </button>

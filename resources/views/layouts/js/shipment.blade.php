@@ -447,12 +447,18 @@
     });
 
 
-    function Openpdf(id){
+    function Openpdf(tab){
+
+        id = "{{ @$shipments[0]['id'] }}";
+
         $.ajax({
-            type: 'get',
-            url: '{{ route("shipment.pdf") }}'+'/'+id,
+            type: 'post',
+            url: '{{ route("shipment.pdf") }}',
+            data:{
+                'id':id,
+                'tab':tab
+            },
             success: function(data) {
-                // alert('kashif');
                 $('#exampleModal').modal('show');
                 $('.modal-body').html(data);
             }

@@ -13,7 +13,7 @@
                 <form method="POST" class="col-12" id="shipment_form">
                     @csrf
                     <div class="mt-2 bg-light" id="shipment_body">
-                        <table id="" class="table ">
+                        <table id="" class="table">
                             <thead class="bg-custom">
                                 <tr style="font-size: 11px!important">
                                     <th>YEAR</th>
@@ -56,9 +56,20 @@
                                 @endforeach --}}
                             </tbody>
                         </table>
-
-
                         <table class="table" style="background:lightgray;">
+                            <thead class="bg-custom d-none">
+                                <tr style="font-size: 11px!important">
+                                    <th>YEAR</th>
+                                    <th>MAKE</th>
+                                    <th>MODEL</th>
+                                    <th>VIN</th>
+                                    <th>TITLE</th>
+                                    <th>TITLE STATE</th>
+                                    <th>TITLE NUMBER</th>
+                                    <th>CUSTOMER</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
                             <tbody id="add_vehicles">
                                 @if (@$shipment)
                                     @foreach ($shipment[0]['vehicle'] as $vehicle)
@@ -89,7 +100,7 @@
                                             <td>{{ @$vehicle['vehicle']['title'] }}</td>
                                             <td>{{ @$vehicle['vehicle']['title_state'] }}</td>
                                             <td>{{ @$vehicle['vehicle']['title_number'] }}</td>
-                                            <td>{{ @$vehicle['vehicle']['customer_name'] }}</td>
+                                            <td>{{ @$vehicle['vehicle']['user']['company_name'] }}</td>
                                             <td class="text-center">
                                                 <input type="checkbox" value="{{ @$vehicle['vehicle']['id'] }}"
                                                     id="{{ @$vehicle['id'] }}" tab="{{ @$vehicle['id'] }}"

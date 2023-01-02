@@ -310,7 +310,7 @@ class ShipmentController extends Controller
             ],
         ];
 
-        $data['vehicle_cart'] = VehicleCart::with('vehicle')->get()->toArray();
+        $data['vehicle_cart'] = VehicleCart::with('vehicle.user')->get()->toArray();
         // dd($vehicle_cart);
         // $output['cart'] = view('layouts.shipment_filter.checkVehicle', $data)->render();
         // dd($data['vehicle_cart']);

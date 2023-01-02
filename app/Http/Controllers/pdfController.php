@@ -139,10 +139,22 @@ class pdfController extends Controller
     }
 
 
-    public function OpenPdf($id){
+    public function OpenPdf(Request $request){
         $data = [];
-        $data['shipment']=Shipment::with('vehicle', 'customer.billings')->whereid($id)->get()->toArray();
-        $output = view('layouts.shipment_detail.shipment_Hazard_pdf', $data)->render();
+        $output = [];
+
+        if($request->tab == 'non_hazard'){
+            $data['shipment']=Shipment::with('vehicle', 'customer.billings')->whereid($request->id)->get()->toArray();
+            $output = view('layouts.shipment_detail.shipment_Hazard_pdf', $data)->render();
+        }
+        else if($request->tab == 'houston'){
+            $data['shipment']=Shipment::with('vehicle', 'customer.billings')->whereid($request->id)->get()->toArray();
+            $output = view('layouts.shipment_detail.shipment_Houston_pdf', $data)->render();
+        }
+        else if($request->tab == 'bol'){
+            $data['shipment']=Shipment::with('vehicle', 'customer.billings')->whereid($request->id)->get()->toArray();
+            $output = view('layouts.shipment_detail.shipment__Landing_pdf', $data)->render();
+        }
         // dd($output);
         return Response($output);
     }

@@ -220,7 +220,7 @@ Route::prefix('/admin')->middleware(['auth','login.status'])->group(function () 
 
     Route::get('/invoice/records', [InvoiceController::class, 'serverside'])->name('invoice.records');
 
-    Route::get('/shipment/pdf/{id?}', [pdfController::class, 'OpenPdf'])->name('shipment.pdf');
+    Route::post('/shipment/pdf', [pdfController::class, 'OpenPdf'])->name('shipment.pdf');
 
 
     Route::get('/shipments/closeModal',                     [ShipmentController::class, 'closeModal'])->name('shipments.closeModal');
