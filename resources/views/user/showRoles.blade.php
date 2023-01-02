@@ -54,7 +54,7 @@
 {{-- Modal End --}}
 <div class="row">
     <div class="createRole d-flex justify-content-end">
-
+        
         <button style="cursor:pointer" onclick="createRole()">Create Role</button>
 
     </div>

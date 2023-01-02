@@ -1,5 +1,5 @@
 {{-- {{dd(@$roles)}} --}}
-<form method="POST">
+<form method="POST" id="roleform">
 <div class="container">
     <div class="row">
         <div class="col-12">
@@ -24,7 +24,7 @@
         </div>
         <div class="col-sm-10 col-md-6 mx-auto">
             <label for="description">Description</label>
-            <textarea type="text" rows="1" name="description" id="desscription" class="form-control"></textarea>
+            <textarea type="text" rows="1" name="description" id="description" class="form-control"></textarea>
         </div>
         <div class="col-sm-10 col-md-6 mx-auto">
             <label for="date">Date</label>

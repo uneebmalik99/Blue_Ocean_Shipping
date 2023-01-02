@@ -322,6 +322,7 @@ class UserController extends Controller
 
     public function addRoles(Request $req)
     {
+        
         $role = role::updateOrCreate(
             ['id' => $req->id],
             [

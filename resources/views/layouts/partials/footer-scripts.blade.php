@@ -811,10 +811,10 @@
         $.ajax({
             type: 'post',
             url: '{{ route('user.addRole') }}',
-            data: $('form').serialize(),
+            data: $('#roleform').serialize(),
             success: function(data) {
                 iziToast.success({
-                    title: 'Vehicle',
+                    title: 'Role',
                     message: data.name + " Added Successfully!",
                     position: 'topCenter',
                     zindex: '9999999999999',
