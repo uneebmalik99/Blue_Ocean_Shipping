@@ -458,7 +458,7 @@
                             style="background: #1F689E; transform: skew(-30deg) !important;border:none;
                     border-radius: 4px;color:white;margin-right: 6px;font-size: 12px;">
                             <div style="transform: skew(30deg) !important;padding:1px 4px">
-                                <a href="{{ route('shipment_detail.shipment_Custom_pdf', @$shipments[0]['id']) }}"
+                                <a id="us_custom" onclick="Openpdf(this.id)"
                                     style="color:white;text-decoration:none;font-size: 12px;" target="_blank">US
                                     Custom</a>
                             </div>
@@ -469,7 +469,7 @@
                         style="background: #1F689E; transform: skew(-30deg) !important;border:none;
                     border-radius: 4px;color:white;margin-right: 6px;font-size: 12px;">
                         <div style="transform: skew(30deg) !important;padding:1px 4px">
-                            <a href="{{ route('shipment_detail.shipment_Dock_pdf', @$shipments[0]['id']) }}"
+                            <a id="dock_receipt" onclick="Openpdf(this.id)"
                                 style="color:white;text-decoration:none;font-size: 12px;" target="_blank">DOCK
                                 RECEIPT</a>
                         </div>

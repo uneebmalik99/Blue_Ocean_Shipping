@@ -155,6 +155,14 @@ class pdfController extends Controller
             $data['shipment']=Shipment::with('vehicle', 'customer.billings')->whereid($request->id)->get()->toArray();
             $output = view('layouts.shipment_detail.shipment__Landing_pdf', $data)->render();
         }
+        else if($request->tab == 'us_custom'){
+            $data['shipment']=Shipment::with('vehicle', 'customer.billings')->whereid($request->id)->get()->toArray();
+            $output = view('layouts.shipment_detail.shipment__Custom_pdf', $data)->render();
+        }
+        else if($request->tab == 'dock_receipt'){
+            $data['shipment']=Shipment::with('vehicle', 'customer.billings')->whereid($request->id)->get()->toArray();
+            $output = view('layouts.shipment_detail.shipment__Dock_pdf', $data)->render();
+        }
         // dd($output);
         return Response($output);
     }
