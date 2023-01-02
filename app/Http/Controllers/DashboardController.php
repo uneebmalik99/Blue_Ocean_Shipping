@@ -400,6 +400,16 @@ class DashboardController extends Controller
                 ->addColumn('shipper', function($row){
                     return strtoupper($row['shipper']);
                 })
+                ->addColumn('vin', function($row){
+                  
+                    return @$row['vehicle'][0]['vin'];
+
+                })
+                ->addColumn('lot', function($row){
+                  
+                    return @$row['vehicle'][0]['lot'];
+
+                })
                 ->addColumn('select_consignee', function($row){
                     $data['row'] = $row;
                     if($row['customer']['billings'][0]['company_name'] != null){
@@ -446,7 +456,7 @@ class DashboardController extends Controller
                                         ";
                     return $btn;
                 })
-                ->rawColumns(['action','shipment_id', 'shipper', 'select_consignee'])
+                ->rawColumns(['action','shipment_id', 'shipper', 'select_consignee', 'vin', 'log'])
                 ->make(true);
         }
         if(Auth::user()->hasRole('Customer')){

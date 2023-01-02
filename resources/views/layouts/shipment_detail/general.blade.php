@@ -1033,26 +1033,29 @@ background-color: #e93f7800!important;
     style="color:red;z-index:999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;background-color:#000000db">
     <span class="close shipment_close_slider cursor" onclick="closeModal()">&times;</span>
     <div class="modal-content shipment_modal_content_slider">
-        <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12 "
-            style="width:104%!important;height:100%!important">
+        <div class="row">
 
-            <div class="mySlides" style="width:100%!important;margin-left: -15px">
-
-                <img src="{{ asset(@$shipments[0]['loading_image'][0]['name']) }}" alt=""
-                style="width: 104%!important;height: 100%;">
-
+            <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12 "
+                style="width:104%!important;height:100%!important">
+    
+                <div class="mySlides" style="width:100%!important;margin-left: -15px">
+    
+                    <img src="{{ asset(@$shipments[0]['loading_image'][0]['name']) }}" alt=""
+                    style="width: 104%!important;height: 100%;">
+    
+                </div>
+    
+                @if (@$shipments[0]['loading_image'])
+                    @foreach (@$shipments[0]['loading_image'] as $img)
+                        <div
+                            class="mySlides col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12"style="left:-2%;width:80%!important">
+                            <img src="{{ asset($img['name']) }}" alt=""
+                            style="width: 137%!important;height: 100%;margin-left: -15px;"
+                                onclick="openModal();currentSlide(1)">
+                        </div>
+                    @endforeach
+                @endif
             </div>
-
-            @if (@$shipments[0]['loading_image'])
-                @foreach (@$shipments[0]['loading_image'] as $img)
-                    <div
-                        class="mySlides col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12"style="left:-2%;width:80%!important">
-                        <img src="{{ asset($img['name']) }}" alt=""
-                        style="width: 137%!important;height: 100%;margin-left: -15px;"
-                            onclick="openModal();currentSlide(1)">
-                    </div>
-                @endforeach
-            @endif
         </div>
 
 

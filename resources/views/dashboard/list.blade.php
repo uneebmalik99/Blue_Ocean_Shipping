@@ -798,7 +798,7 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
 
 
 
-                        <div class="row" style="width:1071px">
+                        <div class="row" style="">
                             <div class="col-12 dispatched_vehicles" style="margin-left: -1px">
                                 <p>Shipments</p>
                             </div>
@@ -833,6 +833,8 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
                                             <th class="font-bold-tr">SHIPPER</th>
                                             {{-- <th class="font-bold-tr">ARRIVAL DAY</th> --}}
                                             <th class="font-bold-tr">Action</th>
+                                            <th>vin</th>
+                                            <th>lot</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1071,11 +1073,17 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
                         {
                             data: 'action'
                         },
+                        {
+                            data: 'vin'
+                        },
+                        {
+                            data: 'lot'
+                        },
                     ],
                     order: [
                         [1, 'asc']
                     ],
-                });
+                }).column(14).visible(false).column(15).visible(false);;
                 $('#dashboard_shipment tbody').on('click', 'td.dt-control', function() {
                     var tr = $(this).closest('tr');
                     var row = table.row(tr);
