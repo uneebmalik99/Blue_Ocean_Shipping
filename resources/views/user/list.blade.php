@@ -145,64 +145,33 @@
                 
 
             </div>
-            {{-- <div class="col-lg-12 col-md-12 col-12 w-100 d-flex justify-content-between align-items-center my-3">
+            <div class="col-lg-12 col-md-12 col-12 w-100 d-flex justify-content-between align-items-center my-3">
+                
+                
+                
                 <div>
                     
-                    
-                    <button class="text-center form-control border next-style reporting_cls " id="new_order_tab">
-                        <a href="{{ route('user.list') }}"><div class="unskew">Users</div></a>
-                    
-                    </button>
-                </div>
-                <div>
-                    
-                    <button class="text-center form-control border next-style reporting_cls " id="new_order_tab"
-                    onclick="showPermissions()">
-                    <div class="unskew">Permissions</div>
-                    </button>
-                </div>
-                <div>
-                    
-                    <button class="text-center form-control border next-style reporting_cls " id="new_order_tab"
-                    onclick="showRoles()">
-                    <div class="unskew">Roles</div>
-                    </button>
-                </div>
-                <div>
-                    <a href="{{ route('user.createRole') }}" class="btn text-white px-4"
-                        style="background: #5ee5f7;
-                    box-shadow: 0px 4px 4px rgba(241, 233, 233, 0.25);
-                    border-radius: 100px;font-size:12px"><i
-                            class="fa fa-plus" style="font-weight:400;"></i>Add Role</a>
 
 
-                    <button class="btn text-white mr-3"
-                        style="background: white;color:black!important;
-                    box-shadow: 0px 4px 4px rgba(241, 233, 233, 0.25);
-                    border-radius: 100px;font-size:12px;"><img
-                            src="{{ asset('assets/images/Flter.png') }}" alt="" style="width:12px;height:12px">
-                        Filter</button>
+                   
 
-                    <button onclick="createUser()" class="btn text-white px-4"
-                        style="background: #2B00D4;
-                    box-shadow: 0px 4px 4px rgba(241, 233, 233, 0.25);
-                    border-radius: 100px;font-size:12px"><i
-                            class="fa fa-plus" style="font-weight:400;"></i> New User</button>
+                    
 
                 </div>
-            </div> --}}
+            </div>
         </div>
-        <button class="float-right next-style reporting_cls" id="add_new_user"
-        onclick="createUser()">
-        <div class="unskew">Add New User</div>
-        </button>
+        
         <div class="row">
+            
             <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
 
                 
                 <div class="main-box">
-                    
-                       
+                    <button class="float-right next-style reporting_cls" id="add_new_user"
+                        onclick="createUser()">
+                        <div class="unskew">Add New User</div>
+                    </button>
+                           
                    
                     <table class="table" id="table_id" style="border:none!important;">
                       
@@ -222,6 +191,8 @@
                            @role(['Sub Admin','Super Admin'])
                                 <th>Action</th>
                             @endrole
+                            
+                                
                             
                             
                         </thead>
