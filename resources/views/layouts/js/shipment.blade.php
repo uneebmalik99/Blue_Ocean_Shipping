@@ -376,9 +376,21 @@
         });
     }
 
+    function modalClose(){
+        $.ajax({
+            method: 'get',
+            url: '{{ route('shipments.closeModal') }}',
+            success: function(data) {
+                setTimeout(function () {
+                    $('#exampleModal').modal('hide');
+
+            }, 2000);
+            }
+        });
+    }
+
     function editShipment(id) {
         $id = id;
-
         $.ajax({
             method: 'POST',
             url: '{{ route('shipments.edit') }}',
