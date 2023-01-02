@@ -167,7 +167,7 @@
 
                 
                 <div class="main-box">
-                    <div class="row mb-4  float-right">
+                    <div class="row mb-4  float-right" style="    margin-right: 12px;">
                         <button class="text-center form-control border next-style reporting_cls" id="add_new_user"
                         onclick="createUser()">
                         <div class="unskew">Add New User</div>
