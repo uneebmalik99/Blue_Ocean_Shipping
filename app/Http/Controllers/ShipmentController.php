@@ -373,7 +373,7 @@ class ShipmentController extends Controller
 
         $data['buyer_ids'] = User::with('billings')->get()->toArray();
 
-        $data['shipment'] = Shipment::with('vehicle', 'customer.billings')->where('id', $req->id)->get()->toArray();
+        $data['shipment'] = Shipment::with('vehicle.user', 'customer.billings')->where('id', $req->id)->get()->toArray();
         $data['shippers'] = ShipperName::where('status', '1')->get();
 
         $notification = $this->Notification();
