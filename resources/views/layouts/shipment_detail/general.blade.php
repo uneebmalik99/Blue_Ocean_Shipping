@@ -208,9 +208,7 @@
         top: 0;
     }
 
-    img {
-        margin-bottom: -4px;
-    }
+    
 
     .caption-container {
         text-align: center;
@@ -251,6 +249,159 @@
         text-decoration: none;
         color: white;
     }
+    @media screen and (max-width: 991px) {
+        .information_second_div {
+            margin-top: 50px;
+  }
+}
+@media screen and (min-width: 1600px) {
+        .img_fluid {
+            height: 300px!important;
+            
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 16px!important;
+    margin-left: 3px!important;
+}
+.icon{
+background-color: #e93f7800!important;
+}
+}
+@media screen and (min-width: 1800px) {
+        .img_fluid {
+            height: 350px!important;
+            
+  }
+  .item_1{
+    width: 166px!important;
+    height: 112px!important;
+    
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 22px!important;
+    margin-left: 17px!important;
+}
+
+  .changeImages{
+    left:-2%!important;
+  }
+}
+@media screen and (min-width: 1920px) {
+        .img_fluid {
+            height: 350px!important;
+            
+  }
+  .item_1{
+    width: 182px!important;
+    height: 133px!important;
+   
+  }
+  .changeImages{
+    left:-2%!important;
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 35px!important;
+    margin-left: 40px!important;
+}
+
+
+@media screen and (min-width: 2160px) {
+        .img_fluid {
+            height: 350px!important;
+            
+  }
+  .item_1{
+    width: 290px!important;
+    height: 133px!important;
+   
+  }
+  .changeImages{
+    left:-2%!important;
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 40px!important;
+    margin-left: 61px!important;
+}
+
+}
+@media screen and (min-width: 2000px) {
+        .img_fluid {
+            height: 400px!important;
+            
+  }
+}
+@media screen and (min-width: 2200px) {
+        .img_fluid {
+            height: 450px!important;
+            
+  }
+}
+@media screen and (min-width: 2880px) {
+        .img_fluid {
+            height: 500px!important;
+            
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 59px!important;
+    margin-left: 116px!important;
+}
+
+}
+@media screen and (min-width: 4320px) {
+        .img_fluid {
+            height: 850px!important;
+            
+  }
+  .item_1{
+    width: 446px!important;
+    height: 262px!important;
+   
+  }
+  .changeImages{
+    left:-2%!important;
+  }
+}
+}
+@media screen and (min-width: 5760px) {
+        .img_fluid {
+            height: 1300px!important;
+            
+  }
+}
+@media screen and (min-width: 5760px) {
+        .img_fluid {
+            height: 1300px!important;
+            
+  }
+}
+
+.left_button {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-size: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none !important;
+}
+    
 </style>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
@@ -598,7 +749,7 @@
                                         <div class="w-100 p-2" style="position: relative;">
                                             <img src="{{ asset(@$shipments[0]['loading_image'][0]['name']) }}"
                                                 alt="" class="slide img_fluid mx-auto w-100 main_image"
-                                                style="height:200px!important; object-fit: fill;border-radius: 10px!important;width:auto%;"
+                                                style="height:200px; object-fit: fill;border-radius: 10px!important;width:auto%;"
                                                 id="main_image_box">
                                             <a class="bottom_button p-2">
                                                 <svg width="39" height="0" viewBox="0 0 39 25"
@@ -631,7 +782,7 @@
                                                         </filter>
                                                     </defs>
                                                     <i class="material-icons" onclick="openModal();currentSlide(1)"
-                                                        style="background-color:#65686c;color:white;border-radius:inherit">fullscreen</i>
+                                                        style="background-color:#65686c;color:white;border-radius:inherit;">fullscreen</i>
                                                 </svg>
 
                                             </a>
@@ -758,7 +909,7 @@
                                             @foreach (@$shipments[0]['loading_image'] as $img)
                                                 <img src="{{ asset($img['name']) }}" alt="vehicle_img"
                                                     class="item_1 changeImage"
-                                                    style="width:120px!important;height:80px!important;"
+                                                    style="width:120px;height:80px;"
                                                     onclick="shipmentChangeImage(this.src)">
                                             @endforeach
                                         @endif
@@ -883,12 +1034,12 @@
     <span class="close shipment_close_slider cursor" onclick="closeModal()">&times;</span>
     <div class="modal-content shipment_modal_content_slider">
         <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12 "
-            style="left:-2%;width:auto!important;height:455px!important">
+            style="width:104%!important;height:100%!important">
 
-            <div class="mySlides" style="width:auto!important";>
+            <div class="mySlides" style="width:100%!important;margin-left: -15px">
 
                 <img src="{{ asset(@$shipments[0]['loading_image'][0]['name']) }}" alt=""
-                    style="width:800px!important;height: 455px!important;">
+                style="width: 104%!important;height: 100%;">
 
             </div>
 
@@ -897,7 +1048,7 @@
                     <div
                         class="mySlides col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12"style="left:-2%;width:80%!important">
                         <img src="{{ asset($img['name']) }}" alt=""
-                            style="width:137%!important;height: 455px!important;"
+                        style="width: 137%!important;height: 100%;margin-left: -15px;"
                             onclick="openModal();currentSlide(1)">
                     </div>
                 @endforeach

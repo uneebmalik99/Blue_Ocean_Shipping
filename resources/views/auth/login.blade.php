@@ -130,7 +130,7 @@ color: white;
 
 @media screen and (min-width:2500px){
 h1 {
-font-size:40px;
+font-size:30px;
 color: white;
 }
 }
@@ -138,7 +138,52 @@ color: white;
 
 @media screen and (min-width:2500px){
 h2 {
-font-size:54px;
+font-size:20px;
+text-transform: capitalize;
+        
+        color: #1F689E;
+}
+}
+@media screen and (min-width:2160px){
+h2 {
+font-size:16px;
+
+text-transform: capitalize;
+        
+        color: #1F689E;
+}
+}
+@media screen and (min-width:2320px){
+h2 {
+font-size:25px;
+
+text-transform: capitalize;
+        
+        color: #1F689E;
+}
+}
+@media screen and (min-width:2880px){
+h2 {
+font-size:20px;
+
+text-transform: capitalize;
+        
+        color: #1F689E;
+}
+}
+@media screen and (min-width:4320px){
+h2 {
+font-size:33px;
+
+text-transform: capitalize;
+        
+        color: #1F689E;
+}
+}
+@media screen and (min-width:5760px){
+h2 {
+font-size:43px;
+
 text-transform: capitalize;
         
         color: #1F689E;

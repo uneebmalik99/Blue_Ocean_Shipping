@@ -54,8 +54,8 @@
 
         .left_button {
             position: absolute;
-            top: 20px;
-            left: 20px;
+            top: 0px;
+            left: 0px;
             font-size: 10px;
             border: none;
             cursor: pointer;
@@ -175,7 +175,11 @@
         user-select: none;
         -webkit-user-select: none;
     }
-
+    .icon {
+    width: 20px !important;
+    height: 22px !important;
+    background: #e93f7800 !important;
+}
     .prev {
         left: -8%;
         border-radius: 3px 0 0 3px;
@@ -244,6 +248,142 @@ a:not([href]):not([tabindex]) {
     text-decoration: none;
     color: white;
 }
+@media screen and (min-width: 1600px) {
+        .img_fluid {
+            height: 300px!important;
+            
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 22px!important;
+    margin-left: 15px!important;
+}
+.icon{
+background-color: #e93f7800!important;
+}
+}
+@media screen and (min-width: 1800px) {
+        .img_fluid {
+            height: 350px!important;
+            
+  }
+  .item_1{
+    width: 166px!important;
+    height: 112px!important;
+    
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 30px!important;
+    margin-left: 31px!important;
+}
+
+  .changeImages{
+    left:-2%!important;
+  }
+}
+@media screen and (min-width: 1920px) {
+        .img_fluid {
+            height: 350px!important;
+            
+  }
+  .item_1{
+    width: 182px!important;
+    height: 133px!important;
+   
+  }
+  .changeImages{
+    left:-2%!important;
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 23px!important;
+    margin-left: 25px!important;
+}
+
+
+@media screen and (min-width: 2160px) {
+        .img_fluid {
+            height: 350px!important;
+            
+  }
+  .item_1{
+    width: 290px!important;
+    height: 133px!important;
+   
+  }
+  .changeImages{
+    left:-2%!important;
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 30px!important;
+    margin-left: 40px!important;
+}
+
+}
+@media screen and (min-width: 2000px) {
+        .img_fluid {
+            height: 400px!important;
+            
+  }
+}
+@media screen and (min-width: 2200px) {
+        .img_fluid {
+            height: 450px!important;
+            
+  }
+}
+@media screen and (min-width: 2880px) {
+        .img_fluid {
+            height: 500px!important;
+            
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 43px!important;
+    margin-left: 80px!important;
+}
+
+}
+@media screen and (min-width: 4320px) {
+        .img_fluid {
+            height: 850px!important;
+            
+  }
+  .item_1{
+    width: 446px!important;
+    height: 262px!important;
+   
+  }
+  .changeImages{
+    left:-2%!important;
+  }
+}
+}
+@media screen and (min-width: 5760px) {
+        .img_fluid {
+            height: 1300px!important;
+            
+  }
+}
+@media screen and (min-width: 5760px) {
+        .img_fluid {
+            height: 1300px!important;
+            
+  }
+}
+
 </style>
 <div class="row my-5">
     <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
@@ -513,10 +653,10 @@ a:not([href]):not([tabindex]) {
                                 
                                 <div class="col-12 main_image">
                                         @if ($shipments[0]['loading_image'])
-                                        <div class="w-100  p-3" style="position: relative;">
+                                        <div class="w-100  p-2" style="position: relative;">
                                             <img src="{{asset(@$shipments[0]['loading_image'][0]['name'])}}"
                                                 alt="" class="slide img_fluid mx-auto w-100 main_image"
-                                                style="height:230px !important;border-radius: 10px!important;" id="main_image_box">
+                                                style="height:200px; object-fit: fill;border-radius: 10px!important;width:auto;" id="main_image_box">
                                             <a class="bottom_button">
                                                 <svg width="34" height="0" viewBox="0 0 39 25" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -544,16 +684,16 @@ a:not([href]):not([tabindex]) {
                                                                 in2="effect1_dropShadow_0_1" result="shape" />
                                                         </filter>
                                                     </defs>
-                                                    <div class="icon" style="float:right;">
+                                                    <div class="icon" style="float:right; background-color:#e93f7800;">
                                                 <i class="material-icons "
                                                             onclick="openModal();currentSlide(1)"
-                                                            style="background-color:#65686c;color:white;border-radius:inherit">fullscreen</i>
+                                                            style="background-color:#65686c;color:white;border-radius:inherit;margin-left:-21px">fullscreen</i>
                                             </div>
                                                 </svg>
     
                                             </a>
     
-                                            <div class="left_button">
+                                            <div class="left_button p-2" style="top: 0%!important;left:0%!important">
                                                 <a href="" style="text-decoration: none">
                                                     <svg width="23" height="22" viewBox="0 0 23 22" fill="none"
                                                         xmlns="http://www.w3.org/2000/svg">
@@ -660,13 +800,13 @@ a:not([href]):not([tabindex]) {
                                             Not Found</p>
                                     @endif
                                     </div>
-                                <div class="image_section">
+                                <div class="image_section p-2">
 
                                     <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12 changeImages">
                                         @if (@$shipments[0]['loading_image'])
                                             @foreach (@$shipments[0]['loading_image'] as $img)
                                                 <img src="{{ asset($img['name']) }}" alt=""class="item_1"
-                                                    style="width:120px!important;height:80px!important;"
+                                                    style="width:120px;height:80px;"
                                                     onclick="showAsMainImage(this.src)">
                                             @endforeach
                                         @endif

@@ -47,20 +47,156 @@
             border-radius: 5px;
             text-align: center;
             text-decoration: none !important;
-        }
+        }}
+        @media screen and (min-width: 1600px) {
+        .img_fluid {
+            height: 300px!important;
+            
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 16px!important;
+    margin-left: 9px!important;
+}
+.icon{
+background-color: #e93f7800!important;
+}
+}
+@media screen and (min-width: 1800px) {
+        .img_fluid {
+            height: 350px!important;
+            
+  }
+  .item_1{
+    width: 166px!important;
+    height: 112px!important;
+    
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 23px!important;
+    margin-left: 23px!important;
+}
+
+  .changeImages{
+    left:-2%!important;
+  }
+}
+@media screen and (min-width: 1920px) {
+        .img_fluid {
+            height: 350px!important;
+            
+  }
+  .item_1{
+    width: 182px!important;
+    height: 133px!important;
+   
+  }
+  .changeImages{
+    left:-2%!important;
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 22px!important;
+    margin-left: 28px!important;
+}
+
+
+@media screen and (min-width: 2160px) {
+        .img_fluid {
+            height: 350px!important;
+            
+  }
+  .item_1{
+    width: 290px!important;
+    height: 133px!important;
+   
+  }
+  .changeImages{
+    left:-2%!important;
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 30px!important;
+    margin-left: 44px!important;
+}
+
+}
+@media screen and (min-width: 2000px) {
+        .img_fluid {
+            height: 400px!important;
+            
+  }
+}
+@media screen and (min-width: 2200px) {
+        .img_fluid {
+            height: 450px!important;
+            
+  }
+}
+@media screen and (min-width: 2880px) {
+        .img_fluid {
+            height: 500px!important;
+            
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 41px!important;
+    margin-left: 87px!important;
+}
+
+}
+@media screen and (min-width: 4320px) {
+        .img_fluid {
+            height: 850px!important;
+            
+  }
+  .item_1{
+    width: 446px!important;
+    height: 262px!important;
+   
+  }
+  .changeImages{
+    left:-2%!important;
+  }
+}
+}
+@media screen and (min-width: 5760px) {
+        .img_fluid {
+            height: 1300px!important;
+            
+  }
+}
+@media screen and (min-width: 5760px) {
+        .img_fluid {
+            height: 1300px!important;
+            
+  }
+}
 
         .left_button {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 10px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            text-align: center;
-            text-decoration: none !important;
-        }
-    }
+    position: absolute;
+    top: 0px!important;
+    left: 0px!important;
+    font-size: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none !important;
+}
+
+
 
     img {
         vertical-align: middle;
@@ -202,9 +338,7 @@
         top: 0;
     }
 
-    img {
-        margin-bottom: -4px;
-    }
+   
 
     .caption-container {
         text-align: center;
@@ -245,19 +379,21 @@
         text-decoration: none;
         color: white;
     }
+}
+
 </style>
 <div class="row my-5">
     <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
         <div class="information_second_div">
             <div class="row" style="padding-bottom:60px">
-                <div class="col-sm-12 col-md-5 col-lg-7 mx-auto mb-4">
+                <div class="col-sm-12 col-md-4 col-lg-5 mx-auto mb-4">
                     <div class="row">
                         <div class="col-12">
                             <h4>Documents</h4>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-9 ml-3">
+                        <div class="col-12 ">
 
                             <div class="d-flex justify-content-between "
                                 style="border: 1px solid rgba(26, 88, 133, 0.17); border-radius: 10px;width: 90%;margin:4px auto;padding:5px;  ">
@@ -435,20 +571,20 @@
 
 
                 </div>
-                <div class="col-sm-12 col-md-5 col-lg-5 mb-5 mt-5">
+                <div class="col-sm-12 col-md-5 col-lg-5 mb-5 mt-5" style="margin-right:12px">
                     <div class="information_gallary" style="width:100%">
                         <div class="gallary_header d-flex">
                             <div class="row">
                                 <div class="col-12">
                                     <div class="w-100">
-                                        <div class="d-flex" style="width:99%">
-                                            <button class="img_active_button img_btn col-sm-12 col-md-4 col-lg-4 mb-3"
+                                        <div class="d-flex " style="width:99%">
+                                            <button class="img_active_button img_btn col-sm-4 col-md-4 col-lg-4 mb-3"
                                             onclick="changeImages(this.id)" tab=" {{ @$vehicle['id'] }}"
                                             id="warehouse_images"
                                             style="color:black;background-color:337fb8;font-size: 12px !important;border-top-left-radius: 8px;font-weight:600;height:41px;">Ware
                                             House Image
                                         </button>
-                                    <button class="image_button img_btn col-sm-12 col-md-4 col-lg-4 mb-4"
+                                    <button class="image_button img_btn col-sm-4 col-md-4 col-lg-4 mb-4"
                                         style="color:black;background-color: #337fb8;font-size:12px!important; border:#e9e9e9;font-weight:600;height:41px;"
                                         id="vehicle_images" onclick="changeImages(this.id)"
                                         tab="{{ @$vehicle['id'] }}">
@@ -469,16 +605,16 @@
                                 <div class="col-12 main_image">
                                         @if (@$vehicle['warehouse_image'])
 
-                                        <div class="w-100  " style="position: relative;">
+                                        <div class="w-100 p-1  " style="position: relative;">
 
-                                            <div style="width: 97%;left: 2%;margin-left: 7px;}">
+                                            <div style="width: 100%">
                                                 <img src="{{ asset(@$vehicle['warehouse_image'][0]['name']) }}"
                                                     alt=""class="img_fluid mx-auto w-100"
-                                                    style="height:auto!important;border-radius: 10px!important;"
+                                                    style="height:200px; object-fit: fill;border-radius: 10px!important;width:auto;"
                                                     id="main_image_box">
                                             </div>
 
-                                            <a class="bottom_button">
+                                            <a class="bottom_button p1">
                                                 <svg width="34" height="0" viewBox="0 0 0 0" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <rect width="0" height="0" rx="0"
@@ -522,7 +658,7 @@
 
                                             </a>
 
-                                            <div class="left_button">
+                                            <div class="left_button p-1 " style="top:0%!important;left:0%!important">
                                                 <a href="" style="text-decoration: none">
                                                     <svg width="23" height="22" viewBox="0 0 23 22"
                                                         fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -644,7 +780,7 @@
                                             @foreach (@$vehicle['warehouse_image'] as $img)
                                                 <img src="{{ asset($img['name']) }}" alt=""class="item_1"
                                                     class="showMainImage"
-                                                    style="width:120px!important;height:80px!important;"
+                                                    style="width:120px;height:80px;"
                                                     onclick="showAsMainImage(this.src)" class="hover-shadow cursor">
                                             @endforeach
                                         @endif

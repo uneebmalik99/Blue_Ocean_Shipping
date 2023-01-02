@@ -322,6 +322,7 @@ class UserController extends Controller
 
     public function addRoles(Request $req)
     {
+        
         $role = role::updateOrCreate(
             ['id' => $req->id],
             [
@@ -366,11 +367,12 @@ class UserController extends Controller
     }
     public function createUser(Request $req){
         $data['roles'] = role::get();
-        $output = view('user.createUser',$data)->render();
+        $output = view('user.createuser',$data)->render();
         return Response($output);
     }
     public function addUsers(Request $req){
         $role = role::where('id',$req['role_id'])->select('name')->first();
+        
         
         $user = User::updateOrCreate(
             ['id' => $req->id],

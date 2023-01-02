@@ -108,4 +108,16 @@ class StickyController extends Controller
         }
         return Response($output);
     }
+    public function delete(Request $request){
+        $id  = $request->id;
+        if(empty($id)){
+            $output = "Output is not set";
+            return Response(($output));
+        }
+        $isdelete = Sticky::where('sticky_id',$id)->delete();
+        if($isdelete){
+            $output = "Deleted";
+            return Response($output);
+        }
+    }
 }

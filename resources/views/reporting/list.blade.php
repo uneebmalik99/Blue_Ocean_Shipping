@@ -42,12 +42,15 @@
 
 
         {{-- customer design implementation --}}
-        <div class="bg-white rounded p-2">
+        <div class="bg-white rounded p-2"style="
+        width: 100%;
+        
+    ">
             {{-- badges start --}}
 
             <div class="d-flex m-2 ml-3 px-3">
                 <button class="text-center form-control border next-style reporting_cls " id="new_order_tab"
-                    onclick="change_reporting_tab(this.id)">
+                    onclick="change_reporting_tab(this.id)" style="margin-left: 25px">
                     <div class="unskew">NEW ORDER REPORT</div>
                 </button>
                 <button class="text-center form-control border tab_style reporting_cls " id="dispatch_tab"
@@ -63,7 +66,7 @@
                     <div class="unskew">SHIPMENT REPORT</div>
                 </button>
                 <button class="text-center form-control border tab_style reporting_cls " id="no_title_tab"
-                    onclick="change_reporting_tab(this.id)">
+                    onclick="change_reporting_tab(this.id)" style="margin-right: 17px;">
                     <div class="unskew">NO TITLE REPORT</div>
                 </button>
 
@@ -87,7 +90,9 @@
 
                         </div>
                         <form id="filter_vehicle_reporting">
-                        <div class="d-flex py-3 px-0">
+                        <div class="d-flex py-3 px-0"style="
+                        width: 108%;
+                    ">
                             <div class="col-2 p-0">
                                 <select class="form-control-sm border-style input-border-style rounded col-11 text-muted px-2" name="location" id="location">
                                     <option selected disabled>Select Location</option>

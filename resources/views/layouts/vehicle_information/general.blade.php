@@ -69,6 +69,155 @@
             text-decoration: none !important;
         }
     }
+    @media screen and (max-width: 991px) {
+        .information_second_div {
+            margin-top: 248px;
+  }
+}
+@media screen and (max-width: 991px) {
+        ..information_button {
+            margin: 50px;
+            margin-left: 238px;
+  }
+}
+@media screen and (min-width: 1600px) {
+        .img_fluid {
+            height: 300px!important;
+            
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 22px!important;
+    margin-left: 15px!important;
+}
+.icon{
+background-color: #e93f7800!important;
+}
+}
+@media screen and (min-width: 1800px) {
+        .img_fluid {
+            height: 350px!important;
+            
+  }
+  .item_1{
+    width: 166px!important;
+    height: 112px!important;
+    
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 30px!important;
+    margin-left: 31px!important;
+}
+
+  .changeImages{
+    left:-2%!important;
+  }
+}
+@media screen and (min-width: 1920px) {
+        .img_fluid {
+            height: 350px!important;
+            
+  }
+  .item_1{
+    width: 182px!important;
+    height: 133px!important;
+   
+  }
+  .changeImages{
+    left:-2%!important;
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 22px!important;
+    margin-left: 40px!important;
+}
+
+
+@media screen and (min-width: 2160px) {
+        .img_fluid {
+            height: 350px!important;
+            
+  }
+  .item_1{
+    width: 290px!important;
+    height: 133px!important;
+   
+  }
+  .changeImages{
+    left:-2%!important;
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 40px!important;
+    margin-left: 61px!important;
+}
+
+}
+@media screen and (min-width: 2000px) {
+        .img_fluid {
+            height: 400px!important;
+            
+  }
+}
+@media screen and (min-width: 2200px) {
+        .img_fluid {
+            height: 450px!important;
+            
+  }
+}
+@media screen and (min-width: 2880px) {
+        .img_fluid {
+            height: 500px!important;
+            
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 59px!important;
+    margin-left: 116px!important;
+}
+
+}
+@media screen and (min-width: 4320px) {
+        .img_fluid {
+            height: 850px!important;
+            
+  }
+  .item_1{
+    width: 446px!important;
+    height: 262px!important;
+   
+  }
+  .changeImages{
+    left:-2%!important;
+  }
+}
+}
+@media screen and (min-width: 5760px) {
+        .img_fluid {
+            height: 1300px!important;
+            
+  }
+}
+@media screen and (min-width: 5760px) {
+        .img_fluid {
+            height: 1300px!important;
+            
+  }
+}
+
+
+
 
     img {
         vertical-align: middle;
@@ -210,10 +359,7 @@
         top: 0;
     }
 
-    img {
-        margin-bottom: -4px;
-    }
-
+    
     .caption-container {
         text-align: center;
         background-color: black;
@@ -253,6 +399,17 @@
         text-decoration: none;
         color: white;
     }
+    .left_button {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-size: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none !important;
+}
 </style>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
@@ -279,7 +436,7 @@
 </div>
 {{-- Modal End --}}
 <div class="row my-4">
-    <div class="col-sm-10 col-md-10 col-lg-4 pl-0" style="height:500px">
+    <div class="col-sm-12 col-md-10 col-lg-4 pl-0" style="height:500px">
         <div class="information_card">
             <div class="d-flex justify-content-between">
                 <h6>General Information</h6>
@@ -450,24 +607,21 @@
                         <span class="information_text">--</span>
                     @endif
                 </div>
-
-
-
-
-                <div class="information_button d-flex justify-content-center mt-3" style="margin:50px">
+<div class="row">
+                        <div class="information_button d-flex justify-content-center mt-3" style="margin:50px; margin-left:130px">
                     <a href="{{ route('vehicle.exportpdf', @$vehicle['id']) }} " target="_blank">
                         <button
                             style="background: #1F689E;
                     transform: skew(-30deg) !important;border:none;
                     border-radius: 4px;color:white;margin-right: 6px;font-size: 13px;">
                             <div style="transform: skew(30deg) !important;padding:1px 4px">
-                                <i class="fa fa-file-pdf-o" style="font-size:12px"></i> Trucking PDF
+                                <i class="fa fa-file-pdf-o" style="font-size:12px;"></i> Trucking PDF
                             </div>
                         </button>
                     </a>
                     {{-- <button style="background: #1CACD9;border:none;font-size:12px;
                     transform: skew(-30deg) !important;border-radius: 4px;color:white;margin-right: 3px;"><div style="transform: skew(30deg) !important;padding:1px 12px">Edit</div></button> --}}
-
+                </div>
                 </div>
                 <div>
                     <br>
@@ -482,7 +636,7 @@
 
         </div>
     </div>
-    <div class="col-sm-10 col-md-10 col-lg-8 pl-0">
+    <div class="col-sm-12 col-md-10 col-lg-8 pl-0">
 
         <div class="information_second_div">
 
@@ -649,20 +803,20 @@
                                         <div class="d-flex" style="width:100%">
 
 
-                                            <button class="img_active_button img_btn col-sm-12 col-md-4 col-lg-4 mb-3"
+                                            <button class="img_active_button img_btn col-sm-4 col-md-4 col-lg-4 mb-3"
                                                 onclick="changeImages(this.id)" tab=" {{ @$vehicle['id'] }}"
                                                 id="warehouse_images"
                                                 style="color:black;background-color:337fb8;font-size: 12px !important;border-top-left-radius: 8px;font-weight:600;height:41px;">Ware
                                                 House Image
                                             </button>
 
-                                            <button class="image_button img_btn col-sm-12 col-md-4 col-lg-4 mb-4"
+                                            <button class="image_button img_btn col-sm-4 col-md-4 col-lg-4 mb-4"
                                                 style="color:black;background-color: #337fb8;font-size:12px!important; border:#e9e9e9;font-weight:600;height:41px;"
                                                 id="vehicle_images" onclick="changeImages(this.id)"
                                                 tab="{{ @$vehicle['id'] }}">
                                                 Pickup Images
 
-                                                <button class="image_button  img_btn col-sm-12 col-md-4 col-lg-4 mb-4"
+                                                <button class="image_button  img_btn col-sm-4 col-md-4 col-lg-4 mb-4"
                                                     style="color:black;;font-size:12px!important;font-weight:600;margin-right:-24px!important;height:41px;"
                                                     onclick="changeImages(this.id)" tab="{{ @$vehicle['id'] }}"
                                                     id="auction_images">
@@ -686,10 +840,11 @@
                                             <div>
                                                 <img src="{{ asset(@$vehicle['warehouse_image'][0]['name']) }}"
                                                     alt=""class="img_fluid mx-auto w-100"
-                                                    style="height:200px!important; object-fit: fill;border-radius: 10px!important;width:auto%;"
-                                                    id="main_image_box">
+                                                    style="height:200px; object-fit: fill;border-radius: 10px!important;width:auto%;"
+                                                    id="main_image_box" >
                                             </div>
 
+                                            <a class="bottom_button p-2">
                                             <a class="bottom_button p-2">
                                                 <svg width="34" height="0" viewBox="0 0 0 0" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -852,12 +1007,12 @@
 
                                 <div class="image_section">
                                     <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12 changeImages"
-                                        style="left:6%; margin-top:15px;">
+                                        style=" margin-top:15px; margin-left:6%">
                                         {{-- @if (@$vehicle['pickupimages']) --}}
                                         @foreach (@$vehicle['warehouse_image'] as $img)
                                             <img src="{{ asset($img['name']) }}" alt="" class="item_1"
                                                 class="showMainImage"
-                                                style="width:120px!important;height:80px!important;"
+                                                style="width:120px;height:80px;"
                                                 onclick="showAsMainImage(this.src)" class="hover-shadow cursor">
                                         @endforeach
                                         {{-- @endif --}}
@@ -894,18 +1049,22 @@
         <div class="row">
 
             <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12"
-            style="width:100%!important;height:100%!important" id="slider_image">
+                style="width:100%!important;height:100%!important" id="slider_image">
     
                 <div class="mySlides" style="width:100%!important;height: 100%!important;" id="slider_main">
                     <img src="{{ asset(@$vehicle['warehouse_image'][0]['name']) }}" alt=""
                         style="width:100%!important;height: 100%!important;">
+                        
                 </div>
     
                 @if (@$vehicle['warehouse_image'])
                     @foreach (@$vehicle['warehouse_image'] as $img)
                     
                         <div class="mySlides col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12" style="width:100%!important">
-                            <img src="{{ asset($img['name']) }}" alt="" style="width:104%!important;height: 100%!important;margin-left:-15px;"
+                            <img src="{{ asset($img['name']) }}" alt="" style="    width: 104%!important;
+                            height: 100%!important;
+                            
+                            margin-left: -15px;"
                                 onclick="openModal();currentSlide(1)">
                         </div>
                     @endforeach

@@ -21,6 +21,7 @@ use App\Http\Controllers\VehicleController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\pdfController;
+use App\Models\Sticky;
 
 Auth::routes();
 
@@ -60,7 +61,7 @@ Route::prefix('/admin')->middleware(['auth','login.status'])->group(function () 
     Route::get('/user/allroles',[App\Http\Controllers\UserController::class,'roles'])->name('user.allroles');
 
 
-    Route::get('/users/createUser',[App\Http\Controllers\UserController::class,'createUser'])->name('user.createUser');
+    Route::get('/users/createUser',[App\Http\Controllers\UserController::class,'createUser'])->name('user.createuser');
 
     // Customer Routes
     Route::get('/customers', [CustomerController::class, 'index'])->name('customer.list');
@@ -166,7 +167,7 @@ Route::prefix('/admin')->middleware(['auth','login.status'])->group(function () 
     //Sticky Notes Routes
     Route::get('/stickynotes', [StickyController::class, 'index'])->name('sticky.list');
     Route::post('/stickynotes', [StickyController::class, 'create'])->name('sticky.create');
-
+    Route::get('/stickynotes/delete',[StickyController::class,'delete'])->name(('sticky.delete'));
     // Shipment Routes
     Route::get('/shipment', [ShipmentController::class, 'index'])->name('shipment.list');
     Route::get('/shipments/create', [ShipmentController::class, 'create'])->name('shipment.create');
