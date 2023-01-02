@@ -216,7 +216,7 @@ text-transform: capitalize;
         </div> --}}
            
                 <div class="copyright">
-                    <p><h2>copyright@ 2022 all right reserved <br>
+                    <p><h2>copyright@ 2023 all right reserved <br>
                     Developed by <a href="https://therevolutiontechnologies.com/" target="__blank">The Revolution Technologies</h2></a>
                     <h2> ECSAP Global Shipping 
                       Wonkai K. Momolu
