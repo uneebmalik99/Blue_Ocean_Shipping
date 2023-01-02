@@ -10,7 +10,7 @@
                     <img class="img-fluid" src="{{ asset('images/blueocean.png') }}" alt="Theme-Logo"
                         style="width:25px;height:25px" />
                     <span class="px-1">
-                        Blue Ocean Shipping
+                        ECSAP GLOBAL Shipping
                     </span>
                 </div>
             </a>
