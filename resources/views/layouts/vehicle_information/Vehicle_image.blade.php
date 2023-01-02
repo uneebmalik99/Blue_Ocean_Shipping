@@ -11,10 +11,190 @@
     text-align: center;
     text-decoration: none !important;
 }
+.icon{
+    background-color:#e93f7800 !important; 
+}
+@media screen and (min-width: 1600px) {
+        .img_fluid {
+            height: 300px!important;
+            
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 22px!important;
+    margin-left: 15px!important;
+}
+.icon{
+background-color: #e93f7800!important;
+}
+.icon {
+    
+    background: #e93f7800 !important;
+}
+}
+
+@media screen and (min-width: 1800px) {
+        .img_fluid {
+            height: 350px!important;
+            
+  }
+  .item_1{
+    width: 166px!important;\admin\reporitng
+    height: 112px!important;
+    
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 30px!important;
+    margin-left: 31px!important;
+}
+
+  .changeImages{
+    left:-2%!important;
+  }
+
+.icon {
+    
+    background: #e93f7800 !important;
+}}
+@media screen and (min-width: 1920px) {
+        .img_fluid {
+            height: 350px!important;
+            
+  }
+  .item_1{
+    width: 182px!important;
+    height: 133px!important;
+   
+  }
+  .changeImages{
+    left:-2%!important;
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 22px!important;
+    margin-left: 40px!important;
+}
+.icon {
+    
+    background: #e93f7800 !important;
+}
+}
+@media screen and (min-width: 2160px) {
+        .img_fluid {
+            height: 350px!important;
+            
+  }
+  .item_1{
+    width: 290px!important;
+    height: 133px!important;
+   
+  }
+  .changeImages{
+    left:-2%!important;
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 40px!important;
+    margin-left: 61px!important;
+}
+.icon {
+    
+    background: #e93f7800 !important;
+}
+}
+@media screen and (min-width: 2000px) {
+        .img_fluid {
+            height: 400px!important;
+            
+  }
+  .icon {
+    
+    background: #e93f7800 !important;
+}
+}
+@media screen and (min-width: 2200px) {
+        .img_fluid {
+            height: 450px!important;
+            
+  }
+  .icon {
+    
+    background: #e93f7800 !important;
+}
+}
+@media screen and (min-width: 2880px) {
+        .img_fluid {
+            height: 500px!important;
+            
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 59px!important;
+    margin-left: 116px!important;
+}
+.icon {
+    
+    background: #e93f7800 !important;
+}
+
+}
+@media screen and (min-width: 4320px) {
+        .img_fluid {
+            height: 850px!important;
+            
+  }
+  .item_1{
+    width: 446px!important;
+    height: 262px!important;
+   
+  }
+  .changeImages{
+    left:-2%!important;
+  }
+  .icon {
+    
+    background: #e93f7800 !important;
+}
+}
+
+@media screen and (min-width: 5760px) {
+        .img_fluid {
+            height: 1300px!important;
+            
+  }
+  .icon {
+    
+    background: #e93f7800 !important;
+}
+}
+@media screen and (min-width: 5760px) {
+        .img_fluid {
+            height: 1300px!important;
+            
+  }
+  .icon {
+    
+    background: #e93f7800 !important;
+}
+}
+
+
+
     </style>
 @if(count(@$images) > 0)
 <div class="p-2" style="position: relative;">
-    <img src="{{asset(@$images[0]['name'])}}" alt=""class="img_fluid " style="height:200px!important; object-fit: fill;border-radius: 10px!important;width:auto%;" id="main_image_box">
+    <img src="{{asset(@$images[0]['name'])}}" alt=""class="img_fluid " style="height:200px; object-fit: fill;border-radius: 10px!important;width:auto%;" id="main_image_box">
     <a class="bottom_button">
         <svg width="20" height="0" viewBox="0 0 39 25" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="39" height="22" rx="5" fill="white" fill-opacity="0.3"/>
@@ -35,10 +215,10 @@
             <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/>
             </filter>
             </defs>
-            <div class="icon" style="float:right;">
+            <div class="icon" style="float:right; background-color:#e93f7805;">
                                                 <i class="material-icons "
                                                             onclick="openModal();currentSlide(1)"
-                                                            style="background-color:#65686c;color:white;border-radius:inherit">fullscreen</i>
+                                                            style="background-color:#65686c;color:white;border-radius:inherit;margin-left: 24px;margin-top: 5px;">fullscreen</i>
                                             </div>
 </svg>
             

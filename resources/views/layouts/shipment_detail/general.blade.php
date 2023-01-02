@@ -254,6 +254,142 @@
             margin-top: 50px;
   }
 }
+@media screen and (min-width: 1600px) {
+        .img_fluid {
+            height: 300px!important;
+            
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 16px!important;
+    margin-left: 3px!important;
+}
+.icon{
+background-color: #e93f7800!important;
+}
+}
+@media screen and (min-width: 1800px) {
+        .img_fluid {
+            height: 350px!important;
+            
+  }
+  .item_1{
+    width: 166px!important;
+    height: 112px!important;
+    
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 22px!important;
+    margin-left: 17px!important;
+}
+
+  .changeImages{
+    left:-2%!important;
+  }
+}
+@media screen and (min-width: 1920px) {
+        .img_fluid {
+            height: 350px!important;
+            
+  }
+  .item_1{
+    width: 182px!important;
+    height: 133px!important;
+   
+  }
+  .changeImages{
+    left:-2%!important;
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 35px!important;
+    margin-left: 40px!important;
+}
+
+
+@media screen and (min-width: 2160px) {
+        .img_fluid {
+            height: 350px!important;
+            
+  }
+  .item_1{
+    width: 290px!important;
+    height: 133px!important;
+   
+  }
+  .changeImages{
+    left:-2%!important;
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 40px!important;
+    margin-left: 61px!important;
+}
+
+}
+@media screen and (min-width: 2000px) {
+        .img_fluid {
+            height: 400px!important;
+            
+  }
+}
+@media screen and (min-width: 2200px) {
+        .img_fluid {
+            height: 450px!important;
+            
+  }
+}
+@media screen and (min-width: 2880px) {
+        .img_fluid {
+            height: 500px!important;
+            
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 59px!important;
+    margin-left: 116px!important;
+}
+
+}
+@media screen and (min-width: 4320px) {
+        .img_fluid {
+            height: 850px!important;
+            
+  }
+  .item_1{
+    width: 446px!important;
+    height: 262px!important;
+   
+  }
+  .changeImages{
+    left:-2%!important;
+  }
+}
+}
+@media screen and (min-width: 5760px) {
+        .img_fluid {
+            height: 1300px!important;
+            
+  }
+}
+@media screen and (min-width: 5760px) {
+        .img_fluid {
+            height: 1300px!important;
+            
+  }
+}
+
 .left_button {
     position: absolute;
     top: 0px;
@@ -613,7 +749,7 @@
                                         <div class="w-100  p-2" style="position: relative;">
                                             <img src="{{ asset(@$shipments[0]['loading_image'][0]['name']) }}"
                                                 alt="" class="slide img_fluid mx-auto w-100 main_image"
-                                                style="height:200px!important; object-fit: fill;border-radius: 10px!important;width:auto%;"
+                                                style="height:200px; object-fit: fill;border-radius: 10px!important;width:auto%;"
                                                 id="main_image_box">
                                             <a class="bottom_button">
                                                 <svg width="39" height="0" viewBox="0 0 39 25"
@@ -774,7 +910,7 @@
                                             @foreach (@$shipments[0]['loading_image'] as $img)
                                                 <img src="{{ asset($img['name']) }}" alt="vehicle_img"
                                                     class="item_1 changeImage"
-                                                    style="width:120px!important;height:80px!important;"
+                                                    style="width:120px;height:80px;"
                                                     onclick="shipmentChangeImage(this.src)">
                                             @endforeach
                                         @endif

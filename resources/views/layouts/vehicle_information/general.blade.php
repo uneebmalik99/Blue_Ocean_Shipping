@@ -80,6 +80,144 @@
             margin-left: 238px;
   }
 }
+@media screen and (min-width: 1600px) {
+        .img_fluid {
+            height: 300px!important;
+            
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 22px!important;
+    margin-left: 15px!important;
+}
+.icon{
+background-color: #e93f7800!important;
+}
+}
+@media screen and (min-width: 1800px) {
+        .img_fluid {
+            height: 350px!important;
+            
+  }
+  .item_1{
+    width: 166px!important;
+    height: 112px!important;
+    
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 30px!important;
+    margin-left: 31px!important;
+}
+
+  .changeImages{
+    left:-2%!important;
+  }
+}
+@media screen and (min-width: 1920px) {
+        .img_fluid {
+            height: 350px!important;
+            
+  }
+  .item_1{
+    width: 182px!important;
+    height: 133px!important;
+   
+  }
+  .changeImages{
+    left:-2%!important;
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 22px!important;
+    margin-left: 40px!important;
+}
+
+
+@media screen and (min-width: 2160px) {
+        .img_fluid {
+            height: 350px!important;
+            
+  }
+  .item_1{
+    width: 290px!important;
+    height: 133px!important;
+   
+  }
+  .changeImages{
+    left:-2%!important;
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 40px!important;
+    margin-left: 61px!important;
+}
+
+}
+@media screen and (min-width: 2000px) {
+        .img_fluid {
+            height: 400px!important;
+            
+  }
+}
+@media screen and (min-width: 2200px) {
+        .img_fluid {
+            height: 450px!important;
+            
+  }
+}
+@media screen and (min-width: 2880px) {
+        .img_fluid {
+            height: 500px!important;
+            
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 59px!important;
+    margin-left: 116px!important;
+}
+
+}
+@media screen and (min-width: 4320px) {
+        .img_fluid {
+            height: 850px!important;
+            
+  }
+  .item_1{
+    width: 446px!important;
+    height: 262px!important;
+   
+  }
+  .changeImages{
+    left:-2%!important;
+  }
+}
+}
+@media screen and (min-width: 5760px) {
+        .img_fluid {
+            height: 1300px!important;
+            
+  }
+}
+@media screen and (min-width: 5760px) {
+        .img_fluid {
+            height: 1300px!important;
+            
+  }
+}
+
+
+
 
     img {
         vertical-align: middle;
@@ -702,11 +840,11 @@
                                             <div>
                                                 <img src="{{ asset(@$vehicle['warehouse_image'][0]['name']) }}"
                                                     alt=""class="img_fluid mx-auto w-100"
-                                                    style="height:200px!important; object-fit: fill;border-radius: 10px!important;width:auto%;"
+                                                    style="height:200px; object-fit: fill;border-radius: 10px!important;width:auto%;"
                                                     id="main_image_box" >
                                             </div>
 
-                                            <a class="bottom_button p-3">
+                                            <a class="bottom_button p-2">
                                                 <svg width="34" height="0" viewBox="0 0 0 0" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <rect width="0" height="0" rx="0"
@@ -873,7 +1011,7 @@
                                         @foreach (@$vehicle['warehouse_image'] as $img)
                                             <img src="{{ asset($img['name']) }}" alt="" class="item_1"
                                                 class="showMainImage"
-                                                style="width:120px!important;height:80px!important;"
+                                                style="width:120px;height:80px;"
                                                 onclick="showAsMainImage(this.src)" class="hover-shadow cursor">
                                         @endforeach
                                         {{-- @endif --}}

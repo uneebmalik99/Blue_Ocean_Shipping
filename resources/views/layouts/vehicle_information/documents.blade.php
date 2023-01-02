@@ -47,7 +47,142 @@
             border-radius: 5px;
             text-align: center;
             text-decoration: none !important;
-        }
+        }}
+        @media screen and (min-width: 1600px) {
+        .img_fluid {
+            height: 300px!important;
+            
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 16px!important;
+    margin-left: 9px!important;
+}
+.icon{
+background-color: #e93f7800!important;
+}
+}
+@media screen and (min-width: 1800px) {
+        .img_fluid {
+            height: 350px!important;
+            
+  }
+  .item_1{
+    width: 166px!important;
+    height: 112px!important;
+    
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 23px!important;
+    margin-left: 23px!important;
+}
+
+  .changeImages{
+    left:-2%!important;
+  }
+}
+@media screen and (min-width: 1920px) {
+        .img_fluid {
+            height: 350px!important;
+            
+  }
+  .item_1{
+    width: 182px!important;
+    height: 133px!important;
+   
+  }
+  .changeImages{
+    left:-2%!important;
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 22px!important;
+    margin-left: 28px!important;
+}
+
+
+@media screen and (min-width: 2160px) {
+        .img_fluid {
+            height: 350px!important;
+            
+  }
+  .item_1{
+    width: 290px!important;
+    height: 133px!important;
+   
+  }
+  .changeImages{
+    left:-2%!important;
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 30px!important;
+    margin-left: 44px!important;
+}
+
+}
+@media screen and (min-width: 2000px) {
+        .img_fluid {
+            height: 400px!important;
+            
+  }
+}
+@media screen and (min-width: 2200px) {
+        .img_fluid {
+            height: 450px!important;
+            
+  }
+}
+@media screen and (min-width: 2880px) {
+        .img_fluid {
+            height: 500px!important;
+            
+  }
+  .material-icons {
+    background-color: #65686c;
+    color: white;
+    border-radius: inherit;
+    margin-top: 41px!important;
+    margin-left: 87px!important;
+}
+
+}
+@media screen and (min-width: 4320px) {
+        .img_fluid {
+            height: 850px!important;
+            
+  }
+  .item_1{
+    width: 446px!important;
+    height: 262px!important;
+   
+  }
+  .changeImages{
+    left:-2%!important;
+  }
+}
+}
+@media screen and (min-width: 5760px) {
+        .img_fluid {
+            height: 1300px!important;
+            
+  }
+}
+@media screen and (min-width: 5760px) {
+        .img_fluid {
+            height: 1300px!important;
+            
+  }
+}
 
         .left_button {
     position: absolute;
@@ -244,12 +379,14 @@
         text-decoration: none;
         color: white;
     }
+}
+
 </style>
 <div class="row my-5">
     <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
         <div class="information_second_div">
             <div class="row" style="padding-bottom:60px">
-                <div class="col-sm-12 col-md-5 col-lg-7 mx-auto mb-4">
+                <div class="col-sm-12 col-md-4 col-lg-5 mx-auto mb-4">
                     <div class="row">
                         <div class="col-12">
                             <h4>Documents</h4>
@@ -313,7 +450,7 @@
                         <div class="col-12">
 
 
-                            @if (@$vehicle['billofsales'])
+                            @if (@$vehicle['billofsales'] || @$vehicle['originaltitles'] || @$vehicle['auction_invoice'] || @$vehicle['auction_copy'])
                                 <div class="d-flex justify-content-between "
                                     style="border: 1px solid rgba(26, 88, 133, 0.17); border-radius: 10px;width: 90%;margin:4px auto;padding:5px; ">
                                     <div class="w-100 ml-4">
@@ -324,6 +461,7 @@
                                                 <td class="text-center">Documents</td>
                                             </thead>
                                             <tbody>
+                                                @if(@$vehicle['billofsales'])
                                                 <tr>
                                                     <td>Bill Of Sale</td>
                                                     <td>{{ @$vehicle['billofsales'][0]['thumbnail'] }}</td>
@@ -340,6 +478,8 @@
                                                         </button>
                                                     </td>
                                                 </tr>
+                                                @endif
+                                                @if(@$vehicle['originaltitles'])
                                                 <tr>
                                                     <td>Original Title</td>
                                                     <td>{{ @$vehicle['originaltitles'][0]['thumbnail'] }}</td>
@@ -355,6 +495,39 @@
                                                         </button>
                                                     </td>
                                                 </tr>
+                                                @endif
+
+                                                {{-- <tr>
+                                                    <td>Auction Invoice</td>
+                                                    <td>auction.pdf</td>
+                                                    <td
+                                                        style="text-align: center;
+                                                width: 33%;">
+                                                        <button
+                                                            style="background: #3e5871;color:white;border-radius:5px;outline:none;border:none;padding: 0 5px;">
+                                                            <a href="{{ asset(@$vehicle['auction_invoice'][0]['name']) }}"
+                                                                download="{{ @$vehicle['auction_invoice'][0]['name'] }}"
+                                                                target="_blank"
+                                                                style="color:white;text-decoration:none;border:none">download</a>
+                                                        </button>
+                                                    </td>
+                                                </tr> --}}
+
+                                                {{-- <tr>
+                                                    <td>Auction Invoice</td>
+                                                    <td>auction.pdf</td>
+                                                    <td
+                                                        style="text-align: center;
+                                                width: 33%;">
+                                                        <button
+                                                            style="background: #3e5871;color:white;border-radius:5px;outline:none;border:none;padding: 0 5px;">
+                                                            <a href="{{ asset(@$vehicle['auction_copy'][0]['name']) }}"
+                                                                download="{{ @$vehicle['auction_copy'][0]['name'] }}"
+                                                                target="_blank"
+                                                                style="color:white;text-decoration:none;border:none">download</a>
+                                                        </button>
+                                                    </td>
+                                                </tr> --}}
 
                                             </tbody>
                                         </table>
@@ -371,6 +544,9 @@
                                     No Found
                                 </div>
                             @endif
+
+
+
                             <div class="d-flex justify-content-between "
                                 style="border: 1px solid rgba(26, 88, 133, 0.17); border-radius: 10px;width: 90%;margin:4px auto;padding:5px;  ">
                                 <span class="infromation_mainText ml-4">Shipper</span>
@@ -395,7 +571,7 @@
 
 
                 </div>
-                <div class="col-sm-12 col-md-4 col-lg-4 mb-5 mt-5" style="margin-right:12px">
+                <div class="col-sm-12 col-md-5 col-lg-5 mb-5 mt-5" style="margin-right:12px">
                     <div class="information_gallary" style="width:100%">
                         <div class="gallary_header d-flex">
                             <div class="row">
@@ -434,7 +610,7 @@
                                             <div style="width: 100%">
                                                 <img src="{{ asset(@$vehicle['warehouse_image'][0]['name']) }}"
                                                     alt=""class="img_fluid mx-auto w-100"
-                                                    style="height:200px!important; object-fit: fill;border-radius: 10px!important;width:auto%;"
+                                                    style="height:200px; object-fit: fill;border-radius: 10px!important;width:auto;"
                                                     id="main_image_box">
                                             </div>
 
@@ -604,7 +780,7 @@
                                             @foreach (@$vehicle['warehouse_image'] as $img)
                                                 <img src="{{ asset($img['name']) }}" alt=""class="item_1"
                                                     class="showMainImage"
-                                                    style="width:120px!important;height:80px!important;"
+                                                    style="width:120px;height:80px;"
                                                     onclick="showAsMainImage(this.src)" class="hover-shadow cursor">
                                             @endforeach
                                         @endif
