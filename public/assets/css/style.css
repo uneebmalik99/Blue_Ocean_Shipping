@@ -448,7 +448,7 @@ p {
     left: 0;
 }
 
-button.close {
+button.close, button.close1 {
     margin-top: 7px;
     margin-bottom: 0;
 }
@@ -29342,7 +29342,7 @@ table.footable-paging-center > tfoot > tr.footable-paging > td {
     margin-bottom: 0;
 }
 
-.close {
+.close, .close1 {
     font-size: 16px;
     margin-top: 5px;
 }
@@ -30077,7 +30077,7 @@ table.footable-paging-center > tfoot > tr.footable-paging > td {
     height: 100%;
 }
 
-.close {
+.close, .close1 {
     opacity: 1;
 }
 

@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-12 d-flex information_buttons p-0">
         <button class="mx-1 form-control shipment_information_tab col-3 next-style" tab="general" id="{{@$shipments[0]['id']}}">
-            <div class="unskew" id=""><i class="fa fa-folder" style="color:#337fb8"></i> General</div>
+            <div class="unskew"><i class="fa fa-folder"></i> General</div>
         </button>
         {{-- <button class="mx-1 form-control shipment_information_tab col-2" tab="inspection" id="{{@$shipments[0]['id']}}">
             <div class="unskew" id="">Inspection</div>
