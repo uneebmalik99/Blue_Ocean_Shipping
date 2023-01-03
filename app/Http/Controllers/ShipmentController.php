@@ -45,6 +45,7 @@ use Spatie\Permission\Models\Permission;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ShipmentExport;
 use URL;
+use DateTime;
 
 use File;
 use ZipArchive;
@@ -370,32 +371,25 @@ class ShipmentController extends Controller
             }
         }
 
-
         $data['buyer_ids'] = User::with('billings')->get()->toArray();
-
         $data['shipment'] = Shipment::with('vehicle.user', 'customer.billings')->where('id', $req->id)->get()->toArray();
         $data['shippers'] = ShipperName::where('status', '1')->get();
-
         $notification = $this->Notification();
         $data['vehicles'] = Vehicle::where('shipment_id', null)->get();
         $data['consignees'] = Consignee::all()->toArray();
         $data['records'] = Shipment::all()->toArray();
         $data['location'] = Location::all()->toArray();
-        // $data['countries'] = ShippingCountry::where('status', '1')->get();
         $data['countries'] = LoadingCountry::select('country')->where('status', '1')->groupBy('country')->get()->toArray();
-
-        // User::select('name')->groupBy('name')->get()->toArray()
         $data['container_size'] = ContainerSize::where('status', '1')->get();
         $data['container_types'] = ContainerType::where('status', '1')->get();
         $data['shipment_lines'] = ShipmentLine::where('status', '1')->get();
         $data['shipment_types'] = ShipmentType::where('status', '1')->get();
-        // $data['companies'] = Company::where('status', '1')->get();
         $data['companies'] = User::role('Customer')->get();
         $data['destination_country'] = DCountry::select('country')->where('status', '1')->groupBy('country')->get()->toArray();
-
         $output = view('shipment.general', $data);
         return Response($output);
     }
+
     public function FetchState(Request $req){
         $data = [];
         $output = [];
@@ -532,8 +526,24 @@ class ShipmentController extends Controller
             unset($data['stamp_title']);
             unset($data['other_document']);
             unset($data['tab']);
+
+
+
+            $current_date = (new DateTime)->format('Y-m-d');
+            $days = (strtotime($data['est_arrival_date']) - strtotime($current_date)) / (60 * 60 * 24);
+
+            if($current_date < $data['sale_date']){
+                $data['status'] = 1;
+            }
+            else if($current_date >= $data['sale_date']){
+                $data['status'] = 2;
+            }
+            else{}
+            if($days < 10){
+                $data['status'] = 3;
+            }
+
             if($request->id){
-                // dd($vehicle_id);
                 if($vehicles){
                     $old_vehicles = Vehicle::where('shipment_id', $data['id'])->get()->toArray();
                     foreach($old_vehicles as $old_vehicle){
@@ -557,7 +567,6 @@ class ShipmentController extends Controller
                 }
                 $data['shipment_id'] = $request->id;
                 $data['loading_images'] = Shipment::with('loading_image')->where('id', $request->id)->get()->toArray();
-                // dd($request->id);
             }
             else{
                 $Obj_vehicle = new Vehicle;
@@ -576,6 +585,7 @@ class ShipmentController extends Controller
                 }
                 VehicleCart::query()->delete();
             }
+
             $view = view('shipment.' . $tab, $data)->render();
             return Response($view);
         }

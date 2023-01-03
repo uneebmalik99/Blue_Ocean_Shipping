@@ -1,6 +1,11 @@
 @extends('layouts.partials.mainlayout')
 @section('body')
-                                        {{-- @dd($user) --}}
+    {{-- <style>
+        .full_msg_show {
+            display: none;
+        }
+    </style> --}}
+    {{-- @dd($user) --}}
 
     <div class="contaier my-5">
         <div class="row">
@@ -37,9 +42,10 @@
                                                         <i class="fa fa-clock-o" aria-hidden="true"></i>
                                                     </div>
                                                     <div class="mt-2">
-                                                        <h4>{{ substr($value->subject, 0, 18) }}...</h4>
+                                                        <h4>{{ $value->subject }}</h4>
                                                         <div class="lessText">
-                                                            <p>{!! substr($value->message, 0 , 22) !!}...</p>
+                                                            <div class="substr_msg_show{{ $value->id }}">{!! substr($value->message, 0, 80) !!}...</div>
+                                                            <div class="full_msg_show{{ $value->id }}" style="display:none;">{!! $value->message !!}</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -82,25 +88,20 @@
                                     <div class="row">
                                         <div class="col-12 mx-auto text-center">
                                             <div class="notification_icon mb-3">
-                                                <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                                <a style="cursor: pointer;" class="show_more" id="show{{ $value->id }}" onclick="show_more(this.id)">
+                                                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-
-
-
                         </div>
                     @endforeach
-
                 </div>
-
-
-
-
             </div>
+
+
             <div class="col-sm-10 col-md-6 col-lg-6 mx-auto">
                 <div class="row">
                     <div class="col-12 create_notication_heading">
@@ -111,11 +112,8 @@
                     <div class="col-12">
                         <div class="create_notification">
                             <form action="{{ route('notification.creates') }}" method="POST">
-
                                 @csrf
-
                                 <input type="hidden" id="id" name="id">
-
                                 <div class="subject">
                                     <label for="subject">Subject</label><br>
                                     <input type="text" id="subject" class="form-control" name="subject">
@@ -140,7 +138,7 @@
                                 </div>
                                 <div class="user_id py-2">
                                     <label for="user_id">Assign To</label>
-                                <select name="user_id" id="user_id" class="mx-auto form-control">
+                                    <select name="user_id" id="user_id" class="mx-auto form-control">
                                         @foreach ($user as $users)
                                             <option value="{{ $users['id'] }}">{{ $users['name'] }}</option>
                                         @endforeach
@@ -197,7 +195,6 @@
 
         function search_notification() {
             search = document.getElementById('search').value;
-
             $.ajax({
                 method: 'post',
                 data: {
@@ -246,7 +243,33 @@
 
 
         }
-        
+
+        // $(".show_more").click(function() {
+        //     // alert('kashif');
+        //     $('.substr_msg').css('display', 'none');
+        //     $('.full_msg_show').css('display', 'block');
+        //     $('.caret_down').removeClass('show_more');
+        //     $('.caret_down').addClass('show_less');
+
+        // });
+
+
+
+        function show_more(id) {
+            cls = $('#'+id).attr('class');
+            if(cls == 'show_more'){
+                $('.substr_msg_'+id).css('display', 'none');
+                $('.full_msg_'+id).css('display', 'block');
+                $('#'+id).removeClass('show_more');
+                $('#'+id).addClass('show_less');
+            }
+            else{
+                $('.substr_msg_'+id).css('display', 'block');
+                $('.full_msg_'+id).css('display', 'none');
+                $('#'+id).removeClass('show_less');
+                $('#'+id).addClass('show_more');
+            }
+
+        }
     </script>
-    
 @endsection
