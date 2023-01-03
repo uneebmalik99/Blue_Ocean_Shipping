@@ -104,21 +104,6 @@ class InvoiceController extends Controller
      
         if ($request->isMethod('post')) {
             $invoice = $request->all();
-
-            // dd($invoice);
-            // return $data1;
-            // $obj =[
-            //     'export_id' => $request->export_id,
-            //     'customer_user_id' => $request->user_name,
-            //     'total_amount' => $request->total_amount,
-            //     'paid_amount' => $request->paid_amount,
-            //     'adjustment_damaged' => $request->damaged,
-            //     'adjustment_storage' => $request->storage,
-            //     'discount' => $request->discount,
-            //     'adjustment_other' => $request->other,
-            //     'note' => $request->note,
-            //     'upload_invoice' => $request->upload_invoice,
-            // ];
             $obj = new Invoice;
             $result = $obj->create($invoice);
             return back();
@@ -174,8 +159,6 @@ class InvoiceController extends Controller
             ],
         ];
         $data['invoices'] = Invoice::with('export', 'consignee')->where('id', $id)->get();
-        // dd($data['invoices']);
-        // dd($data['invoices'][0]['consignee']['consignee_name']);
         $data['export'] = Export::all()->toArray();
         $data['customer'] = Consignee::all();
         $notification = $this->Notification();
@@ -244,14 +227,8 @@ class InvoiceController extends Controller
                                 
                             }
                         }
-                    }
-
-                    
-                    
-                    
+                    }   
                 }
-
-
         }
 
         return 'Invoice Updated!';
@@ -295,10 +272,10 @@ class InvoiceController extends Controller
 
         if ($request->ajax()) {
             if(Auth::user()->hasRole('Customer')){
-                $data = Invoice::with('vehicle')->where('customer_email', auth()->user()->email)->get();
+                $data = Invoice::with('vehicle.user')->where('customer_email', auth()->user()->email)->get();
             }
             else{
-                $data = Invoice::with('vehicle')->get();
+                $data = Invoice::with('vehicle.user')->get();
             }
             return Datatables::of($data)
                 ->addIndexColumn()

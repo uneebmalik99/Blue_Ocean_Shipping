@@ -48,10 +48,12 @@
             </div>
         </div>
 
+    </div>
+
     <div class="bg-white rounded p-2">
         {{-- badges start --}}
         <div class="d-flex m-2" style="width: 100%">
-        <div class="row"style="width:103%;margin-left:-18px">
+            <div class="row"style="width:103%;margin-left:-18px">
             <div class="col-lg-3 col-md-3 order-sm-12 col-12"style="margin-top: 10px;">
                 <div class="col-12 py-0 px-0" style="margin-left: 13px">
                     <div class="col-12 border-style card-rounded py-2 px-3">
@@ -193,6 +195,7 @@
                         @endif
                     </div>
                 </div>
+            
                 {{-- alert end --}}
                 {{-- search filter start --}}
                 <div class="px-4 pt-2 mt-4">
@@ -289,6 +292,8 @@
                 </div>
             </div>
         </div>
+    </div>
+  
         {{-- listing end --}}
 
         <script>

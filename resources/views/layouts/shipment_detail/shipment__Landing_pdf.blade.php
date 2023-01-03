@@ -11,12 +11,13 @@
 </head>
 
 <body>
-    <button type="button" class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
-    style="background: #1d6092;" onclick="printthis()">
-   <div class="d-flex justify-content-center align-items-center">
-       <span class="pl-2 font-size">Print</span>
-   </div>
-</button>
+    
+        <button type="button" class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
+        style="background: #1d6092;" onclick="printthis()">
+       <div class="d-flex justify-content-center align-items-center">
+           <span class="pl-2 font-size">PRINT</span>
+       </div>
+    </button>
 
     <div id="thissection">
         <style>
@@ -85,7 +86,7 @@
                 <tbody>
                     <tr>
                         
-                        <td  class="t_data"><input type="text" value="Blue Ocean Shipping" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
+                        <td  class="t_data"><input type="text" value="" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
                         <td class="t_img" style="text-align:center ;">
                             <img src="{{asset('images/logo_2.png')}}"  class="img_w" alt="" style="width:100px;height: 100px!important;">
                         </td>
@@ -105,7 +106,13 @@
                         <td class="td3_data"><input type="text" value="REFERENCE #" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                     </tr>
                     <tr>
-                        <td rowspan="4" class="td3_data"><input type="text" value="{{ @$shipment[0]['shipper'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                        <td rowspan="4" class="td3_data">
+                            <input type="text" value="{{ @$shipment[0]['vehicle'][0]['user']['shippers'][0]['shipper_name'] }}" style="width: 100%;border:none;outline:none;text-align:start;"><br>
+                            <input type="text" value="{{ @$shipment[0]['vehicle'][0]['user']['shippers'][0]['address'] }}" style="width: 100%;border:none;outline:none;text-align:start;"><br>
+                            <input type="text" value="{{ @$shipment[0]['vehicle'][0]['user']['shippers'][0]['city'] }}, {{ @$shipment[0]['vehicle'][0]['user']['shippers'][0]['zip_code'] }}" style="width: 100%;border:none;outline:none;text-align:start;"><br>
+                            <input type="text" value="{{ @$shipment[0]['vehicle'][0]['user']['shippers'][0]['phone'] }}" style="width: 100%;border:none;outline:none;text-align:start;"><br>
+
+                        </td>
                         <td class="td3_data"><input type="text" value="{{ @$shipment[0]['booking_number'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                         <td class="td3_data"><input type="text" value="{{ @$shipment[0]['shipping_reference'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                     </tr>
@@ -116,12 +123,12 @@
     
                     </tr>
                     <tr>
-                        <td class="td3_data"><input type="text" value="BALTIMORE, MD " style="width: 100%;border:none;outline:none;text-align:start;"></td>
-                        <td class="td3_data"><input type="text" value="BALTIMORE, MD" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                        <td class="td3_data"><input type="text" value="{{ @$shipment[0]['loading_port'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                        <td class="td3_data"><input type="text" value="{{ @$shipment[0]['loading_port'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                     </tr>
                     <tr>
                         <td class="td3_data"><input type="text" value="PORT OF DISCHARGE:" style="width: 100%;border:none;outline:none;text-align:start;"></td>
-                        <td class="td3_data"><input type="text" value="JEBEL ALI, UAE" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                        <td class="td3_data"><input type="text" value=" {{ @$shipment[0]['destination_port'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                     </tr>
                 </tbody>
             </table>
@@ -136,9 +143,14 @@
                         <td class="td3_data"><input type="text" value="VESSEL #" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                     </tr>
                     <tr>
-                        <td rowspan="4" class="td3_data"><input type="text" value="{{ @$shipment[0]['select_consignee'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
-                        <td class="td3_data"><input type="text" value="SEAGIRT" style="width: 100%;border:none;outline:none;text-align:start;"></td>
-                        <td class="td3_data"><input type="text" value="GUDRUN MAERSK" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                        <td rowspan="4" class="td3_data">
+                            <input type="text" value="{{ @$shipment[0]['vehicle'][0]['user']['billings'][0]['company_name'] }}" style="width: 100%;border:none;outline:none;text-align:start;"><br>
+                            <input type="text" value="{{ @$shipment[0]['vehicle'][0]['user']['billings'][0]['address'] }}, {{ @$shipment[0]['vehicle'][0]['user']['billings'][0]['city'] }}, {{ @$shipment[0]['vehicle'][0]['user']['billings'][0]['zip_code'] }}" style="width: 100%;border:none;outline:none;text-align:start;"><br>
+                            <input type="text" value="{{ @$shipment[0]['vehicle'][0]['user']['billings'][0]['phone'] }}" style="width: 100%;border:none;outline:none;text-align:start;">
+
+                        </td>
+                        <td class="td3_data"><input type="text" value="{{ @$shipment[0]['loading_terminal'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                        <td class="td3_data"><input type="text" value="{{ @$shipment[0]['vessel'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                     </tr>
                     <tr>
                         <!-- <td class="td3_data">BoL/AWB/BOOKING # : 220434507C</td> -->
@@ -151,8 +163,8 @@
                         <td class="td3_data"><input type="text" value="VOYAGE NO." style="width: 100%;border:none;outline:none;text-align:start;"></td>
                     </tr>
                     <tr>
-                        <td class="td3_data"><input type="text" value="SEAGIRT" style="width: 100%;border:none;outline:none;text-align:start;"></td>
-                        <td class="td3_data"><input type="text" value="234 W" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                <td class="td3_data"><input type="text" value="{{ @$shipment[0]['loading_terminal'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                        <td class="td3_data"><input type="text" value="{{ @$shipment[0]['voyage'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                     </tr>
                 </tbody>
             </table>
@@ -166,12 +178,16 @@
                         <td class="td3_data"></td>
                     </tr>
                     <tr>
-                        <td colspan="2" rowspan="2" class="td3_p" id="t_pad"><input type="text" value="{{ @$shipment[0]['notifier'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                        <td colspan="2" rowspan="2" class="td3_p" id="t_pad">
+                            <input type="text" value="{{ @$shipment[0]['vehicle'][0]['user']['billings'][0]['company_name'] }}" style="width: 100%;border:none;outline:none;text-align:start;"><br>
+                            <input type="text" value="{{ @$shipment[0]['vehicle'][0]['user']['billings'][0]['address'] }}, {{ @$shipment[0]['vehicle'][0]['user']['billings'][0]['city'] }}, {{ @$shipment[0]['vehicle'][0]['user']['billings'][0]['zip_code'] }}" style="width: 100%;border:none;outline:none;text-align:start;"><br>
+                            <input type="text" value="{{ @$shipment[0]['vehicle'][0]['user']['billings'][0]['phone'] }}" style="width: 100%;border:none;outline:none;text-align:start;">
+                        </td>
                         <td class="td3_data"></td>
     
                     </tr>
                     <tr>
-                        <td class="td3_data"><input type="text" value="ETA/2022-10-11" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                        <td class="td3_data"><input type="text" value="ETA/{{ @$shipment[0]['est_arrival_date'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                     </tr>
     
                 </tbody>
@@ -208,7 +224,7 @@
                     </tr>
                     <tr>
                         <td class="td3_data"><input type="text" value="4 UNITS USED VEHICLES" style="width: 100%;border:none;outline:none;text-align:start;"></td>
-                        <td class="td3_data"><input type="text" value="32" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                        <td class="td3_data"><input type="text" value="{{ @$shipment[0]['vehicle'][0]['weight'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                         <td class="td3_data"><input type="text" value="55 M3" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                         <!-- <td class="td3_data"></td> -->
     
@@ -239,7 +255,6 @@
                         
                     </tr>
                     @endforeach
-                   
                 </tbody>
             </table>
         </div>
@@ -248,7 +263,7 @@
             <table class="table_3" style="width:100%;">
                 <tbody>
                     <tr>
-                        <td class="td3_data"><input type="text" value="*** NON HAZ MAT" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                        <td class="td3_data"><input type="text" value="" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                         <td class="td3_data"><input type="text" value="OCEAN FREIGHT PAID" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                         <td class="td3_data"><input type="text" value="WEIGHT(KG)" style="width: 100%;border:none;outline:none;text-align:start;"></td>
     
