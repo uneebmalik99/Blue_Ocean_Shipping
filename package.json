@@ -22,5 +22,9 @@
         "vue": "^2.6.12",
         "vue-template-compiler": "^2.6.12",
         "webpack-cli": "^4.10.0"
+    },
+    "dependencies": {
+        "laravel-echo": "^1.14.2",
+        "pusher-js": "^8.0.0"
     }
 }
