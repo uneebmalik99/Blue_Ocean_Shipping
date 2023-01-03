@@ -2,7 +2,8 @@
 node_modules/
 npm-debug.log
 yarn-error.log
-
+#Ecsap removing Images for folder from tracking
+public/Images
 # Laravel 4 specific
 bootstrap/compiled.php
 app/storage/
