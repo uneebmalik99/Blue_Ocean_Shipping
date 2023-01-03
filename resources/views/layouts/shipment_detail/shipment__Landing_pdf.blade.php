@@ -85,7 +85,7 @@
                 <tbody>
                     <tr>
                         
-                        <td  class="t_data"><input type="text" value="Blue Ocean Shipping" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
+                        <td  class="t_data"><input type="text" value="" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
                         <td class="t_img" style="text-align:center ;">
                             <img src="{{asset('images/logo_2.png')}}"  class="img_w" alt="" style="width:100px;height: 100px!important;">
                         </td>
@@ -105,7 +105,7 @@
                         <td class="td3_data"><input type="text" value="REFERENCE #" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                     </tr>
                     <tr>
-                        <td rowspan="4" class="td3_data"><input type="text" value="{{ @$shipment[0]['shipper'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                        <td rowspan="4" class="td3_data"><input type="text" value="" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                         <td class="td3_data"><input type="text" value="{{ @$shipment[0]['booking_number'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                         <td class="td3_data"><input type="text" value="{{ @$shipment[0]['shipping_reference'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                     </tr>
@@ -248,7 +248,7 @@
             <table class="table_3" style="width:100%;">
                 <tbody>
                     <tr>
-                        <td class="td3_data"><input type="text" value="*** NON HAZ MAT" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                        <td class="td3_data"><input type="text" value="" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                         <td class="td3_data"><input type="text" value="OCEAN FREIGHT PAID" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                         <td class="td3_data"><input type="text" value="WEIGHT(KG)" style="width: 100%;border:none;outline:none;text-align:start;"></td>
     
