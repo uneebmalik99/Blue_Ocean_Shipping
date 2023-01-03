@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ECSAP GLOBAL Shipping</title>
+    <title>{{ config('app.name') }}</title>
 </head>
 <style>
     p{
@@ -56,10 +56,10 @@ span{
     <div>
         <table style="float:left;width:50% !important;font-size:12px; ">
         <tr>
-              <span style="font-family: arial, sans-serif;margin-top:-3px;font-size:18px"><b> GLOBAL OCEAN SHIPPING  LLC</b></span>
+              <span style="font-family: arial, sans-serif;margin-top:-3px;font-size:18px"><b> {{ config('app.name') }}  LLC</b></span>
             </tr>
             
-               <span style="font-size:10px" >ADDRESS OF GLOBAL OCEAN SHIPPING: {{ @$vehicle[0]['user']['shippers'][0]['address']}}</span>
+               <span style="font-size:10px" >ADDRESS OF {{ config('app.name') }}: {{ @$vehicle[0]['user']['shippers'][0]['address']}}</span>
             </tr>
             <tr>
                 <span style="font-size:10px">STATE,CITY,ZIPCODE:{{ @$vehicle[0]['user']['shippers'][0]['country']}} , {{ @$vehicle[0]['user']['shippers'][0]['city']}} , {{ @$vehicle[0]['user']['shippers'][0]['zip_code']}}</span>

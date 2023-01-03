@@ -267,7 +267,7 @@ text-transform: capitalize;
 </form>
 		</div>
    <div class="login_text d-none d-sm-none d-md-block col-md-4 col-lg-4 col-xl-6 col-xxl-6">
-		<h1>Welcome to Ecsap Shipping</h1>
+		<h1>Welcome to {{ config('app.name') }}}}</h1>
 		</div>
 </div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
