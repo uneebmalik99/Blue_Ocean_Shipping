@@ -105,6 +105,7 @@ class pdfController extends Controller
     public function shipmentview($id){
         $data = [];
         $data['shipment']=Shipment::with('vehicle', 'customer.billings')->whereid($id)->get()->toArray();
+        $data['button_hide'] = 'hide';
         $pdf = PDF::loadview('layouts.shipment_detail.shipment_Hazard_pdf', $data);
         return $pdf->stream(); 
     }
@@ -112,6 +113,7 @@ class pdfController extends Controller
     public function shipmentHouston($id){
         $data = [];
         $data['shipment']=Shipment::with('vehicle')->whereid($id)->get()->toArray();
+        $data['button_hide'] = 'hide';
         $pdf = PDF::loadview('layouts.shipment_detail.shipment_Houston_pdf', $data);
         return $pdf->stream(); 
     }
@@ -119,6 +121,7 @@ class pdfController extends Controller
     public function shipmentLanding($id){
         $data = [];
         $data['shipment']=Shipment::with('vehicle.user.billings', 'vehicle.user.shippers')->whereid($id)->get()->toArray();
+        $data['button_hide'] = 'hide';
         $pdf = PDF::loadview('layouts.shipment_detail.shipment__Landing_pdf', $data);
         return $pdf->stream(); 
     }
@@ -126,6 +129,7 @@ class pdfController extends Controller
     public function shipmentCustom($id){
         $data = [];
         $data['shipment']=Shipment::with('vehicle')->whereid($id)->get()->toArray();
+        $data['button_hide'] = 'hide';
         $pdf = PDF::loadview('layouts.shipment_detail.shipment__Custom_pdf', $data);
         return $pdf->stream(); 
     }
@@ -134,6 +138,7 @@ class pdfController extends Controller
     public function shipmentDock($id){
         $data = [];
         $data['shipment']=Shipment::with('vehicle')->whereid($id)->get()->toArray();
+        $data['button_hide'] = 'hide';
         $pdf = PDF::loadview('layouts.shipment_detail.shipment__Dock_pdf', $data);
         return $pdf->stream(); 
     }
@@ -145,22 +150,27 @@ class pdfController extends Controller
 
         if($request->tab == 'non_hazard'){
             $data['shipment']=Shipment::with('vehicle', 'customer.billings')->whereid($request->id)->get()->toArray();
+            $data['button_hide'] = 'show';
             $output = view('layouts.shipment_detail.shipment_Hazard_pdf', $data)->render();
         }
         else if($request->tab == 'houston'){
             $data['shipment']=Shipment::with('vehicle', 'customer.billings')->whereid($request->id)->get()->toArray();
+            $data['button_hide'] = 'show';
             $output = view('layouts.shipment_detail.shipment_Houston_pdf', $data)->render();
         }
         else if($request->tab == 'bol'){
             $data['shipment']=Shipment::with('vehicle.user.billings', 'vehicle.user.shippers')->whereid($request->id)->get()->toArray();
+            $data['button_hide'] = 'show';
             $output = view('layouts.shipment_detail.shipment__Landing_pdf', $data)->render();
         }
         else if($request->tab == 'us_custom'){
             $data['shipment']=Shipment::with('vehicle', 'customer.billings')->whereid($request->id)->get()->toArray();
+            $data['button_hide'] = 'show';
             $output = view('layouts.shipment_detail.shipment__Custom_pdf', $data)->render();
         }
         else if($request->tab == 'dock_receipt'){
             $data['shipment']=Shipment::with('vehicle', 'customer.billings')->whereid($request->id)->get()->toArray();
+            $data['button_hide'] = 'show';
             $output = view('layouts.shipment_detail.shipment__Dock_pdf', $data)->render();
         }
         // dd($output);

@@ -10,23 +10,31 @@
 
 
 <body>
-<button type="button" class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
+{{-- <button type="button" class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
     style="background: #1d6092;" onclick="printthis()">
    <div class="d-flex justify-content-center align-items-center">
        <span class="pl-2 font-size">Print</span>
    </div>
+</button> --}}
+
+@if($button_hide == 'show')
+<div style="width: 118px;">
+    <button type="button" class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
+    style="background: #1d6092;float:left;" onclick="printthis()">
+   <div class="d-flex justify-content-center align-items-center">
+       <span class="pl-2 font-size">PRINT</span>
+   </div>
 </button>
-    <!-- <table style="width:100%;">
-        <tbody class="t_border">
-            <tr>
-                <td rowspan="2" class="td_border" style="width: 25%;"><img src="{{asset('images/logo_2.png')}}" width="25%" alt=""></td>
-                <td class="td_border">U.S. CUSTOMS AND BORDER PROTECTION</td>
-            </tr>
-            <tr>
-                <td class="td_border"><span>COVER LETTER</span></td>
-            </tr>
-        </tbody>
-    </table> -->
+<a href="{{ route('shipment_detail.shipment_Custom_pdf', @$shipment[0]['id']) }}" class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
+    style="background: #1d6092;float:left;">
+   <div class="d-flex justify-content-center align-items-center">
+       <span class="pl-2 font-size">PDF</span>
+   </div>
+</a>
+</div>
+@endif
+
+
     <div id="thissection">
 
 
@@ -176,7 +184,7 @@
 
 
 
-        <div class="header text-white">
+        <div class="text-white">
             <span><input type="text" value="U.S. CUSTOMS AND BORDER PROTECTION" style="width: 100%;border:none;outline:none;text-align:center;font-weight:bold;"></span>
         </div>
         <div class="img_div d-flex justify-content-center my-2">

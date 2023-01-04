@@ -10,13 +10,31 @@
 </head>
 
 <body>
-    <button type="button" class="text-white form-control-sm border py-1 btn-info rounded modal_button"
+    {{-- <button type="button" class="text-white form-control-sm border py-1 btn-info rounded modal_button"
          style="background: #1d6092;" onclick="printthis()">
         <div class="d-flex justify-content-center align-items-center">
-            
             <span class="pl-2 font-size">Print</span>
         </div>
+    </button> --}}
+
+    @if($button_hide == 'show')
+    <div style="width: 118px;">
+        <button type="button" class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
+        style="background: #1d6092;float:left;" onclick="printthis()">
+       <div class="d-flex justify-content-center align-items-center">
+           <span class="pl-2 font-size">PRINT</span>
+       </div>
     </button>
+    <a href="{{ route('shipment_detail.shipment_Hazard_pdf', @$shipment[0]['id']) }}" class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
+        style="background: #1d6092;float:left;">
+       <div class="d-flex justify-content-center align-items-center">
+           <span class="pl-2 font-size">PDF</span>
+       </div>
+    </a>
+    </div>
+    @endif
+
+
     <div id="thissection">
         <style>
             .non_hazard {
@@ -143,6 +161,7 @@
                 </tbody>
             </table>
             <div>
+                @if($button_hide == 'show')
                 <p>
                     <textarea rows="7" style="width:100%;padding:0;margin:0;box-sizing:border-box;border:none;">
                     THIS IS TO CERTIFY THAT ALL VEHICLES INCLUDED IN THIS CONTAINER HAVE BEEN
@@ -153,6 +172,22 @@
                     WITH THE ABOVE STATEMENT, THESE VEHICLES ARE CLASSIFIED AS NON-HAZARDOUS.
                 </textarea>
                 </p>
+                @else
+              <table>
+                <tr>
+                    <td>
+                    THIS IS TO CERTIFY THAT ALL VEHICLES INCLUDED IN THIS CONTAINER HAVE BEEN
+                    COMPLETELY DRAINED OF FUEL AND RUN UNTIL STALLED. 
+                    <br>  BATTERIES ARE DISCONNECTED
+                    AND TAPED BACK AND ARE PROPERLY SECURED TO PREVENT MOVEMENT IN ANY
+                    DIRECTION. <br> NO UNDECLARED HAZARDOUS MATERIALS ARE CONTAINERIZED, SECURED TO,
+                    OR STOWED IN THIS VEHICL
+                    <br>
+                    WITH THE ABOVE STATEMENT, THESE VEHICLES ARE CLASSIFIED AS NON-HAZARDOUS.
+                    </td>
+                </tr>
+              </table>
+              @endif
                 <div class="footer_head" style="clear:both;">
                     <div class="" style="float:right;">
                         <span>DATE:</span>
