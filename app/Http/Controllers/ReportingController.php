@@ -201,7 +201,7 @@ class ReportingController extends Controller
     {
         if ($request->ajax()) {
         
-        $data = Shipment::with('vehicle.user', 'customer.billings')
+        $data = Shipment::with('vehicle.user')
         ->when($request->filled('shipper'), function ($query) use ($request) {
             return $query->where('shipper', $request->shipper);
         })->when($request->filled('location'), function ($query) use ($request) {
