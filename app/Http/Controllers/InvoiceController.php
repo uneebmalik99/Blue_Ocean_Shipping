@@ -272,7 +272,8 @@ class InvoiceController extends Controller
 
         if ($request->ajax()) {
             if(Auth::user()->hasRole('Customer')){
-                $data = Invoice::with('vehicle.user')->where('customer_email', auth()->user()->email)->get();
+                $data = Invoice::with('vehicle.user')->where('company_name', auth()->user()->company_name)->get();
+                
             }
             else{
                 $data = Invoice::with('vehicle.user')->get();
@@ -288,7 +289,7 @@ class InvoiceController extends Controller
                 ->make(true);
         }
         if(Auth::user()->hasRole('Customer')){
-            $data['data'] = Invoice::with('vehicle')->where('customer_email', auth()->user()->email)->get()->toArray();
+            $data['data'] = Invoice::with('vehicle')->where('company_name', auth()->user()->company_name)->get()->toArray();
         }
         else{
             $data['data'] = Invoice::with('vehicle')->get()->toArray();

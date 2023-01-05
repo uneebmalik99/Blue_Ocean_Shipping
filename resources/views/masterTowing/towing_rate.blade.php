@@ -325,9 +325,10 @@
     </div>
 </div>
 <script>
-     var role = $('#role').val();
-     console.log(Number(role))
-     if(role){
+     var role = Number($('#role').val());
+     
+     if(role == 1){
+        
         $('#towingrate_table').DataTable({
         "ordering": false,
         scrollX: true,
@@ -368,17 +369,8 @@
                 search: "",
                 sLengthMenu: "_MENU_",
                 searchPlaceholder: "Search"
-            },
-            buttons: [{
-                text: 'Add New Record',
-                attr: {
-                    id: 'towing_rate_add',
-                    // class:'btn',
-                    'data-toggle':'modal',
-                    'data-target':'#towingrate_modal',
-                    // 'tab':'',
-                    },
-            }],
+            }
+            
         });
      }
     
