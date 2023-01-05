@@ -124,12 +124,12 @@ class VehicleController extends Controller
 
         if(Auth::user()->hasRole('Customer')){
 
-            $data['records'] = Vehicle::with('user','pickupimages')->where('added_by_user', auth()->user()->id)->where('status', 3)->get()->toArray();
-            $data['new_orders'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '1')->get();
-            $data['dispatched'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '2')->get();
-            $data['on_hand'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '3')->get();
-            $data['no_titles'] = Vehicle::where('added_by_user', auth()->user()->id)->orwhere('customer_name', auth()->user()->id)->orwhere('status', '4')->orwhere('title_type', '!=', 'Exportable')->get();
-            $data['towing_value'] = Vehicle::select('towing_charges')->where('status', '3')->get()->toArray();
+            $data['records'] = Vehicle::with('user','pickupimages')->where('customer_name', auth()->user()->id)->where('status', 3)->get()->toArray();
+            $data['new_orders'] = Vehicle::where('customer_name', auth()->user()->id)->where('status', '1')->get();
+            $data['dispatched'] = Vehicle::where('customer_name', auth()->user()->id)->where('status', '2')->get();
+            $data['on_hand'] = Vehicle::where('customer_name', auth()->user()->id)->where('status', '3')->get();
+            $data['no_titles'] = Vehicle::where('title_type', '!=', 'EXPORTABLE')->orwhereNull('title_type')->where('customer_name', auth()->user()->id)->get();
+            $data['towing_value'] = Vehicle::select('towing_charges')->where('customer_name', auth()->user()->id)->where('status', '3')->get()->toArray();
             $data['towing'] = 0;
             foreach($data['towing_value'] as $towing_charges){
                 if($towing_charges['towing_charges'] != null){
@@ -142,7 +142,7 @@ class VehicleController extends Controller
             $data['make'] = MMS::select('make')->where('status', '1')->groupBy('make')->get()->toArray();
             $data['model'] = MMS::select('model')->where('status', '1')->groupBy('model')->get()->toArray();
 
-            $data['inventory'] = Vehicle::select('value')->where('added_by_user', auth()->user()->id)->where('status', '3')->get()->toArray();
+            $data['inventory'] = Vehicle::select('value')->where('customer_name', auth()->user()->id)->where('status', '3')->get()->toArray();
             $data['inventory_value'] = 0;
             foreach($data['inventory'] as $inventory){
                 $value = str_replace( array( '\'', '"', ',' , ';', '<', '>',  '$'),'', $inventory['value']);
@@ -961,8 +961,8 @@ class VehicleController extends Controller
 
             if($req->state){
                 if(Auth::user()->hasRole('Customer')){  
-                    $total = Vehicle::where('added_by_user', auth()->user()->id)->where('port', $req->state)->get();
-                    $records = Vehicle::with('user')->where('added_by_user', auth()->user()->id);
+                    $total = Vehicle::where('customer_name', auth()->user()->id)->where('port', $req->state)->get();
+                    $records = Vehicle::with('user')->where('customer_name', auth()->user()->id);
                 }
                 else{
                     $total = Vehicle::where('port', $req->state)->get()->toArray();
@@ -971,8 +971,8 @@ class VehicleController extends Controller
             }
             else{
                 if(Auth::user()->hasRole('Customer')){  
-                    $total = Vehicle::where('added_by_user', auth()->user()->id)->get();
-                    $records = Vehicle::with('user')->where('added_by_user', auth()->user()->id);
+                    $total = Vehicle::where('customer_name', auth()->user()->id)->get();
+                    $records = Vehicle::with('user')->where('customer_name', auth()->user()->id);
                 }
                 else{
                     $total = Vehicle::all()->toArray();
@@ -981,10 +981,19 @@ class VehicleController extends Controller
             }
             if ($status) {
                 if($status == '4'){
-                    $records = $records->where('status', $status)->orwhere('title_type', '!=', 'Exportable')->paginate($this->perpage);
-                    $data['records'] = $records;
-                    $output['view'] = view('vehicle.' . $status_name, $data)->render();
-                    return Response($output);
+                    if(Auth::user()->hasRole('Customer')){
+                       $record =  Vehicle::where('title_type', '!=', 'EXPORTABLE')->orwhereNull('title_type')->where('customer_name', auth()->user()->id)->get();
+                        // $records = $records->where('status', $status)->orwhere('title_type', '!=', 'Exportable')->paginate($this->perpage);
+                        $data['records'] = $record;
+                        $output['view'] = view('vehicle.' . $status_name, $data)->render();
+                        return Response($output);
+                    }
+                    else{
+                        $records = $records->where('status', $status)->orwhere('title_type', '!=', 'Exportable')->paginate($this->perpage);
+                        $data['records'] = $records;
+                        $output['view'] = view('vehicle.' . $status_name, $data)->render();
+                        return Response($output);
+                    }
                 }
                 else{
                     $records = $records->where('status', $status)->paginate($this->perpage);
