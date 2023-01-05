@@ -17,6 +17,6 @@ class Shipper extends Model
 
     public function customer()
     {
-        return $this->belongsTo('App\Models\Customer', 'customer_id', 'id');
+        return $this->belongsTo('App\Models\User', 'customer_id', 'id');
     }
 }

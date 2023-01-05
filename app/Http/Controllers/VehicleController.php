@@ -49,6 +49,7 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 // use Excel;
 use URL;
+use DB;
 
 class VehicleController extends Controller
 {
@@ -127,7 +128,7 @@ class VehicleController extends Controller
             $data['new_orders'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '1')->get();
             $data['dispatched'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '2')->get();
             $data['on_hand'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '3')->get();
-            $data['no_titles'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '4')->orwhere('title_type', '!=', 'Exportable')->get();
+            $data['no_titles'] = Vehicle::where('added_by_user', auth()->user()->id)->orwhwere('customer_name', auth()->user()->id)->orwhere('status', '4')->orwhere('title_type', '!=', 'Exportable')->get();
             $data['towing_value'] = Vehicle::select('towing_charges')->where('status', '3')->get()->toArray();
             $data['towing'] = 0;
             foreach($data['towing_value'] as $towing_charges){
@@ -154,14 +155,13 @@ class VehicleController extends Controller
             $data['new_orders'] = Vehicle::where('status', '1')->get();
             $data['dispatched'] = Vehicle::where('status', '2')->get();
             $data['on_hand'] = Vehicle::where('status', '3')->get();
-            $data['no_titles'] = Vehicle::where('status', '4')->orwhere('title_type', '!=', 'Exportable')->get();
+            $data['no_titles'] = Vehicle::with('user')->where('status', '4')->orwhere('title_type', '!=', 'EXPORTABLE')->orwhereNull('title_type')->get();
             $data['towing_value'] = Vehicle::select('towing_charges')->where('status', '3')->get()->toArray();
             $data['towing'] = 0;
             foreach($data['towing_value'] as $towing_charges){
                 if($towing_charges['towing_charges'] != null){
                    $data['towing'] += $towing_charges['towing_charges'];
                 }
-                
             }
             // dd($data['towing']);
             // $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();

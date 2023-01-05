@@ -105,7 +105,8 @@ class ReportingController extends Controller
                 'page' => 'list',
             ],
         ];
-        $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
+        // $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
+        $data['warehouse'] = Warehouse::where('status', '1')->get()->toArray();
         $data['companies'] = User::role('Customer')->get();
         $data['shippers'] = ShipperName::where('status', '1')->get();
         $data['titletypes'] = TitleType::where('status', '1')->get();
@@ -121,7 +122,7 @@ class ReportingController extends Controller
 
         if($req->id == 'dispatch_tab'){
             $data['status'] = 2;
-            $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
+            $data['warehouse'] = Warehouse::where('status', '1')->get()->toArray();
             $data['companies'] = User::role('Customer')->get();
             $data['shippers'] = ShipperName::where('status', '1')->get();
             $data['titletypes'] = TitleType::where('status', '1')->get();
@@ -130,7 +131,7 @@ class ReportingController extends Controller
         }
         elseif($req->id == 'new_order_tab'){
             $data['status'] = 1; 
-            $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
+            $data['warehouse'] = Warehouse::where('status', '1')->get()->toArray();
             $data['companies'] = User::role('Customer')->get();
             $data['shippers'] = ShipperName::where('status', '1')->get();
             $data['titletypes'] = TitleType::where('status', '1')->get();
@@ -139,7 +140,7 @@ class ReportingController extends Controller
         }
         elseif($req->id == 'on_hand_tab'){
             $data['status'] = 3;
-            $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
+            $data['warehouse'] = Warehouse::where('status', '1')->get()->toArray();
             $data['companies'] = User::role('Customer')->get();
             $data['shippers'] = ShipperName::where('status', '1')->get();
             $data['titletypes'] = TitleType::where('status', '1')->get();
@@ -156,9 +157,8 @@ class ReportingController extends Controller
         elseif($req->id == 'no_title_tab')
         {
             $data['status'] = 4;
-            $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
             $data['companies'] = User::role('Customer')->get();
-            $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
+            $data['warehouse'] = Warehouse::where('status', '1')->get()->toArray();
             $data['companies'] = User::role('Customer')->get();
             $data['shippers'] = ShipperName::where('status', '1')->get();
             $data['titletypes'] = TitleType::where('status', '1')->get();
@@ -172,19 +172,20 @@ class ReportingController extends Controller
 
 
     function fitlerVehicles(Request $request){
+        // dd($request->all());
         $output = [];
         $data = [];
-        $data['vehicles'] = Vehicle::where('status', $request->status)->when($request->filled('shipper'), function ($query) use ($request) {
+        $data['vehicles'] = Vehicle::with('user')->where('title_type', '!=', 'EXPORTABLE')->orwhereNull('title_type')
+        ->when($request->filled('shipper'), function ($query) use ($request) {
             return $query->where('shipper_name', $request->shipper);
         })->when($request->filled('location'), function ($query) use ($request) {
-            return $query->Where('pickup_location', $request->location);
+            return $query->Where('port', $request->location);
         })->when($request->filled('title_type'), function ($query) use ($request) {
             return $query->Where('title_type', $request->status);
         })->when($request->filled('company_name'), function ($query) use ($request) {
             return $query->Where('customer_name', $request->company_name);
         })->get()->toArray();
 
-        // dd($data['vehicles']);
 
 
         $output =  view('layouts.reporting.filterVehicles', $data)->render();
@@ -199,19 +200,16 @@ class ReportingController extends Controller
     public function serverside(Request $request)
     {
         if ($request->ajax()) {
-            
-
-            
-       
         
-        $data = Shipment::with('vehicle', 'customer.billings')->when($request->filled('shipper'), function ($query) use ($request) {
+        $data = Shipment::with('vehicle.user', 'customer.billings')
+        ->when($request->filled('shipper'), function ($query) use ($request) {
             return $query->where('shipper', $request->shipper);
         })->when($request->filled('location'), function ($query) use ($request) {
             return $query->Where('loading_state', $request->location);
         })->when($request->filled('status'), function ($query) use ($request) {
             return $query->Where('status', $request->status);
         })->when($request->filled('company_name'), function ($query) use ($request) {
-            return $query->Where('customer_name', $request->company_name);
+            return $query->Where('company_name', $request->company_name);
         })->get();
 
         

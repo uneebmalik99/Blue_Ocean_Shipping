@@ -27,7 +27,7 @@
         @foreach ($records as $val)
             <tr>
                 <td>{{ @$val['posted_date'] }}</td>
-                <td>{{ @$val['customer_name'] }}</td>
+                <td>{{ @$val['user']['company_name'] }}</td>
                 <td>{{ @$val['year'] }}</td>
                 <td>{{ @$val['make'] }}</td>
                 <td>{{ @$val['model'] }}</td>

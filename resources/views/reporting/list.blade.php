@@ -90,14 +90,12 @@
 
                         </div>
                         <form id="filter_vehicle_reporting">
-                        <div class="d-flex py-3 px-0"style="
-                        width: 108%;
-                    ">
+                        <div class="d-flex py-3 px-0">
                             <div class="col-2 p-0">
                                 <select class="form-control-sm border-style input-border-style rounded col-11 text-muted px-2" name="location" id="location">
                                     <option selected disabled>Select Location</option>
-                                    @foreach ($location as $loc)
-                                    <option value="{{ @$loc['state'] }}">{{ @$loc['state'] }}</option>
+                                    @foreach ($warehouse as $loc)
+                                    <option value="{{ @$loc['name'] }}">{{ @$loc['name'] }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -111,7 +109,7 @@
                             </div>
                             <div class="col-2 p-0">
                                 <select class="form-control-sm border-style input-border-style rounded col-11 text-muted px-2" name="status" id="status">
-                                    <option disabled selected>Title Status</option>
+                                    <option disabled selected>Title Type</option>
                                     @foreach ($titletypes as $type)
                                     <option value="{{ @$type['name'] }}">{{ @$type['name'] }}</option>
                                     @endforeach
@@ -121,8 +119,7 @@
                                 <select class="form-control-sm border-style input-border-style rounded col-12 text-muted" name="company_name" id="company_name">
                                     <option disabled selected>Company Name</option>
                                     @foreach ($companies as $company)
-                                    <option value="{{ @$company['company_name'] }}">{{ @$company['company_name'] }}</option>
-                                        
+                                    <option value="{{ @$company['id'] }}">{{ @$company['company_name'] }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -130,18 +127,10 @@
                             <div class="col-4" style="margin-left:13px">
                                
                                 <button type="button" class="btn col-5" style="background:#2c3e50;color:white;font-size:11px!important;" id="1" onclick="filter_vehicle_reporting(this.id)">Search</button>
-                                
                                 <button  type="button" class="btn ml-2 col-3"
                                 style="background:#2c3e50;color:white;font-size:11px!important;text-align:center;"
                                 onclick="clear_reporting_neworder()">Clear</button> 
                             </div>
-
-                            {{-- <div class="col-2 p-0">
-                                <button  type="button" class="btn"
-                                style="background:#2c3e50;color:white;font-size:11px!important;"
-                                onclick="clear_reporting_neworder()">Clear</button>  
-                            </div> --}}
-
                             
                         </div>
                     </form>

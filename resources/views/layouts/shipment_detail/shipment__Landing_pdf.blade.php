@@ -116,10 +116,10 @@
                     </tr>
                     <tr>
                         <td rowspan="4" class="td3_data">
-                            <input type="text" value="{{ @$shipment[0]['vehicle'][0]['user']['shippers'][0]['shipper_name'] }}" style="width: 100%;border:none;outline:none;text-align:start;"><br>
-                            <input type="text" value="{{ @$shipment[0]['vehicle'][0]['user']['shippers'][0]['address'] }}" style="width: 100%;border:none;outline:none;text-align:start;"><br>
-                            <input type="text" value="{{ @$shipment[0]['vehicle'][0]['user']['shippers'][0]['city'] }}, {{ @$shipment[0]['vehicle'][0]['user']['shippers'][0]['zip_code'] }}" style="width: 100%;border:none;outline:none;text-align:start;"><br>
-                            <input type="text" value="{{ @$shipment[0]['vehicle'][0]['user']['shippers'][0]['phone'] }}" style="width: 100%;border:none;outline:none;text-align:start;"><br>
+                            <input type="text" value="{{ @$shipment[0]['customer']['shippers'][0]['shipper_name'] }}" style="width: 100%;border:none;outline:none;text-align:start;"><br>
+                            <input type="text" value="{{ @$shipment[0]['customer']['shippers'][0]['address'] }}" style="width: 100%;border:none;outline:none;text-align:start;"><br>
+                            <input type="text" value="{{ @$shipment[0]['customer']['shippers'][0]['city'] }}, {{ @$shipment[0]['custgomer']['shippers'][0]['zip_code'] }}" style="width: 100%;border:none;outline:none;text-align:start;"><br>
+                            <input type="text" value="{{ @$shipment[0]['customer']['shippers'][0]['phone'] }}" style="width: 100%;border:none;outline:none;text-align:start;"><br>
 
                         </td>
                         <td class="td3_data"><input type="text" value="{{ @$shipment[0]['booking_number'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
@@ -153,9 +153,9 @@
                     </tr>
                     <tr>
                         <td rowspan="4" class="td3_data">
-                            <input type="text" value="{{ @$shipment[0]['vehicle'][0]['user']['billings'][0]['company_name'] }}" style="width: 100%;border:none;outline:none;text-align:start;"><br>
-                            <input type="text" value="{{ @$shipment[0]['vehicle'][0]['user']['billings'][0]['address'] }}, {{ @$shipment[0]['vehicle'][0]['user']['billings'][0]['city'] }}, {{ @$shipment[0]['vehicle'][0]['user']['billings'][0]['zip_code'] }}" style="width: 100%;border:none;outline:none;text-align:start;"><br>
-                            <input type="text" value="{{ @$shipment[0]['vehicle'][0]['user']['billings'][0]['phone'] }}" style="width: 100%;border:none;outline:none;text-align:start;">
+                            <input type="text" value="{{ @$shipment[0]['customer']['billings'][0]['company_name'] }}" style="width: 100%;border:none;outline:none;text-align:start;"><br>
+                            <input type="text" value="{{ @$shipment[0]['customer']['billings'][0]['address'] }}, {{ @$shipment[0]['customer']['billings'][0]['city'] }}, {{ @$shipment[0]['customer'][0]['user']['billings'][0]['zip_code'] }}" style="width: 100%;border:none;outline:none;text-align:start;"><br>
+                            <input type="text" value="{{ @$shipment[0]['customer']['billings'][0]['phone'] }}" style="width: 100%;border:none;outline:none;text-align:start;">
 
                         </td>
                         <td class="td3_data"><input type="text" value="{{ @$shipment[0]['loading_terminal'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
@@ -188,9 +188,10 @@
                     </tr>
                     <tr>
                         <td colspan="2" rowspan="2" class="td3_p" id="t_pad">
-                            <input type="text" value="{{ @$shipment[0]['vehicle'][0]['user']['billings'][0]['company_name'] }}" style="width: 100%;border:none;outline:none;text-align:start;"><br>
-                            <input type="text" value="{{ @$shipment[0]['vehicle'][0]['user']['billings'][0]['address'] }}, {{ @$shipment[0]['vehicle'][0]['user']['billings'][0]['city'] }}, {{ @$shipment[0]['vehicle'][0]['user']['billings'][0]['zip_code'] }}" style="width: 100%;border:none;outline:none;text-align:start;"><br>
-                            <input type="text" value="{{ @$shipment[0]['vehicle'][0]['user']['billings'][0]['phone'] }}" style="width: 100%;border:none;outline:none;text-align:start;">
+                            <input type="text" value="{{ @$shipment[0]['customer']['billings'][0]['company_name'] }}" style="width: 100%;border:none;outline:none;text-align:start;"><br>
+                            <input type="text" value="{{ @$shipment[0]['customer']['billings'][0]['address'] }}, {{ @$shipment[0]['customer']['billings'][0]['city'] }}, {{ @$shipment[0]['customer'][0]['user']['billings'][0]['zip_code'] }}" style="width: 100%;border:none;outline:none;text-align:start;"><br>
+                            <input type="text" value="{{ @$shipment[0]['customer']['billings'][0]['phone'] }}" style="width: 100%;border:none;outline:none;text-align:start;">
+
                         </td>
                         <td class="td3_data"></td>
     

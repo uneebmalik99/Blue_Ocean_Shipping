@@ -1,6 +1,7 @@
- @foreach ($vehicles as $vehicle)
+@if(count(@$vehicles) > 0)
+@foreach ($vehicles as $vehicle)
      <tr>
-         <td>{{ @$vehicle['customer_name'] }}</td>
+         <td>{{ @$vehicle['user']['company_name'] }}</td>
          <td>{{ @$vehicle['year'] }}</td>
          <td>{{ @$vehicle['make'] }}</td>
          <td>{{ @$vehicle['model'] }}</td>
@@ -22,3 +23,27 @@
          <td>{{ @$vehicle['shipper_name'] }}</td>
      </tr>
  @endforeach
+ @else
+ <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td style="text-align: center;">Not Found Any Vehicle</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+ </tr>
+ @endif
