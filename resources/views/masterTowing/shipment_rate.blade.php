@@ -271,7 +271,7 @@
             </tbody>
         </table>
     </div>
-
+    <input type="hidden" value="{{(auth()->user()->hasRole('Super Admin')) ?? 0 }}" id="role"/>
 
     <!-- add update modal -->
     <div class="modal fade" id="shipmentrate_modal" role="dialog">
@@ -287,8 +287,10 @@
 
 
 <script>
-    $('#shipmentrate_table').DataTable({
-        "ordering": false,
+    var role = $('#role').val();
+    if(role){
+        $('#shipmentrate_table').DataTable({
+            "ordering": false,
             scrollX: true,
             select: true,
             dom: 'Blfrtip',
@@ -312,5 +314,26 @@
                     },
             }],
         });
+    }
+    else {
+        $('#shipmentrate_table').DataTable({
+            "ordering": false,
+            scrollX: true,
+            select: true,
+            dom: 'Blfrtip',
+            lengthMenu: [
+                [10, 25, 50],
+                ['10', '25', '50']
+            ],
+            language: {
+                search: "",
+                sLengthMenu: "_MENU_",
+                searchPlaceholder: "Search"
+            }
+            
+        });
+
+    }
+   
 </script>
 @endsection

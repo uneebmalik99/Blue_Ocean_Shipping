@@ -154,12 +154,14 @@
                     <div class="col-2 text-center text"><span><b>CALIFORNIA</b></span></div>
                     <div class="col-1 text-center text"><span><b>SEATTLE</b></span></div>
                 </div>
-                <!-- creat -->
+                
+                <!-- create -->
                 <div class="d-none d-lg-block col-3 ms-3 gx-5 d-lg-flex align-items-lg-end justify-content-lg-start">
                     <div>
                         <h5 class="m-0"><b>Create Towing Rate</b></h5>
                     </div>
                 </div>
+                
             </div>
             <div class="row m-0 mt-3 m-sm-0 m-lg-3  d-flex justify-content-between">
                 <!-- sheet -->

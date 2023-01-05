@@ -1,5 +1,5 @@
 @extends('layouts.partials.mainlayout')
 @section('body')
-    <h1>Tahir Ismail</h1>
+    <h1>Chat</h1>
 
 @endsection

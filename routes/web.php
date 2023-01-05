@@ -238,7 +238,7 @@ Route::prefix('/admin')->middleware(['auth','login.status'])->group(function () 
     Route::get('/tickets', [TicketController::class, 'index'])->name('ticket.list');
 
     //Middleware Group
-    Route::group(['middleware' => ['role:Super Admin']], function () {
+    Route::group(['middleware' => ['permission:Page Access']], function () {
         //User Routes
         // User Routes
     Route::get('/users', [UserController::class, 'index'])->name('user.list');

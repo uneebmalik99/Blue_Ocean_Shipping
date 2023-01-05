@@ -312,7 +312,7 @@
         </table>
     </div>
 
-
+    <input type="hidden" value="{{(auth()->user()->hasRole('Super Admin')) ?? 0 }}" id="role"/>
     <!-- add update modal -->
     <div class="modal fade" id="towingrate_modal" role="dialog">
         <div class="modal fade show" id="towingrate_modal" tabindex="-1" role="dialog"
@@ -325,7 +325,10 @@
     </div>
 </div>
 <script>
-    $('#towingrate_table').DataTable({
+     var role = $('#role').val();
+     console.log(Number(role))
+     if(role){
+        $('#towingrate_table').DataTable({
         "ordering": false,
         scrollX: true,
         select: true,
@@ -350,5 +353,34 @@
                 },
         }],
     });
+     }
+     else{
+        $('#towingrate_table').DataTable({
+            "ordering": false,
+            scrollX: true,
+            select: true,
+            dom: 'Blfrtip',
+            lengthMenu: [
+                [10, 25, 50],
+                ['10', '25', '50']
+            ],
+            language: {
+                search: "",
+                sLengthMenu: "_MENU_",
+                searchPlaceholder: "Search"
+            },
+            buttons: [{
+                text: 'Add New Record',
+                attr: {
+                    id: 'towing_rate_add',
+                    // class:'btn',
+                    'data-toggle':'modal',
+                    'data-target':'#towingrate_modal',
+                    // 'tab':'',
+                    },
+            }],
+        });
+     }
+    
 </script>
 @endsection
