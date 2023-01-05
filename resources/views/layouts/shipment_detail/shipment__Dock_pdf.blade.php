@@ -11,12 +11,28 @@
 
 <body>
 
-    <button type="button" class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
+    {{-- <button type="button" class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
         style="background: #1d6092;" onclick="printthis()">
         <div class="d-flex justify-content-center align-items-center">
             <span class="pl-2 font-size">Print</span>
         </div>
-    </button>
+    </button> --}}
+    @if($button_hide == 'show')
+<div style="width: 118px;">
+    <button type="button" class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
+    style="background: #1d6092;float:left;" onclick="printthis()">
+   <div class="d-flex justify-content-center align-items-center">
+       <span class="pl-2 font-size">PRINT</span>
+   </div>
+</button>
+<a href="{{ route('shipment_detail.shipment_Dock_pdf', @$shipment[0]['id']) }}" class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
+    style="background: #1d6092;float:left;">
+   <div class="d-flex justify-content-center align-items-center">
+       <span class="pl-2 font-size">PDF</span>
+   </div>
+</a>
+</div>
+@endif
 
     <div id="thissection">
         

@@ -379,7 +379,7 @@ background-color: #e93f7800!important;
         text-decoration: none;
         color: white;
     }
-}
+
 
 </style>
 <div class="row my-5">
@@ -394,7 +394,6 @@ background-color: #e93f7800!important;
                     </div>
                     <div class="row">
                         <div class="col-12 ">
-
                             <div class="d-flex justify-content-between "
                                 style="border: 1px solid rgba(26, 88, 133, 0.17); border-radius: 10px;width: 90%;margin:4px auto;padding:5px;  ">
                                 <span class="infromation_mainText ">Title</span>
@@ -433,23 +432,15 @@ background-color: #e93f7800!important;
                                     <span class="information_text">No</span>
                                 @endif
                             </div>
-
-
                         </div>
-
-
                     </div>
-
                     <div class="row">
                         <div class="col-12">
                             <h4>Attachment List</h4>
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="col-12">
-
-
                             @if (@$vehicle['billofsales'] || @$vehicle['originaltitles'] || @$vehicle['auction_invoice'] || @$vehicle['auction_copy'])
                                 <div class="d-flex justify-content-between "
                                     style="border: 1px solid rgba(26, 88, 133, 0.17); border-radius: 10px;width: 90%;margin:4px auto;padding:5px; ">
@@ -496,7 +487,6 @@ background-color: #e93f7800!important;
                                                     </td>
                                                 </tr>
                                                 @endif
-
                                                 {{-- <tr>
                                                     <td>Auction Invoice</td>
                                                     <td>auction.pdf</td>
@@ -528,13 +518,9 @@ background-color: #e93f7800!important;
                                                         </button>
                                                     </td>
                                                 </tr> --}}
-
                                             </tbody>
                                         </table>
-
-
                                     </div>
-
                                 </div>
                                 <br>
                             @else
@@ -544,9 +530,6 @@ background-color: #e93f7800!important;
                                     No Found
                                 </div>
                             @endif
-
-
-
                             <div class="d-flex justify-content-between "
                                 style="border: 1px solid rgba(26, 88, 133, 0.17); border-radius: 10px;width: 90%;margin:4px auto;padding:5px;  ">
                                 <span class="infromation_mainText ml-4">Shipper</span>
@@ -556,7 +539,6 @@ background-color: #e93f7800!important;
                                         style="background:#3e5871;color:white;border-radius:5px;outline:none;border:none;">Details</button>
                                 </span>
                             </div>
-
                             <div class="d-flex justify-content-between "
                                 style="border: 1px solid rgba(26, 88, 133, 0.17); border-radius: 10px;width: 90%;margin:4px auto;padding:5px;  ">
                                 <span class="infromation_mainText ml-4">Consignee</span>
@@ -568,8 +550,6 @@ background-color: #e93f7800!important;
                             </div>
                         </div>
                     </div>
-
-
                 </div>
                 <div class="col-sm-12 col-md-5 col-lg-5 mb-5 mt-5" style="margin-right:12px">
                     <div class="information_gallary" style="width:100%">
@@ -596,31 +576,22 @@ background-color: #e93f7800!important;
                                             Auction Image
                                         </button>
                                         </div>
-
-
                                     </div>
-
                                 </div>
-
                                 <div class="col-12 main_image">
                                         @if (@$vehicle['warehouse_image'])
-
                                         <div class="w-100 p-1  " style="position: relative;">
-
                                             <div style="width: 100%">
                                                 <img src="{{ asset(@$vehicle['warehouse_image'][0]['name']) }}"
                                                     alt=""class="img_fluid mx-auto w-100"
                                                     style="height:200px; object-fit: fill;border-radius: 10px!important;width:auto;"
                                                     id="main_image_box">
                                             </div>
-
                                             <a class="bottom_button p1">
                                                 <svg width="34" height="0" viewBox="0 0 0 0" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <rect width="0" height="0" rx="0"
                                                         fill="white" fill-opacity="0.3" />
-
-
                                                     <g filter="url(#filter0_d_0_1)">
 
                                                         <path
@@ -628,7 +599,6 @@ background-color: #e93f7800!important;
                                                             fill="white" />
 
                                                     </g>
-
                                                     <defs>
                                                         <filter id="filter0_d_0_1" x="5" y="2"
                                                             width="30" height="23"
@@ -655,9 +625,7 @@ background-color: #e93f7800!important;
                                                             style="background-color:#65686c;color:white;border-radius:inherit">fullscreen</i>
                                                     </div>
                                                 </svg>
-
                                             </a>
-
                                             <div class="left_button p-1 " style="top:0%!important;left:0%!important">
                                                 <a href="" style="text-decoration: none">
                                                     <svg width="23" height="22" viewBox="0 0 23 22"
@@ -763,7 +731,6 @@ background-color: #e93f7800!important;
                                                             </filter>
                                                         </defs>
                                                     </svg>
-
                                                 </a>
                                             </div>
                                         </div>
@@ -773,7 +740,6 @@ background-color: #e93f7800!important;
                                     </div>
 
                                 <div class="image_section"style="margin-left: 22px;">
-
                                     <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12 changeImages"
                                         style="left:2%;margin-top:12px">
                                         @if (@$vehicle['warehouse_image'])
@@ -785,13 +751,10 @@ background-color: #e93f7800!important;
                                             @endforeach
                                         @endif
                                     </div>
-
                                 </div>
 
-
+                                
                             </div>
-
-
                         </div>
                     </div>
                     @if (@$vehicle['warehouse_image'])
