@@ -28,41 +28,7 @@ Auth::routes();
 Route::prefix('/admin')->middleware(['auth','login.status'])->group(function () {
     //Home
     Route::get('/', [HomeController::class, 'index']);
-    // User Routes
-    Route::get('/users', [UserController::class, 'index'])->name('user.list');
-    Route::post('/users/create', [UserController::class, 'create'])->name('user.create');
-    Route::get('/users/edit/{id?}', [UserController::class, 'edit'])->name('user.edit');
-    Route::post('/users/edit/{id?}', [UserController::class, 'edit'])->name('user.edit');
-    Route::get('/users/delete/{id?}', [UserController::class, 'delete'])->name('user.delete');
-    Route::get('/users/profile/{id?}', [UserController::class, 'profile'])->name('user.profile');
-    Route::post('/users/updateprofile', [UserController::class, 'updateprofile'])->name('user.updateprofile');
-    Route::get('/users/search', [UserController::class, 'search'])->name('user.search');
-    Route::get('/users/pagination', [UserController::class, 'search'])->name('user.pagination');
-    Route::get('/users/createRole', [App\Http\Controllers\UserController::class, 'createRole'])->name('user.createRole');
-
-    Route::get('/users/createroles', [App\Http\Controllers\UserController::class, 'createroles'])->name('user.createroles');
-
-    Route::post('/users/addRoles', [App\Http\Controllers\UserController::class, 'addRoles'])->name('user.addRole');
-
-    Route::get('/users/deleteRole/{id?}', [App\Http\Controllers\UserController::class, 'deleteRole'])->name('delete.role');
-
-    Route::post('/users/showupdatemodel}', [App\Http\Controllers\UserController::class, 'showUpdateRole'])->name('user.updatemodelshow');
-    Route::post('/users/addUsers', [App\Http\Controllers\UserController::class, 'addUsers'])->name('user.addUser');
-
-    Route::get('/users/editUser',[App\Http\Controllers\UserController::class,'showUpdateUser'])->name('user.edituser');
-    Route::post("/users/assignRoles",[App\Http\Controllers\UserController::class,'assignRole'])->name('user.assignrole');
-    Route::post("/users/dismissrole",[App\Http\Controllers\UserController::class,'dismissrole'])->name('user.dismissrole');
-    Route::post("/users/assignRoute",[App\Http\Controllers\UserController::class,'assignroute'])->name('user.assignroute');
-    Route::post("/users/dismissroute",[App\Http\Controllers\UserController::class,'dismissroute'])->name('user.dismissroute');
-    Route::get('/users/deleteRole/{id?}', [App\Http\Controllers\UserController::class, 'deleteRole'])->name('delete.role');
-
-    Route::post('/users/showupdatemodel}', [App\Http\Controllers\UserController::class, 'showUpdateRole'])->name('user.updatemodelshow');
-    Route::get('/user/allpermissions',[App\Http\Controllers\UserController::class,'permissions'])->name('user.allpermissions');
-    Route::get('/user/allroles',[App\Http\Controllers\UserController::class,'roles'])->name('user.allroles');
-
-
-    Route::get('/users/createUser',[App\Http\Controllers\UserController::class,'createUser'])->name('user.createuser');
-
+    
     // Customer Routes
     Route::get('/customers', [CustomerController::class, 'index'])->name('customer.list');
     Route::get('/customers/create', [CustomerController::class, 'create'])->name('customer.create');
@@ -271,9 +237,46 @@ Route::prefix('/admin')->middleware(['auth','login.status'])->group(function () 
     // Tickets Routes
     Route::get('/tickets', [TicketController::class, 'index'])->name('ticket.list');
 
-    // Master Routes
-    Route::get('/importVehicles',                           [MasterController::class, 'importVehicles'])->name('importVehicles.list');
+    //Middleware Group
+    Route::group(['middleware' => ['role:Super Admin']], function () {
+        //User Routes
+        // User Routes
+    Route::get('/users', [UserController::class, 'index'])->name('user.list');
+    Route::post('/users/create', [UserController::class, 'create'])->name('user.create');
+    Route::get('/users/edit/{id?}', [UserController::class, 'edit'])->name('user.edit');
+    Route::post('/users/edit/{id?}', [UserController::class, 'edit'])->name('user.edit');
+    Route::get('/users/delete/{id?}', [UserController::class, 'delete'])->name('user.delete');
+    Route::get('/users/profile/{id?}', [UserController::class, 'profile'])->name('user.profile');
+    Route::post('/users/updateprofile', [UserController::class, 'updateprofile'])->name('user.updateprofile');
+    Route::get('/users/search', [UserController::class, 'search'])->name('user.search');
+    Route::get('/users/pagination', [UserController::class, 'search'])->name('user.pagination');
+    Route::get('/users/createRole', [App\Http\Controllers\UserController::class, 'createRole'])->name('user.createRole');
 
+    Route::get('/users/createroles', [App\Http\Controllers\UserController::class, 'createroles'])->name('user.createroles');
+
+    Route::post('/users/addRoles', [App\Http\Controllers\UserController::class, 'addRoles'])->name('user.addRole');
+
+    Route::get('/users/deleteRole/{id?}', [App\Http\Controllers\UserController::class, 'deleteRole'])->name('delete.role');
+
+    Route::post('/users/showupdatemodel}', [App\Http\Controllers\UserController::class, 'showUpdateRole'])->name('user.updatemodelshow');
+    Route::post('/users/addUsers', [App\Http\Controllers\UserController::class, 'addUsers'])->name('user.addUser');
+
+    Route::get('/users/editUser',[App\Http\Controllers\UserController::class,'showUpdateUser'])->name('user.edituser');
+    Route::post("/users/assignRoles",[App\Http\Controllers\UserController::class,'assignRole'])->name('user.assignrole');
+    Route::post("/users/dismissrole",[App\Http\Controllers\UserController::class,'dismissrole'])->name('user.dismissrole');
+    Route::post("/users/assignRoute",[App\Http\Controllers\UserController::class,'assignroute'])->name('user.assignroute');
+    Route::post("/users/dismissroute",[App\Http\Controllers\UserController::class,'dismissroute'])->name('user.dismissroute');
+    Route::get('/users/deleteRole/{id?}', [App\Http\Controllers\UserController::class, 'deleteRole'])->name('delete.role');
+
+    Route::post('/users/showupdatemodel}', [App\Http\Controllers\UserController::class, 'showUpdateRole'])->name('user.updatemodelshow');
+    Route::get('/user/allpermissions',[App\Http\Controllers\UserController::class,'permissions'])->name('user.allpermissions');
+    Route::get('/user/allroles',[App\Http\Controllers\UserController::class,'roles'])->name('user.allroles');
+
+
+    Route::get('/users/createUser',[App\Http\Controllers\UserController::class,'createUser'])->name('user.createuser');
+
+        // Master Routes
+    Route::get('/importVehicles',                           [MasterController::class, 'importVehicles'])->name('importVehicles.list');
 
     Route::get('/master',                               [MasterController::class, 'index'])->name('master.list');
     Route::post('/make',                                [MasterController::class, 'make'])->name('make.list');
@@ -313,6 +316,8 @@ Route::prefix('/admin')->middleware(['auth','login.status'])->group(function () 
     Route::post('/master/getbuyerids',       [MasterController::class, 'getbuyersids'])->name('importVehicle.get_buyerids');
 
 
+    });
+   
     // master towing page routes 
 
     Route::post('/master/towing/saveupdate',           [MasterTowingController::class, 'update_save'])->name('updatesave.towingrate');

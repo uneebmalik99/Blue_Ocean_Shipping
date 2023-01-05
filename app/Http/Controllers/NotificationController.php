@@ -11,7 +11,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification as NotificationAssignment;  
 use App\Notifications\UserAssignmentNotification;
-
+use Illuminate\Support\Facades\Auth;
 class NotificationController extends Controller
 {
 
@@ -82,11 +82,20 @@ class NotificationController extends Controller
 
         $data['vehicles_cart'] = VehicleCart::with('vehicle')->get()->toArray();
 
-
-        $notification = $this->Notification();
-        $data['user'] = User::role('Customer')->get();
+        if(Auth::user()->hasRole('Super Admin')){
+            $notification = $this->Notification();
+            $data['user'] = User::role('Customer')->get();
         
-        return view($this->view . 'list', $data, $notification);
+            return view($this->view . 'list', $data,$notification);
+        }
+        else{
+        $data['notification'] = Auth::user()->notifications;
+        $data['user'] = User::role('Customer')->get();
+        //dd($data);
+        return view($this->view . 'list', $data);
+        }
+        
+        
     }
 
     public function create(Request $request)

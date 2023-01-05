@@ -102,6 +102,7 @@
             </div>
 
 
+            @role(['Super Admin','Sub Admin'])
             <div class="col-sm-10 col-md-6 col-lg-6 mx-auto">
                 <div class="row">
                     <div class="col-12 create_notication_heading">
@@ -161,6 +162,7 @@
                     </div>
                 </div>
             </div>
+            @endrole
         </div>
     </div>
 
