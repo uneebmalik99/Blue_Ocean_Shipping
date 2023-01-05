@@ -17,8 +17,8 @@
                 <div class="col-2 p-0">
                     <select class="form-control-sm border-style input-border-style rounded col-11 text-muted px-2" name="location" id="location">
                         <option selected disabled>Select Location</option>
-                        @foreach ($location as $loc)
-                        <option value="{{ @$loc['state'] }}">{{ @$loc['state'] }}</option>
+                        @foreach ($warehouse as $loc)
+                        <option value="{{ @$loc['name'] }}">{{ @$loc['name'] }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -32,7 +32,7 @@
                 </div>
                 <div class="col-2 p-0">
                     <select class="form-control-sm border-style input-border-style rounded col-11 text-muted px-2" name="status" id="status">
-                        <option disabled selected>Title Status</option>
+                        <option disabled selected>Title Type</option>
                         @foreach ($titletypes as $type)
                         <option value="{{ @$type['name'] }}">{{ @$type['name'] }}</option>
                         @endforeach
@@ -42,7 +42,7 @@
                     <select class="form-control-sm border-style input-border-style rounded col-12 text-muted" name="company_name" id="company_name">
                         <option disabled selected>Company Name</option>
                         @foreach ($companies as $company)
-                        <option value="{{ @$company['company_name'] }}">{{ @$company['company_name'] }}</option>
+                        <option value="{{ @$company['id'] }}">{{ @$company['company_name'] }}</option>
                             
                         @endforeach
                     </select>

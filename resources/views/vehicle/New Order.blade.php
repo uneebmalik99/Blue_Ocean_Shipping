@@ -27,7 +27,7 @@
         @foreach ($records as $val)
             {{-- @dd( $val) --}}
             <tr>
-                <td>{{ @$val['customer_name'] }}</td>
+                <td>{{ @$val['user']['company_name'] }}</td>
                 <td>{{ @$val['year'] }}</td>
                 <td>{{ @$val['make'] }}</td>
                 <td>{{ @$val['model'] }}</td>

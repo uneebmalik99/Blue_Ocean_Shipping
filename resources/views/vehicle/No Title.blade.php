@@ -24,7 +24,7 @@
             <tr>
                 <td>
                         
-                            {{ @$val['customer_name'] }}
+                            {{ @$val['user']['company_name'] }}
                             
                 </td>
                 <td>{{ @$val['year'] }}</td>

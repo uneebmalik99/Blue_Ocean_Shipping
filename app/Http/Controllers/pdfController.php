@@ -111,8 +111,9 @@ class pdfController extends Controller
 
     public function shipmentLanding($id){
         $data = [];
-        $data['shipment']=Shipment::with('vehicle.user.billings', 'vehicle.user.shippers')->whereid($id)->get()->toArray();
+        $data['shipment']=Shipment::with('vehicle', 'customer.billings', 'customer.shippers')->whereid($id)->get()->toArray();
         $data['button_hide'] = 'hide';
+        // dd($data['shipment']);
         $pdf = PDF::loadview('layouts.shipment_detail.shipment__Landing_pdf', $data);
         return $pdf->stream(); 
     }
@@ -149,7 +150,7 @@ class pdfController extends Controller
             $output = view('layouts.shipment_detail.shipment_Houston_pdf', $data)->render();
         }
         else if($request->tab == 'bol'){
-            $data['shipment']=Shipment::with('vehicle.user.billings', 'vehicle.user.shippers')->whereid($request->id)->get()->toArray();
+            $data['shipment']=Shipment::with('vehicle.user', 'customer.billings', 'customer.shippers')->whereid($request->id)->get()->toArray();
             $data['button_hide'] = 'show';
             $output = view('layouts.shipment_detail.shipment__Landing_pdf', $data)->render();
         }

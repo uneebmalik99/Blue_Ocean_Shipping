@@ -814,26 +814,26 @@ class ShipmentController extends Controller
             if($request->columns[0]['data']['state'] != ''){
 
                 if(Auth::user()->hasRole('Customer')){
-                    $data = Shipment::with('vehicle')->where('status', $request->columns[0]['data']['tab'])->where('customer_email', auth()->user()->email)->where('loading_state', $request->columns[0]['data']['state'])->get();
+                    $data = Shipment::with('vehicle.user', 'customer')->where('status', $request->columns[0]['data']['tab'])->where('customer_email', auth()->user()->email)->where('loading_state', $request->columns[0]['data']['state'])->get();
                 }
                 else{
                     if($request->columns[0]['data']['tab'] == 'loading_port'){
-                        $data = Shipment::with('vehicle')->where('loading_port', $request->columns[0]['data']['value'])->where('loading_state', $request->columns[0]['data']['state'])->get();
+                        $data = Shipment::with('vehicle.user','customer.billings')->where('loading_port', $request->columns[0]['data']['value'])->where('loading_state', $request->columns[0]['data']['state'])->get();
                     }
                     elseif($request->columns[0]['data']['tab'] == 'destination_port'){
-                        $data = Shipment::with('vehicle')->where('destination_port', $request->columns[0]['data']['value'])->where('loading_state', $request->columns[0]['data']['state'])->get();
+                        $data = Shipment::with('vehicle.user', 'customer.billings')->where('destination_port', $request->columns[0]['data']['value'])->where('loading_state', $request->columns[0]['data']['state'])->get();
                     }
                     elseif($request->columns[0]['data']['tab'] == 'loading_date'){
-                        $data = Shipment::with('vehicle')->where('loading_date', $request->columns[0]['data']['value'])->where('loading_state', $request->columns[0]['data']['state'])->get();
+                        $data = Shipment::with('vehicle.user', 'customer.billings')->where('loading_date', $request->columns[0]['data']['value'])->where('loading_state', $request->columns[0]['data']['state'])->get();
                     }
                     elseif($request->columns[0]['data']['tab'] == 'arrival_date'){
-                        $data = Shipment::with('vehicle')->where('arrival_date', $request->columns[0]['data']['value'])->where('loading_state', $request->columns[0]['data']['state'])->get();
+                        $data = Shipment::with('vehicle.user', 'customer.billings')->where('arrival_date', $request->columns[0]['data']['value'])->where('loading_state', $request->columns[0]['data']['state'])->get();
                     }
                     elseif($request->columns[0]['data']['tab'] == 'all'){
-                        $data = Shipment::with('vehicle')->where('loading_state', $request->columns[0]['data']['state'])->get();
+                        $data = Shipment::with('vehicle.user', 'customer.billings')->where('loading_state', $request->columns[0]['data']['state'])->get();
                     }
                     else{
-                        $data = Shipment::with('vehicle')->where('status', $request->columns[0]['data']['tab'])->where('loading_state', $request->columns[0]['data']['state'])->get();
+                        $data = Shipment::with('vehicle.user', 'customer.billings')->where('status', $request->columns[0]['data']['tab'])->where('loading_state', $request->columns[0]['data']['state'])->get();
                     }
                 }
 
@@ -846,26 +846,26 @@ class ShipmentController extends Controller
 
 
                 if(Auth::user()->hasRole('Customer')){
-                    $data = Shipment::with('vehicle')->where('status', $request->columns[0]['data']['tab'])->where('customer_email', auth()->user()->email)->get();
+                    $data = Shipment::with('vehicle.user', 'customer.billings')->where('status', $request->columns[0]['data']['tab'])->where('customer_email', auth()->user()->email)->get();
                 }
                 else{
                     if($request->columns[0]['data']['tab'] == 'loading_port'){
-                        $data = Shipment::with('vehicle')->where('loading_port', $request->columns[0]['data']['value'])->get();
+                        $data = Shipment::with('vehicle.user', 'customer.billings')->where('loading_port', $request->columns[0]['data']['value'])->get();
                     }
                     elseif($request->columns[0]['data']['tab'] == 'destination_port'){
-                        $data = Shipment::with('vehicle')->where('destination_port', $request->columns[0]['data']['value'])->get();
+                        $data = Shipment::with('vehicle.user', 'customer.billings')->where('destination_port', $request->columns[0]['data']['value'])->get();
                     }
                     elseif($request->columns[0]['data']['tab'] == 'loading_date'){
-                        $data = Shipment::with('vehicle')->where('loading_date', $request->columns[0]['data']['value'])->get();
+                        $data = Shipment::with('vehicle.user', 'customer.billings')->where('loading_date', $request->columns[0]['data']['value'])->get();
                     }
                     elseif($request->columns[0]['data']['tab'] == 'arrival_date'){
-                        $data = Shipment::with('vehicle')->where('arrival_date', $request->columns[0]['data']['value'])->get();
+                        $data = Shipment::with('vehicle.user', 'customer.billings')->where('arrival_date', $request->columns[0]['data']['value'])->get();
                     }
                     elseif($request->columns[0]['data']['tab'] == 'all'){
-                        $data = Shipment::with('vehicle')->get();
+                        $data = Shipment::with('vehicle.user', 'customer.billings')->get();
                     }
                     else{
-                        $data = Shipment::with('vehicle')->where('status', $request->columns[0]['data']['tab'])->get();
+                        $data = Shipment::with('vehicle.user', 'customer.billings')->where('status', $request->columns[0]['data']['tab'])->get();
                     }
                 }
                 
@@ -901,6 +901,17 @@ class ShipmentController extends Controller
                     $data['row'] = $row;
                     $bol = view('layouts.shipment_filter.shipment_bol', $data)->render();
                     return $bol;
+                })
+                ->addColumn('select_consignee', function($row){
+                    $data['row'] = $row;
+                    if($row['customer']['billings'][0]['company_name'] != null){
+                        return $row['customer']['billings'][0]['company_name'];
+                    }
+                    return '';
+
+
+                    // $bol = view('layouts.shipment_filter.shipment_consignee_detail', $data)->render();
+                    // return $bol;
                 })
                 ->addColumn('action', function ($row) {
                     $url_view = url('admin/shipments/profile/' . $row->id);
@@ -947,14 +958,14 @@ class ShipmentController extends Controller
                                         ";
                     return $btn;
                 })
-                ->rawColumns(['id','action','shipment_id', 'notes', 'shipper'])
+                ->rawColumns(['id','action','shipment_id', 'notes', 'shipper', ''])
                 ->make(true);
         }
         if(Auth::user()->hasRole('Customer')){
-            $data['data'] = Shipment::with('vehicle')->where('customer_email', auth()->user()->email)->get()->toArray();
+            $data['data'] = Shipment::with('vehicle', 'customer.billings')->where('customer_email', auth()->user()->email)->get()->toArray();
         }
         else{
-            $data['data'] = Shipment::with('vehicle')->get()->toArray();
+            $data['data'] = Shipment::with('vehicle', 'customer.billings')->get()->toArray();
         }
         $action = ['action'=>''];
         array_push($data['data'], $action);
@@ -970,10 +981,10 @@ class ShipmentController extends Controller
             if($state != null){
                 if(Auth::user()->hasRole('Customer')){
 
-                    $data = Shipment::with('vehicle.user', 'customer.billings')->where('customer_email', auth()->user()->email)->where('loading_state', $state)->get();
+                    $data = Shipment::with('vehicle.user', 'customer.billings', 'customer.shippers')->where('customer_email', auth()->user()->email)->where('loading_state', $state)->get();
                 }
                 else{
-                    $data = Shipment::with('vehicle.user', 'customer.billings')->where('loading_state', $state)->get();
+                    $data = Shipment::with('vehicle.user', 'customer.billings', 'customer.shippers')->where('loading_state', $state)->get();
                 }
         }
         else{
