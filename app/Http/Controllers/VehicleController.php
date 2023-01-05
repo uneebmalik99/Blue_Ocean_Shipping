@@ -128,7 +128,7 @@ class VehicleController extends Controller
             $data['new_orders'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '1')->get();
             $data['dispatched'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '2')->get();
             $data['on_hand'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '3')->get();
-            $data['no_titles'] = Vehicle::where('added_by_user', auth()->user()->id)->orwhwere('customer_name', auth()->user()->id)->orwhere('status', '4')->orwhere('title_type', '!=', 'Exportable')->get();
+            $data['no_titles'] = Vehicle::where('added_by_user', auth()->user()->id)->orwhere('customer_name', auth()->user()->id)->orwhere('status', '4')->orwhere('title_type', '!=', 'Exportable')->get();
             $data['towing_value'] = Vehicle::select('towing_charges')->where('status', '3')->get()->toArray();
             $data['towing'] = 0;
             foreach($data['towing_value'] as $towing_charges){
