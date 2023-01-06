@@ -1109,7 +1109,7 @@ background-color: #e93f7800!important;
 
 <div id="myModal" class="my_modal col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12"
     style="color:red;z-index:999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;background-color:#000000db">
-    <span class="close vehicle_close cursor" onclick="closeModal()">&times;</span>
+    
     <div class="modal-content vehicle_modal_content">
         <div class="row">
 

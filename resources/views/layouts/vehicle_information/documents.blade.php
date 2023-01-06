@@ -606,7 +606,7 @@ background-color: #e93f7800!important;
                             <div class="row">
                                 <div class="col-12">
                                     <div class="w-100">
-                                        <div class="d-flex " style="width:99%">
+                                        <div class="d-flex " style="width:100%">
                                             <button class="img_active_button img_btn col-sm-4 col-md-4 col-lg-4 mb-3"
                                             onclick="changeImages(this.id)" tab=" {{ @$vehicle['id'] }}"
                                             id="warehouse_images"
@@ -843,7 +843,7 @@ background-color: #e93f7800!important;
 
 <div id="myModal" class="modal col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12"
     style="color:red;z-index:999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;background-color:#000000db">
-    <span class="close cursor" onclick="closeModal()">&times;</span>
+    
     <div class="modal-content">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12 "
