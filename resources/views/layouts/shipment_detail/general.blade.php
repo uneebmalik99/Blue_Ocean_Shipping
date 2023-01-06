@@ -773,10 +773,8 @@ background-color: #e93f7800!important;
                                                 onclick="onClick(this)"
                                                 class="modal-hover-opacity"class="hover-shadow cursor">
                                         @endforeach
-                                    @else
-                                        <p class="text-center py-5"
-                                            style="font-size: 22px;font-style: initial;margin-left: 115px;margin-top: 50px;">
-                                            Image Not Found</p>
+                                        @else
+                                        <h6 class="text-center mt-5 w-100" style="color:gray">No Image Found</h6>
                                     @endif
 
 
