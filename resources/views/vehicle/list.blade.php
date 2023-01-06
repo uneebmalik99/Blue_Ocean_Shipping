@@ -402,7 +402,7 @@
                                     <tr>
                                         @role(['Super Admin','Sub Admin'])
                                         <td>
-                                            <input type="checkbox" name="checkboxes" id="{{ @$val['id'] }}" title="Add" onchange="addtoShipment(this.id)">
+                                            <input type="checkbox" name="checkboxes" id="{{ @$val['id'] }}" title="Add" onchange="addtoShipment(this.id)" {{ @$val['shipment_status'] == 1 ? 'checked' : '' }}>
                                         </td>
                                         @endrole 
                                         <td>
