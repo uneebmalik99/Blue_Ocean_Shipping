@@ -188,7 +188,7 @@ class ReportingController extends Controller
             })->get()->toArray();
         }
         else{
-            $data['vehicles'] = Vehicle::where('status', $request->status)
+            $data['vehicles'] = Vehicle::with('user')->where('status', $request->status)
             ->when($request->filled('shipper'), function ($query) use ($request) {
                 return $query->where('shipper_name', $request->shipper);
             })->when($request->filled('location'), function ($query) use ($request) {
