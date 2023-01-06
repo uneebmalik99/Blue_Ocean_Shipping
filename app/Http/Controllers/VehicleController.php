@@ -989,8 +989,9 @@ class VehicleController extends Controller
                         return Response($output);
                     }
                     else{
-                        $records = $records->where('status', $status)->orwhere('title_type', '!=', 'Exportable')->paginate($this->perpage);
+                        $records = Vehicle::where('title_type', '!=', 'EXPORTABLE')->orwhereNull('title_type')->get();
                         $data['records'] = $records;
+                        // dd($data['records']);
                         $output['view'] = view('vehicle.' . $status_name, $data)->render();
                         return Response($output);
                     }
