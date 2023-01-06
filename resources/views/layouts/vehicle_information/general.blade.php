@@ -43,7 +43,7 @@
         text-align: center;
         text-decoration: none !important;
     }
-/* 
+
     @media only screen and (max-width: 425px) {
         .bottom_button {
             position: absolute;
@@ -214,7 +214,7 @@ background-color: #e93f7800!important;
             height: 1300px!important;
             
   }
-} */
+}
 
 
 
@@ -835,7 +835,7 @@ background-color: #e93f7800!important;
 
                                 <div class="col-12 main_image">
                                     @if (@$vehicle['warehouse_image'])
-                                        {{-- <div class="w-100 p-2" style="position: relative;">
+                                        <div class="w-100 p-2" style="position: relative;">
 
                                             <div>
                                                 <img src="{{ asset(@$vehicle['warehouse_image'][0]['name']) }}"
@@ -879,7 +879,8 @@ background-color: #e93f7800!important;
                                                                 in2="effect1_dropShadow_0_1" result="shape" />
                                                         </filter>
                                                     </defs>
-                                                    
+                                                    {{-- <i class="material-icons" onclick="openModal();currentSlide(1)"
+                                                        style="background-color:#65686c;color:white;border-radius:inherit">fullscreen</i> --}}
                                                     <div class="icon" style="float:right;">
                                                         <i class="material-icons"
                                                             onclick="openModal();currentSlide(1)"
@@ -998,7 +999,7 @@ background-color: #e93f7800!important;
                                                     </svg>
                                                 </a>
                                             </div>
-                                        </div> --}}
+                                        </div>
                                     @else
                                         <h6 class="text-center mt-5 w-100" style="color:gray">No Image Found</h6>
                                     @endif
@@ -1007,12 +1008,14 @@ background-color: #e93f7800!important;
                                 <div class="image_section">
                                     <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12 changeImages"
                                         style=" margin-top:15px; margin-left:6%">
+                                        {{-- @if (@$vehicle['pickupimages']) --}}
                                         @foreach (@$vehicle['warehouse_image'] as $img)
                                             <img src="{{ asset($img['name']) }}" alt="" class="item_1"
                                                 class="showMainImage"
                                                 style="width:120px;height:80px;"
                                                 onclick="showAsMainImage(this.src)" class="hover-shadow cursor">
                                         @endforeach
+                                        {{-- @endif --}}
                                     </div>
                                 </div>
                             </div>
