@@ -1,143 +1,52 @@
 <style>
-@media screen and (min-width: 1600px) {
-        .img_fluid {
-            height: 300px!important;
-            
-  }
-  .material-icons {
-    background-color: #65686c;
-    color: white;
-    border-radius: inherit;
-    margin-top: 22px!important;
-    margin-left: 33px!important;
-}
-.icon{
-background-color: #e93f7800!important;
-}
-}
-@media screen and (min-width: 1800px) {
-        .img_fluid {
-            height: 350px!important;
-            
-  }
-  .item_1{
-    width: 166px!important;
-    height: 112px!important;
-    
-  }
-  .material-icons {
-    background-color: #65686c;
-    color: white;
-    border-radius: inherit;
-    margin-top: 30px!important;
-    margin-left: 31px!important;
+  .modal {
+z-index:1;
+display:none;
+padding-top:10px;
+position:fixed;
+left:0;
+top:0;
+width:100%;
+height:100%;
+overflow:auto;
+background-color:rgb(0,0,0);
+background-color:rgba(0,0,0,0.8)
 }
 
-  .changeImages{
-    left:-2%!important;
-  }
-}
-@media screen and (min-width: 1920px) {
-        .img_fluid {
-            height: 350px!important;
-            
-  }
-  .item_1{
-    width: 182px!important;
-    height: 133px!important;
-   
-  }
-  .changeImages{
-    left:-2%!important;
-  }
-  .material-icons {
-    background-color: #65686c;
-    color: white;
-    border-radius: inherit;
-    margin-top: 22px!important;
-    margin-left: 40px!important;
+.modal-content{
+margin: auto;
+display: block;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
 }
 
 
-@media screen and (min-width: 2160px) {
-        .img_fluid {
-            height: 350px!important;
-            
-  }
-  .item_1{
-    width: 290px!important;
-    height: 133px!important;
-   
-  }
-  .changeImages{
-    left:-2%!important;
-  }
-  .material-icons {
-    background-color: #65686c;
-    color: white;
-    border-radius: inherit;
-    margin-top: 40px!important;
-    margin-left: 61px!important;
+.modal-hover-opacity {
+opacity:1;
+filter:alpha(opacity=100);
+-webkit-backface-visibility:hidden
 }
 
-}
-@media screen and (min-width: 2000px) {
-        .img_fluid {
-            height: 400px!important;
-            
-  }
-}
-@media screen and (min-width: 2200px) {
-        .img_fluid {
-            height: 450px!important;
-            
-  }
-}
-@media screen and (min-width: 2880px) {
-        .img_fluid {
-            height: 500px!important;
-            
-  }
-  .material-icons {
-    background-color: #65686c;
-    color: white;
-    border-radius: inherit;
-    margin-top: 59px!important;
-    margin-left: 116px!important;
+.modal-hover-opacity:hover {
+opacity:0.60;
+filter:alpha(opacity=60);
+-webkit-backface-visibility:hidden
 }
 
+
+.close {
+text-decoration:none;float:right;font-size:24px;font-weight:bold;color:white
 }
-@media screen and (min-width: 4320px) {
-        .img_fluid {
-            height: 850px!important;
-            
-  }
-  .item_1{
-    width: 446px!important;
-    height: 262px!important;
-   
-  }
-  .changeImages{
-    left:-2%!important;
-  }
-}
-}
-@media screen and (min-width: 5760px) {
-        .img_fluid {
-            height: 1300px!important;
-            
-  }
-}
-@media screen and (min-width: 5760px) {
-        .img_fluid {
-            height: 1300px!important;
-            
-  }
+.container1 {
+width:200px;
+display:inline-block;
 }
 
 </style>
 @if(@$images)
 @foreach(@$images as $img)  
-<img src="{{asset($img['name'])}}" alt=""class="item_1" style="width:120px;height:80px;" onclick="showAsMainImage(this.src)">
+<img src="{{asset($img['name'])}}" alt=""class="item_1" style="width:24%!important;height:auto!important;"   onclick="onClick(this)" class="modal-hover-opacity"class="hover-shadow cursor">
 @endforeach
 @endif

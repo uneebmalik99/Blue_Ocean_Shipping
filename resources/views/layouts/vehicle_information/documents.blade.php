@@ -1,6 +1,55 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
+
+
+.imagemodal {
+z-index:1;
+display:none;
+padding-top:10px;
+position:fixed;
+left:0;
+top:0;
+width:100%;
+height:100%;
+overflow:auto;
+background-color:rgb(0,0,0);
+background-color:rgba(0,0,0,0.8)
+}
+
+.imagemodal-content{
+margin: auto;
+display: block;
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.imagemodal-hover-opacity {
+opacity:1;
+filter:alpha(opacity=100);
+-webkit-backface-visibility:hidden
+}
+
+.imagemodal-hover-opacity:hover {
+opacity:0.60;
+filter:alpha(opacity=60);
+-webkit-backface-visibility:hidden
+}
+
+
+.close {
+text-decoration:none;float:right;font-size:24px;font-weight:bold;color:white
+}
+.container1 {
+width:200px;
+display:inline-block;
+}
+
+
+
     .item_1 {
         transition: transform .2s;
         box-sizing: border-box;
@@ -35,7 +84,7 @@
         text-align: center;
         text-decoration: none !important;
     }
-
+/* 
     @media only screen and (max-width: 425px) {
         .bottom_button {
             position: absolute;
@@ -182,7 +231,7 @@ background-color: #e93f7800!important;
             height: 1300px!important;
             
   }
-}
+} */
 
         .left_button {
     position: absolute;
@@ -578,7 +627,7 @@ background-color: #e93f7800!important;
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12 main_image">
+                                {{-- <div class="col-12 main_image">
                                         @if (@$vehicle['warehouse_image'])
                                         <div class="w-100 p-1  " style="position: relative;">
                                             <div style="width: 100%">
@@ -737,20 +786,22 @@ background-color: #e93f7800!important;
                                         @else
                                             <h6 class="text-center mt-5 w-100" style="color:gray">No Image Found</h6>
                                         @endif
-                                    </div>
+                                </div> --}}
 
-                                <div class="image_section"style="margin-left: 22px;">
-                                    <div class="col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12 changeImages"
-                                        style="left:2%;margin-top:12px">
-                                        @if (@$vehicle['warehouse_image'])
-                                            @foreach (@$vehicle['warehouse_image'] as $img)
-                                                <img src="{{ asset($img['name']) }}" alt=""class="item_1"
-                                                    class="showMainImage"
-                                                    style="width:120px;height:80px;"
-                                                    onclick="showAsMainImage(this.src)" class="hover-shadow cursor">
-                                            @endforeach
-                                        @endif
-                                    </div>
+                                <div class="image_section changeImages col-12 col-sm-12 col-md-12 col-lg-12 order-xl-12  mx-auto" style=" margin-top:1px; " >
+                                   
+                                       
+                                    @if (@$vehicle['pickupimages'])
+                                    @foreach (@$vehicle['warehouse_image'] as $img)
+                                        <img src="{{ asset($img['name']) }}" alt="" class=""
+                                            class="showMainImage"
+                                            style="width:24%;height:auto%;margin-top:4px;"
+                                            onclick="onClick(this)" class="modal-hover-opacity"class="hover-shadow cursor">
+                                    @endforeach
+                                    @else
+                                    <h6 class="text-center mt-5 w-100" style="color:gray">No Image Found</h6>
+                                    @endif
+                              
                                 </div>
 
                                 
@@ -760,7 +811,7 @@ background-color: #e93f7800!important;
                     @if (@$vehicle['warehouse_image'])
                         <div class="row mt-4 showhide">
                             <div class="col-12 d-flex justify-content-center ">
-                                <a id="download_all" onclick="downloadAll()">
+                                <a id="warehouse_images" onclick="download_all(this.id)" class="downloadVehicles_zip">
                                     <button
                                         style="background: #3e5871;cursor:pointer; border-radius: 6px;border:none;color:white;transform: skew(-30deg);">
                                         <div style="transform: skew(30deg);padding:1px 10px;font-size: 13px;">
@@ -778,6 +829,17 @@ background-color: #e93f7800!important;
 
     </div>
 </div>
+
+
+<div id="modal01" class="imagemodal" onclick="this.style.display='none'">
+    <span class="close vehicle_close cursor" onclick="closeModal()" style="margin-top: 50px">&times;</span>
+
+    <div class="imagemodal-content">
+      <img id="img01" style="max-width:100%">
+    </div>
+  </div>
+
+
 
 <div id="myModal" class="modal col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12"
     style="color:red;z-index:999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;background-color:#000000db">
@@ -833,8 +895,13 @@ background-color: #e93f7800!important;
         document.getElementById("myModal").style.display = "block";
     }
 
+    function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+}
+
     function closeModal() {
-        document.getElementById("myModal").style.display = "none";
+        document.getElementById("modal01").style.display = "none";
     }
 
     var slideIndex = 1;
