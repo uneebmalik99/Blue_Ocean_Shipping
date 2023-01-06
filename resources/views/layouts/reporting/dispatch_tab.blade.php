@@ -28,7 +28,7 @@
                     </select>
                 </div>
                 <div class="col-2 p-0">
-                    <select class="form-control-sm border-style input-border-style rounded col-11 text-muted px-2" name="status" id="status">
+                    <select class="form-control-sm border-style input-border-style rounded col-11 text-muted px-2" name="title_type" id="title_type">
                         <option disabled selected>Title Type</option>
                         @foreach ($titletypes as $type)
                         <option value="{{ @$type['name'] }}">{{ @$type['name'] }}</option>

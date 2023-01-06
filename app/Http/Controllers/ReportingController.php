@@ -176,16 +176,17 @@ class ReportingController extends Controller
         $output = [];
         $data = [];
         if($request->status == 4){
-            $data['vehicles'] = Vehicle::with('user')->where('title_type', '!=', 'EXPORTABLE')->orwhereNull('title_type')
+            $data['vehicles'] = Vehicle::with('user')
             ->when($request->filled('shipper'), function ($query) use ($request) {
                 return $query->where('shipper_name', $request->shipper);
             })->when($request->filled('location'), function ($query) use ($request) {
                 return $query->Where('port', $request->location);
             })->when($request->filled('title_type'), function ($query) use ($request) {
-                return $query->Where('title_type', $request->status);
+                return $query->Where('title_type', $request->title_type);
             })->when($request->filled('company_name'), function ($query) use ($request) {
                 return $query->Where('customer_name', $request->company_name);
             })->get()->toArray();
+
         }
         else{
             $data['vehicles'] = Vehicle::with('user')->where('status', $request->status)
@@ -194,7 +195,7 @@ class ReportingController extends Controller
             })->when($request->filled('location'), function ($query) use ($request) {
                 return $query->Where('port', $request->location);
             })->when($request->filled('title_type'), function ($query) use ($request) {
-                return $query->Where('title_type', $request->status);
+                return $query->Where('title_type', $request->title_type);
             })->when($request->filled('company_name'), function ($query) use ($request) {
                 return $query->Where('customer_name', $request->company_name);
             })->get()->toArray();

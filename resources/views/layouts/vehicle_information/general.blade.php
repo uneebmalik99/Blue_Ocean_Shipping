@@ -1013,7 +1013,6 @@ background-color: #e93f7800!important;
                                                 style="width:120px;height:80px;"
                                                 onclick="showAsMainImage(this.src)" class="hover-shadow cursor">
                                         @endforeach
-                                        {{-- @endif --}}
                                     </div>
                                 </div>
                             </div>
