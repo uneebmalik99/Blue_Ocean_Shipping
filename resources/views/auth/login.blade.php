@@ -216,9 +216,15 @@ text-transform: capitalize;
         </div> --}}
            
                 <div class="copyright">
-                    <p><h2>copyright@ 2022 all right reserved <br>
-                    Developed by <a href="https://therevolutiontechnologies.com/" target="__blank">The Revolution Technologies</h2></a></p>
-                </div>
+                    <p><h2>copyright@ 2023 all right reserved <br>
+                    Developed by
+                    ECSAP Global Shipping 
+                    Wonkai K. Momolu
+                    1851 Edison Highway 
+                    Baltimore MD 21213
+                    <a href="https://therevolutiontechnologies.com/" target="__blank">The Revolution Technologies</h2></a></p>
+                      
+                  </div>
             </div>
 		</div>
     <div class="login shadow"  style="box-shadow:
@@ -261,7 +267,7 @@ text-transform: capitalize;
 </form>
 		</div>
    <div class="login_text d-none d-sm-none d-md-block col-md-4 col-lg-4 col-xl-6 col-xxl-6">
-		<h1>Welcome to {{ config('app.name') }}}}</h1>
+		<h1>Welcome to {{ config('app.name') }}</h1>
 		</div>
 </div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
