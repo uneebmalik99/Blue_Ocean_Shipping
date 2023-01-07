@@ -554,7 +554,6 @@
                 document.getElementById('load').style.visibility = "hidden";
 
 
-
                 //    console.log(xhr.responseJSON['errors']);
                 if (xhr.responseJSON['errors']['customer_name']) {
                     $('#customer_name_error').html('<small style="margin-left:72px">Please Fill*</small>');

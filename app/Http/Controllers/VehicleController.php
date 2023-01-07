@@ -491,7 +491,7 @@ class VehicleController extends Controller
         $vehicle = [];
         $request->validate([
             'customer_name' => 'required',
-            'vin' => 'required',
+            'vin' => 'required|unique:vehicles',
             'auction' => 'required',
             'buyer_id' => 'required',
             'key' => 'required',
