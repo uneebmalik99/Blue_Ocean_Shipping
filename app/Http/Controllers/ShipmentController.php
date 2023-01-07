@@ -1071,7 +1071,7 @@ class ShipmentController extends Controller
                         </svg>
                     </a>
                 </button>
-                                       @role(['Super Admin','Sub Admin])
+                                      
                                         <button class='delete-button'>
                                         <a href=$url_delete>
                                             <svg width='14' height='13' viewBox='0 0 12 12' fill='none'
@@ -1082,7 +1082,7 @@ class ShipmentController extends Controller
                                             </svg>
                                         </a>
                                     </button>
-                                    @endrole";
+                                    ";
                     return $btn;
                 })
                 ->rawColumns(['id','action','shipment_id', 'notes','select_consignee', 'shipper', 'vin', 'lot'])
