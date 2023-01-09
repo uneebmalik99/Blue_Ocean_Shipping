@@ -489,14 +489,28 @@ class VehicleController extends Controller
     {
         // dd($request->all());
         $vehicle = [];
-        $request->validate([
-            'customer_name' => 'required',
-            'vin' => 'required',
-            'auction' => 'required',
-            'buyer_id' => 'required',
-            'key' => 'required',
-            'status' => 'required',
-        ]);
+        if($request->id === null){
+            $request->validate([
+                'customer_name' => 'required',
+                'vin' => 'required|unique:vehicles',
+                'auction' => 'required',
+                'buyer_id' => 'required',
+                'key' => 'required',
+                'status' => 'required',
+            ]);
+
+        }
+        else{
+            $request->validate([
+                'customer_name' => 'required',
+                'vin' => 'required',
+                'auction' => 'required',
+                'buyer_id' => 'required',
+                'key' => 'required',
+                'status' => 'required',
+            ]);
+
+        }
         $data = $request->all();
         $vin['vin'] = $data['vin'];
         $tab = $data['tab'];
