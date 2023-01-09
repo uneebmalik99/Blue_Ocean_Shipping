@@ -147,7 +147,7 @@ class VehicleController extends Controller
             foreach($data['inventory'] as $inventory){
                 $value = str_replace( array( '\'', '"', ',' , ';', '<', '>',  '$'),'', $inventory['value']);
                 $value = preg_replace("/[^A-Za-z0-9.!?[:space:]]/","",$value);
-                $data['inventory_value'] += $value;
+                $data['inventory_value'] += (int)$value;
                 
             }
             
