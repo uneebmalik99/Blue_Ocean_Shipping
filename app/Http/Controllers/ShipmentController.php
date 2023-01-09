@@ -1045,7 +1045,7 @@ class ShipmentController extends Controller
             
                 ->addColumn('action', function ($row) {
                     $data['row'] = $row; 
-                    $output = view('layouts.vehicle.action_buttons', $data)->render();
+                    $output = view('layouts.shipment_detail.action_buttons', $data)->render();
                     return $output;})
                 
                 //->addColumn('action', function ($row) {
