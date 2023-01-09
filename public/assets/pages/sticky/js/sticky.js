@@ -48,7 +48,7 @@
               content: '',
               width: 150,
               height: 200,
-              posX: parseInt(b, 10) , //185
+              posX: parseInt(b, 10) + 10 , //185
               posY: parseInt(a, 10),
               /*posX :410,
               posY : 200,*/
