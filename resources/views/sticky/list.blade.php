@@ -4,29 +4,35 @@
    #the_notes .PIApostit{
      z-index: 99999999999999;
    }
+   #myDIV {
+  width: 100%;
+  padding: 50px 0;
+  text-align: center;
+  background-color: lightblue;
+  margin-top: 20px;
+}
 </style>
     <div class="page-body p-4">
         <div class="col-12 p-3">
             <!-- Sticky Notes card start -->
             <div class="card border border-info rounded">
+               
                 <div class="card-header d-flex justify-content-between py-2">
+                   
                     <div>
                         <h5>Sticky Notes</h5>
                         <span>Click <code>Add Note</code> button to add new sticky notes</span>
+                       
                     </div>
+                    
                     <div class="d-flex">
-                        <div class="card-header-right rounded d-flex align-items-center h-50 p-1 mr-2">
-                            <i class="icofont icofont-rounded-down"></i>
-                        </div>
-                        <div class="card-header-right rounded d-flex align-items-center h-50 p-1 mr-2">
-                            <i class="icofont icofont-refresh"></i>
-                        </div>
-                        <div class="card-header-right rounded d-flex align-items-center h-50 p-1">
-                            <i class="icofont icofont-close-circled"></i>
-                        </div>
+                        <i class="fa fa-times-circle-o"onclick=" hidebutton()" aria-hidden="true"></i>
+                        
+                     
+                    
                     </div>
                 </div>
-                <div class="card-block sticky-card">
+                <div class="card-block sticky-card"  id="myDiIV">
                     <button type="button" id="idRunTheCode" class="btn btn-primary rounded waves-effect waves-light"
                         data-toggle="tooltip" data-placement="top" title="Add note">
                         <i class="icofont icofont-ui-add"></i><span class="m-l-10">Add notes</span>
@@ -40,7 +46,7 @@
                     @foreach ($records as $record )
                     
                     <div class="previous_notes" style="margin-right: 180px!important;">
-                        <div style="position: absolute; width: 150px; height: 200px; background-color: rgb(26, 188, 156); color: rgb(255, 255, 255); font-family: &quot;Open Sans&quot;; font-size: small; border-color: rgb(26, 188, 156); display: block; z-index: 999999;"
+                        <div style=" width: 900px; height: 200px; background-color: rgb(26, 188, 156); color: rgb(255, 255, 255); font-family: &quot;Open Sans&quot;; font-size: small; border-color: rgb(26, 188, 156); display: block; z-index: 999999;"
                         id=""
                         class="PIApostit PIApanel arrow_box tresd ui-draggable ui-draggable-handle ui-resizable">
                         <div id=""
@@ -104,7 +110,22 @@
             <!-- Sticky Notes card end -->
         </div>
     </div>
-    <script>
+   
+
+
+
+
+
+<script>
+function hidebutton() {
+  var x = document.getElementById("myDiIV");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
         //Delete Sticky notes from the pages
         function deleteSticky(id){
             var $id = id;

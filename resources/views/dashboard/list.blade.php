@@ -1,6 +1,13 @@
 @extends('layouts.partials.mainlayout')
 @section('body')
 <style>
+   .col-xl-auto, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
+    position: relative!important;
+    width: 100%!important;
+    min-height: 0px!important;
+    padding-right: 0px!important;
+    padding-left: 0px!important;
+}
     table.dataTable td.dt-control:before {
     height: 1em;
     width: 1em;
@@ -799,7 +806,7 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
 
 
                         <div class="row" style="">
-                            <div class="col-12 dispatched_vehicles" style="margin-left: -1px">
+                            <div class="col-12 dispatched_vehicles" >
                                 <p>Shipments</p>
                             </div>
                         </div>
@@ -813,8 +820,8 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
                             {{-- </div> --}}
                         {{-- </div> --}}
 
-                        <div class="row mt-2 mb-2">
-                            <div class="col-12">
+                        <div class="row mt-2 mb-2" >
+                            <div  style="width: -webkit-fill-available;"> 
                                 <table id="dashboard_shipment" class="row-border" style="width:100%!important;">
                                     <thead class="bg-custom">
                                         <tr class="font-size" style="font-size:11px!important;font-weight:300!important">
