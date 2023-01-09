@@ -420,7 +420,7 @@
 
                     });
                     $('.loading_image').imageUploader({
-                        maxFiles: 4,
+                        maxFiles: 30,
                         imagesInputName: 'loading_image',
 
                     });

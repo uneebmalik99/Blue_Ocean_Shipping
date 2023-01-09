@@ -484,6 +484,7 @@ background-color: #e93f7800!important;
             <div class="d-flex justify-content-between">
 
                 <h6>Export Details</h6>
+                @role(['Super Admin','Sub Admin'])
                 <button class='edit-button mr-3 mt-1' id='{{ @$shipments[0]['id'] }}' onclick='editShipment(this.id)'
                     style="height: 30px!important;">
                     <a>
@@ -495,6 +496,7 @@ background-color: #e93f7800!important;
                         </svg>
                     </a>
                 </button>
+                @endrole
             </div>
             <div class="information_div">
                 <div class="d-flex justify-content-between my-2 py-1 "

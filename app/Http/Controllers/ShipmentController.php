@@ -1045,7 +1045,7 @@ class ShipmentController extends Controller
             
                 ->addColumn('action', function ($row) {
                     $data['row'] = $row; 
-                    $output = view('layouts.shipment_detail.action_buttons', $data)->render();
+                    $output = view('layouts.vehicle.action_buttons', $data)->render();
                     return $output;})
                 
                 //->addColumn('action', function ($row) {
@@ -1157,7 +1157,10 @@ class ShipmentController extends Controller
                 // dd($data['vehicles']);
 
             }else{
-                $data['vehicles'] = Vehicle::with('user')->where('vin', 'LIKE', '%' . $search_text . "%")->where('shipment_id', null)->whereshipment_status('0')->wherevehicle_active_shipment('0')->get()->toArray();
+                $data['vehicles'] = Vehicle::with('user')
+                ->where('vin', 'LIKE', '%' . $search_text . "%")
+                ->where('shipment_id', null)->whereshipment_status('0')
+                ->wherevehicle_active_shipment('0')->get()->toArray();
                 // dd($data['vehicles']);
             }
                 

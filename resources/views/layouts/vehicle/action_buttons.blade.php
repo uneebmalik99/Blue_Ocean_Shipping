@@ -1,4 +1,4 @@
-<a href={{ route('shipment.profile') . '/' . @$row->id }}>
+<a href={{ route('vehicle.profile') . '/' . @$row->id }}>
     <button class="profile-button" style="cursor: pointer !important;">
         <svg width="14" height="13" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -16,7 +16,7 @@
 
 @role(['Super Admin','Sub Admin'])
 {{-- <a> --}}
-<button class="edit-button" id="{{ @$row->id }}"  onclick="editShipment(this.id)"
+<button class="edit-button" id="{{ @$row->id }}"  onclick="updatevehicle(this.id)"
     style="cursor: pointer !important;">
     <svg width="14" height="13" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
@@ -30,7 +30,7 @@
 
 
 
-<a href={{ route('shipment.delete', @$row->id) }}>
+<a href={{ route('vehicle.delete', @$row->id) }}>
     <button class="delete-button" style="cursor: pointer !important;">
 
         <svg width="14" height="13" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
