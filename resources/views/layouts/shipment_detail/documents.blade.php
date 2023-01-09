@@ -857,8 +857,9 @@
                                     style="width:23.5%;height:auto%;" onclick="onClick(this)"
                                     class="modal-hover-opacity">
                             @endforeach
+                            @else
+                            <h6 class="text-center mt-5 w-100" style="color:gray">No Image Found</h6>
                         @endif
-
 
                     </div>
                     {{-- </div>
