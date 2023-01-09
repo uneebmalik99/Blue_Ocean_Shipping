@@ -14,7 +14,7 @@
 
 
 
-@role(['Super Admin','Sub Admin'])
+
 {{-- <a> --}}
 <button class="edit-button" id="{{ @$row->id }}"  onclick="updatevehicle(this.id)"
     style="cursor: pointer !important;">
@@ -29,7 +29,7 @@
 
 
 
-
+@role(['Super Admin','Sub Admin'])
 <a href={{ route('vehicle.delete', @$row->id) }}>
     <button class="delete-button" style="cursor: pointer !important;">
 

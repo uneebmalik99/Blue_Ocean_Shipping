@@ -22,6 +22,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\pdfController;
 use App\Models\Sticky;
+use App\Models\Vehicle;
+use Encore\Admin\Form\Row;
 
 Auth::routes();
 
@@ -121,7 +123,7 @@ Route::prefix('/admin')->middleware(['auth','login.status'])->group(function () 
 
 
     Route::post('/vehicle/addToCart',       [VehicleController::class, 'AddToCart'])->name('vehicle.add_to_cart');
-
+    Route::post('/vehicle/vincheck',[VehicleController::class,'vincheck'])->name('vehicle.vincheck');
 
     Route::get('/vehicle/changeState/{state?}',       [VehicleController::class, 'changeState'])->name('vehicle.changeState');
 

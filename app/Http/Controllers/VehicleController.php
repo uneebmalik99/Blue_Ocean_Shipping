@@ -1160,5 +1160,14 @@ class VehicleController extends Controller
         return Response($url_ima_path);
 
     }
+    public function vincheck(Request $request){
+        $vinexist = Vehicle::wherevin($request->vin)->first();
+        if($vinexist){
+            return "exists";
+        }
+        else {
+            return "not exists";
+        }
+     }
 
 }
