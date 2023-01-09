@@ -56,6 +56,7 @@
                         </svg>
                         </a>
                 </button>
+                   
                     <button class="edit-button" onclick='updatevehicle(this.id)' id={{@$val['id']}}>
                         <a>
                             <svg width="14" height="13" viewBox="0 0 16 16" fill="none"
@@ -66,6 +67,7 @@
                             </svg>
                         </a>
                     </button>
+                    @role(['Super Admin','Sub Admin'])
                     <button class="delete-button">
                         <a href={{route('vehicle.delete', @$val['id'])}}>
                             <svg width="14" height="13" viewBox="0 0 12 12" fill="none"
@@ -77,6 +79,7 @@
 
                         </a>
                     </button>
+                    @endrole
                 </td>
             </tr>
             <?php $i++; ?>
