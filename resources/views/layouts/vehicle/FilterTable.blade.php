@@ -44,6 +44,8 @@
 
                         </a>
                     </button>
+                   
+
                     <button class="edit-button" onclick="updatevehicle(this.id)"
                         id=" {{ @$val[@$module['db_key']] }} "style="cursor: pointer !important;">
                         <svg width="14" height="13" viewBox="0 0 16 16" fill="none"
@@ -53,6 +55,8 @@
                                 fill="#2C77E7" />
                         </svg>
                     </button>
+                    @can('delete')
+
                     <button class="delete-button">
                         <a href={{ url(@$module['action'] . '/delete/' . @$val[@$module['db_key']]) }}>
                             <svg width="14" height="13" viewBox="0 0 12 12" fill="none"
@@ -64,7 +68,7 @@
 
                         </a>
                     </button>
-
+                    @endcan
                 </td>
             </tr>
         @endforeach

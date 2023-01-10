@@ -31,47 +31,7 @@ Route::prefix('/admin')->middleware(['auth','login.status'])->group(function () 
     //Home
     Route::get('/', [HomeController::class, 'index']);
     
-    // Customer Routes
-    Route::get('/customers', [CustomerController::class, 'index'])->name('customer.list');
-    Route::get('/customers/create', [CustomerController::class, 'create'])->name('customer.create');
-    Route::post('/customers/create', [CustomerController::class, 'create'])->name('customer.create');
-    Route::post('/customers/create/general_customer', [CustomerController::class, 'general_create'])->name('customer.general_create');
-    Route::post('/customers/create/billing_customer', [CustomerController::class, 'general_create'])->name('customer.billing_create');
-    Route::post('/customers/create/shipper_customer', [CustomerController::class, 'general_create'])->name('customer.shipper_create');
-    Route::post('/customers/create/quotation_customer', [CustomerController::class, 'general_create'])->name('customer.quotation_create');
-    Route::get('/customers/add/qoutation_customer',[CustomerController::class,'addQoutation'])->name('customer.addQuotation');
-    Route::get('/customers/edit/{id?}',                 [CustomerController::class, 'edit'])->name('customer.edit');
-    Route::post('/customers/edit/{id?}',                [CustomerController::class, 'edit'])->name('customer.edit');
-    Route::get('/customers/update/{id?}',               [CustomerController::class, 'edit'])->name('customer.edit');
-    Route::get('/customers/delete/{id?}',               [CustomerController::class, 'delete'])->name('customer.delete');
-    Route::get('/customers/profile/{id?}',              [CustomerController::class, 'profile'])->name('customer.profile');
-    Route::get('/customers/profile_tab',                [CustomerController::class, 'profile_tab'])->name('customer.profile_tab');
-    Route::get('/customers/search',                     [CustomerController::class, 'search'])->name('customer.search');
-    Route::get('/customers/pagination',                 [CustomerController::class, 'search'])->name('customer.pagination');
-    Route::get('/customers/export',                     [CustomerController::class, 'export'])->name('customer.export');
-    Route::get('/customer/changeStatus/{id?}',          [CustomerController::class, 'ChangeStatus'])->name('customer.changeStatus');
-    Route::post('/customer/filterTable',                [App\Http\Controllers\CustomerController::class, 'FilterTable'])->name('customer.FilterTable');
-
-    Route::post('/customer/changeNotification', [App\Http\Controllers\CustomerController::class, 'changeNotification'])->name('customer.changeNotification');
-
-    Route::post('/customer/update', [App\Http\Controllers\CustomerController::class, 'customerUpdate'])->name('customers.update');
-
-    Route::post('/customer/changeNotification', [App\Http\Controllers\CustomerController::class, 'changeNotification'])->name('customer.changeNotification');
-
-    Route::post('/customer/update', [App\Http\Controllers\CustomerController::class, 'customerUpdate'])->name('customers.update');
-
-    Route::get('/customers/records/{state?}', [CustomerController::class, 'serverside'])->name('customer.records');
-
-
-    Route::get('/customers/changeState/{state?}', [CustomerController::class, 'changeState'])->name('customer.changeState');
-
-
-
-    Route::get('/customers/AddnewQuotation/', [CustomerController::class, 'Addnew_quotation'])->name('customer.Addnew_quotation');
-
-
-
-
+    
 
     //Vehicle Routes
     Route::get('/vehicles', [VehicleController::class, 'index'])->name('vehicle.list');
@@ -241,7 +201,7 @@ Route::prefix('/admin')->middleware(['auth','login.status'])->group(function () 
 
     //Middleware Group
     Route::group(['middleware' => ['permission:Page Access']], function () {
-        //User Routes
+        
         // User Routes
     Route::get('/users', [UserController::class, 'index'])->name('user.list');
     Route::post('/users/create', [UserController::class, 'create'])->name('user.create');
@@ -276,8 +236,51 @@ Route::prefix('/admin')->middleware(['auth','login.status'])->group(function () 
 
 
     Route::get('/users/createUser',[App\Http\Controllers\UserController::class,'createUser'])->name('user.createuser');
+    // Customer Routes
+    Route::get('/customers', [CustomerController::class, 'index'])->name('customer.list');
+    Route::get('/customers/create', [CustomerController::class, 'create'])->name('customer.create');
+    Route::post('/customers/create', [CustomerController::class, 'create'])->name('customer.create');
+    Route::post('/customers/create/general_customer', [CustomerController::class, 'general_create'])->name('customer.general_create');
+    Route::post('/customers/create/billing_customer', [CustomerController::class, 'general_create'])->name('customer.billing_create');
+    Route::post('/customers/create/shipper_customer', [CustomerController::class, 'general_create'])->name('customer.shipper_create');
+    Route::post('/customers/create/quotation_customer', [CustomerController::class, 'general_create'])->name('customer.quotation_create');
+    Route::get('/customers/add/qoutation_customer',[CustomerController::class,'addQoutation'])->name('customer.addQuotation');
+    Route::get('/customers/edit/{id?}',                 [CustomerController::class, 'edit'])->name('customer.edit');
+    Route::post('/customers/edit/{id?}',                [CustomerController::class, 'edit'])->name('customer.edit');
+    Route::get('/customers/update/{id?}',               [CustomerController::class, 'edit'])->name('customer.edit');
+    Route::get('/customers/delete/{id?}',               [CustomerController::class, 'delete'])->name('customer.delete');
+    Route::get('/customers/profile/{id?}',              [CustomerController::class, 'profile'])->name('customer.profile');
+    Route::get('/customers/profile_tab',                [CustomerController::class, 'profile_tab'])->name('customer.profile_tab');
+    Route::get('/customers/search',                     [CustomerController::class, 'search'])->name('customer.search');
+    Route::get('/customers/pagination',                 [CustomerController::class, 'search'])->name('customer.pagination');
+    Route::get('/customers/export',                     [CustomerController::class, 'export'])->name('customer.export');
+    Route::get('/customer/changeStatus/{id?}',          [CustomerController::class, 'ChangeStatus'])->name('customer.changeStatus');
+    Route::post('/customer/filterTable',                [App\Http\Controllers\CustomerController::class, 'FilterTable'])->name('customer.FilterTable');
 
-        // Master Routes
+    Route::post('/customer/changeNotification', [App\Http\Controllers\CustomerController::class, 'changeNotification'])->name('customer.changeNotification');
+
+    Route::post('/customer/update', [App\Http\Controllers\CustomerController::class, 'customerUpdate'])->name('customers.update');
+
+    Route::post('/customer/changeNotification', [App\Http\Controllers\CustomerController::class, 'changeNotification'])->name('customer.changeNotification');
+
+    Route::post('/customer/update', [App\Http\Controllers\CustomerController::class, 'customerUpdate'])->name('customers.update');
+
+    Route::get('/customers/records/{state?}', [CustomerController::class, 'serverside'])->name('customer.records');
+
+
+    Route::get('/customers/changeState/{state?}', [CustomerController::class, 'changeState'])->name('customer.changeState');
+
+
+
+    Route::get('/customers/AddnewQuotation/', [CustomerController::class, 'Addnew_quotation'])->name('customer.Addnew_quotation');
+
+
+
+
+
+
+
+    // Master Routes
     Route::get('/importVehicles',                           [MasterController::class, 'importVehicles'])->name('importVehicles.list');
 
     Route::get('/master',                               [MasterController::class, 'index'])->name('master.list');
