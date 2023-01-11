@@ -31,12 +31,16 @@
     </style>
 
 
- 
+
     <table class="table">
                         <thead
-                            style="background: #DAEFFE;
-                    box-shadow: 0px 0px 0px rgba(92, 174, 235, 0.55);
-                    border-radius: 10px;">
+                        style="
+                        background: #3e5871;
+                        box-shadow: 0px 0px 0px rgba(92, 174, 235, 0.55);
+                        border-radius: 10px;
+                        color: white;
+                        /* width: 107%; */
+                        ">
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
@@ -49,7 +53,7 @@
                                     <td>{{ @$permisson['id'] }}</td>
                                     <td>{{ @$permisson['name'] }}</td>
                                     <td>{{ date('d-m-y H:m', strtotime(@$permisson['created_at'])) }}</td>
-                                    
+
 
                                 </tr>
                             @endforeach
