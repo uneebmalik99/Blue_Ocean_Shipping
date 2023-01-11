@@ -980,7 +980,7 @@ class ShipmentController extends Controller
             
             if($state != null){
                 if(Auth::user()->hasRole('Customer')){
-
+                   
                     $data = Shipment::with('vehicle.user', 'customer.billings', 'customer.shippers')->where('customer_email', auth()->user()->email)->where('loading_state', $state)->get();
                 }
                 else{
@@ -989,13 +989,14 @@ class ShipmentController extends Controller
         }
         else{
             if(Auth::user()->hasRole('Customer')){
-                $data = Shipment::with('vehicle.user', 'customer.billings')->where('customer_email', auth()->user()->email)->get();
+                $user_vehicles_ids = Vehicle::where('customer_name', auth()->user()->id)->pluck('id');
+                // dd($user_vehicles_ids);
+                $data = Shipment::with('vehicle.user', 'customer.billings')->whereIn('id', $user_vehicles_ids)->orwhere('customer_email', auth()->user()->email)->get();
             }
             else{
                 $data = Shipment::with('vehicle.user', 'customer.billings')->get();
             }
         }
-
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('id', function($row){
@@ -1021,14 +1022,10 @@ class ShipmentController extends Controller
                     return strtoupper($row['shipper']);
                 })
                 ->addColumn('vin', function($row){
-                  
                     return @$row['vehicle'][0]['vin'];
-
                 })
                 ->addColumn('lot', function($row){
-                  
                     return @$row['vehicle'][0]['lot'];
-
                 })
                 ->addColumn('select_consignee', function($row){
                     $data['row'] = $row;
@@ -1036,13 +1033,10 @@ class ShipmentController extends Controller
                         return $row['customer']['billings'][0]['company_name'];
                     }
                     return '';
-
-
                     // $bol = view('layouts.shipment_filter.shipment_consignee_detail', $data)->render();
                     // return $bol;
                 })
                 ->addIndexColumn()
-            
                 ->addColumn('action', function ($row) {
                     $data['row'] = $row; 
                     $output = view('layouts.shipment_detail.action_buttons', $data)->render();

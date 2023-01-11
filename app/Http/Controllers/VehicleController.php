@@ -169,8 +169,6 @@ class VehicleController extends Controller
                    $data['towing'] += $towing_charges['towing_charges'];
                 }
             }
-            // dd($data['towing']);
-            // $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
             $data['status'] = VehicleStatus::limit(3)->get()->toArray();
             $data['make'] = MMS::select('make')->where('status', '1')->groupBy('make')->get()->toArray();
             $data['model'] = MMS::select('model')->where('status', '1')->groupBy('model')->get()->toArray();
@@ -182,9 +180,7 @@ class VehicleController extends Controller
                     $value = preg_replace("/[^A-Za-z0-9.!?[:space:]]/","",$value);
                     $data['inventory_value'] += $value;
                 }
-                
             }
-           
         }
         $data['location'] = Warehouse::where('status', '1')->get()->toArray();
 
