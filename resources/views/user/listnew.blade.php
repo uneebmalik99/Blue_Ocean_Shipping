@@ -236,7 +236,7 @@
                 </div>
                 {{-- search filter end --}}
                 <div class="mt-2 bg-light" style="height: 100%;overflow-x: scroll;">
-                    <table id="user_table" class="table row-border" style="width:100%!important;">
+                    <table id="user_table1" class="table row-border" style="width:100%!important;">
                         <thead class="bg-custom">
                             <tr class="font-size">
                                 <th class="font-bold-tr">User ID</th>
@@ -276,7 +276,7 @@
         else{
             state = '';
         }
-                var table = $('#user_table').DataTable({
+                var table = $('#user_table1').DataTable({
                     
                     processing: true,
                     serverSide: true,
@@ -292,6 +292,7 @@
                         processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span> ',
                     },
                     ajax: "{{ route('user.records') }}" + "/" + state,
+                    
                     columns: [
                        
                         {
@@ -309,6 +310,10 @@
                         {
                             data: 'phone',
                             name: 'phone'
+                        },
+                        {
+                            data: 'role',
+                            name: 'role'
                         },
                         {
                             data: 'status',

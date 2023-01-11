@@ -208,7 +208,7 @@ Route::prefix('/admin')->middleware(['auth','login.status'])->group(function () 
         
         // User Routes
     Route::get('/users', [UserController::class, 'index'])->name('user.list');
-    Route::post('/users/records',[UserController::class,'serverside'])->name('user.records');
+    Route::get('/users/records',[UserController::class,'serverside'])->name('user.records');
     Route::post('/users/create', [UserController::class, 'create'])->name('user.create');
     Route::get('/users/edit/{id?}', [UserController::class, 'edit'])->name('user.edit');
     Route::post('/users/edit/{id?}', [UserController::class, 'edit'])->name('user.edit');
@@ -241,6 +241,16 @@ Route::prefix('/admin')->middleware(['auth','login.status'])->group(function () 
 
 
     Route::get('/users/createUser',[App\Http\Controllers\UserController::class,'createUser'])->name('user.createuser');
+    
+
+
+
+
+
+
+
+
+
     // Customer Routes
     Route::get('/customers', [CustomerController::class, 'index'])->name('customer.list');
     Route::get('/customers/create', [CustomerController::class, 'create'])->name('customer.create');

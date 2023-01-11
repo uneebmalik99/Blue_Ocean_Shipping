@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Yajra\Datatables\Datatables;
 
 class UserController extends Controller
 {
@@ -455,18 +456,13 @@ class UserController extends Controller
     }
     public function serverside(Request $request, $state = null){
         if ($request->ajax()) {
-
             if($state != null){
-                $data = User::with('roles')->where('state', $state);
-                
+                $data = User::with('roles')->where('state', $state)->get();
         }
         else{
-            $data = User::role('roles');
-            
+            $data = User::with('roles')->get();
         }
 
-
-            
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
@@ -484,7 +480,12 @@ class UserController extends Controller
                     $output = view('layouts.user.status', $data)->render();
                     return $output;
                 })
-                ->rawColumns(['action', 'created_at', 'status'])
+                ->addColumn('role', function ($row) {
+                    $data['row'] = $row;
+                    $output = view('layouts.user.status', $data)->render();
+                    return $output;
+                })
+                ->rawColumns(['action', 'created_at', 'status', 'role'])
                 ->make(true);
         }
         return back();
