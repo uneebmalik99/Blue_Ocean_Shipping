@@ -82,9 +82,6 @@
                 });
                 $('#vehicle_filter_table').DataTable({
                     columnDefs: [{
-                    // className: 'dtr-control',
-                    // orderable: false,
-                    // targets: -1,
                     orderable: false, targets: '_all'
                 }],
                     scrollX: true,
@@ -98,7 +95,6 @@
                         searchPlaceholder: "Search"
                     },
                 });
-
                 $('#no_title').DataTable({
                     scrollX: true,
                     "lengthMenu": [

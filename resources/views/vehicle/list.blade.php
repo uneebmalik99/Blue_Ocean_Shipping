@@ -453,7 +453,6 @@
                                                     </svg>
                                                 </a>
                                             </button>
-                                            @role(['Super Admin', 'Sub Admin'])
                                                 <button class="edit-button" onclick='updatevehicle(this.id)'
                                                     id={{ @$val['id'] }}>
                                                     <a>
@@ -466,6 +465,8 @@
 
                                                     </a>
                                                 </button>
+                                            @role(['Super Admin', 'Sub Admin'])
+
                                                 <button class="delete-button">
                                                     <a
                                                         href={{ url(@$module['action'] . '/delete/' . @$val[@$module['db_key']]) }}>
