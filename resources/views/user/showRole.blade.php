@@ -79,7 +79,7 @@
                     border-radius: 10px;">
                             <tr>
                                 <th>#</th>
-                                <th>Rule Name</th>
+                                <th>Role Name</th>
                                 <th>Create At</th>
                                 <th>Action</th>
                             </tr>
