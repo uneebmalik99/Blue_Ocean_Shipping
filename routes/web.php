@@ -92,6 +92,10 @@ Route::prefix('/admin')->middleware(['auth','login.status'])->group(function () 
 
 
 
+    Route::post('vehicle/search_all_vehicles',       [VehicleController::class, 'search_all_vehicles'])->name('vehicle.search_all_vehicles');
+
+
+
     //Sticky Notes Routes
     Route::get('/stickynotes', [StickyController::class, 'index'])->name('sticky.list');
     Route::post('/stickynotes', [StickyController::class, 'create'])->name('sticky.create');

@@ -128,7 +128,11 @@ class VehicleController extends Controller
             $data['new_orders'] = Vehicle::where('customer_name', auth()->user()->id)->where('status', '1')->get();
             $data['dispatched'] = Vehicle::where('customer_name', auth()->user()->id)->where('status', '2')->get();
             $data['on_hand'] = Vehicle::where('customer_name', auth()->user()->id)->where('status', '3')->get();
-            $data['no_titles'] = Vehicle::where('title_type', '!=', 'EXPORTABLE')->orwhereNull('title_type')->where('customer_name', auth()->user()->id)->get();
+            $data['no_titles'] = Vehicle::where('customer_name', auth()->user()->id)
+            ->where(function ($status){
+                $status->where('title_type', '!=', 'EXPORTABLE')
+                ->orwhereNull('title_type');
+            })->get();
             $data['towing_value'] = Vehicle::select('towing_charges')->where('customer_name', auth()->user()->id)->where('status', '3')->get()->toArray();
             $data['towing'] = 0;
             foreach($data['towing_value'] as $towing_charges){
@@ -1168,6 +1172,48 @@ class VehicleController extends Controller
         else {
             return "not exists";
         }
+     }
+
+
+
+
+
+
+     public function search_all_vehicles(Request $request){
+        $search_text = $request->text;
+        $data = [];
+        $output = [];
+
+        if(Auth::user()->hasRole('Customer')){
+            $data['records'] = Vehicle::with('user')->where('customer_name', auth()->user()->id)
+            ->where(function($query) use ($search_text){
+                $query->where('vin', 'LIKE', "%{$search_text}%")
+                ->orwhere('lot', 'LIKE', "%{$search_text}%");
+            })
+            ->where(function ($status){
+                $status->where('status', 1)
+                ->orwhere('status', 2)
+                ->orwhere('status', 3);
+            })->get()->toArray();
+        }
+        else{
+            $data['records'] = Vehicle::with('user')->where(function($query) use ($search_text){
+                $query->where('vin', 'LIKE', "%{$search_text}%")
+                ->orwhere('lot', 'LIKE', "%{$search_text}%");
+            })
+            ->where(function ($status){
+                $status->where('status', 1)
+                ->orwhere('status', 2)
+                ->orwhere('status', 3);
+            })->get()->toArray();
+
+        }
+
+                // dd($data['records']);
+
+                $output = view('layouts.vehicle.searchAllVehicle', $data)->render();
+                return Response($output);
+
      }
 
 }

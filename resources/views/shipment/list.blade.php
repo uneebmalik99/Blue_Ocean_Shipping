@@ -29,8 +29,8 @@
         }
 
         /* .loading_image_update .uploaded .uploaded-image img:hover{
-                    transform: scale(8.5);
-                } */
+                        transform: scale(8.5);
+                    } */
     </style>
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
@@ -414,16 +414,19 @@
                             target: -1
                         }
                     },
-                    columnDefs: [
+                    columnDefs: [{
+                            orderable: false,
+                            targets: '_all'
+                        },
                         {
-                        orderable: false,
-                        targets: '_all'
-                    },
-                    {
-                target: 17,
-                visible: false
-            },
-                ],
+                        searchable: false,
+                        targets: [0,1,2,5,6,7,8,9,10,11,12,13,14,15,16]
+                        },
+                        {
+                            target: 17,
+                            visible: false
+                        },
+                    ],
                     'scrollX': true,
                     "lengthMenu": [
                         [50, 100, 500],
@@ -442,7 +445,6 @@
                             orderable: false,
                             data: null,
                             defaultContent: '',
-
                         },
                         {
                             data: 'id'
