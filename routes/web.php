@@ -204,6 +204,7 @@ Route::prefix('/admin')->middleware(['auth','login.status'])->group(function () 
         
         // User Routes
     Route::get('/users', [UserController::class, 'index'])->name('user.list');
+    Route::post('/users/records',[UserController::class,'serverside'])->name('user.records');
     Route::post('/users/create', [UserController::class, 'create'])->name('user.create');
     Route::get('/users/edit/{id?}', [UserController::class, 'edit'])->name('user.edit');
     Route::post('/users/edit/{id?}', [UserController::class, 'edit'])->name('user.edit');

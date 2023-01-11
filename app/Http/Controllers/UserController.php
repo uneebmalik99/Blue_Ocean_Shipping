@@ -96,13 +96,16 @@ class UserController extends Controller
 
         } else {
 
-            $records = User::with('roles')->where('role_id', 1)->orwhere('role_id', 2)->orwhere('role_id', 3)->get();
+            $records = User::with('roles')->get()->toArray();
             // return $records;
             $data['records'] = $records;
+            $data['active_user'] = User::where('status',1)->count();
+            $data['inactive_user'] = User::where('status',0)->count();
             
         }
 
         $notification = $this->Notification();
+        
         return view($this->view . 'list', $data, $notification);
    
     }
@@ -449,6 +452,42 @@ class UserController extends Controller
         if($role){
             return "Revoked";
         }
+    }
+    public function serverside(Request $request, $state = null){
+        if ($request->ajax()) {
+
+            if($state != null){
+                $data = User::with('roles')->where('state', $state);
+                
+        }
+        else{
+            $data = User::role('roles');
+            
+        }
+
+
+            
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function ($row) {
+                    $data['row'] = $row;
+                    $output = view('layouts.user.action_buttons', $data)->render();
+                    return $output;
+                })
+                ->addColumn('created_at', function ($row) {
+                    $data['row'] = $row;
+                    $output = view('layouts.user.created_at', $data)->render();
+                    return $output;
+                })
+                ->addColumn('status', function ($row) {
+                    $data['row'] = $row;
+                    $output = view('layouts.user.status', $data)->render();
+                    return $output;
+                })
+                ->rawColumns(['action', 'created_at', 'status'])
+                ->make(true);
+        }
+        return back();
     }
 
 }
