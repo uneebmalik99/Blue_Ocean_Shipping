@@ -121,6 +121,7 @@
             return html;
         }
         var table = $('.shipment-reporting').DataTable({
+            destroy: true,
             responsive: {
                 details: {
                     type: 'column',
@@ -230,6 +231,7 @@
             }
             $('.vehicle_shipment_table').DataTable({
                 "lengthChange": false,
+                destroy: true,
                 "info": false,
                 "bPaginate": false,
                 searching: false,

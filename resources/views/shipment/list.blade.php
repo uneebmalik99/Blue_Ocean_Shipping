@@ -401,6 +401,7 @@
                     return html;
                 }
                 var table = $('#shipment_table').DataTable({
+                    destroy: true,
                     processing: true,
                     serverSide: true,
                     autoWidth: false,
@@ -513,6 +514,7 @@
                     }
                     $('.vehicle_shipment_table').DataTable({
                         "lengthChange": false,
+                        destroy: true,
                         "info": false,
                         "bPaginate": false,
                         searching: false,
