@@ -390,7 +390,6 @@ class DashboardController extends Controller
         $notification = $this->Notification();
         return view($this->view . 'list', $data, $notification);
     }
-
     public function serverside(Request $request, $state = null)
     {
         if ($request->ajax()) {
