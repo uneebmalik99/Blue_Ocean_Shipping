@@ -14,7 +14,9 @@
             border:.1px solid gray;
         }
         #search_vehicle::placeholder{
-            font-size:13px!important;
+            /* font-size:13px!important;
+             */
+            color:gray!important;
             padding-left:3px!important;
         }
     </style>
