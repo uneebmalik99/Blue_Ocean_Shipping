@@ -100,8 +100,8 @@ class UserController extends Controller
             $records = User::with('roles')->get()->toArray();
             // return $records;
             $data['records'] = $records;
-            $data['active_user'] = User::where('status',1)->count();
-            $data['inactive_user'] = User::where('status',0)->count();
+            $data['active_user'] = User::where('status',1)->get()->count();
+            $data['inactive_user'] = User::where('status',0)->get()->count();
             $data['all_user'] = User::all()->count();
             
         }
