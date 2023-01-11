@@ -104,36 +104,79 @@ class DashboardController extends Controller
                 $data['NewOrders'] = Vehicle::where('status', 1)->where('customer_name', auth()->user()->id)->count();
                 $data['Dispatched'] = Vehicle::where('status', 2)->where('customer_name', auth()->user()->id)->count();
                 $data['onHand'] = Vehicle::where('status', 3)->where('customer_name', auth()->user()->id)->count();
-                $data['noTitle'] = Vehicle::where('status', 4)->where('customer_name', auth()->user()->id)->count();
+                $data['no_titles'] = Vehicle::where('customer_name', auth()->user()->id)
+                ->where(function ($type){
+                    $type->where('title_type', '!=', 'EXPORTABLE');
+                })->where(function ($status){
+                    $status->where('status', 1)
+                    ->orwhere('status', 2)
+                    ->orwhere('status', 3);
+                })
+                ->get()->count();
+                // dd($data['no_titles']);
                 $all_vehicles = Vehicle::get();
                 // $allVehicles_value = Vehicle::where('added_by_user', auth()->user()->id)->get()->sum('value');
                 $data['all_vehicles'] = $all_vehicles;
                 // $data['allVehicles_value'] = $allVehicles_value;
 
                
-
+ $user_vehicles_ids = Vehicle::where('customer_name', auth()->user()->id)->pluck('shipment_id');
 
                  // ======= shipments statuses  ====== 
-                 $booked = Shipment::where('select_consignee', auth()->user()->id)->where('status', '1');
+
+                 $data['booked'] = Shipment::with('consignee')->where(function ($status) use ($user_vehicles_ids){
+                    $status->wherein('id', $user_vehicles_ids)
+                    ->orwhere('customer_email', auth()->user()->email);
+                })->where('status', '1')->get();
+    
+                $data['shipped'] = Shipment::with('consignee')->where(function ($status) use ($user_vehicles_ids){
+                    $status->wherein('id', $user_vehicles_ids)
+                    ->orwhere('customer_email', auth()->user()->email);
+                })->where('status', '2')->get();
+                $data['arrived'] = Shipment::with('consignee')->where(function ($status) use ($user_vehicles_ids){
+                    $status->wherein('id', $user_vehicles_ids)
+                    ->orwhere('customer_email', auth()->user()->email);
+                })->where('status', '3')->get();
+                $data['completed'] = Shipment::with('consignee')->where(function ($status) use ($user_vehicles_ids){
+                    $status->wherein('id', $user_vehicles_ids)
+                    ->orwhere('customer_email', auth()->user()->email);
+                })->where('status', '4')->get();
+
+
+
+
+                 $booked = Shipment::where(function ($status) use ($user_vehicles_ids){
+                    $status->wherein('id', $user_vehicles_ids)
+                    ->orwhere('select_consignee', auth()->user()->id);
+                })->where('status', '1');
                  $booked_count = $booked->count();
                  $booked_value = Shipment::where('customer_email', auth()->user()->email)->count();
                  $data['booked_count'] = $booked_count;
                  $data['booked_total'] = $booked_value;
          
-                 $shipped = Shipment::where('select_consignee', auth()->user()->id)->where('status', '2');
+                 $shipped = Shipment::where(function ($status) use ($user_vehicles_ids){
+                    $status->wherein('id', $user_vehicles_ids)
+                    ->orwhere('select_consignee', auth()->user()->id);
+                })->where('status', '2');
                  $shipped_count = $shipped->count();
                  $shipped_value = Shipment::where('customer_email', auth()->user()->email)->count();
                  $data['shipped_count'] = $shipped_count;
                  $data['shipped_total'] = $shipped_value;
          
-                 $arrived = Shipment::where('select_consignee', auth()->user()->id)->where('status', '3');
+                 $arrived = Shipment::where(function ($status) use ($user_vehicles_ids){
+                    $status->wherein('id', $user_vehicles_ids)
+                    ->orwhere('select_consignee', auth()->user()->id);
+                })->where('status', '3');
                  $arrived_count = $arrived->count();
                  $arrived_value = Shipment::where('customer_email', auth()->user()->email)->count();
                  $data['arrived_count'] = $arrived_count;
                  $data['arrived_total'] = $arrived_value;
                  
          
-                 $completed = Shipment::where('select_consignee', auth()->user()->id)->get();
+                 $completed = Shipment::where(function ($status) use ($user_vehicles_ids){
+                    $status->wherein('id', $user_vehicles_ids)
+                    ->orwhere('select_consignee', auth()->user()->id);
+                })->where('status', '4');
                  $completed_count = $completed->count();
                  $completed_value = Shipment::where('customer_email', auth()->user()->email)->count();
                  $data['completed_count'] = $completed_count;
@@ -354,7 +397,8 @@ class DashboardController extends Controller
 
             if($state != null){
                 if(Auth::user()->hasRole('Customer')){
-                    $data = Shipment::with('vehicle.user')->where('customer_email', auth()->user()->email)->where('loading_state', $state)->get();
+                    $user_vehicles_ids = Vehicle::where('customer_name', auth()->user()->id)->pluck('id');
+                    $data = Shipment::with('vehicle.user', 'customer.billings', 'customer.shippers')->whereIn('id', $user_vehicles_ids)->orwhere('customer_email', auth()->user()->email)->orwhere('loading_state', $state)->get();
                 }
                 else{
                     $data = Shipment::with('vehicle.user')->where('loading_state', $state)->get();
@@ -362,7 +406,10 @@ class DashboardController extends Controller
         }
         else{
             if(Auth::user()->hasRole('Customer')){
-                $data = Shipment::with('vehicle.user', 'customer')->where('customer_email', auth()->user()->email)->get();
+                $user_vehicles_ids = Vehicle::where('customer_name', auth()->user()->id)->pluck('shipment_id');
+                // dd($user_vehicles_ids);
+                $data = Shipment::with('vehicle.user', 'customer.billings')->whereIn('id', $user_vehicles_ids)->orwhere('customer_email', auth()->user()->email)->get();
+                // dd($data);
             }
             else{
                 $data = Shipment::with('vehicle.user', 'customer.billings')->get();

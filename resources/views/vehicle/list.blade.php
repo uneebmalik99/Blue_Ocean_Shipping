@@ -9,7 +9,7 @@
             margin-top: 33px;
             width: 250px;
             border-radius: 3px;
-            z-index:999999999999999999;
+            z-index:999;
             outline:none;
             border:.1px solid gray;
         }

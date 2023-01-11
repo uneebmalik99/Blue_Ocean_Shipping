@@ -129,10 +129,14 @@ class VehicleController extends Controller
             $data['dispatched'] = Vehicle::where('customer_name', auth()->user()->id)->where('status', '2')->get();
             $data['on_hand'] = Vehicle::where('customer_name', auth()->user()->id)->where('status', '3')->get();
             $data['no_titles'] = Vehicle::where('customer_name', auth()->user()->id)
-            ->where(function ($status){
-                $status->where('title_type', '!=', 'EXPORTABLE')
-                ->orwhereNull('title_type');
-            })->get();
+            ->where(function ($type){
+                $type->where('title_type', '!=', 'EXPORTABLE');
+            })->where(function ($status){
+                $status->where('status', 1)
+                ->orwhere('status', 2)
+                ->orwhere('status', 3);
+            })
+            ->get();
             $data['towing_value'] = Vehicle::select('towing_charges')->where('customer_name', auth()->user()->id)->where('status', '3')->get()->toArray();
             $data['towing'] = 0;
             foreach($data['towing_value'] as $towing_charges){
@@ -992,7 +996,9 @@ class VehicleController extends Controller
                 }
             }
             else{
+           
                 if(Auth::user()->hasRole('Customer')){  
+                   
                     $total = Vehicle::where('customer_name', auth()->user()->id)->get();
                     $records = Vehicle::with('user')->where('customer_name', auth()->user()->id);
                 }
@@ -1002,9 +1008,18 @@ class VehicleController extends Controller
                 }
             }
             if ($status) {
+                // dd($status);
                 if($status == '4'){
                     if(Auth::user()->hasRole('Customer')){
-                       $record =  Vehicle::where('title_type', '!=', 'EXPORTABLE')->orwhereNull('title_type')->where('customer_name', auth()->user()->id)->get();
+                       $record =  Vehicle::where('customer_name', auth()->user()->id)
+                       ->where(function ($type){
+                           $type->where('title_type', '!=', 'EXPORTABLE');
+                       })->where(function ($status){
+                           $status->where('status', 1)
+                           ->orwhere('status', 2)
+                           ->orwhere('status', 3);
+                       })
+                       ->get();
                         // $records = $records->where('status', $status)->orwhere('title_type', '!=', 'Exportable')->paginate($this->perpage);
                         $data['records'] = $record;
                         $output['view'] = view('vehicle.' . $status_name, $data)->render();
@@ -1013,7 +1028,6 @@ class VehicleController extends Controller
                     else{
                         $records = Vehicle::where('title_type', '!=', 'EXPORTABLE')->orwhereNull('title_type')->get();
                         $data['records'] = $records;
-                        // dd($data['records']);
                         $output['view'] = view('vehicle.' . $status_name, $data)->render();
                         return Response($output);
                     }

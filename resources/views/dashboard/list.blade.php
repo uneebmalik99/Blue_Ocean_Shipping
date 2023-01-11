@@ -621,7 +621,7 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
                                     </div>
                                 </div>
                                 <div>
-                                    <div class="font-bold"><span>{{ @$noTitle }}</span> </div>
+                                    <div class="font-bold"><span>{{ @$no_titles }}</span> </div>
                                     <div class="py-1 col-12 text-muted p-0 font-size">
                                         {{-- <span>Total Vehicles
                                             <b>{{ @$TotalVehicles }}</b>
