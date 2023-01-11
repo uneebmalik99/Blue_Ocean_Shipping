@@ -138,7 +138,46 @@
             
                 {{-- alert end --}}
                 {{-- search filter start --}}
-                <div class="px-4 pt-2 mt-4">
+                <div class="container bg-light border">
+                    <div class="row">
+                        <div class="d-flex m-4" style="
+                        width: 94%;
+                        margin-right: 2px;">
+                            <button class="text-center form-control border next-style reporting_cls " id="users">
+                                <a href="{{ route('user.list') }}" style="text-decoration: none!important;"
+                                ><div class="unskew" style="color:black;">Users</div></a>
+                                
+                            </button>
+                            <button class="text-center form-control border tab_style reporting_cls" id="permissions"
+                            onclick="showPermissions(this.id)">
+                            <div class="unskew">Permissions</div>
+                            </button>
+                            <button class="text-center form-control border tab_style reporting_cls " id="roles"
+                                onclick="showRoles(this.id)">
+                                <div class="unskew">Roles</div>
+                            </button>
+                            
+                            
+            
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-12 w-100 d-flex justify-content-between align-items-center my-3">
+                            
+                            
+                            
+                            <div>
+                                
+            
+            
+                               
+            
+                                
+            
+                            </div>
+                        </div>
+                    </div
+
+                </div>
+               <div class="px-4 pt-2 mt-4">
                     <div class="d-flex justify-content-between">
                         <div class="col-4 p-0">
                             <span class="h5 text-muted">

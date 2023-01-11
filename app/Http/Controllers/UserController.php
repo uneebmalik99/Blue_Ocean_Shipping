@@ -106,7 +106,7 @@ class UserController extends Controller
 
         $notification = $this->Notification();
         
-        return view($this->view . 'list', $data, $notification);
+        return view($this->view . 'listnew', $data, $notification);
    
     }
 
