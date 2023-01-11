@@ -4,7 +4,7 @@
         #search_vehicle {
             position: absolute;
             right: 88px;
-            top: .;
+            /* top: .; */
             /* bottom: 2%; */
             margin-top: 33px;
             width: 250px;
@@ -15,6 +15,7 @@
         }
         #search_vehicle::placeholder{
             font-size:13px!important;
+            padding-left:3px!important;
         }
     </style>
     <!-- Modal -->

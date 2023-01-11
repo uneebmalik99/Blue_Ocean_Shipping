@@ -334,9 +334,7 @@
                                     <select
                                         class="form-control-sm border-style input-border-style rounded shipment_filtering col-12 text-muted px-2"
                                         name="destination_port"
-                                        id="destination_port"style="
-                                width: 85%;margin-top: 22px;
-                            ">
+                                        id="destination_port"style="width: 85%;margin-top: 22px; ">
 
                                         <option value="all" disabled selected>Destination Port</option>
                                         <option value="all">All Ports</option>
@@ -348,7 +346,6 @@
                             </div>
                         </div>
                     </div>
-
                     {{-- search filter end --}}
                     <div class="shipment_table_body">
                         <table id="shipment_table" class="row-border"
@@ -387,7 +384,6 @@
         <script type="text/javascript">
             $(document).ready(function() {
                 state = "{{ @$state }}";
-
                 function format(d) {
                     console.log(d);
                     html =
@@ -440,7 +436,6 @@
                     },
                     ajax: "{{ route('shipments.records') }}" + "/" + state,
                     columns: [{
-                            // class: 'details-control',
                             className: 'dt-control',
                             orderable: false,
                             data: null,
@@ -513,7 +508,6 @@
                         row.child.hide();
                         tr.removeClass('dt-hasChild shown');
                     } else {
-
                         row.child(format(row.data()['vehicle'])).show();
                         tr.addClass('dt-hasChild shown');
                     }
