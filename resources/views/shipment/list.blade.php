@@ -29,8 +29,8 @@
         }
 
         /* .loading_image_update .uploaded .uploaded-image img:hover{
-                    transform: scale(8.5);
-                } */
+                        transform: scale(8.5);
+                    } */
     </style>
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
@@ -334,9 +334,7 @@
                                     <select
                                         class="form-control-sm border-style input-border-style rounded shipment_filtering col-12 text-muted px-2"
                                         name="destination_port"
-                                        id="destination_port"style="
-                                width: 85%;margin-top: 22px;
-                            ">
+                                        id="destination_port"style="width: 85%;margin-top: 22px; ">
 
                                         <option value="all" disabled selected>Destination Port</option>
                                         <option value="all">All Ports</option>
@@ -348,7 +346,6 @@
                             </div>
                         </div>
                     </div>
-
                     {{-- search filter end --}}
                     <div class="shipment_table_body">
                         <table id="shipment_table" class="row-border"
@@ -387,7 +384,6 @@
         <script type="text/javascript">
             $(document).ready(function() {
                 state = "{{ @$state }}";
-
                 function format(d) {
                     console.log(d);
                     html =
@@ -405,6 +401,7 @@
                     return html;
                 }
                 var table = $('#shipment_table').DataTable({
+                    destroy: true,
                     processing: true,
                     serverSide: true,
                     autoWidth: false,
@@ -414,16 +411,19 @@
                             target: -1
                         }
                     },
-                    columnDefs: [
+                    columnDefs: [{
+                            orderable: false,
+                            targets: '_all'
+                        },
                         {
-                        orderable: false,
-                        targets: '_all'
-                    },
-                    {
-                target: 17,
-                visible: false
-            },
-                ],
+                        searchable: false,
+                        targets: [0,1,2,5,6,7,8,9,10,11,12,13,14,15,16]
+                        },
+                        {
+                            target: 17,
+                            visible: false
+                        },
+                    ],
                     'scrollX': true,
                     "lengthMenu": [
                         [50, 100, 500],
@@ -437,12 +437,10 @@
                     },
                     ajax: "{{ route('shipments.records') }}" + "/" + state,
                     columns: [{
-                            // class: 'details-control',
                             className: 'dt-control',
                             orderable: false,
                             data: null,
                             defaultContent: '',
-
                         },
                         {
                             data: 'id'
@@ -511,12 +509,12 @@
                         row.child.hide();
                         tr.removeClass('dt-hasChild shown');
                     } else {
-
                         row.child(format(row.data()['vehicle'])).show();
                         tr.addClass('dt-hasChild shown');
                     }
                     $('.vehicle_shipment_table').DataTable({
                         "lengthChange": false,
+                        destroy: true,
                         "info": false,
                         "bPaginate": false,
                         searching: false,
