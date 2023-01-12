@@ -415,7 +415,7 @@ class UserController extends Controller
                'username' => 'required',
                'password' => 'required',
                'phone' => 'required|numeric',
-               'email' => 'required|email|unique:users',
+               'email' => 'required|email|unique:user',
                'company_name' => 'required',
                'company_email' => 'required',
                'country' => 'required',
