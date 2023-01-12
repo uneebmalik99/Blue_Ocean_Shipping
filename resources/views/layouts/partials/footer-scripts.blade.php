@@ -2082,36 +2082,24 @@
 </script>
 {{-- User List Profile dynamic Tabs of Permissions and Roles --}}
 <script>
-    function showPermissions(id) {
-        //alert("here is");
+   
+
+    
+
+    function user_section(id) {
         $('.reporting_cls').removeClass('next-style');
         $('.reporting_cls').addClass('tab_style');
-        
-        $('#'+id).addClass('next-style');
-        $.ajax({
-            type: 'GET',
-            url: '{{ route('user.allpermissions') }}',
-
-            success: function(data) {
-
-                $('.main-box').html(data);
-            }
-        });
-    }
-
-    function showRoles(id) {
-        $('.reporting_cls').removeClass('next-style');
-        $('.reporting_cls').addClass('tab_style');
-        
         $('#'+id).addClass('next-style');
 
         
         $.ajax({
-            type: 'GET',
-            url: '{{ route('user.allroles') }}',
-
+            type: 'post',
+            url: '{{ route('user.changeTab') }}',
+            data:{
+                tab:id,
+            },
             success: function(data) {
-
+                console.log(data);
                 $('.main-box').html(data);
             }
         });
@@ -2124,6 +2112,7 @@
             type: 'GET',
             url: '{{ route('user.createuser') }}',
             success: function(data) {
+                $('#exampleModalLabel').text('New User');
                 $('.modal-body').html(data);
                 $('#exampleModal').modal('show');
             }
@@ -2140,6 +2129,7 @@
             },
             success: function(data) {
                 // alert(data);
+                $('#exampleModalLabel').text('Update User');
                 $('.modal-body').html(data);
                 $('#exampleModal').modal('show');
             }
@@ -2166,8 +2156,29 @@
                 $('#exampleModal').modal('hide');
                 location.reload();
 
+            },
+            error: function(xhr, status, errorThrown) {
+                console.log(xhr.responseJSON)
+                if (xhr.responseJSON['errors']['name']) {
+                    iziToast.warning({
+                    message: 'Failed! Name is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
+                }
+
+                if (xhr.responseJSON['errors']['email']) {
+                    iziToast.warning({
+                    message: 'Failed! Email is missing OR Already Exists',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
+                }
             }
         });
+
+
+
     }
 </script>
 <script>

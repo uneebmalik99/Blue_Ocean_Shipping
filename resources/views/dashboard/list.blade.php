@@ -351,6 +351,40 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
             }
         }
     </style>
+
+
+ <!-- Modal -->
+ <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
+ style="z-index:999999">
+ <div class="modal-dialog modal-fullscreen scrollable mw-100 m-2 px-3 py-2" role="document">
+     <div class="modal-content">
+         <div class="modal-header d-flex justify-content-between title_style">
+             <div>
+                 <h5 class="modal-title text-white" id="exampleModalLabel">New {{ $module['singular'] }}</h5>
+             </div>
+             <div>
+                 <button type="button" class="close text-white h6" data-dismiss="modal" aria-label="Close"
+                     onclick="modalClose()" style="margin-top: -11px;
+                 font-size: 26px;">
+                     <span aria-hidden="true">x</span>
+                 </button>
+             </div>
+         </div>
+         <div class="modal-body">
+             ...
+         </div>
+     </div>
+ </div>
+</div>
+{{-- Modal End --}}
+
+
+
+
+
+
+
+
     <div class="container-fluid p-0">
         <div class="row">
             <div class="col-12 mx-auto">

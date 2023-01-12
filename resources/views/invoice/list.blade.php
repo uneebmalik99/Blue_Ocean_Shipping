@@ -46,8 +46,8 @@
         </div>
         <br>
         <div class="card">
-            <div class="card-body overflow-auto">
-                <table class="table" id="inovice_table" style="width:100%!important;">
+            <div class="card-body">
+                <table class="row-border" id="inovice_table" style="width:100%!important;overflow-x:scroll!important;">
                     <thead>
                         <tr class="font-size"style="
                         background-color: #2c3e50;
@@ -66,7 +66,6 @@
                             <th class="font-bold-tr">PAYMENT DATE</th>
                             <th class="font-bold-tr">RECIEVED AMOUNT</th>
                             <th class="font-bold-tr">BALANCE</th>
-                            
                             <th class="font-bold-tr">ACTIONS</th>
                         </tr>
                     </thead>

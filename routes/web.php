@@ -238,8 +238,10 @@ Route::prefix('/admin')->middleware(['auth','login.status','revalidatehistory'])
     Route::get('/users/deleteRole/{id?}', [App\Http\Controllers\UserController::class, 'deleteRole'])->name('delete.role');
 
     Route::post('/users/showupdatemodel}', [App\Http\Controllers\UserController::class, 'showUpdateRole'])->name('user.updatemodelshow');
-    Route::get('/user/allpermissions',[App\Http\Controllers\UserController::class,'permissions'])->name('user.allpermissions');
-    Route::get('/user/allroles',[App\Http\Controllers\UserController::class,'roles'])->name('user.allroles');
+
+
+
+    Route::post('/user/changeTab',[App\Http\Controllers\UserController::class,'changeTab'])->name('user.changeTab');
 
 
     Route::get('/users/createUser',[App\Http\Controllers\UserController::class,'createUser'])->name('user.createuser');

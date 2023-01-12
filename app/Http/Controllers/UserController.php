@@ -65,8 +65,8 @@ class UserController extends Controller
 
     public function index()
     {
-    //    return auth()->user()->getRoleNames();
-    // return User::role('Super Admin')->get();
+        //    return auth()->user()->getRoleNames();
+        // return User::role('Super Admin')->get();
 
         $data = [];
         $data = [
@@ -90,26 +90,30 @@ class UserController extends Controller
         // $data['role'] = Auth::user()->role;
         // if ($data['role']->name == 'Customer') {
 
-        if(Auth::user()->hasRole('Customer')){
+        if (Auth::user()->hasRole('Customer')) {
 
             $records = User::where('email', Auth::user()->email)->get();
             $data['records'] = $records;
-
         } else {
-
             $records = User::with('roles')->get()->toArray();
-            // return $records;
             $data['records'] = $records;
-            $data['active_user'] = User::where('status',1)->get()->count();
-            $data['inactive_user'] = User::where('status',0)->get()->count();
-            $data['all_user'] = User::all()->count();
-            
+
+            $data['active_user'] = User::with('roles')->whereHas('roles', function ($query) {
+                $query->where('name', '!=', 'Customer');
+            })->where('status', '1')->get()->count();
+
+            $data['inactive_user'] = User::with('roles')->whereHas('roles', function ($query) {
+                $query->where('name', '!=', 'Customer');
+            })->where('status', '0')->get()->count();
+
+            $data['all_user'] = User::with('roles')->whereHas('roles', function ($query) {
+                $query->where('name', '!=', 'Customer');
+            })->get()->count();
         }
 
         $notification = $this->Notification();
         unset($data['page_title']);
         return view($this->view . 'listnew', $data, $notification);
-   
     }
 
     public function create(Request $request)
@@ -124,7 +128,8 @@ class UserController extends Controller
             "page_title" => $this->plural . " create",
             "page_heading" => $this->plural . ' create',
             "breadcrumbs" => array("dashboard" => "Dashboard", "#" => $this->plural . " create"),
-            "module" => ['type' => $this->type,
+            "module" => [
+                'type' => $this->type,
                 'type' => $this->type,
                 'singular' => $this->singular,
                 'plural' => $this->plural,
@@ -136,7 +141,6 @@ class UserController extends Controller
         ];
         $notification = $this->Notification();
         return view($this->view . "create_edit", $data, $notification);
-
     }
 
     public function edit(Request $request, $id = null)
@@ -166,7 +170,8 @@ class UserController extends Controller
             "button_text" => "Update ",
             "breadcrumbs" => array("dashboard" => "Dashboard", "#" => $this->plural . " List"),
             'action' => $action,
-            "module" => ['type' => $this->type,
+            "module" => [
+                'type' => $this->type,
                 'type' => $this->type,
                 'singular' => $this->singular,
                 'plural' => $this->plural,
@@ -197,7 +202,8 @@ class UserController extends Controller
             "page_title" => $this->singular . ' Profile',
             "page_heading" => $this->singular . ' Profile',
             "breadcrumbs" => array("dashboard" => "Dashboard", "#" => $this->plural . " List"),
-            "module" => ['type' => $this->type,
+            "module" => [
+                'type' => $this->type,
                 'type' => $this->type,
                 'singular' => $this->singular,
                 'plural' => $this->plural,
@@ -212,17 +218,15 @@ class UserController extends Controller
         $notification = $this->Notification();
         $data['records'] = User::find($id)->toArray();
         $data['roles'] = Role::all()->whereNotIn('name', $user->getRoleNames())->toArray();
-        
-        $data['permissions'] = Permission::all()->whereNotIn('name',$user->getPermissionsViaRoles())->take(5)->toArray();
-        
+
+        $data['permissions'] = Permission::all()->whereNotIn('name', $user->getPermissionsViaRoles())->take(5)->toArray();
+
         $data['assignRoles'] = $user->getRoleNames();
         $data['assignPermissions'] = $user->getPermissionsViaRoles();
 
         $data['routes'] = Permission::all()->skip(5);
         $data['assignedRoutes'] = $user->getAllPermissions()->skip(5);
         return view($this->view . 'profile', $data, $notification);
-
-
     }
 
     public function updateProfile(Request $request)
@@ -266,14 +270,14 @@ class UserController extends Controller
                     $url_edit = url($this->action . '/edit/' . $val->id);
                     $url_delete = url($this->action . '/delete/' . $val->id);
                     $table .= '<tr>' .
-                    '<td>' . $i . '</td>' .
-                    '<td>' . $val->username . '</td>' .
-                    '<td>' . $val->email . '</td>' .
-                    '<td>' . $val->status . '</td>' .
-                    '<td>' . $val->city . '</td>' .
-                    '<td>' . $val->state . '</td>' .
-                    '<td>' . $val->phone . '</td>' .
-                    '<td>' . $val->customer_name . '</td>' .
+                        '<td>' . $i . '</td>' .
+                        '<td>' . $val->username . '</td>' .
+                        '<td>' . $val->email . '</td>' .
+                        '<td>' . $val->status . '</td>' .
+                        '<td>' . $val->city . '</td>' .
+                        '<td>' . $val->state . '</td>' .
+                        '<td>' . $val->phone . '</td>' .
+                        '<td>' . $val->customer_name . '</td>' .
 
                         '<td>' . '<button><a href=' . $url_edit . '><i class=' . '"ti-pencil"' . '></i></a></button>' . '<button><a href=' . $url_delete . '><i class=' . '"ti-trash"' . '></i></a></button>' . '</td>' .
                         '</tr>';
@@ -314,20 +318,18 @@ class UserController extends Controller
 
         $notification = $this->Notification();
         return view($this->view . 'showRole', $data, $notification);
-
     }
 
     public function createroles()
     {
         $data['permissions'] = Permission::all()->toArray();
-        $output = view('user.createRole',$data)->render();
+        $output = view('user.createRole', $data)->render();
         return Response($output);
-
     }
 
     public function addRoles(Request $req)
     {
-        
+
         $role = role::updateOrCreate(
             ['id' => $req->id],
             [
@@ -344,7 +346,6 @@ class UserController extends Controller
         $role->delete();
         if ($role) {
             return back()->with('delete', 'Role Deleted Successfully!');
-
         }
     }
 
@@ -356,34 +357,76 @@ class UserController extends Controller
         $data['permissions'] = $role->permissions;
         $output = view('user.createRole', $data)->render();
         return Response($output);
-
     }
 
 
     public function showUpdateUser(Request $req)
-    {   
-        
+    {
+
         $id = $req->id;
         $data['user'] = User::find($id)->toArray();
         $data['roles'] = role::get();
         $output = view('user.createuser', $data)->render();
         return Response($output);
-
     }
-    public function createUser(Request $req){
+    public function createUser(Request $req)
+    {
         $data['roles'] = role::get();
-        $output = view('user.createuser',$data)->render();
+        $output = view('user.createuser', $data)->render();
         return Response($output);
     }
-    public function addUsers(Request $req){
-        $role = role::where('id',$req['role_id'])->select('name')->first();
-        
-        
-        $user = User::updateOrCreate(
-            ['id' => $req->id],
+    public function addUsers(Request $req)
+    {
+
+        $role = role::where('id', $req['role_id'])->select('name')->first();
+
+       if($req->id){
+        $req->validate([
+            'name' => 'required',
+            'username' => 'required',
+            'phone' => 'required|numeric',
+            'company_name' => 'required',
+            'company_email' => 'required',
+            'country' => 'required',
+            'zip_code' => 'required',
+            'address_line1' => 'required',
+        ]);
+        $user = User::find($req->id);
+        $user->name = $req->name;
+        $user->username = $req->username;
+        if($req->password){
+           $user->password = Hash::make($req->password);
+        }
+        $user->company_name = $req->company_name;
+        $user->company_email = $req->company_email;
+        $user->address_line1 = $req->address_line1;
+        $user->address_line2 = $req->address_line2;
+        $user->city = $req->city;
+        $user->country = $req->country;
+        $user->zip_code = $req->zip_code;
+        $user->phone = $req->phone;
+        $user->update();
+
+       }
+       else
+       {
+           $req->validate([
+               'name' => 'required',
+               'username' => 'required',
+               'password' => 'required',
+               'phone' => 'required|numeric',
+               'email' => 'required|email|unique:users',
+               'company_name' => 'required',
+               'company_email' => 'required',
+               'country' => 'required',
+               'zip_code' => 'required',
+               'address_line1' => 'required',
+           ]);
+
+           $user = User::create(
             [
                 "name" => $req['name'],
-                "username" => $req['user_name'],
+                "username" => $req['username'],
                 "password" => Hash::make($req['password']),
                 "email" => $req['email'],
                 "company_name" => $req['company_name'],
@@ -394,76 +437,93 @@ class UserController extends Controller
                 "country" => $req['country'],
                 "zip_code" => $req['zip_code'],
                 "phone" => $req['phone'],
-                "role_id" => $req['role_id']
             ]
         );
-        
-        if($role['name'] == 'Super Admin'){
-            $user->assignRole('Super Admin');
-        }
-        if($role['name'] == 'Sub Admin'){
-            $user->assignRole('Sub Admin');
-        }
-        if($role['name'] == 'Location Admin'){
-            $user->assignRole('Location Admin');
-        }
-        if($role['name'] == 'Customer'){
-            $user->assignRole('Customer');
-        }
-        
+
+       }
+       if($req->id){}
+       else{
+           if ($role['name'] == 'Super Admin') {
+               $user->assignRole('Super Admin');
+           }
+           if ($role['name'] == 'Sub Admin') {
+               $user->assignRole('Sub Admin');
+           }
+           if ($role['name'] == 'Location Admin') {
+               $user->assignRole('Location Admin');
+           }
+           if ($role['name'] == 'Customer') {
+               $user->assignRole('Customer');
+           }
+       }
+
+
         return Response($user);
     }
-    public function assignRole(Request $req){
-        
-        $user = User::where('id',$req['id'])->first();
-        $role = $user->assignRole($req['role']);
-        if($role){
-            return "Assigned";
-        }
-    }
-    public function dismissrole(Request $req){
-        $user = User::where('id',$req['id'])->first();
-        $role = $user->removeRole($req['role']);
-        if($role){
-            return "Revoked";
-        }
-    }
-    public function permissions(){
-        $data['permissions'] = Permission::all()->toArray();
-        
-        $output = view('user.showPermission',$data)->render();
+    public function assignRole(Request $req)
+    {
 
-        return Response($output);
-    }
-    public function roles(){
-        $data['roles'] = role::all()->toArray();
-        $output = view('user.showRoles',$data)->render();
-        return Response($output);
-    }
-    public function assignroute(Request $req){
-    
-        $user = User::where('id',$req['id'])->first();
-        $role = $user->givePermissionTo($req['role']);
-        if($role){
+        $user = User::where('id', $req['id'])->first();
+        $role = $user->assignRole($req['role']);
+        if ($role) {
             return "Assigned";
         }
     }
-    public function dismissroute(Request $req){
-        $user = User::where('id',$req['id'])->first();
-        $role = $user->revokePermissionTo($req['role']);
-        if($role){
+    public function dismissrole(Request $req)
+    {
+        $user = User::where('id', $req['id'])->first();
+        $role = $user->removeRole($req['role']);
+        if ($role) {
             return "Revoked";
         }
     }
-    public function serverside(Request $request, $state = null){
+
+    public function changeTab(Request $request)
+    {
+        $output = [];
+        if ($request->tab == 'users') {
+            $output = view('user.showUsers')->render();
+        } else if ($request->tab == 'permissions') {
+            $data['permissions'] = Permission::all()->toArray();
+            $output = view('user.showPermission', $data)->render();
+        } else if ($request->tab == 'roles') {
+            $data['roles'] = role::all()->toArray();
+            $output = view('user.showRoles', $data)->render();
+        } else {
+        }
+        return Response($output);
+    }
+    public function assignroute(Request $req)
+    {
+
+        $user = User::where('id', $req['id'])->first();
+        $role = $user->givePermissionTo($req['role']);
+        if ($role) {
+            return "Assigned";
+        }
+    }
+    public function dismissroute(Request $req)
+    {
+        $user = User::where('id', $req['id'])->first();
+        $role = $user->revokePermissionTo($req['role']);
+        if ($role) {
+            return "Revoked";
+        }
+    }
+    public function serverside(Request $request, $state = null)
+    {
         if ($request->ajax()) {
-            if($state != null){
+            if ($state != null) {
                 $data = User::with('roles')->where('state', $state)->get();
-        }
-        else{
-            $data = User::with('roles');
-        }
-        
+            } else {
+                // $data = User::with('roles')->notRole('Customer')->get();
+                $data = User::with('roles')->whereHas('roles', function ($query) {
+                    $query->where('name', '!=', 'Customer');
+                })->get();
+
+                // dd($data);
+            }
+
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
@@ -491,5 +551,4 @@ class UserController extends Controller
         }
         return back();
     }
-
 }

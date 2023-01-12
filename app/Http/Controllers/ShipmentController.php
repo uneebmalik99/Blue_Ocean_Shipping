@@ -860,7 +860,12 @@ class ShipmentController extends Controller
 
 
                 if(Auth::user()->hasRole('Customer')){
-                    $data = Shipment::with('vehicle.user', 'customer.billings')->where('status', $request->columns[0]['data']['tab'])->where('customer_email', auth()->user()->email)->get();
+                    // $data = Shipment::with('vehicle.user', 'customer.billings')->where('status', $request->columns[0]['data']['tab'])->where('customer_email', auth()->user()->email)->get();
+                    $user_vehicles_ids = Vehicle::where('customer_name', auth()->user()->id)->pluck('shipment_id');
+                    $data = Shipment::with('vehicle.user', 'customer.billings')->where(function ($status) use ($user_vehicles_ids){
+                        $status->wherein('id', $user_vehicles_ids)
+                        ->orwhere('select_consignee', auth()->user()->id);
+                    })->where('status', $request->columns[0]['data']['tab'])->get();
                 }
                 else{
                     if($request->columns[0]['data']['tab'] == 'loading_port'){
@@ -988,7 +993,6 @@ class ShipmentController extends Controller
         else{
             if(Auth::user()->hasRole('Customer')){
                 $user_vehicles_ids = Vehicle::where('customer_name', auth()->user()->id)->pluck('shipment_id');
-                // dd($user_vehicles_ids);
                 $data = Shipment::with('vehicle.user', 'customer.billings')->whereIn('id', $user_vehicles_ids)->orwhere('customer_email', auth()->user()->email)->get();
                 // dd($data);
             }

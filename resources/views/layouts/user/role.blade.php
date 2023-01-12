@@ -1,1 +1,1 @@
-{{ strtoupper($row->getRoleNames()->first()) }}
+{{ implode(", ", $row->getRoleNames()->toArray()) }}

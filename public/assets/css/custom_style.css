@@ -18,7 +18,11 @@
 #onhand_report_length,
 #shipment_report_length,
 #notitle_report_length,
-#shipment_reporting_length {
+#shipment_reporting_length,
+#user_table1_length,
+#user_table2_length,
+#permission_table_length,
+#role_table_length {
     padding: 2% 0% 1% 2% !important;
 }
 
@@ -42,7 +46,11 @@
 #onhand_report_length select
 #shipment_report_length select,
 #notitle_report_length select
-#shipment_reporting_length select{
+#shipment_reporting_length select,
+#user_table1_length select,
+#user_table2_length select,
+#permission_table_length select,
+#role_table_length select{
     height: calc(1.8125rem + 2px) !important;
     border: 1px solid rgba(189, 189, 189, 1) !important;
     border-radius: 0.25rem !important;
@@ -76,7 +84,11 @@
 #onhand_report_filter,
 #shipment_report_filter,
 #notitle_report_filter,
-#shipment_reporting_filter {
+#shipment_reporting_filter,
+#user_table1_filter,
+#user_table2_filter,
+#permission_table_filter,
+#role_table_filter {
     padding: 2% 2% 1% 0% !important;
 }
 
@@ -100,7 +112,11 @@
 #onhand_report_length input
 #shipment_report_length input,
 #notitle_report_length input
-#shipment_reporting_length input{
+#shipment_reporting_length input,
+#user_table1_length input,
+#user_table2_length input,
+#permission_table_length input,
+#role_table_length input{
     border: 1px solid rgba(189, 189, 189, 1) !important;
     color: #2b3d51 !important;
     border-radius: 0.25rem !important;
@@ -129,7 +145,11 @@
 #onhand_report_wrapper,
 #shipment_report_wrapper,
 #notitle_report_wrapper,
-#shipment_reporting_wrapper {
+#shipment_reporting_wrapper,
+#user_table1_wrapper,
+#user_table2_wrapper,
+#permission_table_wrapper,
+#role_table_wrapper {
     background-color: white !important;
 }
 
