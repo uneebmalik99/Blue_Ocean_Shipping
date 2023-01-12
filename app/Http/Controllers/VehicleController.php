@@ -824,7 +824,6 @@ class VehicleController extends Controller
                 }
                 $i++;
             }
-
         }
         $import_vehicle = [];
         foreach($vehicle_array as $newValues){
