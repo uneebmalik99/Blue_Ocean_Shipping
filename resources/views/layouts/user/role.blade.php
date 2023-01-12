@@ -1,0 +1,1 @@
+{{ strtoupper($row->getRoleNames()->first()) }}

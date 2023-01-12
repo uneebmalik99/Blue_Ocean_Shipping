@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\VehicleCart;
 use Illuminate\Support\Facades\Auth;
 use Yajra\Datatables\Datatables;
-
+use Illuminate\Support\Facades\DB;
 
 class InvoiceController extends Controller
 {
@@ -213,21 +213,32 @@ class InvoiceController extends Controller
                 if($output['vehicle']){
 
                     // dd($output['vehicle']);
-                    $already_vehicles = Vehicle::whereinovice_id($invoice_id)->get()->toArray();
-                    // dd($already_vehicles[1]['id']);
-                    for($i = 0; $i<count($already_vehicles); $i++){
-                        foreach($output['vehicle'] as $vehicle_id){
-                            if($already_vehicles[$i]['id'] == $vehicle_id){
-                                
-                            }
-                            else{
-                                $get_vehicle = Vehicle::find($already_vehicles[$i]['id']);
-                                $get_vehicle->inovice_id  = null;
-                                $get_vehicle->update();
-                                
-                            }
+                    $already_vehicles = Vehicle::whereinovice_id($invoice_id)->pluck('id')->toArray();
+                    
+                    $unsetInvoice = DB::table('vehicles')->whereIn('id', $already_vehicles)->update(array('inovice_id' => null));
+                    
+                   
+                    if($unsetInvoice){
+                        foreach($output['vehicle'] as $id){
+                            $get_vehicle = Vehicle::find($id);
+                            $get_vehicle->inovice_id  = $invoice_id;
+                            $get_vehicle->update();
                         }
-                    }   
+                    }
+                    // for($i = 0; $i<count($already_vehicles); $i++){
+                    //     foreach($output['vehicle'] as $vehicle_id){
+                    //         if($already_vehicles[$i]['id'] == $vehicle_id){
+                                
+                    //         }
+                    //         else{
+                    //             $get_vehicle = Vehicle::find($already_vehicles[$i]['id']);
+                    //             $get_vehicle->inovice_id  = null;
+                    //             $get_vehicle->update();
+                                
+                    //         }
+                    //     }
+                    // }   
+
                 }
         }
 
@@ -298,4 +309,5 @@ class InvoiceController extends Controller
         array_push($data['data'], $action);
         return $data;
     }
+   
 }

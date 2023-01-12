@@ -102,11 +102,12 @@ class UserController extends Controller
             $data['records'] = $records;
             $data['active_user'] = User::where('status',1)->count();
             $data['inactive_user'] = User::where('status',0)->count();
+            $data['all_user'] = User::all()->count();
             
         }
 
         $notification = $this->Notification();
-        
+        unset($data['page_title']);
         return view($this->view . 'listnew', $data, $notification);
    
     }
@@ -460,9 +461,9 @@ class UserController extends Controller
                 $data = User::with('roles')->where('state', $state)->get();
         }
         else{
-            $data = User::with('roles')->get();
+            $data = User::with('roles');
         }
-
+        
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
@@ -482,7 +483,7 @@ class UserController extends Controller
                 })
                 ->addColumn('role', function ($row) {
                     $data['row'] = $row;
-                    $output = view('layouts.user.status', $data)->render();
+                    $output = view('layouts.user.role', $data)->render();
                     return $output;
                 })
                 ->rawColumns(['action', 'created_at', 'status', 'role'])
