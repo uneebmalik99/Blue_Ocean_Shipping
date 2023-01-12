@@ -6,9 +6,6 @@
         $model = $('#vehicle_model').val();
         $status = $('#vehicle_status').val();
         $status_name = $('#vehicle_status').find(":selected").text();
-
-
-        // alert($make);
         $.ajax({
             type: 'get',
             url: '{{ URL::to('admin/vehicles/filtering') }}',
@@ -21,8 +18,6 @@
                 'status_name': $status_name,
             },
             success: function(data) {
-
-
                 if (data.view) {
                     $('#status_body').html(data.view);
                 } else {
@@ -40,7 +35,6 @@
                         sLengthMenu: "_MENU_",
                         searchPlaceholder: "Search"
                     },
-
                 });
                 $('#dispatched_table').DataTable({
                     scrollX: true,

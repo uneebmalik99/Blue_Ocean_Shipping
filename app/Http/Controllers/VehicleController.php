@@ -165,7 +165,14 @@ class VehicleController extends Controller
             $data['new_orders'] = Vehicle::where('status', '1')->get();
             $data['dispatched'] = Vehicle::where('status', '2')->get();
             $data['on_hand'] = Vehicle::where('status', '3')->get();
-            $data['no_titles'] = Vehicle::with('user')->where('status', '4')->orwhere('title_type', '!=', 'EXPORTABLE')->orwhereNull('title_type')->get();
+            $data['no_titles'] = Vehicle::where(function ($type){
+                $type->where('title_type', '!=', 'EXPORTABLE');
+            })->where(function ($status){
+                $status->where('status', 1)
+                ->orwhere('status', 2)
+                ->orwhere('status', 3);
+            })
+            ->get();
             $data['towing_value'] = Vehicle::select('towing_charges')->where('status', '3')->get()->toArray();
             $data['towing'] = 0;
             foreach($data['towing_value'] as $towing_charges){
@@ -218,11 +225,18 @@ class VehicleController extends Controller
 
         if(Auth::user()->hasRole('Customer')){
 
-            $data['records'] = Vehicle::with('user','pickupimages')->where('added_by_user', auth()->user()->id)->where('status', 3)->where('port', $state)->get()->toArray();
-            $data['new_orders'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '1')->where('port', $state)->get();
-            $data['dispatched'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '2')->where('port', $state)->get();
-            $data['on_hand'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '3')->where('port', $state)->get();
-            $data['no_titles'] = Vehicle::where('added_by_user', auth()->user()->id)->where('status', '4')->where('port', $state)->get();
+            $data['records'] = Vehicle::with('user','pickupimages')->where('customer_name', auth()->user()->id)->where('status', 3)->where('port', $state)->get()->toArray();
+            $data['new_orders'] = Vehicle::where('customer_name', auth()->user()->id)->where('status', '1')->where('port', $state)->get();
+            $data['dispatched'] = Vehicle::where('customer_name', auth()->user()->id)->where('status', '2')->where('port', $state)->get();
+            $data['on_hand'] = Vehicle::where('customer_name', auth()->user()->id)->where('status', '3')->where('port', $state)->get();
+            $data['no_titles'] = Vehicle::where('customer_name', auth()->user()->id)
+            ->where(function ($type){
+                $type->where('title_type', '!=', 'EXPORTABLE');
+            })->where(function ($status){
+                $status->where('status', 1)
+                ->orwhere('status', 2)
+                ->orwhere('status', 3);
+            })->where('port', $state)->get();
             $data['towing_value'] = Vehicle::select('towing_charges')->where('status', '3')->get()->toArray();
             $data['towing'] = 0;
             foreach($data['towing_value'] as $towing_charges){
@@ -252,7 +266,13 @@ class VehicleController extends Controller
             $data['new_orders'] = Vehicle::where('status', '1')->where('port', $state)->get();
             $data['dispatched'] = Vehicle::where('status', '2')->where('port', $state)->get();
             $data['on_hand'] = Vehicle::where('status', '3')->where('port', $state)->get();
-            $data['no_titles'] = Vehicle::where('status', '4')->where('port', $state)->get();
+            $data['no_titles'] = Vehicle::where(function ($type){
+                $type->where('title_type', '!=', 'EXPORTABLE');
+            })->where(function ($status){
+                $status->where('status', 1)
+                ->orwhere('status', 2)
+                ->orwhere('status', 3);
+            })->where('port', $state)->get();
             $data['towing_value'] = Vehicle::select('towing_charges')->where('status', '3')->get()->toArray();
             $data['towing'] = 0;
             foreach($data['towing_value'] as $towing_charges){
