@@ -87,6 +87,10 @@
             url: '{{ route('invoice.create') }}',
             success: function(data) {
                 $('.modal-body').html(data);
+                $('#exampleModal').modal({
+                    backdrop: 'static',
+                    keyboard: false
+                })
                 $('#exampleModal').modal('show');
             }
         });
