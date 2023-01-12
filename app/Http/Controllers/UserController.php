@@ -391,6 +391,7 @@ class UserController extends Controller
             'zip_code' => 'required',
             'address_line1' => 'required',
         ]);
+        dd('kashif update');
         $user = User::find($req->id);
         $user->name = $req->name;
         $user->username = $req->username;
@@ -415,13 +416,14 @@ class UserController extends Controller
                'username' => 'required',
                'password' => 'required',
                'phone' => 'required|numeric',
-               'email' => 'required|email|unique:users',
+               'email' => 'required|email|unique:user',
                'company_name' => 'required',
                'company_email' => 'required',
                'country' => 'required',
                'zip_code' => 'required',
                'address_line1' => 'required',
            ]);
+
 
            $user = User::create(
             [
@@ -437,8 +439,22 @@ class UserController extends Controller
                 "country" => $req['country'],
                 "zip_code" => $req['zip_code'],
                 "phone" => $req['phone'],
-            ]
-        );
+            ]);
+        // $user = new User;
+        // $user->name =  $req['name'];
+        // $user->username =  $req['username'];
+        // $user->password =  Hash::make($req['password']);
+        // $user->email =  $req['email'];
+        // $user->company_name =  $req['company_name'];
+        // $user->company_email =  $req['company_email'];
+        // $user->address_line1 =  $req['address_line1'];
+        // $user->address_line2 =  $req['address_line2'];
+        // $user->city =  $req['city'];
+        // $user->country =  $req['country'];
+        // $user->zip_code =  $req['zip_code'];
+        // $user->phone =  $req['phone'];
+        // $user->save();
+
 
        }
        if($req->id){}
