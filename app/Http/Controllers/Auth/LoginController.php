@@ -55,16 +55,18 @@ class LoginController extends Controller
     //     return view('auth.login');
     // }
 
-    public function locked()
-    {
+    public function locked(Request $request)
+    {   
+      
         if (!session('lock-expires-at')) {
+            
             return view('lock.lock_screen');
         }
 
         if (session('lock-expires-at') > now()) {
             return view('lock.lock_screen');
         }
-        return view('lock.lock_screen');
+        
     }
 
     public function unlock(Request $request)

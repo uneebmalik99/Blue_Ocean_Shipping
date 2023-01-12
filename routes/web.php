@@ -27,7 +27,9 @@ use Encore\Admin\Form\Row;
 
 Auth::routes();
 
-Route::prefix('/admin')->middleware(['auth','login.status'])->group(function () {
+
+
+Route::prefix('/admin')->middleware(['auth','login.status','revalidatehistory'])->group(function () {
     //Home
     Route::get('/', [HomeController::class, 'index']);
     

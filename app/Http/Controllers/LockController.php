@@ -7,10 +7,13 @@ use Illuminate\Http\Request;
 
 class LockController extends Controller
 {
-    public function lockScreen()
+    public function lockScreen(Request $request)
     {
+        
         if (Auth::check()) {
+            
             \Session::put('locked', true);
+            
             return view('lock.lock_screen');
         }
 
