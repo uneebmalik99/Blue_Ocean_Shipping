@@ -287,8 +287,8 @@
                         <div class="d-flex justify-content-end col-6">
     
                             <div class="col-3">
-                                <button type="reset" class="btn next-style text-white col-12 py-1"
-                                    id="general_vehicle" value="Reset" style="cursor: pointer;">
+                                <button type="reset"  class="btn next-style text-white col-12 py-1"
+                                    id="general_vehicle"  onclick="reset_inovice()" value="Reset" style="cursor: pointer;">
                                     <div class="unskew">Clear</div>
                                 </button>
                             </div>
@@ -342,6 +342,13 @@
         var balance = Math.abs(Math.floor(invoice_amount)-Math.floor(received_amount))
         
         $('#balance').val(balance);
+    }
+
+
+
+
+    function reset_inovice(){
+       $('#inovice_shipment_table').html('');
     }
 </script>
 

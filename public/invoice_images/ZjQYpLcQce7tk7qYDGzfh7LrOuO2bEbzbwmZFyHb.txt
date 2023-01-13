@@ -1,0 +1,592 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1:3306
+-- Generation Time: Jan 06, 2023 at 12:59 PM
+-- Server version: 10.5.15-MariaDB-cll-lve
+-- PHP Version: 7.2.34
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `u360694715_ocean_blue`
+--
+
+--
+-- Dumping data for table `auctions`
+--
+
+INSERT DELAYED IGNORE INTO `auctions` (`id`, `name`, `location`, `date`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'COPART', NULL, NULL, '1', '2023-01-02 13:23:23', '2023-01-02 13:23:23'),
+(2, 'IAAI', NULL, NULL, '1', '2023-01-02 16:50:02', '2023-01-02 16:50:02'),
+(3, 'ADESA', NULL, NULL, '1', '2023-01-04 15:49:39', '2023-01-04 15:49:39'),
+(4, 'MANHEIM', NULL, NULL, '1', '2023-01-04 15:49:46', '2023-01-04 15:49:46'),
+(5, 'ACV', NULL, NULL, '1', '2023-01-04 15:49:51', '2023-01-04 15:49:51'),
+(6, 'DEALER', NULL, NULL, '1', '2023-01-04 15:49:59', '2023-01-04 15:49:59');
+
+--
+-- Dumping data for table `auction_images`
+--
+
+INSERT DELAYED IGNORE INTO `auction_images` (`id`, `name`, `thumbnail`, `vehicle_id`, `created_at`, `updated_at`) VALUES
+(18, 'vehicle_images/zsuoKGNMwchrz36LZVELr3Fp95o9O7zjAPEuIwfZ.jpg', '1672950400.jpg', 8, '2023-01-05 20:26:40', '2023-01-05 20:26:40'),
+(19, 'vehicle_images/06e9qei5MEpI0QA4FL6KeLJEYFZ1P9ZIkkMCbwWJ.jpg', '1672950400.jpg', 8, '2023-01-05 20:26:40', '2023-01-05 20:26:40'),
+(20, 'vehicle_images/n6Oq72sUg0eulnSLk93yS11VK7w9eu9hC9JMkktJ.jpg', '1672950400.jpg', 8, '2023-01-05 20:26:40', '2023-01-05 20:26:40'),
+(21, 'vehicle_images/zwphBvvFJg3w4aIsgd3oWfbDLCyCUJhnQXDuko2N.jpg', '1672950400.jpg', 8, '2023-01-05 20:26:40', '2023-01-05 20:26:40'),
+(22, 'vehicle_images/mLy24FpmQUPtayISpqxmUVHp4lT1L8bpDPKStAdc.jpg', '1672950400.jpg', 8, '2023-01-05 20:26:40', '2023-01-05 20:26:40'),
+(23, 'vehicle_images/z6lV5oej2nTs8ceYbJtw1A3UrshFc3ux7kaHYX4Z.jpg', '1673002637.jpg', 53, '2023-01-06 10:57:17', '2023-01-06 10:57:17'),
+(24, 'vehicle_images/W5S2Gniwt7d5wJaCcoqsDRuLUInbZ9QXEb41xiaH.jpg', '1673002637.jpg', 53, '2023-01-06 10:57:17', '2023-01-06 10:57:17'),
+(25, 'vehicle_images/qhoGjaZIizTHdCrBSqVThQfpEdFsC3Q3pl4pOR8U.jpg', '1673002637.jpg', 53, '2023-01-06 10:57:17', '2023-01-06 10:57:17'),
+(26, 'vehicle_images/D2W1GEYlV5gePd4gKH5hX9Xd4AR07G0ghuAm6wNo.jpg', '1673002637.jpg', 53, '2023-01-06 10:57:17', '2023-01-06 10:57:17'),
+(27, 'vehicle_images/wv574T9VfSU3M4pRKkZQpEXMDF70b0b9mdJjyCuE.jpg', '1673002637.jpg', 53, '2023-01-06 10:57:17', '2023-01-06 10:57:17'),
+(28, 'vehicle_images/qe8UOSZnPXE05Q2D4fq4YvvqXLAGJN0FBzGYdZFZ.jpg', '1673002637.jpg', 53, '2023-01-06 10:57:17', '2023-01-06 10:57:17'),
+(29, 'vehicle_images/mpeYILpmJWGU8HnmZq8lkQbmA6H2KN66CrOkRkkK.jpg', '1673002637.jpg', 53, '2023-01-06 10:57:17', '2023-01-06 10:57:17'),
+(30, 'vehicle_images/yNv9fRQffPyCWb7WjE1qKLGRWLqHOD0Ch5C28W30.jpg', '1673002637.jpg', 53, '2023-01-06 10:57:17', '2023-01-06 10:57:17'),
+(31, 'vehicle_images/hQkbr5NLcXaWiQsZ5mlTDLLkpqHl1ugCRF0KLL8W.jpg', '1673002637.jpg', 53, '2023-01-06 10:57:17', '2023-01-06 10:57:17'),
+(32, 'vehicle_images/0BUf9EJ1Q0v4r7qpXS7aqUxwZDIRBTWG5byO33l9.jpg', '1673002637.jpg', 53, '2023-01-06 10:57:17', '2023-01-06 10:57:17');
+
+--
+-- Dumping data for table `auction_invoices`
+--
+
+INSERT DELAYED IGNORE INTO `auction_invoices` (`id`, `name`, `type`, `size`, `vehicle_id`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(2, 'vehicle_images/ZfECZEuWnmHg1UkosgFfKCMBwihQ3zK7dE4H9YRu.pdf', 'pdf', '10.396 kb', 8, NULL, '2023-01-05 20:26:40', '2023-01-05 20:26:40');
+
+--
+-- Dumping data for table `billing_parties`
+--
+
+INSERT DELAYED IGNORE INTO `billing_parties` (`id`, `first_name`, `last_name`, `company_name`, `company_email`, `country`, `city`, `phone`, `address`, `zip_code`, `foreign_passport_number`, `identification_number`, `expiry_date`, `shipping`, `shipment_type`, `purchased_from`, `request_pickup`, `end_use`, `buyer_number`, `customer_id`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(3, 'MASOOD', 'AHMAD', 'NOOR AL JABAL USED CARS TR LLC', 'Nooraljabal1133@gmail.com', 'UNITED ARAB EMIRATES', 'SHARJAH', 'TEL: +971554081518', 'INDUSTRIAL AREA #2', '000', NULL, NULL, NULL, 'multiple', 'vehicle', 'auction', 'yes', 'business', '831328,507250,239861,422241,163869,483905', 4, NULL, '2023-01-04 15:55:53', '2023-01-04 15:55:53'),
+(4, 'JAWAD', 'ASMATY', 'GALAXY STAR SHIPPING LINE L.L.C', 'alwahaalthahabiah01@gmail.com', 'UNITED ARAB EMIRATES', 'SHARJAH', NULL, 'INDUSTRIAL AREA #6', '000', NULL, NULL, NULL, 'multiple', 'vehicle', 'auction', 'yes', 'business', '163427,311113,417335,597275,MANHEIM,558130,925303,744816', 5, NULL, '2023-01-04 16:01:47', '2023-01-04 18:07:03'),
+(5, 'FAKHAR', 'ALAM', 'FAKAHR ALAM USED CARS TR LLC', 'falam1805@gmail.com', 'UNITED ARAB EMIRATES', 'SHARJAH', '+971 56 782 5191', 'INDUSTRIAL AREA #2', '000', NULL, NULL, NULL, 'single', 'vehicle', 'auction', NULL, 'personal', '103535', 6, NULL, '2023-01-04 16:05:38', '2023-01-04 16:05:38'),
+(6, 'MUJEEB', 'AMANZAY', 'MARHABA USED CARS TR LLC', 'ceo@marhabaauctions.com', 'UNITED ARAB EMIRATES', 'SHARJAH', '+971 55 177 7768', 'INDUSTRIAL AREA #2', '000', NULL, NULL, NULL, 'multiple', 'vehicle', 'auction', 'yes', 'business', 'NA', 7, NULL, '2023-01-04 16:08:37', '2023-01-05 08:19:44'),
+(7, 'MUHAMMAD', 'ZUBAIR', 'MUHAMMAD ZUBAIR', 'mzubair@almotarat.com', 'UNITED ARAB EMIRATES', 'SHARJAH', '+971 52 240 5566', 'INDUSTRIAL AREA #2', '000', NULL, NULL, NULL, 'single', 'vehicle', 'auction', 'yes', NULL, '187150,BELL AIR,MANHEIM', 8, NULL, '2023-01-04 16:25:24', '2023-01-05 08:37:45'),
+(8, 'Test', 'MAlik', 'TestTRT', 'Trt@gmail.com', 'PK', 'ISB', '352553', 'nfninrvinvi', '55595', '46246', '424', '2023-01-05', 'single', 'vehicle', 'auction', 'yes', 'personal', '2454,22655', 9, NULL, '2023-01-05 06:22:24', '2023-01-05 06:22:24');
+
+--
+-- Dumping data for table `colors`
+--
+
+INSERT DELAYED IGNORE INTO `colors` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'WHITE', '1', '2023-01-03 09:46:30', '2023-01-03 09:46:30'),
+(2, 'BLACK', '1', '2023-01-03 09:46:37', '2023-01-03 09:46:37'),
+(3, 'SILVER', '1', '2023-01-03 09:46:46', '2023-01-03 09:46:46'),
+(4, 'BLUE', '1', '2023-01-04 15:47:37', '2023-01-04 15:47:37'),
+(5, 'BROWN', '1', '2023-01-04 15:47:43', '2023-01-04 15:47:43'),
+(6, 'BURGUNDY', '1', '2023-01-04 15:47:54', '2023-01-04 15:47:54'),
+(7, 'CHARC', '1', '2023-01-04 15:48:02', '2023-01-04 15:48:02'),
+(8, 'CREAM', '1', '2023-01-04 15:48:09', '2023-01-04 15:48:09'),
+(9, 'GOLD', '1', '2023-01-04 15:48:16', '2023-01-04 15:48:16'),
+(10, 'GRAY', '1', '2023-01-04 15:48:22', '2023-01-04 15:48:22'),
+(11, 'GREEN', '1', '2023-01-04 15:48:33', '2023-01-04 15:48:33'),
+(12, 'RED', '1', '2023-01-04 15:48:45', '2023-01-04 15:48:45'),
+(13, 'YELLOW', '1', '2023-01-04 15:48:57', '2023-01-04 15:48:57'),
+(14, 'TAN', '1', '2023-01-05 20:29:07', '2023-01-05 20:29:07');
+
+--
+-- Dumping data for table `container_sizes`
+--
+
+INSERT DELAYED IGNORE INTO `container_sizes` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
+(2, '40\' HC', '1', '2023-01-02 16:47:50', '2023-01-02 16:47:50');
+
+--
+-- Dumping data for table `container_types`
+--
+
+INSERT DELAYED IGNORE INTO `container_types` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
+(2, '40\' HC', '1', '2023-01-02 16:48:22', '2023-01-02 16:48:22');
+
+--
+-- Dumping data for table `d_countries`
+--
+
+INSERT DELAYED IGNORE INTO `d_countries` (`id`, `country`, `state`, `port`, `terminal`, `status`, `created_at`, `updated_at`) VALUES
+(2, 'UNITED ARAB EMIRATES', 'DUBAI', 'JEBEL ALI', '.', '1', '2023-01-02 16:38:41', '2023-01-02 16:38:41');
+
+--
+-- Dumping data for table `invoices`
+--
+
+INSERT DELAYED IGNORE INTO `invoices` (`id`, `ar_number`, `company_name`, `port_of_loading`, `destination_port`, `container_size`, `invoice_no`, `invoice_amount`, `invoice_date`, `due_date`, `payment_date`, `received_amount`, `balance`, `invoice_document`, `added_by_role`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(1, '2345', 'TestTRT', 'Test', 'Test', '30', 0, 34, '2023-01-10', '2023-01-05', '2023-01-12', 325, 291, 'invoice_images/nUXbRi6CWsiV5dTzevKNYNIqIvfWyMQ2nbsZjSHG.pdf', 1, '2023-01-04 15:46:07', '2023-01-02 13:37:29', '2023-01-04 15:46:07');
+
+--
+-- Dumping data for table `keys`
+--
+
+INSERT DELAYED IGNORE INTO `keys` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
+(2, 'YES', '1', '2023-01-02 16:50:43', '2023-01-02 16:50:43'),
+(3, 'NO', '1', '2023-01-02 16:50:51', '2023-01-02 16:50:51'),
+(4, 'REMOTE', '1', '2023-01-02 16:50:57', '2023-01-02 16:50:57');
+
+--
+-- Dumping data for table `loading_countries`
+--
+
+INSERT DELAYED IGNORE INTO `loading_countries` (`id`, `country`, `state`, `port`, `terminal`, `status`, `created_at`, `updated_at`) VALUES
+(2, 'UNITED STATES', 'MARYLAND', 'BALTIMORE', '.', '1', '2023-01-02 16:39:07', '2023-01-02 16:39:07'),
+(3, 'UNITED STATES', 'SEATTLE', 'SEATTLE', '.', '1', '2023-01-03 09:52:40', '2023-01-03 09:52:54');
+
+--
+-- Dumping data for table `loading__images`
+--
+
+INSERT DELAYED IGNORE INTO `loading__images` (`id`, `name`, `thumbnail`, `shipment_id`, `created_at`, `updated_at`) VALUES
+(28, 'shipment_images/mQfOtiO61L3afirJBsFGgBnS4WL7utxXXkrRizVQ.jpg', '1672862060.jpg', 3, '2023-01-04 19:54:20', '2023-01-04 19:54:20'),
+(29, 'shipment_images/4MYO5lcRdXjGTjqAt5gmv5iIJpKRVEPi4HPpr34y.jpg', '1672862060.jpg', 3, '2023-01-04 19:54:20', '2023-01-04 19:54:20'),
+(30, 'shipment_images/5KV30ABoJme5I18lLB1c1KJjRxZfezJl2E17oFhC.jpg', '1672862060.jpg', 3, '2023-01-04 19:54:20', '2023-01-04 19:54:20');
+
+--
+-- Dumping data for table `migrations`
+--
+
+INSERT DELAYED IGNORE INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_100000_create_password_resets_table', 1),
+(2, '2019_08_19_000000_create_failed_jobs_table', 1),
+(3, '2022_08_01_062153_create_shipment_statuses_table', 1),
+(4, '2022_08_01_062153_create_vehicle_status_table', 1),
+(5, '2022_08_01_062154_create_users_table', 1),
+(6, '2022_08_01_062155_create_invoices_table', 1),
+(7, '2022_08_01_062155_create_locations_table', 1),
+(8, '2022_08_01_062155_create_shipments_table', 1),
+(9, '2022_08_01_062155_create_vehicles_table', 1),
+(10, '2022_08_01_112132_create_towing_requests_table', 1),
+(11, '2022_08_02_121332_create_exports_table', 1),
+(12, '2022_08_02_131855_create_notifications_table', 1),
+(13, '2022_08_03_063608_create_consignees_table', 1),
+(14, '2022_08_03_073837_create_documents_table', 1),
+(15, '2022_08_03_115246_create_conditions_table', 1),
+(16, '2022_08_03_115729_create_vehicle__conditions_table', 1),
+(17, '2022_08_03_123758_create_vehicle__exports_table', 1),
+(18, '2022_08_04_062014_create_export__images_table', 1),
+(19, '2022_08_04_062924_create_features_table', 1),
+(20, '2022_08_04_063503_create_images_table', 1),
+(21, '2022_08_04_064434_create_invoice__payments_table', 1),
+(22, '2022_08_04_064943_create_notes_table', 1),
+(23, '2022_08_04_065732_create_pricings_table', 1),
+(24, '2022_08_04_070631_create_vehicle__features_table', 1),
+(25, '2022_08_04_072941_create_audits_table', 1),
+(26, '2022_08_04_103518_create_dock_receipts_table', 1),
+(27, '2022_08_22_092416_create_stickies_table', 1),
+(28, '2022_08_30_112551_create_billing_parties_table', 1),
+(29, '2022_08_31_094417_create_shippers_table', 1),
+(30, '2022_08_31_112330_create_quotations_table', 1),
+(31, '2022_09_08_142539_consignee__shipment', 1),
+(32, '2022_09_19_114102_create_invoice_images_table', 1),
+(33, '2022_09_19_114244_create_warehouse_images_table', 1),
+(34, '2022_09_19_114624_create_auction_invoices_table', 1),
+(35, '2022_09_21_095955_create_auction_copies_table', 1),
+(36, '2022_09_22_070028_create_customer_documents_table', 1),
+(37, '2022_09_23_105533_create_shipment_images_table', 1),
+(38, '2022_09_30_072933_create_shipment__invices_table', 1),
+(39, '2022_09_30_073030_create_stamp__titles_table', 1),
+(40, '2022_09_30_073202_create_loading__images_table', 1),
+(41, '2022_09_30_073240_create_other__documents_table', 1),
+(42, '2022_09_30_113155_create_bill_of_sales_table', 1),
+(43, '2022_09_30_114622_create_original_titles_table', 1),
+(44, '2022_09_30_115047_create_pickup_images_table', 1),
+(45, '2022_10_12_062546_create_vehicle_types_table', 1),
+(46, '2022_10_18_111828_create_shipping_countries_table', 1),
+(47, '2022_10_18_111829_create_states_table', 1),
+(48, '2022_10_18_111928_create_companies_table', 1),
+(49, '2022_10_18_112037_create_destination_countries_table', 1),
+(50, '2022_10_18_112038_create_destination_states_table', 1),
+(51, '2022_10_18_112039_create_destination_ports_table', 1),
+(52, '2022_10_18_112103_create_loading_ports_table', 1),
+(53, '2022_10_18_112132_create_makes_table', 1),
+(54, '2022_10_18_112220_create_colors_table', 1),
+(55, '2022_10_18_112244_create_titles_table', 1),
+(56, '2022_10_18_112305_create_keys_table', 1),
+(57, '2022_10_18_112323_create_auctions_table', 1),
+(58, '2022_10_19_101780_create_shipping_states_table', 1),
+(59, '2022_10_21_053608_create_title_types_table', 1),
+(60, '2022_10_24_122557_create_shipment_lines_table', 1),
+(61, '2022_10_24_123208_create_container_types_table', 1),
+(62, '2022_10_24_123710_create_container_sizes_table', 1),
+(63, '2022_10_24_125744_create_shipper_name_table', 1),
+(64, '2022_10_24_125842_create_pickup_location_table', 1),
+(65, '2022_10_24_125903_create_site_table', 1),
+(66, '2022_10_24_130332_creat_warehouse_table', 1),
+(67, '2022_10_25_064656_create_loading_terminals_table', 1),
+(68, '2022_10_26_060920_create_destination_terminals_table', 1),
+(69, '2022_11_01_053123_create_loading_countries_table', 1),
+(70, '2022_11_01_053648_create_shipment_types_table', 1),
+(71, '2022_11_01_073138_create_d_countries_table', 1),
+(72, '2022_11_01_080002_create_m_m_s_table', 1),
+(73, '2022_11_02_055304_create_no_of_vehicles_table', 1),
+(74, '2022_11_16_191326_create_shippment_rates_table', 1),
+(75, '2022_11_16_200115_create_master_towings_table', 1),
+(76, '2022_11_17_103044_create_customer_buyer_ids_table', 1),
+(77, '2022_11_22_095618_create_import_vehicles_table', 1),
+(78, '2022_11_22_095619_create_permission_tables', 1),
+(79, '2022_11_29_052240_create_vehicle_carts_table', 1);
+
+--
+-- Dumping data for table `model_has_roles`
+--
+
+INSERT DELAYED IGNORE INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
+(1, 'App\\Models\\User', 1),
+(2, 'App\\Models\\User', 10),
+(4, 'App\\Models\\User', 4),
+(4, 'App\\Models\\User', 5),
+(4, 'App\\Models\\User', 6),
+(4, 'App\\Models\\User', 7),
+(4, 'App\\Models\\User', 8),
+(4, 'App\\Models\\User', 9);
+
+--
+-- Dumping data for table `notifications`
+--
+
+INSERT DELAYED IGNORE INTO `notifications` (`id`, `subject`, `message`, `is_read`, `status`, `notifiable_type`, `notifiable_id`, `type`, `read_at`, `data`, `user_id`, `expiry_date`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(3, 'DELIVERED Tuesday 1/3/2023 at 9:29 am Signed for by: M.MITNIK Obtain Proof of delivery', '<p>DELIVERED</p>\r\n\r\n<p>Tuesday1/3/2023 at 9:29 am</p>\r\n\r\n<p>DELIVERED</p>\r\n\r\n<p>Tuesday1/3/2023 at 9:29 am</p>\r\n\r\n<p>Signed for by: M.MITNIK</p>\r\n\r\n<p>Obtain Proof of delivery</p>\r\n\r\n<p>Signed for by: M.MITNIK</p>\r\n\r\n<p>Obtain Proof of delivery</p>', 0, 1, '', 0, '', NULL, '', 5, '2023-01-04', '2023-01-05 08:18:02', '2023-01-04 19:47:02', '2023-01-05 08:18:02'),
+(4, 'TEst', '<p><strong>TEstb<s>y</s></strong><s> TRTfjvjkkjd. jjkv</s></p>\r\n\r\n<p><s>vmfjf</s>jsvdbkjdsv</p>', 0, 0, '', 0, '', NULL, '', 4, '2023-01-05', '2023-01-05 06:18:19', '2023-01-05 05:50:03', '2023-01-05 06:18:19'),
+(5, 'gs', '<p>kj</p>', 0, 1, '', 0, '', NULL, '', 4, '2023-01-05', NULL, '2023-01-05 06:18:30', '2023-01-05 21:22:58'),
+(6, 'nnkln', '<p>nklk</p>', 0, 0, '', 0, '', NULL, '', 4, '2023-01-05', NULL, '2023-01-05 06:18:55', '2023-01-05 06:18:55'),
+(7, 'lk', '<p><strong>nll<em>kn mln<s>.&nbsp;</s></em></strong><s>jk kj</s></p>', 0, 0, '', 0, '', NULL, '', 4, '2023-01-11', NULL, '2023-01-05 06:19:28', '2023-01-05 06:19:28');
+
+--
+-- Dumping data for table `no_of_vehicles`
+--
+
+INSERT DELAYED IGNORE INTO `no_of_vehicles` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
+(1, '4', '1', '2023-01-02 16:49:29', '2023-01-02 16:49:29');
+
+--
+-- Dumping data for table `permissions`
+--
+
+INSERT DELAYED IGNORE INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
+(1, 'view', 'web', '2023-01-02 12:58:00', '2023-01-02 12:58:00'),
+(2, 'create', 'web', '2023-01-02 12:58:00', '2023-01-02 12:58:00'),
+(3, 'edit', 'web', '2023-01-02 12:58:00', '2023-01-02 12:58:00'),
+(4, 'delete', 'web', '2023-01-02 12:58:00', '2023-01-02 12:58:00'),
+(5, 'Page Access', 'web', '2023-01-02 12:58:00', '2023-01-02 12:58:00');
+
+--
+-- Dumping data for table `quotations`
+--
+
+INSERT DELAYED IGNORE INTO `quotations` (`id`, `destination_port`, `valid_from`, `valid_till`, `container_size`, `vehicle`, `loading_port`, `shipping_line`, `default`, `special_rate`, `customer_id`, `created_at`, `updated_at`) VALUES
+(2, 'JEBEL ALI', '2023-01-01', '2023-01-31', '40\' HC', '4', 'BALTIMORE', 'MEARSK LINE', '3100', '2900', 4, '2023-01-04 15:56:40', '2023-01-04 15:56:40'),
+(3, 'JEBEL ALI', '2023-01-01', '2023-01-31', '40\' HC', '4', 'BALTIMORE', 'MEARSK LINE', '3100', '2900', 5, '2023-01-04 16:02:33', '2023-01-04 18:07:06'),
+(4, 'JEBEL ALI', '2023-01-01', '2023-01-31', '40\' HC', '4', 'BALTIMORE', 'MEARSK LINE', '3100', '2900', 6, '2023-01-04 16:06:23', '2023-01-04 16:06:23'),
+(5, 'JEBEL ALI', '2023-01-01', '2023-01-31', '40\' HC', '4', 'BALTIMORE', 'MEARSK LINE', '3100', '2900', 7, '2023-01-04 16:09:21', '2023-01-05 08:19:49'),
+(6, 'JEBEL ALI', NULL, NULL, '40\' HC', '4', 'BALTIMORE', 'MEARSK LINE', '3100', '3000', 8, '2023-01-04 16:25:58', '2023-01-05 08:37:48'),
+(7, 'JEBEL ALI', '2023-01-06', '2023-01-05', '40\' HC', '4', 'BALTIMORE', 'MEARSK LINE', 'default', '67', 9, '2023-01-05 06:23:33', '2023-01-05 06:23:33');
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT DELAYED IGNORE INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
+(1, 'Super Admin', 'web', '2023-01-02 12:58:00', '2023-01-02 12:58:00'),
+(2, 'Sub Admin', 'web', '2023-01-02 12:58:00', '2023-01-02 12:58:00'),
+(3, 'Location Admin', 'web', '2023-01-02 12:58:00', '2023-01-02 12:58:00'),
+(4, 'Customer', 'web', '2023-01-02 12:58:00', '2023-01-02 12:58:00');
+
+--
+-- Dumping data for table `role_has_permissions`
+--
+
+INSERT DELAYED IGNORE INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1);
+
+--
+-- Dumping data for table `shipments`
+--
+
+INSERT DELAYED IGNORE INTO `shipments` (`id`, `company_name`, `customer_email`, `customer_phone`, `shipment_type`, `loading_date`, `cut_off_date`, `export_date`, `ship_date`, `sale_date`, `est_arrival_date`, `booking_number`, `container_no`, `container_size`, `container_type`, `shipping_reference`, `ase-itn_number`, `xtn_number`, `oti_number`, `select_consignee`, `notifier`, `shipper`, `loading_terminal`, `loading_port`, `loading_state`, `discharge_port`, `loading_country`, `destination_terminal`, `destination_port`, `destination_state`, `destination_country`, `hand_over_to`, `hand_over_date`, `shipping_line`, `vessel`, `seal_number`, `voyage`, `units`, `types`, `insurance`, `fmc_license_number`, `select_notify_party`, `status`, `notes`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(3, 'GALAXY STAR SHIPPING LINE L.L.C', 'alwahaalthahabiah01@gmail.com', '+971 52 714 0302', 'OCEAN FREIGHT', '2022-12-23', '2022-12-26', NULL, NULL, '2022-12-26', '2023-01-26', '223857653', 'MSKU0129267', '40\' HC', '40\' HC', 'WM90908', NULL, 'X20221207940374', NULL, 5, 5, 'ECSAP SHIPPING', '.', 'BALTIMORE', 'MARYLAND', NULL, 'UNITED STATES', '.', 'JEBEL ALI', 'DUBAI', 'UNITED ARAB EMIRATES', NULL, NULL, 'MEARSK LINE', 'MAERSK GUNDE', '49053093', '250W', NULL, NULL, NULL, NULL, NULL, '2', NULL, '2023-01-04 16:38:49', '2023-01-04 19:01:38', NULL),
+(4, 'GALAXY STAR SHIPPING LINE L.L.C', 'alwahaalthahabiah01@gmail.com', '+971 52 714 0302', 'OCEAN FREIGHT', '2022-12-28', '2023-01-03', NULL, NULL, '2023-01-04', '2023-02-04', '223634752', 'MRSU5824302', '40\' HC', '40\' HC', 'GAX2123', NULL, 'X20230103153168', NULL, 5, 5, 'ECSAP SHIPPING', '.', 'BALTIMORE', 'MARYLAND', NULL, 'UNITED STATES', '.', 'JEBEL ALI', 'DUBAI', 'UNITED ARAB EMIRATES', NULL, NULL, 'MEARSK LINE', 'MSC AGADIR', '49053008', '301E', NULL, NULL, NULL, NULL, NULL, '1', NULL, '2023-01-04 16:54:13', '2023-01-04 16:54:13', NULL),
+(5, 'GALAXY STAR SHIPPING LINE L.L.C', 'alwahaalthahabiah01@gmail.com', '+971 52 714 0302', 'OCEAN FREIGHT', '2022-10-21', '2022-10-29', NULL, NULL, '2022-11-01', '2022-11-24', '222058809', 'MRSU6413733', '40\' HC', '40\' HC', NULL, NULL, NULL, NULL, 5, 5, 'ECSAP SHIPPING', '.', 'BALTIMORE', 'MARYLAND', NULL, 'UNITED STATES', '.', 'JEBEL ALI', 'DUBAI', 'UNITED ARAB EMIRATES', NULL, NULL, 'MEARSK LINE', 'SEAGIRT BALTIMORE', '49053059', '241W', NULL, NULL, NULL, NULL, NULL, '3', NULL, '2023-01-04 17:07:36', '2023-01-04 17:08:40', NULL),
+(6, 'GALAXY STAR SHIPPING LINE L.L.C', 'alwahaalthahabiah01@gmail.com', '+971 52 714 0302', 'OCEAN FREIGHT', '2022-11-11', '2022-11-12', NULL, NULL, '2022-11-08', '2022-12-06', '222058916', 'MRSU3678169', '40\' HC', '40\' HC', 'wm564321', NULL, NULL, NULL, 5, 5, 'ECSAP SHIPPING', '.', 'BALTIMORE', 'MARYLAND', NULL, 'UNITED STATES', '.', 'JEBEL ALI', 'DUBAI', 'UNITED ARAB EMIRATES', NULL, NULL, 'MEARSK LINE', 'SEAGIRT BALTIMORE', '49053051', '243W', NULL, NULL, NULL, NULL, NULL, '1', NULL, '2023-01-04 17:19:51', '2023-01-04 17:19:51', NULL),
+(8, 'GALAXY STAR SHIPPING LINE L.L.C', 'alwahaalthahabiah01@gmail.com', '+971 52 714 0302', 'OCEAN FREIGHT', '2022-11-26', '2022-12-01', NULL, NULL, '2022-12-06', '2023-01-19', '223217264', 'SUDU6962844', '40\' HC', '40\' HC', NULL, NULL, NULL, NULL, 5, 5, 'ECSAP SHIPPING', '.', 'BALTIMORE', 'MARYLAND', NULL, 'UNITED STATES', '.', 'JEBEL ALI', 'DUBAI', 'UNITED ARAB EMIRATES', NULL, NULL, 'MEARSK LINE', 'MSC TOMOKO', '49053142', '248E', NULL, NULL, NULL, NULL, NULL, '1', NULL, '2023-01-04 17:31:18', '2023-01-04 17:31:18', NULL),
+(9, 'NOOR AL JABAL USED CARS TR LLC', 'Nooraljabal1133@gmail.com', 'TEL: +971554081518', 'OCEAN FREIGHT', '2022-11-21', '2022-11-22', NULL, NULL, '2022-11-26', '2022-12-22', '223010045', 'MRKU6070415', '40\' HC', '40\' HC', NULL, NULL, 'X20221116757998', NULL, 4, 4, 'ECSAP SHIPPING', '.', 'BALTIMORE', 'MARYLAND', NULL, 'UNITED STATES', '.', 'JEBEL ALI', 'DUBAI', 'UNITED ARAB EMIRATES', NULL, NULL, 'MEARSK LINE', 'GERDA MAERSK', '49053141', '246W', NULL, NULL, NULL, NULL, NULL, '1', NULL, '2023-01-04 17:48:16', '2023-01-04 17:48:16', NULL),
+(10, 'MARHABA USED CARS TR LLC', 'ceo@marhabaauctions.com', '+971 55 177 7768', 'OCEAN FREIGHT', '2022-12-28', '2023-01-01', NULL, NULL, '2023-01-10', '2023-02-27', '223634752', 'TCKU6972551', '40\' HC', '40\' HC', 'MAR9901', 'X20221229039576', NULL, NULL, 7, 7, 'ECSAP SHIPPING', '.', 'BALTIMORE', 'MARYLAND', NULL, 'UNITED STATES', '.', 'JEBEL ALI', 'DUBAI', 'UNITED ARAB EMIRATES', NULL, NULL, 'MEARSK LINE', 'MSC AGADIR', '49053020', '310E', NULL, NULL, NULL, NULL, NULL, '1', NULL, '2023-01-05 08:28:54', '2023-01-05 08:28:54', NULL),
+(11, 'NOOR AL JABAL USED CARS TR LLC', 'Nooraljabal1133@gmail.com', 'TEL: +971554081518', 'OCEAN FREIGHT', '2023-01-03', '2023-01-08', NULL, NULL, '2023-01-10', '2023-02-08', '223902699', 'MRSU3359069', '40\' HC', '40\' HC', NULL, NULL, 'X20230104227961', NULL, 4, 4, 'ECSAP SHIPPING', '.', 'BALTIMORE', 'MARYLAND', NULL, 'UNITED STATES', '.', 'JEBEL ALI', 'DUBAI', 'UNITED ARAB EMIRATES', NULL, NULL, 'MEARSK LINE', 'MEARSK', '49053016', 'E301', NULL, NULL, NULL, NULL, NULL, '1', NULL, '2023-01-06 12:35:24', '2023-01-06 12:35:24', NULL),
+(12, 'NOOR AL JABAL USED CARS TR LLC', 'Nooraljabal1133@gmail.com', 'TEL: +971554081518', 'OCEAN FREIGHT', '2023-01-03', '2023-01-08', NULL, NULL, '2023-01-10', '2023-02-08', '223634752', 'MSKU0680602', '40\' HC', '40\' HC', NULL, NULL, 'X20230104223722', NULL, 4, 4, 'ECSAP SHIPPING', '.', 'BALTIMORE', 'MARYLAND', NULL, 'UNITED STATES', '.', 'JEBEL ALI', 'DUBAI', 'UNITED ARAB EMIRATES', NULL, NULL, 'MEARSK LINE', 'MSC AGADIR', '49053014', '301E', NULL, NULL, NULL, NULL, NULL, '1', NULL, '2023-01-06 12:40:32', '2023-01-06 12:40:32', NULL),
+(13, 'NOOR AL JABAL USED CARS TR LLC', 'Nooraljabal1133@gmail.com', 'TEL: +971554081518', 'OCEAN FREIGHT', '2023-01-01', '2023-01-08', NULL, NULL, '2023-01-10', '2023-02-08', '223634752', 'BSIU8088037', '40\' HC', '40\' HC', NULL, NULL, 'X20230103154491', NULL, 4, 4, 'ECSAP SHIPPING', '.', 'BALTIMORE', 'MARYLAND', NULL, 'UNITED STATES', '.', 'JEBEL ALI', 'DUBAI', 'UNITED ARAB EMIRATES', NULL, NULL, 'MEARSK LINE', 'MSC AGADIR', '49053019', '301E', NULL, NULL, NULL, NULL, NULL, '1', NULL, '2023-01-06 12:43:44', '2023-01-06 12:43:44', NULL),
+(15, 'GALAXY STAR SHIPPING LINE L.L.C', 'alwahaalthahabiah01@gmail.com', '+971 52 714 0302', 'OCEAN FREIGHT', '2023-01-01', '2023-01-03', NULL, NULL, '2023-01-10', '2023-02-08', '223634752', 'MRSU5824302', '40\' HC', '40\' HC', NULL, NULL, 'X20230103153168', NULL, 5, 5, 'ECSAP SHIPPING', '.', 'BALTIMORE', 'MARYLAND', NULL, 'UNITED STATES', '.', 'JEBEL ALI', 'DUBAI', 'UNITED ARAB EMIRATES', NULL, NULL, 'MEARSK LINE', 'MSC AGADIR', '49053008', '301E', NULL, NULL, NULL, NULL, NULL, '1', NULL, '2023-01-06 12:56:30', '2023-01-06 12:56:30', NULL),
+(16, 'NOOR AL JABAL USED CARS TR LLC', 'Nooraljabal1133@gmail.com', 'TEL: +971554081518', 'OCEAN FREIGHT', '2023-01-01', '2023-01-08', NULL, NULL, '2023-01-10', '2023-02-08', '223634752', 'MRKU5337791', '40\' HC', '40\' HC', 'NOOR564', NULL, 'X20221229060200', NULL, 4, 4, 'ECSAP SHIPPING', '.', 'BALTIMORE', 'MARYLAND', NULL, 'UNITED STATES', '.', 'JEBEL ALI', 'DUBAI', 'UNITED ARAB EMIRATES', NULL, NULL, 'MEARSK LINE', 'MSC AGADIR', '49053010', 'E301', NULL, NULL, NULL, NULL, NULL, '1', NULL, '2023-01-06 12:59:06', '2023-01-06 12:59:06', NULL);
+
+--
+-- Dumping data for table `shipment_lines`
+--
+
+INSERT DELAYED IGNORE INTO `shipment_lines` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
+(2, 'MEARSK LINE', '1', '2023-01-02 16:48:45', '2023-01-02 16:48:45'),
+(3, 'CMA CGM', '1', '2023-01-03 10:07:28', '2023-01-03 10:07:28');
+
+--
+-- Dumping data for table `shipment_types`
+--
+
+INSERT DELAYED IGNORE INTO `shipment_types` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
+(2, 'OCEAN FREIGHT', '1', '2023-01-02 16:39:27', '2023-01-02 16:39:27');
+
+--
+-- Dumping data for table `shippers`
+--
+
+INSERT DELAYED IGNORE INTO `shippers` (`id`, `shipper_name`, `contact_person_name`, `phone`, `company_email`, `country`, `city`, `zip_code`, `address`, `consignee`, `consolidate`, `original_shipping_documents`, `insurance`, `destination_port`, `customer_id`, `created_at`, `updated_at`) VALUES
+(3, 'ECSAP GLOBAL SHIPPING', 'WONKAI MOMOLU', '+1 210 25424875', 'wonaki@ecsapshipping.com', 'UNITED STATES', 'BALTIMORE', '21213', '1851 EDITON HIGHWAY', 'same as billing party', 'no', 'send back', 'no', 'single', 4, '2023-01-04 15:56:22', '2023-01-04 15:56:22'),
+(4, 'ECSAP GLOBAL SHIPPING', 'WONKAI MOMOLU', '+1 210 25424875', 'wonaki@ecsapshipping.com', 'UNITED STATES', 'BALTIMORE', '21213', '1851 EDITON HIGHWAY', 'same as billing party', 'no', 'send back', 'no', 'single', 5, '2023-01-04 16:02:17', '2023-01-04 16:02:17'),
+(5, 'ECSAP GLOBAL SHIPPING', 'WONKAI MOMOLU', '+1 210 25424875', 'wonaki@ecsapshipping.com', 'UNITED STATES', 'BALTIMORE', '21213', '1851 EDITON HIGHWAY', 'same as billing party', 'yes', 'send back', 'no', 'single', 6, '2023-01-04 16:06:05', '2023-01-04 16:06:05'),
+(6, 'ECSAP GLOBAL SHIPPING', 'WONKAI MOMOLU', '+1 210 25424875', 'wonaki@ecsapshipping.com', 'UNITED STATES', 'BALTIMORE', '21213', '1851 EDITON HIGHWAY', 'same as billing party', 'yes', 'send back', 'no', 'single', 7, '2023-01-04 16:09:06', '2023-01-04 16:09:06'),
+(7, 'ECSAP GLOBAL SHIPPING', 'WONKAI MOMOLU', '+1 210 25424875', 'wonaki@ecsapshipping.com', 'UNITED STATES', 'BALTIMORE', '21213', '1851 EDITON HIGHWAY', 'same as billing party', 'yes', 'send back', 'no', 'single', 8, '2023-01-04 16:25:46', '2023-01-04 16:25:46'),
+(8, 'TRT', 'TRT', '32753595335', 'TRT@gmail.com', 'PK', 'ISB', '23741', 'hjbfwiucbs', 'same as billing party', 'yes', 'send back', 'yes', 'single', 9, '2023-01-05 06:23:04', '2023-01-05 06:23:04');
+
+--
+-- Dumping data for table `shipper_name`
+--
+
+INSERT DELAYED IGNORE INTO `shipper_name` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
+(2, 'ECSAP SHIPPING', '1', '2023-01-02 16:44:10', '2023-01-02 16:44:10'),
+(3, 'W8 SHIPPING WA', '1', '2023-01-03 09:52:16', '2023-01-03 09:52:16');
+
+--
+-- Dumping data for table `site`
+--
+
+INSERT DELAYED IGNORE INTO `site` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
+(2, 'ON-SITE', '1', '2023-01-02 16:43:28', '2023-01-02 16:43:28'),
+(3, 'OFF-SITE', '1', '2023-01-02 16:43:47', '2023-01-02 16:43:47');
+
+--
+-- Dumping data for table `titles`
+--
+
+INSERT DELAYED IGNORE INTO `titles` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'YES', '1', '2023-01-02 16:51:17', '2023-01-02 16:51:17'),
+(2, 'NO', '1', '2023-01-02 16:51:24', '2023-01-02 16:51:24');
+
+--
+-- Dumping data for table `title_types`
+--
+
+INSERT DELAYED IGNORE INTO `title_types` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'EXPORTABLE', '1', '2023-01-02 16:44:45', '2023-01-02 16:44:45'),
+(2, 'PENDING', '1', '2023-01-02 16:46:11', '2023-01-02 16:46:11'),
+(3, 'OFF-SITE', '1', '2023-01-02 16:46:19', '2023-01-02 16:46:19'),
+(4, 'BOS', '1', '2023-01-02 16:46:27', '2023-01-02 16:46:27'),
+(5, 'LIEN', '1', '2023-01-02 16:46:34', '2023-01-02 16:46:34');
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT DELAYED IGNORE INTO `user` (`id`, `name`, `username`, `authkey`, `password`, `password_reset_token`, `email`, `company_name`, `company_email`, `status`, `role_id`, `user_is_detected`, `address_line1`, `address_line2`, `city`, `state`, `country`, `zip_code`, `phone`, `fax`, `level`, `industry`, `source`, `customer_type`, `sales_type`, `sales_person`, `inside_person`, `lead`, `payment_type`, `payment_term`, `price_code`, `location_number`, `added_by_user`, `user_image`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(1, 'Super Admin', 'Super Admin', '09dss9daasdzxc', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, 'admin@admin.com', '', '', '1', '1', '0', 'jad', 'jkasdlf', 'jhang', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-01-02 12:58:00', '2023-01-02 12:58:00'),
+(4, 'MASOOD AHMAD', 'JABAL2022', NULL, '$2y$10$JwX7WdHECMKwMiqOgjCe3OM0GmlUBevmmFarORV2u3DQcuoM99y2q', NULL, 'Nooraljabal1133@gmail.com', 'NOOR AL JABAL USED CARS TR LLC', 'Nooraljabal1133@gmail.com', '1', '4', NULL, 'INDUSTRIAL AREA #2', NULL, NULL, 'SHARJAH', 'UNITED ARAB EMIRATES', '000', 'TEL: +971554081518', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'MIDDLE EAST', '1', NULL, NULL, '2023-01-04 15:54:11', '2023-01-04 15:54:11'),
+(5, 'JAWEED ASMATY', 'GALAXY2022', NULL, '$2y$10$4VpchQ3qghhpenM2cF3zQuW.toj.dnB7zDj/qkT4AkJYH2sUB2gPi', NULL, 'alwahaalthahabiah01@gmail.com', 'GALAXY STAR SHIPPING LINE L.L.C', 'alwahaalthahabiah01@gmail.com', '1', '4', NULL, 'INDUSTRIAL AREA #6', NULL, NULL, 'SHARJAH', 'UNITED ARAB EMIRATES', '000', '+971 52 714 0302', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'MIDDLE EAST', '1', NULL, NULL, '2023-01-04 16:00:47', '2023-01-04 19:05:31'),
+(6, 'FAKHAR ALAM', 'FAKHAR2022', NULL, '$2y$10$xcWSaA5kWGXj2C39lI5AbOHKWEWOAfhhKI4PLZJPBxTSFP/RcIL3e', NULL, 'falam1805@gmail.com', 'FAKAHR ALAM USED CARS TR LLC', 'falam1805@gmail.com', '1', '4', NULL, 'INDUSTRIAL AREA #2', NULL, NULL, 'SHARJAH', 'UNITED ARAB EMIRATES', '000', '+971 56 782 5191', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'MIDDLE EAST', '1', NULL, NULL, '2023-01-04 16:05:00', '2023-01-04 16:05:00'),
+(7, 'MUJEEB AMANZAY', 'MUJEEB2022', NULL, '$2y$10$u.sMqRAP/ZXiTrNLClyOMuxzSxzK/2d3gojN8RESvb5ScFb1N8dnO', NULL, 'ceo@marhabaauctions.com', 'MARHABA USED CARS TR LLC', 'ceo@marhabaauctions.com', '1', '4', NULL, 'INDUSTRIAL AREA #2', NULL, NULL, 'SHARJAH', 'UNITED ARAB EMIRATES', '000', '+971 55 177 7768', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'MIDDLE EAST', '1', NULL, NULL, '2023-01-04 16:07:44', '2023-01-04 16:07:44'),
+(8, 'MUHAMMAD ZUBAIR', 'MCS2022', NULL, '$2y$10$DIZgMtj4QjihpgrXSQ2YQeRYHcoamU5d9DA9ZW7ZDbSTrlHjd329y', NULL, 'mzubair@almotarat.com', 'MUHAMMAD ZUBAIR', 'mzubair@almotarat.com', '1', '4', NULL, 'INDUSTRIAL AREA #2', NULL, NULL, 'SHARJAH', 'UNITED ARAB EMIRATES', '000', '+971 52 240 5566', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'MIDDLE EAST', '1', NULL, NULL, '2023-01-04 16:24:28', '2023-01-05 08:37:40'),
+(9, 'Test', 'Test99', NULL, '$2y$10$/bl2ij6iJHoqn0OBnkbGBODXocq0Kup5fClrH9oy./dXfDkw1IqKK', NULL, 'test@gmail.com', 'TestName', 'Test99@gmail.com', '1', '4', NULL, 'nfwoeion', NULL, NULL, 'NJ', 'PK', '47850', '351531531535', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ISS', '1', NULL, NULL, '2023-01-05 06:21:17', '2023-01-05 06:21:17'),
+(10, 'Uneeb', 'uneebmalik99', NULL, '$2y$10$1TeNZfyOcaqhLz0kNBw9ZO50pwXcHpXnQFwWOv/pu2.ZGass9xIoq', NULL, 'uneebmalik@gmail.com', 'TRT', 'trt@gmail.com', '1', '2', NULL, 'ABC', 'ABC', 'ISB', NULL, 'PK', '346700358', '557699', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-01-06 06:04:52', '2023-01-06 06:12:49');
+
+--
+-- Dumping data for table `vehicles`
+--
+
+INSERT DELAYED IGNORE INTO `vehicles` (`id`, `customer_name`, `vin`, `year`, `make`, `model`, `vehicle_type`, `color`, `weight`, `value`, `auction`, `buyer_id`, `key`, `note`, `hat_number`, `title_type`, `title`, `title_rec_date`, `title_state`, `title_number`, `shipper_name`, `status`, `sale_date`, `paid_date`, `days`, `posted_date`, `pickup_date`, `delivered`, `delivered_date`, `pickup_location`, `site`, `dealer_fee`, `late_fee`, `auction_storage`, `towing_charges`, `warehouse_storage`, `title_fee`, `port_detention_fee`, `custom_inspection`, `additional_fee`, `insurance`, `fee`, `customer_paying_fee`, `profit`, `paid_by`, `bidder`, `lot`, `entry_date`, `age`, `assign_date`, `description`, `dispatch_date`, `port`, `vehicle_is_deleted`, `tow`, `shipment_id`, `shipment_status`, `vehicle_active_shipment`, `inovice_id`, `added_by_user`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(8, 6, '1N4AL3AP5FC270878', '2015', 'NISSAN', 'Altima', 'SEDAN', 'GREEN', '1800', '1083.00', 'COPART', '103535', 'YES', NULL, NULL, 'BOS', 'YES', NULL, NULL, NULL, 'ECSAP SHIPPING', 3, '2023-01-03', '2023-01-03', 0, '2023-01-03', '2023-01-03', NULL, NULL, 'KY - LOUISVILLE', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '64840112', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, '2023-01-05 20:28:45', '2023-01-04 16:12:09', '2023-01-05 20:28:45'),
+(9, 6, '5NPE24AF5KH790153', '2019', 'HYUNDAI', 'Sonata', 'SEDAN', 'GRAY', '2000', '3938.00', 'COPART', '103535', 'YES', NULL, NULL, 'PENDING', 'YES', NULL, NULL, NULL, 'ECSAP SHIPPING', 3, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'MD - BALTIMORE EAST', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '61033822', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-04 16:14:54', '2023-01-06 11:34:22'),
+(10, 6, '1N4BL4BV9KC233494', '2019', 'NISSAN', 'Altima', 'SEDAN', 'GRAY', '2100', '5848.00', 'COPART', '103535', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2022-12-01', 'MD', 89045921, 'ECSAP SHIPPING', 7, '2022-12-01', '2022-12-01', 0, '2022-12-01', '2022-12-01', '2022-12-01', NULL, 'MD - BALTIMORE', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '59123712', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 3, '1', '0', NULL, 1, NULL, '2023-01-04 16:19:04', '2023-01-04 16:38:49'),
+(11, 8, '3N1AB7AP7KL621392', '2019', 'NISSAN', 'Sentra', 'SEDAN', 'GRAY', '2000', '1900.00', 'MANHEIM', 'BELL AIR', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2022-12-15', 'FL', 141963515, 'ECSAP SHIPPING', 7, '2022-12-15', '2022-12-15', 0, '2022-12-15', '2022-12-15', '2022-12-15', NULL, 'MD - BALTIMORE', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '621392', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 3, '1', '0', NULL, 1, NULL, '2023-01-04 16:28:01', '2023-01-04 16:38:49'),
+(12, 8, 'JA32U2FU7CU030174', '2012', 'MITSUBISHI', 'Lancer', 'SEDAN', 'GRAY', '1800', '2000', 'MANHEIM', 'BELL AIR', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2022-12-15', 'MD', 56801142, 'ECSAP SHIPPING', 7, '2022-12-15', '2022-12-15', 0, '2022-12-15', '2022-12-15', '2022-12-15', NULL, 'MD - BALTIMORE', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '030174', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 3, '1', '0', NULL, 1, NULL, '2023-01-04 16:29:41', '2023-01-04 16:38:49'),
+(13, 5, '1N4BL4BV6KC142859', '2019', 'NISSAN', 'Altima', 'SEDAN', 'BLACK', '2000', '5000', 'COPART', '311113', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2022-12-15', 'MD', 2147483647, 'ECSAP SHIPPING', 7, '2022-12-15', '2022-12-15', 0, '2022-12-15', '2022-12-15', '2022-12-15', NULL, 'MD - BALTIMORE', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '60016452', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 3, '1', '0', NULL, 1, NULL, '2023-01-04 16:34:24', '2023-01-04 16:38:49'),
+(14, 8, '5NPD84LF1LH629419', '2020', 'HYUNDAI', 'Elantra', 'SEDAN', 'RED', '2000', '5000', 'MANHEIM', 'BELL AIR', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 123456789, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'MD - BALTIMORE', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '629419', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 4, '0', '1', NULL, 1, NULL, '2023-01-04 16:42:42', '2023-01-04 16:54:13'),
+(15, 5, '3N1CN8BV0LL843048', '2020', 'NISSAN', 'Versa', 'SEDAN', 'BLUE', '2000', '2000', 'COPART', 'MANHEIM', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 123456789, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'WASHINGTON DC', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '68097402', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, NULL, 4, '1', '0', NULL, 1, NULL, '2023-01-04 16:44:59', '2023-01-04 16:54:13'),
+(16, 5, '1NXBU40EX92052236', '2009', 'TOYOTA', 'Corolla', 'SEDAN', 'RED', '2000', '5000', 'COPART', '417335', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 123456789, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'WASHINGTON DC', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '65614712', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 4, '0', '1', NULL, 1, NULL, '2023-01-04 16:48:11', '2023-01-04 16:54:13'),
+(17, 5, '5N1AT2MVXHC880515', '2017', 'NISSAN', 'Rogue', 'SUV', 'BLACK', '2500', '5000', 'COPART', '417335', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 123456789, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'MD - BALTIMORE EAST', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '56040292', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 4, '0', '1', NULL, 1, NULL, '2023-01-04 16:50:01', '2023-01-04 16:54:13'),
+(18, 5, 'KNMAT2MT8HP543899', '2017', 'NISSAN', 'Rogue', 'SEDAN', 'BLACK', '2000', '5000', 'COPART', '417335', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 123456789, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'VA - HAMPTON', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '59253862', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 5, '1', '0', NULL, 1, NULL, '2023-01-04 17:01:03', '2023-01-04 17:07:36'),
+(19, 5, 'KNMAT2MT8HP543899', '2017', 'NISSAN', 'Rogue', 'SEDAN', 'WHITE', '2000', '5000', 'IAAI', '558130', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 123456789, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'Nashville', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '34267805', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 5, '1', '0', NULL, 1, NULL, '2023-01-04 17:03:04', '2023-01-04 17:07:36'),
+(20, 5, '2T1BU4EE7AC376873', '2010', 'TOYOTA', 'Corolla', 'SEDAN', 'WHITE', '2000', '5000', 'COPART', '311113', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 123456789, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'VA - HAMPTON', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '59490302', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 5, '1', '0', NULL, 1, NULL, '2023-01-04 17:04:39', '2023-01-04 17:07:36'),
+(21, 5, '5NPEL4JA5LH062495', '2020', 'HYUNDAI', 'Sonata', 'SEDAN', 'WHITE', '2000', '5000', 'IAAI', '558130', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 123456789, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'RICHMOND', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '34283403', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 5, '1', '0', NULL, 1, NULL, '2023-01-04 17:06:11', '2023-01-04 17:07:36'),
+(22, 5, 'JN1BJ1CP7JW154288', '2018', 'NISSAN', 'Rogue Sport', 'SUV', 'WHITE', '2000', '5000', 'COPART', '417335', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 123456789, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'WASHINGTON DC', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '52830022', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 6, '1', '0', NULL, 1, NULL, '2023-01-04 17:12:38', '2023-01-04 17:19:51'),
+(23, 5, '5NPD84LFXHH000684', '2017', 'HYUNDAI', 'Elantra', 'SEDAN', 'WHITE', NULL, '5000', 'COPART', '417335', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 123456789, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'MO - ST. LOUIS', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '56431202', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 6, '1', '0', NULL, 1, NULL, '2023-01-04 17:14:15', '2023-01-04 17:19:51'),
+(24, 5, '5XXGU4L30GG068615', '2016', 'KIA', 'Optima', 'SEDAN', 'WHITE', '2000', '5000', 'COPART', '417335', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 123456789, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'NC - MEBANE', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '61284232', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 6, '1', '0', NULL, 1, NULL, '2023-01-04 17:15:41', '2023-01-04 17:19:51'),
+(25, 5, '1NXBU4EE6AZ212772', '2010', 'TOYOTA', 'Corolla', 'SEDAN', 'WHITE', '2000', '5000', 'COPART', '417335', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 123456789, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'NC - GASTONIA', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '59184472', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 6, '1', '0', NULL, 1, NULL, '2023-01-04 17:16:58', '2023-01-04 17:19:51'),
+(26, 5, '5NPD84LF5JH390812', '2018', 'HYUNDAI', 'Elantra', 'SEDAN', 'WHITE', '2000', '5000', 'COPART', '417335', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 123456789, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'TN - KNOXVILLE', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '61341522', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 8, '1', '0', NULL, 1, NULL, '2023-01-04 17:23:36', '2023-01-04 17:31:18'),
+(27, 5, 'JTDBL40E59J030654', '2009', 'TOYOTA', 'Corolla', 'SEDAN', 'WHITE', '2000', '5000', 'COPART', '417335', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 123456789, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'PA - PITTSBURGH SOUTH', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '60486432', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 8, '1', '0', NULL, 1, NULL, '2023-01-04 17:25:00', '2023-01-04 17:31:18'),
+(28, 5, '1N4BL4BV0KC195511', '2019', 'NISSAN', 'Altima', 'SEDAN', 'WHITE', '2000', '5000', 'COPART', '597275', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 123456789, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'TN - NASHVILLE', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '60005252', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 8, '1', '0', NULL, 1, NULL, '2023-01-04 17:26:35', '2023-01-04 17:31:18'),
+(29, 5, '5NPD84LF8HH097531', '2017', 'HYUNDAI', 'Elantra', 'SEDAN', 'WHITE', NULL, '5000', 'COPART', '417335', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 123456789, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'MD - BALTIMORE', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '34556792', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 8, '1', '0', NULL, 1, NULL, '2023-01-04 17:27:58', '2023-01-04 17:31:18'),
+(30, 5, '2T1BURHE4FC401678', '2015', 'TOYOTA', 'Corolla', 'SEDAN', 'WHITE', '2000', '5000', 'COPART', '311113', 'NO', NULL, NULL, 'BOS', 'YES', NULL, NULL, NULL, 'ECSAP SHIPPING', 3, '2022-10-20', '2022-10-21', 1, '2022-10-22', '2022-10-22', '2022-10-25', NULL, 'KY - LOUISVILLE', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '58343872', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-04 17:34:46', '2023-01-04 17:34:46'),
+(31, 5, '2T1BURHE6EC225957', '2014', 'TOYOTA', 'Corolla', 'SEDAN', 'BLACK', '2000', '3000', 'COPART', '597275', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 123456789, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'VA - HAMPTON', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '60958232', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 9, '1', '0', NULL, 1, NULL, '2023-01-04 17:39:41', '2023-01-04 17:48:17'),
+(32, 4, '3N1AB7AP0KL616308', '2019', 'NISSAN', 'Sentra', 'SEDAN', 'WHITE', '2000', '5000', 'MANHEIM', '831328', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 123456789, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'MD - BALTIMORE', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '616308', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 9, '1', '0', NULL, 1, NULL, '2023-01-04 17:42:19', '2023-01-04 17:48:17'),
+(33, 4, '1N4BL4BV0LC250346', '2020', 'NISSAN', 'Altima', 'SEDAN', 'WHITE', '2000', '5000', 'MANHEIM', '831328', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 123456789, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'MD - BALTIMORE', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '250346', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 9, '1', '0', NULL, 1, NULL, '2023-01-04 17:43:41', '2023-01-04 17:48:17'),
+(34, 4, '1N4BL4EV3KC253669', '2019', 'NISSAN', 'Altima', 'SEDAN', 'WHITE', '2000', '5000', 'MANHEIM', '831328', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 123456789, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'MD - BALTIMORE', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '253669', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 9, '1', '0', NULL, 1, NULL, '2023-01-04 17:45:12', '2023-01-04 17:48:17'),
+(35, 5, '3N1CN8BV0LL843048', '2020', 'NISSAN', 'Versa', 'SEDAN', 'BLUE', '2000', '3000', 'COPART', '163427', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 123456789, 'ECSAP SHIPPING', 7, '2022-12-30', '2022-12-30', 0, '2022-12-30', '2022-12-30', '2022-12-30', NULL, 'DC - WASHINGTON DC', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '68097402', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 4, '1', '0', NULL, 1, NULL, '2023-01-04 17:54:40', '2023-01-06 12:56:30'),
+(36, 5, '4T1BF1FK5FU021185', '2015', 'TOYOTA', 'Camry', 'SEDAN', 'WHITE', '2000', '3000', 'COPART', '311113', 'YES', NULL, NULL, 'PENDING', 'YES', NULL, NULL, NULL, 'ECSAP SHIPPING', 3, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'MD - BALTIMORE EAST', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '61161872', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-04 18:01:41', '2023-01-04 18:01:41'),
+(37, 5, '1N4AL3AP5EN230013', '2014', 'NISSAN', 'Altima', 'SEDAN', NULL, '2000', '3000', 'COPART', '311113', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'KY', 2147483647, 'ECSAP SHIPPING', 3, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'KY - LEXINGTON EAST', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '62122512', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-04 18:04:36', '2023-01-04 18:45:38'),
+(38, 5, '4T1B11HK5JU023443', '2018', 'TOYOTA', 'Camry', 'SEDAN', 'BROWN', '2000', '3000', 'COPART', '417335', 'YES', NULL, NULL, 'PENDING', 'YES', NULL, NULL, NULL, 'ECSAP SHIPPING', 3, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'MD - BALTIMORE EAST', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '60845192', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, NULL, NULL, '0', '0', NULL, 1, NULL, '2023-01-04 18:06:45', '2023-01-04 18:06:45'),
+(39, 5, '5N1AT2MT7HC797509', '2017', 'NISSAN', 'Rogue', 'SUV', 'BLUE', '2000', '30000', 'COPART', '163427', 'YES', NULL, NULL, 'PENDING', 'YES', NULL, NULL, NULL, 'ECSAP SHIPPING', 2, '2023-01-01', '2023-01-01', 0, '2023-01-01', NULL, NULL, NULL, 'TN - KNOXVILLE SUV', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '62059252', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-04 18:09:33', '2023-01-04 18:09:33'),
+(40, 5, '1N4BL4CV6KC211922', '2019', 'NISSAN', 'Altima', 'SEDAN', 'BLACK', '2000', '3000', 'COPART', '925303', 'YES', NULL, NULL, 'PENDING', 'YES', NULL, NULL, NULL, 'ECSAP SHIPPING', 3, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'PA - PITTSBURGH NORTH', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '64672122', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-04 18:26:35', '2023-01-04 18:26:35'),
+(41, 5, '1N4BL4DV2NN321504', '2022', 'NISSAN', 'Altima', 'SEDAN', 'BLACK', NULL, '5000', 'COPART', '417335', 'YES', NULL, NULL, 'EXPORTABLE', NULL, '2023-01-01', 'MD', 123456789, 'ECSAP SHIPPING', 3, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'LONG ISLAND', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '55197232', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-04 18:28:35', '2023-01-04 18:46:24'),
+(42, 5, '2T1BU4EE1BC723020', '2011', 'TOYOTA', 'Corolla', 'SEDAN', 'BLUE', '2000', '5000', 'COPART', '417335', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 56713263, 'ECSAP SHIPPING', 3, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'DC - WASHINGTON DC', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '58207252', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-04 18:30:32', '2023-01-04 18:30:32'),
+(43, 7, '5NPDH4AE0DH214927', '2013', 'HYUNDAI', 'Elantra', 'SEDAN', 'WHITE', '2000', '3000', 'COPART', 'NA', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 56802955, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'WASHINGTON DC', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '34961987', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 10, '1', '0', NULL, 1, NULL, '2023-01-05 08:21:08', '2023-01-05 08:28:54'),
+(44, 7, 'KMHH35LE2JU018178', '2018', 'HYUNDAI', 'Elantra GT', 'SEDAN', 'WHITE', '2000', '3000', 'COPART', 'NA', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 123456789, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'WASHINGTON DC', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '60056412', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 10, '1', '0', NULL, 1, NULL, '2023-01-05 08:22:33', '2023-01-05 08:28:54'),
+(45, 7, '5NPEC4AC0CH341256', '2012', 'HYUNDAI', 'Sonata', 'SEDAN', 'WHITE', NULL, '3000', 'COPART', 'NA', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 123456789, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'WASHINGTON DC', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '33599361', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 10, '1', '0', NULL, 1, NULL, '2023-01-05 08:24:04', '2023-01-05 08:28:54'),
+(46, 7, '3N1AB7AP4KY340895', '2019', 'NISSAN', 'Sentra', 'SEDAN', 'WHITE', '2000', '3000', 'COPART', 'NA', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 54087271, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'MD - BALTIMORE', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '58528402', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 10, '1', '0', NULL, 1, NULL, '2023-01-05 08:25:33', '2023-01-05 08:28:54'),
+(47, 7, '2HGFC2F61KH573367', '2019', 'HONDA', 'Civic', 'SEDAN', 'GRAY', '2000', '3000', 'COPART', 'NA', 'YES', NULL, NULL, 'PENDING', 'YES', NULL, NULL, NULL, 'ECSAP SHIPPING', 3, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'WASHINGTON DC', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '62185832', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-05 08:30:31', '2023-01-05 08:36:39'),
+(48, 7, '2T3RFREV8GW505532', '2016', 'TOYOTA', 'RAV4', 'SEDAN', 'BLUE', '2000', '5000', 'COPART', 'NA', 'YES', NULL, NULL, 'PENDING', 'YES', NULL, NULL, NULL, 'ECSAP SHIPPING', 3, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'WASHINGTON DC', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '65529372', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-05 08:32:34', '2023-01-05 08:36:25'),
+(49, 7, '5NPEB4AC7BH238451', '2011', 'HYUNDAI', 'Sonata', 'SEDAN', 'SILVER', '2000', '5000', 'COPART', 'NA', 'YES', NULL, NULL, 'PENDING', 'YES', NULL, NULL, NULL, 'ECSAP SHIPPING', 3, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'WASHINGTON DC', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '62207712', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-05 08:33:33', '2023-01-05 08:36:11'),
+(50, 7, '3N1AB8CV6LY244026', '2020', 'NISSAN', 'Sentra', 'SEDAN', 'BLACK', '2000', '3000', 'COPART', 'NA', 'YES', NULL, NULL, 'PENDING', 'YES', NULL, NULL, NULL, 'ECSAP SHIPPING', 3, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'MD - BALTIMORE', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '60925542', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-05 08:35:32', '2023-01-05 08:35:54'),
+(51, 5, '1N4AA6AP1GC382456', '2016', 'NISSAN', 'Maxima', 'SEDAN', 'BLACK', '2000', '3000', 'COPART', '417335', 'NO', NULL, NULL, 'PENDING', 'YES', NULL, NULL, NULL, 'ECSAP SHIPPING', 3, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'IN - INDIANAPOLIS', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '62646202', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-05 08:40:14', '2023-01-05 08:40:14'),
+(52, 6, '1N4AL3AP5FC270878', '2015', 'NISSAN', 'Altima', 'SEDAN', 'TAN', '2000', '1083', 'COPART', '103535', 'YES', NULL, NULL, 'BOS', 'YES', NULL, NULL, NULL, 'ECSAP SHIPPING', 3, '2023-01-02', '2023-01-03', 1, '2023-01-02', '2023-01-03', '2023-01-05', NULL, 'LOUISVILLE', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '64840112', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-05 20:20:01', '2023-01-05 20:29:28'),
+(53, 4, 'KNDPMCAC5L7628967', '2020', 'KIA', 'Sportage', 'SUV', 'WHITE', '2300', '5000', 'COPART', '831328', 'YES', NULL, NULL, 'PENDING', 'YES', NULL, NULL, NULL, 'ECSAP SHIPPING', 1, '2023-01-05', '2023-01-05', 4, '2023-01-06', NULL, NULL, NULL, 'DC - WASHINGTON DC', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '61937022', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-06 10:56:34', '2023-01-06 10:56:34'),
+(54, 4, '3VW217AU3FM045212', '2015', 'VOLKSWAGEN', 'Golf', 'SEDAN', 'BLACK', '1800', '3000', 'COPART', '831328', 'YES', NULL, NULL, 'PENDING', 'YES', NULL, NULL, NULL, 'ECSAP SHIPPING', 1, '2023-01-05', '2023-01-05', 0, '2023-01-05', NULL, NULL, NULL, 'DC - WASHINGTON DC', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '70015782', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-06 11:04:16', '2023-01-06 11:04:16'),
+(55, 4, '1N4AL3AP8DC161084', '2013', 'NISSAN', 'Altima', 'SEDAN', 'WHITE', '1800', '3000', 'COPART', '831328', 'YES', NULL, NULL, 'PENDING', 'YES', NULL, NULL, NULL, 'ECSAP SHIPPING', 1, '2023-01-05', '2023-01-05', 0, NULL, NULL, NULL, NULL, 'DC - WASHINGTON DC', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '68722472', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-06 11:05:45', '2023-01-06 11:05:45'),
+(56, 4, '1HGCR3F80FA005608', '2015', 'HONDA', 'Accord', 'SEDAN', NULL, NULL, NULL, 'IAAI', '483905', 'YES', NULL, NULL, 'PENDING', 'YES', NULL, NULL, NULL, 'ECSAP SHIPPING', 1, '2023-01-04', '2023-01-04', 0, NULL, NULL, NULL, NULL, 'Baltimore', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '31684626', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-06 11:07:15', '2023-01-06 11:07:15'),
+(57, 4, 'KMHDH4AE7DU514448', '2013', 'HYUNDAI', 'Elantra', 'SEDAN', 'GRAY', '1800', '3000', 'COPART', '831328', 'YES', NULL, NULL, 'BOS', 'YES', NULL, NULL, NULL, 'ECSAP SHIPPING', 2, '2023-01-03', '2023-01-03', 0, NULL, NULL, NULL, NULL, 'KY - WALTON', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '65094822', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-06 11:09:12', '2023-01-06 11:09:12'),
+(58, 4, 'KMHD84LF5LU009612', '2020', 'HYUNDAI', 'Elantra', 'SEDAN', 'SILVER', '1800', NULL, 'COPART', '507250', 'YES', NULL, NULL, 'PENDING', 'YES', NULL, NULL, NULL, 'ECSAP SHIPPING', 2, '2023-01-03', '2023-01-03', 0, NULL, NULL, NULL, NULL, 'DC - WASHINGTON DC', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '61456122', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-06 11:11:36', '2023-01-06 11:11:36'),
+(59, 4, '5NPEC4AC5CH363818', '2012', 'HYUNDAI', 'Sonata', 'SEDAN', 'SILVER', '1800', '3000', 'COPART', '507250', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', NULL, NULL, NULL, 'ECSAP SHIPPING', 7, '2023-01-03', '2023-01-03', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'DC - WASHINGTON DC', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '58933822', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, NULL, 12, '1', '0', NULL, 1, NULL, '2023-01-06 11:15:11', '2023-01-06 12:40:32'),
+(60, 4, 'JN8AY2NE3L9780190', '2020', 'NISSAN', 'Armada', 'SUV', 'BLACK', '3000', '5000', 'IAAI', '163869', 'NO', NULL, NULL, 'EXPORTABLE', 'YES', NULL, NULL, NULL, NULL, 7, '2022-12-27', '2022-12-27', 0, '2022-12-27', '2022-12-27', '2022-12-27', NULL, 'Baltimore', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '34604183', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 12, '1', '0', NULL, 1, NULL, '2023-01-06 11:17:47', '2023-01-06 12:40:32'),
+(61, 4, '5YFEPRAE1LP067121', '2020', 'TOYOTA', 'Corolla', 'SEDAN', 'BLACK', '1800', '3000', 'IAAI', '163869', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 56978735, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'Baltimore', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '34504875', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 13, '1', '0', NULL, 1, NULL, '2023-01-06 11:21:02', '2023-01-06 12:43:44'),
+(62, 4, '2T1BURHE6HC930634', '2017', 'TOYOTA', 'Corolla', 'SEDAN', NULL, '1800', '3000', 'COPART', '422241', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 12345789, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'DE - SEAFORD', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '70103652', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 11, '1', '0', NULL, 1, NULL, '2023-01-06 11:25:00', '2023-01-06 12:35:24'),
+(63, 4, '1N4AA5APXDC830182', '2013', 'NISSAN', 'Maxima', 'SEDAN', 'WHITE', NULL, NULL, 'COPART', '422241', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 12345678, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'DE - SEAFORD', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '69774942', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 12, '1', '0', NULL, 1, NULL, '2023-01-06 11:29:47', '2023-01-06 12:40:32'),
+(64, 4, '5NPEC4AB7BH205020', '2011', 'HYUNDAI', 'Sonata', 'SEDAN', 'WHITE', NULL, NULL, 'COPART', '422241', 'YES', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'DE - SEAFORD', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '66322432', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, NULL, 13, '1', '0', NULL, 1, NULL, '2023-01-06 11:31:18', '2023-01-06 12:43:44'),
+(65, 4, '2T1BURHE0FC443295', '2015', 'TOYOTA', 'Corolla', 'SEDAN', 'WHITE', NULL, NULL, 'COPART', '422241', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 123456789, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'DE - SEAFORD', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '63834742', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 11, '1', '0', NULL, 1, NULL, '2023-01-06 11:32:37', '2023-01-06 12:35:24'),
+(66, 4, '5TDYK3DC0GS691511', '2016', 'TOYOTA', 'Sienna', 'SEDAN', 'BURGUNDY', NULL, NULL, 'COPART', '507250', 'YES', NULL, NULL, 'PENDING', 'YES', NULL, NULL, NULL, 'ECSAP SHIPPING', 3, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'MD - BALTIMORE EAST', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '68307232', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-06 11:34:03', '2023-01-06 11:34:03'),
+(67, 4, '3N1AB7APXHY319235', '2017', 'NISSAN', 'Sentra', 'SEDAN', 'RED', NULL, NULL, 'COPART', '831328', 'YES', NULL, NULL, 'PENDING', 'YES', NULL, NULL, NULL, 'ECSAP SHIPPING', 3, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'MD - BALTIMORE EAST', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '68277382', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-06 11:35:48', '2023-01-06 11:35:48'),
+(68, 4, '4T1BD1FK5HU213926', '2017', 'TOYOTA', 'Camry', 'SEDAN', 'BLUE', '1800', NULL, 'COPART', '831328', 'YES', NULL, NULL, 'PENDING', 'YES', NULL, NULL, NULL, 'ECSAP SHIPPING', 3, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'MD - BALTIMORE EAST', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '66463522', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-06 11:37:10', '2023-01-06 11:37:10'),
+(69, 4, '1G11B5SA4GF132650', '2016', 'CHEVROLET', 'Malibu', 'SEDAN', 'GOLD', NULL, NULL, 'COPART', '831328', 'YES', NULL, NULL, NULL, 'YES', NULL, NULL, NULL, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'MD - BALTIMORE EAST', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '60141972', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 11, '1', '0', NULL, 1, NULL, '2023-01-06 11:46:12', '2023-01-06 12:35:24'),
+(70, 4, '1C4PJLLX7JD520003', '2018', 'JEEP', 'Cherokee', 'SUV', 'WHITE', NULL, NULL, 'COPART', '831328', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 123456789, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'MD - BALTIMORE EAST', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '66335372', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 11, '1', '0', NULL, 1, NULL, '2023-01-06 11:47:58', '2023-01-06 12:35:24'),
+(71, 4, '1HGCR2F33FA191319', '2015', 'HONDA', 'Accord', 'SEDAN', 'GOLD', NULL, NULL, 'COPART', '422241', 'YES', NULL, NULL, 'PENDING', 'YES', NULL, NULL, NULL, 'ECSAP SHIPPING', 3, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'MD - BALTIMORE EAST', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '56397032', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-06 11:49:31', '2023-01-06 11:49:31'),
+(72, 4, '1N4BL4BV7LC206604', '2020', 'NISSAN', 'Altima', 'SEDAN', 'GRAY', NULL, NULL, 'COPART', '831328', 'YES', NULL, NULL, 'PENDING', 'YES', NULL, NULL, NULL, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'BELL AIR	Belcamp, MD', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '206604', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 16, '1', '0', NULL, 1, NULL, '2023-01-06 11:51:27', '2023-01-06 12:59:06'),
+(73, 4, 'KMHH35LE3JU027391', '2018', 'HYUNDAI', 'Elantra GT', 'SEDAN', 'SILVER', NULL, NULL, 'COPART', '831328', 'YES', NULL, NULL, 'PENDING', 'YES', NULL, NULL, NULL, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'BELL AIR	Belcamp, MD', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '027391', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 12, '1', '0', NULL, 1, NULL, '2023-01-06 11:52:45', '2023-01-06 12:40:32'),
+(74, 4, '1N4BL4BV2KC237919', '2019', 'NISSAN', 'Altima', 'SEDAN', 'WHITE', NULL, NULL, 'COPART', '831328', 'YES', NULL, NULL, 'PENDING', 'YES', NULL, NULL, NULL, 'ECSAP SHIPPING', 3, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'MD - BALTIMORE EAST', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '65281862', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-06 11:53:55', '2023-01-06 11:53:55'),
+(75, 4, 'KMHEC4A44DA080873', '2013', 'HYUNDAI', 'Sonata', 'SEDAN', 'WHITE', NULL, NULL, 'COPART', '831328', 'YES', NULL, NULL, 'PENDING', 'YES', NULL, NULL, NULL, 'ECSAP SHIPPING', 3, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'MD - BALTIMORE EAST', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '58468242', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-06 11:55:00', '2023-01-06 11:55:00'),
+(76, 4, '3GKALPEV0LL192069', '2020', 'GMC', 'Terrain', 'SEDAN', 'GRAY', NULL, NULL, 'COPART', '831328', 'YES', NULL, NULL, 'PENDING', 'YES', NULL, NULL, NULL, 'ECSAP SHIPPING', 3, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'MD - BALTIMORE EAST', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '63369672', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-06 11:56:12', '2023-01-06 11:56:12'),
+(77, 4, '1N4AL3AP0HC293150', '2017', 'NISSAN', 'Altima', 'SEDAN', 'GRAY', NULL, NULL, 'COPART', '831328', 'YES', NULL, NULL, 'PENDING', 'YES', NULL, NULL, NULL, 'ECSAP SHIPPING', 3, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'MD - BALTIMORE EAST', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '53162292', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-06 11:58:04', '2023-01-06 11:58:04'),
+(78, 4, '3N1CN7AP0JL817110', '2018', 'NISSAN', 'Versa', 'SEDAN', 'GRAY', NULL, NULL, 'COPART', '831328', 'YES', NULL, NULL, 'PENDING', 'YES', NULL, NULL, NULL, 'ECSAP SHIPPING', 3, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'MD - BALTIMORE EAST', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '63381302', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-06 11:59:20', '2023-01-06 11:59:20'),
+(79, 4, 'KNAGM4A75F5570087', '2015', 'KIA', 'Optima', 'SEDAN', 'WHITE', NULL, NULL, 'COPART', '831328', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 123456789, 'ECSAP SHIPPING', 3, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'MD - BALTIMORE EAST', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '51698442', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-06 12:00:27', '2023-01-06 12:00:27'),
+(80, 4, 'KNDJP3A56H7447706', '2017', 'KIA', 'Soul', 'SEDAN', 'RED', NULL, NULL, 'COPART', '831328', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 123456789, 'ECSAP SHIPPING', 1, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'MD - BALTIMORE EAST', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '59296312', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-06 12:01:36', '2023-01-06 12:01:36'),
+(81, 4, '5NPE34F1KH751086', '2017', 'HYUNDAI', 'Sonata', 'SEDAN', 'BLACK', NULL, NULL, 'COPART', '831328', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 123456789, 'ECSAP SHIPPING', 3, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'MD - BALTIMORE EAST', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '52996702', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-06 12:03:49', '2023-01-06 12:03:49'),
+(82, 4, '1N4AL3AP5HN345960', '2017', 'NISSAN', 'Altima', 'SEDAN', 'WHITE', NULL, NULL, 'COPART', '831328', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'VA', 85078031, 'ECSAP SHIPPING', 3, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'MD - BALTIMORE EAST', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '52934472', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-06 12:05:03', '2023-01-06 12:05:03'),
+(83, 4, '3N1CN7AP2GL839005', '2016', 'NISSAN', 'Versa', 'SEDAN', 'BLUE', NULL, NULL, 'COPART', '831328', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 56718197, 'ECSAP SHIPPING', 3, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'MD - BALTIMORE EAST', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '60035122', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-06 12:06:34', '2023-01-06 12:06:34'),
+(84, 4, '1HGCR2F73EA005411', '2014', 'HONDA', 'Accord', 'SEDAN', 'SILVER', NULL, NULL, 'COPART', '831328', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 123456789, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'MD - BALTIMORE EAST', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '58164192', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 16, '1', '0', NULL, 1, NULL, '2023-01-06 12:07:48', '2023-01-06 12:59:06'),
+(85, 4, '1N4AL3AP8FC104449', '2015', 'NISSAN', 'Altima', 'SEDAN', 'RED', NULL, NULL, 'COPART', '831328', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 12457896, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'MD - BALTIMORE EAST', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '60185632', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 13, '1', '0', NULL, 1, NULL, '2023-01-06 12:08:59', '2023-01-06 12:43:44'),
+(86, 4, '3N1AB7AP4DL777487', '2013', 'NISSAN', 'Sentra', 'SEDAN', 'GRAY', NULL, NULL, 'COPART', '831328', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', NULL, 123456789, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'MD - BALTIMORE', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '64309012', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 16, '1', '0', NULL, 1, NULL, '2023-01-06 12:10:16', '2023-01-06 12:59:06'),
+(87, 4, 'KNDJN2A22F7116849', '2015', 'KIA', 'Soul', 'SEDAN', 'BLACK', NULL, NULL, 'COPART', '831328', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-06', 'MD', 123456789, 'ECSAP SHIPPING', 3, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'MD - BALTIMORE EAST', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '59376292', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-06 12:11:28', '2023-01-06 12:11:28'),
+(88, 4, '4T1BK1EB4EU088825', '2014', 'TOYOTA', 'Avalon', 'SEDAN', 'WHITE', NULL, NULL, 'COPART', '507250', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 452158745, 'ECSAP SHIPPING', 3, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'MD - BALTIMORE EAST', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '59808052', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-06 12:12:35', '2023-01-06 12:12:35'),
+(89, 4, '1N4BL2AP9CC153508', '2012', 'NISSAN', 'Altima', 'SEDAN', 'BLUE', NULL, NULL, 'COPART', '831328', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 1245782356, 'ECSAP SHIPPING', 3, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'MD - BALTIMORE EAST', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '61137392', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-06 12:14:13', '2023-01-06 12:14:13'),
+(90, 4, '5N1AR2MM0DC600617', '2013', 'NISSAN', 'Pathfinder', 'SEDAN', 'WHITE', NULL, NULL, 'COPART', '507250', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 123456789, 'ECSAP SHIPPING', 3, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'MD - BALTIMORE EAST', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '61055122', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-06 12:15:35', '2023-01-06 12:15:35'),
+(91, 4, '1HGCR2F86FA040471', '2015', 'HONDA', 'Accord', 'SEDAN', 'WHITE', NULL, NULL, 'COPART', '507250', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 2147483647, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'MD - BALTIMORE EAST', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '59319982', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 16, '1', '0', NULL, 1, NULL, '2023-01-06 12:16:54', '2023-01-06 12:59:06'),
+(92, 4, '5N1AZ2MH4FN238298', '2015', 'NISSAN', 'Murano', 'SEDAN', 'SILVER', NULL, NULL, 'COPART', '831328', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 124578956, 'ECSAP SHIPPING', 3, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'MD - BALTIMORE EAST', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '60308622', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-06 12:18:20', '2023-01-06 12:18:20'),
+(93, 4, '4T1BF3EK7BU627580', '2011', 'TOYOTA', 'Camry', 'SEDAN', 'WHITE', NULL, NULL, 'COPART', '507250', 'YES', NULL, NULL, 'PENDING', 'YES', NULL, NULL, NULL, 'ECSAP SHIPPING', 3, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'DC - WASHINGTON DC', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '55722352', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-06 12:19:32', '2023-01-06 12:19:32'),
+(94, 4, '1N4BL4BV8LC138880', '2020', 'NISSAN', 'Altima', 'SEDAN', 'SILVER', NULL, NULL, 'COPART', '831328', 'YES', NULL, NULL, 'PENDING', 'YES', NULL, NULL, NULL, 'ECSAP SHIPPING', 3, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'BELL AIR	Belcamp, MD', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '138880', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-06 12:20:48', '2023-01-06 12:20:48'),
+(95, 4, 'KMHD35LH8GU333441', '2016', 'HYUNDAI', 'Elantra', 'SEDAN', 'BLACK', NULL, NULL, 'MANHEIM', '831328', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 1245789526, 'ECSAP SHIPPING', 3, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'BELL AIR	Belcamp, MD', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '333441', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-06 12:22:28', '2023-01-06 12:22:28'),
+(96, 4, 'KMHD35LH8GU333441', '2016', 'HYUNDAI', 'Elantra', 'SEDAN', 'BLACK', '1800', NULL, 'COPART', '831328', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 2147483647, 'ECSAP SHIPPING', 3, '2022-12-01', '2022-12-01', 0, '2022-12-01', '2022-12-01', '2022-12-01', NULL, 'MD - BALTIMORE EAST', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '48446762', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-06 12:24:03', '2023-01-06 12:24:03'),
+(97, 4, '3N1AB7AP0DL767362', '2013', 'NISSAN', 'Sentra', 'SEDAN', 'WHITE', NULL, NULL, 'COPART', '831328', 'YES', NULL, NULL, 'PENDING', 'YES', NULL, NULL, NULL, 'ECSAP SHIPPING', 2, '2022-09-13', '2022-09-14', 1, '2022-09-14', '2022-09-14', '2023-01-14', NULL, 'MD - BALTIMORE EAST', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '46873452', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-06 12:26:33', '2023-01-06 12:31:55');
+INSERT DELAYED IGNORE INTO `vehicles` (`id`, `customer_name`, `vin`, `year`, `make`, `model`, `vehicle_type`, `color`, `weight`, `value`, `auction`, `buyer_id`, `key`, `note`, `hat_number`, `title_type`, `title`, `title_rec_date`, `title_state`, `title_number`, `shipper_name`, `status`, `sale_date`, `paid_date`, `days`, `posted_date`, `pickup_date`, `delivered`, `delivered_date`, `pickup_location`, `site`, `dealer_fee`, `late_fee`, `auction_storage`, `towing_charges`, `warehouse_storage`, `title_fee`, `port_detention_fee`, `custom_inspection`, `additional_fee`, `insurance`, `fee`, `customer_paying_fee`, `profit`, `paid_by`, `bidder`, `lot`, `entry_date`, `age`, `assign_date`, `description`, `dispatch_date`, `port`, `vehicle_is_deleted`, `tow`, `shipment_id`, `shipment_status`, `vehicle_active_shipment`, `inovice_id`, `added_by_user`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(98, 4, '5UXKR0C56G0S93692', '2016', 'BMW', 'X5', 'SEDAN', 'WHITE', NULL, NULL, 'IAAI', '239861', 'YES', NULL, NULL, 'PENDING', 'YES', NULL, NULL, NULL, 'ECSAP SHIPPING', 7, '2022-11-17', '2022-11-17', 0, '2022-11-17', '2022-11-18', '2022-11-20', NULL, 'MD - BALTIMORE EAST', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '54688152', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 13, '1', '0', NULL, 1, NULL, '2023-01-06 12:29:05', '2023-01-06 12:43:44'),
+(99, 4, '5XXGR4A68DG199611', '2013', 'KIA', 'Optima', 'SEDAN', 'GRAY', NULL, NULL, 'COPART', '239861', 'YES', NULL, NULL, 'PENDING', 'YES', NULL, NULL, NULL, 'ECSAP SHIPPING', 2, '2022-11-17', '2022-11-17', 0, '2022-11-18', '2022-11-19', '2022-11-19', NULL, 'MD - BALTIMORE EAST', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '64791272', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', NULL, '0', '0', NULL, 1, NULL, '2023-01-06 12:30:52', '2023-01-06 12:30:52'),
+(100, 8, '5NPD84LF1LH629419', '2020', 'HYUNDAI', 'Elantra', 'SEDAN', 'RED', NULL, NULL, 'MANHEIM', 'BELL AIR', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', NULL, 124578545, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'BELL AIR	Belcamp, MD', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '629419', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 4, '1', '0', NULL, 1, NULL, '2023-01-06 12:48:09', '2023-01-06 12:56:30'),
+(101, 5, '1NXBU40EX9Z052236', '2009', 'TOYOTA', 'Corolla', 'SEDAN', 'RED', NULL, NULL, 'COPART', '417335', 'YES', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 124578454, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'DC - WASHINGTON DC', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '65614712', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 4, '1', '0', NULL, 1, NULL, '2023-01-06 12:51:56', '2023-01-06 12:56:30'),
+(102, 5, '5N1AT2MVXHC880515', '2017', 'NISSAN', 'Rogue', 'SEDAN', 'BLACK', NULL, NULL, 'COPART', '417335', 'NO', NULL, NULL, 'EXPORTABLE', 'YES', '2023-01-01', 'MD', 12457895, 'ECSAP SHIPPING', 7, '2023-01-01', '2023-01-01', 0, '2023-01-01', '2023-01-01', '2023-01-01', NULL, 'DC - WASHINGTON DC', 'ON-SITE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '56040292', NULL, NULL, NULL, NULL, NULL, 'BALTIMORE', NULL, 'By Customer', 4, '1', '0', NULL, 1, NULL, '2023-01-06 12:54:04', '2023-01-06 12:56:30');
+
+--
+-- Dumping data for table `vehicle_status`
+--
+
+INSERT DELAYED IGNORE INTO `vehicle_status` (`id`, `status_name`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'New Order', '1', '2023-01-02 12:58:00', '2023-01-02 12:58:00'),
+(2, 'Dispatched', '1', '2023-01-02 12:58:00', '2023-01-02 12:58:00'),
+(3, 'On Hand', '1', '2023-01-02 12:58:00', '2023-01-02 12:58:00'),
+(4, 'No Title', '1', '2023-01-02 12:58:00', '2023-01-02 12:58:00'),
+(5, 'Towing', '1', '2023-01-02 12:58:00', '2023-01-02 12:58:00'),
+(6, 'Inventory Value', '1', '2023-01-02 12:58:00', '2023-01-02 12:58:00'),
+(7, 'Booked', '1', '2023-01-02 12:58:00', '2023-01-02 12:58:00');
+
+--
+-- Dumping data for table `vehicle_types`
+--
+
+INSERT DELAYED IGNORE INTO `vehicle_types` (`id`, `vehicle_type`, `status`, `created_at`, `updated_at`) VALUES
+(2, 'SEDAN', '1', '2023-01-02 16:50:18', '2023-01-02 16:50:18'),
+(3, 'SUV', '1', '2023-01-02 16:50:26', '2023-01-02 16:50:26');
+
+--
+-- Dumping data for table `warehouse`
+--
+
+INSERT DELAYED IGNORE INTO `warehouse` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
+(2, 'BALTIMORE', '1', '2023-01-02 16:39:52', '2023-01-02 16:39:52'),
+(3, 'SEATTLE', '1', '2023-01-03 09:51:15', '2023-01-04 15:51:48');
+
+--
+-- Dumping data for table `warehouse_images`
+--
+
+INSERT DELAYED IGNORE INTO `warehouse_images` (`id`, `name`, `thumbnail`, `vehicle_id`, `created_at`, `updated_at`) VALUES
+(16, 'vehicle_images/2HybxL16v6SzxrvM4xlMwTdd2B9suqd9ow31aRKY.jpg', '1672925543.jpg', 40, '2023-01-05 13:32:23', '2023-01-05 13:32:23'),
+(17, 'vehicle_images/pqZlVv3joObiGlCqwnfsBz76uSBXUs5ZgthwFtVd.png', '1672925543.png', 40, '2023-01-05 13:32:23', '2023-01-05 13:32:23'),
+(18, 'vehicle_images/jE48CiaNGnim5fXamp1tu4wTrvB7Jp03Y10hq8M8.jpg', '1672925543.jpg', 40, '2023-01-05 13:32:23', '2023-01-05 13:32:23'),
+(19, 'vehicle_images/SQlrAdvklyXvdzzvbSgsfkHVqsrmY6udSMWVaCWA.jpg', '1672925543.jpg', 40, '2023-01-05 13:32:23', '2023-01-05 13:32:23'),
+(20, 'vehicle_images/lO3worB8CGxU9LymcHXEObmcMh51ft36tdQA2lGF.jpg', '1672925543.jpg', 40, '2023-01-05 13:32:23', '2023-01-05 13:32:23'),
+(21, 'vehicle_images/XClxzMVpCC3fsytpDWCVU2tf4QOAHno31YCi9cWI.jpg', '1672926097.jpg', 37, '2023-01-05 13:41:37', '2023-01-05 13:41:37'),
+(22, 'vehicle_images/n2udkqSxwmRXH8Si8HwR9lvxuRIXaxrKBxt0f53Q.jpg', '1672926097.jpg', 37, '2023-01-05 13:41:37', '2023-01-05 13:41:37'),
+(23, 'vehicle_images/zVD5aXWg62qF7RFikuZBPicg8Erv7S3CmwVnzdlX.jpg', '1672926097.jpg', 37, '2023-01-05 13:41:37', '2023-01-05 13:41:37'),
+(24, 'vehicle_images/ClreAcWsp7arSvm2J5guutdpCnpLngQ2GC7hyeik.jpg', '1672926097.jpg', 37, '2023-01-05 13:41:37', '2023-01-05 13:41:37'),
+(25, 'vehicle_images/h6SKhH3fEyRbTpstOBXG1pfPl6aufeFFWuHrMB8o.jpg', '1672926097.jpg', 37, '2023-01-05 13:41:37', '2023-01-05 13:41:37'),
+(26, 'vehicle_images/iWMCIPufgNBRwmtzQbaexjoPew0fnFkJKyPnF6iy.jpg', '1672926097.jpg', 37, '2023-01-05 13:41:37', '2023-01-05 13:41:37'),
+(27, 'vehicle_images/3ZkiQjmj1HQfraEtdeOSToMrEMZOm737RsFE1uWb.jpg', '1672926097.jpg', 37, '2023-01-05 13:41:37', '2023-01-05 13:41:37'),
+(28, 'vehicle_images/yuMUWy5daWivacjWCK3aGgcoXowT4ah9XfyfccwX.jpg', '1672926097.jpg', 37, '2023-01-05 13:41:37', '2023-01-05 13:41:37'),
+(29, 'vehicle_images/H7b0bNM4zkqckv3jhVXJ3USPJBoVyHwsos4JF5CI.jpg', '1672931523.jpg', 51, '2023-01-05 15:12:03', '2023-01-05 15:12:03'),
+(30, 'vehicle_images/7cIB0opq9p1KKAC9WFTjmSzf9q2VO6bq65xKXyIH.jpg', '1672931523.jpg', 51, '2023-01-05 15:12:03', '2023-01-05 15:12:03'),
+(31, 'vehicle_images/QPNhjDGiQTQtcHpPKtjUBmEiICTV7ZszDXDBvck5.jpg', '1672931523.jpg', 51, '2023-01-05 15:12:04', '2023-01-05 15:12:04'),
+(32, 'vehicle_images/2zds57mMIe8QXTsJxiA955C5cqXQ1OOOU28e8Ff5.jpg', '1672931524.jpg', 51, '2023-01-05 15:12:04', '2023-01-05 15:12:04'),
+(33, 'vehicle_images/f1Z45ccGDEWSEWD7m2kQYvklV01ItjrYZ2Mmvv25.jpg', '1672950714.jpg', 52, '2023-01-05 20:31:54', '2023-01-05 20:31:54'),
+(34, 'vehicle_images/lptKkUjn1BPXKpwRsK36W3MKsWETHIKkM0YXYW0U.jpg', '1672950714.jpg', 52, '2023-01-05 20:31:55', '2023-01-05 20:31:55'),
+(35, 'vehicle_images/u6LDioiKIfQwELoOrAdTunI39zAREWJb4zZsF1zm.jpg', '1672950715.jpg', 52, '2023-01-05 20:31:55', '2023-01-05 20:31:55'),
+(36, 'vehicle_images/AqkIKdzirAk6Thsqy1sK3HZRvkljorENs7nI1Gu0.jpg', '1672950715.jpg', 52, '2023-01-05 20:31:56', '2023-01-05 20:31:56'),
+(37, 'vehicle_images/KdFJblRXJtnNQBcM8jMGP43J947L5O8zAmndDnxf.jpg', '1672950716.jpg', 52, '2023-01-05 20:31:57', '2023-01-05 20:31:57'),
+(38, 'vehicle_images/yeJlNqRF1K8niG1cEgUtIy3GBu4PvvJ60YaqtF6c.jpg', '1673002685.jpg', 53, '2023-01-06 10:58:05', '2023-01-06 10:58:05'),
+(39, 'vehicle_images/38PC3G0GyV2gxX5ZA7rQFQqon08BykpooHmXZ2Pz.jpg', '1673002685.jpg', 53, '2023-01-06 10:58:05', '2023-01-06 10:58:05'),
+(40, 'vehicle_images/P0pGaz3AvaHupn5Jecw5S7lS5ARrQ6wnginoklfj.jpg', '1673002685.jpg', 53, '2023-01-06 10:58:05', '2023-01-06 10:58:05'),
+(41, 'vehicle_images/eWtT8YsPTPb3m2XUDVrXBRMYjsTVSQg6b9B5YXn2.jpg', '1673002685.jpg', 53, '2023-01-06 10:58:05', '2023-01-06 10:58:05'),
+(42, 'vehicle_images/oaA8qhYZVyVAkepyzKWCpHAYZsfFMzNzGKWTkq9E.jpg', '1673002685.jpg', 53, '2023-01-06 10:58:05', '2023-01-06 10:58:05'),
+(43, 'vehicle_images/Kg2nzoCN50jIRibSY0K5F68ng3uB1GpQkutvegZU.jpg', '1673002685.jpg', 53, '2023-01-06 10:58:05', '2023-01-06 10:58:05'),
+(44, 'vehicle_images/dJ6qfiNWEAD704H18Os8WccIAnODWgCGqXRCKS8F.jpg', '1673002685.jpg', 53, '2023-01-06 10:58:05', '2023-01-06 10:58:05'),
+(45, 'vehicle_images/blE3DcL5kFRIADBDZFuvmfIOgkB5rQ9ojIDRMiNP.jpg', '1673002685.jpg', 53, '2023-01-06 10:58:05', '2023-01-06 10:58:05'),
+(46, 'vehicle_images/aN1IlpYx2W5XYHfYIovoInQmPd16vuHibpNpHV40.jpg', '1673002685.jpg', 53, '2023-01-06 10:58:05', '2023-01-06 10:58:05'),
+(47, 'vehicle_images/wnSfpIM3htqD2fG2SoRs82KePVwfPeBrWDugRdm8.jpg', '1673002685.jpg', 53, '2023-01-06 10:58:05', '2023-01-06 10:58:05'),
+(48, 'vehicle_images/XSIhbaVeUPbw66NBOzvA74gFi8zm3XYnMh6JeVOv.jpg', '1673003993.jpg', 60, '2023-01-06 11:19:53', '2023-01-06 11:19:53'),
+(49, 'vehicle_images/cWmJlKQcSNB080IlfsG3UNTkEbLZPbH146rPf9h2.jpg', '1673003993.jpg', 60, '2023-01-06 11:19:53', '2023-01-06 11:19:53'),
+(50, 'vehicle_images/MORrMpqAmvEfZ2tYWsnKFINhTjzs5hReyVq5s8RI.jpg', '1673003993.jpg', 60, '2023-01-06 11:19:54', '2023-01-06 11:19:54'),
+(51, 'vehicle_images/NAqwoqmG48QzcFktPJVl4U404L9B39kUrTvrzcge.jpg', '1673003994.jpg', 60, '2023-01-06 11:19:55', '2023-01-06 11:19:55'),
+(52, 'vehicle_images/XpqxPc1rKjGeq1AxaYCkLlZX7ggqZdkMNwkAS0TX.jpg', '1673003995.jpg', 60, '2023-01-06 11:19:56', '2023-01-06 11:19:56'),
+(53, 'vehicle_images/v4euh2xbsInbfqW78yAekDv0WE2wOj2MYJ1tmiID.jpg', '1673004155.jpg', 61, '2023-01-06 11:22:35', '2023-01-06 11:22:35'),
+(54, 'vehicle_images/O0RggGDf6pjKZXqtbZRg5ADtymds5gotiMBM2sFr.jpg', '1673004155.jpg', 61, '2023-01-06 11:22:35', '2023-01-06 11:22:35'),
+(55, 'vehicle_images/GxrOxewNQBckUjRpXDPZLGtQmqwQPoEic5nIog8s.jpg', '1673004155.jpg', 61, '2023-01-06 11:22:38', '2023-01-06 11:22:38'),
+(56, 'vehicle_images/zQkolK9yqJKpytU29Qt2lvEl6UZjTkFv0xnX2R5W.jpg', '1673004158.jpg', 61, '2023-01-06 11:22:39', '2023-01-06 11:22:39'),
+(57, 'vehicle_images/4t8t7tW3D96jOK7M5oQnMzYvaqbNo5kyjNQ6xFDP.jpg', '1673004159.jpg', 61, '2023-01-06 11:22:40', '2023-01-06 11:22:40'),
+(58, 'vehicle_images/adJe0WOpvSS2RsbwhDU57sUC56EZbr40TfG4LzX4.jpg', '1673004414.jpg', 62, '2023-01-06 11:26:54', '2023-01-06 11:26:54'),
+(59, 'vehicle_images/dknrGmlnLnupQPz7jYjXjQn94f4xsO6B2ZnJc7I2.jpg', '1673004414.jpg', 62, '2023-01-06 11:26:54', '2023-01-06 11:26:54'),
+(60, 'vehicle_images/UMwDI0DMKXOp6RrdpTwcww0d3y0f9Pf8JQWYFaot.jpg', '1673004414.jpg', 62, '2023-01-06 11:26:55', '2023-01-06 11:26:55'),
+(61, 'vehicle_images/tI1tiPeT2uRllVw5Qb73Xuz5deHyhAqh5Vk549U7.jpg', '1673004415.jpg', 62, '2023-01-06 11:26:57', '2023-01-06 11:26:57'),
+(62, 'vehicle_images/mQ3i3HbTZl7sy0C6aeHCwj6l7ctUG9fwrfzG5PxW.jpg', '1673004417.jpg', 62, '2023-01-06 11:26:57', '2023-01-06 11:26:57');
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
