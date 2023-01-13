@@ -10,7 +10,7 @@
   }
 </style>
     <!-- Modal -->
-    
+
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
         style="z-index: 21474!important;">
         <div class="modal-dialog modal-fullscreen scrollable mw-100 m-2 px-3 py-2" role="document">
@@ -35,7 +35,7 @@
     </div>
     {{-- Modal End --}}
     <div class="container-fluid p-0">
-        <div class="row">
+        <div class="d-flex">
             <div class="col-12 mx-auto">
                 <div class="d-flex dashboard_heading" style="margin-top:-40px!important">
                     <div>
@@ -52,10 +52,10 @@
 
     <div class="bg-white rounded p-2">
         {{-- badges start --}}
-        <div class="d-flex m-2" style="width: 100%">
-            <div class="row"style="width:103%;margin-left:-18px">
+        <div class="d-flex  " style="width: 100%">
+
             <div class="col-lg-3 col-md-3 order-sm-12 col-12"style="margin-top: 10px;">
-                <div class="col-12 py-0 px-0" style="margin-left: 13px">
+                <div class="col-12 py-0 px-0" >
                     <div class="col-12 border-style card-rounded py-2 px-3">
                         <div class="d-flex">
                             <div class="col-10 text-muted p-0 d-flex align-items-center">
@@ -85,8 +85,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-3 order-sm-12 col-12"style="margin-top: 10px; margin-left:-22px">
-                <div class="col-12 py-0 px-0" style="margin-left:21px">
+            <div class="col-lg-3 col-md-3 order-sm-12 col-12"style="margin-top: 10px;">
+                <div class="col-12 py-0 px-0" >
                     <div class="col-12 border-style card-rounded py-2 px-3">
                         <div class="d-flex">
                             <div class="col-10 text-muted p-0 d-flex align-items-center">
@@ -112,8 +112,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-3 order-sm-12 col-12"style="margin-top: 10px;margin-left:-22px">
-                <div class="col-12 py-0 px-0"style="margin-left:31px">
+            <div class="col-lg-3 col-md-3 order-sm-12 col-12"style="margin-top: 10px;">
+                <div class="col-12 py-0 px-0">
                     <div class="col-12 border-style card-rounded py-2 px-3">
                         <div class="d-flex">
                             <div class="col-10 text-muted p-0 d-flex align-items-center">
@@ -143,8 +143,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-3 order-sm-12 col-12"style="margin-top: 10px;margin-left:-22px">
-                <div class="col-12 py-0 px-0"style="margin-left:39px">
+            <div class="col-lg-3 col-md-3 order-sm-12 col-12"style="margin-top: 10px;">
+                <div class="col-12 py-0 px-0">
                     <div class="col-12 border-style card-rounded py-2 px-3">
                         <div class="d-flex">
                             <div class="col-10 text-muted p-0 d-flex align-items-center">
@@ -176,7 +176,7 @@
             </div>
             </div>
 
-        </div>
+
         {{-- badges end --}}
 
         {{-- listing start --}}
@@ -195,7 +195,7 @@
                         @endif
                     </div>
                 </div>
-            
+
                 {{-- alert end --}}
                 {{-- search filter start --}}
                 <div class="px-4 pt-2 mt-4">
@@ -293,7 +293,7 @@
             </div>
         </div>
     </div>
-  
+
         {{-- listing end --}}
 
         <script>
@@ -354,7 +354,7 @@
         <script type="text/javascript">
             $(function() {
         s = '{{@$state}}';
-                
+
                 if(s){
             state = s;
         }
@@ -362,7 +362,7 @@
             state = '';
         }
                 var table = $('#customer_table').DataTable({
-                    
+
                     processing: true,
                     serverSide: true,
                     "lengthMenu": [
@@ -378,7 +378,7 @@
                     },
                     ajax: "{{ route('customer.records') }}" + "/" + state,
                     columns: [
-                       
+
                         {
                             data: 'id',
                             name: 'id'
