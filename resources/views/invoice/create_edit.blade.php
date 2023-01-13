@@ -287,7 +287,7 @@
                         <div class="d-flex justify-content-end col-6">
     
                             <div class="col-3">
-                                <button type="reset"  class="btn next-style text-white col-12 py-1"
+                                <button type="reset" class="btn next-style text-white col-12 py-1"
                                     id="general_vehicle" value="Reset" style="cursor: pointer;">
                                     <div class="unskew">Clear</div>
                                 </button>
@@ -344,12 +344,4 @@
         $('#balance').val(balance);
     }
 </script>
-{{-- <script>
-    function removeVehicle() {
-        event.preventDefault()
-        var td = event.target.parentNode;
-        var tr = td.parentNode; // the row to be removed
-        tr.parentNode.removeChild(tr);
-    }
-</script> --}}
 
