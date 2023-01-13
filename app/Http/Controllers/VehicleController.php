@@ -804,6 +804,7 @@ class VehicleController extends Controller
         $data =  Excel::toArray([], $path);
 
        $vehicle_array = [];
+       $already_exists_vehicle = [];
 
         foreach($data as $value){
             // dd($value);
@@ -815,6 +816,7 @@ class VehicleController extends Controller
                     $already_vin_import = ImportVehicle::wherevin($row[7])->first();
                     $already_vin_vehicle = Vehicle::wherevin($row[7])->first();
                     if($already_vin_import || $already_vin_vehicle){
+                        // array_push($already_exists_vehicle, $row);
                     }
                     else{
                         array_push($vehicle_array, $row);
