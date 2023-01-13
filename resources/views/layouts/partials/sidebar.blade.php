@@ -248,6 +248,9 @@
                         <div class="user-details">
                             {{-- <span>{{ Auth::user()->username }}</span> --}}
                             <span id="more-details">{{ Auth::user()->username }} <i class="ti-angle-down"></i></span>
+                           
+                            <span id="" style="font-size:9px!important;">{{ Auth::user()->email }}</span>
+
                         </div>
                     </div>
 
