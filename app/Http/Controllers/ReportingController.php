@@ -172,33 +172,75 @@ class ReportingController extends Controller
 
 
     function fitlerVehicles(Request $request){
-        // dd($request->all());
+        
+
         $output = [];
         $data = [];
-        if($request->status == 4){
-            $data['vehicles'] = Vehicle::with('user')
-            ->when($request->filled('shipper'), function ($query) use ($request) {
-                return $query->where('shipper_name', $request->shipper);
-            })->when($request->filled('location'), function ($query) use ($request) {
-                return $query->Where('port', $request->location);
-            })->when($request->filled('title_type'), function ($query) use ($request) {
-                return $query->Where('title_type', $request->title_type);
-            })->when($request->filled('company_name'), function ($query) use ($request) {
-                return $query->Where('customer_name', $request->company_name);
-            })->get()->toArray();
 
+        if($request->status == 4){
+
+            if(Auth::user()->hasRole('Customer')){
+                $data['vehicles'] = Vehicle::with('user')->where('customer_name', auth()->user()->id)
+                ->where(function ($type){
+                    $type->where('title_type', '!=', 'EXPORTABLE');
+                })->where('status', '!=', '7')
+                ->when($request->filled('shipper'), function ($query) use ($request) {
+                    return $query->where('shipper_name', $request->shipper);
+                })->when($request->filled('location'), function ($query) use ($request) {
+                    return $query->Where('port', $request->location);
+                })->when($request->filled('title_type'), function ($query) use ($request) {
+                    return $query->Where('title_type', $request->title_type);
+                })->when($request->filled('company_name'), function ($query) use ($request) {
+                    return $query->Where('customer_name', $request->company_name);
+                })->get()->toArray();
+            }
+            else{
+                $data['vehicles'] = Vehicle::with('user')->where(function ($type){
+                    $type->where('title_type', '!=', 'EXPORTABLE');
+                })->where('status', '!=', '7')
+                ->when($request->filled('shipper'), function ($query) use ($request) {
+                    return $query->where('shipper_name', $request->shipper);
+                })->when($request->filled('location'), function ($query) use ($request) {
+                    return $query->Where('port', $request->location);
+                })->when($request->filled('title_type'), function ($query) use ($request) {
+                    return $query->Where('title_type', $request->title_type);
+                })->when($request->filled('company_name'), function ($query) use ($request) {
+                    return $query->Where('customer_name', $request->company_name);
+                })->get()->toArray();
+            }
+
+        
         }
         else{
-            $data['vehicles'] = Vehicle::with('user')->where('status', $request->status)
-            ->when($request->filled('shipper'), function ($query) use ($request) {
-                return $query->where('shipper_name', $request->shipper);
-            })->when($request->filled('location'), function ($query) use ($request) {
-                return $query->Where('port', $request->location);
-            })->when($request->filled('title_type'), function ($query) use ($request) {
-                return $query->Where('title_type', $request->title_type);
-            })->when($request->filled('company_name'), function ($query) use ($request) {
-                return $query->Where('customer_name', $request->company_name);
-            })->get()->toArray();
+
+              if(Auth::user()->hasRole('Customer')){
+                $data['vehicles'] = Vehicle::with('user')->where('customer_name', auth()->user()->id)->where('status', $request->status)
+                ->when($request->filled('shipper'), function ($query) use ($request) {
+                    return $query->where('shipper_name', $request->shipper);
+                })->when($request->filled('location'), function ($query) use ($request) {
+                    return $query->Where('port', $request->location);
+                })->when($request->filled('title_type'), function ($query) use ($request) {
+                    return $query->Where('title_type', $request->title_type);
+                })->when($request->filled('company_name'), function ($query) use ($request) {
+                    return $query->Where('customer_name', $request->company_name);
+                })->get()->toArray();
+              }
+              else{
+                  $data['vehicles'] = Vehicle::with('user')->where('status', $request->status)
+                  ->when($request->filled('shipper'), function ($query) use ($request) {
+                      return $query->where('shipper_name', $request->shipper);
+                  })->when($request->filled('location'), function ($query) use ($request) {
+                      return $query->Where('port', $request->location);
+                  })->when($request->filled('title_type'), function ($query) use ($request) {
+                      return $query->Where('title_type', $request->title_type);
+                  })->when($request->filled('company_name'), function ($query) use ($request) {
+                      return $query->Where('customer_name', $request->company_name);
+                  })->get()->toArray();
+              }
+
+
+
+
         }
 
 
@@ -215,17 +257,38 @@ class ReportingController extends Controller
     public function serverside(Request $request)
     {
         if ($request->ajax()) {
+            if(Auth::user()->hasRole('Customer')){
+                // dd($request->company_name);
+                $user_vehicles_ids = Vehicle::where('customer_name', auth()->user()->id)->pluck('shipment_id');
+                $data = Shipment::with('vehicle.user')->where(function ($type) use ($user_vehicles_ids){
+                    $type->whereIn('id', $user_vehicles_ids)
+                    ->orwhere('select_consignee', auth()->user()->id);
+                })
+                ->when($request->filled('shipper'), function ($query) use ($request) {
+                    return $query->where('shipper', $request->shipper);
+                })->when($request->filled('location'), function ($query) use ($request) {
+                    return $query->Where('loading_state', $request->location);
+                })->when($request->filled('status'), function ($query) use ($request) {
+                    return $query->Where('status', $request->status);
+                })->when($request->filled('company_name'), function ($query) use ($request) {
+                    return $query->Where('company_name', $request->company_name);
+                })->get();
+                // dd($data);
+
+            }
+            else{
+                $data = Shipment::with('vehicle.user')
+                ->when($request->filled('shipper'), function ($query) use ($request) {
+                    return $query->where('shipper', $request->shipper);
+                })->when($request->filled('location'), function ($query) use ($request) {
+                    return $query->Where('loading_state', $request->location);
+                })->when($request->filled('status'), function ($query) use ($request) {
+                    return $query->Where('status', $request->status);
+                })->when($request->filled('company_name'), function ($query) use ($request) {
+                    return $query->Where('company_name', $request->company_name);
+                })->get();
+            }
         
-        $data = Shipment::with('vehicle.user')
-        ->when($request->filled('shipper'), function ($query) use ($request) {
-            return $query->where('shipper', $request->shipper);
-        })->when($request->filled('location'), function ($query) use ($request) {
-            return $query->Where('loading_state', $request->location);
-        })->when($request->filled('status'), function ($query) use ($request) {
-            return $query->Where('status', $request->status);
-        })->when($request->filled('company_name'), function ($query) use ($request) {
-            return $query->Where('company_name', $request->company_name);
-        })->get();
 
         
         // $data = Shipment::with('vehicle', 'customer.billings')->get();

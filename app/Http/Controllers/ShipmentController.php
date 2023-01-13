@@ -538,7 +538,6 @@ class ShipmentController extends Controller
                 ]);
             }
             else{
-
                 $request->validate([
                     'company_name' => 'required',
                     'customer_email' => 'required',
@@ -547,7 +546,6 @@ class ShipmentController extends Controller
                 ]);
             }
 
-            
             $data = [];
             $data = $request->all();
             // dd($data);

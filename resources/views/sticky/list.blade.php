@@ -46,7 +46,7 @@
                     @foreach ($records as $record )
                     
                     <div class="previous_notes" style="margin-right: 180px!important;">
-                        <div style=" width: 900px; height: 200px; background-color: rgb(26, 188, 156); color: rgb(255, 255, 255); font-family: &quot;Open Sans&quot;; font-size: small; border-color: rgb(26, 188, 156); display: block; z-index: 999999;"
+                        <div style=" width:150%!important;margin-left:20px; height: 230px; background-color: rgb(26, 188, 156); color: rgb(255, 255, 255); font-family: &quot;Open Sans&quot;; font-size: small; border-color: rgb(26, 188, 156); display: block; z-index: 999999;"
                         id=""
                         class="PIApostit PIApanel arrow_box tresd ui-draggable ui-draggable-handle ui-resizable">
                         <div id=""
