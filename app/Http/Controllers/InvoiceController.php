@@ -184,10 +184,13 @@ class InvoiceController extends Controller
         $data = [];
         $output = [];
         $data = $req->all();
+        if(!isset($req->id)){
         if(empty($data['vehicles']) || empty($data['invoice_no']) || empty($data['invoice_document'])){
             return 'Invoice can not be generated because required data is not entered';
         }
+        }
         if(isset($req->id)){
+            
             if($req->invoice_document){
                 $file = $data['invoice_document'];
                 $file_name = time() . '.' . $file->extension();
