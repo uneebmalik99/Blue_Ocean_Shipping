@@ -374,7 +374,7 @@
                         </div>
                     </div>
                     {{-- search filter end --}}
-                    <input type="text" id="search_vehicle" onkeyup="search_all_vehicle()" placeholder="Search" />
+                    <input type="text" id="search_vehicle" tab="onhand" onkeyup="search_all_vehicle()" placeholder="Search" />
                     <div id="status_body" class="mt-2 bg-light">
                         <table id="on_hand_table_main" class="row-border" style="width:100%!important;">
                             <thead class="bg-custom">
@@ -660,6 +660,9 @@
 
             function search_all_vehicle(id) {
                 text = $('#search_vehicle').val();
+                tab = $('#search_vehicle').attr('tab');
+                // alert(tab);
+                console.log(text);
                 $.ajax({
                     type: 'post',
                     url: '{{ route('vehicle.search_all_vehicles') }}',

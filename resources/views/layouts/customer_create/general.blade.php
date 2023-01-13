@@ -143,6 +143,17 @@
                                         <small></small>
                                     </div>
 
+                                    @if(@$documents[0]['id'])
+                                    <div class=" d-flex">
+                                        <label for="email" class="col-5 px-0 font-size font-bold">Email
+                                            <span class="text-danger">*</span>
+                                        </label>
+                                        <input type="email"
+                                            class="form-control-sm border border-0 rounded-pill bg col-7" name="email"
+                                            id="email" value="{{ @$documents[0]['email'] }}" disabled>
+                                            <input type="hidden" name="email" id="email" value="{{ @$documents[0]['email'] }}">
+                                    </div>
+                                    @else
                                     <div class=" d-flex">
                                         <label for="email" class="col-5 px-0 font-size font-bold">Email
                                             <span class="text-danger">*</span>
@@ -151,6 +162,10 @@
                                             class="form-control-sm border border-0 rounded-pill bg col-7" name="email"
                                             id="email" value="{{ @$documents[0]['email'] }}">
                                     </div>
+                                    @endif
+
+
+
                                     <div class="col-12 d-flex justify-content-center">
                                         <small id="email_error" class="text-danger"></small>
                                     </div>
