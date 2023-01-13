@@ -204,7 +204,8 @@ Route::prefix('/admin')->middleware(['auth','login.status','revalidatehistory'])
     
     // Tickets Routes
     Route::get('/tickets', [TicketController::class, 'index'])->name('ticket.list');
-
+    Route::get('/users/profile/{id?}', [UserController::class, 'profile'])->name('user.profile');
+    Route::post('/users/updateprofile', [UserController::class, 'updateprofile'])->name('user.updateprofile');
     //Middleware Group
     Route::group(['middleware' => ['permission:Page Access']], function () {
         
@@ -215,8 +216,7 @@ Route::prefix('/admin')->middleware(['auth','login.status','revalidatehistory'])
     Route::get('/users/edit/{id?}', [UserController::class, 'edit'])->name('user.edit');
     Route::post('/users/edit/{id?}', [UserController::class, 'edit'])->name('user.edit');
     Route::get('/users/delete/{id?}', [UserController::class, 'delete'])->name('user.delete');
-    Route::get('/users/profile/{id?}', [UserController::class, 'profile'])->name('user.profile');
-    Route::post('/users/updateprofile', [UserController::class, 'updateprofile'])->name('user.updateprofile');
+    
     Route::get('/users/search', [UserController::class, 'search'])->name('user.search');
     Route::get('/users/pagination', [UserController::class, 'search'])->name('user.pagination');
     Route::get('/users/createRole', [App\Http\Controllers\UserController::class, 'createRole'])->name('user.createRole');
