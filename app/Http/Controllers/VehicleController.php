@@ -541,10 +541,12 @@ class VehicleController extends Controller
 
         }
         $data = $request->all();
+       
         $vin['vin'] = $data['vin'];
         $tab = $data['tab'];
         unset($data['tab']);
         $Obj = new Vehicle;
+        
         if($request->id === null)
     {
         $new = $Obj->create($data);
@@ -1226,15 +1228,20 @@ class VehicleController extends Controller
             })->get()->toArray();
         }
         else{
-            $data['records'] = Vehicle::with('user')->where(function($query) use ($search_text){
-                $query->where('vin', 'LIKE', "%{$search_text}%")
-                ->orwhere('lot', 'LIKE', "%{$search_text}%");
-            })
-            ->where(function ($status){
-                $status->where('status', 1)
-                ->orwhere('status', 2)
-                ->orwhere('status', 3);
-            })->get()->toArray();
+            if($search_text != ''){
+                $data['records'] = Vehicle::with('user')->where(function($query) use ($search_text){
+                    $query->where('vin', 'LIKE', "%{$search_text}%")
+                    ->orwhere('lot', 'LIKE', "%{$search_text}%");
+                })
+                ->where(function ($status){
+                    $status->where('status', 1)
+                    ->orwhere('status', 2)
+                    ->orwhere('status', 3);
+                })->get()->toArray();
+            }
+            else{
+                $data['records'] = Vehicle::with('user')->where('status', 3)->get()->toArray();
+            }
 
         }
 

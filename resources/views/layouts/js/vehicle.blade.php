@@ -294,6 +294,7 @@
     function fetchVehicles(id) {
         $tab = $('#' + id).attr('tab');
         $value = $('#' + id).attr('value');
+        $('#search_vehicle').css('display', 'none');
         $id = id;
 
 
@@ -315,8 +316,8 @@
 
                 $('#new_order_table').DataTable({
                     scrollX: true,
-                    bFilter: false,
-                    bInfo: false,
+                    // bFilter: false,
+                    // bInfo: false,
                     "lengthMenu": [
                         [50, 100, 500],
                         [50, 100, 500]
@@ -337,8 +338,8 @@
                 });
                 $('#dispatched_table').DataTable({
                     scrollX: true,
-                    bFilter: false,
-                    bInfo: false,
+                    // bFilter: false,
+                    // bInfo: false,
                     "lengthMenu": [
                         [50, 100, 500],
                         [50, 100, 500]
@@ -359,8 +360,8 @@
 
                 $('#on_hand_table_main').DataTable({
                     scrollX: true,
-                    bFilter: false,
-                    bInfo: false,
+                    // bFilter: false,
+                    // bInfo: false,
                     "lengthMenu": [
                         [50, 100, 500],
                         [50, 100, 500]
@@ -380,8 +381,8 @@
                 });
                 $('#on_hand_table').DataTable({
                     scrollX: true,
-                    bFilter: false,
-                    bInfo: false,
+                    // bFilter: false,
+                    // bInfo: false,
                     "lengthMenu": [
                         [50, 100, 500],
                         [50, 100, 500]
@@ -415,8 +416,8 @@
                 });
                 $('#no_title').DataTable({
                     scrollX: true,
-                    bFilter: false,
-                    bInfo: false,
+                    // bFilter: false,
+                    // bInfo: false,
                     "lengthMenu": [
                         [50, 100, 500],
                         [50, 100, 500]

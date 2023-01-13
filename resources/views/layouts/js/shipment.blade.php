@@ -4,9 +4,6 @@
         var formData = new FormData(jQuery('#shipment_form')[0]);
         $next_tab = $('.next_tab').attr('id');
         formData.append('tab', $next_tab);
-
-        console.log(...formData);
-
         document.getElementById('load').style.visibility = "visible";
         $.ajax({
             method: 'POST',
@@ -15,55 +12,73 @@
             processData: false,
             contentType: false,
             success: function(data) {
-
                 document.getElementById('load').style.visibility = "hidden";
 
-                // $('.modal-body').html(data);
-                $('#exampleModal').modal('hide');
-
-                iziToast.success({
-                    title: 'Success',
-                    message: 'Shipment Update Successfully!',
-                    timeout: 1500,
-                    position: 'topCenter',
-                    zindex: '9999999999999',
-                });
-
-                setTimeout(function() {
-                    window.location.reload(true);
-                }, 1500);
-
+                if (data == 'please select atleast one vehicle') {
+                    iziToast.warning({
+                        message: 'Failed: Please select atleast one vehicle!',
+                        timeout: 1500,
+                        position: 'topCenter',
+                        zindex: '9999999999999'
+                    });
+                } else {
+                    $('#exampleModal').modal('hide');
+                    iziToast.success({
+                        title: 'Success',
+                        message: 'Shipment Update Successfully!',
+                        timeout: 1500,
+                        position: 'topCenter',
+                        zindex: '9999999999999',
+                    });
+                    setTimeout(function() {
+                        window.location.reload(true);
+                    }, 1500);
+                }
             },
             complete: function() {
                 document.getElementById('load').style.visibility = "hidden";
             },
-            error: function() {
+            error: function(response) {
+                console.log(response.responseJSON['errors']['company_name']);
                 document.getElementById('load').style.visibility = "hidden";
-
-                iziToast.warning({
-                    message: 'Failed to insert data!',
-                    timeout: 1500,
-                    position: 'topCenter',
-                    zindex: '9999999999999'
-                });
+                if (response.responseJSON['errors']['company_name']) {
+                    iziToast.warning({
+                        message: 'Failed Company name is missing!',
+                        timeout: 1500,
+                        position: 'topCenter',
+                        zindex: '9999999999999'
+                    });
+                } else if (response.responseJSON['errors']['customer_email']) {
+                    iziToast.warning({
+                        message: 'Failed Customer email is missing!',
+                        timeout: 1500,
+                        position: 'topCenter',
+                        zindex: '9999999999999'
+                    });
+                } else if (response.responseJSON['errors']['customer_phone']) {
+                    iziToast.warning({
+                        message: 'Failed Customer email is missing!',
+                        timeout: 1500,
+                        position: 'topCenter',
+                        zindex: '9999999999999'
+                    });
+                } else if (response.responseJSON['errors']['container_no']) {
+                    iziToast.warning({
+                        message: 'Failed Container number is missing!',
+                        timeout: 1500,
+                        position: 'topCenter',
+                        zindex: '9999999999999'
+                    });
+                } else {}
             }
         });
-
     }
 
-
-
-
     function create_shipment_form(id) {
-
-
         var formData = new FormData(jQuery('#shipment_form')[0]);
         $next_tab = $('.next_tab').attr('id');
         formData.append('tab', $next_tab);
-
         console.log(...formData);
-
-
         document.getElementById('load').style.visibility = "visible";
         $.ajax({
             method: 'POST',
@@ -72,48 +87,44 @@
             processData: false,
             contentType: false,
             success: function(data) {
-
-                
-
                 document.getElementById('load').style.visibility = "hidden";
-
-                $('.modal-body').html(data);
-                $('#exampleModal').modal('show');
-                $('#general_shipment_tab').removeClass('next-style');
-                $('#general_shipment_tab').addClass('tab_style');
-                $('#attachments_shipment_tab').addClass('next-style');
-
-                $('.loading_image').imageUploader({
-                    maxFiles: 30,
-                    imagesInputName: 'loading_image',
-
-                });
-                $('.loading_image_update').imageUploader({
-                    maxFiles: 30,
-                    imagesInputName: 'loading_image',
-                    preloaded: loading_old,
-                    preloadedInputName: 'loading_old'
-
-                });
-                iziToast.success({
-                    title: 'Success',
-                    message: 'Data inserted successfully!',
-                    timeout: 1500,
-                    position: 'topCenter',
-                    zindex: '9999999999999',
-                });
-
-
-
-
-
+                if (data == 'please Select atleast one vehicle') {
+                    iziToast.warning({
+                        message: 'Failed: Please select atleast one vehicle!',
+                        timeout: 1500,
+                        position: 'topCenter',
+                        zindex: '9999999999999'
+                    });
+                } else {
+                    $('.modal-body').html(data);
+                    $('#exampleModal').modal('show');
+                    $('#general_shipment_tab').removeClass('next-style');
+                    $('#general_shipment_tab').addClass('tab_style');
+                    $('#attachments_shipment_tab').addClass('next-style');
+                    $('.loading_image').imageUploader({
+                        maxFiles: 30,
+                        imagesInputName: 'loading_image',
+                    });
+                    $('.loading_image_update').imageUploader({
+                        maxFiles: 30,
+                        imagesInputName: 'loading_image',
+                        preloaded: loading_old,
+                        preloadedInputName: 'loading_old'
+                    });
+                    iziToast.success({
+                        title: 'Success',
+                        message: 'Data inserted successfully!',
+                        timeout: 1500,
+                        position: 'topCenter',
+                        zindex: '9999999999999',
+                    });
+                }
             },
             complete: function() {
                 document.getElementById('load').style.visibility = "hidden";
             },
             error: function() {
                 document.getElementById('load').style.visibility = "hidden";
-
                 iziToast.warning({
                     message: 'Failed to insert data!',
                     timeout: 1500,
@@ -122,10 +133,8 @@
                 });
             }
         });
-
     }
 </script>
-
 <script>
     $('.shipment_filtering').on('change', function() {
         $port_of_loading = $('#port_of_loading').val();
@@ -151,7 +160,6 @@
 
     });
 </script>
-
 <script>
     function shipment_images_upload(id) {
         var formData = new FormData(jQuery('#shipment_attachments_form')[0]);
@@ -189,10 +197,8 @@
         });
     }
 
-
     function search_shipment() {
         $search_shipmentText = $('#shipment_search').val();
-
         $.ajax({
             method: 'POST',
             url: '{{ route('shipments.search_shipment') }}',
@@ -206,12 +212,8 @@
         });
     }
 
-
-
-
     function FetchState() {
         $country = $('#loading_country').val();
-
         $.ajax({
             method: 'POST',
             url: '{{ route('shipments.FetchState') }}',
@@ -223,13 +225,10 @@
                 $('#loading_state').html(data);
             }
         });
-
-
     }
 
     function FetchPort() {
         $state = $('#loading_state').val();
-
         $.ajax({
             method: 'POST',
             url: '{{ route('shipments.FetchPort') }}',
@@ -241,12 +240,10 @@
                 $('#loading_port').html(data);
             }
         });
-
     }
 
     function FetchTerminal() {
         $port = $('#loading_port').val();
-
         $.ajax({
             method: 'POST',
             url: '{{ route('shipments.FetchTerminal') }}',
@@ -258,12 +255,10 @@
                 $('#loading_terminal').html(data);
             }
         });
-
     }
 
     function DestinationState() {
         $country_id = $('#destination_country').val();
-
         $.ajax({
             method: 'POST',
             url: '{{ route('shipments.FetachDestiState') }}',
@@ -279,7 +274,6 @@
 
     function FetachDestinationPort() {
         $state_id = $('#destination_state').val();
-
         $.ajax({
             method: 'POST',
             url: '{{ route('shipments.FetachDestiPort') }}',
@@ -295,7 +289,6 @@
 
     function FetchDestiTerimals() {
         $port_id = $('#destination_port').val();
-
         $.ajax({
             method: 'POST',
             url: '{{ route('shipments.FetachDestiTerminal') }}',
@@ -311,7 +304,6 @@
 
     function customer_details() {
         company_name = $('#company_name').val();
-
         $.ajax({
             method: 'POST',
             url: '{{ route('shipments.customer_details') }}',
@@ -336,7 +328,6 @@
         var td = event.target.parentNode;
         var tr = td.parentNode; // the row to be removed
         tr.parentNode.removeChild(tr);
-
         $.ajax({
             method: 'POST',
             url: '{{ route('shipments.add_vehicles') }}',
@@ -376,15 +367,15 @@
         });
     }
 
-    function modalClose(){
+    function modalClose() {
         $.ajax({
             method: 'get',
             url: '{{ route('shipments.closeModal') }}',
             success: function(data) {
-                setTimeout(function () {
+                setTimeout(function() {
                     $('#exampleModal').modal('hide');
 
-            }, 2000);
+                }, 2000);
             }
         });
     }
@@ -445,7 +436,4 @@
             }
         });
     });
-
-
-  
 </script>

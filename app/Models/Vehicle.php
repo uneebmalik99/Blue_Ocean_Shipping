@@ -14,7 +14,9 @@ class Vehicle extends Model
     public $timestamps = true;
     protected $table = "vehicles";
     protected $guarded = [];
-    protected $fillable = ['inovice_id'];
+    // protected $fillable = ['inovice_id'];
+    // protected $fillable = ['customer_name'];
+
     public function user()
     {
         return $this->belongsTo('App\Models\User', 'customer_name', 'id');

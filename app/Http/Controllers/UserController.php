@@ -384,14 +384,14 @@ class UserController extends Controller
         $req->validate([
             'name' => 'required',
             'username' => 'required',
-            'phone' => 'required|numeric',
             'company_name' => 'required',
             'company_email' => 'required',
+            'address_line1' => 'required',
+            'city' => 'required',
             'country' => 'required',
             'zip_code' => 'required',
-            'address_line1' => 'required',
+            'phone' => 'required|numeric',
         ]);
-        dd('kashif update');
         $user = User::find($req->id);
         $user->name = $req->name;
         $user->username = $req->username;
@@ -415,13 +415,14 @@ class UserController extends Controller
                'name' => 'required',
                'username' => 'required',
                'password' => 'required',
-               'phone' => 'required|numeric',
                'email' => 'required|email|unique:user',
                'company_name' => 'required',
                'company_email' => 'required',
+               'address_line1' => 'required',
+               'city' => 'required',
                'country' => 'required',
                'zip_code' => 'required',
-               'address_line1' => 'required',
+               'phone' => 'required|numeric',
            ]);
 
 

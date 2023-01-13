@@ -329,32 +329,15 @@
                                                 </button>
                                             {{-- @endif --}}
                                         {{-- @endcan --}}
-
-
-
-
-
-
-
                                     </td>
-
                                 </tr>
                             @endforeach
-
-
-
-
-
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-
-
     </div>
-
-
     @if (Session::has('delete'))
         <script>
             iziToast.success({
@@ -365,6 +348,5 @@
                 messageColor: 'black'
             });
         </script>
-    @endif
-    
+    @endif    
 @endsection

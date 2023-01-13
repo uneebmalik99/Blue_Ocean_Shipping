@@ -55,10 +55,8 @@
                                             @else
                                                 <option selected disabled>Select Company Name</option>
                                             @endif
-
                                             <option value="{{ Auth::user()->id }}">
                                                 {{ Auth::user()->company_name }}</option>
-
                                         </select>
                                     @endrole
                                     {{-- <input type="text" class="form-control-sm border border-0 rounded-pill bg col-6"

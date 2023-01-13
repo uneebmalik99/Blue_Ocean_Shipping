@@ -138,7 +138,7 @@
                                                 <div class="d-flex align-items-center">
                                                     <label for="company_name"
                                                         class="col-6 px-0 font-size font-bold">Company
-                                                        Name</label>
+                                                        Name<span class="text-danger">*</span></label>
                                                     <select
                                                         class="form-control-sm border border-0 rounded-pill bg col-6"
                                                         name="company_name" id="company_name"
@@ -154,33 +154,49 @@
                                                             <option value="{{ $company['company_name'] }}">
                                                                 {{ $company['company_name'] }}</option>
                                                         @endforeach
-
                                                     </select>
                                                     {{-- <input type="text"
                                                         class="form-control-sm border border-0 rounded-pill bg col-6"
                                                         name="company_name" id="company_name"> --}}
+                                                </div>
+                                                <div class="d-flex justify-content-center">
+                                                    <span class="text-danger" id="customer_name_error">
+                                                        <small></small>
+                                                    </span>
                                                 </div>
                                             </div>
                                             <div class="col-12 py-2">
                                                 <div class="d-flex align-items-center">
                                                     <label for="customer_email"
                                                         class="col-6 px-0 font-size font-bold">Customer
-                                                        Email</label>
+                                                        Email<span
+                                                        class="text-danger">*</span></label>
                                                     <input type="text"
                                                         class="form-control-sm border border-0 rounded-pill bg col-6"
                                                         name="customer_email" id="customer_email"
                                                         value="{{ @$shipment[0]['customer_email'] }}">
+                                                </div>
+                                                <div class="d-flex justify-content-center">
+                                                    <span class="text-danger" id="customer_email_error">
+                                                        <small></small>
+                                                    </span>
                                                 </div>
                                             </div>
                                             <div class="col-12 py-2">
                                                 <div class="d-flex align-items-center">
                                                     <label for="customer_phone"
                                                         class="col-6 px-0 font-size font-bold">Customer
-                                                        Phone</label>
+                                                        Phone<span
+                                                        class="text-danger">*</span></label>
                                                     <input type="text"
                                                         class="form-control-sm border border-0 rounded-pill bg col-6"
                                                         name="customer_phone" id="customer_phone"
                                                         value="{{ @$shipment[0]['customer_phone'] }}">
+                                                </div>
+                                                <div class="d-flex justify-content-center">
+                                                    <span class="text-danger" id="customer_phone_error">
+                                                        <small></small>
+                                                    </span>
                                                 </div>
                                             </div>
                                             <div class="col-12 py-2">
@@ -304,11 +320,17 @@
                                             <div class="col-12 py-2">
                                                 <div class="d-flex align-items-center">
                                                     <label for="container_number"
-                                                        class="col-6 px-0 font-size font-bold">Container Number</label>
+                                                        class="col-6 px-0 font-size font-bold">Container Number<span
+                                                        class="text-danger">*</span></label>
                                                     <input type="text"
                                                         class="form-control-sm border border-0 rounded-pill bg col-6"
                                                         name="container_no" id="container_number"
                                                         value="{{ @$shipment[0]['container_no'] }}">
+                                                </div>
+                                                <div class="d-flex justify-content-center">
+                                                    <span class="text-danger" id="customer_name_error">
+                                                        <small></small>
+                                                    </span>
                                                 </div>
                                             </div>
                                             <div class="col-12 py-2">
@@ -950,14 +972,6 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-end col-6">
-
-                            {{-- <div class="col-3">
-                                <button type="reset" class="btn next-style text-white col-12 py-1"
-                                    id="general_vehicle" value="Reset" style="cursor: pointer;">
-                                    <div class="unskew">Clear</div>
-                                </button>
-                            </div> --}}
-
                             @if (@$shipment[0]['id'])
                                 <div class="col-3">
                                     <input type="hidden" class="next_tab" id="attachments">

@@ -2158,7 +2158,7 @@
 
             },
             error: function(xhr, status, errorThrown) {
-                console.log(xhr.responseJSON)
+                // console.log(xhr.responseJSON)
                 if (xhr.responseJSON['errors']['name']) {
                     iziToast.warning({
                     message: 'Failed! Name is missing',
@@ -2166,14 +2166,79 @@
                     zindex: '9999999999999'
                 });
                 }
-
-                if (xhr.responseJSON['errors']['email']) {
+                else if(xhr.responseJSON['errors']['username']) {
+                    iziToast.warning({
+                    message: 'Failed! Username is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
+                }
+                else if(xhr.responseJSON['errors']['password']) {
+                    iziToast.warning({
+                    message: 'Failed! Password is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
+                }
+                else if(xhr.responseJSON['errors']['email']) {
                     iziToast.warning({
                     message: 'Failed! Email is missing OR Already Exists',
                     position: 'topCenter',
                     zindex: '9999999999999'
                 });
                 }
+                else if (xhr.responseJSON['errors']['company_name']) {
+                    iziToast.warning({
+                    message: 'Failed! Company Name is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
+                }
+                else if (xhr.responseJSON['errors']['company_email']) {
+                    iziToast.warning({
+                    message: 'Failed! Company Email is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
+                }
+                else if (xhr.responseJSON['errors']['address_line1']) {
+                    iziToast.warning({
+                    message: 'Failed! Address line 1 is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
+                }
+                else if (xhr.responseJSON['errors']['city']) {
+                    iziToast.warning({
+                    message: 'Failed! City is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
+                }
+                else if (xhr.responseJSON['errors']['country']) {
+                    iziToast.warning({
+                    message: 'Failed! Country is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
+                }
+                else if (xhr.responseJSON['errors']['zip_code']) {
+                    iziToast.warning({
+                    message: 'Failed! Zip Code is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
+                }
+                else if (xhr.responseJSON['errors']['phone']) {
+                    iziToast.warning({
+                    message: 'Failed! Phone is missing',
+                    position: 'topCenter',
+                    zindex: '9999999999999'
+                });
+                }
+                else{}
+
+
             }
         });
 
