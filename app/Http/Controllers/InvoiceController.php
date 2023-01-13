@@ -190,8 +190,10 @@ class InvoiceController extends Controller
         }
         }
         if(isset($req->id)){
-            
-            if($req->invoice_document){
+            if(empty($data['vehicles']) || empty($data['invoice_no'])){
+                return 'Invoice can not be generated because required data is not entered';
+            }
+            else if($req->invoice_document){
                 $file = $data['invoice_document'];
                 $file_name = time() . '.' . $file->extension();
                 $docname = Storage::putFile($this->directory, $file);
