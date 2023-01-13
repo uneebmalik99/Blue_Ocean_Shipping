@@ -184,8 +184,8 @@ class InvoiceController extends Controller
         $data = [];
         $output = [];
         $data = $req->all();
-        if(empty($data['vehicles'])){
-            return 'Invoice can not be generated';
+        if(empty($data['vehicles']) || empty($data['invoice_no']) || empty($data['invoice_document'])){
+            return 'Invoice can not be generated because required data is not entered';
         }
         if(isset($req->id)){
             if($req->invoice_document){
@@ -283,8 +283,10 @@ class InvoiceController extends Controller
 
         if ($request->ajax()) {
             if(Auth::user()->hasRole('Customer')){
-                $data = Invoice::with('vehicle.user')->wherecompany_name(auth()->user()->company_name)->get();
+                $user_vehicles_ids = Vehicle::where('customer_name', auth()->user()->id)->pluck('inovice_id');
                 
+                $data = Invoice::with('vehicle.user')->whereIn('id',$user_vehicles_ids)->get();
+               
             }
             else{
                 $data = Invoice::with('vehicle.user')->get();

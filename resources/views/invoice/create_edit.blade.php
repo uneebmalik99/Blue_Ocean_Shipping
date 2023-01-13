@@ -107,7 +107,7 @@
                                         left: 5%;
                                     ">
                                             <div class="col-12 py-3">
-                                                <div class="text-color" style="cursor: pointer;" id="invoice_calendar"
+                                                <div class="text-color" id="InvoiceInformation" style="cursor: pointer;" id="invoice_calendar"
                                                     onclick="slide(this.id)">
                                                     <svg width="8" height="6" viewBox="0 0 8 6" fill="none"
                                                         xmlns="http://www.w3.org/2000/svg">
@@ -118,14 +118,33 @@
                                                     <span class="p-2">Invoice Information</span>
                                                 </div>
                                             </div>
-                                            <div id="invoice_no">
+                                            <div>
                                                 <div class="col-12 py-2">
-                                                    <div class="d-flex align-items-center">
+                                                    {{-- <div class="d-flex align-items-center">
                                                         <label for="invoice_no"
                                                             class="col-6 px-0 font-size font-bold">Invoice#</label>
                                                         <input type="number" required
                                                             class="form-control-sm border border-0 rounded-pill bg col-6"
                                                             name="invoice_no" id="invoice_no" value="{{ (isset($invoice[0]['invoice_no']) ? @$invoice[0]['invoice_no']:random_int(100000,999999)) }}">
+                                                    </div> --}}
+                                                    <div class="d-flex align-items-center">
+                                                        <label for="invoice_no" class="col-6 px-0 font-size font-bold">Invoice# <span
+                                                                class="text-danger">*</span></label>
+                                                        <div
+                                                            class="d-flex align-items-center d-flex align-items-center form-control-sm border border-0 rounded-pill bg col-6">
+                                                            
+                                                            <input type="number" class="col-7 general_input" name="invoice_no" id="invoice_no"
+                                                                value="{{ @$invoice[0]['invoice_no'] }}">
+                    
+                                                            <a class="prefix text-dark px-2 getinf"
+                                                                style="text-decoration: none!important;
+                                                                 background:rgb(175, 197, 234);border-radius:20px;cursor:pointer"
+                                                                id="get_invoice_no" onclick="get_invoice_no()">
+                                                                <span class="text-white px-1" id="get_invoice_no">getinvoice#</span>
+                                                            </a>
+                                                            
+                                                        </div>
+                                                        
                                                     </div>
                                                 </div>
                                                 <div class="col-12 py-2">
@@ -143,7 +162,7 @@
                                                             class="col-6 px-0 font-size font-bold">Invoice Amount</label>
                                                         <input type="number"
                                                             class="form-control-sm border border-0 rounded-pill bg col-6"
-                                                            name="invoice_amount" id="invoice_amount" value="{{ @$invoice[0]['invoice_amount'] }}">
+                                                            name="invoice_amount" id="invoice_amount" value="{{ @$invoice[0]['invoice_amount'] }}" onkeyup="findbalance()">
     
                                                     </div>
                                                 </div>
@@ -200,6 +219,8 @@
                                 <label for="invoice_document" style="cursor: pointer;
                                 
                                 padding: 9px 96px;">
+                                <span
+                                class="text-danger">*</span>
                                     
                                     <img src="{{asset('images/file.png')}}" alt="" style="width: 5rem;">
     
@@ -241,7 +262,7 @@
                                     <td>{{ @$vehicle['model'] }}</td>
                                     <td>{{@$vehicle['vin'] }}</td>
                                     <td>{{ @$vehicle['customer_name'] }}</td>
-                                    <td onclick="removeVehicle()"><i class='fa fa-minus' aria-hidden='true'></i><input type='hidden' checked id='vehicle' value="{{ @$vehicle['id'] }}" name='vehicles[]'/></td>
+                                    <td><i class='fa fa-minus' onclick="removeVehicle()" aria-hidden='true'></i><input type='hidden' checked id='vehicle' value="{{ @$vehicle['id'] }}" name='vehicles[]'/></td>
                                     </tr>
                                     @empty
                             <tr>        <td>Empty</td></tr>
@@ -274,7 +295,7 @@
                             <div class="col-3">
                                 <input type="hidden" class="next_tab" id="invoice">
                                 <button type="button" class="btn next-style text-white col-12 py-1"
-                                    onclick="create_invoice_form()" id="general_invoice"
+                                    onclick="create_invoice_form(event)" id="general_invoice"
                                     style="cursor: pointer;" tab="attachments_invoice_tab">
                                     <div class="unskew">Save</div>
                                 </button>
@@ -288,6 +309,23 @@
         </div>
     </div>
 </div>
+<script>
+    function get_invoice_no(){
+       let invoice_no = getrand(1000);
+       let str = invoice_no.slice(0,5);
+       $('#invoice_no').val(str);
+    }
+     function getrand(count){
+  var chars = '0123456789'.split('');
+  var result = '';
+  for(var i=0; i<count; i++){
+    var x = Math.floor(Math.random() * chars.length);
+    result += chars[x];
+  }
+  return result;
+}
+
+</script>
 <script>
     let input = document.getElementById("invoice_document");
     let imageName = document.getElementById("imageName");

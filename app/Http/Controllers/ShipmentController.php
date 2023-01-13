@@ -983,7 +983,7 @@ class ShipmentController extends Controller
         if ($request->ajax()) {
         if($state != null){
                 if(Auth::user()->hasRole('Customer')){
-                    $user_vehicles_ids = Vehicle::where('customer_name', auth()->user()->id)->pluck('id');
+                    $user_vehicles_ids = Vehicle::where('customer_name', auth()->user()->id)->pluck('shipment_id');
                     $data = Shipment::with('vehicle.user', 'customer.billings', 'customer.shippers')->whereIn('id', $user_vehicles_ids)->orwhere('customer_email', auth()->user()->email)->orwhere('loading_state', $state)->get();
                 }
                 else{

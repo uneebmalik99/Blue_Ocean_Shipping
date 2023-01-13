@@ -1063,7 +1063,7 @@
                         data.shipments[0]['vehicle'].forEach(element => {
                             output = "<tr><td>" + element.year + "</td><td>" + element.make +
                                 "</td><td>" + element.model + "</td><td>" + element.vin +
-                                "</td><td>" + element.customer_name + "</td><td onclick='removeVehicle()' class='text-center'><i class='fa fa-minus' aria-hidden='true'></i><input type='hidden' checked value='" +
+                                "</td><td>" + element.customer_name + "</td><td class='text-center'><i class='fa fa-minus' onclick='removeVehicle()' aria-hidden='true'></i><input type='hidden' checked value='" +
                                 element.id + "' id='vehicle' name='vehicles[]'></td></tr>";
                             html.push(output);
                         });
@@ -2182,8 +2182,8 @@
     }
 </script>
 <script>
-    function create_invoice_form() {
-
+    function create_invoice_form(event) {
+        event.preventDefault();
         var formData = new FormData(jQuery('#invoice_shipment_form')[0]);
 
         $.ajax({
@@ -2193,10 +2193,11 @@
             contentType: false,
             data: formData,
             success: function(data) {
-                $('#exampleModal').modal('hide');
-                if(data == 'Invoice can not be generated'){
+                
+                if(data == 'Invoice can not be generated because required data is not entered'){
                     iziToast.warning({
                     title: 'Invoice',
+                    titleColor: 'red',
                     message: data,
                     position: 'topCenter',
                     zindex: '9999999999999',
@@ -2211,10 +2212,12 @@
                     zindex: '9999999999999',
 
                 });
-                }
                 setTimeout(function() {
                     location.reload();
                 }, 1000);
+                $('#exampleModal').modal('hide');
+                }
+                
             }
         });
     }
