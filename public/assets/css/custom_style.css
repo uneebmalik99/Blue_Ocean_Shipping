@@ -22,7 +22,8 @@
 #user_table1_length,
 #user_table2_length,
 #permission_table_length,
-#role_table_length {
+#role_table_length,
+#dashboard_shipment_length {
     padding: 2% 0% 1% 2% !important;
 }
 
@@ -50,7 +51,8 @@
 #user_table1_length select,
 #user_table2_length select,
 #permission_table_length select,
-#role_table_length select{
+#role_table_length select,
+#dashboard_shipment_length select{
     height: calc(1.8125rem + 2px) !important;
     border: 1px solid rgba(189, 189, 189, 1) !important;
     border-radius: 0.25rem !important;
@@ -88,7 +90,8 @@
 #user_table1_filter,
 #user_table2_filter,
 #permission_table_filter,
-#role_table_filter {
+#role_table_filter,
+#dashboard_shipment_filter {
     padding: 2% 2% 1% 0% !important;
 }
 
@@ -116,7 +119,8 @@
 #user_table1_length input,
 #user_table2_length input,
 #permission_table_length input,
-#role_table_length input{
+#role_table_length input,
+#dashboard_shipment_length input{
     border: 1px solid rgba(189, 189, 189, 1) !important;
     color: #2b3d51 !important;
     border-radius: 0.25rem !important;
@@ -149,7 +153,8 @@
 #user_table1_wrapper,
 #user_table2_wrapper,
 #permission_table_wrapper,
-#role_table_wrapper {
+#role_table_wrapper,
+#dashboard_shipment_wrapper {
     background-color: white !important;
 }
 

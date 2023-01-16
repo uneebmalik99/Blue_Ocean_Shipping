@@ -20,10 +20,13 @@
             </p> --}}
            {{-- {{dd(@$user['status'])}} --}}
             <div>
-                <br>
+                {{-- <br> --}}
                 <div>
                     <span class="text-muted my-3">
                         <b>Username:</b> {{ @$user['name'] }}
+                        </span>
+                        <span class="text-muted my-3">
+                            <b>Email:</b> {{ @$user['email'] }}
                         </span>
                 </div>
                 <div class="p-3">

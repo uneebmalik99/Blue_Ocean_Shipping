@@ -524,13 +524,23 @@ background-color: #e93f7800!important;
                     <span class="information_text">{{ @$shipments[0]['shipment_type'] }}</span>
                 </div>
 
+
                 <div class="d-flex justify-content-between my-2 py-1"
                     style="border: 1px solid rgba(26, 88, 133, 0.17);
                 border-radius: 10px;width: 90%;margin:6px auto">
-                    <span class="infromation_mainText">Export Date</span>
-                    <span class="information_text">{{ @$shipments[0]['export_date'] }}</span>
-                </div>
+                    <span class="infromation_mainText">Shipment Status</span>
+                    @if(@$shipments[0]['status'] == '1')
+                    <span class="information_text">Shipped</span>
+                    @elseif (@$shipments[0]['status'] == '2')
+                    <span class="information_text">Booked</span>
+                    @elseif (@$shipments[0]['status'] == '3')
+                    <span class="information_text">Arrived</span>
+                    @else
+                    <span class="information_text">Completed</span>
+                    @endif
 
+
+                </div>
 
                 <div class="d-flex justify-content-between my-2 py-1"
                     style="border: 1px solid rgba(26, 88, 133, 0.17);
@@ -695,8 +705,7 @@ background-color: #e93f7800!important;
                     <h4>Shippment Information</h4>
                 </div>
             </div>
-
-            <div class="row" style="padding-bottom:60px">
+            <div class="row" style="">
                 <div class="col-sm-12 col-md-5 col-lg-5" style="margin-top:-5px">
                     <div class="d-flex justify-content-between my-2 py-1 "
                         style="border: 1px solid rgba(26, 88, 133, 0.17);border-radius: 10px;width: 90%;margin:6px auto">
@@ -765,7 +774,7 @@ background-color: #e93f7800!important;
                             <div class="row"> --}}
 
                                 <div class="information_gallary image_section col-11 col-sm-11 col-md-11 col-lg-11 order-xl-11 mx-auto"
-                                    style="margin-top: 1px;padding-top: 12px;">
+                                    style="margin-top: 1px;padding-top: 12px;height:360px!important;overflow:scroll!important;">
 
 
                                     @if (@$shipments[0]['loading_image'])

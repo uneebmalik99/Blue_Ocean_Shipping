@@ -1,7 +1,7 @@
 @extends('layouts.partials.mainlayout')
 @section('body')
 <style>
-    tbody tr td {
+    /* tbody tr td {
         background-color: #fff !important;
         box-shadow: none !important;
     }
@@ -23,7 +23,7 @@
 
     thead {
         color: #ffff;
-    }
+    } */
 
     .dt-buttons {
         float: right !important;
@@ -163,7 +163,7 @@
         padding: 7.5px;
     }
 
-    @media only screen and (max-width: 600px) {
+    /* @media only screen and (max-width: 600px) {
         .title_cards {
             font-size: 15px !important;
         }
@@ -179,44 +179,21 @@
         .title_cards {
             font-size: 10px !important;
         }
-    }
+    } */
 </style>
 <div class="container-fluid p-0">
-    <div class="bg-white rounded p-2">
-
-        {{-- <div class="row p-2">
-            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 p-2">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="loading_date"
-                            style="height: 31px!important;font-size:12px!important;background:white!important;">Valid From</span>
-                    </div>
-                    <input type="date" class="form-control-sm border-style shipment_filtering col-7 text-muted px-2"
-                        id="loading_date" aria-describedby="loading_date" style="height: 31px!important;" required="">
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 p-2">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="arrival_date"
-                            style="height: 31px!important;font-size:12px!important;background:white!important">Valid To</span>
-                    </div>
-                    <input type="date" class="form-control-sm border-style shipment_filtering col-7 text-muted px-2"
-                        id="arrival_date" aria-describedby="arrival_date" style="height: 31px!important;" required="">
-                </div>
-            </div>
-        </div> --}}
-        <table id="shipmentrate_table" style="width: 100% !important">
-            <thead style="background: #3e5871 ;color:#fff">
-                <tr>
-                    <th>CONTAINER SIZE</th>
-                    <th>VEHICLES</th>
-                    <th>LOADING PORT</th>
-                    <th>DESTINATION</th>
-                    <th>SHIPPING LINE</th>
-                    <th>RATE</th>
-                    <th>STATUS</th>
-                    <th>ACTION</th>
+    <div class="bg-white rounded p-2 mt-2 bg-light">
+        <table id="shipmentrate_table" class="table row-border" style="width:100%!important;">
+            <thead class="bg-custom">
+                <tr class="font-size">
+                    <th class="font-bold-tr">CONTAINER SIZE</th>
+                    <th class="font-bold-tr">VEHICLES</th>
+                    <th class="font-bold-tr">LOADING PORT</th>
+                    <th class="font-bold-tr">DESTINATION</th>
+                    <th class="font-bold-tr">SHIPPING LINE</th>
+                    <th class="font-bold-tr">RATE</th>
+                    <th class="font-bold-tr">STATUS</th>
+                    <th class="font-bold-tr">ACTION</th>
                 </tr>
             </thead>
             <tbody>
@@ -272,7 +249,6 @@
         </table>
     </div>
     <input type="hidden" value="{{(auth()->user()->hasRole('Super Admin')) ?? 0 }}" id="role"/>
-
     <!-- add update modal -->
     <div class="modal fade" id="shipmentrate_modal" role="dialog">
         <div class="modal  fade show" id="shipmentrate_modal" tabindex="-1" role="dialog"
@@ -290,13 +266,13 @@
     var role = $('#role').val();
     if(role){
         $('#shipmentrate_table').DataTable({
-            "ordering": false,
             scrollX: true,
             select: true,
             dom: 'Blfrtip',
-            lengthMenu: [
+            "ordering": false,
+            "lengthMenu": [
                 [10, 25, 50],
-                ['10', '25', '50']
+                [10, 25, 50]
             ],
             language: {
                 search: "",
@@ -317,13 +293,13 @@
     }
     else {
         $('#shipmentrate_table').DataTable({
-            "ordering": false,
             scrollX: true,
             select: true,
             dom: 'Blfrtip',
-            lengthMenu: [
+            "ordering": false,
+            "lengthMenu": [
                 [10, 25, 50],
-                ['10', '25', '50']
+                [10, 25, 50]
             ],
             language: {
                 search: "",

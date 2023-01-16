@@ -28,6 +28,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @if($documents)
                             @php
                                 $i = 1;
                             @endphp
@@ -72,6 +73,17 @@
                                 $i++;
                             @endphp
                             @endforeach
+                            @else
+
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>No Documents Found</td>
+                                <td></td>
+                            </tr>
+
+
+                            @endif
 
                         </tbody>
                     </table>

@@ -474,14 +474,18 @@ class DashboardController extends Controller
                     return strtoupper($row['shipper']);
                 })
                 ->addColumn('vin', function($row){
-                  
-                    return @$row['vehicle'][0]['vin'];
-
+                    $vin_array = []; 
+                    foreach($row['vehicle'] as $vin){
+                        array_push($vin_array, $vin['vin']);
+                    }
+                    return implode(',', $vin_array);
                 })
                 ->addColumn('lot', function($row){
-                  
-                    return @$row['vehicle'][0]['lot'];
-
+                    $lot_array = [];
+                    foreach($row['vehicle'] as $lot){
+                        array_push($lot_array, $lot['lot']);
+                    }
+                    return implode(',', $lot_array);
                 })
                 ->addColumn('select_consignee', function($row){
                     $data['row'] = $row;

@@ -3,9 +3,9 @@
         <h6 class="text-muted"><b>Consignee Information</b></h6>
     </div>
     <div class="col-12 mt-2">
-        <div class="text-muted text-left">
+        {{-- <div class="text-muted text-left">
             <b>Consignee</b>
-        </div>
+        </div> --}}
         <div class="d-flex justify-content-start flex-wrap">
             {{-- <div class="text-muted d-flex"><input type="radio" name="consignee" value="same as billing party"
                     {{ @$shipper[0]['consignee'] == 'same as billing party' ? 'checked' : '' }}>

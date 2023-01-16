@@ -449,12 +449,24 @@ class VehicleController extends Controller
             $page = "";
 
             if(Auth::user()->hasRole('Customer')){
-                $total = Vehicle::where('added_by_user', auth()->user()->id)->get()->toArray();
-                $records = Vehicle::with('user')->where('added_by_user', auth()->user()->id);
+                $total = Vehicle::with('user')->where(function ($status){
+                    $status->where('status', 1)
+                    ->orwhere('status', 2)
+                    ->orwhere('status', 3);
+                })->where('customer_name', auth()->user()->id)->get()->toArray();
+                $records = Vehicle::with('user')->where(function ($status){
+                    $status->where('status', 1)
+                    ->orwhere('status', 2)
+                    ->orwhere('status', 3);
+                })->where('customer_name', auth()->user()->id);
             }
             else{
                 $total = Vehicle::all()->toArray();
-                $records = Vehicle::with('user');
+                $records = Vehicle::with('user')->where(function ($status){
+                    $status->where('status', 1)
+                    ->orwhere('status', 2)
+                    ->orwhere('status', 3);
+                });
             }
             // $total = Vehicle::all()->toArray();
             // $records = Vehicle::with('user');
@@ -478,10 +490,9 @@ class VehicleController extends Controller
             if ($year) {
                 if ($year != "") {
                     if ($year == "all") {
-                        $records = Vehicle::with('user', 'vehicle_status')->get()->toArray();
+                        $records = Vehicle::with('user', 'vehicle_status')->where('status', '3')->get()->toArray();
                     }
                     else{
-
                         $records = $records->where('year', $year)->get()->toArray();
                     }
                 }
@@ -499,7 +510,7 @@ class VehicleController extends Controller
             if ($status) {
                 if ($status != "") {
                     if ($status == 'all') {
-                        $records = Vehicle::all();
+                        $records = Vehicle::with('user', 'vehicle_status')->where('status', '3')->get()->toArray();
 
                     } else {
                         $records = Vehicle::with('user', 'vehicle_status')->where('status', $status)->paginate($this->perpage);
