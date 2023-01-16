@@ -204,8 +204,9 @@ Route::prefix('/admin')->middleware(['auth','login.status','revalidatehistory'])
     
     // Tickets Routes
     Route::get('/tickets', [TicketController::class, 'index'])->name('ticket.list');
-    Route::get('/users/profile/{id?}', [UserController::class, 'profile'])->name('user.profile');
-    Route::post('/users/updateprofile', [UserController::class, 'updateprofile'])->name('user.updateprofile');
+    
+    Route::get('/customers/profile/{id?}',              [CustomerController::class, 'profile'])->name('customer.profile');
+    Route::get('/customers/profile_tab',                [CustomerController::class, 'profile_tab'])->name('customer.profile_tab');
     //Middleware Group
     Route::group(['middleware' => ['permission:Page Access']], function () {
         
@@ -216,7 +217,8 @@ Route::prefix('/admin')->middleware(['auth','login.status','revalidatehistory'])
     Route::get('/users/edit/{id?}', [UserController::class, 'edit'])->name('user.edit');
     Route::post('/users/edit/{id?}', [UserController::class, 'edit'])->name('user.edit');
     Route::get('/users/delete/{id?}', [UserController::class, 'delete'])->name('user.delete');
-    
+    Route::get('/users/profile/{id?}', [UserController::class, 'profile'])->name('user.profile');
+    Route::post('/users/updateprofile', [UserController::class, 'updateprofile'])->name('user.updateprofile');
     Route::get('/users/search', [UserController::class, 'search'])->name('user.search');
     Route::get('/users/pagination', [UserController::class, 'search'])->name('user.pagination');
     Route::get('/users/createRole', [App\Http\Controllers\UserController::class, 'createRole'])->name('user.createRole');
@@ -268,8 +270,7 @@ Route::prefix('/admin')->middleware(['auth','login.status','revalidatehistory'])
     Route::post('/customers/edit/{id?}',                [CustomerController::class, 'edit'])->name('customer.edit');
     Route::get('/customers/update/{id?}',               [CustomerController::class, 'edit'])->name('customer.edit');
     Route::get('/customers/delete/{id?}',               [CustomerController::class, 'delete'])->name('customer.delete');
-    Route::get('/customers/profile/{id?}',              [CustomerController::class, 'profile'])->name('customer.profile');
-    Route::get('/customers/profile_tab',                [CustomerController::class, 'profile_tab'])->name('customer.profile_tab');
+   
     Route::get('/customers/search',                     [CustomerController::class, 'search'])->name('customer.search');
     Route::get('/customers/pagination',                 [CustomerController::class, 'search'])->name('customer.pagination');
     Route::get('/customers/export',                     [CustomerController::class, 'export'])->name('customer.export');
