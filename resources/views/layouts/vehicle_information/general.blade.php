@@ -841,7 +841,7 @@ background-color: #e93f7800!important;
                                         </div>
                                     </div>
                                 </div>
-                                <div class="image_section changeImages d-flex col-12 col-sm-12 col-md-12 col-lg-12 order-xl-12  mx-auto"
+                                <div class="image_section changeImages col-12 col-sm-12 col-md-12 col-lg-12 order-xl-12  mx-auto"
                                     style=" margin-top:1px; ">
                                     @if (@$vehicle['warehouse_image'])
                                         @foreach (@$vehicle['warehouse_image'] as $img)
