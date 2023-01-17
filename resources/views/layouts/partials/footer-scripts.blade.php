@@ -335,6 +335,9 @@
                     'tab': $tab
                 },
                 success: function(data) {
+                    $('.modal-body').html(data);
+                    $('#exampleModal').modal('show');
+                    $('#exampleModalLabel').text('New Vehicle');
                   
                     $('.billofsales').imageUploader({
                         maxFiles: 4,
@@ -380,9 +383,7 @@
                         preloaded: pickup_image,
                         preloadedInputName: 'pickup_old',
                     });
-                    $('.modal-body').html(data);
-                    $('#exampleModal').modal('show');
-                    $('#exampleModalLabel').text('New Vehicle');
+                    
                 }
             });
         } else if ($id == "shipment") {

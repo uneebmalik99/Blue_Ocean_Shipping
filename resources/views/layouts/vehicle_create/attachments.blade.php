@@ -138,7 +138,7 @@
 
                     {{-- @if(@$vehicles[0]['auction_image']) --}}
                   
-                    @if (count($vehicles[0]['auction_image']) > 0)
+                    @if (count((array)@$vehicles[0]['auction_image']) > 0)
                     <script>
                         a_image = [];
                         auction_obj = {};
@@ -188,7 +188,7 @@
                     </div>
                     @endif
                     {{-- @if(@$vehicles[0]['warehouse_image']) --}}
-                    @if (count($vehicles[0]['warehouse_image']) > 0)
+                    @if (count((array)@$vehicles[0]['warehouse_image']) > 0)
                     <script>
                         w_image = [];
                         warehouse_obj = {};
@@ -253,7 +253,7 @@
             @endif
 
             {{-- @if(@$vehicles[0]['pickupimages']) --}}
-            @if (count($vehicles[0]['pickupimages']) > 0)
+            @if (count((array)@$vehicles[0]['pickupimages']) > 0)
             <script>
                 p_images = [];
                 pickup_obj = {};
