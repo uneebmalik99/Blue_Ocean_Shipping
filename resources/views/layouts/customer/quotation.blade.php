@@ -1,4 +1,4 @@
-
+    @if(count(@$quotation) > 0)
     <div class="d-flex justify-content-around p-2">
         <div class="col-4 d-block">
             <div>
@@ -239,6 +239,17 @@
     </div>
     @endif
      @endfor
+    @endif
+
+    @else
+    <div class="card user-card rounded mt-3">
+        <div class="px-3 d-flex justify-cotent">
+    <div class="d-flex justify-content-center w-100">
+        <p>No Quotation Found</p>
+    </div>
+        </div>
+    </div>
+
     @endif
 
 
