@@ -570,7 +570,8 @@ class VehicleController extends Controller
         return Response($output);
     }
     else{
-        $vehicle['vehicles'] = Vehicle::with('pickupimages','originaltitles', 'billofsales','auction_image', 'warehouse_image')->where('id', $request->id)->get()->toArray();
+        $vehicle['vehicles'] = Vehicle::with('warehouse_image', 'auction_image', 'pickupimages','originaltitles', 'billofsales')->where('id', $request->id)->get()->toArray();
+        // dd($vehicle['vehicles']);
         $obj = Vehicle::find($request->id);
         $obj->update($data);
         $Obj_vehicle = $obj->where('vin', $data['vin'])->get();
@@ -677,17 +678,17 @@ class VehicleController extends Controller
         }
         
 
-        // if(!$auction_images && !$request->auction_old){
-        //     $auction_image = AuctionImage::where('vehicle_id', $Obj_vehicle[0]['id'])->delete();
-        // }
+        if(!$auction_images && !$request->auction_old){
+            $auction_image = AuctionImage::where('vehicle_id', $Obj_vehicle[0]['id'])->delete();
+        }
 
-        // if(!$warehouse_images && !$request->warehouse_old){
-        //     $auction_image = WarehouseImage::where('vehicle_id', $Obj_vehicle[0]['id'])->delete();
-        // }
+        if(!$warehouse_images && !$request->warehouse_old){
+            $auction_image = WarehouseImage::where('vehicle_id', $Obj_vehicle[0]['id'])->delete();
+        }
 
-        // if(!$pickup && !$request->pickup_old){
-        //     $auction_image = PickupImage::where('vehicle_id', $Obj_vehicle[0]['id'])->delete();
-        // }
+        if(!$pickup && !$request->pickup_old){
+            $auction_image = PickupImage::where('vehicle_id', $Obj_vehicle[0]['id'])->delete();
+        }
         
 
         if($auction_images){

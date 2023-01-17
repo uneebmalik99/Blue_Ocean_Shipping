@@ -294,6 +294,10 @@ Route::prefix('/admin')->middleware(['auth','login.status','revalidatehistory'])
     Route::get('/customers/AddnewQuotation/', [CustomerController::class, 'Addnew_quotation'])->name('customer.Addnew_quotation');
 
 
+    Route::post('/customerDelete/quotation', [CustomerController::class, 'customerDeleteQuotation'])->name('customerDelete.quotation');
+
+
+
 
 
 

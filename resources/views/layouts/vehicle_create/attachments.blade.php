@@ -120,21 +120,24 @@
 
 
         <div class="d-lg-flex d-block justify-content-center py-lg-2">
+
+
+
             <div class="px-lg-3 col-lg-5 py-lg-0">
                 <div class="box box-bg-2 col-12">
-                    {{-- <form method="POST" id="vehicle_auction_form" enctype="multipart/form-data"> --}}
-                    {{-- <input type="hidden" name="vin" id="vin" value="{{$vin}}" /> --}}
+                    
 
                     <div class="col-5 my-3 p-0 d-flex justify-content-center" style="border-bottom:2px solid #3181B9;">
                         <b>Auction Images</b>
                     </div>
-                    @if(@$vehicles)
+                    @if(@$vehicles[0]['auction_image'])
                     <div class="vehicle_auction_image_update" name="vehicle_auction_image[]" style="padding:.5rem .5rem;"></div>
                     @else
                     <div class="vehicle_auction_image" name="vehicle_auction_image[]" style="padding:.5rem .5rem;"></div>
                     @endif
 
-                    @if(@$vehicles)
+                    {{-- @if(@$vehicles[0]['auction_image']) --}}
+                  
                     @if (count($vehicles[0]['auction_image']) > 0)
                     <script>
                         a_image = [];
@@ -152,40 +155,45 @@
                     @endforeach
                     <script>
                         let auction_image = a_image;
+                        $('.vehicle_auction_image_update').imageUploader({
+                        preloaded: auction_image,
+                        imagesInputName: 'auction_images',
+                        maxFiles: 30,
+                        preloadedInputName: 'auction_old'
+
+                    });
                     </script>
                     @else
                     <script>
-                    $('.vehicle_auction_image_update').imageUploader({
+                    $('.vehicle_auction_image').imageUploader({
                         imagesInputName: 'auction_images',
                         maxFiles: 30,
                     });
                     </script>
                     @endif
-                    @endif
+                    {{-- @endif --}}
                 </div>
             </div>
+
             <div class="px-lg-3 col-lg-5 py-lg-0">
                 <div class="box box-bg-2 col-12">
-                    {{-- <form method="POST" id="vehicle_warehouse_form" enctype="multipart/form-data"> --}}
-                    {{-- <input type="hidden" name="vin" id="vin" value="{{$vin}}" /> --}}
-
                     <div class="col-6 my-3 p-0 d-flex justify-content-center" style="border-bottom:2px solid #3181B9;">
                         <b>Warehouse Images</b>
                     </div>
-                    @if(@$vehicles)
-                    <div class="vehicle_warehouse_image_update" name="vehicle_warehouse_image[]" style="padding:.5rem .5rem;"></div>
+                    @if(@$vehicles[0]['warehouse_image'])
+                    <div class="vehicle_warehouse_image_update" name="vehicle_warehouse_image[]" style="padding:.5rem .5rem;">
+                    </div>
                     @else
                     <div class="vehicle_warehouse_image" name="vehicle_warehouse_image[]" style="padding:.5rem .5rem;">
                     </div>
                     @endif
-                    @if(@$vehicles)
+                    {{-- @if(@$vehicles[0]['warehouse_image']) --}}
                     @if (count($vehicles[0]['warehouse_image']) > 0)
                     <script>
                         w_image = [];
                         warehouse_obj = {};
                     </script>
                     @foreach ($vehicles[0]['warehouse_image'] as $warehouse_image)
-                    {{-- {{asset(@$warehouse_image['name'])}} --}}
                         <script>
                            warehouse_obj ={
                                     id: "{{@$warehouse_image['id']}}",
@@ -193,30 +201,38 @@
                                 };
                                 w_image.push(warehouse_obj);
                         </script>
-
                     @endforeach
                     <script>
                         let warehouse_image = w_image;
                         console.log(warehouse_image);
+
+                        
+                $('.vehicle_warehouse_image_update').imageUploader({
+                    preloaded: warehouse_image,
+                    maxFiles: 30,
+                    imagesInputName: 'warehouse_images',
+                    preloadedInputName: 'warehouse_old'
+                });
+
+
                     </script>
                     @else
                     <script>
-                    $('.vehicle_warehouse_image_update').imageUploader({
+                    $('.vehicle_warehouse_image').imageUploader({
                         imagesInputName: 'warehouse_images',
                         maxFiles: 30,
                     });
                     </script>
                     @endif
-                    @else
-                    <script>
-                        $('.vehicle_warehouse_image').imageUploader({
-                        imagesInputName: 'warehouse_images',
-                        maxFiles: 30,
-                    });
-                    </script>
-                    @endif
+                   
                 </div>
             </div>
+
+
+
+
+            
+            
         </div>
 
 
@@ -228,7 +244,7 @@
             <div class="col-5 my-3 p-0 d-flex justify-content-center" style="border-bottom:2px solid #3181B9;">
                 <b>Pickup Images</b>
             </div>
-            @if(@$vehicles)
+            @if(@$vehicles[0]['pickupimages'])
             <div class="pick_update"  style="padding: .5rem .5rem;">
             </div>
             @else
@@ -236,15 +252,13 @@
             </div>
             @endif
 
-            @if(@$vehicles)
+            {{-- @if(@$vehicles[0]['pickupimages']) --}}
             @if (count($vehicles[0]['pickupimages']) > 0)
-            {{-- {{count($vehicles[0]['pickupimages'])}} --}}
             <script>
                 p_images = [];
                 pickup_obj = {};
             </script>
             @foreach ($vehicles[0]['pickupimages'] as $pickup_image)
-            {{-- {{asset(@$pickup_image['name'])}} --}}
                 <script>
                    pickup_obj ={
                             id: "{{@$pickup_image['id']}}",
@@ -256,23 +270,23 @@
             @endforeach
             <script>
                 let pickup_image = p_images;
+
+                $('.pick_update').imageUploader({
+                        imagesInputName: 'pickup',
+                        maxFiles: 30,
+                        preloaded: pickup_image,
+                        preloadedInputName: 'pickup_old',
+                    });
             </script>
             @else
             <script>
-                $('.pick_update').imageUploader({
+                $('.pick').imageUploader({
                             imagesInputName: 'pickup',
                             maxFiles: 30, 
                 });
             </script>
             @endif
-            @else
-            <script>
-                $('.pick').imageUploader({
-                        imagesInputName: 'pickup',
-                        maxFiles: 30,  
-                    });
-            </script>
-            @endif
+           
 
         </div>
     </div>

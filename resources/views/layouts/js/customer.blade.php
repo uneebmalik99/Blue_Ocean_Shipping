@@ -745,4 +745,35 @@
             }
         });
     }
+
+
+    function delete_quotation(id){
+        $('.parent_quotation').remove();
+        $.ajax({
+            type: 'post',
+            url: '{{ route('customerDelete.quotation') }}',
+            data: {
+                'id': id
+            },
+            success: function(data) {
+               
+            }
+        });
+
+
+    }
+    function delete_quotation_loop(id){
+        $('.parent_quotation'+id).remove();
+
+        $.ajax({
+            type: 'post',
+            url: '{{ route('customerDelete.quotation') }}',
+            data: {
+                'id': id
+            },
+            success: function(data) {
+              
+            }
+        });
+    }
 </script>

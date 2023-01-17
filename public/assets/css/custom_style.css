@@ -214,7 +214,12 @@
 }
 
 .btn_custom {
-    background: #696cff !important;
+    background: linear-gradient( 254.1deg, #10c3ea 4.82%, #337fb8 61.08%) !important;
+    border: 1px solid #1c71b0 !important;
+    box-shadow: 6px 6px 4px rgba(48, 148, 175, 0.47) !important;
+    transform: skew(-30deg) !important;
+    border-radius: 2px !important;
+    color: #fff !important;
 }
 
 .next-style {
@@ -237,6 +242,12 @@
     box-shadow: 6px 6px 4px rgba(48, 148, 175, 0.47) !important;
     transform: skew(-30deg) !important;
     
+}
+.profile_tabs{
+    border-left: 1px solid gray !important;
+    /* border-right: 1px solid gray !important; */
+    box-shadow: 6px 6px 4px rgba(48, 148, 175, 0.47) !important;
+    transform: skew(-30deg) !important;
 }
 
 .unskew {
@@ -467,9 +478,10 @@ table.sortable thead {
 
 .billing_input_style input {
     background: rgba(255, 255, 255, 0.13);
-    border: 1px solid #696cff;
-    box-shadow: 0px 4px 4px rgba(105, 108, 255, 0.33);
+    border: 1px solid #2c3e50!important;
+    /* box-shadow: 0px 4px 4px rgba(105, 108, 255, 0.33); */
     border-radius: 10px;
+    color:#6c757d!important;
 }
 
 .scroll {
