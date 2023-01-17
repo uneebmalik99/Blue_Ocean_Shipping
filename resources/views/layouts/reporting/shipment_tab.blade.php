@@ -19,7 +19,7 @@
                         name="location"  id="location">
                         <option selected disabled>Select Location</option>
                         @foreach ($location as $loc)
-                            <option value="{{ @$loc['state'] }}">{{ @$loc['state'] }}</option>
+                            <option value="{{ @$loc['port'] }}">{{ @$loc['port'] }}</option>
                         @endforeach
                     </select>
                 </div>
