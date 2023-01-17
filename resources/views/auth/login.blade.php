@@ -218,7 +218,7 @@ text-transform: capitalize;
                 <div class="copyright">
                     <p><h2>copyright@ 2023 all right reserved <br>
                     Developed by
-                    Universal OCEAN Shipping 
+                    ECSAP GLOBAL SHIPPING
                     Revolution Technologies
                     
                     <a href="https://therevolutiontechnologies.com/" target="__blank">The Revolution Technologies</h2></a></p>
