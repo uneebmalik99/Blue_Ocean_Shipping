@@ -1,11 +1,15 @@
 <div class="col-lg-3 h-100 p-0">
     <div class="col-lg-12 p-0">
-        <div class="card user-card rounded">
+        <div class="card user-card rounded" style="text-align: start!important;">
             <div class="card-header-img">
-                @if(@$user['user_image'])
-                <img class="rounded-circle" style="height:175px !important;width:175px !important;border:3px solid #2c3e50" src="{{ asset(@$user['user_image']) }}" alt="card-img"/>
+                @if (@$user['user_image'])
+                    <img class="rounded-circle"
+                        style="height:175px !important;width:175px !important;border:3px solid #2c3e50"
+                        src="{{ asset(@$user['user_image']) }}" alt="card-img" />
                 @else
-                <img class="rounded-circle" style="height:175px !important;width:175px !important;border:3px solid #2c3e50" src="{{ asset('assets/images/user.png') }}" alt="card-img" />
+                    <img class="rounded-circle"
+                        style="height:175px !important;width:175px !important;border:3px solid #2c3e50"
+                        src="{{ asset('assets/images/user.png') }}" alt="card-img" />
                 @endif
 
                 <div>
@@ -18,13 +22,14 @@
                 adipisicing elit, sed do eiusmod temp or
                 incidi dunt ut labore et.
             </p> --}}
-           {{-- {{dd(@$user['status'])}} --}}
+            {{-- {{dd(@$user['status'])}} --}}
             <div>
-                <br>
-                <div>
-                    <span class="text-muted my-3">
+                {{-- <br> --}}
+                <div class="">
+                    <span class="text-muted py-1 px-3">
                         <b>Username:</b> {{ @$user['name'] }}
-                        </span>
+                    </span>
+
                 </div>
                 <div class="p-3">
 
@@ -34,14 +39,16 @@
                     <hr class="m-0" style="border:1px solid #555454">
                 </div>
                 <div class="d-flex flex-column align-items-start">
-
+                    <span class="text-muted py-1 px-3">
+                        <b>Email:</b> {{ @$user['email'] }}
+                    </span>
                     {{-- <span class="text-muted py-1 px-3">
                         <b>Email:</b> {{ @$user['email'] }}
                         </span> --}}
                     <span class="text-muted py-1 px-3">
                         <b>Status:</b>
                         {{-- {{dd(@$val['status'])}} --}}
-                        @if (@$user['status'] == "1")
+                        @if (@$user['status'] == '1')
                             <div class="badge badge-success py-1 px-2 rounded">Active</div>
                         @endif
 
@@ -51,9 +58,6 @@
                     </span>
                     <span class="text-muted py-1 px-3">
                         <b>Role:</b> Customer
-                    </span>
-                    <span class="text-muted py-1 px-3">
-                        <b>Tax id:</b> {{ @$user['tax_id'] }} 12
                     </span>
                     <span class="text-muted py-1 px-3">
                         <b>Contact:</b> {{ @$user['phone'] }}

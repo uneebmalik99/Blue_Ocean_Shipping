@@ -658,7 +658,7 @@ background-color: #e93f7800!important;
                 </div>
                 <div class="row">
                     <div class="information_button d-flex justify-content-center mt-3"
-                        style="margin:50px; margin-left:130px">
+                        style="margin:12px; margin-left:130px">
                         <a href="{{ route('vehicle.exportpdf', @$vehicle['id']) }} " target="_blank">
                             <button
                                 style="background: #1F689E;
@@ -669,12 +669,8 @@ background-color: #e93f7800!important;
                                 </div>
                             </button>
                         </a>
-                        {{-- <button style="background: #1CACD9;border:none;font-size:12px;
-                    transform: skew(-30deg) !important;border-radius: 4px;color:white;margin-right: 3px;"><div style="transform: skew(30deg) !important;padding:1px 12px">Edit</div></button> --}}
+                      
                     </div>
-                </div>
-                <div>
-                    <br>
                 </div>
 
 
@@ -796,37 +792,6 @@ background-color: #e93f7800!important;
                         @endif
                     </div>
 
-
-
-
-
-
-                    {{-- <div class="d-flex justify-content-between my-2 py-1" style="border: 1px solid rgba(26, 88, 133, 0.17); border-radius: 10px;width: 90%;margin:4px auto;padding:5px; ">
-                        <span class="infromation_mainText ">Order Date</span>
-                        @if (@$vehicle['sale_date'])
-                        <span class="information_text ">{{@$vehicle['sale_date']}}</span>
-                        @else
-                        <span class="information_text">--</span>
-                        @endif
-                    </div> --}}
-                    {{-- <div class="d-flex justify-content-between my-2 py-1" style="border: 1px solid rgba(26, 88, 133, 0.17); border-radius: 10px;width: 90%;margin:4px auto;padding:5px; ">
-                        <span class="infromation_mainText ">location</span>
-                        @if (@$vehicle['pickup_location'])
-                        <span class="information_text ">{{@$vehicle['pickup_location']}}</span>
-                        @else
-                    <span class="information_text">--</span>
-                    @endif
-                    </div> --}}
-
-                    {{-- <div class="mt-4 " style="width: 80%;margin:4px auto;padding:5px; ">
-                        <p style="color:#6D8DA6; ">Note to department</p>
-                    </div> --}}
-                    {{-- <div class=" ">
-                        <select name=" " id=" " class="form-control " style="border: 1px solid rgba(26, 88, 133, 0.17); border-radius: 10px;width: 90%;margin:4px auto;padding:5px;font-size:13px;color:#6D8DA6; ">
-                            <option value=" ">Please Select department</option>
-                        </select>
-                    </div> --}}
-
                     <div class="d-flex justify-content-start " style="width: 80%;margin:4px auto;padding:5px; ">
                         <p style="color:#6D8DA6 ">Note</p><br>
                     </div>
@@ -842,16 +807,6 @@ background-color: #e93f7800!important;
 @endif
 </textarea>
                     </div>
-
-                    {{-- <div style="width: 90%; " class="d-flex justify-content-end col-sm-12 ">
-
-                        <button class="send mt-3" style="background: #1CACD9; border-radius: 4px;transform: skew(-30deg) !important;font-size: 13px;border:none;color:white; ">
-                        <div style="transform: skew(30deg) !important;padding:1px 12px ">
-                            Send
-                        </div>
-                    </button>
-
-                    </div> --}}
 
 
                 </div>
@@ -886,15 +841,17 @@ background-color: #e93f7800!important;
                                         </div>
                                     </div>
                                 </div>
-                                <div class="image_section changeImages col-12 col-sm-12 col-md-12 col-lg-12 order-xl-12  mx-auto"
+                                <div class="image_section changeImages d-flex col-12 col-sm-12 col-md-12 col-lg-12 order-xl-12  mx-auto"
                                     style=" margin-top:1px; ">
                                     @if (@$vehicle['warehouse_image'])
                                         @foreach (@$vehicle['warehouse_image'] as $img)
+                                        <div style="width: 24%!important;height:100%!important;">
                                             <img src="{{ asset($img['name']) }}" alt="" class=""
-                                                class="showMainImage"
-                                                style="width:24%;height:auto!important;margin-top:4px; object-fit:fill;"
-                                                onclick="onClick(this)" class="modal-hover-opacity"
-                                                class="hover-shadow cursor">
+                                                    class="showMainImage"
+                                                    style="height:inherit!important;object-fit:fill;"
+                                                    onclick="onClick(this)" class="modal-hover-opacity"
+                                                    class="hover-shadow cursor">
+                                        </div>
                                         @endforeach
                                     @else
                                         <h6 class="text-center mt-5 w-100" style="color:gray">No Image Found</h6>
@@ -929,7 +886,7 @@ background-color: #e93f7800!important;
 
 <div id="modal01" class="imgmodal" onclick="this.style.display='none' color:red">
     <span class="close vehicle_close cursor" onclick="closeModal()" style="margin-top: 50px">&times;</span>
-    <span class="close">&times;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    {{-- <span class="close">&times;&nbsp;&nbsp;&nbsp;&nbsp;</span> --}}
     <div class="imgmodal-content">
         <img id="img01" style="max-width:100%">
     </div>

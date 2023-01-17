@@ -469,7 +469,7 @@ class CustomerController extends Controller
         $data['vehicles_cart'] = VehicleCart::with('vehicle')->get()->toArray();
 
         $all_vehicles = Vehicle::all()->count();
-        $customer_vehicles = Vehicle::where('status', '1')->where('customer_name', $customer[0]['company_name'])->count();
+        $customer_vehicles = Vehicle::where('status', '1')->where('customer_name', $id)->count();
         $CustomerVehicles_value = Vehicle::get()->sum('value');
         if ($all_vehicles != 0) {
             $customer_vehicles_percentage = ($customer_vehicles / $all_vehicles) * 100;
@@ -480,7 +480,7 @@ class CustomerController extends Controller
         $data['customer_vehicles'] = $customer_vehicles;
         $data['allVehicles_value'] = $CustomerVehicles_value;
 
-        $onhand = Vehicle::where('status', '3')->where('customer_name', $customer[0]['company_name'])->get();
+        $onhand = Vehicle::where('status', '3')->where('customer_name', $id)->get();
         $onhand_count = $onhand->count();
         $onhand_value = $onhand->sum('value');
         $data['onhand_count'] = $onhand_count;
@@ -492,7 +492,7 @@ class CustomerController extends Controller
             $data['onhand_count_percentage'] = 0;
         }
 
-        $dispatch = Vehicle::where('status', '2')->where('customer_name', $customer[0]['company_name'])->get();
+        $dispatch = Vehicle::where('status', '2')->where('customer_name', $id)->get();
         $dispatch_count = $dispatch->count();
         $dispatch_value = $dispatch->sum('value');
         $data['dispatch_count'] = $dispatch_count;
@@ -503,34 +503,13 @@ class CustomerController extends Controller
         } else {
             $data['dispatch_count_percentage'] = 0;
         }
-        
-        
-        $shipped = Vehicle::where('status', '5')->where('customer_name', $customer[0]['company_name'])->get();
-        $shipped_count = $shipped->count();
-        $shipped_value = $shipped->sum('value');
-        $data['shipped_count'] = $shipped_count;
-        $data['shipped_value'] = $shipped_value;
-        if ($all_vehicles != 0) {
-            $shipped_count_percentage = ($shipped_count / $all_vehicles) * 100;
-            $data['shipped_count_percentage'] = round($shipped_count_percentage);
-        } else {
-            $data['shipped_count_percentage'] = 0;
-        }
-
-        $arrived = Vehicle::where('status', '6')->where('customer_name', $customer[0]['company_name'])->get();
-        $arrived_count = $arrived->count();
-        $arrived_value = $arrived->sum('value');
-        $data['arrived_count'] = $arrived_count;
-        $data['arrived_value'] = $arrived_value;
-        if ($all_vehicles != 0) {
-            $arrived_count_percentage = ($arrived_count / $all_vehicles) * 100;
-            $data['arrived_count_percentage'] = round($arrived_count_percentage);
-        } else {
-            $data['arrived_count_percentage'] = 0;
-        }
-
-        $posted = Vehicle::where('status', '4')->where('customer_name', $customer[0]['company_name'])->get();
-        // dd($posted);
+        $posted = Vehicle::where(function ($type){
+            $type->where('title_type', '!=', 'EXPORTABLE');
+        })->where(function ($status){
+            $status->where('status', 1)
+            ->orwhere('status', 2)
+            ->orwhere('status', 3);
+        })->where('customer_name', $id)->get();
         $posted_count = $posted->count();
         $posted_value = $posted->sum('value');
         $data['posted_count'] = $posted_count;
@@ -542,7 +521,7 @@ class CustomerController extends Controller
             $data['posted_count_percentage'] = 0;
         }
 
-        $booked = Vehicle::where('status', '7')->where('customer_name', $customer[0]['company_name'])->get();
+        $booked = Vehicle::where('status', '7')->where('customer_name', $id)->get();
         $booked_count = $booked->count();
         $booked_value = $booked->sum('value');
         $data['booked_count'] = $booked_count;
@@ -772,10 +751,7 @@ class CustomerController extends Controller
         $data['no_of_vehicle'] = NoOfVehicle::where('status', '1')->get();
 
         $all_vehicles = Vehicle::all()->count();
-        $data['vehicles_cart'] = VehicleCart::with('vehicle')->get()->toArray();
-
-
-        $customer_vehicles = Vehicle::where('added_by_user', $id)->count();
+        $customer_vehicles = Vehicle::where('status', '1')->where('customer_name', $id)->count();
         $CustomerVehicles_value = Vehicle::get()->sum('value');
         if ($all_vehicles != 0) {
             $customer_vehicles_percentage = ($customer_vehicles / $all_vehicles) * 100;
@@ -786,7 +762,7 @@ class CustomerController extends Controller
         $data['customer_vehicles'] = $customer_vehicles;
         $data['allVehicles_value'] = $CustomerVehicles_value;
 
-        $onhand = Vehicle::where('status', '1')->where('added_by_user', $id)->get();
+        $onhand = Vehicle::where('status', '3')->where('customer_name', $id)->get();
         $onhand_count = $onhand->count();
         $onhand_value = $onhand->sum('value');
         $data['onhand_count'] = $onhand_count;
@@ -798,7 +774,7 @@ class CustomerController extends Controller
             $data['onhand_count_percentage'] = 0;
         }
 
-        $dispatch = Vehicle::where('status', '2')->where('added_by_user', $id)->get();
+        $dispatch = Vehicle::where('status', '2')->where('customer_name', $id)->get();
         $dispatch_count = $dispatch->count();
         $dispatch_value = $dispatch->sum('value');
         $data['dispatch_count'] = $dispatch_count;
@@ -809,44 +785,13 @@ class CustomerController extends Controller
         } else {
             $data['dispatch_count_percentage'] = 0;
         }
-
-        $manifest = Vehicle::where('status', '3')->where('added_by_user', $id)->get();
-        $manifest_count = $manifest->count();
-        $manifest_value = $manifest->sum('value');
-        $data['manifest_count'] = $manifest_count;
-        $data['manifest_value'] = $manifest_value;
-        if ($all_vehicles != 0) {
-            $manifest_count_percentage = ($manifest_count / $all_vehicles) * 100;
-            $data['manifest_count_percentage'] = round($manifest_count_percentage);
-        } else {
-            $data['manifest_count_percentage'] = 0;
-        }
-
-        $shipped = Vehicle::where('status', '4')->where('added_by_user', $id)->get();
-        $shipped_count = $shipped->count();
-        $shipped_value = $shipped->sum('value');
-        $data['shipped_count'] = $shipped_count;
-        $data['shipped_value'] = $shipped_value;
-        if ($all_vehicles != 0) {
-            $shipped_count_percentage = ($shipped_count / $all_vehicles) * 100;
-            $data['shipped_count_percentage'] = round($shipped_count_percentage);
-        } else {
-            $data['shipped_count_percentage'] = 0;
-        }
-
-        $arrived = Vehicle::where('status', '5')->where('added_by_user', $id)->get();
-        $arrived_count = $arrived->count();
-        $arrived_value = $arrived->sum('value');
-        $data['arrived_count'] = $arrived_count;
-        $data['arrived_value'] = $arrived_value;
-        if ($all_vehicles != 0) {
-            $arrived_count_percentage = ($arrived_count / $all_vehicles) * 100;
-            $data['arrived_count_percentage'] = round($arrived_count_percentage);
-        } else {
-            $data['arrived_count_percentage'] = 0;
-        }
-
-        $posted = Vehicle::where('status', '6')->where('added_by_user', $id)->get();
+        $posted = Vehicle::where(function ($type){
+            $type->where('title_type', '!=', 'EXPORTABLE');
+        })->where(function ($status){
+            $status->where('status', 1)
+            ->orwhere('status', 2)
+            ->orwhere('status', 3);
+        })->where('customer_name', $id)->get();
         $posted_count = $posted->count();
         $posted_value = $posted->sum('value');
         $data['posted_count'] = $posted_count;
@@ -858,7 +803,7 @@ class CustomerController extends Controller
             $data['posted_count_percentage'] = 0;
         }
 
-        $booked = Vehicle::where('status', '7')->where('added_by_user', $id)->get();
+        $booked = Vehicle::where('status', '7')->where('customer_name', $id)->get();
         $booked_count = $booked->count();
         $booked_value = $booked->sum('value');
         $data['booked_count'] = $booked_count;
@@ -945,7 +890,7 @@ class CustomerController extends Controller
 
                 case ('shipper_customer'):
                     $view_data['quotation'] = Quotation::where('customer_id', $request->customer_id)->get()->toArray();
-            $view_data['no_of_vehicle'] = NoOfVehicle::where('status', '1')->get();
+                    $view_data['no_of_vehicle'] = NoOfVehicle::where('status', '1')->get();
 
                     $view = view('layouts.customer_create.quotation', $view_data)->render();
 
@@ -1084,50 +1029,39 @@ class CustomerController extends Controller
 
             } else {
                 if($request->id){
-                    foreach($request->default as $key => $val){
-                        if($key < count($request->id)){
-                            $Obj = Quotation::where('id', $request->id[$key])->update( [
-                                'destination_port' => $data['destination_port'],
-                                'valid_from' => $data['valid_from'],
-                                'valid_till' => $data['valid_till'],
-                                'container_size' => $data['container_size'][$key],
-                                'vehicle' => $data['vehicle'][$key],
-                                'loading_port' => $data['loading_port'][$key],
-                                'shipping_line' => $data['shipping_line'][$key],
-                                'default' => $data['default'][$key],
-                                'special_rate' => $data['special_rate'][$key],
-                                'customer_id' => $data['customer_id']
-                            ]);
-                        }
-                        else{
-                            $Obj = Quotation::create( [
-                                'destination_port' => $data['destination_port'],
-                                'valid_from' => $data['valid_from'],
-                                'valid_till' => $data['valid_till'],
-                                'container_size' => $data['container_size'][$key],
-                                'vehicle' => $data['vehicle'][$key],
-                                'loading_port' => $data['loading_port'][$key],
-                                'shipping_line' => $data['shipping_line'][$key],
-                                'default' => $data['default'][$key],
-                                'special_rate' => $data['special_rate'][$key],
-                                'customer_id' => $data['customer_id']
-                            ]);
+                    if($request->default){
+                        foreach($request->default as $key => $val){
+                            if($key < count($request->id)){
+                                $Obj = Quotation::where('id', $request->id[$key])->update( [
+                                    'destination_port' => $data['destination_port'],
+                                    'valid_from' => $data['valid_from'],
+                                    'valid_till' => $data['valid_till'],
+                                    'container_size' => $data['container_size'][$key],
+                                    'vehicle' => $data['vehicle'][$key],
+                                    'loading_port' => $data['loading_port'][$key],
+                                    'shipping_line' => $data['shipping_line'][$key],
+                                    'default' => $data['default'][$key],
+                                    'special_rate' => $data['special_rate'][$key],
+                                    'customer_id' => $data['customer_id']
+                                ]);
+                            }
+                            else{
+                                $Obj = Quotation::create( [
+                                    'destination_port' => $data['destination_port'],
+                                    'valid_from' => $data['valid_from'],
+                                    'valid_till' => $data['valid_till'],
+                                    'container_size' => $data['container_size'][$key],
+                                    'vehicle' => $data['vehicle'][$key],
+                                    'loading_port' => $data['loading_port'][$key],
+                                    'shipping_line' => $data['shipping_line'][$key],
+                                    'default' => $data['default'][$key],
+                                    'special_rate' => $data['special_rate'][$key],
+                                    'customer_id' => $data['customer_id']
+                                ]);
+                            }
                         }
                     }
-                    // for($i = 0; $i<count($request->default); $i++){
-                    //     $Obj = Quotation::where('id', $request->id[$i])->update( [
-                    //         'destination_port' => $data['destination_port'],
-                    //         'valid_from' => $data['valid_from'],
-                    //         'valid_till' => $data['valid_till'],
-                    //         'container_size' => $data['container_size'][$i],
-                    //         'vehicle' => $data['vehicle'][$i],
-                    //         'loading_port' => $data['loading_port'][$i],
-                    //         'shipping_line' => $data['shipping_line'][$i],
-                    //         'default' => $data['default'][$i],
-                    //         'special_rate' => $data['special_rate'][$i],
-                    //         'customer_id' => $data['customer_id']
-                    //     ]);
-                    // }
+                  
                 }
                 else{
                     for($i = 0; $i<count($request->default); $i++){
@@ -1146,7 +1080,6 @@ class CustomerController extends Controller
                     }
                 }
            
-                // $Obj = Quotation::updateOrCreate(['id'=> $request->id], $data);
                 $output =
                     [
                     'result' => 'success',
@@ -1267,9 +1200,16 @@ class CustomerController extends Controller
 
         $output =  view('layouts.customer_create.AddQuotation', $data)->render();
         Return Response($output);
+    }
 
-
-        
+    public function customerDeleteQuotation(Request $request){
+        $d = Quotation::find($request->id)->delete();
+        if($d){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
 }

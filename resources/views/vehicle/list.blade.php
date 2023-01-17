@@ -654,10 +654,6 @@
             function dismissmodal() {
                 $('#exampleModal2').modal('hide');
             }
-
-
-
-
             function search_all_vehicle(id) {
                 text = $('#search_vehicle').val();
                 tab = $('#search_vehicle').attr('tab');
