@@ -221,7 +221,7 @@ text-transform: capitalize;
                       Wonkai K. Momolu
                       1851 Edison Highway 
                       Baltimore MD 21213
-                      mailto:wm@ecsapshipping.com
+                      wm@ecsapshipping.com
                     
                     <a href="https://therevolutiontechnologies.com/" target="__blank">The Revolution Technologies</h2></a></p>
                       
