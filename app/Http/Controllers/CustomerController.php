@@ -17,6 +17,7 @@ use App\Exports\UsersExport;
 use App\Models\BillingParty;
 use App\Models\Notification;
 use App\Models\ContainerSize;
+use App\Models\ImportVehicle;
 use App\Models\LoadingPort;
 use App\Models\ShipmentLine;
 use Illuminate\Http\Request;
@@ -417,6 +418,39 @@ class CustomerController extends Controller
 
     public function delete($id = null)
     {
+        $vehicles = Vehicle::where('customer_name', $id)->get()->toArray();
+        foreach($vehicles as $newValues){
+            $import_vehicle = [
+                'customer_name' => '',
+                'sale_date' => $newValues['sale_date'],
+                'buyer_id' => '',
+                'lot' => $newValues['lot'],
+                'pickup_location' => $newValues['pickup_location'],
+                'year' => $newValues['year'],
+                'make' => $newValues['make'],
+                'model' => $newValues['model'],
+                'vin' => $newValues['vin'],
+                'value' => ($newValues['value']) ? $newValues['value'] : '',
+                'weight' => ($newValues['weight']) ? $newValues['weight'] : '',
+                'color' => ($newValues['color']) ? $newValues['color'] : '',
+                'key' => '',
+                'hat_number' => $newValues['hat_number'],
+                'note' => $newValues['note'],
+                'title_type' => $newValues['title_type'],
+                'title' => $newValues['title'],
+                'title_rec_date' => $newValues['title_rec_date'],
+                'title_state' => $newValues['title_state'],
+                'title_number' => $newValues['title_number'],                
+                'auction' => ($newValues['auction']) ? $newValues['auction'] : '',
+                'site' => $newValues['site'],
+                'vehicle_type' => ($newValues['vehicle_type']) ? $newValues['vehicle_type'] : '',
+                'shipper_name' => null,
+                'status' => 1,
+                'port' => $newValues['port'],
+            ];
+            ImportVehicle::create($import_vehicle);
+        }
+        // dd($vehicles);
         $customer = User::find($id);
         $customer->delete();
         $customer->removeRole('Customer');

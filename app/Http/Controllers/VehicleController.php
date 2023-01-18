@@ -399,7 +399,7 @@ class VehicleController extends Controller
             $id = $request->id;
             $data['user'] = Vehicle::with('user','vehicle_status')->where('id', $id)->get()->toArray();
             // dd($data['user']);
-            $data['update_buyer_id'] = User::with('billings')->wherecompany_name($data['user'][0]['customer_name'])->get()->toArray();
+            $data['update_buyer_id'] = User::with('billings')->whereid($data['user'][0]['customer_name'])->get()->toArray();
             // dd($data['update_buyer_id']);
             // $Obj_vehicle = new Vehicle;
             // $data['user'] = $Obj_vehicle->find($id)->toArray();
