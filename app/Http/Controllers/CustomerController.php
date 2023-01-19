@@ -1037,8 +1037,6 @@ class CustomerController extends Controller
                         $documents['thumbnail'] = $file_name;
                         $files->move(public_path($this->directory), $docname);
                         $documents['user_id'] = $user_id;
-
-                        // $Obj = CustomerDocument::updateOrCreate(['user_id' => $request->id], $documents);
                         $Obj = new CustomerDocument;
                         $Obj->create($documents);
                     }
@@ -1061,10 +1059,7 @@ class CustomerController extends Controller
                 ];
 
             } elseif ($tab == "shipper_customer") {
-                // dd($data);
                 $Obj = Shipper::updateOrCreate(['id' => $request->id], $data);
-                // $Obj = new Shipper;
-                // $Obj->create($data);
                 $output =
                     [
                     'result' => 'success',
@@ -1072,7 +1067,6 @@ class CustomerController extends Controller
                     'view' => $view,
                     'destination_port' => DCountry::select('port')->where('status', '1')->groupBy('port')->get()->toArray(),
                 ];
-
             } else {
                 if($request->id){
                     if($request->default){
@@ -1161,44 +1155,27 @@ class CustomerController extends Controller
         $user = User::where('role_id', '4');
         if ($filterText == "all") {
             $data['user'] = $user->get();
-            // dd('all');
         } else {
             $data['user'] = $user->where('status', $filterText)
                 ->orWhere('city', $filterText)
                 ->orWhere('state', $filterText)->get();
-            // $data['user'] = $user->where('status', $filterText)->orwhere('city', $filterText)->orwhere('state', $filterText)->get()->toArray();
-
         }
         $output = view('customer.FilterTable', $data)->render();
         return Response($output);
     }
-
     public function changeNotification(Request $req)
     {
         $id = $req->id;
         $notification = Notification::where('id', $id)->get();
         return Response($notification);
-
     }
-
     public function export()
     {
         return Excel::download(new UsersExport, 'customers.xlsx');
     }
-
-    // public function import(Request $request)
-    // {
-    //     if ($request->ajax()) {
-    //         $output = view('layouts.customer.import_customer')->render();
-    //         return Response($output);
-    //     }
-    //     Excel::import(new CustomersImport, request()->file('import_document'));
-    // }
-
+    
     public function serverside(Request $request, $state = null)
-    {
-       
-        
+    { 
         if ($request->ajax()) {
 
             if($state != null){
@@ -1207,9 +1184,6 @@ class CustomerController extends Controller
         else{
             $data = User::role('Customer');
         }
-
-
-            
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
