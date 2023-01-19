@@ -20,6 +20,7 @@ use App\Models\ContainerSize;
 use App\Models\ImportVehicle;
 use App\Models\LoadingPort;
 use App\Models\ShipmentLine;
+use App\Jobs\SendMailJob;
 use Illuminate\Http\Request;
 use App\Models\DestinationPort;
 use App\Models\CustomerDocument;
@@ -31,6 +32,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Storage;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Image;
 
 class CustomerController extends Controller
 {
@@ -980,6 +982,8 @@ class CustomerController extends Controller
     
                 if ($image) {
                     foreach ($image as $images) {
+                        // $image_resize = Image::make($images->getRealPath());
+                        // $image_resize->fit(250);
                         $filename = Storage::putFile($this->directory, $images);
                         $images->move(public_path($this->directory), $filename);
                         $data['user_image'] = $filename;
@@ -999,13 +1003,21 @@ class CustomerController extends Controller
                 else{
                     $data['password'] = Hash::make($request->password);
                 }
-                // $Obj = new User;
-                // $Obj->create($data);
-                // dd($data['id']);
-                // $data['password'] = Hash::make($request->password);
-                // dd($data);
+                
                 $Obj = User::updateOrCreate(['id' => $request->id], $data);
-                // $email = $data['email'];
+                $user = $Obj->toArray();
+
+                if($Obj){
+                    if($request->password){
+                        $user['password'] = $request->password;
+                    }
+                    else{
+                        $user['password'] = 'Previouse Password';
+                    }
+                    // dd($user);
+                    dispatch(new SendMailJob($user));
+                }
+                
                 $user = User::where('email', $email)->get();
                 $user_id = $user[0]['id'];
 

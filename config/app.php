@@ -178,6 +178,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         // Barryvdh\DomPDF\ServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
     ],
 
     /*
@@ -232,7 +233,7 @@ return [
         'Input' => Illuminate\Support\Facades\Input::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         // 'PDF' => Barryvdh\DomPDF\Facade::class,
-
+        'Image' => Intervention\Image\Facades\Image::class
     ],
 
 ];
