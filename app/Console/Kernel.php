@@ -26,6 +26,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('Shipments:Update')->everyThreeMinutes();
+        $schedule->command('queue:prune-batches')->daily();
         // Log::info("shipment:update command run");
     }
 
