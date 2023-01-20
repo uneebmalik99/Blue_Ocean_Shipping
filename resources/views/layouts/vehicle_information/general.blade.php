@@ -841,14 +841,14 @@ background-color: #e93f7800!important;
                                         </div>
                                     </div>
                                 </div>
-                                <div class="image_section changeImages d-flex col-12 col-sm-12 col-md-12 col-lg-12 order-xl-12  mx-auto"
+                                <div class="image_section changeImages col-12 col-sm-12 col-md-12 col-lg-12 order-xl-12  mx-auto"
                                     style=" margin-top:1px; ">
                                     @if (@$vehicle['warehouse_image'])
                                         @foreach (@$vehicle['warehouse_image'] as $img)
                                         {{-- <div style="width: 24%!important;height:100%!important;"> --}}
-                                            <img src="{{ asset($img['name']) }}" alt="" class=""
+                                            <img src="{{ asset($img['name']) }}" alt=""
                                                     class="showMainImage"
-                                                    style="width:24%;height:auto!important;margin-top:4px;object-fit:fill;"
+                                                    style="width:24%;height:66px!important;margin-top:4px;object-fit:fill;"
                                                     onclick="onClick(this)" class="modal-hover-opacity"
                                                     class="hover-shadow cursor">
                                         {{-- </div> --}}
