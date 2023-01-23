@@ -17,7 +17,7 @@ class User extends Authenticatable
     // use Notifiable;
     // use softDeletes;
     protected $primaryKey = 'id';
-    protected $table = "users";
+    protected $table = "user";
     protected $guarded = [];
       /**
      * The attributes that should be hidden for arrays.
