@@ -936,7 +936,7 @@
         document.getElementById('load').style.visibility = "visible";
         tab = tab;
         vin = $('#vin').val();
-       
+        t = $('#vin').attr('value');
         if (tab == 'getinfo') {
             if (vin == '') {
                 document.getElementById('load').style.visibility = "hidden";
@@ -947,6 +947,39 @@
                             });
 
             } else {
+                if(vin == t){
+                    var url = 'https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvaluesextended/' + vin + '?format=json';
+                        $.ajax({
+                            type: 'GET',
+                            url: url,
+                            success: function(data) {
+                                console.log(data.Results[0]);
+                                vehicle = data.Results[0];
+                                if (vehicle.Model == '' && vehicle.Make == '') {
+                                    iziToast.error({
+                                        position: 'topCenter',
+                                        timeout: 10000,
+                                        icon: 'fa fa-warning',
+                                        title: 'Error',
+                                        message: 'No Vehicle Found!',
+                                    });
+                                } else {
+                                    $('#year').val(vehicle.ModelYear);
+                                    $('#model').html('<option value="' + vehicle.Model + '">' + vehicle.Model +
+                                        '</option>');
+                                    $('#make').html('<option value="' + vehicle.Make + '">' + vehicle.Make +
+                                        '</option>');
+                                    $('#getinfo').attr('id', 'reset');
+                                    $('#getinfo').text('Reset');
+                                }
+                            },
+                            complete: function() {
+                                document.getElementById('load').style.visibility = "hidden";
+                            }
+                            });
+                        
+                }
+                else{
                 $.ajax({
                     type: 'POST',
                     url: '{{ route('vehicle.vincheck') }}',
@@ -954,7 +987,7 @@
                         vin: vin
                     },
                     success: function(data) {
-                            if(data == "exists"){
+                        if(data == "exists"){
                             document.getElementById('load').style.visibility = "hidden";
                             iziToast.warning({
                                 message: 'Vin Exists',
@@ -1009,6 +1042,7 @@
                         
                     }
                 });
+            }
                 
                 
             }

@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+    
 });
 //VehicLe Resoucrce Routes
 Route::apiResource('vehicle',\App\Http\Controllers\Api\v1\VehicleController::class);

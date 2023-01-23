@@ -163,8 +163,8 @@
                     </tr>
                     <tr>
                         <!-- <td class="td3_data">BoL/AWB/BOOKING # : 220434507C</td> -->
-                        <td class="td3_data"><input type="text" value="1" style="width: 100%;border:none;outline:none;text-align:start;"></td>
-                        <td class="td3_data"><input type="text" value="1" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                        <td class="td3_data"><input type="text" value="{{ @$shipment[0]['destination_port'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                        <td class="td3_data"><input type="text" value="{{ @$shipment[0]['loading_port'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
     
                     </tr>
                     <tr>
@@ -210,13 +210,14 @@
                     <tr>
                         <td class="td3_data"><input type="text" value="CONTAINER #" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                         <td class="td3_data"><input type="text" value="CONTAINER TYPE " style="width: 100%;border:none;outline:none;text-align:start;"></td>
-                        <td class="td3_data"><input type="text" value="SEAL #" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                        <td class="td3_data"><input type="text" value="Booking Number#" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                         <td class="td3_data"><input type="text" value="SPECIAL INSTRUCTIONS" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                     </tr>
                     <tr>
+                        
                         <td class="td3_data"><input type="text" value="{{ @$shipment[0]['container_no'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                         <td class="td3_data"><input type="text" value="{{ @$shipment[0]['container_type'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
-                        <td class="td3_data"><input type="text" value="29658206" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                        <td class="td3_data"><input type="text" value="{{ @$shipment[0]['booking_number'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                         <td class="td3_data"><input type="text" value=" " style="width: 100%;border:none;outline:none;text-align:start;"></td>
     
                     </tr>
@@ -233,8 +234,8 @@
                         <!-- <td class="td3_data">SPECIAL INSTRUCTIONS</td> -->
                     </tr>
                     <tr>
-                        <td class="td3_data"><input type="text" value="4 UNITS USED VEHICLES" style="width: 100%;border:none;outline:none;text-align:start;"></td>
-                        <td class="td3_data"><input type="text" value="{{ @$shipment[0]['vehicle'][0]['weight'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                        <td class="td3_data"><input type="text" value="{{ @$shipment[0]['units'] }} UNITS USED VEHICLES" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                        <td class="td3_data"><input type="text" value="--" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                         <td class="td3_data"><input type="text" value="55 M3" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                         <!-- <td class="td3_data"></td> -->
     
@@ -280,8 +281,8 @@
                     </tr>
                     <tr>
                         <td class="td3_data"><input type="text" value="SEND TELEX RELEASE" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
-                        <td class="td3_data"><b>ITN#</b><input type="text" value="X20220827150029" style="width: 100%;border:none;outline:none;text-align:start;"></td>
-                        <td class="td3_data"><input type="text" value="7615" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                        <td class="td3_data"><b>ITN#</b><input type="text" value="{{ @$shipment[0]['ase-itn_number'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                        <td class="td3_data"><input type="text" value="{{ @$total_weight }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                     </tr>
                     <tr>
                         <td colspan="3" class="p_text"><input type="text" value="These Comodities, Technology Or Software Were Exported From The United States In The Acordance With The Exoirt." style="width: 100%;border:none;outline:none;text-align:start;"></td>

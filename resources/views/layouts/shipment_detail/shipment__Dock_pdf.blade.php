@@ -221,8 +221,8 @@
                         <input type="text" value="TR 12105 ALDINE WESTFIELD RD, Tel:7132801186," style="width: 100%;border:none;outline:none;text-align:start;"><br>
                         <input type="text" value="HOUSTON, TX 77093. UNITED STATES" style="width: 100%;border:none;outline:none;text-align:start;">
                     </td>
-                    <td class="right"><input type="text" value="222044902" style="width: 100%;border:none;outline:none;text-align:start;"></td>
-                    <td class="no_al"><input type="text" value="222044902" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                    <td class="right"><input type="text" value="{{ @$shipment[0]['booking_number'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                    <td class="no_al"><input type="text" value="{{ @$shipment[0]['booking_number'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                 </tr>
                 <tr>
     

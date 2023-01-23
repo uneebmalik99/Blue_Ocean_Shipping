@@ -17,6 +17,7 @@
         "kyslik/column-sortable": "^6.4",
         "laravel-admin-ext/lock-screen": "^1.0",
         "laravel/framework": "^8.0",
+        "laravel/sanctum": "2.11",
         "laravel/tinker": "^2.0",
         "laravel/ui": "*",
         "livewire/livewire": "^2.10",
