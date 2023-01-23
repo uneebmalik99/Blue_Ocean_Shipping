@@ -85,7 +85,7 @@
                                         <a class="prefix text-dark px-2 getinf"
                                             style="text-decoration: none!important;
                                              background:rgb(175, 197, 234);border-radius:20px;cursor:pointer"
-                                            id="getinfo" onclick="getInfo(this.id)">
+                                            id="getinfo" onclick="getInfo(this.id)" value="{{ @$user[0]['vin'] }}">
                                             <span class="text-white px-1" id="getinfo">GetInfo</span>
                                         </a>
                                         {{-- </form> --}}

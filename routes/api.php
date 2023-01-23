@@ -17,6 +17,7 @@ use App\Http\Controllers\Api\v1\AuthController;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+    
 });
 //Auth Api Routes
 Route::post('/auth/register', [AuthController::class, 'register']);

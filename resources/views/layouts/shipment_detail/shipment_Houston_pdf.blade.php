@@ -154,8 +154,8 @@
                         <td class="td3_data"><input type="text" value="{{ @$vehicle['model'] }}" style="width: 100%;border:none!important;outline:none;text-align:start;"></td>
                         <td class="td3_data"><input type="text" value="{{ @$vehicle['vin'] }}" style="width: 100%;border:none!important;outline:none;text-align:start;"></td>
                         <td class="td3_data"><input type="text" value="{{ @$vehicle['title_number'] }}" style="width: 100%;border:none!important;outline:none;text-align:start;"></td>
-                        <td class="td3_data"><input type="text" value="{{ @$vehicle['state'] }}" style="width: 100%;border:none!important;outline:none;text-align:start;"></td>
-                        <td class="td3_data"><input type="text" value="{{ @$vheicle['value'] }}" style="width: 100%;border:none!important;outline:none;text-align:start;"></td>
+                        <td class="td3_data"><input type="text" value="{{ @$vehicle['title_state'] }}" style="width: 100%;border:none!important;outline:none;text-align:start;"></td>
+                        <td class="td3_data"><input type="text" value="{{ @$vehicle['value'] }}" style="width: 100%;border:none!important;outline:none;text-align:start;"></td>
                         
                     </tr>
                     @endforeach
@@ -172,19 +172,19 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="td3_data"><input type="text" value="ITN : X20220827150029" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                        <td class="td3_data"><input type="text" value="ITN : {{ @$shipment[0]['ase-itn_number'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                         <td class="td3_data"><input type="text" value="VALUE :" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                     </tr>
                     <tr>
-                        <td class="td3_data"><input type="text" value="CARRIER : MAERSK" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                        <td class="td3_data"><input type="text" value="CARRIER : {{ @$shipment[0]['shipping_line'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                         <td class="td3_data"><input type="text" value="VESSEL : GUDRUN MAERSK" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                     </tr>
                     <tr>
-                        <td colspan="2" class="td3_data"><input type="text" value="BoL/AWB/BOOKING # : 220434507C" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                        <td colspan="2" class="td3_data"><input type="text" value="BoL/AWB/BOOKING # : {{ @$shipment[0]['booking_number'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                         
                     </tr>
                     <tr>
-                        <td class="td3_data"><input type="text" value="EXPORT DATE : 2022-09-13 " style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                        <td class="td3_data"><input type="text" value="EXPORT DATE : {{ @$shipment[0]['sale_date'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                         <td class="td3_data"><input type="text" value="PORT OF UNLADING :" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                     </tr>
                     <tr>
