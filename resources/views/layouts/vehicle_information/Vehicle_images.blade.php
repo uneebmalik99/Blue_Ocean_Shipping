@@ -47,7 +47,7 @@ display:inline-block;
 </style>
 @if(@$images)
 @foreach(@$images as $img)  
-<img src="{{asset($img['name'])}}" alt=""class="item_1" style="width:24%!important;height:auto!important;"   onclick="onClick(this)" class="modal-hover-opacity"class="hover-shadow cursor">
+<img src="{{asset($img['name'])}}" alt=""class="item_1" style="width:24%!important;height:66px!important;"   onclick="onClick(this)" class="modal-hover-opacity"class="hover-shadow cursor">
 @endforeach
 @else
 <h6 class="text-center mt-5 w-100" style="color:gray">No Image Found</h6>

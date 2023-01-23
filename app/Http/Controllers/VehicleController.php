@@ -50,7 +50,7 @@ use Spatie\Permission\Models\Permission;
 // use Excel;
 use URL;
 use DB;
-
+use Intervention\Image\ImageManagerStatic as Images;
 class VehicleController extends Controller
 {
 
@@ -399,7 +399,7 @@ class VehicleController extends Controller
             $id = $request->id;
             $data['user'] = Vehicle::with('user','vehicle_status')->where('id', $id)->get()->toArray();
             // dd($data['user']);
-            $data['update_buyer_id'] = User::with('billings')->wherecompany_name($data['user'][0]['customer_name'])->get()->toArray();
+            $data['update_buyer_id'] = User::with('billings')->whereid($data['user'][0]['customer_name'])->get()->toArray();
             // dd($data['update_buyer_id']);
             // $Obj_vehicle = new Vehicle;
             // $data['user'] = $Obj_vehicle->find($id)->toArray();
@@ -695,14 +695,29 @@ class VehicleController extends Controller
             $Obj_auctionImages = new AuctionImage;
             foreach ($auction_images as $auctionImages) {
                 $file_name = time() . '.' . $auctionImages->extension();
-                $filename = Storage::putFile($this->directory, $auctionImages);
-                $type = $auctionImages->extension();
-                $doc = $auctionImages->move(public_path($this->directory), $filename);
+                if ($auctionImages->getSize() > 3219999) {
+                    $path = $auctionImages->getRealPath();
+                    $actual_image = Images::make($path);
+                    $height = $actual_image->height()/1;
+                    $width = $actual_image->width()/1;
+                    $image_resize = $actual_image->resize($width, $height)->encode('jpg');
+                    $hash = md5($image_resize->__toString());
+                    $path = "vehicle_images/{$hash}.jpg";
+                    $image_resize->save(public_path($path));
+                    $filename = Storage::put($path, $image_resize->__toString());
+                }
+                else{
+                    $filename = Storage::putFile($this->directory, $auctionImages);
+                    $type = $auctionImages->extension();
+                    $doc = $auctionImages->move(public_path($this->directory), $filename);
+                }
                 $data = [
                     'name' => $filename,
                     'thumbnail' => $file_name,
                     'vehicle_id' => $Obj_vehicle[0]['id'],
                 ];
+
+
                 $Obj_auctionImages->create($data);
                 $output['result'] = "Success";
             }   

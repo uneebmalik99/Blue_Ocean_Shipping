@@ -220,7 +220,7 @@
                     <td class="td_text"><input type="text" value="{{ @$vehicle['model'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                     <td class="td_text"><input type="text" value="{{ @$vehicle['vin'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                     <td class="td_text"><input type="text" value="{{ @$vehicle['title_number'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
-                    <td class="td_text"><input type="text" value="{{ @$vehicle['state'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                    <td class="td_text"><input type="text" value="{{ @$vehicle['title_state'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                     <td class="td_text"><input type="text" value="{{ @$vehicle['value'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                     <td class="td_text">
                         <div class="td_last">X</div>
@@ -337,7 +337,7 @@
                     <td colspan="6" class="t2_header"> <input type="text" value="EXPORTER INFORMATION" style="width: 100%;border:none;outline:none;text-align:center;font-weight:bold"></td>
                 </tr>
                 <tr>
-                    <td colspan="2" class="box_1"><b>Booking #:</b>  <input type="text" value=" " style="width: 100%;border:none;outline:none;text-align:start;margin-left:90px!important;"></td>
+                    <td colspan="2" class="box_1"><b>Booking #:</b>  <input type="text" value="{{ @$shipment[0]['booking_number'] }} " style="width: 100%;border:none;outline:none;text-align:start;margin-left:90px!important;"></td>
                     <td id="v_ww" class="box_1"><b>Vessel Name & Voyage#: </b>  <input type="text" value=" " style="width: 100%;border:none;outline:none;text-align:start;"></td>
                     <td colspan="2" class="box_1"></td>
                     <!-- <td class=""></td> -->
@@ -354,7 +354,7 @@
     
                 <tr>
                     <td colspan="2" class="box_1"><b>Vessel Departure Date: </b>  <input type="text" value=" " style="width: 100%;border:none;outline:none;text-align:start;"></td>
-                    <td class="box_1"><b>US Port of <br> Export: </b>  <input type="text" value=" " style="width: 100%;border:none;outline:none;text-align:start;margin-left:130px!important;"></td>
+                    <td class="box_1"><b>US Port of <br> Export: </b>  <input type="text" value="{{ @$shipment[0]['loading_port'] }} " style="width: 100%;border:none;outline:none;text-align:start;margin-left:130px!important;"></td>
                     <td colspan="2" class=""></td>
                     <!-- <td class=""></td> -->
                 </tr>
@@ -376,9 +376,9 @@
                     <td colspan="4" class="t_brd"></td>
                 </tr>
                 <tr>
-                    <td class="" colspan="2"> <input type="text" value="Steamship Line: " style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
-                    <td class="" colspan="2"> <input type="text" value="Terminal:" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
-                    <td class=""> <input type="text" value="Container#:" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
+                    <td class="" colspan="2"> <input type="text" value="Steamship Line: {{ @$shipment[0]['shipping_line'] }}" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
+                    <td class="" colspan="2"> <input type="text" value="Terminal: {{ @$shipment[0]['destination_terminal'] }}" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
+                    <td class=""> <input type="text" value="Container#: {{ @$shipment[0]['container_no'] }}" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
                 </tr>
                 <tr>
                      <td></td>
@@ -399,7 +399,7 @@
                     <td colspan="6" class="t2_header"> <input type="text" value="AES INFORMATION" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                 </tr>
                 <tr>
-                    <td colspan="5"> <input type="text" value="ITN #:" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
+                    <td colspan="5"> <input type="text" value="ITN #: {{ @$shipment[0]['ase-itn_number'] }}" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
                 </tr>
                 {{-- <tr> --}}
                     {{-- <td></td> --}}

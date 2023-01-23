@@ -110,9 +110,13 @@
                                         <label for="username" class="col-5 px-0 font-size font-bold">Password
                                             <span class="text-danger">*</span>
                                         </label>
-                                        <input type="text"
-                                            class="form-control-sm border border-0 rounded-pill bg col-7"
-                                            name="password" id="password" value="{{ @$user['name'] }}">
+                                        {{-- <div class="d-flex"> --}}
+                                            <input type="password"
+                                                class="form-control-sm border border-0 rounded-pill bg col-7"
+                                                name="password" id="password">
+                                            <i class="fa-solid fa-eye" id="togglePassword" style="margin-left: -27px;margin-top:9px;cursor: pointer;color:#1f689e!important;z-index:9;"></i>
+
+                                        {{-- </div> --}}
                                     </div>
                                     <div class="col-12 d-flex justify-content-center">
                                         <small id="password_error" class="text-danger"></small>
@@ -143,25 +147,27 @@
                                         <small></small>
                                     </div>
 
-                                    @if(@$documents[0]['id'])
-                                    <div class=" d-flex">
-                                        <label for="email" class="col-5 px-0 font-size font-bold">Email
-                                            <span class="text-danger">*</span>
-                                        </label>
-                                        <input type="email"
-                                            class="form-control-sm border border-0 rounded-pill bg col-7" name="email"
-                                            id="email" value="{{ @$documents[0]['email'] }}" disabled>
-                                            <input type="hidden" name="email" id="email" value="{{ @$documents[0]['email'] }}">
-                                    </div>
+                                    @if (@$documents[0]['id'])
+                                        <div class=" d-flex">
+                                            <label for="email" class="col-5 px-0 font-size font-bold">Email
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <input type="email"
+                                                class="form-control-sm border border-0 rounded-pill bg col-7"
+                                                name="email" id="email" value="{{ @$documents[0]['email'] }}"
+                                                disabled>
+                                            <input type="hidden" name="email" id="email"
+                                                value="{{ @$documents[0]['email'] }}">
+                                        </div>
                                     @else
-                                    <div class=" d-flex">
-                                        <label for="email" class="col-5 px-0 font-size font-bold">Email
-                                            <span class="text-danger">*</span>
-                                        </label>
-                                        <input type="email"
-                                            class="form-control-sm border border-0 rounded-pill bg col-7" name="email"
-                                            id="email" value="{{ @$documents[0]['email'] }}">
-                                    </div>
+                                        <div class=" d-flex">
+                                            <label for="email" class="col-5 px-0 font-size font-bold">Email
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <input type="email"
+                                                class="form-control-sm border border-0 rounded-pill bg col-7"
+                                                name="email" id="email" value="{{ @$documents[0]['email'] }}">
+                                        </div>
                                     @endif
 
 
@@ -456,13 +462,13 @@
                                             name="state" id="state" value="{{ @$documents[0]['state'] }}">
                                         {{-- <select class="form-control-sm border border-0 rounded-pill bg col-7"
                                             name="state" id="state">
-                                            @if(@$documents[0]['state'])
+                                            @if (@$documents[0]['state'])
                                             <option value="{{ @$documents[0]['state'] }}">{{ @$documents[0]['state'] }}</option>
                                             @else
                                             <option Selected disabled>Select State</option>
                                             @endif
                                             @foreach ($states as $state)
-                                            @if(@$documents[0]['state'] == $state['state'])
+                                            @if (@$documents[0]['state'] == $state['state'])
                                             @else
                                                 <option value="{{ $state['state'] }}">{{ $state['state'] }}
                                             @endif
@@ -567,7 +573,7 @@
                                         multiple />
                                     <br />
                                     <div class="imageName">
-                                       
+
                                     </div>
                                     {{-- <span id="imageName"></span> --}}
                                     <br>
@@ -647,3 +653,15 @@
         // imageName.innerText = inputImage.length + 'files selected';
     })
 </script>
+
+<script>
+    const togglePassword = document.querySelector('#togglePassword');
+    const password = document.querySelector('#password');
+    togglePassword.addEventListener('click', function (e) {
+      // toggle the type attribute
+      const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+      password.setAttribute('type', type);
+      // toggle the eye slash icon
+      this.classList.toggle('fa-eye-slash');
+  });
+  </script>

@@ -150,8 +150,14 @@ class pdfController extends Controller
             $output = view('layouts.shipment_detail.shipment_Houston_pdf', $data)->render();
         }
         else if($request->tab == 'bol'){
+            $data['total_weight'] = 0;
             $data['shipment']=Shipment::with('vehicle.user', 'customer.billings', 'customer.shippers')->whereid($request->id)->get()->toArray();
             $data['button_hide'] = 'show';
+            foreach ($data['shipment'][0]['vehicle'] as $weight) {
+                if($weight['weight'] != null){
+                   $data['total_weight'] += $weight['weight'];
+                }
+            }
             $output = view('layouts.shipment_detail.shipment__Landing_pdf', $data)->render();
         }
         else if($request->tab == 'us_custom'){

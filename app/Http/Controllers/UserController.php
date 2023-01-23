@@ -199,7 +199,7 @@ class UserController extends Controller
     {
         $data = [];
         $data = [
-            "page_title" => $this->singular . ' Profile',
+            // "page_title" => $this->singular . ' Profile',
             "page_heading" => $this->singular . ' Profile',
             "breadcrumbs" => array("dashboard" => "Dashboard", "#" => $this->plural . " List"),
             "module" => [

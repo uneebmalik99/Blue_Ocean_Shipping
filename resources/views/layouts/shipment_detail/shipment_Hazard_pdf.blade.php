@@ -17,21 +17,22 @@
         </div>
     </button> --}}
 
-    @if($button_hide == 'show')
-    <div style="width: 118px;">
-        <button type="button" class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
-        style="background: #1d6092;float:left;" onclick="printthis()">
-       <div class="d-flex justify-content-center align-items-center">
-           <span class="pl-2 font-size">PRINT</span>
-       </div>
-    </button>
-    <a href="{{ route('shipment_detail.shipment_Hazard_pdf', @$shipment[0]['id']) }}" class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
-        style="background: #1d6092;float:left;">
-       <div class="d-flex justify-content-center align-items-center">
-           <span class="pl-2 font-size">PDF</span>
-       </div>
-    </a>
-    </div>
+    @if ($button_hide == 'show')
+        <div style="width: 118px;">
+            <button type="button" class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
+                style="background: #1d6092;float:left;" onclick="printthis()">
+                <div class="d-flex justify-content-center align-items-center">
+                    <span class="pl-2 font-size">PRINT</span>
+                </div>
+            </button>
+            <a href="{{ route('shipment_detail.shipment_Hazard_pdf', @$shipment[0]['id']) }}"
+                class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
+                style="background: #1d6092;float:left;">
+                <div class="d-flex justify-content-center align-items-center">
+                    <span class="pl-2 font-size">PDF</span>
+                </div>
+            </a>
+        </div>
     @endif
 
 
@@ -46,7 +47,7 @@
             }
 
             .non_hazard td {
-                border: 1px solid gray;
+                border-right: 1px solid gray;
 
             }
 
@@ -56,9 +57,15 @@
 
             .img_logo {
                 display: block;
-                margin-left: auto;
-                margin-right: auto;
-                width: 50%;
+                width: 25% !important;
+                margin-left: -15px !important;
+            }
+
+            img {
+                vertical-align: middle;
+                border-style: none;
+                width: 73%;
+                margin-left: 0px;
             }
 
             .footer_head {
@@ -75,33 +82,37 @@
             }
         </style>
         <div class="">
+
             <figure class="img_logo">
                 <img src="{{ asset('images/login_logo.png') }}" alt="image">
             </figure>
+            <div class="logo" style="margin-top: -47px;">
+                <div style="background-color: red">
+                    <h4>
+                        <input type="text" value="NON-HAZARDOUS DECLARATION"
+                            style="width:100%;border:none;text-align:center;" />
+                    </h4>
+                </div>
+            </div>
         </div>
-        <div class="logo">
-            <h4>
-                <input type="text" value="NON-HAZARDOUS DECLARATION"
-                    style="width:100%;border:none;text-align:center;" />
-            </h4>
-        </div>
+
         <div>
-            <table class="center non_hazard" style="width:100%">
+            <table class="center non_hazard" style="width:87%;margin-left:78px;">
                 <tbody>
-                    <tr>
+                    <tr style="background-color: #c1c1c1!important;">
                         <td>
                             <input type="text" value="CARRIER"
-                                style="width: 100%;border:none;outline:none;text-align:center;">
+                                style="width: 100%;border:none;outline:none;text-align:center; background-color: #c1c1c1!important;">
                         </td>
                         <td>
                             <input type="text" value="{{ @$shipment[0]['shipping_line'] }}"
-                                style="width: 100%;border:none;outline:none;text-align:center;">
+                                style="width: 100%;border:none;outline:none;text-align:center; background-color: #c1c1c1!important;">
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <input type="text" value="VESSEL NAME / VOYAGE"
-                                style="width: 100%;border:none;outline:none;text-align:center;">
+                                style="width: 100%;border:none;outline:none;text-align:center; ">
                         </td>
                         <td>
                             <input type="text" value="{{ @$shipment[0]['vessel'] }} {{ @$shipment[0]['voyage'] }}"
@@ -109,13 +120,13 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td style=" background-color: #c1c1c1!important;">
                             <input type="text" value="ORIGIN"
-                                style="width: 100%;border:none;outline:none;text-align:center;">
+                                style="width: 100%;border:none;outline:none;text-align:center; background-color: #c1c1c1!important;">
                         </td>
-                        <td>
+                        <td style=" background-color: #c1c1c1!important;">
                             <input type="text" value="{{ @$shipment[0]['loading_port'] }}"
-                                style="width: 100%;border:none;outline:none;text-align:center;">
+                                style="width: 100%;border:none;outline:none;text-align:center; background-color: #c1c1c1!important;">
                         </td>
                     </tr>
                     <tr>
@@ -129,13 +140,13 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td style=" background-color: #c1c1c1!important;">
                             <input type="text" value="BOOKING NUMBER"
-                                style="width: 100%;border:none;outline:none;text-align:center;">
+                                style="width: 100%;border:none;outline:none;text-align:center; background-color: #c1c1c1!important;">
                         </td>
-                        <td>
+                        <td style=" background-color: #c1c1c1!important;">
                             <input type="text" value="{{ @$shipment[0]['booking_number'] }}"
-                                style="width: 100%;border:none;outline:none;text-align:center;">
+                                style="width: 100%;border:none;outline:none;text-align:center; background-color: #c1c1c1!important;">
                         </td>
                     </tr>
                     <tr>
@@ -149,51 +160,46 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td style=" background-color: #c1c1c1!important;">
                             <input type="text" value="NUMBER OF VEHICLES"
-                                style="width: 100%;border:none;outline:none;text-align:center;">
+                                style="width: 100%;border:none;outline:none;text-align:center; background-color: #c1c1c1!important;">
                         </td>
-                        <td>
+                        <td style=" background-color: #c1c1c1!important;">
                             <input type="text" value="{{ count(@$shipment[0]['vehicle']) }}"
-                                style="width: 100%;border:none;outline:none;text-align:center;">
+                                style="width: 100%;border:none;outline:none;text-align:center; background-color: #c1c1c1!important;">
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <div>
-                @if($button_hide == 'show')
-                <p>
-                    <textarea rows="7" style="width:100%;padding:0;margin:0;box-sizing:border-box;border:none;">
-                    THIS IS TO CERTIFY THAT ALL VEHICLES INCLUDED IN THIS CONTAINER HAVE BEEN
-                    COMPLETELY DRAINED OF FUEL AND RUN UNTIL STALLED. BATTERIES ARE DISCONNECTED
-                    AND TAPED BACK AND ARE PROPERLY SECURED TO PREVENT MOVEMENT IN ANY
-                    DIRECTION. NO UNDECLARED HAZARDOUS MATERIALS ARE CONTAINERIZED, SECURED TO,
-                    OR STOWED IN THIS VEHICL
-                    WITH THE ABOVE STATEMENT, THESE VEHICLES ARE CLASSIFIED AS NON-HAZARDOUS.
+            <div style="
+            height: 250px;
+        ">
+                @if ($button_hide == 'show')
+                    <p>
+                        <textarea rows="7"
+                            style="width: 86%;padding:0;margin:0;box-sizing:border-box;border:none;margin-left: 84px;margin-top: 19px;">
+THIS IS TO CERTIFY THAT ALL VEHICLES INCLUDED IN THIS CONTAINER HAVE BEEN COMPLETELY DRAINED OF FUEL AND RUN UNTIL STALLED. BATTERIES ARE DISCONNECTED AND TAPED BACK AND ARE PROPERLY SECURED TO PREVENT MOVEMENT IN ANY DIRECTION. NO UNDECLARED HAZARDOUS MATERIALS ARE CONTAINERIZED, SECURED TO, OR STOWED IN THESE VEHICLES WITH THE ABOVE STATEMENT, THESE VEHICLES ARE CLASSIFIED AS NON-HAZARDOUS.
                 </textarea>
-                </p>
+                    </p>
                 @else
-              <table>
-                <tr>
-                    <td>
-                    THIS IS TO CERTIFY THAT ALL VEHICLES INCLUDED IN THIS CONTAINER HAVE BEEN
-                    COMPLETELY DRAINED OF FUEL AND RUN UNTIL STALLED. 
-                    <br>  BATTERIES ARE DISCONNECTED
-                    AND TAPED BACK AND ARE PROPERLY SECURED TO PREVENT MOVEMENT IN ANY
-                    DIRECTION. <br> NO UNDECLARED HAZARDOUS MATERIALS ARE CONTAINERIZED, SECURED TO,
-                    OR STOWED IN THIS VEHICL
-                    <br>
-                    WITH THE ABOVE STATEMENT, THESE VEHICLES ARE CLASSIFIED AS NON-HAZARDOUS.
-                    </td>
-                </tr>
-              </table>
-              @endif
-                <div class="footer_head" style="clear:both;">
-                    <div class="" style="float:right;">
+                    <table>
+                        <tr>
+                            <td>
+                                THIS IS TO CERTIFY THAT ALL VEHICLES INCLUDED IN THIS CONTAINER HAVE BEEN COMPLETELY
+                                DRAINED OF FUEL AND RUN UNTIL STALLED. BATTERIES ARE DISCONNECTED AND TAPED BACK AND ARE
+                                PROPERLY SECURED TO PREVENT MOVEMENT IN ANY DIRECTION. NO UNDECLARED HAZARDOUS MATERIALS
+                                ARE CONTAINERIZED, SECURED TO,OR STOWED IN THIS VEHICL WITH THE ABOVE STATEMENT, THESE
+                                VEHICLES ARE CLASSIFIED AS NON-HAZARDOUS.
+                            </td>
+                        </tr>
+                    </table>
+                @endif
+                <div class="footer_head" style="clear:both; margin-top:-25px!important">
+                    <div class="" style="float:right;margin-right:77px;">
                         <span>DATE:</span>
                         <input type="text" class="FOOTER">
                     </div>
-                    <div class="" style="float:left;">
+                    <div class="" style="margin-left:80px;">
                         <SPAN>SIGNED:</SPAN>
                         <input type="text" class="FOOTER">
                     </div>

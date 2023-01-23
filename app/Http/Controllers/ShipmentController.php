@@ -566,7 +566,9 @@ class ShipmentController extends Controller
 
 
             $current_date = (new DateTime)->format('Y-m-d');
-            $days = (strtotime($data['est_arrival_date']) - strtotime($current_date)) / (60 * 60 * 24);
+            $days = explode('-', (strtotime($data['est_arrival_date']) - strtotime($current_date)) / (60 * 60 * 24));
+            // dd($days[1]);
+
 
             if($current_date < $data['sale_date']){
                 $data['status'] = 1;
@@ -575,7 +577,7 @@ class ShipmentController extends Controller
                 $data['status'] = 2;
             }
             else{}
-            if($days < 10){
+            if($days[1] < '10'){
                 $data['status'] = 3;
             }
 

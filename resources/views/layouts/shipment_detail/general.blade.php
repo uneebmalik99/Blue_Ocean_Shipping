@@ -530,9 +530,9 @@ background-color: #e93f7800!important;
                 border-radius: 10px;width: 90%;margin:6px auto">
                     <span class="infromation_mainText">Shipment Status</span>
                     @if (@$shipments[0]['status'] == '1')
-                        <span class="information_text">Shipped</span>
-                    @elseif (@$shipments[0]['status'] == '2')
                         <span class="information_text">Booked</span>
+                    @elseif (@$shipments[0]['status'] == '2')
+                        <span class="information_text">Shipped</span>
                     @elseif (@$shipments[0]['status'] == '3')
                         <span class="information_text">Arrived</span>
                     @else
@@ -847,7 +847,17 @@ background-color: #e93f7800!important;
                                     <td>{{ @$vehicles['model'] }}</td>
                                     <td>{{ @$vehicles['color'] }}</td>
                                     <td>{{ @$vehicles['vin'] }}</td>
-                                    <td>{{ @$vehicles['vehicle_status']['status_name'] }}</td>
+                                    <td>
+                                        @if (@$shipments[0]['status'] == '1')
+                                            <span class="">Booked</span>
+                                        @elseif (@$shipments[0]['status'] == '2')
+                                            <span class="">Shipped</span>
+                                        @elseif (@$shipments[0]['status'] == '3')
+                                            <span class="">Arrived</span>
+                                        @else
+                                            <span class="">Completed</span>
+                                        @endif
+                                    </td>
                                     <td>{{ @$vehicles['lot'] }}</td>
                                     <td>{{ @$vehicles['title_state'] }}</td>
                                     <td>
