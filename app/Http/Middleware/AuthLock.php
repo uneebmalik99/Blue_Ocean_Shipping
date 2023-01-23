@@ -18,6 +18,8 @@ class AuthLock
         if(!auth()->user()){
            return $next($request);
         }
+
+
         // If the user does not have this feature enabled, then just return next.
         if (!auth()->user()->hasLockoutTime()) {
             // Check if previous session was set, if so, remove it because we don't need it here.

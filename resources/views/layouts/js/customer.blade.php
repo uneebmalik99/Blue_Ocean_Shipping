@@ -42,7 +42,7 @@
         var formData = new FormData(jQuery('#customer_general_form')[0]);
         formData.append('tab', $tab);
         console.log(...formData);
-        // document.getElementById('load').style.visibility = "visible";
+        document.getElementById('load').style.visibility = "visible";
 
         $.ajax({
             type: 'post',
@@ -742,6 +742,37 @@
                 $('.navbar_tab').addClass('tab_style');
                 $('#' + $skiptab).addClass('next-style');
 
+            }
+        });
+    }
+
+
+    function delete_quotation(id){
+        $('.parent_quotation').remove();
+        $.ajax({
+            type: 'post',
+            url: '{{ route('customerDelete.quotation') }}',
+            data: {
+                'id': id
+            },
+            success: function(data) {
+               
+            }
+        });
+
+
+    }
+    function delete_quotation_loop(id){
+        $('.parent_quotation'+id).remove();
+
+        $.ajax({
+            type: 'post',
+            url: '{{ route('customerDelete.quotation') }}',
+            data: {
+                'id': id
+            },
+            success: function(data) {
+              
             }
         });
     }

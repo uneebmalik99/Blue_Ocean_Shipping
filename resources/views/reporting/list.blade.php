@@ -90,50 +90,60 @@
 
                         </div>
                         <form id="filter_vehicle_reporting">
-                        <div class="d-flex py-3 px-0">
-                            <div class="col-2 p-0">
-                                <select class="form-control-sm border-style input-border-style rounded col-11 text-muted px-2" name="location" id="location">
-                                    <option selected disabled>Select Location</option>
-                                    @foreach ($warehouse as $loc)
-                                    <option value="{{ @$loc['name'] }}">{{ @$loc['name'] }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="col-2 p-0">
-                                <select class="form-control-sm border-style input-border-style rounded col-11 text-muted px-2" name="shipper" id="shipper">
-                                    <option disabled selected>Select Shipper</option>
-                                    @foreach ($shippers as $shipper)
-                                    <option value="{{ @$shipper['name'] }}">{{ @$shipper['name'] }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="col-2 p-0">
-                                <select class="form-control-sm border-style input-border-style rounded col-11 text-muted px-2" name="title_type" id="title_type">
-                                    <option disabled selected>Title Type</option>
-                                    @foreach ($titletypes as $type)
-                                    <option value="{{ @$type['name'] }}">{{ @$type['name'] }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="col-2 p-0">
-                                <select class="form-control-sm border-style input-border-style rounded col-12 text-muted" name="company_name" id="company_name">
-                                    <option disabled selected>Company Name</option>
-                                    @foreach ($companies as $company)
-                                    <option value="{{ @$company['id'] }}">{{ @$company['company_name'] }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                            <div class="d-flex py-3 px-0">
+                                <div class="col-2 p-0">
+                                    <select
+                                        class="form-control-sm border-style input-border-style rounded col-11 text-muted px-2"
+                                        name="location" id="location">
+                                        <option selected disabled>Select Location</option>
+                                        @foreach ($warehouse as $loc)
+                                            <option value="{{ @$loc['name'] }}">{{ @$loc['name'] }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-2 p-0">
+                                    <select
+                                        class="form-control-sm border-style input-border-style rounded col-11 text-muted px-2"
+                                        name="shipper" id="shipper">
+                                        <option disabled selected>Select Shipper</option>
+                                        @foreach ($shippers as $shipper)
+                                            <option value="{{ @$shipper['name'] }}">{{ @$shipper['name'] }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-2 p-0">
+                                    <select
+                                        class="form-control-sm border-style input-border-style rounded col-11 text-muted px-2"
+                                        name="title_type" id="title_type">
+                                        <option disabled selected>Title Type</option>
+                                        @foreach ($titletypes as $type)
+                                            <option value="{{ @$type['name'] }}">{{ @$type['name'] }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-2 p-0">
+                                    <select
+                                        class="form-control-sm border-style input-border-style rounded col-12 text-muted"
+                                        name="company_name" id="company_name">
+                                        <option disabled selected>Company Name</option>
+                                        @foreach ($companies as $company)
+                                            <option value="{{ @$company['id'] }}">{{ @$company['company_name'] }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
 
-                            <div class="col-4" style="margin-left:13px">
-                               
-                                <button type="button" class="btn col-5" style="background:#2c3e50;color:white;font-size:11px!important;" id="1" onclick="filter_vehicle_reporting(this.id)">Search</button>
-                                <button  type="button" class="btn ml-2 col-3"
-                                style="background:#2c3e50;color:white;font-size:11px!important;text-align:center;"
-                                onclick="clear_reporting_neworder()">Clear</button> 
+                                <div class="col-4" style="margin-left:13px">
+
+                                    <button type="button" class="btn col-5"
+                                        style="background:#2c3e50;color:white;font-size:11px!important;" id="1"
+                                        onclick="filter_vehicle_reporting(this.id)">Search</button>
+                                    <button type="button" class="btn ml-2 col-3"
+                                        style="background:#2c3e50;color:white;font-size:11px!important;text-align:center;"
+                                        onclick="clear_reporting_neworder()">Clear</button>
+                                </div>
+
                             </div>
-                            
-                        </div>
-                    </form>
+                        </form>
                     </div>
                     <div id="status_body" class="mt-2 bg-light">
 
@@ -336,7 +346,7 @@
             function change_reporting_tab(tab) {
                 $('.reporting_cls').removeClass('next-style');
                 $('.reporting_cls').addClass('tab_style');
-                $('#'+tab).addClass('next-style');
+                $('#' + tab).addClass('next-style');
                 $.ajax({
                     type: 'post',
                     url: '{{ route('reporting.changetab') }}',
@@ -574,20 +584,20 @@
 
 
 
-            function filter_vehicle_reporting(status){
-        var formData = new FormData(jQuery('#filter_vehicle_reporting')[0]);
-        formData.append('status', status);
-        console.log(...formData);
-        $.ajax({
-            method: 'POST',
-            url: '{{ URL::to('admin/reporting/filter_vehicle') }}',
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function(data) {
-                $('#filter_reporting_vehicles').html(data);
-            }
-        });
+            function filter_vehicle_reporting(status) {
+                var formData = new FormData(jQuery('#filter_vehicle_reporting')[0]);
+                formData.append('status', status);
+                console.log(...formData);
+                $.ajax({
+                    method: 'POST',
+                    url: '{{ URL::to('admin/reporting/filter_vehicle') }}',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(data) {
+                        $('#filter_reporting_vehicles').html(data);
+                    }
+                });
 
 
             }
@@ -595,10 +605,10 @@
 
 
 
-            function clear_reporting_neworder(){
-        $('#filter_vehicle_reporting')[0].reset();
-        $('#filter_reporting_vehicles').html('');
+            function clear_reporting_neworder() {
+                $('#filter_vehicle_reporting')[0].reset();
+                $('#filter_reporting_vehicles').html('');
 
-    }
+            }
         </script>
     @endsection

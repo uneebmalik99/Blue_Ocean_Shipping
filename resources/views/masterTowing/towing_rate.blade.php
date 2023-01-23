@@ -51,7 +51,7 @@
 .dropdown-check-list.visible .items {
   display: block;
 }
-    tbody tr td {
+    /* tbody tr td {
         background-color: #fff !important;
         box-shadow: none !important;
     }
@@ -59,7 +59,7 @@
     tbody tr td:hover {
         background-color: #fff !important;
         box-shadow: none !important;
-    }
+    } */
 
     .companiestable {
         background: #FFFFFF;
@@ -67,13 +67,13 @@
         border-radius: 10px;
     }
 
-    .table {
+    /* .table {
         border: none !important;
     }
 
     thead {
         color: #ffff;
-    }
+    } */
 
     .dt-buttons {
         float: right !important;
@@ -242,10 +242,9 @@
 </style>
 <div class="container-fluid p-0">
     <div class="bg-white rounded p-2">
-        <table id="towingrate_table" style="width: 100% !important">
-            <thead style="width: 100% !important;background: #3e5871 ;color:#fff">
+        <table id="towingrate_table" class="table row-border" style="width:100%!important">
+            <thead  class="bg-custom">
                 <tr>
-                    {{-- <th>Sr#</th> --}}
                     <th>CITY</th>
                     <th>AUCTION</th>
                     <th>RATE</th>
@@ -255,7 +254,7 @@
                     <th>CALIFORNIA</th>
                     <th>SEATTLE</th>
                     <th>STATUS</th>
-                    <th>AUCTION</th>
+                    <th>ACTION</th>
                 </tr>
             </thead>
             <tbody>

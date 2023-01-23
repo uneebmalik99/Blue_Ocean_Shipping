@@ -529,14 +529,23 @@ class ShipmentController extends Controller
                 return 'please select atleast one vehicle';
             }
 
-            $request->validate([
-                'company_name' => 'required',
-                'customer_email' => 'required',
-                'customer_phone' => 'required',
-                'container_no' => 'required|unique:shipments',
-            ]);
+            if($request->id){
+                $request->validate([
+                    'company_name' => 'required',
+                    'customer_email' => 'required',
+                    'customer_phone' => 'required',
+                    'container_no' => 'required',
+                ]);
+            }
+            else{
+                $request->validate([
+                    'company_name' => 'required',
+                    'customer_email' => 'required',
+                    'customer_phone' => 'required',
+                    'container_no' => 'required|unique:shipments',
+                ]);
+            }
 
-            
             $data = [];
             $data = $request->all();
             // dd($data);

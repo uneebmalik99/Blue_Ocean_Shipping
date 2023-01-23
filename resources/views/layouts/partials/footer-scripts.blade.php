@@ -241,12 +241,12 @@
 <script>
     $('.profile_tabs').on('click', function() {
         $('.profile_tabs').removeClass('btn_custom rounded text-white');
-        $('.profile_tabs').addClass('border-0 form-control text-muted');
+        $('.profile_tabs').addClass('form-control text-muted');
         $id = $(this).attr('cust_id');
         $tab = $(this).attr('id');
         // alert($tab);
         $(this).addClass('btn btn_custom rounded text-white');
-        $(this).removeClass('border-0 form-control text-muted');
+        $(this).removeClass('form-control text-muted');
         $.ajax({
             type: 'get',
             url: '{{ URL::to('admin/customers/profile_tab') }}',
@@ -338,6 +338,7 @@
                     $('.modal-body').html(data);
                     $('#exampleModal').modal('show');
                     $('#exampleModalLabel').text('New Vehicle');
+                  
                     $('.billofsales').imageUploader({
                         maxFiles: 4,
                         imagesInputName: 'billofsales',
@@ -382,7 +383,7 @@
                         preloaded: pickup_image,
                         preloadedInputName: 'pickup_old',
                     });
-
+                    
                 }
             });
         } else if ($id == "shipment") {
@@ -624,44 +625,44 @@
             success: function(data) {
 
                 document.getElementById('load').style.visibility = "hidden";
+             
                 $('.modal-body').html(data.view);
                 $('#exampleModal').modal('show');
                 $('#' + $tab_id + '_tab').removeClass('next-style');
                 $('#' + $tab_id + '_tab').addClass('tab_style');
                 $('#' + $next_tab).addClass('next-style');
 
+                // $('.vehicle_auction_image').imageUploader({
+                //     maxFiles: 30,
+                //     imagesInputName: 'auction_images',
+                // });
+                // $('.vehicle_auction_image_update').imageUploader({
+                //     preloaded: auction_image,
+                //     maxFiles: 30,
+                //     imagesInputName: 'auction_images',
+                //     preloadedInputName: 'auction_old',
+                // });
+                // $('.vehicle_warehouse_image').imageUploader({
+                //     maxFiles: 30,
+                //     imagesInputName: 'warehouse_images',
+                // });
 
-                $('.vehicle_auction_image').imageUploader({
-                    maxFiles: 30,
-                    imagesInputName: 'auction_images',
-                });
-                $('.vehicle_auction_image_update').imageUploader({
-                    preloaded: auction_image,
-                    maxFiles: 30,
-                    imagesInputName: 'auction_images',
-                    preloadedInputName: 'auction_old',
-                });
-                $('.vehicle_warehouse_image').imageUploader({
-                    maxFiles: 30,
-                    imagesInputName: 'warehouse_images',
-                });
-
-                $('.vehicle_warehouse_image_update').imageUploader({
-                    preloaded: warehouse_image,
-                    maxFiles: 30,
-                    imagesInputName: 'warehouse_images',
-                    preloadedInputName: 'warehouse_old'
-                });
-                $('.pick').imageUploader({
-                    imagesInputName: 'pickup',
-                    maxFiles: 30,
-                });
-                $('.pick_update').imageUploader({
-                    imagesInputName: 'pickup',
-                    maxFiles: 30,
-                    preloaded: pickup_image,
-                    preloadedInputName: 'pickup_old'
-                });
+                // $('.vehicle_warehouse_image_update').imageUploader({
+                //     preloaded: warehouse_image,
+                //     maxFiles: 30,
+                //     imagesInputName: 'warehouse_images',
+                //     preloadedInputName: 'warehouse_old'
+                // });
+                // $('.pick').imageUploader({
+                //     imagesInputName: 'pickup',
+                //     maxFiles: 30,
+                // });
+                // $('.pick_update').imageUploader({
+                //     imagesInputName: 'pickup',
+                //     maxFiles: 30,
+                //     preloaded: pickup_image,
+                //     preloadedInputName: 'pickup_old'
+                // });
                 $('.billofsales').imageUploader({
                     maxFiles: 30,
                     imagesInputName: 'billofsales',
@@ -673,7 +674,8 @@
                     imagesInputName: 'originaltitle',
 
                 });
-             
+
+        
 
 
             },

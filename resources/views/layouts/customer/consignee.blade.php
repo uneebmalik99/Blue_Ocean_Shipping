@@ -3,9 +3,9 @@
         <h6 class="text-muted"><b>Consignee Information</b></h6>
     </div>
     <div class="col-12 mt-2">
-        <div class="text-muted text-left">
+        {{-- <div class="text-muted text-left">
             <b>Consignee</b>
-        </div>
+        </div> --}}
         <div class="d-flex justify-content-start flex-wrap">
             {{-- <div class="text-muted d-flex"><input type="radio" name="consignee" value="same as billing party"
                     {{ @$shipper[0]['consignee'] == 'same as billing party' ? 'checked' : '' }}>
@@ -17,33 +17,33 @@
             </div> --}}
             <div class="col-xxl-4 col-lg-4 col-md-12 col-sm-12 col-12 text-left text-muted">
                 <label for="first_name">Name</label><br>
-                <input disabled class="form-control-sm border border-info rounded" type="text" name="first_name" id="first_name"
-                    value="{{ @$billing[0]['first_name'] }}">
+                <input disabled class="form-control-sm border rounded" type="text" name="first_name" id="first_name"
+                    value="{{ @$billing[0]['first_name'] }}" style="border:1px solid #6c757d!important;">
             </div>
             <div class="col-xxl-4 col-lg-4 col-md-12 col-sm-12 col-12 text-left text-muted">
                 <label for="address">Address</label><br>
-                <input disabled class="form-control-sm border border-info rounded" type="text" name="address" id="address"
-                    value="{{ @$billing[0]['address'] }}">
+                <input disabled class="form-control-sm border rounded" type="text" name="address" id="address"
+                    value="{{ @$billing[0]['address'] }}" style="border:1px solid #6c757d!important;">
             </div>
             <div class="col-xxl-4 col-lg-4 col-md-12 col-sm-12 col-12 text-left text-muted">
                 <label for="country">Country</label><br>
-                <input disabled class="form-control-sm border border-info rounded" type="text" name="country" id="country"
-                    value="{{ @$billing[0]['country'] }}">
+                <input disabled class="form-control-sm border rounded" type="text" name="country" id="country"
+                    value="{{ @$billing[0]['country'] }}" style="border:1px solid #6c757d!important;">
             </div>
-            <div class="col-xxl-4 col-lg-4 col-md-12 col-sm-12 col-12 text-left text-muted">
+            <div class="col-xxl-4 col-lg-4 col-md-12 col-sm-12 col-12 text-left text-muted mt-4">
                 <label for="city">City</label><br>
-                <input disabled class="form-control-sm border border-info rounded" type="text" name="city" id="city"
-                    value="{{ @$billing[0]['city'] }}">
+                <input disabled class="form-control-sm border rounded" type="text" name="city" id="city"
+                    value="{{ @$billing[0]['city'] }}" style="border:1px solid #6c757d!important;">
             </div>
-            <div class="col-xxl-4 col-lg-4 col-md-12 col-sm-12 col-12 text-left text-muted">
+            <div class="col-xxl-4 col-lg-4 col-md-12 col-sm-12 col-12 text-left text-muted mt-4">
                 <label for="zip_code">Zip Code</label><br>
-                <input disabled class="form-control-sm border border-info rounded" type="text" name="zip_code" id="zip_code"
-                    value="{{ @$billing[0]['zip_code'] }}">
+                <input disabled class="form-control-sm border rounded" type="text" name="zip_code" id="zip_code"
+                    value="{{ @$billing[0]['zip_code'] }}" style="border:1px solid #6c757d!important;">
             </div>
-            <div class="col-xxl-4 col-lg-4 col-md-12 col-sm-12 col-12 text-left text-muted">
+            <div class="col-xxl-4 col-lg-4 col-md-12 col-sm-12 col-12 text-left text-muted mt-4">
                 <label for="phone">Phone</label><br>
-                <input disabled class="form-control-sm border border-info rounded" type="text" name="phone" id="phone"
-                    value="{{ @$billing[0]['phone'] }}">
+                <input disabled class="form-control-sm border rounded" type="text" name="phone" id="phone"
+                    value="{{ @$billing[0]['phone'] }}" style="border:1px solid #6c757d!important;">
             </div>
         </div>
 

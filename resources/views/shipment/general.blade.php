@@ -145,7 +145,7 @@
                                                         onchange="customer_details()">
                                                         @if (@$shipment[0]['company_name'])
                                                             <option value="{{ @$shipment[0]['company_name'] }}"
-                                                                selected disabled>{{ @$shipment[0]['company_name'] }}
+                                                                selected>{{ @$shipment[0]['company_name'] }}
                                                             </option>
                                                         @else
                                                             <option selected disabled>Select Company</option>
@@ -169,8 +169,7 @@
                                                 <div class="d-flex align-items-center">
                                                     <label for="customer_email"
                                                         class="col-6 px-0 font-size font-bold">Customer
-                                                        Email<span
-                                                        class="text-danger">*</span></label>
+                                                        Email<span class="text-danger">*</span></label>
                                                     <input type="text"
                                                         class="form-control-sm border border-0 rounded-pill bg col-6"
                                                         name="customer_email" id="customer_email"
@@ -186,8 +185,7 @@
                                                 <div class="d-flex align-items-center">
                                                     <label for="customer_phone"
                                                         class="col-6 px-0 font-size font-bold">Customer
-                                                        Phone<span
-                                                        class="text-danger">*</span></label>
+                                                        Phone<span class="text-danger">*</span></label>
                                                     <input type="text"
                                                         class="form-control-sm border border-0 rounded-pill bg col-6"
                                                         name="customer_phone" id="customer_phone"
@@ -321,7 +319,7 @@
                                                 <div class="d-flex align-items-center">
                                                     <label for="container_number"
                                                         class="col-6 px-0 font-size font-bold">Container Number<span
-                                                        class="text-danger">*</span></label>
+                                                            class="text-danger">*</span></label>
                                                     <input type="text"
                                                         class="form-control-sm border border-0 rounded-pill bg col-6"
                                                         name="container_no" id="container_number"
@@ -465,12 +463,14 @@
                                                     <select
                                                         class="form-control-sm border border-0 rounded-pill bg col-6"
                                                         name="select_consignee" id="select_consignee">
-                                                        
+
                                                         @if (@$shipment[0]['customer']['billings'][0]['company_name'])
                                                             <option value="{{ @$shipment[0]['customer']['id'] }}"
-                                                                selected disabled>{{ @$shipment[0]['customer']['billings'][0]['company_name'] }}</option>
+                                                                selected disabled>
+                                                                {{ @$shipment[0]['customer']['billings'][0]['company_name'] }}
+                                                            </option>
                                                         @else
-                                                        <option>Select Consignee</option>
+                                                            <option>Select Consignee</option>
                                                         @endif
                                                         {{-- @foreach ($buyer_ids as $buyer_id)
                                                         @if (@$buyer_id['billings'][0]['company_name'])
@@ -497,9 +497,11 @@
                                                         class="form-control-sm border border-0 rounded-pill bg col-6"
                                                         id="notifier" name="notifier">
                                                         @if (@$shipment[0]['customer']['billings'][0]['company_name'])
-                                                        <option value="{{ @$shipment[0]['customer']['id'] }}"
-                                                            selected disabled>{{ @$shipment[0]['customer']['billings'][0]['company_name'] }}</option>
-                                                    @else
+                                                            <option value="{{ @$shipment[0]['customer']['id'] }}"
+                                                                selected disabled>
+                                                                {{ @$shipment[0]['customer']['billings'][0]['company_name'] }}
+                                                            </option>
+                                                        @else
                                                             <option selected disabled>Select Notifier</option>
                                                         @endif
                                                         {{-- @foreach ($buyer_ids as $buyer_id)

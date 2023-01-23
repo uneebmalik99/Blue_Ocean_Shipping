@@ -17,8 +17,10 @@ use App\Exports\UsersExport;
 use App\Models\BillingParty;
 use App\Models\Notification;
 use App\Models\ContainerSize;
+use App\Models\ImportVehicle;
 use App\Models\LoadingPort;
 use App\Models\ShipmentLine;
+use App\Jobs\SendMailJob;
 use Illuminate\Http\Request;
 use App\Models\DestinationPort;
 use App\Models\CustomerDocument;
@@ -30,6 +32,8 @@ use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Storage;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Intervention\Image\ImageManagerStatic as Image;
+use Spatie\ImageOptimizer\OptimizerChainFactory;
 
 class CustomerController extends Controller
 {
@@ -115,7 +119,7 @@ class CustomerController extends Controller
         //     $data['records'][] = $records;
         //     $i++;
         // }
-        $data['consignees'] = Shipper::where('consignee', '!=' , Null)->count();
+        $data['consignees'] = Shipper::where('consignee', '!=', Null)->count();
         $data['active_customer'] = User::role('Customer')->where('status', '1')->get()->count();
 
         $data['Inactive_customer'] = User::role('Customer')->where('status', '0')->get()->count();
@@ -125,29 +129,32 @@ class CustomerController extends Controller
         $data['active'] = $Obj->where('status', '1')->get();
 
         $lastweekshipper = Shipper::select('*')
-            ->whereBetween('created_at',
+            ->whereBetween(
+                'created_at',
                 [Carbon::now()->subWeek()->startOfWeek(), Carbon::now()->subWeek()->endOfWeek()]
             )->get()->count();
 
         $currentweekshipper = Shipper::select("*")
-            ->whereBetween('created_at',
+            ->whereBetween(
+                'created_at',
                 [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()]
             )
             ->get()->count();
         if ($lastweekshipper > 0) {
             $diff = $currentweekshipper - $lastweekshipper;
             $data['lastweekanalysis'] = ($diff / $lastweekshipper) * 100;
-
         } else {
             $data['lastweekanalysis'] = 100;
         }
         $lastweekconsignee = Consignee::select('*')
-            ->whereBetween('created_at',
+            ->whereBetween(
+                'created_at',
                 [Carbon::now()->subWeek()->startOfWeek(), Carbon::now()->subWeek()->endOfWeek()]
             )->get()->count();
 
         $currentweekconsignee = Consignee::select("*")
-            ->whereBetween('created_at',
+            ->whereBetween(
+                'created_at',
                 [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()]
             )
             ->get()->count();
@@ -163,13 +170,13 @@ class CustomerController extends Controller
         $data['shipper'] = Shipper::all();
         // $data['consignees'] = Consignee::all();
         return view($this->view . 'list', $data, $notification);
-
     }
 
 
-    public function changeState($state){
+    public function changeState($state)
+    {
 
-        if($state == 'ALL'){
+        if ($state == 'ALL') {
             return redirect()->route('customer.list');
         }
 
@@ -191,7 +198,7 @@ class CustomerController extends Controller
         $data['vehicles_cart'] = VehicleCart::with('vehicle')->get()->toArray();
         $notification = $this->Notification();
         $data['records'] = User::role('Customer')->where('state', $state)->get();
-        $data['consignees'] = Shipper::where('consignee', '!=' , Null)->where('address', $state)->count();
+        $data['consignees'] = Shipper::where('consignee', '!=', Null)->where('address', $state)->count();
         $data['active_customer'] = User::role('Customer')->where('state', $state)->where('status', '1')->get()->count();
 
         $data['Inactive_customer'] = User::role('Customer')->where('state', $state)->where('status', '0')->get()->count();
@@ -201,29 +208,32 @@ class CustomerController extends Controller
         $data['active'] = $Obj->where('status', '1')->where('state', $state)->get();
 
         $lastweekshipper = Shipper::select('*')
-            ->whereBetween('created_at',
+            ->whereBetween(
+                'created_at',
                 [Carbon::now()->subWeek()->startOfWeek(), Carbon::now()->subWeek()->endOfWeek()]
             )->get()->count();
 
         $currentweekshipper = Shipper::select("*")
-            ->whereBetween('created_at',
+            ->whereBetween(
+                'created_at',
                 [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()]
             )
             ->get()->count();
         if ($lastweekshipper > 0) {
             $diff = $currentweekshipper - $lastweekshipper;
             $data['lastweekanalysis'] = ($diff / $lastweekshipper) * 100;
-
         } else {
             $data['lastweekanalysis'] = 100;
         }
         $lastweekconsignee = Consignee::select('*')
-            ->whereBetween('created_at',
+            ->whereBetween(
+                'created_at',
                 [Carbon::now()->subWeek()->startOfWeek(), Carbon::now()->subWeek()->endOfWeek()]
             )->get()->count();
 
         $currentweekconsignee = Consignee::select("*")
-            ->whereBetween('created_at',
+            ->whereBetween(
+                'created_at',
                 [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()]
             )
             ->get()->count();
@@ -239,22 +249,20 @@ class CustomerController extends Controller
         $data['shipper'] = Shipper::where('address', $state);
         // $data['consignees'] = Consignee::all();
         return view($this->view . 'list', $data, $notification);
-
-        
     }
 
     public function create(Request $request)
     {
-        
+
         $data = [];
         $action = url($this->action . '/create');
-        if($request->email){
+        if ($request->email) {
             $tab = $request->tab;
 
             $customer = User::where('email', $request->email)->get()->toArray();
             // dd($customer[0]['id']);
 
-            
+
             $data = [
                 "page_title" => $this->plural . " create",
                 "page_heading" => $this->plural . ' create',
@@ -274,14 +282,13 @@ class CustomerController extends Controller
                 ],
             ];
 
-            if($tab == 'shipper'){
+            if ($tab == 'shipper') {
                 $data['shipper'] = Shipper::where('customer_id', $customer[0]['id'])->get()->toArray();
             }
-            if($tab == 'quotation'){
+            if ($tab == 'quotation') {
                 $data['quotation'] = Quotation::where('customer_id', $customer[0]['id'])->get()->toArray();
             }
-        }
-        else{
+        } else {
             $data = [
                 "page_title" => $this->plural . " create",
                 "page_heading" => $this->plural . ' create',
@@ -312,10 +319,10 @@ class CustomerController extends Controller
             $data['states'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
 
             $output = view('layouts.customer_create.' . $tab, $data)->render();
-            
+
             return Response($output);
         }
-        
+
 
         // if ($request->isMethod('post')) {
         //     $record = $request->all();
@@ -324,7 +331,7 @@ class CustomerController extends Controller
         //     return redirect($this->action)->with('success', 'Vehicle addedd successfully.');
 
         // }
-        
+
         $notification = $this->Notification();
         return view($this->view . 'create_edit', $data, $notification);
     }
@@ -384,7 +391,6 @@ class CustomerController extends Controller
             unset($data['images']);
             $Obj = User::find($req->id);
             $Obj->update($data);
-
         }
 
         if ($file) {
@@ -397,26 +403,57 @@ class CustomerController extends Controller
                 $files->move(public_path($this->directory), $docname);
             }
             // dd($file_id);
-            if(empty($file_id)){
-            $documents['user_id'] = $req->id;
-            $Obj = new CustomerDocument;
-            $Obj->create($documents);
+            if (empty($file_id)) {
+                $documents['user_id'] = $req->id;
+                $Obj = new CustomerDocument;
+                $Obj->create($documents);
+            } else {
+                $Obj = CustomerDocument::find($file_id);
+                $Obj->update($documents);
             }
-            else{
-            $Obj = CustomerDocument::find($file_id);
-            $Obj->update($documents);
-            }
-            
+
             // return ' 0';
 
         }
         $success = 'Customer Updated Successfully!';
         return $success;
-
     }
 
     public function delete($id = null)
     {
+        $vehicles = Vehicle::where('customer_name', $id)->get()->toArray();
+        foreach ($vehicles as $newValues) {
+            $import_vehicle = [
+                'customer_name' => '',
+                'sale_date' => $newValues['sale_date'],
+                'buyer_id' => '',
+                'lot' => $newValues['lot'],
+                'pickup_location' => $newValues['pickup_location'],
+                'year' => $newValues['year'],
+                'make' => $newValues['make'],
+                'model' => $newValues['model'],
+                'vin' => $newValues['vin'],
+                'value' => ($newValues['value']) ? $newValues['value'] : '',
+                'weight' => ($newValues['weight']) ? $newValues['weight'] : '',
+                'color' => ($newValues['color']) ? $newValues['color'] : '',
+                'key' => '',
+                'hat_number' => $newValues['hat_number'],
+                'note' => $newValues['note'],
+                'title_type' => $newValues['title_type'],
+                'title' => $newValues['title'],
+                'title_rec_date' => $newValues['title_rec_date'],
+                'title_state' => $newValues['title_state'],
+                'title_number' => $newValues['title_number'],
+                'auction' => ($newValues['auction']) ? $newValues['auction'] : '',
+                'site' => $newValues['site'],
+                'vehicle_type' => ($newValues['vehicle_type']) ? $newValues['vehicle_type'] : '',
+                'shipper_name' => null,
+                'status' => 1,
+                'port' => $newValues['port'],
+            ];
+            ImportVehicle::create($import_vehicle);
+        }
+        // dd($vehicles);
         $customer = User::find($id);
         $customer->delete();
         $customer->removeRole('Customer');
@@ -435,7 +472,6 @@ class CustomerController extends Controller
 
             $customer->status = '1';
             $customer->save();
-
         }
         $message = "Status Updated Successfully";
         return $message;
@@ -455,7 +491,8 @@ class CustomerController extends Controller
             "button_text" => "Update ",
             "breadcrumbs" => array("dashboard" => "Dashboard", "#" => $this->plural . " List"),
             'action' => $action,
-            "module" => ['type' => $this->type,
+            "module" => [
+                'type' => $this->type,
                 'type' => $this->type,
                 'singular' => $this->singular,
                 'plural' => $this->plural,
@@ -469,7 +506,7 @@ class CustomerController extends Controller
         $data['vehicles_cart'] = VehicleCart::with('vehicle')->get()->toArray();
 
         $all_vehicles = Vehicle::all()->count();
-        $customer_vehicles = Vehicle::where('status', '1')->where('customer_name', $customer[0]['company_name'])->count();
+        $customer_vehicles = Vehicle::where('status', '1')->where('customer_name', $id)->count();
         $CustomerVehicles_value = Vehicle::get()->sum('value');
         if ($all_vehicles != 0) {
             $customer_vehicles_percentage = ($customer_vehicles / $all_vehicles) * 100;
@@ -480,7 +517,7 @@ class CustomerController extends Controller
         $data['customer_vehicles'] = $customer_vehicles;
         $data['allVehicles_value'] = $CustomerVehicles_value;
 
-        $onhand = Vehicle::where('status', '3')->where('customer_name', $customer[0]['company_name'])->get();
+        $onhand = Vehicle::where('status', '3')->where('customer_name', $id)->get();
         $onhand_count = $onhand->count();
         $onhand_value = $onhand->sum('value');
         $data['onhand_count'] = $onhand_count;
@@ -492,7 +529,7 @@ class CustomerController extends Controller
             $data['onhand_count_percentage'] = 0;
         }
 
-        $dispatch = Vehicle::where('status', '2')->where('customer_name', $customer[0]['company_name'])->get();
+        $dispatch = Vehicle::where('status', '2')->where('customer_name', $id)->get();
         $dispatch_count = $dispatch->count();
         $dispatch_value = $dispatch->sum('value');
         $data['dispatch_count'] = $dispatch_count;
@@ -503,34 +540,13 @@ class CustomerController extends Controller
         } else {
             $data['dispatch_count_percentage'] = 0;
         }
-        
-        
-        $shipped = Vehicle::where('status', '5')->where('customer_name', $customer[0]['company_name'])->get();
-        $shipped_count = $shipped->count();
-        $shipped_value = $shipped->sum('value');
-        $data['shipped_count'] = $shipped_count;
-        $data['shipped_value'] = $shipped_value;
-        if ($all_vehicles != 0) {
-            $shipped_count_percentage = ($shipped_count / $all_vehicles) * 100;
-            $data['shipped_count_percentage'] = round($shipped_count_percentage);
-        } else {
-            $data['shipped_count_percentage'] = 0;
-        }
-
-        $arrived = Vehicle::where('status', '6')->where('customer_name', $customer[0]['company_name'])->get();
-        $arrived_count = $arrived->count();
-        $arrived_value = $arrived->sum('value');
-        $data['arrived_count'] = $arrived_count;
-        $data['arrived_value'] = $arrived_value;
-        if ($all_vehicles != 0) {
-            $arrived_count_percentage = ($arrived_count / $all_vehicles) * 100;
-            $data['arrived_count_percentage'] = round($arrived_count_percentage);
-        } else {
-            $data['arrived_count_percentage'] = 0;
-        }
-
-        $posted = Vehicle::where('status', '4')->where('customer_name', $customer[0]['company_name'])->get();
-        // dd($posted);
+        $posted = Vehicle::where(function ($type) {
+            $type->where('title_type', '!=', 'EXPORTABLE');
+        })->where(function ($status) {
+            $status->where('status', 1)
+                ->orwhere('status', 2)
+                ->orwhere('status', 3);
+        })->where('customer_name', $id)->get();
         $posted_count = $posted->count();
         $posted_value = $posted->sum('value');
         $data['posted_count'] = $posted_count;
@@ -542,7 +558,7 @@ class CustomerController extends Controller
             $data['posted_count_percentage'] = 0;
         }
 
-        $booked = Vehicle::where('status', '7')->where('customer_name', $customer[0]['company_name'])->get();
+        $booked = Vehicle::where('status', '7')->where('customer_name', $id)->get();
         $booked_count = $booked->count();
         $booked_value = $booked->sum('value');
         $data['booked_count'] = $booked_count;
@@ -595,16 +611,16 @@ class CustomerController extends Controller
                     $url_delete = url($this->action . '/delete/' . $val->id);
                     $url_profile = url($this->action . '/profile/' . $val->id);
                     $table .= '<tr>' .
-                    '<td>' . $val->customer_number . '</td>' .
-                    '<td class=' . "d-block" . '>
+                        '<td>' . $val->customer_number . '</td>' .
+                        '<td class=' . "d-block" . '>
                     <div>' . '<span>' . '<b>' . $val->customer_name . '</b>' .
-                    '</span>' . '<span style=' . "font-size: 12px !important;" . '>' . $val->lead . '</span>' .
-                    '</div>' . '</td>' .
-                    '<td>' . $val->level . '</td>' .
-                    '<td>' . $val->main_phone . '</td>' .
-                    '<td>' . $val->address . '</td>' .
-                    '<td>' . $val->status . '</td>' .
-                    '<td>' . $val->zip_code . '</td>' .
+                        '</span>' . '<span style=' . "font-size: 12px !important;" . '>' . $val->lead . '</span>' .
+                        '</div>' . '</td>' .
+                        '<td>' . $val->level . '</td>' .
+                        '<td>' . $val->main_phone . '</td>' .
+                        '<td>' . $val->address . '</td>' .
+                        '<td>' . $val->status . '</td>' .
+                        '<td>' . $val->zip_code . '</td>' .
                         '<td>' .
                         '<button><a href=' . $url_edit . '><i class=' . "ti-pencil" . '></i></a></button>' . '<button><a href=' . $url_delete . '><i class=' . "ti-trash" . '></i></a></button>' . '<button><a href=' . $url_profile . '><i class=' . "ti-trash" . '></i></a></button>' .
                         '</td>' .
@@ -772,10 +788,7 @@ class CustomerController extends Controller
         $data['no_of_vehicle'] = NoOfVehicle::where('status', '1')->get();
 
         $all_vehicles = Vehicle::all()->count();
-        $data['vehicles_cart'] = VehicleCart::with('vehicle')->get()->toArray();
-
-
-        $customer_vehicles = Vehicle::where('added_by_user', $id)->count();
+        $customer_vehicles = Vehicle::where('status', '1')->where('customer_name', $id)->count();
         $CustomerVehicles_value = Vehicle::get()->sum('value');
         if ($all_vehicles != 0) {
             $customer_vehicles_percentage = ($customer_vehicles / $all_vehicles) * 100;
@@ -786,7 +799,7 @@ class CustomerController extends Controller
         $data['customer_vehicles'] = $customer_vehicles;
         $data['allVehicles_value'] = $CustomerVehicles_value;
 
-        $onhand = Vehicle::where('status', '1')->where('added_by_user', $id)->get();
+        $onhand = Vehicle::where('status', '3')->where('customer_name', $id)->get();
         $onhand_count = $onhand->count();
         $onhand_value = $onhand->sum('value');
         $data['onhand_count'] = $onhand_count;
@@ -798,7 +811,7 @@ class CustomerController extends Controller
             $data['onhand_count_percentage'] = 0;
         }
 
-        $dispatch = Vehicle::where('status', '2')->where('added_by_user', $id)->get();
+        $dispatch = Vehicle::where('status', '2')->where('customer_name', $id)->get();
         $dispatch_count = $dispatch->count();
         $dispatch_value = $dispatch->sum('value');
         $data['dispatch_count'] = $dispatch_count;
@@ -809,44 +822,13 @@ class CustomerController extends Controller
         } else {
             $data['dispatch_count_percentage'] = 0;
         }
-
-        $manifest = Vehicle::where('status', '3')->where('added_by_user', $id)->get();
-        $manifest_count = $manifest->count();
-        $manifest_value = $manifest->sum('value');
-        $data['manifest_count'] = $manifest_count;
-        $data['manifest_value'] = $manifest_value;
-        if ($all_vehicles != 0) {
-            $manifest_count_percentage = ($manifest_count / $all_vehicles) * 100;
-            $data['manifest_count_percentage'] = round($manifest_count_percentage);
-        } else {
-            $data['manifest_count_percentage'] = 0;
-        }
-
-        $shipped = Vehicle::where('status', '4')->where('added_by_user', $id)->get();
-        $shipped_count = $shipped->count();
-        $shipped_value = $shipped->sum('value');
-        $data['shipped_count'] = $shipped_count;
-        $data['shipped_value'] = $shipped_value;
-        if ($all_vehicles != 0) {
-            $shipped_count_percentage = ($shipped_count / $all_vehicles) * 100;
-            $data['shipped_count_percentage'] = round($shipped_count_percentage);
-        } else {
-            $data['shipped_count_percentage'] = 0;
-        }
-
-        $arrived = Vehicle::where('status', '5')->where('added_by_user', $id)->get();
-        $arrived_count = $arrived->count();
-        $arrived_value = $arrived->sum('value');
-        $data['arrived_count'] = $arrived_count;
-        $data['arrived_value'] = $arrived_value;
-        if ($all_vehicles != 0) {
-            $arrived_count_percentage = ($arrived_count / $all_vehicles) * 100;
-            $data['arrived_count_percentage'] = round($arrived_count_percentage);
-        } else {
-            $data['arrived_count_percentage'] = 0;
-        }
-
-        $posted = Vehicle::where('status', '6')->where('added_by_user', $id)->get();
+        $posted = Vehicle::where(function ($type) {
+            $type->where('title_type', '!=', 'EXPORTABLE');
+        })->where(function ($status) {
+            $status->where('status', 1)
+                ->orwhere('status', 2)
+                ->orwhere('status', 3);
+        })->where('customer_name', $id)->get();
         $posted_count = $posted->count();
         $posted_value = $posted->sum('value');
         $data['posted_count'] = $posted_count;
@@ -858,7 +840,7 @@ class CustomerController extends Controller
             $data['posted_count_percentage'] = 0;
         }
 
-        $booked = Vehicle::where('status', '7')->where('added_by_user', $id)->get();
+        $booked = Vehicle::where('status', '7')->where('customer_name', $id)->get();
         $booked_count = $booked->count();
         $booked_value = $booked->sum('value');
         $data['booked_count'] = $booked_count;
@@ -882,14 +864,14 @@ class CustomerController extends Controller
     {
 
         if ($request->ajax()) {
-           
+
             // $data = [];
             $data = $request->all();
             // dd($data);
             $tab = $request->tab;
             $image = $request->file('customer_image');
             $file = $request->file('user_file');
-            
+
 
             // dd($data);
             unset($data['user_file']);
@@ -921,16 +903,16 @@ class CustomerController extends Controller
                     'email' => $email,
                 ],
             ];
-            
-            if($request->id){
+
+            if ($request->id) {
                 $view_data['billing'] = BillingParty::where('customer_id', $data['id'])->get()->toArray();
             }
 
-            
-                
-             
 
-            
+
+
+
+
 
             switch ($tab) {
                 case ('general_customer'):
@@ -945,7 +927,7 @@ class CustomerController extends Controller
 
                 case ('shipper_customer'):
                     $view_data['quotation'] = Quotation::where('customer_id', $request->customer_id)->get()->toArray();
-            $view_data['no_of_vehicle'] = NoOfVehicle::where('status', '1')->get();
+                    $view_data['no_of_vehicle'] = NoOfVehicle::where('status', '1')->get();
 
                     $view = view('layouts.customer_create.quotation', $view_data)->render();
 
@@ -964,7 +946,7 @@ class CustomerController extends Controller
             }
 
             if ($tab == "general_customer") {
-                if($request->id){
+                if ($request->id) {
                     $request->validate([
                         'name' => 'required',
                         'username' => 'required',
@@ -978,10 +960,7 @@ class CustomerController extends Controller
                         'state' => 'required',
                         'address_line1' => 'required',
                     ]);
-
-
-                }
-                else{
+                } else {
                     $request->validate([
                         'name' => 'required',
                         'username' => 'required',
@@ -997,47 +976,62 @@ class CustomerController extends Controller
                         'address_line1' => 'required',
                     ]);
                 }
-                
-    
+
+
                 if ($image) {
                     foreach ($image as $images) {
-                        $filename = Storage::putFile($this->directory, $images);
-                        $images->move(public_path($this->directory), $filename);
-                        $data['user_image'] = $filename;
+                        if ($images->getSize() > 3219999) {
+                            $actual_image = Image::make($request->file('customer_image')[0]->getRealPath());
+                            $height = $actual_image->height()/1;
+                            $width = $actual_image->width()/1;
+                            $image_resize = $actual_image->resize($width, $height)->encode('jpg');
+                            $hash = md5($image_resize->__toString());
+                            $path = "customer_images/{$hash}.jpg";
+                            $image_resize->save(public_path($path));
+                            $filename = Storage::put($path, $image_resize->__toString());
+                            $data['user_image'] = $path;
+                        } else {
+                            $filename = Storage::putFile($this->directory, $images);
+                            $images->move(public_path($this->directory), $filename);
+                            $data['user_image'] = $filename;
+                        }
                         $data['password'] = Hash::make($request->password);
                         unset($data['customer_image']);
                     }
                 }
 
-                if($request->id){
-                    if($request->password){
+                if ($request->id) {
+                    if ($request->password) {
                         $data['password'] = Hash::make($request->password);
-                    }
-                    else{
+                    } else {
                         unset($data['password']);
                     }
-                }
-                else{
+                } else {
                     $data['password'] = Hash::make($request->password);
                 }
-                // $Obj = new User;
-                // $Obj->create($data);
-                // dd($data['id']);
-                // $data['password'] = Hash::make($request->password);
-                // dd($data);
+
                 $Obj = User::updateOrCreate(['id' => $request->id], $data);
-                // $email = $data['email'];
+                $user = $Obj->toArray();
+
+                if ($Obj) {
+                    if ($request->password) {
+                        $user['password'] = $request->password;
+                    } else {
+                        $user['password'] = 'Previouse Password';
+                    }
+                    dispatch(new SendMailJob($user));
+                }
+
                 $user = User::where('email', $email)->get();
                 $user_id = $user[0]['id'];
 
-                if($request->id){
-                }
-                else{
+                if ($request->id) {
+                } else {
                     $role = User::find($user_id);
                     $role->assignRole('Customer');
                 }
 
-                
+
                 if ($file) {
                     foreach ($file as $files) {
                         $file_name = time() . '.' . $files->extension();
@@ -1046,91 +1040,69 @@ class CustomerController extends Controller
                         $documents['thumbnail'] = $file_name;
                         $files->move(public_path($this->directory), $docname);
                         $documents['user_id'] = $user_id;
-
-                        // $Obj = CustomerDocument::updateOrCreate(['user_id' => $request->id], $documents);
                         $Obj = new CustomerDocument;
                         $Obj->create($documents);
                     }
                 }
                 $output =
                     [
-                    'result' => 'success',
-                    'tab' => 'Customer created successfully!',
-                    'view' => $view,
-                ];
-
+                        'result' => 'success',
+                        'tab' => 'Customer created successfully!',
+                        'view' => $view,
+                    ];
             } elseif ($tab == "billing_customer") {
                 // dd($data);
                 $Obj = BillingParty::updateOrCreate(['id' => $request->id], $data);
                 $output =
                     [
-                    'result' => 'success',
-                    'tab' => 'Billing data inserted!',
-                    'view' => $view,
-                ];
-
+                        'result' => 'success',
+                        'tab' => 'Billing data inserted!',
+                        'view' => $view,
+                    ];
             } elseif ($tab == "shipper_customer") {
-                // dd($data);
                 $Obj = Shipper::updateOrCreate(['id' => $request->id], $data);
-                // $Obj = new Shipper;
-                // $Obj->create($data);
                 $output =
                     [
-                    'result' => 'success',
-                    'tab' => 'Shipper data inserted!',
-                    'view' => $view,
-                    'destination_port' => DCountry::select('port')->where('status', '1')->groupBy('port')->get()->toArray(),
-                ];
-
+                        'result' => 'success',
+                        'tab' => 'Shipper data inserted!',
+                        'view' => $view,
+                        'destination_port' => DCountry::select('port')->where('status', '1')->groupBy('port')->get()->toArray(),
+                    ];
             } else {
-                if($request->id){
-                    foreach($request->default as $key => $val){
-                        if($key < count($request->id)){
-                            $Obj = Quotation::where('id', $request->id[$key])->update( [
-                                'destination_port' => $data['destination_port'],
-                                'valid_from' => $data['valid_from'],
-                                'valid_till' => $data['valid_till'],
-                                'container_size' => $data['container_size'][$key],
-                                'vehicle' => $data['vehicle'][$key],
-                                'loading_port' => $data['loading_port'][$key],
-                                'shipping_line' => $data['shipping_line'][$key],
-                                'default' => $data['default'][$key],
-                                'special_rate' => $data['special_rate'][$key],
-                                'customer_id' => $data['customer_id']
-                            ]);
-                        }
-                        else{
-                            $Obj = Quotation::create( [
-                                'destination_port' => $data['destination_port'],
-                                'valid_from' => $data['valid_from'],
-                                'valid_till' => $data['valid_till'],
-                                'container_size' => $data['container_size'][$key],
-                                'vehicle' => $data['vehicle'][$key],
-                                'loading_port' => $data['loading_port'][$key],
-                                'shipping_line' => $data['shipping_line'][$key],
-                                'default' => $data['default'][$key],
-                                'special_rate' => $data['special_rate'][$key],
-                                'customer_id' => $data['customer_id']
-                            ]);
+                if ($request->id) {
+                    if ($request->default) {
+                        foreach ($request->default as $key => $val) {
+                            if ($key < count($request->id)) {
+                                $Obj = Quotation::where('id', $request->id[$key])->update([
+                                    'destination_port' => $data['destination_port'],
+                                    'valid_from' => $data['valid_from'],
+                                    'valid_till' => $data['valid_till'],
+                                    'container_size' => $data['container_size'][$key],
+                                    'vehicle' => $data['vehicle'][$key],
+                                    'loading_port' => $data['loading_port'][$key],
+                                    'shipping_line' => $data['shipping_line'][$key],
+                                    'default' => $data['default'][$key],
+                                    'special_rate' => $data['special_rate'][$key],
+                                    'customer_id' => $data['customer_id']
+                                ]);
+                            } else {
+                                $Obj = Quotation::create([
+                                    'destination_port' => $data['destination_port'],
+                                    'valid_from' => $data['valid_from'],
+                                    'valid_till' => $data['valid_till'],
+                                    'container_size' => $data['container_size'][$key],
+                                    'vehicle' => $data['vehicle'][$key],
+                                    'loading_port' => $data['loading_port'][$key],
+                                    'shipping_line' => $data['shipping_line'][$key],
+                                    'default' => $data['default'][$key],
+                                    'special_rate' => $data['special_rate'][$key],
+                                    'customer_id' => $data['customer_id']
+                                ]);
+                            }
                         }
                     }
-                    // for($i = 0; $i<count($request->default); $i++){
-                    //     $Obj = Quotation::where('id', $request->id[$i])->update( [
-                    //         'destination_port' => $data['destination_port'],
-                    //         'valid_from' => $data['valid_from'],
-                    //         'valid_till' => $data['valid_till'],
-                    //         'container_size' => $data['container_size'][$i],
-                    //         'vehicle' => $data['vehicle'][$i],
-                    //         'loading_port' => $data['loading_port'][$i],
-                    //         'shipping_line' => $data['shipping_line'][$i],
-                    //         'default' => $data['default'][$i],
-                    //         'special_rate' => $data['special_rate'][$i],
-                    //         'customer_id' => $data['customer_id']
-                    //     ]);
-                    // }
-                }
-                else{
-                    for($i = 0; $i<count($request->default); $i++){
+                } else {
+                    for ($i = 0; $i < count($request->default); $i++) {
                         $Obj = Quotation::Create([
                             'destination_port' => $data['destination_port'],
                             'valid_from' => $data['valid_from'],
@@ -1145,17 +1117,16 @@ class CustomerController extends Controller
                         ]);
                     }
                 }
-           
-                // $Obj = Quotation::updateOrCreate(['id'=> $request->id], $data);
+
                 $output =
                     [
-                    'result' => 'success',
-                    'tab' => 'Quotation data inserted!',
-                    'quotation' => 'fade',
-                ];
+                        'result' => 'success',
+                        'tab' => 'Quotation data inserted!',
+                        'quotation' => 'fade',
+                    ];
             }
 
-            
+
             return Response($output);
         }
     }
@@ -1182,55 +1153,34 @@ class CustomerController extends Controller
         $user = User::where('role_id', '4');
         if ($filterText == "all") {
             $data['user'] = $user->get();
-            // dd('all');
         } else {
             $data['user'] = $user->where('status', $filterText)
                 ->orWhere('city', $filterText)
                 ->orWhere('state', $filterText)->get();
-            // $data['user'] = $user->where('status', $filterText)->orwhere('city', $filterText)->orwhere('state', $filterText)->get()->toArray();
-
         }
         $output = view('customer.FilterTable', $data)->render();
         return Response($output);
     }
-
     public function changeNotification(Request $req)
     {
         $id = $req->id;
         $notification = Notification::where('id', $id)->get();
         return Response($notification);
-
     }
-
     public function export()
     {
         return Excel::download(new UsersExport, 'customers.xlsx');
     }
 
-    // public function import(Request $request)
-    // {
-    //     if ($request->ajax()) {
-    //         $output = view('layouts.customer.import_customer')->render();
-    //         return Response($output);
-    //     }
-    //     Excel::import(new CustomersImport, request()->file('import_document'));
-    // }
-
     public function serverside(Request $request, $state = null)
     {
-       
-        
         if ($request->ajax()) {
 
-            if($state != null){
+            if ($state != null) {
                 $data = User::role('Customer')->where('state', $state);
-        }
-        else{
-            $data = User::role('Customer');
-        }
-
-
-            
+            } else {
+                $data = User::role('Customer');
+            }
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
@@ -1255,21 +1205,28 @@ class CustomerController extends Controller
     }
 
 
-    public function Addnew_quotation(){
+    public function Addnew_quotation()
+    {
 
         $data = [];
         $output = [];
-        
+
         $data['container_size'] = ContainerSize::where('status', '1')->get();
         $data['loading_ports'] = LoadingCountry::select('port')->where('status', '1')->groupBy('port')->get()->toArray();
         $data['shipping_lines'] = ShipmentLine::where('status', '1')->get();
         $data['no_of_vehicle'] = NoOfVehicle::where('status', '1')->get();
 
         $output =  view('layouts.customer_create.AddQuotation', $data)->render();
-        Return Response($output);
-
-
-        
+        return Response($output);
     }
 
+    public function customerDeleteQuotation(Request $request)
+    {
+        $d = Quotation::find($request->id)->delete();
+        if ($d) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
