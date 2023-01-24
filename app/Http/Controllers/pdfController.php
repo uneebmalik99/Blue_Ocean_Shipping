@@ -10,6 +10,8 @@ use App\Models\Notification;
 use App\Models\Shipment;
 use Carbon\Carbon;
 use PDF;
+use App\Jobs\SendPdfJob;
+use Illuminate\Support\Facades\Mail;
 
 class pdfController extends Controller
 {
@@ -128,7 +130,7 @@ class pdfController extends Controller
 
     public function shipmentDock($id){
         $data = [];
-        $data['shipment']=Shipment::with('vehicle')->whereid($id)->get()->toArray();
+        $data['shipment']=Shipment::with('vehicle', 'customer.billings', 'customer.shippers')->whereid($id)->get()->toArray();
         $data['button_hide'] = 'hide';
         $pdf = PDF::loadview('layouts.shipment_detail.shipment__Dock_pdf', $data);
         return $pdf->stream(); 
@@ -161,7 +163,7 @@ class pdfController extends Controller
             $output = view('layouts.shipment_detail.shipment__Landing_pdf', $data)->render();
         }
         else if($request->tab == 'us_custom'){
-            $data['shipment']=Shipment::with('vehicle', 'customer.billings')->whereid($request->id)->get()->toArray();
+            $data['shipment']=Shipment::with('vehicle', 'customer.billings', 'customer.shippers')->whereid($request->id)->get()->toArray();
             $data['button_hide'] = 'show';
             $output = view('layouts.shipment_detail.shipment__Custom_pdf', $data)->render();
         }
@@ -172,6 +174,65 @@ class pdfController extends Controller
         }
         // dd($output);
         return Response($output);
+    }
+
+    public function sendPdf(Request $request){
+        if($request->tab == 'dock_pdf'){
+            $data['shipment']=Shipment::with('vehicle', 'customer', 'customer.billings', 'customer.shippers')->whereid($request->id)->get()->toArray();
+            $data['button_hide'] = 'hide';
+            $data['email'] = $data['shipment'][0]['customer']['email'];
+            $pdf = PDF::loadview('layouts.shipment_detail.shipment__Dock_pdf', $data);
+            Mail::send([], [], function ($message) use ($data, $pdf) {
+                $message->to($data["email"])
+                    ->subject('Dock Documents')
+                    ->attachData($pdf->output(), "dock.pdf");
+            });
+        }
+        else if($request->tab == 'custom_pdf'){
+            $data['shipment']=Shipment::with('vehicle', 'customer.billings', 'customer.shippers')->whereid($request->id)->get()->toArray();
+            $data['button_hide'] = 'hide';
+            $data['email'] = $data['shipment'][0]['customer']['email'];
+            $pdf = PDF::loadview('layouts.shipment_detail.shipment__Custom_pdf', $data);
+            Mail::send([], [], function ($message) use ($data, $pdf) {
+                $message->to($data["email"])
+                    ->subject('Custom Documents')
+                    ->attachData($pdf->output(), "custom.pdf");
+            });
+        }
+        else if($request->tab == 'bol_pdf'){
+            $data['shipment']=Shipment::with('vehicle', 'customer.billings', 'customer.shippers')->whereid($request->id)->get()->toArray();
+            $data['button_hide'] = 'hide';
+            $data['email'] = $data['shipment'][0]['customer']['email'];
+            $pdf = PDF::loadview('layouts.shipment_detail.shipment__Landing_pdf', $data);
+            Mail::send([], [], function ($message) use ($data, $pdf) {
+                $message->to($data["email"])
+                    ->subject('Bol Documents')
+                    ->attachData($pdf->output(), "bol.pdf");
+            });
+        }
+        else if($request->tab == 'houston_pdf'){
+            $data['shipment']=Shipment::with('vehicle', 'customer.billings', 'customer.shippers')->whereid($request->id)->get()->toArray();
+            $data['button_hide'] = 'hide';
+            $data['email'] = $data['shipment'][0]['customer']['email'];
+            $pdf = PDF::loadview('layouts.shipment_detail.shipment_Houston_pdf', $data);
+            Mail::send([], [], function ($message) use ($data, $pdf) {
+                $message->to($data["email"])
+                    ->subject('Houston Documents')
+                    ->attachData($pdf->output(), "houston.pdf");
+            });
+        }
+        else if($request->tab == 'hazard_pdf'){
+            $data['shipment']=Shipment::with('vehicle', 'customer.billings', 'customer.shippers')->whereid($request->id)->get()->toArray();
+            $data['button_hide'] = 'hide';
+            $data['email'] = $data['shipment'][0]['customer']['email'];
+            $pdf = PDF::loadview('layouts.shipment_detail.shipment_Hazard_pdf', $data);
+            Mail::send([], [], function ($message) use ($data, $pdf) {
+                $message->to($data["email"])
+                    ->subject('Hazard Documents')
+                    ->attachData($pdf->output(), "hazard.pdf");
+            });
+        }
+        return true;
     }
     
 }

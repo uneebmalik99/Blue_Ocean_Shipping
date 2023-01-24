@@ -12,7 +12,7 @@
 
 <body>
     @if($button_hide == 'show')
-    <div style="width: 118px;">
+    <div style="width: 218px;">
         <button type="button" class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
         style="background: #1d6092;float:left;" onclick="printthis()">
        <div class="d-flex justify-content-center align-items-center">
@@ -25,6 +25,10 @@
            <span class="pl-2 font-size">PDF</span>
        </div>
     </a>
+    <a class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
+    style="background: #1d6092;float:left;" tab="{{ @$shipment[0]['id'] }}" id="bol_pdf" onclick="sendpdfthroughmail(this.id)">
+       <span class="pl-2 font-size">EMAIL</span>
+   </a>
     </div>
     @endif
 

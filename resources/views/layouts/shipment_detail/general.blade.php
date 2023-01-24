@@ -466,7 +466,7 @@ background-color: #e93f7800!important;
                 <div>
                     <button type="button" class="close text-white h6" data-dismiss="modal" aria-label="Close"
                         style="margin-top: -11px;
-                 font-size: 26px;">
+                 font-size: 26px;" onclick="modelClose()">
                         <span aria-hidden="true">x</span>
                     </button>
                 </div>
@@ -538,15 +538,6 @@ background-color: #e93f7800!important;
                     @else
                         <span class="information_text">Completed</span>
                     @endif
-
-
-                </div>
-
-                <div class="d-flex justify-content-between my-2 py-1"
-                    style="border: 1px solid rgba(26, 88, 133, 0.17);
-                border-radius: 10px;width: 90%;margin:6px auto">
-                    <span class="infromation_mainText">Ship Date</span>
-                    <span class="information_text">{{ @$shipments[0]['ship_date'] }}</span>
                 </div>
 
                 <div class="d-flex justify-content-between my-2 py-1"
@@ -1092,5 +1083,9 @@ background-color: #e93f7800!important;
                 $('.modal-body').html(data);
             }
         });
+    }
+
+    function modelClose(){
+        $('#exampleModal').modal('hide');
     }
 </script>

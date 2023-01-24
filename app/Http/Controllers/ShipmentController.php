@@ -566,26 +566,18 @@ class ShipmentController extends Controller
 
 
             $current_date = (new DateTime)->format('Y-m-d');
-            $days = strtotime($data['est_arrival_date']) - strtotime($current_date) / (60 * 60 * 24);
-            
-            if(strpos($days, '-') != false){
-                $days = explode('-', $days);
-            }
-
+            $days = (strtotime($data['est_arrival_date']) - strtotime($current_date)) / (60 * 60 * 24);
+           
             if($current_date < $data['sale_date']){
                 $data['status'] = 1;
             }
-
             else if($current_date >= $data['sale_date']){
                 $data['status'] = 2;
             }
-
             else{}
-
-            if($days < '10'){
+            if(abs($days) < '10'){
                 $data['status'] = 3;
             }
-
             if($request->id){
                 if($vehicles){
                     $old_vehicles = Vehicle::where('shipment_id', $data['id'])->get()->toArray();
