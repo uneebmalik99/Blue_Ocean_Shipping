@@ -157,6 +157,9 @@ Route::prefix('/admin')->middleware(['auth','login.status','revalidatehistory'])
 
     Route::post('/shipment/pdf', [pdfController::class, 'OpenPdf'])->name('shipment.pdf');
 
+    Route::post('/shipment/send/pdf', [pdfController::class, 'sendPdf'])->name('shipment.sendpdfthroughmail');
+
+
 
     Route::get('/shipments/closeModal',                     [ShipmentController::class, 'closeModal'])->name('shipments.closeModal');
 

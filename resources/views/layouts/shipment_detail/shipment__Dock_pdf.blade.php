@@ -32,12 +32,10 @@
    </div>
 </a>
 
-<button type="button" class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
-    style="background: #1d6092;float:left;">
-   {{-- <div class="d-flex justify-content-center align-items-center"> --}}
+<a class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
+    style="background: #1d6092;float:left;" tab="{{ @$shipment[0]['id'] }}" id="dock_pdf" onclick="sendpdfthroughmail(this.id)">
        <span class="pl-2 font-size">EMAIL</span>
-   {{-- </div> --}}
-</button>
+   </a>
 
 
 </div>
@@ -252,7 +250,7 @@
                 </tr> --}}
                 <tr>
                     <td colspan="2" class="we" id="noor"><input type="text" value="3.CONSIGNEE TO" style="width: 100%;border:none;outline:none;text-align:start;"></td>
-                    <td colspan="2" class="we"><input type="text" value="7.FORWARDING AGENT (Name and address-reference)" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                    <td colspan="2" class="we"><input type="text" value="7.Shipper (Name and address-reference)" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                 </tr>
                 <tr>
                     <td colspan="2" class="no_al" rowspan="" id="noor">
@@ -265,11 +263,9 @@
                         {{-- <input type="text" value="SHARJAH. UNITED ARAB EMIRATES" style="width: 100%;border:none;outline:none;text-align:start;"> --}}
                     </td>
                     <td colspan="2" class="no_al">
-                        <input type="text" value="B&C LUXURY AUTO LTD " style="width: 100%;border:none;outline:none;text-align:start;">
-                        <br>
-                        <input type="text" value="104 LISTER AV., NEWARK, NJ 07105. UNITED " style="width: 100%;border:none;outline:none;text-align:start;">
-                        <br>
-                        <input type="text" value="STATES" style="width: 100%;border:none;outline:none;text-align:start;">
+                        <input type="text" value="{{ @$shipment[0]['customer']['shippers'][0]['shipper_name'] }}" style="width: 100%;border:none;outline:none;text-align:start;"><br>
+                        <input type="text" value="{{ @$shipment[0]['customer']['shippers'][0]['address'] }}" style="width: 100%;border:none;outline:none;text-align:start;"><br>
+                        <input type="text" value="{{ @$shipment[0]['customer']['shippers'][0]['phone'] }}" style="width: 100%;border:none;outline:none;text-align:start;">
                     </td>
                 </tr>
                 <tr>
@@ -598,7 +594,7 @@
             <tr>
                 <td></td>
                 <td class="wrds">
-                    <input type="text" value="UPLOADED DATE: {{ @$shipment[0]['created_at'] }}" style="width: 100%;border:none;outline:none;text-align:start;">
+                    <input type="text" value="UPLOADED DATE: {{ date('M d, Y', @$shipment[0]['create_at']) }}" style="width: 100%;border:none;outline:none;text-align:start;">
 
                 </td>
     
@@ -625,7 +621,7 @@
                 {{-- <td class="wrds">PLACED&nbsp;&nbsp;&nbsp;&nbsp;<span class="p_doc">IN SHIP ON
                         DOCK</span>&nbsp;&nbsp;&nbsp;&nbsp;LOCATION&nbsp;&nbsp;&nbsp;___________________________</td> --}}
                 <td colspan="2" class="d_date" style="text-align:center;padding-top:10px;">
-                    DATE: <input type="text" value="{{ date(@$shipment[0]['create_at']) }}" style="width: 50%;border:none;outline:none;text-align:start;">
+                    DATE: <input type="text" value="{{ date('M d, Y', @$shipment[0]['create_at']) }}" style="width: 50%;border:none;outline:none;text-align:start;">
 
                 </td>
             </tr>
