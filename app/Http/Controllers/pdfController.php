@@ -166,7 +166,7 @@ class pdfController extends Controller
             $output = view('layouts.shipment_detail.shipment__Custom_pdf', $data)->render();
         }
         else if($request->tab == 'dock_receipt'){
-            $data['shipment']=Shipment::with('vehicle', 'customer.billings')->whereid($request->id)->get()->toArray();
+            $data['shipment']=Shipment::with('vehicle', 'customer.billings', 'customer.shippers')->whereid($request->id)->get()->toArray();
             $data['button_hide'] = 'show';
             $output = view('layouts.shipment_detail.shipment__Dock_pdf', $data)->render();
         }
