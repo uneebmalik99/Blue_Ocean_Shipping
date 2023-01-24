@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
-use App\Traits\ApiResponser;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Shipment;
 use Illuminate\Http\Request;
-
-class AuthController extends Controller
+use Illuminate\Support\Facades\Validator;
+use App\Traits\ApiResponser;
+class ContainerController extends Controller
 {
     use ApiResponser;
     /**
@@ -19,10 +18,7 @@ class AuthController extends Controller
     public function index()
     {
         //
-       
     }
-
-    
 
     /**
      * Show the form for creating a new resource.
@@ -89,50 +85,29 @@ class AuthController extends Controller
     {
         //
     }
-    public function register(Request $request)
-    {
-       
-        $attr = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|unique:user,email',
-            'password' => 'required|string|min:6|confirmed'
-        ]);
+    
+    /***
+     * Shipment Search
+     */
+    public function search_shipment(Request $request){
+        $validated = Validator::validate($request->all(),[
+            'container_number' => 'string|required'
+        ]
 
-        $user = User::create([
-            'name' => $attr['name'],
-            'password' => bcrypt($attr['password']),
-            'email' => $attr['email']
-        ]);
-
-        return $this->success([
-            'token' => $user->createToken('API Token')->plainTextToken
-        ]);
-    }
-
-    public function login(Request $request)
-    {
-        $attr = $request->validate([
-            'email' => 'required|string|email|',
-            'password' => 'required|string|min:6'
-        ]);
-
-        if (!Auth::attempt($attr)) {
-            return $this->error('Credentials not match', 401);
-        }
+        );
         
-        return $this->success([
-            'token' => auth()->user()->createToken('API Token')->plainTextToken,
-            'data' => auth()->user(),
-             
-        ],"Login Successfully");
-    }
-
-    public function logout()
-    {
-        auth()->user()->tokens()->delete();
-
-        return [
-            'message' => 'Tokens Revoked'
-        ];
+        $search_text = $validated['container_number'];
+        
+        if(auth()->user()->hasRole('Customer')){
+        $data = Shipment::with(['vehicle.warehouse_image', 'loading_image', 'vehicle.vehicle_status'])->where('container_no', $search_text)->get()->toArray();
+        }
+        else{
+            $data = Shipment::with(['vehicle.warehouse_image','loading_image','vehicle.vehicle_status'])->where('container_no', $search_text)->get()->toArray();
+        }
+        if(!isset($data) || empty($data)){
+            //error(string $message = null, int $code, $data = null)
+            return $this->error('search key not match with any Shipment',401,$data);
+        }
+        return $this->success($data,"Shipment searched Successfully",200);
     }
 }

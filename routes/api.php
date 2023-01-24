@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\v1\AuthController;
+use App\Http\Controllers\Api\v1\ContainerController;
+use App\Http\Controllers\Api\v1\VehicleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,12 +26,17 @@ Route::post('/auth/register', [AuthController::class, 'register']);
 
 Route::post('/auth/login', [AuthController::class, 'login']);
 
-Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::get('/me', function(Request $request) {
-        return auth()->user();
-    });
+Route::prefix('/auth')->middleware(['auth:sanctum'])->group(function () {
+    
 
-    Route::post('/auth/logout', [AuthController::class, 'logout']);
+    Route::post('/logout', [AuthController::class, 'logout']);
+    //Vehicle
+    Route::prefix('/vehicle')->group(function(){
+        Route::post('/search', [VehicleController::class, 'search_vehicle']);
+    });
+    Route::prefix('/shipment')->group(function(){
+        Route::post('/search', [ContainerController::class, 'search_shipment']);
+    });
 });
 //VehicLe Resoucrce Routes
-Route::apiResource('vehicle',\App\Http\Controllers\Api\v1\VehicleController::class);
+//Route::apiResource('vehicle',\App\Http\Controllers\Api\v1\VehicleController::class);
