@@ -439,27 +439,27 @@
 
 
 
-    function sendpdfthroughmail(tab){
-        id = $('#'+tab).attr('tab');
-        document.getElementById('load').style.visibility = "visible";
+    // function sendpdfthroughmail(tab){
+    //     id = $('#'+tab).attr('tab');
+    //     document.getElementById('load').style.visibility = "visible";
        
-        $.ajax({
-            type: 'post',
-            url: '{{ route('shipment.sendpdfthroughmail') }}',
-            data: {
-                'id': id,
-                'tab':tab
-            },
-            success: function(data) {
-                document.getElementById('load').style.visibility = "hidden";
-                iziToast.success({
-                        title: 'Success',
-                        message: 'Mail Send Successfully!',
-                        timeout: 1500,
-                        position: 'topCenter',
-                        zindex: '9999999999999',
-                    });
-            }
-        });
-    }
+    //     $.ajax({
+    //         type: 'post',
+    //         url: '{{ route('shipment.sendpdfthroughmail') }}',
+    //         data: {
+    //             'id': id,
+    //             'tab':tab
+    //         },
+    //         success: function(data) {
+    //             document.getElementById('load').style.visibility = "hidden";
+    //             iziToast.success({
+    //                     title: 'Success',
+    //                     message: 'Mail Send Successfully!',
+    //                     timeout: 1500,
+    //                     position: 'topCenter',
+    //                     zindex: '9999999999999',
+    //                 });
+    //         }
+    //     });
+    // }
 </script>
