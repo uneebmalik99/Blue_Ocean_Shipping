@@ -1019,7 +1019,7 @@ class CustomerController extends Controller
                     } else {
                         $user['password'] = 'Previouse Password';
                     }
-                    dispatch(new SendMailJob($user));
+                   // dispatch(new SendMailJob($user));
                 }
 
                 $user = User::where('email', $email)->get();
