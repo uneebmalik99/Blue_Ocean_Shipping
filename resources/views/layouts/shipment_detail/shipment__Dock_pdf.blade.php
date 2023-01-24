@@ -18,7 +18,7 @@
         </div>
     </button> --}}
     @if($button_hide == 'show')
-<div style="width: 118px;">
+<div style="width: 218px;">
     <button type="button" class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
     style="background: #1d6092;float:left;" onclick="printthis()">
    <div class="d-flex justify-content-center align-items-center">
@@ -31,6 +31,15 @@
        <span class="pl-2 font-size">PDF</span>
    </div>
 </a>
+
+<button type="button" class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
+    style="background: #1d6092;float:left;">
+   {{-- <div class="d-flex justify-content-center align-items-center"> --}}
+       <span class="pl-2 font-size">EMAIL</span>
+   {{-- </div> --}}
+</button>
+
+
 </div>
 @endif
 
@@ -39,7 +48,6 @@
         <style>
             * {
                 font-family: sans-serif;
-    
             }
     
             .tbl {
@@ -217,9 +225,9 @@
                 </tr>
                 <tr>
                     <td colspan="2" class="no_al" rowspan="2" id="noor">
-                        <input type="text" value="NOOR AL JABAL USED CARS" style="width: 100%;border:none;outline:none;text-align:start;"><br>
-                        <input type="text" value="TR 12105 ALDINE WESTFIELD RD, Tel:7132801186," style="width: 100%;border:none;outline:none;text-align:start;"><br>
-                        <input type="text" value="HOUSTON, TX 77093. UNITED STATES" style="width: 100%;border:none;outline:none;text-align:start;">
+                        <input type="text" value="{{ @$shipment[0]['customer']['shippers'][0]['shipper_name'] }}" style="width: 100%;border:none;outline:none;text-align:start;"><br>
+                        <input type="text" value="{{ @$shipment[0]['customer']['shippers'][0]['address'] }}" style="width: 100%;border:none;outline:none;text-align:start;"><br>
+                        <input type="text" value="{{ @$shipment[0]['customer']['shippers'][0]['phone'] }}" style="width: 100%;border:none;outline:none;text-align:start;">
                     </td>
                     <td class="right"><input type="text" value="{{ @$shipment[0]['booking_number'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                     <td class="no_al"><input type="text" value="{{ @$shipment[0]['booking_number'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
@@ -234,26 +242,27 @@
                     <td class="we">5.DPCUMENT NUMBER</td>
                     <td class="we">SA.B/L NUMBER</td> -->
                 </tr>
-                <tr>
+                {{-- <tr>
                     <td colspan=""></td>
                     <td class="we" style="border:1px solid black ;padding-bottom:15px;">
                         <input type="text" value="ZIP CODE" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                     <td colspan="2" style="border-left:1px solid black"></td>
                     <!-- <td style="background-color:cadetblue;"></td> -->
                     <!-- <td style="background-color:blue;"></td> -->
-                </tr>
+                </tr> --}}
                 <tr>
                     <td colspan="2" class="we" id="noor"><input type="text" value="3.CONSIGNEE TO" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                     <td colspan="2" class="we"><input type="text" value="7.FORWARDING AGENT (Name and address-reference)" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                 </tr>
                 <tr>
-                    <td colspan="2" class="no_al" rowspan="" id="noor"><input type="text" value="NOOR AL JABAL USED CARS TR" style="width: 100%;border:none;outline:none;text-align:start;">
+                    <td colspan="2" class="no_al" rowspan="" id="noor">
+                        <input type="text" value="{{ @$shipment[0]['customer']['billings'][0]['company_name'] }}" style="width: 100%;border:none;outline:none;text-align:start;">
                         <br>
-                        <input type="text" value="Licence Number 718431" style="width: 100%;border:none;outline:none;text-align:start;">
+                        <input type="text" value="{{ @$shipment[0]['customer']['billings'][0]['address'] }}, {{ @$shipment[0]['customer']['billings'][0]['city'] }}, {{ @$shipment[0]['customer'][0]['user']['billings'][0]['zip_code'] }}" style="width: 100%;border:none;outline:none;text-align:start;">
                         <br>
-                        <input type="text" value="INDUSTRIAL AREA NO: 02, Tel: 7132801186," style="width: 100%;border:none;outline:none;text-align:start;">
-                        <br>
-                        <input type="text" value="SHARJAH. UNITED ARAB EMIRATES" style="width: 100%;border:none;outline:none;text-align:start;">
+                        <input type="text" value="{{ @$shipment[0]['customer']['billings'][0]['phone'] }}" style="width: 100%;border:none;outline:none;text-align:start;">
+                        {{-- <br> --}}
+                        {{-- <input type="text" value="SHARJAH. UNITED ARAB EMIRATES" style="width: 100%;border:none;outline:none;text-align:start;"> --}}
                     </td>
                     <td colspan="2" class="no_al">
                         <input type="text" value="B&C LUXURY AUTO LTD " style="width: 100%;border:none;outline:none;text-align:start;">
@@ -277,14 +286,11 @@
                 </tr>
                 <tr>
                     <td colspan="2" class="carrige_p" id="noor">
-                        <input type="text" value="NOOR AL JABAL USED CARS TR" style="width: 100%;border:none;outline:none;text-align:start;">
+                        <input type="text" value="{{ @$shipment[0]['customer']['billings'][0]['company_name'] }}" style="width: 100%;border:none;outline:none;text-align:start;">
                         <br>
-                        <input type="text" value="Licence Number 718431" style="width: 100%;border:none;outline:none;text-align:start;">
+                        <input type="text" value="{{ @$shipment[0]['customer']['billings'][0]['address'] }}, {{ @$shipment[0]['customer']['billings'][0]['city'] }}, {{ @$shipment[0]['customer'][0]['user']['billings'][0]['zip_code'] }}" style="width: 100%;border:none;outline:none;text-align:start;">
                         <br>
-                        <input type="text" value="INDUSTRIAL AREA NO: 02, Tel: 7132801186," style="width: 100%;border:none;outline:none;text-align:start;">
-                        <br>
-                        <input type="text" value="                        SHARJAH. UNITED ARAB EMIRATES
-                        " style="width: 100%;border:none;outline:none;text-align:start;">
+                        <input type="text" value="{{ @$shipment[0]['customer']['billings'][0]['phone'] }}" style="width: 100%;border:none;outline:none;text-align:start;">
                     </td>
                     <td colspan="2" rowspan="2"></td>
                 </tr>
@@ -314,15 +320,15 @@
                 </tr>
                 <tr>
                     <td class="jabli" id="noor">
-                        <input type="text" value="Ute/238W" style="width: 100%;border:none;outline:none;text-align:start;">
+                        <input type="text" value="--" style="width: 100%;border:none;outline:none;text-align:start;">
 
                     </td>
                     <td class="jabli" id="noor">
-                        <input type="text" value="Newark" style="width: 100%;border:none;outline:none;text-align:start;">
+                        <input type="text" value="{{ @$shipment[0]['loading_port'] }}" style="width: 100%;border:none;outline:none;text-align:start;">
 
                     </td>
                     <td class="jabli" id="" colspan="2">
-                        <input type="text" value="APM" style="width: 100%;border:none;outline:none;text-align:start;">
+                        <input type="text" value="{{ @$shipment[0]['loading_terminal'] }}" style="width: 100%;border:none;outline:none;text-align:start;">
 
                     </td>
                 </tr>
@@ -346,7 +352,7 @@
                 </tr>
                 <tr>
                     <td class="jabli" id="noor">
-                        <input type="text" value="Jebel Ali,UAE" style="width: 100%;border:none;outline:none;text-align:start;">
+                        <input type="text" value="{{ @$shipment[0]['destination_port'] }}" style="width: 100%;border:none;outline:none;text-align:start;">
 
                     </td>
                     <td class="jabli" id="noor">
@@ -358,7 +364,7 @@
 
                     </td>
                     <td class="jabli" id="">
-                        <input type="text" value="YES OR NO" style="width: 100%;border:none;outline:none;text-align:start;">
+                        <input type="text" value="{{ (@$shipment[0]['vessel']) ? 'YES' : 'NO' }}" style="width: 100%;border:none;outline:none;text-align:start;">
 
                     </td>
                 </tr>
@@ -399,7 +405,7 @@
 
                 </td>
             </tr>
-            <tbody style="border:1px solid black;">
+            {{-- <tbody style="border:1px solid black;">
                 <tr>
                     <td class="right">
                         <input type="text" value="CNT: MRSU4542541" style="width: 100%;border:none;outline:none;text-align:start;">
@@ -514,6 +520,29 @@
                     <td class="right" id="pad"></td>
                     <td class="right" id="pad"></td>
                 </tr>
+            </tbody> --}}
+            <tbody style="border:1px solid black;">
+                <tr>
+                    <td class="td3_data"><input type="text" value="YEAR" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
+                    <td class="td3_data"><input type="text" value="MAKE" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
+                    <td class="td3_data"><input type="text" value="MODEL / COLOR" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
+                    <td class="td3_data"><input type="text" value="VIN" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
+                    <td class="td3_data"><input type="text" value="TITLE" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
+                    <td class="td3_data"><input type="text" value="WEIGHT" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
+                    {{-- <td class="td3_data"><input type="text" value="CUBE" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;"></td> --}}
+                </tr>
+                @foreach ($shipment[0]['vehicle'] as $vehicle)
+                <tr>
+                    <td class="td3_data"><input type="text" value="{{ @$vehicle['year'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                    <td class="td3_data"><input type="text" value="{{ @$vehicle['make'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                    <td class="td3_data"><input type="text" value="{{ @$vehicle['model'] }} / {{ @$vehicle['color'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                    <td class="td3_data"><input type="text" value="{{ @$vehicle['vin'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                    <td class="td3_data"><input type="text" value="{{ @$vehicle['title_type'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                    <td class="td3_data"><input type="text" value="{{ @$vehicle['weight'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                    {{-- <td class="td3_data"><input type="text" value="{{ @$vehicle['cube'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td> --}}
+                    
+                </tr>
+                @endforeach
             </tbody>
         </table>
         <table style="width:100%;" class="tbl_c">
@@ -550,8 +579,7 @@
             <tr>
                 <td></td>
                 <td class="wrds" style="padding-top:10px ;">
-                    <input type="text" value="ARRIVED DATE" style="width: 100%;border:none;outline:none;text-align:start;">
-
+                    <input type="text" value="ARRIVED DATE: {{ @$shipment[0]['est_arrival_date'] }}" style="width: 100%;border:none;outline:none;text-align:start;">
                 </td>
     
                 <td colspan="2"></td>
@@ -570,7 +598,7 @@
             <tr>
                 <td></td>
                 <td class="wrds">
-                    <input type="text" value="UPLOADED DATE" style="width: 100%;border:none;outline:none;text-align:start;">
+                    <input type="text" value="UPLOADED DATE: {{ @$shipment[0]['created_at'] }}" style="width: 100%;border:none;outline:none;text-align:start;">
 
                 </td>
     
@@ -597,7 +625,7 @@
                 {{-- <td class="wrds">PLACED&nbsp;&nbsp;&nbsp;&nbsp;<span class="p_doc">IN SHIP ON
                         DOCK</span>&nbsp;&nbsp;&nbsp;&nbsp;LOCATION&nbsp;&nbsp;&nbsp;___________________________</td> --}}
                 <td colspan="2" class="d_date" style="text-align:center;padding-top:10px;">
-                    DATE: <input type="text" value="Oct/04/2022" style="width: 50%;border:none;outline:none;text-align:start;">
+                    DATE: <input type="text" value="{{ date(@$shipment[0]['create_at']) }}" style="width: 50%;border:none;outline:none;text-align:start;">
 
                 </td>
             </tr>
