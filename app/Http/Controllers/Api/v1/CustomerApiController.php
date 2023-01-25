@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Api\v1;
+namespace App\Http\Controllers\api\v1;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
-use App\Traits\ApiResponser;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Validator;
 
-class AuthController extends Controller
+
+class CustomerApiController extends Controller
 {
-    use ApiResponser;
     /**
      * Display a listing of the resource.
      *
@@ -19,10 +19,7 @@ class AuthController extends Controller
     public function index()
     {
         //
-       
     }
-
-    
 
     /**
      * Show the form for creating a new resource.
@@ -39,6 +36,7 @@ class AuthController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * 
      */
     public function store(Request $request)
     {
@@ -53,7 +51,7 @@ class AuthController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -89,50 +87,20 @@ class AuthController extends Controller
     {
         //
     }
-    public function register(Request $request)
-    {
-       
-        $attr = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|unique:user,email',
-            'password' => 'required|string|min:6|confirmed'
-        ]);
 
-        $user = User::create([
-            'name' => $attr['name'],
-            'password' => bcrypt($attr['password']),
-            'email' => $attr['email']
-        ]);
-
-        return $this->success([
-            'token' => $user->createToken('API Token')->plainTextToken
-        ]);
-    }
-
-    public function login(Request $request)
-    {
-        $attr = $request->validate([
-            'email' => 'required|string|email|',
-            'password' => 'required|string'
-        ]);
-
-        if (!Auth::attempt($attr)) {
-            return $this->error('Credentials not match', 401);
+    public function view_all_customers(){
+        $users = User::role('Customer')->get();
+        if($users){
+            return response([
+                'data' => $users,
+                'success' => 'Success',
+            ], 201);
         }
-        
-        return $this->success([
-            'token' => auth()->user()->createToken('API Token')->plainTextToken,
-            'data' => auth()->user(),
-             
-        ],"Login Successfully");
-    }
-
-    public function logout()
-    {
-        auth()->user()->tokens()->delete();
-
-        return [
-            'message' => 'Tokens Revoked'
-        ];
+        else{
+            return response([
+                'data' => $users,
+                'error' => 'fail',
+            ], 201);
+        }
     }
 }

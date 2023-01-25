@@ -124,13 +124,37 @@
                 document.getElementById('load').style.visibility = "hidden";
             },
             error: function() {
+                console.log(response.responseJSON['errors']['company_name']);
                 document.getElementById('load').style.visibility = "hidden";
-                iziToast.warning({
-                    message: 'Failed to insert data!',
-                    timeout: 1500,
-                    position: 'topCenter',
-                    zindex: '9999999999999'
-                });
+                if (response.responseJSON['errors']['company_name']) {
+                    iziToast.warning({
+                        message: 'Failed Company name is missing!',
+                        timeout: 1500,
+                        position: 'topCenter',
+                        zindex: '9999999999999'
+                    });
+                } else if (response.responseJSON['errors']['customer_email']) {
+                    iziToast.warning({
+                        message: 'Failed Customer email is missing!',
+                        timeout: 1500,
+                        position: 'topCenter',
+                        zindex: '9999999999999'
+                    });
+                } else if (response.responseJSON['errors']['customer_phone']) {
+                    iziToast.warning({
+                        message: 'Failed Customer email is missing!',
+                        timeout: 1500,
+                        position: 'topCenter',
+                        zindex: '9999999999999'
+                    });
+                } else if (response.responseJSON['errors']['container_no']) {
+                    iziToast.warning({
+                        message: 'Failed Container number is missing!',
+                        timeout: 1500,
+                        position: 'topCenter',
+                        zindex: '9999999999999'
+                    });
+                } else {}
             }
         });
     }

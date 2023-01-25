@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\v1\AuthController;
 use App\Http\Controllers\Api\v1\ContainerController;
 use App\Http\Controllers\Api\v1\VehicleController;
+use App\Http\Controllers\Api\v1\CustomerApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,9 +34,15 @@ Route::prefix('/auth')->middleware(['auth:sanctum'])->group(function () {
     //Vehicle
     Route::prefix('/vehicle')->group(function(){
         Route::post('/search', [VehicleController::class, 'search_vehicle']);
+        Route::post('/update', [VehicleController::class, 'update_vehicle']);
     });
     Route::prefix('/shipment')->group(function(){
         Route::post('/search', [ContainerController::class, 'search_shipment']);
+        Route::post('/update', [ContainerController::class, 'update_shipment']);
+
+    });
+    Route::prefix('/customer')->group(function () {
+        Route::get('/View/AllCustomers', [CustomerApiController::class, 'view_all_customers']);
     });
 });
 //VehicLe Resoucrce Routes

@@ -51,6 +51,9 @@ use Spatie\Permission\Models\Permission;
 use URL;
 use DB;
 use Intervention\Image\ImageManagerStatic as Images;
+use Illuminate\Support\Facades\Storage;
+
+
 class VehicleController extends Controller
 {
 
@@ -695,22 +698,11 @@ class VehicleController extends Controller
             $Obj_auctionImages = new AuctionImage;
             foreach ($auction_images as $auctionImages) {
                 $file_name = time() . '.' . $auctionImages->extension();
-                if ($auctionImages->getSize() > 3219999) {
-                    $path = $auctionImages->getRealPath();
-                    $actual_image = Images::make($path);
-                    $height = $actual_image->height()/1;
-                    $width = $actual_image->width()/1;
-                    $image_resize = $actual_image->resize($width, $height)->encode('jpg');
-                    $hash = md5($image_resize->__toString());
-                    $path = "vehicle_images/{$hash}.jpg";
-                    $image_resize->save(public_path($path));
-                    $filename = Storage::put($path, $image_resize->__toString());
-                }
-                else{
+              
                     $filename = Storage::putFile($this->directory, $auctionImages);
                     $type = $auctionImages->extension();
                     $doc = $auctionImages->move(public_path($this->directory), $filename);
-                }
+                
                 $data = [
                     'name' => $filename,
                     'thumbnail' => $file_name,
