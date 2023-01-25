@@ -224,7 +224,7 @@
                     <td class="td_text"><input type="text" value="{{ @$vehicle['model'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                     <td class="td_text"><input type="text" value="{{ @$vehicle['vin'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                     <td class="td_text"><input type="text" value="{{ @$vehicle['title_number'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
-                    <td class="td_text"><input type="text" value="{{ @$vehicle['title_state'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                    <td class="td_text"><input type="text" value="{{ @$vehicle['title_type'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                     <td class="td_text"><input type="text" value="{{ @$vehicle['value'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                     <td class="td_text">
                         <div class="td_last">X</div>
@@ -249,7 +249,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="t_headers"><input type="text" value="Exporter (USPPI) Name: " style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
+                    <td class="t_headers"><input type="text" value="Exporter (USPPI) Name: {{ @$shipment[0]['customer']['shippers'][0]['shipper_name'] }}" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
                     <td colspan="5" class="t_th"></td>
                     <!-- <td class=""></td> -->
     
@@ -280,9 +280,9 @@
                     <!-- <td class=""></td> -->
                 </tr>
                 <tr>
-                    <td colspan="2" class="ppp"><b>Phone:</b>  <input type="text" value=" " style="width: 100%;border:none;outline:none;text-align:start;margin-left:275px!important;"></td>
+                    <td colspan="2" class="ppp"><b>Phone:</b>  <input type="text" value=" " style="width: 60%;border:none;outline:none;text-align:start;margin-left:275px!important;"></td>
                     <!-- <td class="t_th"></td> -->
-                    <td colspan="2" class=""><b>Fax:</b>  <input type="text" value=" " style="width: 100%;border:none;outline:none;text-align:start;margin-left:20px!important;"></td>
+                    <td colspan="2" class=""><b>Fax:</b>  <input type="text" value="" style="width: 90%;border:none;outline:none;text-align:start;margin-left:10px!important;"></td>
                     <td class="ppp"></td>
                     <td></td>
                 </tr>
