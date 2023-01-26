@@ -105,10 +105,10 @@ class ContainerController extends Controller
         $search_text = $validated['container_number'];
         
         if(auth()->user()->hasRole('Customer')){
-        $data = Shipment::with(['vehicle.warehouse_image', 'loading_image', 'vehicle.vehicle_status'])->where('container_no', $search_text)->get()->toArray();
+        $data = Shipment::with(['vehicle','vehicle.warehouse_image', 'loading_image', 'vehicle.vehicle_status'])->where('container_no', $search_text)->get()->toArray();
         }
         else{
-            $data = Shipment::with(['vehicle.warehouse_image','loading_image','vehicle.vehicle_status'])->where('container_no', $search_text)->get()->toArray();
+            $data = Shipment::with(['vehicle', 'vehicle.warehouse_image','loading_image','vehicle.vehicle_status'])->where('container_no', $search_text)->get()->toArray();
         }
         if(!isset($data) || empty($data)){
             //error(string $message = null, int $code, $data = null)

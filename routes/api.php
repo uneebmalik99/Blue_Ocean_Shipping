@@ -44,6 +44,7 @@ Route::prefix('/auth')->middleware(['auth:sanctum'])->group(function () {
     Route::prefix('/customer')->group(function () {
         Route::get('/View/AllCustomers', [CustomerApiController::class, 'view_all_customers']);
         Route::get('/buyer_ids/{id?}', [CustomerApiController::class, 'view_buyer_ids']);
+        Route::get('/consignee/{id?}', [CustomerApiController::class, 'view_consignee']);
     });
 });
 //VehicLe Resoucrce Routes
