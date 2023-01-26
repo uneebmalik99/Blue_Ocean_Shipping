@@ -1017,7 +1017,7 @@ class CustomerController extends Controller
                     if ($request->password) {
                         $user['password'] = $request->password;
                     } else {
-                        $user['password'] = 'Previouse Password';
+                        $user['password'] = 'Previous Password';
                     }
                    // dispatch(new SendMailJob($user));
                 }

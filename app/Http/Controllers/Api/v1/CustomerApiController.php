@@ -6,11 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
+use App\Traits\ApiResponser;
+
 use Illuminate\Support\Facades\Validator;
 
 
 class CustomerApiController extends Controller
 {
+    use ApiResponser;
     /**
      * Display a listing of the resource.
      *
@@ -93,13 +96,27 @@ class CustomerApiController extends Controller
             return response([
                 'data' => $users,
                 'success' => 'Success',
-            ], 201);
+            ], 200);
         }
         else{
             return response([
                 'data' => $users,
                 'error' => 'fail',
-            ], 201);
+            ], 401);
         }
     }
+
+    public function view_buyer_ids($id = null){
+
+        $buyyer_ids = User::with('billings')->whereid($id)->get()->toArray();
+        $data['buyer_numbers'] = $buyyer_ids[0]['billings'][0]['buyer_number'];
+        if($buyyer_ids){
+            return $this->success($data, "Found Buyer Ids Successfully!", 200);
+        }
+        else{
+            return $this->error('Not Found Any Buyer Id For This Customer', 401, $buyyer_ids);
+
+        }
+    }
+
 }
