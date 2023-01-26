@@ -111,10 +111,11 @@
                                             <span class="text-danger">*</span>
                                         </label>
                                         {{-- <div class="d-flex"> --}}
-                                            <input type="password"
-                                                class="form-control-sm border border-0 rounded-pill bg col-7"
-                                                name="password" id="password">
-                                            <i class="fa-solid fa-eye" id="togglePassword" style="margin-left: -27px;margin-top:9px;cursor: pointer;color:#1f689e!important;z-index:9;"></i>
+                                        <input type="password"
+                                            class="form-control-sm border border-0 rounded-pill bg col-7"
+                                            name="password" id="password">
+                                        <i class="fa-solid fa-eye" id="togglePassword"
+                                            style="margin-left: -27px;margin-top:9px;cursor: pointer;color:#1f689e!important;z-index:9;"></i>
 
                                         {{-- </div> --}}
                                     </div>
@@ -532,7 +533,10 @@
                                 {{-- <div class="user_image" style="padding-top: .5rem; border-radius: 15px!important;">
                                 </div> --}}
                                 <div class="profile-images-card"
-                                    style="   border: 1px dotted black;padding: 1px 96px;">
+                                    style="   border: 1px dotted black;padding: 1px 96px;display: flex;
+                                    justify-content: center;
+                                    flex-direction: column;
+                                    align-items: center;">
                                     <div class="profile-images">
                                         <img src="{{ asset('images/profile.jpg') }}" id="upload-img">
                                     </div>
@@ -657,11 +661,11 @@
 <script>
     const togglePassword = document.querySelector('#togglePassword');
     const password = document.querySelector('#password');
-    togglePassword.addEventListener('click', function (e) {
-      // toggle the type attribute
-      const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-      password.setAttribute('type', type);
-      // toggle the eye slash icon
-      this.classList.toggle('fa-eye-slash');
-  });
-  </script>
+    togglePassword.addEventListener('click', function(e) {
+        // toggle the type attribute
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        // toggle the eye slash icon
+        this.classList.toggle('fa-eye-slash');
+    });
+</script>

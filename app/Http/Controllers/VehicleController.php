@@ -41,7 +41,7 @@ use App\Models\WarehouseImage;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
-use Storage;
+// use Storage;
 use Yajra\Datatables\Datatables;
 use PDF;
 use Illuminate\Support\Facades\Auth;
