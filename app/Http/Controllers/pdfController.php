@@ -203,6 +203,11 @@ class pdfController extends Controller
             $data['shipment']=Shipment::with('vehicle', 'customer.billings', 'customer.shippers')->whereid($request->id)->get()->toArray();
             $data['button_hide'] = 'hide';
             $data['email'] = $data['shipment'][0]['customer']['email'];
+            foreach ($data['shipment'][0]['vehicle'] as $weight) {
+                if($weight['weight'] != null){
+                   $data['total_weight'] += $weight['weight'];
+                }
+            }
             $pdf = PDF::loadview('layouts.shipment_detail.shipment__Landing_pdf', $data);
             Mail::send([], [], function ($message) use ($data, $pdf) {
                 $message->to($data["email"])

@@ -248,11 +248,10 @@
                     <tr>
                         <td class="td3_data"><input type="text" value="YEAR" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;font-weight:bold"></td>
                         <td class="td3_data"><input type="text" value="MAKE" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;font-weight:bold"></td>
-                        <td class="td3_data"><input type="text" value="MODEL" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
-                        <td class="td3_data"><input type="text" value="COLOR" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
+                        <td class="td3_data"><input type="text" value="MODEL / COLOR" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
                         <td class="td3_data"><input type="text" value="VIN" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
                         <td class="td3_data"><input type="text" value="WEIGHT" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
-                        <td class="td3_data"><input type="text" value="CUBE" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
+                        {{-- <td class="td3_data"><input type="text" value="CUBE" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;"></td> --}}
                     </tr>
                     @foreach ($shipment[0]['vehicle'] as $vehicle)
                     <tr>
@@ -261,7 +260,7 @@
                         <td class="td3_data"style="background-color:#e6e2e2;"><input type="text" value="{{ @$vehicle['model'] }} / {{ @$vehicle['color'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                         <td class="td3_data"style="border:none"><input type="text" value="{{ @$vehicle['vin'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                         <td class="td3_data"style="background-color:#e6e2e2;"><input type="text" value="{{ @$vehicle['weight'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
-                        <td class="td3_data"><input type="text" value="{{ @$vehicle['cube'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                        {{-- <td class="td3_data"><input type="text" value="{{ @$vehicle['cube'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td> --}}
 
                     </tr>
                     @endforeach
