@@ -56,7 +56,6 @@ class CustomerApiController extends Controller
     {
         
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -67,7 +66,6 @@ class CustomerApiController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -89,7 +87,6 @@ class CustomerApiController extends Controller
     {
         //
     }
-
     public function view_all_customers(){
         $users = User::role('Customer')->get();
         if($users){
@@ -105,18 +102,25 @@ class CustomerApiController extends Controller
             ], 401);
         }
     }
-
     public function view_buyer_ids($id = null){
-
         $buyyer_ids = User::with('billings')->whereid($id)->get()->toArray();
-        $data['buyer_numbers'] = $buyyer_ids[0]['billings'][0]['buyer_number'];
         if($buyyer_ids){
+            $data['buyer_numbers'] = $buyyer_ids[0]['billings'][0]['buyer_number'];
             return $this->success($data, "Found Buyer Ids Successfully!", 200);
         }
         else{
             return $this->error('Not Found Any Buyer Id For This Customer', 401, $buyyer_ids);
-
         }
     }
-
+    public function view_consignee($id = null){
+        $data = [];
+        $consignee = User::with('billings')->whereid($id)->get()->toArray();
+        if($consignee){
+            $data['consignee'] = $consignee[0]['billings'][0]['company_name'];
+            return $this->success($data, "Found Buyer Ids Successfully!", 200);
+        }
+        else{
+            return $this->error('Not Found Any Buyer Id For This Customer', 401, $consignee);
+        }
+    }
 }
