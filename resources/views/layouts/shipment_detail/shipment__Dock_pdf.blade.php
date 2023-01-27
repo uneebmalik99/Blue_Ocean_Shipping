@@ -26,7 +26,7 @@
    </div>
 </button>
 <a href="{{ route('shipment_detail.shipment_Dock_pdf', @$shipment[0]['id']) }}" class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
-    style="background: #1d6092;float:left;">
+    style="background: #1d6092;float:left;" target="_blank">
    <div class="d-flex justify-content-center align-items-center">
        <span class="pl-2 font-size">PDF</span>
    </div>

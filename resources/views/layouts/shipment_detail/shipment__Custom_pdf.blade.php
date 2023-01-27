@@ -238,9 +238,7 @@
         <div class="text_last">
             <span><input type="text" value="ROLLOVER____ (Please check if a cover letter was previously validated)" style="width: 100%;border:none;outline:none;text-align:start;"></span>
         </div>
-    
         <hr>
-    
         <table style="width:100%;" class="">
             <tbody>
                 <tr>
@@ -325,10 +323,10 @@
 
                 <tr>
                     <td></td>
-                    <td id="blue" class="t_brd"></td>
+                    {{-- <td id="blue" class="t_brd"></td> --}}
                     <td class="w_fax"></td>
                     <!-- <td class="t_th">hhh</td> -->
-                    <td colspan="5" class="t_brd"></td>
+                    {{-- <td colspan="5" class="t_brd"></td> --}}
                 </tr>
     
             </tbody>
@@ -380,17 +378,17 @@
                     <td colspan="4" class="t_brd"></td>
                 </tr>
                 <tr>
-                    <td class="" colspan="2"> <input type="text" value="Steamship Line: {{ @$shipment[0]['shipping_line'] }}" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
-                    <td class="" colspan="2"> <input type="text" value="Terminal: {{ @$shipment[0]['destination_terminal'] }}" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
-                    <td class=""> <input type="text" value="Container#: {{ @$shipment[0]['container_no'] }}" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
+                    <td class="" colspan="2"> <input type="text" value="Steamship Line: {{ @$shipment[0]['shipping_line'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                    <td class="" colspan="2"> <input type="text" value="Terminal: {{ @$shipment[0]['destination_terminal'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                    <td class=""> <input type="text" value="Container#: {{ @$shipment[0]['container_no'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                 </tr>
                 <tr>
                      <td></td>
-                    <td  class="t_brd" ></td>
+                    {{-- <td  class="t_brd" ></td> --}}
                     <td></td>
-                    <td class="t_brd"></td>
+                    {{-- <td class="t_brd"></td> --}}
                     <td></td>
-                    <td  class="t_brd"></td>
+                    {{-- <td  class="t_brd"></td> --}}
                 </tr>
             </tbody>
     
