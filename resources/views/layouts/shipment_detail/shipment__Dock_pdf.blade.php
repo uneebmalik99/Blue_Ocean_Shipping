@@ -563,21 +563,21 @@
                 <tr>
                     <td class="we" id="ee"
                         style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none">
-                        <input type="text" value="14"
+                        <input type="text" value="--"
                             style="width: 100%;border:none;outline:none;text-align:start;">
 
                         <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
                     <td class="we" id="noor"
                         style="font-weight: bold ;font-size:12px;border-top:none;border-right:1px solid black">
-                        <input type="text" value="23"
+                        <input type="text" value="--"
                             style="width: 100%;border:none;outline:none;text-align:start;">
                     </td>
                     <td style="border: 1px solid black;border-left:none!important";>
-                        <input type="text" value="56"
+                        <input type="text" value="--"
                             style="width: 80%;border:none;outline:none;text-align:start;">
                     </td>
                     <td style="border: 1px solid black;border-left:none!important";>
-                        <input type="text" value="65"
+                        <input type="text" value="--"
                             style="width: 80%;border:none;outline:none;text-align:start;">
                     </td>
                 </tr>
