@@ -86,12 +86,10 @@
         }
         .page{
             margin-top: 188px;
-
         }
         .page_border{
             border: 1px solid #aea3a3;
         }
-
     </style>
         {{-- <div class="" style="" > --}}
             <table class="tbl_0" style="width:100%;border:none">
