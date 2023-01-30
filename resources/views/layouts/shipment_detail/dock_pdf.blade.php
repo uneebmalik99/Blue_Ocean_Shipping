@@ -516,34 +516,34 @@
             <tr>
 
                 <td class="we" id="ee"
-                    style="font-weight: bold ;font-size:12px ;width:11%!important; border-top:none;background-color: #d6cdcd;
+                    style="font-weight: bold ;font-size:12px ;width:11%!important; border-top:none;background-color: #F0F3F4;
                     ">
                     <input type="text" value="MARKS AND Number
                         "
-                        style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;background-color: #d6cdcd;">
+                        style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;background-color: #F0F3F4;">
                 </td>
 
                 <td class="we" id="ee"
-                    style="font-weight: bold ;font-size:12px ;width:11%!important; border-top:none;background-color: #d6cdcd;">
+                    style="font-weight: bold ;font-size:12px ;width:11%!important; border-top:none;background-color: #F0F3F4;">
                     <input type="text" value="NUMBER
                             "
-                        style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;background-color: #d6cdcd;">
+                        style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;background-color: #F0F3F4;">
                 </td>
 
 
 
                 <td class="we" id="ee"
-                    style="font-weight: bold ;font-size:12px ;width:11%!important; border-top:none;background-color: #d6cdcd;">
+                    style="font-weight: bold ;font-size:12px ;width:11%!important; border-top:none;background-color: #F0F3F4;">
                     <input type="text" value="DISCRIPTION OF COMMODITEIS in Schedule B detail
                     "
-                        style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;background-color: #d6cdcd;">
+                        style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;background-color: #F0F3F4;">
                 </td>
 
                 <td class="we" id="ee"
-                    style="font-weight: bold ;font-size:12px ;width:11%!important; border-top:none;background-color: #d6cdcd;">
+                    style="font-weight: bold ;font-size:12px ;width:11%!important; border-top:none;background-color: #F0F3F4;">
                     <input type="text" value="GROOSS WEIGHT (Kilos)
                         "
-                        style="width: 90%;border:none;outline:none;text-align:start;font-weight:bold;background-color: #d6cdcd;">
+                        style="width: 90%;border:none;outline:none;text-align:start;font-weight:bold;background-color: #F0F3F4;">
                 </td>
 
 

@@ -93,19 +93,23 @@
         }
 
     </style>
-        <div class="" style="" >
-            <table class="tbl_0" style="width:100%;border:none;">
+        {{-- <div class="" style="" > --}}
+            <table class="tbl_0" style="width:100%;border:none">
                 <tbody>
                     <tr>
-                        <td class="t_img" style="text-align:center ;">
-                            <img src="{{asset('images/logo_2.png')}}"  class="img_w" alt=""style="width:100px;height: 93px!important;margin-right:-100px">
+                        <td class="" style="text-align:start;width:40%;">
+                            <img src="{{ asset('images/logo_2.png') }}" class=""
+                                alt=""style="width:100px;height: 80px!important;">
                         </td>
-                        <td class="t_data"><input type="text" value="BILL OF LADING" style="width: 50%;border:none;outline:none;text-align:center;font-weight:bold;margin-left:225px!important; text-decoration:underline rgb(133, 125, 125)"></td>
+                        <td class="" style="width:60%;">
+                            <input type="text" value="BILL OF LADING"
+                                style="width: 98%;border:none;outline:none;text-align:start;font-weight:bold;font-size:15px;text-decoration:underline rgb(133, 125, 125)">
+                        </td>
                     </tr>
-
+    
                 </tbody>
             </table>
-        </div>
+        {{-- </div> --}}
 
         <div class="tbl_3">
             <table class="table_3" style="width:100%;">

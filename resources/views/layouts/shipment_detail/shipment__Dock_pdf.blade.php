@@ -10,13 +10,6 @@
 </head>
 
 <body>
-
-    {{-- <button type="button" class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
-        style="background: #1d6092;" onclick="printthis()">
-        <div class="d-flex justify-content-center align-items-center">
-            <span class="pl-2 font-size">Print</span>
-        </div>
-    </button> --}}
     @if ($button_hide == 'show')
         <div style="width: 218px;">
             <button type="button" class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
@@ -535,34 +528,34 @@
 
 
                     <td class="we" id="ee"
-                        style="font-weight: bold ;font-size:12px ;width:20%!important; border-top:none;background-color: #d6cdcd;
+                        style="font-weight: bold ;font-size:12px ;width:20%!important; border-top:none;background-color: #F0F3F4;
                 ">
                         <input type="text" value="MARKS AND Number
                     "
-                            style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;background-color: #d6cdcd;">
+                            style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;background-color: #F0F3F4;">
                     </td>
 
                     <td class="we" id="ee"
-                        style="font-weight: bold ;font-size:12px ;width:20%!important; border-top:none;background-color: #d6cdcd;">
+                        style="font-weight: bold ;font-size:12px ;width:20%!important; border-top:none;background-color: #F0F3F4;">
                         <input type="text" value="NUMBER
                         "
-                            style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;background-color: #d6cdcd;">
+                            style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;background-color: #F0F3F4;">
                     </td>
 
 
 
                     <td class="we" id="ee"
-                        style="font-weight: bold ;font-size:12px ;width:20%!important; border-top:none;background-color: #d6cdcd;">
+                        style="font-weight: bold ;font-size:12px ;width:20%!important; border-top:none;background-color: #F0F3F4;">
                         <input type="text" value="DISCRIPTION OF COMMODITEIS in Schedule B detail
                 "
-                            style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;background-color: #d6cdcd;">
+                            style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;background-color: #F0F3F4;">
                     </td>
 
                     <td class="we" id="ee"
-                        style="font-weight: bold ;font-size:12px ;width:20%!important; border-top:none;background-color: #d6cdcd;">
+                        style="font-weight: bold ;font-size:12px ;width:20%!important; border-top:none;background-color: #F0F3F4;">
                         <input type="text" value="GROOSS WEIGHT (Kilos)
                     "
-                            style="width: 90%;border:none;outline:none;text-align:start;font-weight:bold;background-color: #d6cdcd;">
+                            style="width: 90%;border:none;outline:none;text-align:start;font-weight:bold;background-color: #F0F3F4;">
                     </td>
 
 
@@ -671,10 +664,10 @@
                             style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;broder-left:none;border-bottom:none">
                     </td>
                     <td class="we" id="ee"
-                        style="font-weight: bold;font-size:12px;border-bottom:none;border-right: none;border-left: none;border-top:none">
+                        style="font-size:12px;border-bottom:none;border-right: none;border-left: none;border-top:none">
                         <input type="text" value="RECEIVED THE ABOVE DESCRIBED 
                             "
-                            style="width: 97%;border:none;outline:none;border-right: none;text-align:start;font-weight:bold;broder-left:none;border-bottom:none;border-top:none">
+                            style="width: 97%;border:none;outline:none;border-right: none;text-align:start;broder-left:none;border-bottom:none;border-top:none">
                     </td>
                     <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
                 </tr>
