@@ -107,7 +107,7 @@ class ContainerController extends Controller
         if(auth()->user()->hasRole('Customer')){
         $data = Shipment::with(['vehicle','vehicle.warehouse_image', 'loading_image', 'vehicle.vehicle_status'])->where('container_no', $search_text)->get()->toArray();
         }
-        else{
+        else{ 
             $data = Shipment::with(['vehicle', 'vehicle.warehouse_image','loading_image','vehicle.vehicle_status'])->where('container_no', $search_text)->get()->toArray();
         }
         if(!isset($data) || empty($data)){

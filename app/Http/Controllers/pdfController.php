@@ -99,7 +99,7 @@ class pdfController extends Controller
         $data = [];
         $data['shipment']=Shipment::with('vehicle', 'customer.billings')->whereid($id)->get()->toArray();
         $data['button_hide'] = 'hide';
-        $pdf = PDF::loadview('layouts.shipment_detail.shipment_Hazard_pdf', $data);
+        $pdf = PDF::loadview('layouts.shipment_detail.hazard_pdf', $data);
         return $pdf->stream(); 
     }
 
@@ -107,7 +107,7 @@ class pdfController extends Controller
         $data = [];
         $data['shipment']=Shipment::with('vehicle')->whereid($id)->get()->toArray();
         $data['button_hide'] = 'hide';
-        $pdf = PDF::loadview('layouts.shipment_detail.shipment_Houston_pdf', $data);
+        $pdf = PDF::loadview('layouts.shipment_detail.houston_pdf', $data);
         return $pdf->stream(); 
     }
 
@@ -116,7 +116,7 @@ class pdfController extends Controller
         $data['shipment']=Shipment::with('vehicle', 'customer.billings', 'customer.shippers')->whereid($id)->get()->toArray();
         $data['button_hide'] = 'hide';
         // dd($data['shipment']);
-        $pdf = PDF::loadview('layouts.shipment_detail.shipment__Landing_pdf', $data);
+        $pdf = PDF::loadview('layouts.shipment_detail.lading_pdf', $data);
         return $pdf->stream(); 
     }
 
@@ -124,7 +124,7 @@ class pdfController extends Controller
         $data = [];
         $data['shipment']=Shipment::with('vehicle')->whereid($id)->get()->toArray();
         $data['button_hide'] = 'hide';
-        $pdf = PDF::loadview('layouts.shipment_detail.shipment__Custom_pdf', $data);
+        $pdf = PDF::loadview('layouts.shipment_detail.custom_pdf', $data);
         return $pdf->stream(); 
     }
 
@@ -132,7 +132,7 @@ class pdfController extends Controller
         $data = [];
         $data['shipment']=Shipment::with('vehicle', 'customer.billings', 'customer.shippers')->whereid($id)->get()->toArray();
         $data['button_hide'] = 'hide';
-        $pdf = PDF::loadview('layouts.shipment_detail.shipment__Dock_pdf', $data);
+        $pdf = PDF::loadview('layouts.shipment_detail.dock_pdf', $data);
         return $pdf->stream(); 
     }
 
@@ -177,6 +177,7 @@ class pdfController extends Controller
     }
 
     public function sendPdf(Request $request){
+
         if($request->tab == 'dock_pdf'){
             $data['shipment']=Shipment::with('vehicle', 'customer', 'customer.billings', 'customer.shippers')->whereid($request->id)->get()->toArray();
             $data['button_hide'] = 'hide';

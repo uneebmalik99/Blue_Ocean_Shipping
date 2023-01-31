@@ -209,7 +209,8 @@ THIS IS TO CERTIFY THAT ALL VEHICLES INCLUDED IN THIS CONTAINER HAVE BEEN COMPLE
             <table style="width:100%">
                 <tr>
                     <td>
-                        <SPAN style="margin-left: 105px;">SIGNED:</SPAN>
+
+                        <SPAN>SIGNED:</SPAN>
                         <input type="text" class="FOOTER">
                     </td>
                     <td>
