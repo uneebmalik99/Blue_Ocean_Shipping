@@ -255,14 +255,14 @@ textarea {
         <table class="tbl" style="width:100%;">
             <tbody>
                 <tr>
-                    <td colspan="2" class="we" id="ee" style="font-weight: bold ;font-size:12px ;width:33%!important;"> <input type="text" value="2.EXPORTER
+                    <td class="we" id="ee" style="font-weight: bold ;font-size:12px ;width:33%!important;"> <input type="text" value="EXPORTER
                     " style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
                     <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
-                    <td class="we" id="noor" style="font-weight: bold ;font-size:12px"><input type="text" value="5.DOCUMENT NUMBER" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
-                    <td class="we" style="font-weight: bold ;font-size:12px"><input type="text" value="SA.B/L NUMBER" style="width: 80%;border:none;outline:none;text-align:start;font-weight:bold"></td>
+                    <td class="we" id="noor" style="font-weight: bold ;font-size:12px"><input type="text" value="DOCUMENT NUMBER" style="width: 100%;width:33%!important;border:none;outline:none;text-align:start;font-weight:bold"></td>
+                    <td class="we" style="font-weight: bold ;font-size:12px"><input type="text" value="SA.B/L NUMBER" style="width: 80%;border:none;width:33%!important;outline:none;text-align:start;font-weight:bold"></td>
                 </tr>
                 <tr>
-                    <td colspan="2" class="no_al" rowspan="2" id="noor"; style="border-bottom:none;" >
+                    <td class="no_al" rowspan="2" id="noor"; style="border-bottom:none;" >
                         <input type="text" value="{{ @$shipment[0]['customer']['shippers'][0]['shipper_name'] }}" style="width: 100%;border:none;outline:none;text-align:start;"><br>
                         <input type="text" value="{{ @$shipment[0]['customer']['shippers'][0]['address'] }}" style="width: 100%;border:none;outline:none;text-align:start;"><br>
                         <input type="text" value="{{ @$shipment[0]['customer']['shippers'][0]['phone'] }}" style="width: 100%;border:none;border-bottom:1px black; outline:none;text-align:start;">
@@ -272,12 +272,12 @@ textarea {
                </tr>
                 <tr>
 
-                   <td collspan="1" rowspan="" class="we" id="export_ref" style="font-weight: bold ;font-size:12px">
-                        <input type="text" value="6.EXPORT REFREENCE" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold">
+                   <td  rowspan="" class="we" id="export_ref" style="font-weight: bold ;font-size:12px">
+                        <input type="text" value="EXPORT REFREENCE" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold">
                     </td>
 
 
-                    <td colspan="1" rowspan="" class="we" id="export_ref" style="font-weight: bold ;font-size:12px">
+                    <td rowspan="" class="we" id="export_ref" style="font-weight: bold ;font-size:12px">
                         <input type="text" value="POINT(STATE) OF ORIGIN" style="width: 80%;border:none;outline:none;text-align:start;font-weight:bold">
                     </td>
 
@@ -289,14 +289,14 @@ textarea {
                     <td class="we">SA.B/L NUMBER</td> -->
                 </tr>
                 <tr>
-                    <td colspan="2" class="we" id="ee" style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none"> <input type="text" value="
+                    <td  class="we" id="ee" style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none"> <input type="text" value="
                     " style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
                     <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
                     <td class="we" id="noor" style="font-weight: bold ;font-size:12px"><input type="text" value="--" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
                     <td class="we" style="font-weight: bold ;font-size:12px"><input type="text" value="--" style="width: 80%;border:none;outline:none;text-align:start;font-weight:bold"></td>
                 </tr>
                 <tr>
-                    <td colspan="2" class="we" id="ee" style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none"> <input type="text" value="CONSIGNEE TO
+                    <td class="we" id="ee" style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none"> <input type="text" value="CONSIGNEE TO
                     " style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
                     <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
                   <td class="we" id="noor" style="font-weight: bold ;font-size:12px;border-top:none;border-right:none"><input type="text" value="Shipper" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
@@ -308,7 +308,7 @@ textarea {
 
 
                 <tr>
-                    <td colspan="2" class="we" id="ee" style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none">
+                    <td  class="we" id="ee" style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none">
                     <input type="text" value="{{ @$shipment[0]['customer']['billings'][0]['company_name'] }}" style="width: 100%;border:none;outline:none;text-align:start;"><br>
                     <input type="text" value="{{ @$shipment[0]['customer']['billings'][0]['address'] }}, {{ @$shipment[0]['customer']['billings'][0]['city'] }}, {{ @$shipment[0]['customer'][0]['user']['billings'][0]['zip_code'] }}" style="width: 100%;border:none;outline:none;text-align:start;"><br>
                     <input type="text" value="{{ @$shipment[0]['customer']['billings'][0]['phone'] }}" style="width: 100%;border:none;outline:none;text-align:start;">
@@ -322,7 +322,7 @@ textarea {
 <td style="border: 1px solid black;border-left:none!important"></td>
                 </tr>
                 <tr>
-                    <td colspan="2" class="we" id="ee" style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none"> <input type="text" value="NOTIFY PARTY /INTERMEDIATE CONSIGNEE
+                    <td  class="we" id="ee" style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none"> <input type="text" value="NOTIFY PARTY /INTERMEDIATE CONSIGNEE
                     " style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
                     <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
                   <td class="we" id="noor" style="font-weight: bold ;font-size:12px;border-top:none;border-right:none"><input type="text" value="DOMESTIC ROUTINGEXPORT INSTRUCTION" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
@@ -334,7 +334,7 @@ textarea {
 
 
                 <tr>
-                    <td colspan="2" class="we" id="ee" style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none">
+                    <td cclass="we" id="ee" style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none">
                         <input type="text" value="{{ @$shipment[0]['customer']['billings'][0]['company_name'] }}" style="width: 100%;border:none;outline:none;text-align:start;">
                         <br>
                         <input type="text" value="{{ @$shipment[0]['customer']['billings'][0]['address'] }}, {{ @$shipment[0]['customer']['billings'][0]['city'] }}, {{ @$shipment[0]['customer'][0]['user']['billings'][0]['zip_code'] }}" style="width: 100%;border:none;outline:none;text-align:start;">
@@ -349,11 +349,11 @@ textarea {
                 </tr>
 
                 <tr>
-                    <td colspan="2" class="we" id="ee" style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none">  <input type="text" value="PRE-CARRIAGE BY
+                    <td  class="we" id="ee" style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none">  <input type="text" value="PRE-CARRIAGE BY
                     " style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
                     <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
                   <td class="we" id="noor" style="font-weight: bold ;font-size:12px;border-top:none;border-right:none"><input type="text" value="PLACE OF RECIEPT BY PRE-CARRIER" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
-                  <td class="we" id="noor" style="font-weight: bold ;font-size:12px;border-top:none;border-right:1px solid black"><input type="text" value="EXPORTING CARRIER by" style="width: 90%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
+                  <td class="we" id="noor" style="font-weight: bold ;font-size:12px;border-top:none;border-right:1px solid black"><input type="text" value="LOADING PRE/TERMINAL" style="width: 90%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
 
 
                 </tr>
@@ -362,31 +362,25 @@ textarea {
 
 
                 <tr>
-                    <td colspan="2" class="we" id="ee" style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none">
-                        <input type="text" value="NOOR AL JABAL USED CARS" style="width: 100%;border:none;outline:none;text-align:start;"><br>
-                                <input type="text" value="TR 12105 ALDINE WESTFIELD RD, Tel:7132801186," style="width: 100%;border:none;outline:none;text-align:start;"><br>
-                                <input type="text" value="HOUSTON, TX 77093. UNITED STATES" style="width: 100%;border:none;outline:none;text-align:start;">
+                    <td class="we" id="ee" style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none">
+                        <input type="text" value="--" style="width: 100%;border:none;outline:none;text-align:start;">
                                 </td>
                     <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
                   <td class="we" id="noor" style="font-weight: bold ;font-size:12px;border-top:none;border-right:1px solid black">
-                    <input type="text" value="NOOR AL JABAL USED CARS" style="width: 100%;border:none;outline:none;text-align:start;"><br>
-                    <input type="text" value="TR 12105 ALDINE WESTFIELD RD, Tel:7132801186," style="width: 100%;border:none;outline:none;text-align:start;"><br>
-                    <input type="text" value="HOUSTON, TX 77093. UNITED STATES" style="width: 100%;border:none;outline:none;text-align:start;">
+                    <input type="text" value="--" style="width: 100%;border:none;outline:none;text-align:start;">
                    </td>
                    <td style="border: 1px solid black;border-left:none!important";>
-                    <input type="text" value="NOOR AL JABAL USED CARS" style="width: 80%;border:none;outline:none;text-align:start;"><br>
-                    <input type="text" value="TR 12105 ALDINE WESTFIELD RD, Tel:7132801186," style="width: 80%;border:none;outline:none;text-align:start;"><br>
-                    <input type="text" value="HOUSTON, TX 77093. UNITED STATES" style="width: 80%;border:none;outline:none;text-align:start;">
+                    <input type="text" value="--" style="width: 80%;border:none;outline:none;text-align:start;">
                 </td>
 
                 </tr>
 
                 <tr>
-                    <td colspan="2" class="we" id="ee" style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none">  <input type="text" value="PORT OF LOADING/EXPORT
+                    <td class="we" id="ee" style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none">  <input type="text" value="EXPORTING CARRIAGE BY
                     " style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
                     <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
-                  <td class="we" id="noor" style="font-weight: bold ;font-size:12px;border-top:none;border-right:none"><input type="text" value="LOADING PIER/TERMINAL" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
-                  <td class="we" id="noor" style="font-weight: bold ;font-size:12px;border-top:none;border-right:1px solid black"><input type="text" value="EFOREIGN PORY OF UNLOADING" style="width: 90%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
+                  <td class="we" id="noor" style="font-weight: bold ;font-size:12px;border-top:none;border-right:none"><input type="text" value="PORT OF LAODING/EXPORT" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
+                  <td class="we" id="noor" style="font-weight: bold ;font-size:12px;border-top:none;border-right:1px solid black"><input type="text" value="PLACE OF DELIVERY BY ON-CARRIER" style="width: 90%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
 
 
                 </tr>
@@ -395,32 +389,25 @@ textarea {
 
 
                 <tr>
-                    <td colspan="2" class="we" id="ee" style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none">
-                        <input type="text" value="NOOR AL JABAL USED CARS" style="width: 100%;border:none;outline:none;text-align:start;"><br>
-                                <input type="text" value="TR 12105 ALDINE WESTFIELD RD, Tel:7132801186," style="width: 100%;border:none;outline:none;text-align:start;"><br>
-                                <input type="text" value="HOUSTON, TX 77093. UNITED STATES" style="width: 100%;border:none;outline:none;text-align:start;">
-                                </td>
+                    <td class="we" id="ee" style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none">
+                        <input type="text" value="--" style="width: 100%;border:none;outline:none;text-align:start;">
                     <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
                   <td class="we" id="noor" style="font-weight: bold ;font-size:12px;border-top:none;border-right:1px solid black">
-                    <input type="text" value="NOOR AL JABAL USED CARS" style="width: 100%;border:none;outline:none;text-align:start;"><br>
-                    <input type="text" value="TR 12105 ALDINE WESTFIELD RD, Tel:7132801186," style="width: 100%;border:none;outline:none;text-align:start;"><br>
-                    <input type="text" value="HOUSTON, TX 77093. UNITED STATES" style="width: 100%;border:none;outline:none;text-align:start;">
+                    <input type="text" value="--" style="width: 100%;border:none;outline:none;text-align:start;">
                    </td>
                    <td style="border: 1px solid black;border-left:none!important";>
-                    <input type="text" value="NOOR AL JABAL USED CARS" style="width: 80%;border:none;outline:none;text-align:start;"><br>
-                    <input type="text" value="TR 12105 ALDINE WESTFIELD RD, Tel:7132801186," style="width: 80%;border:none;outline:none;text-align:start;"><br>
-                    <input type="text" value="HOUSTON, TX 77093. UNITED STATES" style="width: 80%;border:none;outline:none;text-align:start;">
+                    <input type="text" value="--" style="width: 80%;border:none;outline:none;text-align:start;">
                 </td>
 
                 </tr>
 
 
                 <tr>
-                    <td colspan="2" class="we" id="ee" style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none">  <input type="text" value="PRE-CARRIAGE BY
+                    <td class="we" id="ee" style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none">  <input type="text" value="FOREIGN PORT OF UNLOADING
                     " style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
                     <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
-                  <td class="we" id="noor" style="font-weight: bold ;font-size:12px;border-top:none;border-right:none"><input type="text" value="PLACE OF RECIEPT BY PRE-CARRIER" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
-                  <td class="we" id="noor" style="font-weight: bold ;font-size:12px;border-top:none;border-right:1px solid black"><input type="text" value="EXPORTING CARRIER by" style="width: 90%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
+                  <td class="we" id="noor" style="font-weight: bold ;font-size:12px;border-top:none;border-right:none;width:33%!important;"><input type="text" value="TYPE OF MOVE" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
+                  <td class="we" id="noor" style="font-weight: bold ;font-size:12px;border-top:none;border-right:1px solid black;width:33%!important;"><input type="text" value="CONTAINERIZED" style="width: 90%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
 
 
                 </tr>
@@ -429,44 +416,44 @@ textarea {
 
 
                 <tr>
-                    <td colspan="2" class="we" id="ee" style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none">
-                        <input type="text" value="NOOR AL JABAL USED CARS" style="width: 100%;border:none;outline:none;text-align:start;"><br>
-                                <input type="text" value="TR 12105 ALDINE WESTFIELD RD, Tel:7132801186," style="width: 100%;border:none;outline:none;text-align:start;"><br>
-                                <input type="text" value="HOUSTON, TX 77093. UNITED STATES" style="width: 100%;border:none;outline:none;text-align:start;">
+                    <td class="we" id="ee" style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none">
+                        <input type="text" value="--" style="width: 100%;border:none;outline:none;text-align:start;">
                                 </td>
                     <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
                   <td class="we" id="noor" style="font-weight: bold ;font-size:12px;border-top:none;border-right:1px solid black">
-                    <input type="text" value="NOOR AL JABAL USED CARS" style="width: 100%;border:none;outline:none;text-align:start;"><br>
-                    <input type="text" value="TR 12105 ALDINE WESTFIELD RD, Tel:7132801186," style="width: 100%;border:none;outline:none;text-align:start;"><br>
-                    <input type="text" value="HOUSTON, TX 77093. UNITED STATES" style="width: 100%;border:none;outline:none;text-align:start;">
+                    <input type="text" value="--" style="width: 100%;border:none;outline:none;text-align:start;">
                    </td>
                    <td style="border: 1px solid black;border-left:none!important";>
-                    <input type="text" value="NOOR AL JABAL USED CARS" style="width: 80%;border:none;outline:none;text-align:start;"><br>
-                    <input type="text" value="TR 12105 ALDINE WESTFIELD RD, Tel:7132801186," style="width: 80%;border:none;outline:none;text-align:start;"><br>
-                    <input type="text" value="HOUSTON, TX 77093. UNITED STATES" style="width: 80%;border:none;outline:none;text-align:start;">
+                    <input type="text" value="--" style="width: 80%;border:none;outline:none;text-align:start;">
                 </td>
 
                 </tr>
-                <tr>
+</tbody>
+</table>
+                        
+                <table style="width:100%">
+                        <tbody>
+                        <tr>
+                    
 
-                        <td  class="we" id="ee" style="font-weight: bold ;font-size:12px ;width:11%!important; border-top:none;background-color: #d6cdcd;
-                    "> <input type="text" value="MARKS AND Number
-                        " style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;background-color: #d6cdcd;"></td>
-
-                        <td  class="we" id="ee" style="font-weight: bold ;font-size:12px ;width:11%!important; border-top:none;background-color: #d6cdcd;"> <input type="text" value="NUMBER
-                            " style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;background-color: #d6cdcd;"></td>
-
-
-
-                        <td  class="we" id="ee" style="font-weight: bold ;font-size:12px ;width:11%!important; border-top:none;background-color: #d6cdcd;"> <input type="text" value="DISCRIPTION OF COMMODITEIS in Schedule B detail
+                    <td  class="we" id="ee" style="font-weight: bold ;font-size:12px ;width:20%!important; border-top:none;background-color: #d6cdcd;
+                "> <input type="text" value="MARKS AND Number
                     " style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;background-color: #d6cdcd;"></td>
 
-                    <td  class="we" id="ee" style="font-weight: bold ;font-size:12px ;width:11%!important; border-top:none;background-color: #d6cdcd;"> <input type="text" value="GROOSS WEIGHT (Kilos)
-                        " style="width: 90%;border:none;outline:none;text-align:start;font-weight:bold;background-color: #d6cdcd;"></td>
+                    <td  class="we" id="ee" style="font-weight: bold ;font-size:12px ;width:20%!important; border-top:none;background-color: #d6cdcd;"> <input type="text" value="NUMBER
+                        " style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;background-color: #d6cdcd;"></td>
 
 
-                    </tr>
-                    <tr>
+
+                    <td  class="we" id="ee" style="font-weight: bold ;font-size:12px ;width:20%!important; border-top:none;background-color: #d6cdcd;"> <input type="text" value="DISCRIPTION OF COMMODITEIS in Schedule B detail
+                " style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;background-color: #d6cdcd;"></td>
+
+                <td  class="we" id="ee" style="font-weight: bold ;font-size:12px ;width:20%!important; border-top:none;background-color: #d6cdcd;"> <input type="text" value="GROOSS WEIGHT (Kilos)
+                    " style="width: 90%;border:none;outline:none;text-align:start;font-weight:bold;background-color: #d6cdcd;"></td>
+                    
+
+                </tr>
+                <tr>
                         <td  class="we" id="ee" style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none">
                             <input type="text" value="14" style="width: 100%;border:none;outline:none;text-align:start;">
 
@@ -480,26 +467,30 @@ textarea {
                     <td style="border: 1px solid black;border-left:none!important";>
                         <input type="text" value="65" style="width: 80%;border:none;outline:none;text-align:start;">
                          </td>
+                        </tr>
 
-
-
-                    </tr>
-
+                            
+                        </tbody>
+                    </table>
+                    <table>
+                    <tbody style="border:1px solid;">
+                    
+                   
                     <tr>
 
-                        <td  class="we" id="ee" style="font-weight: bold ;font-size:12px ;width:11%!important; border:none;
+                        <td  class="we" id="ee" style="font-weight: bold ;font-size:12px ;width:11%!important; border:none;width:33%;border-bottom:1px solid;
                     "> <input type="text" value="YEAR
                         " style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
 
-                        <td  class="we" id="ee" style="font-weight: bold ;font-size:12px ;width:11%!important; border:none;"> <input type="text" value="MAKE/COLOR
+                        <td  class="we" id="ee" style="font-weight: bold ;font-size:12px ;border-bottom:1px solid;width:11%!important; width:33%;"> <input type="text" value="MAKE/COLOR
                             " style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
 
 
 
-                        <td  class="we" id="ee" style="font-weight: bold ;font-size:12px ;width:11%!important; border:none;"> <input type="text" value="MODAL
+                        <td  class="we" id="ee" style="font-weight: bold ;font-size:12px ;border-bottom:1px solid;width:11%!important; width:33%;"> <input type="text" value="MODAL
                     " style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
 
-                    <td  class="we" id="ee" style="font-weight: bold ;font-size:12px ;width:11%!important; border:none;"> <input type="text" value="GROOSS WEIGHT (Kilos)
+                    <td  class="we" id="ee" style="font-weight: bold ;font-size:12px ;border-bottom:1px solid;width:11%!important;width:33%;"> <input type="text" value="GROOSS WEIGHT (Kilos)
                         " style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
 
 
@@ -523,63 +514,91 @@ textarea {
 
             </table>
 
-            <table  style="width:40%; height:10px;margin-top:40px">
-                <tbody>
+            <table style="width: 49%;height:10px;margin-top:-1pxpx;margin-left: 0px;">
+                <tbody style="border-right:none!important">
                     <tr>
-                        <td colspan="2" class="we" id="ee" style="font-weight: bold ;font-size:12px ; width:50%;border-right:none;border-bottom:none">
+                        <td class="we" id="ee" style="font-weight: bold ;font-size:12px ; width:50%;border-right:none;border-bottom:none">
                             <input type="text" value="DELIVERD BY:
                             " style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;broder-left:none;border-bottom:none">
                         </td>
-                        <td colspan="2" class="we" id="ee" style="font-weight: bold ;font-size:12px ;border-left:none;border-bottom:none;"> <input type="text" value="RECEIVED THE ABOVE DESCRIBED GOODS OR PACKAGES SUNBJECT
-                            " style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;broder-left:none;border-bottom:none;border-top:none"></td>
+                        <td class="we" id="ee" style="font-weight: bold;font-size:12px;border-bottom:none;border-right: none;border-left: none;"> <input type="text" value="RECEIVED THE ABOVE DESCRIBED 
+                            " style="width: 97%;border:none;outline:none;border-right: none;text-align:start;font-weight:bold;broder-left:none;border-bottom:none;border-top:none"></td>
                             <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
                     </tr>
                     <tr>
-                        <td colspan="2" class="we" id="ee" style="font-weight: bold ;font-size:12px ; width:50%;border-right:none;border-bottom:none;border-top:none">
+                        <td class="we" id="ee" style="font-weight: bold ;font-size:12px ; width:50%;border-right:none;border-bottom:none;border-top:none">
                             <input type="text" value="LIGHTER TRUCK
                             " style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;broder-left:none;border-bottom:none;border-top:none">
                         </td>
-                        <td colspan="2" class="we" id="ee" style="font-weight: bold ;font-size:12px ;border-left:none;border-bottom:none;border-top:none"> <input type="text" value="2.EXPORTER
-                            " style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;broder-left:none;border-bottom:none;border-top:none"></td>
+                        <td class="we" id="ee" style="font-weight: bold;font-size:12px;border-left:none;border-top:none;border: none;"> <input type="text" value="2.EXPORTER
+                            " style="width: 96%;border:none;outline:none;text-align:start;border-right: none;font-weight:bold;broder-left:none;border-bottom:none;border-top:none"></td>
                             <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
                     </tr>
                     <tr>
-                        <td colspan="2" class="we" id="ee" style="font-weight: bold ;font-size:12px ; width:50%;border-right:none;border-bottom:none;border-top:none">
+                        <td class="we" id="ee" style="font-weight: bold ;font-size:12px ; width:50%;border-right:none;border-bottom:none;border-top:none">
                             <input type="text" value="ARRIVED DATE
                             " style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;broder-left:none;border-bottom:none">
                         </td>
-                        <td colspan="2" class="we" id="ee" style="font-weight: bold ;font-size:12px ;border-left:none;border-bottom:none;border-top:none"> <input type="text" value="ARRIVED DATE: {{ @$shipment[0]['est_arrival_date'] }}
-                            " style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;broder-left:none;border-bottom:none;border-top:none"></td>
+                        <td class="we" id="ee" style="font-weight: bold;font-size:12px;border-right: none;border-bottom:none;border-top:none;border: none;"> <input type="text" value="ARRIVED DATE: 2023-01-26
+                            " style="width: 97%;border:none;outline:none;text-align:start;font-weight:bold;broder-left:none;border-bottom:none;border-top:none"></td>
                             <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
                     </tr>
                     <tr>
-                        <td colspan="2" class="we" id="ee" style="font-weight: bold ;font-size:12px ; width:50%;border-right:none;border-top:none;border-bottom:none">
+                        <td class="we" id="ee" style="font-weight: bold;font-size:12px;width:50%;border-right:none;border-top:none;border-bottom:none;border-right: none;">
                             <input type="text" value="UPLOADED DATE
                             " style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;broder-left:none;border-top:none;border-bottom:none">
                         </td>
-                        <td colspan="2" class="we" id="ee" style="font-weight: bold ;font-size:12px ;border-left:none;border-top:none;border-bottom:none"> <input type="text" value="{{ date('M d, Y', @$shipment[0]['create_at']) }}
-                            " style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;broder-left:none;border-top:none;border-bottom:none"></td>
+                        <td class="we" id="ee" style="font-weight: bold;font-size:12px;border-right: none;bborder-top:none;border-bottom:none;border-left: none;border: none;"> <input type="text" value="Jan 30, 2023
+                            " style="width: 97%;border:none;outline:none;text-align:start;font-weight:bold;broder-left:none;border-top:none;border-bottom:none"></td>
                             <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
                     </tr>
-                    <tr>
-                            <td colspan="2" class="we" id="ee" style="font-weight: bold ;font-size:12px ; width:50%;border-right:none;border-top:none;border-top:none">
+                    <tr style="
+    border-bottom: none;
+">
+                            <td class="we" id="ee" style="font-weight: bold;font-size:12px;width:50%;border-right:none;border-top:none;border-top:none;border-bottom: none;">
                                 <input type="text" value="CHECKED BY
                                 " style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;broder-left:none;border-top:none">
                             </td>
-                            <td colspan="2" class="we" id="ee" style="font-weight: bold ;font-size:12px ;border-left:none;border-top:none"> <input type="text" value="-
-                                " style="width: 90%;border:none;outline:none;text-align:start;font-weight:bold;broder-left:none;border-top:none"></td>
+                            <td class="we" id="ee" style="font-weight: bold;font-size:12px;border-right: none;border-left:none;border-top:none;border-bottom: none;"> <input type="text" value="-
+                                " style="width: 90%;border:none;outline:none;text-align:start;font-weight:bold;border-top:none"></td>
 
                         </tr>
+                        <tr>
+                        <td>
+
+<SPAN>SIGNED:</SPAN>
+<input type="text" class="FOOTER" style="
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    margin-bottom: 0px;
+    margin-top: -2px;
+    
+">
+</td>
+<td>
+<span style="">DATE:</span>
+<input type="text" class="FOOTER"style="
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    margin-bottom: 0px;
+    margin-top: -2px;
+    
+">
+</td>
+                        </tr>
+                    
 
 
-
+</tbody>
                 </table>
-                <table class="tbl" style="width:40%;float: right;margin-top:-146px">
+                <table class="tbl" style="width: 51%;float: right;margin-top:-134px;margin-right: -1px;">
                     <tbody>
                         <tr>
-                            <td class="we" id="ee" style="font-weight: bold ;font-size:12px ; width:20%;">
+                            <td class="we" id="ee" style="font-weight: bold;font-size:12px;width: 37%;/* border-left:none!important; */">
 
-                           <textarea  style="width: 92%;height: 170px;">RECEIVED THE ABOVE DESCRIBED GOODS OR PACKAGES SUBJECT TO ALL THE TERMS OF THE UNDERSIGNED'S  REGULAR FORM OF DOCK RECEIPT AND BILL OF LADING WHICH SHALL CONSTITUTE THE CONTRACT UNDER WHICH THE GOODS ARE RECEIVED, COPIES OF WHICH ARE AVAIABLE FROM THE CARRIER ON REQUEST AND MAY BE INSPECTED AT ANY OF ITS OFFICES.</textarea>
+                           <textarea style="width: 92%;height: 118px;">RECEIVED THE ABOVE DESCRIBED GOODS OR PACKAGES SUBJECT TO ALL THE TERMS OF THE UNDERSIGNED'S  REGULAR FORM OF DOCK RECEIPT AND BILL OF LADING WHICH SHALL CONSTITUTE THE CONTRACT UNDER WHICH THE GOODS ARE RECEIVED, COPIES OF WHICH ARE AVAIABLE FROM THE CARRIER ON REQUEST AND MAY BE INSPECTED AT ANY OF ITS OFFICES.</textarea>
                             </td>
                                <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
                         </tr>
@@ -587,7 +606,7 @@ textarea {
 
 
 
-                    </table>
+                    </tbody></table>
 
 
     </div>
