@@ -18,22 +18,22 @@
         </div>
     </button> --}}
     @if($button_hide == 'show')
-    <div style="width: 218px;">
+    <div style="width: 236px;">
         <button type="button" class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
         style="background: #1d6092;float:left;" onclick="printthis()">
        <div class="d-flex justify-content-center align-items-center">
-           <span class="pl-2 font-size">PRINT</span>
+           <span class="pl-2 font-size"><i class="fa-solid fa-print" style="color:white;margin-right:3px;"></i> PRINT</span>
        </div>
     </button>
     <a href="{{ route('shipment_detail.shipment_Houston_pdf', @$shipment[0]['id']) }}" class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
         style="background: #1d6092;float:left;" target="_blank">
        <div class="d-flex justify-content-center align-items-center">
-           <span class="pl-2 font-size">PDF</span>
+           <span class="pl-2 font-size"><i class="fa-solid fa-file-pdf" style="color:white;margin-right:3px;"></i> PDF</span>
        </div>
     </a>
     <a class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
     style="background: #1d6092;float:left;" tab="{{ @$shipment[0]['id'] }}" id="houston_pdf" onclick="sendpdfthroughmail(this.id)">
-       <span class="pl-2 font-size">EMAIL</span>
+       <span class="pl-2 font-size"><i class="fa-solid fa-envelope" style="color:white;margin-right:3px;"></i> EMAIL</span>
    </a>
     </div>
     @endif
@@ -68,7 +68,7 @@
             margin-top: 15px;
            }
            .table_4,.table_4 tr,.table_4 th{
-                border: 1px solid black;
+                /* border: 1px solid black; */
                 border-collapse: collapse;  
             }
             .td4_data{
@@ -117,6 +117,9 @@
             .td_img{
                 width:15%;
                 pad: 5px;
+            }
+            td{
+                font-size:12px;
             }
     
         </style>
@@ -167,10 +170,10 @@
             </table>
         </div>
         <div class="tbl_3">
-            <table class="table_3" style="width:100%;">
+            <table class="table_3" style="width:100%;width:100%;margin-top: -16px;border-top:none!important;">
                 <thead>
                     <tr>
-                        <th  colspan="2" class="td3_data"><input type="text" value="TRANSPORTATION INFORMATION" style="width: 100%;border:none;outline:none;text-align:start;"></th>
+                        <th  colspan="2" class="td3_data"><input type="text" value="TRANSPORTATION INFORMATION" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;"></th>
                         
                     </tr>
                 </thead>
@@ -202,10 +205,10 @@
         </div>
     
         <div class="tbl_4">
-            <table class="table_4" style="width:100%;">
+            <table class="table_4" style="width:100%;width:100%;margin-top: -16px;border-top:none!important;">
                 <thead>
                     <tr>
-                        <th  colspan="3" class="td4_data"><input type="text" value="SHIPPER/EXPORTER" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;"></th>
+                        <th  colspan="3" class="td4_data" style="border-top:none!important;"><input type="text" value="SHIPPER/EXPORTER" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;"></th>
                         
                     </tr>
                 </thead>
@@ -237,7 +240,7 @@
         </div>
     
         <div class="tbl_5">
-            <table class="table_5" style="width:100%;">
+            <table class="table_5" style="width:100%;width:100%;margin-top: -16px;border-bottom:none!important;">
                 <thead>
                     <tr>
                         <th  colspan="3" class="td5_data"><input type="text" value="ULTIMATE CONSIGNEE ([ ] CHECK IF SHIPPER)" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;"></th>
@@ -248,7 +251,7 @@
         </div>
     
         <div class="tbl_6">
-            <table class="table_4" style="width:100%;">
+            <table class="table_4" style="width:100%;width:100%;margin-top: -16px;">
                 <thead>
                     <tr>
                         <th  colspan="4" class="td4_data"><input type="text" value="DESIGNATED AGENT/BROKER/FREIGHT FORWARDER" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;"></th>

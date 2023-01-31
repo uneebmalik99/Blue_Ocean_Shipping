@@ -90,6 +90,10 @@
         .page_border{
             border: 1px solid #aea3a3;
         }
+        .bol_vehicle_table tr:nth-child(even) {
+        border-bottom:1px solid lightgray!important;
+    }
+    
     </style>
         {{-- <div class="" style="" > --}}
             <table class="tbl_0" style="width:100%;border:none">
@@ -109,7 +113,7 @@
             </table>
         {{-- </div> --}}
 
-        <div class="tbl_3">
+    
             <table class="table_3" style="width:100%;">
                 <tbody>
                     <tr>
@@ -142,13 +146,7 @@
                         <td class="td3_data"><input type="text" value=" {{ @$shipment[0]['destination_port'] }}" style="width: 97%;border:none;outline:none;text-align:start;"></td>
                     </tr>
 
-                </tbody>
-            </table>
-        </div>
-
-        <div class="tbl_3">
-            <table class="table_3" style="width:100%;margin-top: -6px">
-                <tbody>
+      
                     <tr>
                         <td class="td3_data"><input type="text" value="CONSIGNEE" style="width: 97%;border:none;outline:none;text-align:start;font-weight:bold"></td>
                         <td class="td3_data"><input type="text" value="PLACE OF RECEIPT #" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
@@ -173,40 +171,39 @@
                 <td class="td3_data"><input type="text" value="{{ @$shipment[0]['loading_terminal'] }}" style="width: 92%;border:none;outline:none;text-align:start;"></td>
                         <td class="td3_data"><input type="text" value="{{ @$shipment[0]['voyage'] }}" style="width: 92%;border:none;outline:none;text-align:start;"></td>
                     </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="tbl_3">
-            <table class="table_3" style="width:100%;margin-top: -6px">
-                <tbody>
+              
+       
                     <tr>
-                        <td colspan="1" class="td3_p"><input type="text" value="NOTIFY" style="width: 97.8%;border:none;outline:none;text-align:start;font-weight:bold"></td>
-                        <td class="td3_data"value="NOTIFY"><input type="text" value="Extra Information" style="width: 98.6%;border:none;outline:none;text-align:start;font-weight:bold"></td>
+                        <td colspan="1" style="border-top:none" ><b>NOTIFY</b></td>
+                        <td class="td3_data"value="NOTIFY"><input type="text" value="EXTRA INFORMATION" style="width: 98.6%;border:none;outline:none;text-align:start;font-weight:bold"></td>
+                        <td class="td3_data"value="NOTIFY" style="border:none;"><input type="text" value="" style="width: 86%;border:none;outline:none;text-align:start;font-weight:bold"></td>
+                 
                     </tr>
                     <tr>
                         <td colspan="1" rowspan="1" class="td3_p" id="t_pad" style="width: 50%">
-                            <input type="text" value="{{ @$shipment[0]['customer']['billings'][0]['company_name'] }}" style="width: 100%;border:none;outline:none;text-align:start;"><br>
-                            <input type="text" value="{{ @$shipment[0]['customer']['billings'][0]['address'] }}, {{ @$shipment[0]['customer']['billings'][0]['city'] }}, {{ @$shipment[0]['customer'][0]['user']['billings'][0]['zip_code'] }}" style="width: 100%;border:none;outline:none;text-align:start;"><br>
-                            <input type="text" value="{{ @$shipment[0]['customer']['billings'][0]['phone'] }}" style="width: 100%;border:none;outline:none;text-align:start;">
+                            <input type="text" value="{{ @$shipment[0]['customer']['billings'][0]['company_name'] }}" style="width: 100%;border:none;outline:none;text-align:start;font-size:14px"><br>
+                            <input type="text" value="{{ @$shipment[0]['customer']['billings'][0]['address'] }}, {{ @$shipment[0]['customer']['billings'][0]['city'] }}, {{ @$shipment[0]['customer'][0]['user']['billings'][0]['zip_code'] }}" style="width: 100%;border:none;outline:none;text-align:start;font-size:14px"><br>
+                            <input type="text" value="{{ @$shipment[0]['customer']['billings'][0]['phone'] }}" style="width: 70%;border:none;outline:none;text-align:start;font-size:14px">
+                            
 
                         </td>
-                        <td class="td3_data"><input type="text" value="ETA/{{ @$shipment[0]['est_arrival_date'] }}" style="width: 92%;border:none;outline:none;text-align:start;"></td>
+                        <td class="td3_data" style="border:none!importan; border-left:1px solid #cfc9c9!important;"><input type="text" value="ETA/{{ @$shipment[0]['est_arrival_date'] }}" style="width: 70%;border:none;outline:none;text-align:start; border-left:none!important; border-right:none"></td>
+                        <td class="td3_data" style="border: none !important;border-left:none!important"><input type="text" value=" " style="width: 70%;outline:none;text-align:start; border:none"></td>
 
                     </tr>
 
 
                 </tbody>
             </table>
-        </div>
+        
 
-        <div class="tbl_3">
-            <table class="table_3" style="width:100%;margin-top: -6px">
+        
+            <table class="table_3" style="width:100%;">
                 <tbody>
-                    <tr>
-                        <td class="td3_data"><input type="text" value="CONTAINER #" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
+                    <tr style="border-top:none!important">
+                        <td class="td3_data" style="border-top:none!important;"><input type="text" value="CONTAINER #" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
                         <td class="td3_data"><input type="text" value="CONTAINER TYPE " style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
-                        <td class="td3_data"><input type="text" value="Booking Number#" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
+                        <td class="td3_data"><input type="text" value="BOOKING NUMBER" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
                         <td class="td3_data"><input type="text" value="SPECIAL INSTRUCTIONS" style="width: 97%;border:none;outline:none;text-align:start;font-weight:bold"></td>
                     </tr>
                     <tr>
@@ -219,9 +216,9 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
-        <div class="tbl_3">
-            <table class="table_3" style="width:100%;margin-top: -6px">
+        
+        
+            <table class="table_3" style="width:100%;">
                 <tbody>
                     <tr>
                         <td class="td3_data"><input type="text" value="SHIPPERS DESCRIPTIONS OF GOODS" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
@@ -238,36 +235,34 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
+        
 
-        <div class="tbl_3">
-            <table class="table_3" style="width:100%;margin-top: -6px">
+        
+            <table class="table_3 bol_vehicle_table" style="width:100%;">
                 <tbody>
                     <tr>
-                        <td class="td3_data"><input type="text" value="YEAR" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;font-weight:bold"></td>
-                        <td class="td3_data"><input type="text" value="MAKE" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;font-weight:bold"></td>
-                        <td class="td3_data"><input type="text" value="MODEL" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
-                        <td class="td3_data"><input type="text" value="COLOR" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
-                        <td class="td3_data"><input type="text" value="VIN" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
-                        <td class="td3_data"><input type="text" value="WEIGHT" style="width: 93.7%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
+                        <td class="td3_data" style="border:none!important;"><input type="text" value="YEAR" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;font-weight:bold"></td>
+                        <td class="td3_data"style="border:none!important;"><input type="text" value="MAKE" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;font-weight:bold"></td>
+                        <td class="td3_data"style="border:none!important;"><input type="text" value="MODEL" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
+                        <td class="td3_data"style="border:none!important;"><input type="text" value="COLOR" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
+                        <td class="td3_data"style="border:none!important;"><input type="text" value="VIN" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
+                        <td class="td3_data"style="border:none!important;"><input type="text" value="WEIGHT" style="width: 93.7%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
                     </tr>
                     @foreach ($shipment[0]['vehicle'] as $vehicle)
                     <tr>
-                        <td class="td3_data"style="background-color:#F0F3F4;"><input type="text" value="{{ @$vehicle['year'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                        <td class="td3_data"style="border:none!important;"><input type="text" value="{{ @$vehicle['year'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                         <td class="td3_data"style="border:none"><input type="text" value="{{ @$vehicle['make'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
-                        <td class="td3_data"style="background-color:#F0F3F4;"><input type="text" value="{{ @$vehicle['model'] }} " style="width: 100%;border:none;outline:none;text-align:start;"></td>
-                        <td class="td3_data"style="background-color:#F0F3F4;"><input type="text" value=" {{ @$vehicle['color'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
-                        <td class="td3_data"style="border:none"><input type="text" value="{{ @$vehicle['vin'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
-                        <td class="td3_data"style="background-color:#F0F3F4;"><input type="text" value="{{ @$vehicle['weight'] }}" style="width: 90%;border:none;outline:none;text-align:start;"></td>
+                        <td class="td3_data"style="border:none!important;"><input type="text" value="{{ @$vehicle['model'] }} " style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                        <td class="td3_data"style="border:none!important;"><input type="text" value=" {{ @$vehicle['color'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                        <td class="td3_data"style="border:none!important;"><input type="text" value="{{ @$vehicle['vin'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                        <td class="td3_data"style="border:none!important;"><input type="text" value="{{ @$vehicle['weight'] }}" style="width: 90%;border:none;outline:none;text-align:start;"></td>
 
                     </tr>
                     @endforeach
                 </tbody>
             </table>
-        </div>
-
-        <div class="tbl_3">
-            <table class="table_3" style="width:100%;margin-top: -6px">
+      
+            <table class="table_3" style="width:100%;">
                 <tbody>
 
                     <tr>
@@ -288,10 +283,9 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
+        
 
-        <div class="tbl_3">
-            <table class="table_3" style="width:100%;margin-top: -6px">
+            <table class="table_3" style="width:100%;">
                 <tbody>
                     <tr style="width: 80%">
                         <td colspan="5" class="p2_text" style="width: 90%">
@@ -307,9 +301,9 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
+        
 
-    </div>
+
 
 
 

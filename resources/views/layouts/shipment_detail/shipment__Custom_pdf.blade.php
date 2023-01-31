@@ -18,22 +18,22 @@
 </button> --}}
 
 @if($button_hide == 'show')
-<div style="width: 218px;">
+<div style="width: 236px;">
     <button type="button" class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
     style="background: #1d6092;float:left;" onclick="printthis()">
    <div class="d-flex justify-content-center align-items-center">
-       <span class="pl-2 font-size">PRINT</span>
+       <span class="pl-2 font-size"><i class="fa-solid fa-print" style="color:white;margin-right:3px;"></i> PRINT</span>
    </div>
 </button>
 <a href="{{ route('shipment_detail.shipment_Custom_pdf', @$shipment[0]['id']) }}" class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
-    style="background: #1d6092;float:left;">
+    style="background: #1d6092;float:left;" target="_blank">
    <div class="d-flex justify-content-center align-items-center">
-       <span class="pl-2 font-size">PDF</span>
+       <span class="pl-2 font-size"><i class="fa-solid fa-file-pdf" style="color:white;margin-right:3px;"></i> PDF</span>
    </div>
 </a>
 <a class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
-    style="background: #1d6092;float:left;" tab="{{ @$shipment[0]['id'] }}" id="custom_pdf" onclick="sendpdfthroughmail(this.id)">
-       <span class="pl-2 font-size">EMAIL</span>
+    style="background: #1d6092;float:left;font-size:12px;" tab="{{ @$shipment[0]['id'] }}" id="custom_pdf" onclick="sendpdfthroughmail(this.id)">
+       <span class="pl-2 font-size"><i class="fa-solid fa-envelope" style="color:white;margin-right:3px;"></i> EMAIL</span>
    </a>
 </div>
 @endif
@@ -72,6 +72,7 @@
                 text-align: center;
                 padding-top: 10px;
                 padding-bottom: 10px;
+                border-bottom:.8px solid black;
             }
         
             .td_text {
@@ -86,9 +87,9 @@
                 border: 1px solid black;
             }
         
-            .text_last {
+            /* .text_last {
                 margin-top: 10px;
-            }
+            } */
         
             .t2_header {
                 text-align: center;
@@ -185,94 +186,87 @@
 
 
 
+<table class="tbl_0" style="width:100%;">
+    <tbody>
+        <tr>
+            <td class="" style="text-align:start;width:40%;">
+                <img src="{{ asset('images/logo_2.png') }}" class=""
+                    alt=""style="width:100px;height: 80px!important;">
+            </td>
+            <td class="" style="width:60%;">
+                <input type="text" value="U.S. CUSTOMS AND BORDER PROTECTION"
+                    style="width: 98%;border:none;outline:none;text-align:start;font-weight:bold;font-size:16.5px;text-decoration:underline rgb(133, 125, 125)">
+            </td>
+        </tr>
 
+    </tbody>
+</table>
+        {{-- <div class="h_footer my-2"> --}}
+          <input type="text" value="COVER LETTER" style="width: 100%;border:none;outline:none;text-align:center;">
+        {{-- </div> --}}
 
-
-        <div class="text-white">
-            <span><input type="text" value="U.S. CUSTOMS AND BORDER PROTECTION" style="width: 100%;border:none;outline:none;text-align:center;font-weight:bold;"></span>
-        </div>
-        <div class="img_div d-flex justify-content-center my-2">
-            <img src="{{asset('images/logo_2.png')}}" alt="" style="width:100px;height:100px;">
-        </div>
-        <div class="h_footer my-2">
-            <span class="fff-1"><input type="text" value="COVER LETTER" style="width: 100%;border:none;outline:none;text-align:center;font-weight:bold"></span>
-        </div>
-        <hr>
+    <div style="border:1px solid black;">
     
         <table style="width:100%;">
             <thead>
-                <tr>
-                    <td colspan="8" class="fff_2"><b>VEHICLE INFORMATION</b></td>
-                </tr>
                 <tr>
                     <td class="th_text"><input type="text" value="YEAR" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
                     <td class="th_text"><input type="text" value="MAKE" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
                     <td class="th_text"><input type="text" value="MODEL" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
                     <td class="th_text"><input type="text" value="VIN" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
-                    <td class="th_text"><input type="text" value="TITLE NUMBER" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
-                    <td class="th_text"><input type="text" value="STATE" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
                     <td class="th_text"><input type="text" value="VALUE" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
-                    <td class="th_text">X</td>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($shipment[0]['vehicle'] as $vehicle)
                     
-                <tr>
+                <tr style="border-bottom: .8px solid lightgray;">
                     <td class="td_text"><input type="text" value="{{ @$vehicle['year'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                     <td class="td_text"><input type="text" value="{{ @$vehicle['make'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                     <td class="td_text"><input type="text" value="{{ @$vehicle['model'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                     <td class="td_text"><input type="text" value="{{ @$vehicle['vin'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
-                    <td class="td_text"><input type="text" value="{{ @$vehicle['title_number'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
-                    <td class="td_text"><input type="text" value="{{ @$vehicle['title_type'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                     <td class="td_text"><input type="text" value="{{ @$vehicle['value'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
-                    <td class="td_text">
-                        <div class="td_last">X</div>
-                    </td>
+                    
                 </tr>
                 @endforeach
     
             </tbody>
         </table>
-    
-        <div class="text_last">
-            <span><input type="text" value="ROLLOVER____ (Please check if a cover letter was previously validated)" style="width: 100%;border:none;outline:none;text-align:start;"></span>
-        </div>
-        <hr>
+        {{-- <div class="text_last"> --}}
+            <input type="text" value="ROLLOVER____ (Please check if a cover letter was previously validated)" style="width: 100%;border:none;outline:none;text-align:start;font-size:10px;">
+        {{-- </div> --}}
+        <hr style="margin:0;">
         <table style="width:100%;" class="">
             <tbody>
                 <tr>
-                    <td colspan="6" class="t2_header">
-                        <input type="text" value="EXPORTER INFORMATION" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold">
+                    <td colspan="6" class="t2_header" style="border-bottom: .8px solid lightgray;">
+                        <input type="text" value="EXPORTER INFORMATION" style="width: 100%;border:none;outline:none;text-align:center;font-weight:bold;margin-top:12px;">
                     </td>
                 </tr>
                 <tr>
-                    <td class="t_headers"><input type="text" value="Exporter (USPPI) Name: {{ @$shipment[0]['customer']['shippers'][0]['shipper_name'] }}" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
-                    <td colspan="5" class="t_th"></td>
+                    <td class="t_headers"><input type="text" value="Exporter (USPPI) Name:" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
+                    <td colspan="5" class="t_th"><input type="text" value=" {{ @$shipment[0]['customer']['shippers'][0]['shipper_name'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                     <!-- <td class=""></td> -->
     
                 </tr>
                 <tr>
-                    <td colspan="6" class="address"><input type="text" value="U.S. Address: " style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
+                    <td class="address"><input type="text" value="U.S. Address: " style="width: 30%;border:none;outline:none;text-align:start;font-weight:bold"></td>
     
-                </tr>
-    
-                <tr>
-                    <td></td>
+            
                     <td class="">
-                        <input type="text" value=" " style="width: 100%;border:none;outline:none;text-align:start;">
+                        <input type="text" value="" style="width: 100%;border:none;outline:none;text-align:start;">
                         <div class="adii">Street</div>
                     </td>
-                    <td colspan="2" class="">
-                        <input type="text" value=" " style="width: 100%;border:none;outline:none;text-align:start;">
+                    <td class="">
+                        <input type="text" value="" style="width: 100%;border:none;outline:none;text-align:start;">
                         <div class="adii">City</div>
                     </td>
                     <td class="">
-                        <input type="text" value=" " style="width: 100%;border:none;outline:none;text-align:start;">
+                        <input type="text" value="" style="width: 100%;border:none;outline:none;text-align:start;">
                         <div class="adii">State</div>
                     </td>
                     <td class="">
-                        <input type="text" value=" " style="width: 100%;border:none;outline:none;text-align:start;">
+                        <input type="text" value="" style="width: 100%;border:none;outline:none;text-align:start;">
                         <div class="adii">Zip</div>
                     </td>
                     <!-- <td class=""></td> -->
@@ -331,17 +325,17 @@
     
             </tbody>
         </table>
-        <hr>
+        <hr style="margin:0;">
     
         <table style="width:100%;" class="tbl_b">
             <tbody>
                 <tr>
-                    <td colspan="6" class="t2_header"> <input type="text" value="EXPORTER INFORMATION" style="width: 100%;border:none;outline:none;text-align:center;font-weight:bold"></td>
+                    <td colspan="6" class="t2_header"> <input type="text" value="EXPORTER INFORMATION" style="width: 100%;border:none;outline:none;text-align:center;font-weight:bold;margin-top:12px;border-bottom:.9px solid lightgray;"></td>
                 </tr>
                 <tr>
                     <td colspan="2" class="box_1"><b>Booking #:</b>  <input type="text" value="{{ @$shipment[0]['booking_number'] }} " style="width: 100%;border:none;outline:none;text-align:start;margin-left:90px!important;"></td>
-                    <td id="v_ww" class="box_1"><b>Vessel Name & Voyage#: </b>  <input type="text" value=" " style="width: 100%;border:none;outline:none;text-align:start;"></td>
-                    <td colspan="2" class="box_1"></td>
+                    <td id="v_ww" class="box_1"><b>Vessel Name & Voyage#: </b></td>
+                    <td colspan="2" class="box_1"><input type="text" value="" style="width: 100%;border:none;outline:none;text-align:start;"></td>
                     <!-- <td class=""></td> -->
                 </tr>
     
@@ -356,7 +350,7 @@
     
                 <tr>
                     <td colspan="2" class="box_1"><b>Vessel Departure Date: </b>  <input type="text" value=" " style="width: 100%;border:none;outline:none;text-align:start;"></td>
-                    <td class="box_1"><b>US Port of <br> Export: </b>  <input type="text" value="{{ @$shipment[0]['loading_port'] }} " style="width: 100%;border:none;outline:none;text-align:start;margin-left:130px!important;"></td>
+                    <td class="box_1"><b>US Port of Export: </b>  <input type="text" value="{{ @$shipment[0]['loading_port'] }} " style="width: 100%;border:none;outline:none;text-align:start;margin-left:130px!important;"></td>
                     <td colspan="2" class=""></td>
                     <!-- <td class=""></td> -->
                 </tr>
@@ -393,7 +387,7 @@
             </tbody>
     
         </table>
-        <hr style="margin-top:none ;">
+        <hr style="margin:0;">
     
         <table style="width: 100%;" class="">
             <tbody>

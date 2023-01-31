@@ -18,24 +18,24 @@
     </button> --}}
 
     @if ($button_hide == 'show')
-        <div style="width: 218px;">
+        <div style="width: 236px;">
             <button type="button" class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
                 style="background: #1d6092;float:left;" onclick="printthis()">
                 <div class="d-flex justify-content-center align-items-center">
-                    <span class="pl-2 font-size">PRINT</span>
+                    <span class="pl-2 font-size"><i class="fa-solid fa-print" style="color:white;margin-right:3px;"></i> PRINT</span>
                 </div>
             </button>
             <a href="{{ route('shipment_detail.shipment_Hazard_pdf', @$shipment[0]['id']) }}"
                 class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
                 style="background: #1d6092;float:left;"  target="_blank">
                 <div class="d-flex justify-content-center align-items-center">
-                    <span class="pl-2 font-size">PDF</span>
+                    <span class="pl-2 font-size"><i class="fa-solid fa-file-pdf" style="color:white;margin-right:3px;"></i> PDF</span>
                 </div>
             </a>
             <a class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
                 style="background: #1d6092;float:left;" tab="{{ @$shipment[0]['id'] }}" id="hazard_pdf"
                 onclick="sendpdfthroughmail(this.id)">
-                <span class="pl-2 font-size">EMAIL</span>
+                <span class="pl-2 font-size"><i class="fa-solid fa-envelope" style="color:white;margin-right:3px;"></i> EMAIL</span>
             </a>
         </div>
     @endif

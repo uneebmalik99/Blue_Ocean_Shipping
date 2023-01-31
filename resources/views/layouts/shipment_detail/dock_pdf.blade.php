@@ -226,6 +226,9 @@
             margin-right: -1px;
             border: none;
         }
+        .bol_vehicle_table tr:nth-child(even) {
+        border-bottom:1px solid lightgray!important;
+    }
     </style>
 
     {{-- <div class="" > --}}
@@ -583,7 +586,7 @@
 
     </table>
 
-    <table style="width:100%;border:1px solid black;border-top:none!important;">
+    <table  class=".bol_vehicle_table"style="width:100%;border:1px solid black;border-top:none!important;">
         <tbody>
             <tr style="width:100%;font-weight:bold;">
                 <td>YEAR</td>
@@ -609,29 +612,29 @@
         </tbody>
     </table>
 
-    <table style="width:50.8%;margin-top:-2px;border-right:none!important;border-top:none!important;margin-left:-2px!important;">
-        <tbody>
+    <table style="width:50.8%;margin-top:-1px;border:1px solid black;border-right:none!important;border-left:1px solid black">
+        <tbody >
             <tr style="border: none!important;">
                 <td colspan="2" class="we" id="ee"
-                    style="font-weight: bold ;font-size:12px ; width:50%;border-right:none;border-bottom:none;border-top:none;">
-                    <input type="text" value="DELIVERD BY:" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;">
+                    style="font-weight: bold ;font-size:12px ; width:50%;border:none!important">
+                    <input type="text" value="DELIVERD BY:" style="width: 100%;border:none;outline:none; text-align:start;font-weight:bold;">
                 </td>
                 <td colspan="2" class="we" id="ee"
-                    style="font-size:12px ;border-left:none;border-bottom:none;border-top:none;border-right:none;"> <input
+                    style="font-size:12px ;border-left:none;border:none;padding: top 4px;"> <input
                         type="text"
                         value="RECEIVED THE ABOVE DESCRIBED GOODS OR PACKAGES SUNBJECT"
-                        style="width: 70%;border:none;outline:none;text-align:start;">
+                        style="width: 70%;border:none;outline:none;text-align:start;padding-top:4px!important;margin-top:3px!important">
                 </td>
                 <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
             </tr>
             <tr>
                 <td colspan="2" class="we" id="ee"
-                    style="font-weight:bold ;font-size:12px ; width:50%;border-right:none;border-bottom:none;border-top:none">
+                    style="font-weight:bold ;font-size:12px ; width:50%;border:none">
                     <input type="text" value="LIGHTER TRUCK"
                         style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;">
                 </td>
                 <td colspan="2" class="we" id="ee"
-                    style="font-size:12px ;border-left:none;border-bottom:none;border-top:none;width:50%;border-right:none">
+                    style="font-size:12px ;border-left:none;border:none">
                     <input type="text" value="EXPORTER"
                         style="width: 78%;border:none;outline:none;text-align:start;">
                 </td>
@@ -639,12 +642,12 @@
             </tr>
             <tr>
                 <td colspan="2" class="we" id="ee"
-                    style="font-weight: bold;font-size:12px; width:50%;border-right:none;border-bottom:none;border-top:none">
+                    style="font-weight: bold;font-size:12px; width:50%;border:none">
                     <input type="text" value="ARRIVED DATE"
                         style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;broder-left:none;border-bottom:none">
                 </td>
                 <td colspan="2" class="we" id="ee"
-                    style="font-size:12px;border-left:none;border-bottom:none;border-top:none;border-right:none;">
+                    style="font-size:12px;border:none">
                     <input type="text"
                         value="ARRIVED DATE: {{ @$shipment[0]['est_arrival_date'] }}"
                         style="width: 70%;border:none;outline:none;text-align:start;broder-left:none;border-bottom:none;border-top:none;font-size:10px">
@@ -653,7 +656,7 @@
             </tr>
             <tr>
                 <td colspan="2" class="we" id="ee"
-                    style="font-weight: bold ;font-size:12px ; width:50%;border-right:none;border-top:none;border-bottom:none">
+                    style="font-weight: bold ;font-size:12px ; width:50%;border:none">
                     <input type="text" value="UPLOADED DATE
                             "
                         style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;broder-left:none;border-top:none;border-bottom:none">
@@ -669,34 +672,34 @@
             </tr>
             <tr>
                 <td colspan="2" class="we" id="ee"
-                    style="font-weight: bold ;font-size:12px ; width:50%;border-right:none;border-top:none;border-top:none">
+                    style="font-weight: bold ;font-size:12px ; width:50%;border:none">
                     <input type="text" value="PLACE BY: _________________
                                 "
                         style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;broder-left:none;border-top:none">
                 </td>
                 <td colspan="2" class="we" id="ee"
-                    style="font-weight: bold ;font-size:12px ;border-left:none;border-top:none;border-right:none"> <input type="text"
+                    style="font-weight: bold ;font-size:12px ;border:none"> <input type="text"
                         value="LOCATION: ________________"
-                        style="width: 90%;border:none;outline:none;text-align:start;font-weight:bold;broder-left:none;border-top:none">
+                        style="width: 90%;border:none;outline:none;text-align:start;font-weight:bold;broder-left:none;border-top:none;border-bottom:none">
                 </td>
 
             </tr>
         </tbody>
 
     </table>
-    <table class="tbl" style="width:50%;float: right;margin-top:-160.5px;margin-right:0px!important;">
+    <table class="tbl" style="width:50%;float: right;margin-top:-161px;margin-right:0px!important; border-right:2px solid black;border-bottom:2px solid #939393;border-left:1px solid black!important;border-color:#939393;">
         <tbody>
             <tr>
                 <td class="we" id="ee"
-                style="font-size:12px;width: 37%;border-top:none;/* border-left:none!important; */">
+                style="font-size:12px;width: 37%;border:none">
 
-                <textarea style="width: 92%;height:90px;font-size:10px!important;">RECEIVED THE ABOVE DESCRIBED GOODS OR PACKAGES SUBJECT TO ALL THE TERMS OF THE UNDERSIGNED'S  REGULAR FORM OF DOCK RECEIPT AND BILL OF LADING WHICH SHALL CONSTITUTE THE CONTRACT UNDER WHICH THE GOODS ARE RECEIVED, COPIES OF WHICH ARE AVAIABLE FROM THE CARRIER ON REQUEST AND MAY BE INSPECTED AT ANY OF ITS OFFICES.</textarea>
+                <textarea style="width: 92%;height:92px;font-size:10px!important;">RECEIVED THE ABOVE DESCRIBED GOODS OR PACKAGES SUBJECT TO ALL THE TERMS OF THE UNDERSIGNED'S  REGULAR FORM OF DOCK RECEIPT AND BILL OF LADING WHICH SHALL CONSTITUTE THE CONTRACT UNDER WHICH THE GOODS ARE RECEIVED, COPIES OF WHICH ARE AVAIABLE FROM THE CARRIER ON REQUEST AND MAY BE INSPECTED AT ANY OF ITS OFFICES.</textarea>
             <br>
-                <input type="text" value="FOR THE MASTERS" style="width: 90%;border:none;outline:none;text-align:start;font-weight:bold;border-top:none">
+                <input type="text" value="FOR THE MASTERS" style="width: 90%;border:none;outline:none;text-align:start;font-weight:bold;">
             
             <br>
-            <input type="text" value="BY: ___________________" style="width: 50%;border:none;outline:none;text-align:start;font-weight:bold;border-top:none">
-            <input type="text" value="DATE: _________________" style="width: 40%;border:none;outline:none;text-align:start;font-weight:bold;border-top:none">
+            <input type="text" value="BY: ___________________" style="width: 50%;border:none;outline:none;text-align:start;font-weight:bold;">
+            <input type="text" value="DATE: _________________" style="width: 40%;border:none;outline:none;text-align:start;font-weight:bold;">
         </td>
             </tr>
         </tbody>
