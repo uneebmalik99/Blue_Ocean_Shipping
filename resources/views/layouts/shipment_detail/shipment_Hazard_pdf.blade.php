@@ -18,7 +18,7 @@
     </button> --}}
 
     @if ($button_hide == 'show')
-        <div style="width: 236px;">
+        <div style="width: 242px;">
             <button type="button" class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
                 style="background: #1d6092;float:left;" onclick="printthis()">
                 <div class="d-flex justify-content-center align-items-center">
@@ -111,18 +111,18 @@
     </table>
     <table class="" style="width:95%;border:1px solid #535050">
         <tbody>
-            <tr style="background-color: #c1c1c1!important;">
-                <td style="border-right:3px black">
+            <tr style="background-color: #F0F3F4!important;">
+                <td style="border-right:1px solid black">
                     <input type="text" value="CARRIER"
-                        style="width:98%;text-align:center;background-color: #c1c1c1!important;border:none ;border-right:3px black!important;">
+                        style="width:98%;text-align:center;background-color: #F0F3F4!important;border:none ;border-right:3px black!important;">
                 </td>
                 <td>
                     <input type="text" value="{{ @$shipment[0]['shipping_line'] }}"
-                        style="width:98%;text-align:center;background-color: #c1c1c1!important; border:none;">
+                        style="width:98%;text-align:center;background-color: #F0F3F4!important; border:none;">
                 </td>
             </tr>
             <tr>
-                <td style="padding: none!important;">
+                <td style="padding: none!important;border-right:1px solid black;">
                     <input type="text" value="VESSEL NAME / VOYAGE"
                         style="width: 98%;border:none;padding: none!important;outline:none;text-align:center; ">
                 </td>
@@ -132,17 +132,17 @@
                 </td>
             </tr>
             <tr>
-                <td style="padding: none!important;background-color: #c1c1c1!important;">
+                <td style="padding: none!important;background-color: #F0F3F4!important;border-right:1px solid black;">
                     <input type="text" value="ORIGIN"
-                        style="width: 98%;border:none;padding: none!important;outline:none;text-align:center;background-color: #c1c1c1!important; ">
+                        style="width: 98%;border:none;padding: none!important;outline:none;text-align:center;background-color: #F0F3F4!important; ">
                 </td>
-                <td style="padding: none!important;background-color: #c1c1c1!important;">
+                <td style="padding: none!important;background-color: #F0F3F4!important;">
                     <input type="text" value="{{ @$shipment[0]['loading_port'] }} {{ @$shipment[0]['voyage'] }}"
-                        style="width: 98%;border:none;outline:none;padding: none!important;text-align:center;padding: none!important;background-color: #c1c1c1!important;">
+                        style="width: 98%;border:none;outline:none;padding: none!important;text-align:center;padding: none!important;background-color: #F0F3F4!important;">
                 </td>
             </tr>
             <tr>
-                <td style="padding: none!important;">
+                <td style="padding: none!important;border-right:1px solid black;">
                     <input type="text" value="DESTINATION"
                         style="width: 98%;border:none;outline:none;padding: none!important;text-align:center;">
                 </td>
@@ -152,17 +152,17 @@
                 </td>
             </tr>
             <tr>
-                <td style=" background-color: #c1c1c1!important;padding: none!important;">
+                <td style=" background-color: #F0F3F4!important;padding: none!important;border-right:1px solid black;">
                     <input type="text" value="BOOKING NUMBER"
-                        style="width: 98%;border:none;padding: none!important;outline:none;text-align:center; background-color: #c1c1c1!important;">
+                        style="width: 98%;border:none;padding: none!important;outline:none;text-align:center; background-color: #F0F3F4!important;">
                 </td>
-                <td style=" background-color: #c1c1c1!important;padding: none!important;">
+                <td style=" background-color: #F0F3F4!important;padding: none!important;">
                     <input type="text" value="{{ @$shipment[0]['booking_number'] }}"
-                        style="width: 98%;border:none;outline:none;text-align:center;padding: none!important; background-color: #c1c1c1!important;">
+                        style="width: 98%;border:none;outline:none;text-align:center;padding: none!important; background-color: #F0F3F4!important;">
                 </td>
             </tr>
             <tr>
-                <td style="padding: none!important;">
+                <td style="padding: none!important;border-right:1px solid black;">
                     <input type="text" value="CONTAINER NUMBER"
                         style="width: 98%;border:none;outline:none;text-align:center;padding: none!important;">
                 </td>
@@ -172,13 +172,13 @@
                 </td>
             </tr>
             <tr>
-                <td style=" background-color: #c1c1c1!important;padding: none!important;">
+                <td style=" background-color: #F0F3F4!important;padding: none!important;border-right:1px solid black;">
                     <input type="text" value="NUMBER OF VEHICLES"
-                        style="width: 98%;border:none;padding: none!important;outline:none;text-align:center; background-color: #c1c1c1!important;">
+                        style="width: 98%;border:none;padding: none!important;outline:none;text-align:center; background-color: #F0F3F4!important;">
                 </td>
-                <td style=" background-color: #c1c1c1!important;padding: none!important;padding: none!important;">
+                <td style=" background-color: #F0F3F4!important;padding: none!important;padding: none!important;">
                     <input type="text" value="{{ count(@$shipment[0]['vehicle']) }}"
-                        style="width: 98%;border:none;padding: none!important;outline:none;text-align:center; background-color: #c1c1c1!important;">
+                        style="width: 98%;border:none;padding: none!important;outline:none;text-align:center; background-color: #F0F3F4!important;">
                 </td>
             </tr>
         </tbody>

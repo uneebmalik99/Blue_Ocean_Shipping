@@ -184,7 +184,7 @@
                     </tr>
                     <tr>
                         <td class="td3_data"><input type="text" value="CARRIER : {{ @$shipment[0]['shipping_line'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
-                        <td class="td3_data"><input type="text" value="VESSEL : GUDRUN MAERSK" style="width:88%;border:none;outline:none;text-align:start;"></td>
+                        <td class="td3_data"><input type="text" value="VESSEL : {{ @$shipment[0]['vessel'] }}" style="width:88%;border:none;outline:none;text-align:start;"></td>
                     </tr>
                     <tr>
                         <td colspan="2" class="td3_data"><input type="text" value="BoL/AWB/BOOKING # : {{ @$shipment[0]['booking_number'] }}" style="width: 88%;border:none;outline:none;text-align:start;"></td>
@@ -192,13 +192,13 @@
                     </tr>
                     <tr>
                         <td class="td3_data"><input type="text" value="EXPORT DATE : {{ @$shipment[0]['sale_date'] }}" style="width: 88%;border:none;outline:none;text-align:start;"></td>
-                        <td class="td3_data"><input type="text" value="PORT OF UNLADING :" style="width: 88%;border:none;outline:none;text-align:start;"></td>
+                        <td class="td3_data"><input type="text" value="PORT OF UNLADING : {{ @$shipment[0]['destination_port'] }}" style="width: 88%;border:none;outline:none;text-align:start;"></td>
                     </tr>
                     <tr>
                         <td colspan="2" class="td3_data"><input type="text" value="ULTIMATE DESTINATION : {{ @$shipment[0]['destination_port'] }}" style="width: 88%;border:none;outline:none;text-align:start;"></td>
                     </tr>
                     <tr>
-                        <td colspan="2" class="td3_data"><input type="text" value="VEHICLE LOCATION : " style="width: 88%;border:none;outline:none;text-align:start;"></td>
+                        <td colspan="2" class="td3_data"><input type="text" value="VEHICLE LOCATION : --" style="width: 88%;border:none;outline:none;text-align:start;"></td>
                     </tr>
                 </tbody>
             </table>
@@ -214,26 +214,26 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td colspan="2" class="td4_data"><input type="text" value="NAME : {{ @$shipment[0]['shipper'] }}" style="width: 88%;border:none;outline:none;text-align:start;"></td>
-                        <td class="td4_data"><input type="text" value="DOB :" style="width: 88%;border:none;outline:none;text-align:start;"></td>
+                        <td colspan="2" class="td4_data"><input type="text" value="NAME : {{ @$shipment[0]['customer']['shippers'][0]['shipper_name'] }}" style="width: 88%;border:none;outline:none;text-align:start;"></td>
+                        <td class="td4_data"><input type="text" value="DOB : -- " style="width: 88%;border:none;outline:none;text-align:start;"></td>
                     </tr>
                     <tr>
-                        <td colspan="3"  class="td4_data"><input type="text" value="ADDRESS:SHARJAH IND # 2." style="width: 80%;border:none;outline:none;text-align:start;"></td>
+                        <td colspan="3"  class="td4_data"><input type="text" value="ADDRESS: {{ @$shipment[0]['customer']['shippers'][0]['address'] }}" style="width: 80%;border:none;outline:none;text-align:start;"></td>
                         <!-- <td class="td4_data"></td> -->
                     </tr>
                     <tr>
-                        <td class="td4_data"><input type="text" value="CITY :" style="width: 100%;border:none;outline:none;text-align:start;"></td>
-                        <td class="td4_data"><input type="text" value="STATE :" style="width: 100%;border:none;outline:none;text-align:start;"></td>
-                        <td class="td4_data"><input type="text" value="ZIP CODE : 000000" style="width: 88%;border:none;outline:none;text-align:start;"></td>
+                        <td class="td4_data"><input type="text" value="CITY : {{ @$shipment[0]['customer']['shippers'][0]['city'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                        <td class="td4_data"><input type="text" value="STATE : {{ @$shipment[0]['customer']['shippers'][0]['state'] }}" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                        <td class="td4_data"><input type="text" value="ZIP CODE : {{ @$shipment[0]['customer']['shippers'][0]['zip_code'] }}" style="width: 88%;border:none;outline:none;text-align:start;"></td>
                         
                     </tr>
                     <tr>
-                        <td colspan="3" class="td4_data"><input type="text" value="PHONE : TEL:N/A, FAX:" style="width: 88%;border:none;outline:none;text-align:start;"></td>
+                        <td colspan="3" class="td4_data"><input type="text" value="PHONE : {{ @$shipment[0]['customer']['shippers'][0]['phone'] }}" style="width: 88%;border:none;outline:none;text-align:start;"></td>
                         <!-- <td class="td4_data"></td> -->
                     </tr>
                     <tr>
-                        <td  class="td4_data"><input type="text" value="ID # :" style="width: 88%;border:none;outline:none;text-align:start;"></td>
-                        <td colspan="2" class="td4_data"><input type="text" value="TYPE & ISSUER :" style="width: 88%;border:none;outline:none;text-align:start;"></td>
+                        <td  class="td4_data"><input type="text" value="ID#: --" style="width: 88%;border:none;outline:none;text-align:start;"></td>
+                        <td colspan="2" class="td4_data"><input type="text" value="TYPE & ISSUER : --" style="width: 88%;border:none;outline:none;text-align:start;"></td>
                     </tr>
                 </tbody>
             </table>
@@ -260,22 +260,22 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td colspan="4" class="td4_data"><input type="text" value="NAME : ECSAP GLOBAL Shipping" style="width: 88%;border:none;outline:none;text-align:start;"></td>
+                        <td colspan="4" class="td4_data"><input type="text" value="NAME : --" style="width: 88%;border:none;outline:none;text-align:start;"></td>
                         <!-- <td class="td4_data">DOB :</td> -->
                     </tr>
                     <tr>
-                        <td colspan="4"  class="td4_data"><input type="text" value="ADDRESS : 7801 PARKHURST DR" style="width:88%;border:none;outline:none;text-align:start;"></td>
+                        <td colspan="4"  class="td4_data"><input type="text" value="ADDRESS : --" style="width:88%;border:none;outline:none;text-align:start;"></td>
                         <!-- <td class="td4_data"></td> -->
                     </tr>
                     <tr>
-                        <td colspan="2" class="td4_data"><input type="text" value="CITY : HOUSTON" style="width: 88%;border:none;outline:none;text-align:start;"></td>
-                        <td  colspan="2" class="td4_data"><input type="text" value="STATE : TX" style="width: 88%;border:none;outline:none;text-align:start;"></td>
+                        <td colspan="2" class="td4_data"><input type="text" value="CITY : --" style="width: 88%;border:none;outline:none;text-align:start;"></td>
+                        <td  colspan="2" class="td4_data"><input type="text" value="STATE : --" style="width: 88%;border:none;outline:none;text-align:start;"></td>
                         <!-- <td class="td4_data">ZIP CODE : 000000</td> -->
                         
                     </tr>
                     <tr>
-                        <td colspan="2" class="td4_data"><input type="text" value="PHONE : l713-631-1560" style="width: 88%;border:none;outline:none;text-align:start;"></td>
-                        <td colspan="2" class="td4_data"><input type="text" value="CONTACT :SOPHIA" style="width: 88%;border:none;outline:none;text-align:start;"></td>
+                        <td colspan="2" class="td4_data"><input type="text" value="PHONE : --" style="width: 88%;border:none;outline:none;text-align:start;"></td>
+                        <td colspan="2" class="td4_data"><input type="text" value="CONTACT :--" style="width: 88%;border:none;outline:none;text-align:start;"></td>
                     </tr>
                     
                 </tbody>

@@ -18,7 +18,7 @@
 </button> --}}
 
 @if($button_hide == 'show')
-<div style="width: 236px;">
+<div style="width: 242px;">
     <button type="button" class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
     style="background: #1d6092;float:left;" onclick="printthis()">
    <div class="d-flex justify-content-center align-items-center">

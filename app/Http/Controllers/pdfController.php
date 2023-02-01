@@ -97,7 +97,7 @@ class pdfController extends Controller
 
     public function shipmentview($id){
         $data = [];
-        $data['shipment']=Shipment::with('vehicle', 'customer.billings')->whereid($id)->get()->toArray();
+        $data['shipment']=Shipment::with('vehicle', 'customer.billings', 'customer.shippers')->whereid($id)->get()->toArray();
         $data['button_hide'] = 'hide';
         $pdf = PDF::loadview('layouts.shipment_detail.hazard_pdf', $data);
         return $pdf->stream(); 
@@ -105,7 +105,7 @@ class pdfController extends Controller
 
     public function shipmentHouston($id){
         $data = [];
-        $data['shipment']=Shipment::with('vehicle')->whereid($id)->get()->toArray();
+        $data['shipment']=Shipment::with('vehicle', 'customer.billings', 'customer.shippers')->whereid($id)->get()->toArray();
         $data['button_hide'] = 'hide';
         $pdf = PDF::loadview('layouts.shipment_detail.houston_pdf', $data);
         return $pdf->stream(); 
@@ -122,7 +122,7 @@ class pdfController extends Controller
 
     public function shipmentCustom($id){
         $data = [];
-        $data['shipment']=Shipment::with('vehicle')->whereid($id)->get()->toArray();
+        $data['shipment']=Shipment::with('vehicle', 'customer.billings', 'customer.shippers')->whereid($id)->get()->toArray();
         $data['button_hide'] = 'hide';
         $pdf = PDF::loadview('layouts.shipment_detail.custom_pdf', $data);
         return $pdf->stream(); 
@@ -142,12 +142,12 @@ class pdfController extends Controller
         $output = [];
 
         if($request->tab == 'non_hazard'){
-            $data['shipment']=Shipment::with('vehicle', 'customer.billings')->whereid($request->id)->get()->toArray();
+            $data['shipment']=Shipment::with('vehicle', 'customer.billings', 'customer.shippers')->whereid($request->id)->get()->toArray();
             $data['button_hide'] = 'show';
             $output = view('layouts.shipment_detail.shipment_Hazard_pdf', $data)->render();
         }
         else if($request->tab == 'houston'){
-            $data['shipment']=Shipment::with('vehicle', 'customer.billings')->whereid($request->id)->get()->toArray();
+            $data['shipment']=Shipment::with('vehicle', 'customer.billings', 'customer.shippers')->whereid($request->id)->get()->toArray();
             $data['button_hide'] = 'show';
             $output = view('layouts.shipment_detail.shipment_Houston_pdf', $data)->render();
         }

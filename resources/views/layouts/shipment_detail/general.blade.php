@@ -792,14 +792,12 @@ background-color: #e93f7800!important;
                         @if (@$shipments[0]['loading_image'])
                             @foreach (@$shipments[0]['loading_image'] as $img)
                                 <img src="{{ asset($img['name']) }}" alt="vehicle_img" class="item_1 changeImage"
-                                    style="width:23.5%;height: auto;" onclick="onClick(this)"
+                                    style="width:23.5%;height: 66px!important;" onclick="onClick(this)"
                                     class="modal-hover-opacity"class="hover-shadow cursor">
                             @endforeach
                         @else
                             <h6 class="text-center mt-5 w-100" style="color:gray">No Image Found</h6>
                         @endif
-
-
 
                     </div>
                     {{-- </div>
