@@ -37,7 +37,7 @@ use App\Models\State;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
-use Storage;
+use Illuminate\Support\Facades\Storage;
 use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
@@ -67,22 +67,16 @@ class ShipmentController extends Controller
     private function Notification()
     {
         $data['notification'] = Notification::with('user')->paginate($this->perpage);
-        // $data['location'] = Location::all()->toArray();
-        // $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
         $data['location'] = Warehouse::where('status', '1')->get()->toArray();
-
-        // dd();
         if ($data['notification']->toArray()) {
             $current = Carbon::now();
             foreach ($data['notification'] as $key => $date_notification) {
-
                 $date = $date_notification->created_at;
                 $diff = $date->diffInSeconds(\Carbon\Carbon::now());
                 $days = $diff / 86400;
                 $hours = $diff / 3600;
                 $minutes = $diff / 3600;
                 $seconds = $diff % 60;
-
                 if ($days > 1) {
                     $data['notification'][$key]['date'] = (int) $days . 'd,' . (int) $hours . 'h,' . (int) $minutes . 'm,' . $seconds . 's ';
                 } elseif ($hours > 1) {
@@ -97,7 +91,6 @@ class ShipmentController extends Controller
             $data['notification_count'] = count($unread);
         } else {
         }
-        // dd($data);
         return $data;
     }
 
@@ -160,22 +153,14 @@ class ShipmentController extends Controller
             $data['destination_port'] = DCountry::select('port')->where('status', '1')->groupBy('port')->get()->toArray();
         }
 
-        // dd($data['loading_port']);
-        // years
         $current_date = Carbon::now();
         $period = CarbonPeriod::create('2022-09-09', $current_date);
         $period = CarbonPeriod::create('2022-09-09', $current_date);
-        // dd($period->toArray());
         foreach ($period as $date) {
-            // dd($date);
             $data['date'][] = $date->format('Y-m-d');
         }
-
-        // dd($data['shipments']);
         return view($this->view . 'list', $data, $notification);
     }
-
-
     public function changeState($state)
     {
         if ($state == 'ALL') {
@@ -196,11 +181,8 @@ class ShipmentController extends Controller
                 'page' => 'list',
             ],
         ];
-
         $notification = $this->Notification();
         $data['vehicles_cart'] = VehicleCart::with('vehicle')->get()->toArray();
-
-
         if (Auth::user()->hasRole('Customer')) {
             $data['records'] = Shipment::with('consignee')->where('customer_email', auth()->user()->email)->get();
             $data['booked'] = Shipment::with('consignee')->where('customer_email', auth()->user()->email)->where('status', '1')->where('loading_state', $state)->get();
@@ -219,21 +201,16 @@ class ShipmentController extends Controller
             $data['completed'] = Shipment::with('consignee')->where('status', '4')->where('loading_state', $state)->paginate($this->perpage);
             $data['shipments'] = Shipment::with('vehicle')->get()->toArray();
             $data['loading_port'] = LoadingCountry::select('port')->where('status', '1')->groupBy('port')->get()->toArray();
-
             $data['destination_port'] = DCountry::select('port')->where('status', '1')->groupBy('port')->get()->toArray();
         }
-
-
         $current_date = Carbon::now();
         $period = CarbonPeriod::create('2022-09-09', $current_date);
         $period = CarbonPeriod::create('2022-09-09', $current_date);
         foreach ($period as $date) {
             $data['date'][] = $date->format('Y-m-d');
         }
-
         return view($this->view . 'list', $data, $notification);
     }
-
     public function create(Request $request)
     {
         $action = url($this->action . '/create');
@@ -245,7 +222,6 @@ class ShipmentController extends Controller
             "button_text" => "Create",
             "module" => [
                 'type' => $this->type,
-                // 'type' => $this->type,
                 'singular' => $this->singular,
                 'plural' => $this->plural,
                 'view' => $this->view,
@@ -254,7 +230,6 @@ class ShipmentController extends Controller
                 'page' => 'create',
             ],
         ];
-
         $vehicles = Vehicle::where('shipment_id', null)->get()->toArray();
         if ($vehicles) {
             foreach ($vehicles as $vehicle) {
@@ -262,29 +237,20 @@ class ShipmentController extends Controller
                 Vehicle::whereid($vehicle['id'])->update($vehicle);
             }
         }
-
-
         $data['buyer_ids'] = User::with('billings')->get()->toArray();
-        // dd($data['buyer_ids']);
         $notification = $this->Notification();
         $data['vehicles'] = Vehicle::where('shipment_id', null)->get();
         $data['consignees'] = Consignee::all()->toArray();
         $data['records'] = Shipment::all()->toArray();
         $data['location'] = Location::all()->toArray();
-        // $data['countries'] = ShippingCountry::where('status', '1')->get();
         $data['countries'] = LoadingCountry::select('country')->where('status', '1')->groupBy('country')->get()->toArray();
-
-        // User::select('name')->groupBy('name')->get()->toArray()
         $data['container_size'] = ContainerSize::where('status', '1')->get();
         $data['container_types'] = ContainerType::where('status', '1')->get();
         $data['shipment_lines'] = ShipmentLine::where('status', '1')->get();
         $data['shipment_types'] = ShipmentType::where('status', '1')->get();
-        // $data['companies'] = Company::where('status', '1')->get();
         $data['companies'] = User::role('Customer')->get();
         $data['destination_country'] = DCountry::select('country')->where('status', '1')->groupBy('country')->get()->toArray();
-        // $data['shippers'] = Shipper::all();
         $data['shippers'] = ShipperName::where('status', '1')->get();
-        // $data['states'] = State::where('status', '1')->get();
         if ($request->ajax()) {
             $tab = $request->tab;
             // return $tab;
@@ -478,7 +444,7 @@ class ShipmentController extends Controller
         return Response($output);
     }
 
-    private function store($request)
+    private function store(Request $request)
     {
 
         // $request->request->remove('vehicle');
@@ -487,7 +453,7 @@ class ShipmentController extends Controller
         $Obj->create($data);
         $shipment = $Obj->latest()->first();
 
-        $vehicle = Vehicle::find($id);
+        $vehicle = Vehicle::find($request->id);
 
         $vehicle->shipment_id = $shipment->id;
         $vehicle->save();

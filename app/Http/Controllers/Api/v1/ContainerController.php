@@ -132,6 +132,7 @@ class ContainerController extends Controller
 
         unset($data['shipment_id']);
         unset($data['loading_delelte_images']);
+        unset($data['loading_images']);
 
         $obj = Shipment::find($shipment_id);
         $obj->update($data);
