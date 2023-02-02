@@ -392,7 +392,7 @@
         <table style="width: 100%;" class="">
             <tbody>
                 <tr>
-                    <td colspan="6" class="t2_header"> <input type="text" value="AES INFORMATION" style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                    <td colspan="6" class="t2_header"> <input type="text" value="AES INFORMATION" style="width: 100%;border:none;outline:none;text-align:center;border-bottom:.8px solid lightgray;"></td>
                 </tr>
                 <tr>
                     <td colspan="5"> <input type="text" value="ITN #: {{ @$shipment[0]['ase-itn_number'] }}" style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
