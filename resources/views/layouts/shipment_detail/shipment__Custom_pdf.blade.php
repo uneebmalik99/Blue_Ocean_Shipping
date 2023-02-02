@@ -388,7 +388,6 @@
     
         </table>
         <hr style="margin:0;">
-    
         <table style="width: 100%;" class="">
             <tbody>
                 <tr>

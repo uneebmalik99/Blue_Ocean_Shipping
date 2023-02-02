@@ -150,8 +150,6 @@
                         <th><input type="text" value="MAKE" style="width: 80%;border:none!important;outline:none;text-align:start;font-weight:bold;"></th>
                         <th><input type="text" value="MODEL" style="width: 80%;border:none!important;outline:none;text-align:start;font-weight:bold;"></th>
                         <th><input type="text" value="VIN" style="width: 80%;border:none!important;outline:none;text-align:start;font-weight:bold;"></th>
-                        <th><input type="text" value="TITLE NUMBER" style="width: 80%;border:none;outline:none;text-align:start;font-weight:bold;"></th>
-                        <th><input type="text" value="STATE" style="width: 80%;border:none;outline:none;text-align:start;font-weight:bold;"></th>
                         <th><input type="text" value="VALUE" style="width: 80%;border:none;outline:none;text-align:start;font-weight:bold;"></th>
                     </tr>
                     @foreach ($shipment[0]['vehicle'] as $vehicle)
@@ -160,8 +158,6 @@
                         <td class="td3_data"><input type="text" value="{{ @$vehicle['make'] }}" style="width: 100%;border:none!important;outline:none;text-align:start;"></td>
                         <td class="td3_data"><input type="text" value="{{ @$vehicle['model'] }}" style="width: 100%;border:none!important;outline:none;text-align:start;"></td>
                         <td class="td3_data"><input type="text" value="{{ @$vehicle['vin'] }}" style="width: 100%;border:none!important;outline:none;text-align:start;"></td>
-                        <td class="td3_data"><input type="text" value="{{ @$vehicle['title_number'] }}" style="width: 100%;border:none!important;outline:none;text-align:start;"></td>
-                        <td class="td3_data"><input type="text" value="{{ @$vehicle['title_state'] }}" style="width: 100%;border:none!important;outline:none;text-align:start;"></td>
                         <td class="td3_data"><input type="text" value="{{ @$vehicle['value'] }}" style="width: 88%;border:none!important;outline:none;text-align:start;"></td>
                         
                     </tr>
