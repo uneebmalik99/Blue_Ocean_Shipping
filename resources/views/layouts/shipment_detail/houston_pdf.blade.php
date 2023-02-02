@@ -150,7 +150,9 @@
                         <th><input type="text" value="MAKE" style="width: 80%;border:none!important;outline:none;text-align:start;font-weight:bold;"></th>
                         <th><input type="text" value="MODEL" style="width: 80%;border:none!important;outline:none;text-align:start;font-weight:bold;"></th>
                         <th><input type="text" value="VIN" style="width: 80%;border:none!important;outline:none;text-align:start;font-weight:bold;"></th>
-                        <th><input type="text" value="VALUE" style="width: 80%;border:none;outline:none;text-align:start;font-weight:bold;"></th>
+                        <th><input type="text" value="TITLE TYPE" style="width: 80%;border:none;outline:none;text-align:start;font-weight:bold;"></th>
+                        <th><input type="text" value="Value" style="width: 80%;border:none;outline:none;text-align:start;font-weight:bold;"></th>
+                        <th><input type="text" value="WEIGHT" style="width: 80%;border:none;outline:none;text-align:start;font-weight:bold;"></th>
                     </tr>
                     @foreach ($shipment[0]['vehicle'] as $vehicle)
                     <tr>
@@ -158,7 +160,9 @@
                         <td class="td3_data"><input type="text" value="{{ @$vehicle['make'] }}" style="width: 100%;border:none!important;outline:none;text-align:start;"></td>
                         <td class="td3_data"><input type="text" value="{{ @$vehicle['model'] }}" style="width: 100%;border:none!important;outline:none;text-align:start;"></td>
                         <td class="td3_data"><input type="text" value="{{ @$vehicle['vin'] }}" style="width: 100%;border:none!important;outline:none;text-align:start;"></td>
-                        <td class="td3_data"><input type="text" value="{{ @$vehicle['value'] }}" style="width: 88%;border:none!important;outline:none;text-align:start;"></td>
+                        <td class="td3_data"><input type="text" value="{{ @$vehicle['title_type'] }}" style="width: 100%;border:none!important;outline:none;text-align:start;"></td>
+                        <td class="td3_data"><input type="text" value="{{ @$vehicle['value'] }}" style="width: 100%;border:none!important;outline:none;text-align:start;"></td>
+                        <td class="td3_data"><input type="text" value="{{ @$vehicle['weight'] }}" style="width: 88%;border:none!important;outline:none;text-align:start;"></td>
                         
                     </tr>
                     @endforeach
