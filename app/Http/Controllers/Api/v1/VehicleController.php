@@ -154,8 +154,10 @@ class VehicleController extends Controller
         if ($checkAlreadyVin) {
             return $this->error('Vin Already Exists', 401, $checkAlreadyVin);
         }
-        unset($data['vehicle_id']);
 
+        unset($data['vehicle_id']);
+        unset($data['vin']);
+        
         // vehicle update code start  
 
         $obj = Vehicle::find($vehicle_id);
