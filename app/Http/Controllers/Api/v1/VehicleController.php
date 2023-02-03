@@ -128,12 +128,10 @@ class VehicleController extends Controller
         $validated = Validator::validate(
             $request->all(),
             [
-                'customer_name' => 'required',
-                'vin' => 'required',
-                'auction' => 'required',
-                'buyer_id' => 'required',
-                'key' => 'required',
-                'status' => 'required',
+                // 'customer_name' => 'required',
+                // 'auction' => 'required',
+                // 'buyer_id' => 'required',
+                // 'status' => 'required',
                 'vehicle_id' => 'required',
             ]
 
