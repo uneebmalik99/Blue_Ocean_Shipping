@@ -509,6 +509,50 @@
                     </td>
 
                 </tr>
+
+                <tr style="border-bottom: .8px solid lightgray;">
+                    <td class="we" id="ee"
+                        style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none;border-bottom:.8px solid lightgray;">
+                        <input type="text" value="CONTAINER #"
+                            style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
+                    <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
+                    <td class="we" id="noor"
+                        style="font-weight: bold ;font-size:12px;border-top:none;border-right:none;width:33%!important;border-bottom:.8px solid lightgray;">
+                        <input type="text" value="SEAL #"
+                            style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold">
+                    </td>
+                    <td class="we" id="noor"
+                        style="font-weight: bold ;font-size:12px;border-top:none;border-right:1px solid black;width:33%!important;border-bottom:.8px solid lightgray;">
+                        <input type="text" value="ASE-ITN #"
+                            style="width: 90%;border:none;outline:none;text-align:start;font-weight:bold;">
+                    </td>
+
+
+                </tr>
+    
+    
+    
+    
+                <tr>
+                    <td class="we no_al" id="ee" style="font-size:12px ;width:33%!important; border-top:none">
+                        <input type="text" value="{{ (@$shipment[0]['container_no']) ? @$shipment[0]['container_no'] : '--'  }}"
+                            style="width: 100%;border:none;outline:none;text-align:start;">
+                    </td>
+                    <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
+                    <td class="we no_al" id="noor"
+                        style="font-size:12px;border-top:none;border-right:1px solid black">
+                        <input type="text" value="{{ (@$shipment[0]['seal_number']) ? $shipment[0]['seal_number'] : '--' }}"
+                            style="width: 100%;border:none;outline:none;text-align:start;">
+                    </td>
+                    <td style="border: 1px solid black;border-left:none!important;border-top:lightgray;" class="no_al">
+                        <input type="text" value="{{ (@$shipment[0]['ase-itn_number']) ? $shipment[0]['ase-itn_number'] : '--' }}"
+                            style="width: 80%;border:none;outline:none;text-align:start;">
+                    </td>
+
+                </tr>
+
+
+
             </tbody>
         </table>
 
