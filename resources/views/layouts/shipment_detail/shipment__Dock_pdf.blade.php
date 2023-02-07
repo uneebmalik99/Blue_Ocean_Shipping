@@ -453,7 +453,7 @@
 
                 <tr>
                     <td class="we no_al" id="ee" style="font-size:12px ;width:33%!important; border-top:none">
-                        <input type="text" value="--"
+                        <input type="text" value="{{ @$shipment[0]['shipping_line'] }}"
                             style="width: 100%;border:none;outline:none;text-align:start;">
                         <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
                     <td class="we no_al" id="noor"
@@ -604,7 +604,7 @@
                             style="width: 80%;border:none;outline:none;text-align:start;">
                     </td>
                     <td style="border: 1px solid black;border-left:none!important;border-top:.8px solid lightgray" class="no_al">
-                        <input type="text" value="--"
+                        <input type="text" value="{{ @$total_weight }}"
                             style="width: 80%;border:none;outline:none;text-align:start;">
                     </td>
                 </tr>
@@ -651,7 +651,7 @@
 
                     <td class="we" id="ee"
                         style="font-weight: bold ;font-size:12px ;border-bottom:1.5px solid lightgray;width:11%!important;width:33%;border-top:none">
-                        <input type="text" value="GROOSS WEIGHT (Kilos)
+                        <input type="text" value="WEIGHT
                         "
                             style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;">
                     </td>

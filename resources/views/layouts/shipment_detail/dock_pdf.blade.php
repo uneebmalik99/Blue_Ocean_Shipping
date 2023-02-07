@@ -410,7 +410,7 @@
                         style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
                 <td class="we" id="noor"
                     style="font-weight: bold ;font-size:12px;border-top:none;border-right:1px solid black;border-bottom:.8px solid lightgray;"><input
-                        type="text" value="EXPORTING CARRIER by"
+                        type="text" value="EXPORTING CARRIER BY"
                         style="width: 90%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
 
 
@@ -432,7 +432,7 @@
                         style="width: 100%;border:none;outline:none;text-align:start;">
                 </td>
                 <td style="border: 1px solid black;border-left:none!important;border-top:.8px solid lightgray;">
-                    <input type="text" value="--"
+                    <input type="text" value="{{ @$shipment[0]['shipping_line'] }}"
                         style="width: 80%;border:none;outline:none;text-align:start;">
                 </td>
 
@@ -617,7 +617,7 @@
                         style="width: 80%;border:none;outline:none;text-align:start;">
                 </td>
                 <td style="border: 1px solid black;border-left:none!important;border-top:.8px solid lightgray">
-                    <input type="text" value="--"
+                    <input type="text" value="{{ @$total_weight }}"
                         style="width: 80%;border:none;outline:none;text-align:start;">
                 </td>
 

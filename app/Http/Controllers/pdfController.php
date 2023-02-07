@@ -130,8 +130,14 @@ class pdfController extends Controller
 
     public function shipmentDock($id){
         $data = [];
+        $data['total_weight'] = 0;
         $data['shipment']=Shipment::with('vehicle', 'customer.billings', 'customer.shippers')->whereid($id)->get()->toArray();
         $data['button_hide'] = 'hide';
+        foreach ($data['shipment'][0]['vehicle'] as $weight) {
+            if($weight['weight'] != null){
+               $data['total_weight'] += $weight['weight'];
+            }
+        }
         $pdf = PDF::loadview('layouts.shipment_detail.dock_pdf', $data);
         return $pdf->stream(); 
     }
@@ -168,8 +174,14 @@ class pdfController extends Controller
             $output = view('layouts.shipment_detail.shipment__Custom_pdf', $data)->render();
         }
         else if($request->tab == 'dock_receipt'){
+            $data['total_weight'] = 0;
             $data['shipment']=Shipment::with('vehicle', 'customer.billings', 'customer.shippers')->whereid($request->id)->get()->toArray();
             $data['button_hide'] = 'show';
+            foreach ($data['shipment'][0]['vehicle'] as $weight) {
+                if($weight['weight'] != null){
+                   $data['total_weight'] += $weight['weight'];
+                }
+            }
             $output = view('layouts.shipment_detail.shipment__Dock_pdf', $data)->render();
         }
         // dd($output);
