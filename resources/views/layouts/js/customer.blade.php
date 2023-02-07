@@ -42,7 +42,7 @@
         var formData = new FormData(jQuery('#customer_general_form')[0]);
         formData.append('tab', $tab);
         console.log(...formData);
-        // document.getElementById('load').style.visibility = "visible";
+        document.getElementById('load').style.visibility = "visible";
 
         $.ajax({
             type: 'post',

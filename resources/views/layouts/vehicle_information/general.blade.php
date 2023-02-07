@@ -845,13 +845,13 @@ background-color: #e93f7800!important;
                                     style=" margin-top:1px; ">
                                     @if (@$vehicle['warehouse_image'])
                                         @foreach (@$vehicle['warehouse_image'] as $img)
-                                        <div style="width: 24%!important;height:100%!important;">
-                                            <img src="{{ asset($img['name']) }}" alt="" class=""
+                                        {{-- <div style="width: 24%!important;height:100%!important;"> --}}
+                                            <img src="{{ asset($img['name']) }}" alt=""
                                                     class="showMainImage"
-                                                    style="height:inherit!important;object-fit:fill;"
+                                                    style="width:24%;height:66px!important;margin-top:4px;object-fit:fill;"
                                                     onclick="onClick(this)" class="modal-hover-opacity"
                                                     class="hover-shadow cursor">
-                                        </div>
+                                        {{-- </div> --}}
                                         @endforeach
                                     @else
                                         <h6 class="text-center mt-5 w-100" style="color:gray">No Image Found</h6>

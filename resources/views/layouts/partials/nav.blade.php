@@ -5,7 +5,7 @@
             <a class="mobile-menu" id="mobile-collapse" href="#!">
                 <i class="ti-menu"></i>
             </a>
-            <a href="index.html">
+            <a href="{{ route('dashboard.list') }}">
                 <div class="d-flex align-items-end">
                     <img class="img-fluid" src="{{ asset('images/blueocean.png') }}" alt="Theme-Logo"
                         style="width:25px;height:25px" />

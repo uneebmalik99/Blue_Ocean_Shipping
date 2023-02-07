@@ -112,7 +112,7 @@
     <table class="" style="width:95%;border:1px solid #535050">
         <tbody>
             <tr style="background-color: #F0F3F4!important;">
-                <td style="border-right:1px solid black">
+                <td style="">
                     <input type="text" value="CARRIER"
                         style="width:98%;text-align:center;background-color: #F0F3F4!important;border:none ;border-right:3px black!important;">
                 </td>
@@ -122,7 +122,7 @@
                 </td>
             </tr>
             <tr>
-                <td style="padding: none!important;border-right:1px solid black;">
+                <td style="padding: none!important;">
                     <input type="text" value="VESSEL NAME / VOYAGE"
                         style="width: 98%;border:none;padding: none!important;outline:none;text-align:center; ">
                 </td>
@@ -132,7 +132,7 @@
                 </td>
             </tr>
             <tr>
-                <td style="padding: none!important;background-color: #F0F3F4!important;border-right:1px solid black;">
+                <td style="padding: none!important;background-color: #F0F3F4!important;;">
                     <input type="text" value="ORIGIN"
                         style="width: 98%;border:none;padding: none!important;outline:none;text-align:center;background-color: #F0F3F4!important; ">
                 </td>
@@ -142,7 +142,7 @@
                 </td>
             </tr>
             <tr>
-                <td style="padding: none!important;border-right:1px solid black;">
+                <td style="padding: none!important;">
                     <input type="text" value="DESTINATION"
                         style="width: 98%;border:none;outline:none;padding: none!important;text-align:center;">
                 </td>
@@ -152,7 +152,7 @@
                 </td>
             </tr>
             <tr>
-                <td style=" background-color: #F0F3F4!important;padding: none!important;border-right:1px solid black;">
+                <td style=" background-color: #F0F3F4!important;padding: none!important;;">
                     <input type="text" value="BOOKING NUMBER"
                         style="width: 98%;border:none;padding: none!important;outline:none;text-align:center; background-color: #F0F3F4!important;">
                 </td>
@@ -162,7 +162,7 @@
                 </td>
             </tr>
             <tr>
-                <td style="padding: none!important;border-right:1px solid black;">
+                <td style="padding: none!important;">
                     <input type="text" value="CONTAINER NUMBER"
                         style="width: 98%;border:none;outline:none;text-align:center;padding: none!important;">
                 </td>
@@ -172,7 +172,7 @@
                 </td>
             </tr>
             <tr>
-                <td style=" background-color: #F0F3F4!important;padding: none!important;border-right:1px solid black;">
+                <td style=" background-color: #F0F3F4!important;padding: none!important;;">
                     <input type="text" value="NUMBER OF VEHICLES"
                         style="width: 98%;border:none;padding: none!important;outline:none;text-align:center; background-color: #F0F3F4!important;">
                 </td>
@@ -183,9 +183,7 @@
             </tr>
         </tbody>
     </table>
-    <div style="
-            height: 250px;margin-top:15px;
-        ">
+    <div style="height: 250px;margin-top:15px;">
         @if ($button_hide == 'show')
             <p>
                 <textarea rows="7" style="width: 86%;padding:4;margin:0;box-sizing:border-box;border:none;margin-left: 84px; ">

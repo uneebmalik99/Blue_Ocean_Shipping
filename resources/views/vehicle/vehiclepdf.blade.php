@@ -59,13 +59,13 @@ span{
               <span style="font-family: arial, sans-serif;margin-top:-3px;font-size:18px"><b> {{ config('app.name') }}  LLC</b></span>
             </tr>
             
-               <span style="font-size:10px" >ADDRESS OF {{ config('app.name') }}: {{ @$vehicle[0]['user']['shippers'][0]['address']}}</span>
+               <span style="font-size:10px" >{{ config('app.name') }}: {{ @$vehicle[0]['user']['shippers'][0]['address']}}</span>
             </tr>
             <tr>
-                <span style="font-size:10px">STATE,CITY,ZIPCODE:{{ @$vehicle[0]['user']['shippers'][0]['country']}} , {{ @$vehicle[0]['user']['shippers'][0]['city']}} , {{ @$vehicle[0]['user']['shippers'][0]['zip_code']}}</span>
+                <span style="font-size:10px">{{ @$vehicle[0]['user']['shippers'][0]['country']}} , {{ @$vehicle[0]['user']['shippers'][0]['city']}} , {{ @$vehicle[0]['user']['shippers'][0]['zip_code']}}</span>
             </tr>
             <tr>
-                <span style="font-size:10px">PHONE NO: {{ @$vehicle[0]['user']['shippers'][0]['phone']}}</span>
+                {{-- <span style="font-size:10px">PHONE NO: {{ @$vehicle[0]['user']['shippers'][0]['phone']}}</span> --}}
             </tr> 
             <tr>
 </tr> <tr></tr> <tr></tr> <tr></tr> <tr></tr> <tr></tr> <tr></tr> <tr></tr> <tr></tr> <tr></tr> <tr></tr> <tr></tr> <tr></tr> <tr></tr> <tr></tr> <tr></tr> <tr>
@@ -76,19 +76,19 @@ span{
                <span style="margin-top:16px;"><b>BILL TO:</b></span>
             </tr>
             <tr>
-                <span>CUSTOMER NAME: {{ @$vehicle[0]['user']['billings'][0]['first_name']}} {{ @$vehicle[0]['user']['billings'][0]['last_name']}}</span>
+                <span>{{ @$vehicle[0]['user']['billings'][0]['first_name']}} {{ @$vehicle[0]['user']['billings'][0]['last_name']}}</span>
             </tr>
             <tr>
-                <span>COMPANY NAME: {{ @$vehicle[0]['user']['billings'][0]['company_name']}}</span>
+                <span>{{ @$vehicle[0]['user']['billings'][0]['company_name']}}</span>
             </tr>
             <tr>
-                <span>COMPANY ADDRESS: {{ @$vehicle[0]['user']['billings'][0]['address']}}</span>
+                <span>{{ @$vehicle[0]['user']['billings'][0]['address']}}</span>
             </tr>
             <tr>
-                <span >STATE,CITY,ZIPCODE:{{ @$vehicle[0]['user']['billings'][0]['country']}},  {{ @$vehicle[0]['user']['billings'][0]['city']}}, {{ @$vehicle[0]['user']['billings'][0]['zip_code']}}</span>
+                <span >{{ @$vehicle[0]['user']['billings'][0]['country']}} ,  {{ @$vehicle[0]['user']['billings'][0]['city']}}, {{ @$vehicle[0]['user']['billings'][0]['zip_code']}}</span>
             </tr>
             <tr>
-              <span>PHONE: {{ @$vehicle[0]['user']['billings'][0]['phone']}}</span>
+              <span>{{ @$vehicle[0]['user']['billings'][0]['phone']}}</span>
           </tr>
         </table>
         <div style="left:50%;">

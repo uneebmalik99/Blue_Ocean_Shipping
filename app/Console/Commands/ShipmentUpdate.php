@@ -57,7 +57,7 @@ class ShipmentUpdate extends Command
             else{
                 
             }
-            if($days < 10){
+            if(abs($days) < '10'){
                 DB::update('update shipments set status = ? where id = ?',[3,$shipment['id']]);
             }
         }

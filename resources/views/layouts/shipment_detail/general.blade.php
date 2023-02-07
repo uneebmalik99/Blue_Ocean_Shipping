@@ -466,7 +466,7 @@ background-color: #e93f7800!important;
                 <div>
                     <button type="button" class="close text-white h6" data-dismiss="modal" aria-label="Close"
                         style="margin-top: -11px;
-                 font-size: 26px;">
+                 font-size: 26px;" onclick="modelClose()">
                         <span aria-hidden="true">x</span>
                     </button>
                 </div>
@@ -530,23 +530,14 @@ background-color: #e93f7800!important;
                 border-radius: 10px;width: 90%;margin:6px auto">
                     <span class="infromation_mainText">Shipment Status</span>
                     @if (@$shipments[0]['status'] == '1')
-                        <span class="information_text">Shipped</span>
-                    @elseif (@$shipments[0]['status'] == '2')
                         <span class="information_text">Booked</span>
+                    @elseif (@$shipments[0]['status'] == '2')
+                        <span class="information_text">Shipped</span>
                     @elseif (@$shipments[0]['status'] == '3')
                         <span class="information_text">Arrived</span>
                     @else
                         <span class="information_text">Completed</span>
                     @endif
-
-
-                </div>
-
-                <div class="d-flex justify-content-between my-2 py-1"
-                    style="border: 1px solid rgba(26, 88, 133, 0.17);
-                border-radius: 10px;width: 90%;margin:6px auto">
-                    <span class="infromation_mainText">Ship Date</span>
-                    <span class="information_text">{{ @$shipments[0]['ship_date'] }}</span>
                 </div>
 
                 <div class="d-flex justify-content-between my-2 py-1"
@@ -635,60 +626,65 @@ background-color: #e93f7800!important;
                 <br>
                 <div class="information_button d-flex justify-content-center">
                     @role(['Super Admin', 'Sub Admin'])
-                        <button
-                            style="background: #1F689E; transform: skew(-30deg) !important;border:none;
+                        <a id="non_hazard" onclick="Openpdf(this.id)"
+                            style="color:white;text-decoration:none;font-size: 12px;cursor:pointer" target="_blank">
+                            <button
+                                style="background: #1F689E; transform: skew(-30deg) !important;border:none;
                     border-radius: 4px;color:white;margin-right: 6px;font-size: 12px;">
-                            <div style="transform: skew(30deg) !important;padding:1px 4px">
-                                <a id="non_hazard" onclick="Openpdf(this.id)"
-                                    style="color:white;text-decoration:none;font-size: 12px;" target="_blank">Non Hazard
-                                    Report</a>
-                            </div>
-                        </button>
+                                <div style="transform: skew(30deg) !important;padding:1px 4px">
+                                    Non Hazard
+                                    Report
+                                </div>
+                            </button>
+                        </a>
 
-                        <button
-                            style="background: #1F689E; transform: skew(-30deg) !important;border:none;
+                        <a id="houston" onclick="Openpdf(this.id)"
+                            style="color:white;text-decoration:none;font-size: 12px;" target="_blank">
+                            <button
+                                style="background: #1F689E; transform: skew(-30deg) !important;border:none;
                     border-radius: 4px;color:white;margin-right: 6px;font-size: 12px;">
-                            <div style="transform: skew(30deg) !important;padding:1px 4px">
-                                <a id="houston" onclick="Openpdf(this.id)"
-                                    style="color:white;text-decoration:none;font-size: 12px;" target="_blank">Houston
-                                    Cover Letter</a>
-                            </div>
-                        </button>
+                                <div style="transform: skew(30deg) !important;padding:1px 4px">
+                                    Houston Cover Letter
+                                </div>
+                            </button>
+                        </a>
                     @endrole
                 </div>
 
                 <div class="information_button d-flex justify-content-center mt-2">
-
-                    <button
-                        style="background: #1F689E; transform: skew(-30deg) !important;border:none;
-                    border-radius: 4px;color:white;margin-right: 6px;font-size: 12px;">
-                        <div style="transform: skew(30deg) !important;padding:1px 4px">
-                            <a id="bol" onclick="Openpdf(this.id)"
-                                style="color:white;text-decoration:none;font-size: 12px;" target="_blank">BOL</a>
-                        </div>
-                    </button>
-                    @role(['Super Admin', 'Sub Admin'])
+                    <a id="bol" onclick="Openpdf(this.id)"
+                        style="color:white;text-decoration:none;font-size: 12px;" target="_blank">
                         <button
                             style="background: #1F689E; transform: skew(-30deg) !important;border:none;
                     border-radius: 4px;color:white;margin-right: 6px;font-size: 12px;">
                             <div style="transform: skew(30deg) !important;padding:1px 4px">
-                                <a id="us_custom" onclick="Openpdf(this.id)"
-                                    style="color:white;text-decoration:none;font-size: 12px;" target="_blank">US
-                                    Custom</a>
+                                BOL
                             </div>
                         </button>
+                    </a>
+                    @role(['Super Admin', 'Sub Admin'])
+                        <a id="us_custom" onclick="Openpdf(this.id)"
+                            style="color:white;text-decoration:none;font-size: 12px;" target="_blank">
+                            <button
+                                style="background: #1F689E; transform: skew(-30deg) !important;border:none;
+                    border-radius: 4px;color:white;margin-right: 6px;font-size: 12px;">
+                                <div style="transform: skew(30deg) !important;padding:1px 4px">
+                                    US Custom
+                                </div>
+                            </button>
+                        </a>
                     @endrole
 
-                    <button
-                        style="background: #1F689E; transform: skew(-30deg) !important;border:none;
+                    <a id="dock_receipt" onclick="Openpdf(this.id)"
+                        style="color:white;text-decoration:none;font-size: 12px;" target="_blank">
+                        <button
+                            style="background: #1F689E; transform: skew(-30deg) !important;border:none;
                     border-radius: 4px;color:white;margin-right: 6px;font-size: 12px;">
-                        <div style="transform: skew(30deg) !important;padding:1px 4px">
-                            <a id="dock_receipt" onclick="Openpdf(this.id)"
-                                style="color:white;text-decoration:none;font-size: 12px;" target="_blank">DOCK
-                                RECEIPT</a>
-                        </div>
-                    </button>
-
+                            <div style="transform: skew(30deg) !important;padding:1px 4px">
+                                DOCK RECEIPT
+                            </div>
+                        </button>
+                    </a>
                 </div>
 
 
@@ -741,10 +737,10 @@ background-color: #e93f7800!important;
                     <div class="d-flex justify-content-start" style="width: 80%;margin-top:6px;margin-left:20px;">
                         Note
                     </div>
-                    <div class="d-flex justify-content-start " style="width: 90%;margin:5px auto;padding:5px; ">
-                        <textarea name=" " id=" " cols="40" rows="4"
+                    <div class="d-flex justify-content-start">
+                        {{-- <textarea name="" id="" cols="40" rows="4"
                             style="border: 1px solid rgba(26, 88, 133, 0.17); border-radius: 10px;
-                    color: #6D8DA6; "
+                    color: #6D8DA6;text-align:start!important;"
                             disabled>
                     @if (@$shipments[0]['notes'])
 {{ @$shipments[0]['notes'] }}
@@ -752,8 +748,24 @@ background-color: #e93f7800!important;
 --
 @endif
                 </textarea>
+                        <br> --}}
 
+
+                        <div style="border: 1px solid rgba(26, 88, 133, 0.17);
+                        width: 86%;
+                        height: 103px;
+                        border-radius: 10px;
+                        color: #6D8DA6;
+                        text-align: start!important;
+                        margin-left: 18px;margin-top:5px;padding:0 15px;">
+                            @if (@$shipments[0]['notes'])
+                                {{ @$shipments[0]['notes'] }}
+                            @else
+                                --
+                            @endif
+                        </div>
                     </div>
+
                     {{-- <div style="width: 90%; " class="d-flex justify-content-end "> --}}
 
                     {{-- <button class="send mt-3"
@@ -780,14 +792,12 @@ background-color: #e93f7800!important;
                         @if (@$shipments[0]['loading_image'])
                             @foreach (@$shipments[0]['loading_image'] as $img)
                                 <img src="{{ asset($img['name']) }}" alt="vehicle_img" class="item_1 changeImage"
-                                    style="width:23.5%;height: auto;" onclick="onClick(this)"
+                                    style="width:23.5%;height: 66px!important;" onclick="onClick(this)"
                                     class="modal-hover-opacity"class="hover-shadow cursor">
                             @endforeach
                         @else
                             <h6 class="text-center mt-5 w-100" style="color:gray">No Image Found</h6>
                         @endif
-
-
 
                     </div>
                     {{-- </div>
@@ -847,7 +857,17 @@ background-color: #e93f7800!important;
                                     <td>{{ @$vehicles['model'] }}</td>
                                     <td>{{ @$vehicles['color'] }}</td>
                                     <td>{{ @$vehicles['vin'] }}</td>
-                                    <td>{{ @$vehicles['vehicle_status']['status_name'] }}</td>
+                                    <td>
+                                        @if (@$shipments[0]['status'] == '1')
+                                            <span class="">Booked</span>
+                                        @elseif (@$shipments[0]['status'] == '2')
+                                            <span class="">Shipped</span>
+                                        @elseif (@$shipments[0]['status'] == '3')
+                                            <span class="">Arrived</span>
+                                        @else
+                                            <span class="">Completed</span>
+                                        @endif
+                                    </td>
                                     <td>{{ @$vehicles['lot'] }}</td>
                                     <td>{{ @$vehicles['title_state'] }}</td>
                                     <td>
@@ -1082,5 +1102,9 @@ background-color: #e93f7800!important;
                 $('.modal-body').html(data);
             }
         });
+    }
+
+    function modelClose() {
+        $('#exampleModal').modal('hide');
     }
 </script>

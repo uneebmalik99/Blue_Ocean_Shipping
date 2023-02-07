@@ -150,7 +150,7 @@ class ReportingController extends Controller
         elseif($req->id == 'shipment_tab'){
             $data['shippers'] = ShipperName::where('status', '1')->get();
             $data['companies'] = User::role('Customer')->get();
-            $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
+            $data['location'] = LoadingCountry::select('port')->where('status', '1')->groupBy('port')->get()->toArray();
             $data['vehicles'] = Vehicle::where('shipment_id', '!=',  null)->get()->toArray();
             $output =  view('layouts.reporting.'. $req->id, $data)->render();
         }
@@ -281,7 +281,7 @@ class ReportingController extends Controller
                 ->when($request->filled('shipper'), function ($query) use ($request) {
                     return $query->where('shipper', $request->shipper);
                 })->when($request->filled('location'), function ($query) use ($request) {
-                    return $query->Where('loading_state', $request->location);
+                    return $query->Where('loading_port', $request->location);
                 })->when($request->filled('status'), function ($query) use ($request) {
                     return $query->Where('status', $request->status);
                 })->when($request->filled('company_name'), function ($query) use ($request) {

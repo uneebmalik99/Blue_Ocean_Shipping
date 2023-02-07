@@ -41,7 +41,7 @@ use App\Models\WarehouseImage;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
-use Storage;
+// use Storage;
 use Yajra\Datatables\Datatables;
 use PDF;
 use Illuminate\Support\Facades\Auth;
@@ -50,6 +50,9 @@ use Spatie\Permission\Models\Permission;
 // use Excel;
 use URL;
 use DB;
+use Intervention\Image\ImageManagerStatic as Images;
+use Illuminate\Support\Facades\Storage;
+
 
 class VehicleController extends Controller
 {
@@ -399,7 +402,7 @@ class VehicleController extends Controller
             $id = $request->id;
             $data['user'] = Vehicle::with('user','vehicle_status')->where('id', $id)->get()->toArray();
             // dd($data['user']);
-            $data['update_buyer_id'] = User::with('billings')->wherecompany_name($data['user'][0]['customer_name'])->get()->toArray();
+            $data['update_buyer_id'] = User::with('billings')->whereid($data['user'][0]['customer_name'])->get()->toArray();
             // dd($data['update_buyer_id']);
             // $Obj_vehicle = new Vehicle;
             // $data['user'] = $Obj_vehicle->find($id)->toArray();
@@ -695,14 +698,18 @@ class VehicleController extends Controller
             $Obj_auctionImages = new AuctionImage;
             foreach ($auction_images as $auctionImages) {
                 $file_name = time() . '.' . $auctionImages->extension();
-                $filename = Storage::putFile($this->directory, $auctionImages);
-                $type = $auctionImages->extension();
-                $doc = $auctionImages->move(public_path($this->directory), $filename);
+              
+                    $filename = Storage::putFile($this->directory, $auctionImages);
+                    $type = $auctionImages->extension();
+                    $doc = $auctionImages->move(public_path($this->directory), $filename);
+                
                 $data = [
                     'name' => $filename,
                     'thumbnail' => $file_name,
                     'vehicle_id' => $Obj_vehicle[0]['id'],
                 ];
+
+
                 $Obj_auctionImages->create($data);
                 $output['result'] = "Success";
             }   
