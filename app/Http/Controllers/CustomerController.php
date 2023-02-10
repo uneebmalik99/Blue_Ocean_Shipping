@@ -372,7 +372,7 @@ class CustomerController extends Controller
         return Response($output);
     }
 
-    
+     // customerUpdate function call when edit records and submit it 
     public function customerUpdate(Request $req)
     {
         $image = $req->file('user_image');
@@ -425,6 +425,7 @@ class CustomerController extends Controller
         return $success;
     }
 
+    // delete function for customer delete from customer page and database  
     public function delete($id = null)
     {
         $vehicles = Vehicle::where('customer_name', $id)->get()->toArray();
@@ -466,6 +467,7 @@ class CustomerController extends Controller
         return back()->with('deleted', 'Customer Deleted Successfully!');
     }
 
+    // change customer status from active to inactive and inactive to active 
     public function ChangeStatus($id)
     {
 
@@ -483,6 +485,7 @@ class CustomerController extends Controller
         return $message;
     }
 
+    // call when view specific customer profile 
     public function profile($id)
     {
         // return $id;
