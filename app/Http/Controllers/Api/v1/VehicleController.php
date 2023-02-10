@@ -39,9 +39,6 @@ class VehicleController extends Controller
     public function store(StoreVehicleRequest $request)
     {
         //
-
-
-
         $vehicle = Vehicle::create($request->all());
         return $vehicle;
     }
