@@ -129,10 +129,6 @@ class VehicleController extends Controller
         $validated = Validator::validate(
             $request->all(),
             [
-                // 'customer_name' => 'required',
-                // 'auction' => 'required',
-                // 'buyer_id' => 'required',
-                // 'status' => 'required',
                 'vehicle_id' => 'required',
             ]
 
@@ -147,24 +143,10 @@ class VehicleController extends Controller
         unset($data['warehouse_deleted_images']);
         unset($data['auction_deleted_images']);
         unset($data['pickup_deleted_images']);
-
         $vehicle_id = $data['vehicle_id'];
-        // $checkAlreadyVin = Vehicle::where('id', $data['vehicle_id'])->where(function ($type) use ($data) {
-        //     $type->where('id', '!=', $data['vehicle_id']);
-        // })->get()->toArray();
-        // if ($checkAlreadyVin) {
-        //     return $this->error('Vin Already Exists', 401, $checkAlreadyVin);
-        // }
-
         unset($data['vehicle_id']);
-        unset($data['vin']);
-        
-        // vehicle update code start  
-
         $obj = Vehicle::find($vehicle_id);
         $obj->update($data);
-        
-
         // vehicle images delete code start 
 
         if($request->warehouse_deleted_images){
