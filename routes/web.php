@@ -24,14 +24,24 @@ use App\Http\Controllers\pdfController;
 use App\Models\Sticky;
 use App\Models\Vehicle;
 use Encore\Admin\Form\Row;
+/***
+ * Auth Routes and Login Controller from Laravel Ui package
+ * Thats in the Vendor/laravelui Directory
+ * For User Registration and Authentication and Authorization uses Auth middleware
+ * 
+ * 
+ */
+Auth::routes(); 
 
-Auth::routes();
-
-
+/***
+ * Admin Routes Starts from here
+ * Login Status middleware for checking only Active users are authorized to access the dashboard 
+ * Revalidate History middleware is for logged out user dont get logged in by Pressing back button
+ */
 
 Route::prefix('/admin')->middleware(['auth','login.status','revalidatehistory'])->group(function () {
     //Home
-    Route::get('/', [HomeController::class, 'index']);
+    //Route::get('/', [HomeController::class, 'index']);
     
     
 
