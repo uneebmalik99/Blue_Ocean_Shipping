@@ -11,24 +11,27 @@
 
 <body>
     @if ($button_hide == 'show')
-        <div style="width: 218px;">
+        <div style="width: 262px;">
             <button type="button" class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
                 style="background: #1d6092;float:left;" onclick="printthis()">
                 <div class="d-flex justify-content-center align-items-center">
-                    <span class="pl-2 font-size">PRINT</span>
+                    <span class="pl-2 font-size"><i class="fa-solid fa-print" style="color:white;margin-right:3px;"></i>
+                        PRINT</span>
                 </div>
             </button>
             <a href="{{ route('shipment_detail.shipment_Dock_pdf', @$shipment[0]['id']) }}"
                 class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
                 style="background: #1d6092;float:left;" target="_blank">
                 <div class="d-flex justify-content-center align-items-center">
-                    <span class="pl-2 font-size">PDF</span>
+                    <span class="pl-2 font-size"><i class="fa-solid fa-file-pdf"
+                            style="color:white;margin-right:3px;"></i> PDF</span>
                 </div>
             </a>
             <a class="text-white form-control-sm border py-1 my-2 btn-info rounded modal_button"
                 style="background: #1d6092;float:left;" tab="{{ @$shipment[0]['id'] }}" id="dock_pdf"
                 onclick="sendpdfthroughmail(this.id)">
-                <span class="pl-2 font-size">EMAIL</span>
+                <span class="pl-2 font-size"><i class="fa-solid fa-envelope" style="color:white;margin-right:3px;"></i>
+                    EMAIL</span>
             </a>
         </div>
     @endif
@@ -43,7 +46,7 @@
 
             .tbl {
                 /* border: 1px solid black; */
-                border-collapse: collapse;
+                /* border-collapse: collapse; */
             }
 
             .we {
@@ -153,7 +156,7 @@
             }
 
             .no_al {
-                font-size: x-small !important;
+                font-size: 12px !important;
                 border: 1px solid;
             }
 
@@ -226,15 +229,11 @@
                 margin-right: -1px;
                 border: none;
             }
+
+            .bol_vehicle_table tr {
+                border-bottom: 1px solid lightgray !important;
+            }
         </style>
-
-
-
-
-
-
-
-
 
         {{-- <div class="" style="height: 131px;"> --}}
         <table class="tbl_0" style="width:100%;">
@@ -246,7 +245,7 @@
                     </td>
                     <td class="" style="width:60%;">
                         <input type="text" value="DOCK RECEIPT"
-                            style="width: 98%;border:none;outline:none;text-align:start;font-weight:bold;font-size:15px;text-decoration:underline rgb(133, 125, 125)">
+                            style="width: 98%;border:none;outline:none;text-align:start;font-weight:bold;font-size:16.5px;text-decoration:underline rgb(133, 125, 125)">
                     </td>
                 </tr>
 
@@ -256,24 +255,24 @@
 
         <table class="tbl" style="width:100%;">
             <tbody>
-                <tr>
-                    <td class="we" id="ee" style="font-weight: bold ;font-size:12px ;width:33%!important;">
-                        <input type="text" value="EXPORTER
-                    "
+                <tr style="border-bottom: .8px solid lightgray;">
+                    <td class="we" id="ee" style="font-weight:bold;font-size:12px;width:33%!important;border-bottom:.8px solid lightgray">
+                        <input type="text" value="EXPORTER"
                             style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold">
                     </td>
                     <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
-                    <td class="we" id="noor" style="font-weight: bold ;font-size:12px"><input type="text"
-                            value="DOCUMENT NUMBER"
-                            style="width: 100%;width:33%!important;border:none;outline:none;text-align:start;font-weight:bold">
+                    <td class="we" id="noor" style="font-weight:bold;font-size:12px;border-bottom:.8px solid lightgray">
+                        <input
+                            type="text" value="DOCUMENT NUMBER"
+                            style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold">
                     </td>
-                    <td class="we" style="font-weight: bold ;font-size:12px"><input type="text"
-                            value="SA.B/L NUMBER"
-                            style="width: 80%;border:none;width:33%!important;outline:none;text-align:start;font-weight:bold">
+                    <td class="we" style="width:33%;font-weight:bold;font-size:12px;border-bottom:.8px solid lightgray">
+                        <input type="text" value="SA.B/L NUMBER"
+                            style="width: 80%;border:none;width:100%!important;outline:none;text-align:start;font-weight:bold">
                     </td>
                 </tr>
                 <tr>
-                    <td class="no_al" rowspan="2" id="noor"; style="border-bottom:none;">
+                    <td class="no_al" rowspan="2" id="noor" style="border-bottom:none;border-top:.8px solid lightgray;">
                         <input type="text" value="{{ @$shipment[0]['customer']['shippers'][0]['shipper_name'] }}"
                             style="width: 100%;border:none;outline:none;text-align:start;"><br>
                         <input type="text" value="{{ @$shipment[0]['customer']['shippers'][0]['address'] }}"
@@ -281,21 +280,21 @@
                         <input type="text" value="{{ @$shipment[0]['customer']['shippers'][0]['phone'] }}"
                             style="width: 100%;border:none;border-bottom:1px black; outline:none;text-align:start;">
                     </td>
-                    <td class="right"><input type="text" value="{{ @$shipment[0]['booking_number'] }}"
+                    <td class="no_al right" style="border-top:.8px solid lightgray;"><input type="text" value="{{ @$shipment[0]['booking_number'] }}"
                             style="width: 100%;border:none;outline:none;text-align:start;"></td>
-                    <td class="no_al"><input type="text" value="{{ @$shipment[0]['booking_number'] }}"
+                    <td class="no_al" style="border-top:.8px solid lightgray;"><input type="text" value="{{ @$shipment[0]['booking_number'] }}"
                             style="width: 80%;border:none;outline:none;border-bottom:1px black!important;text-align:start;">
                     </td>
                 </tr>
                 <tr>
 
-                    <td class="we" style="font-weight: bold ;font-size:12px">
+                    <td class="we" style="font-weight: bold ;font-size:12px;border-bottom:.8px solid lightgray;">
                         <input type="text" value="EXPORT REFREENCE"
                             style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold">
                     </td>
 
 
-                    <td class="we" style="font-weight: bold ;font-size:12px">
+                    <td class="we" style="font-weight: bold ;font-size:12px;border-bottom:.8px solid lightgray;">
                         <input type="text" value="POINT(STATE) OF ORIGIN"
                             style="width: 80%;border:none;outline:none;text-align:start;font-weight:bold">
                     </td>
@@ -309,31 +308,29 @@
                 </tr>
                 <tr>
                     <td class="we" id="ee"
-                        style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none"> </td>
+                        style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none;"> </td>
                     <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
-                    <td class="we" id="noor" style="font-weight: bold ;font-size:12px"><input
-                            type="text" value="--"
-                            style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
-                    <td class="we" style="font-weight: bold ;font-size:12px"><input type="text"
-                            value="--"
-                            style="width: 80%;border:none;outline:none;text-align:start;font-weight:bold"></td>
+                    <td class="we" id="noor" style="font-size:12px;border-top: 0.8px solid lightgray;"><input type="text" value="--"
+                            style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                    <td class="we" style="font-size:12px;border-top: 0.8px solid lightgray;"><input type="text" value="--"
+                            style="width: 80%;border:none;outline:none;text-align:start;"></td>
                 </tr>
-                <tr>
+                <tr style="border-bottom: .8px solid lightgray;">
                     <td class="we" id="ee"
-                        style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none"> <input
-                            type="text" value="CONSIGNEE TO
-                    "
+                        style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none;border-bottom:.8px solid lightgray;">
+                        <input type="text" value="CONSIGNEE TO"
                             style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
                     <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
                     <td class="we" id="noor"
-                        style="font-weight: bold ;font-size:12px;border-top:none;border-right:none"><input
-                            type="text" value="Shipper"
+                        style="font-weight: bold ;font-size:12px;border-top:none;border-right:none;border-bottom:.8px solid lightgray;">
+                        <input type="text" value="Shipper"
                             style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
-                    <td style="border: 1px solid black;border-left:none!important"></td>
+                    <td style="border: 1px solid black;border-left:none!important;border-bottom:.8px solid lightgray;">
+                    </td>
 
                 </tr>
                 <tr>
-                    <td class="we" id="ee"
+                    <td class="we no_al" id="ee"
                         style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none">
                         <input type="text" value="{{ @$shipment[0]['customer']['billings'][0]['company_name'] }}"
                             style="width: 100%;border:none;outline:none;text-align:start;"><br>
@@ -344,7 +341,7 @@
                             style="width: 100%;border:none;outline:none;text-align:start;">
                     </td>
                     <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
-                    <td class="we" id="noor"
+                    <td class="we no_al" id="noor"
                         style="font-weight: bold ;font-size:12px;border-top:none;border-right:none">
                         <input type="text" value="{{ @$shipment[0]['customer']['shippers'][0]['shipper_name'] }}"
                             style="width: 100%;border:none;outline:none;text-align:start;"><br>
@@ -353,20 +350,20 @@
                         <input type="text" value="{{ @$shipment[0]['customer']['shippers'][0]['phone'] }}"
                             style="width: 70%;border:none;outline:none;text-align:start;">
                     </td>
-                    <td style="border: 1px solid black;border-left:none!important"></td>
+                    <td style="border: 1px solid black;border-left:none!important;border-top:.8px solid lightgray!important;"></td>
                 </tr>
-                <tr>
+                <tr style="border-bottom: .8px solid lightgray;">
                     <td class="we" id="ee"
-                        style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none"> <input
-                            type="text" value="NOTIFY PARTY /INTERMEDIATE CONSIGNEE
-                    "
+                        style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none;border-bottom:.8px solid lightgray;">
+                        <input type="text" value="NOTIFY PARTY /INTERMEDIATE CONSIGNEE"
                             style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
                     <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
                     <td class="we" id="noor"
-                        style="font-weight: bold ;font-size:12px;border-top:none;border-right:none"><input
-                            type="text" value="DOMESTIC ROUTINGEXPORT INSTRUCTION"
+                        style="font-weight: bold ;font-size:12px;border-top:none;border-right:none;border-bottom:.8px solid lightgray;">
+                        <input type="text" value="DOMESTIC ROUTINGEXPORT INSTRUCTION"
                             style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
-                    <td style="border: 1px solid black;border-left:none!important"></td>
+                    <td style="border: 1px solid black;border-left:none!important;border-bottom:.8px solid lightgray;">
+                    </td>
 
                 </tr>
 
@@ -374,7 +371,7 @@
 
 
                 <tr>
-                    <td cclass="we" id="ee"
+                    <td cclass="we no_al" id="ee"
                         style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none">
                         <input type="text" value="{{ @$shipment[0]['customer']['billings'][0]['company_name'] }}"
                             style="width: 100%;border:none;outline:none;text-align:start;">
@@ -387,28 +384,26 @@
                             style="width: 100%;border:none;outline:none;text-align:start;">
                     </td>
                     <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
-                    <td class="we" id="noor"
-                        style="font-weight: bold ;font-size:12px;border-top:none;border-right:none">
+                    <td class="we no_al" id="noor" style="font-size:12px;border-top:none;border-right:none">
                         <input type="text" value="--"
                             style="width: 70%;border:none;outline:none;text-align:start;">
                     </td>
-                    <td style="border: 1px solid black;border-left:none!important"></td>
+                    <td style="border: 1px solid black;border-left:none!important;border-top:.8px solid lightgray;"></td>
                 </tr>
 
-                <tr>
+                <tr style="border-bottom: .8px solid lightgray;">
                     <td class="we" id="ee"
-                        style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none"> <input
-                            type="text" value="PRE-CARRIAGE BY
-                    "
+                        style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none;border-bottom:.8px solid lightgray;">
+                        <input type="text" value="PRE-CARRIAGE BY"
                             style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
                     <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
                     <td class="we" id="noor"
-                        style="font-weight: bold ;font-size:12px;border-top:none;border-right:none"><input
-                            type="text" value="PLACE OF RECIEPT BY PRE-CARRIER"
+                        style="font-weight: bold ;font-size:12px;border-top:none;border-right:none;border-bottom:.8px solid lightgray;">
+                        <input type="text" value="PLACE OF RECIEPT BY PRE-CARRIER"
                             style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
                     <td class="we" id="noor"
-                        style="font-weight: bold ;font-size:12px;border-top:none;border-right:1px solid black"><input
-                            type="text" value="LOADING PRE/TERMINAL"
+                        style="font-weight: bold ;font-size:12px;border-top:none;border-right:1px solid black;border-bottom:.8px solid lightgray;">
+                        <input type="text" value="LOADING PRE/TERMINAL"
                             style="width: 90%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
 
 
@@ -418,38 +413,36 @@
 
 
                 <tr>
-                    <td class="we" id="ee"
-                        style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none">
+                    <td class="we no_al" id="ee" style="font-size:12px ;width:33%!important; border-top:none">
                         <input type="text" value="--"
                             style="width: 100%;border:none;outline:none;text-align:start;">
                     </td>
                     <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
-                    <td class="we" id="noor"
-                        style="font-weight: bold ;font-size:12px;border-top:none;border-right:1px solid black">
+                    <td class="we no_al" id="noor"
+                        style="font-size:12px;border-top:none;border-right:1px solid black">
                         <input type="text" value="--"
                             style="width: 100%;border:none;outline:none;text-align:start;">
                     </td>
-                    <td style="border: 1px solid black;border-left:none!important";>
+                    <td style="border: 1px solid black;border-left:none!important;border-top:.8px solid lightgray;" class="no_al">
                         <input type="text" value="{{ @$shipment[0]['loading_terminal'] }}"
                             style="width: 80%;border:none;outline:none;text-align:start;">
                     </td>
 
                 </tr>
 
-                <tr>
+                <tr style="border-bottom: .8px solid lightgray;">
                     <td class="we" id="ee"
-                        style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none"> <input
-                            type="text" value="EXPORTING CARRIAGE BY
-                    "
+                        style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none;border-bottom:.8px solid lightgray;">
+                        <input type="text" value="EXPORTING CARRIAGE BY"
                             style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
                     <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
                     <td class="we" id="noor"
-                        style="font-weight: bold ;font-size:12px;border-top:none;border-right:none"><input
-                            type="text" value="PORT OF LAODING/EXPORT"
+                        style="font-weight: bold ;font-size:12px;border-top:none;border-right:none;border-bottom:.8px solid lightgray;">
+                        <input type="text" value="PORT OF LAODING/EXPORT"
                             style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
                     <td class="we" id="noor"
-                        style="font-weight: bold ;font-size:12px;border-top:none;border-right:1px solid black"><input
-                            type="text" value="PLACE OF DELIVERY BY ON-CARRIER"
+                        style="font-weight: bold ;font-size:12px;border-top:none;border-right:1px solid black;border-bottom:.8px solid lightgray;">
+                        <input type="text" value="PLACE OF DELIVERY BY ON-CARRIER"
                             style="width: 90%;border:none;outline:none;text-align:start;font-weight:bold;"></td>
 
 
@@ -459,17 +452,16 @@
 
 
                 <tr>
-                    <td class="we" id="ee"
-                        style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none">
-                        <input type="text" value="--"
+                    <td class="we no_al" id="ee" style="font-size:12px ;width:33%!important; border-top:none">
+                        <input type="text" value="{{ @$shipment[0]['shipping_line'] }}"
                             style="width: 100%;border:none;outline:none;text-align:start;">
                         <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
-                    <td class="we" id="noor"
-                        style="font-weight: bold ;font-size:12px;border-top:none;border-right:1px solid black">
+                    <td class="we no_al" id="noor"
+                        style="font-size:12px;border-top:none;border-right:1px solid black">
                         <input type="text" value="{{ @$shipment[0]['loading_port'] }}"
                             style="width: 100%;border:none;outline:none;text-align:start;">
                     </td>
-                    <td style="border: 1px solid black;border-left:none!important";>
+                    <td style="border: 1px solid black;border-left:none!important;border-top:.8px solid lightgray;" class="no_al">
                         <input type="text" value="--"
                             style="width: 80%;border:none;outline:none;text-align:start;">
                     </td>
@@ -477,20 +469,19 @@
                 </tr>
 
 
-                <tr>
+                <tr style="border-bottom: .8px solid lightgray;">
                     <td class="we" id="ee"
-                        style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none"> <input
-                            type="text" value="FOREIGN PORT OF UNLOADING
-                    "
+                        style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none;border-bottom:.8px solid lightgray;">
+                        <input type="text" value="FOREIGN PORT OF UNLOADING"
                             style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
                     <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
                     <td class="we" id="noor"
-                        style="font-weight: bold ;font-size:12px;border-top:none;border-right:none;width:33%!important;">
+                        style="font-weight: bold ;font-size:12px;border-top:none;border-right:none;width:33%!important;border-bottom:.8px solid lightgray;">
                         <input type="text" value="TYPE OF MOVE"
                             style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold">
                     </td>
                     <td class="we" id="noor"
-                        style="font-weight: bold ;font-size:12px;border-top:none;border-right:1px solid black;width:33%!important;">
+                        style="font-weight: bold ;font-size:12px;border-top:none;border-right:1px solid black;width:33%!important;border-bottom:.8px solid lightgray;">
                         <input type="text" value="CONTAINERIZED"
                             style="width: 90%;border:none;outline:none;text-align:start;font-weight:bold;">
                     </td>
@@ -502,57 +493,94 @@
 
 
                 <tr>
-                    <td class="we" id="ee"
-                        style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none">
+                    <td class="we no_al" id="ee" style="font-size:12px ;width:33%!important; border-top:none">
                         <input type="text" value="--"
                             style="width: 100%;border:none;outline:none;text-align:start;">
                     </td>
                     <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
-                    <td class="we" id="noor"
-                        style="font-weight: bold ;font-size:12px;border-top:none;border-right:1px solid black">
+                    <td class="we no_al" id="noor"
+                        style="font-size:12px;border-top:none;border-right:1px solid black">
                         <input type="text" value="--"
                             style="width: 100%;border:none;outline:none;text-align:start;">
                     </td>
-                    <td style="border: 1px solid black;border-left:none!important";>
+                    <td style="border: 1px solid black;border-left:none!important;border-top:lightgray;" class="no_al">
                         <input type="text" value="--"
                             style="width: 80%;border:none;outline:none;text-align:start;">
                     </td>
 
                 </tr>
+
+                <tr style="border-bottom: .8px solid lightgray;">
+                    <td class="we" id="ee"
+                        style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none;border-bottom:.8px solid lightgray;">
+                        <input type="text" value="CONTAINER #"
+                            style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold"></td>
+                    <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
+                    <td class="we" id="noor"
+                        style="font-weight: bold ;font-size:12px;border-top:none;border-right:none;width:33%!important;border-bottom:.8px solid lightgray;">
+                        <input type="text" value="SEAL #"
+                            style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold">
+                    </td>
+                    <td class="we" id="noor"
+                        style="font-weight: bold ;font-size:12px;border-top:none;border-right:1px solid black;width:33%!important;border-bottom:.8px solid lightgray;">
+                        <input type="text" value="ASE-ITN #"
+                            style="width: 90%;border:none;outline:none;text-align:start;font-weight:bold;">
+                    </td>
+
+
+                </tr>
+    
+    
+    
+    
+                <tr>
+                    <td class="we no_al" id="ee" style="font-size:12px ;width:33%!important; border-top:none">
+                        <input type="text" value="{{ (@$shipment[0]['container_no']) ? @$shipment[0]['container_no'] : '--'  }}"
+                            style="width: 100%;border:none;outline:none;text-align:start;">
+                    </td>
+                    <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
+                    <td class="we no_al" id="noor"
+                        style="font-size:12px;border-top:none;border-right:1px solid black">
+                        <input type="text" value="{{ (@$shipment[0]['seal_number']) ? $shipment[0]['seal_number'] : '--' }}"
+                            style="width: 100%;border:none;outline:none;text-align:start;">
+                    </td>
+                    <td style="border: 1px solid black;border-left:none!important;border-top:lightgray;" class="no_al">
+                        <input type="text" value="{{ (@$shipment[0]['ase-itn_number']) ? $shipment[0]['ase-itn_number'] : '--' }}"
+                            style="width: 80%;border:none;outline:none;text-align:start;">
+                    </td>
+
+                </tr>
+
+
+
             </tbody>
         </table>
 
         <table style="width:100%">
             <tbody>
-                <tr>
-
-
+                <tr style="border-bottom: .8px solid lightgray;">
                     <td class="we" id="ee"
-                        style="font-weight: bold ;font-size:12px ;width:20%!important; border-top:none;background-color: #F0F3F4;
-                ">
-                        <input type="text" value="MARKS AND Number
-                    "
+                        style="font-weight: bold ;font-size:12px ;width:20%!important; border-top:none;background-color: #F0F3F4;border-bottom:.8px solid lightgray;">
+                        <input type="text" value="MARKS AND Number"
                             style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;background-color: #F0F3F4;">
                     </td>
 
                     <td class="we" id="ee"
-                        style="font-weight: bold ;font-size:12px ;width:20%!important; border-top:none;background-color: #F0F3F4;">
-                        <input type="text" value="NUMBER
-                        "
+                        style="font-weight: bold ;font-size:12px ;width:20%!important; border-top:none;background-color: #F0F3F4;border-bottom:.8px solid lightgray;">
+                        <input type="text" value="NUMBER"
                             style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;background-color: #F0F3F4;">
                     </td>
 
 
 
                     <td class="we" id="ee"
-                        style="font-weight: bold ;font-size:12px ;width:20%!important; border-top:none;background-color: #F0F3F4;">
-                        <input type="text" value="DISCRIPTION OF COMMODITEIS in Schedule B detail
-                "
+                        style="font-weight: bold ;font-size:12px ;width:20%!important; border-top:none;background-color: #F0F3F4;border-bottom:.8px solid lightgray;">
+                        <input type="text" value="DISCRIPTION OF COMMODITEIS in Schedule B detail"
                             style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;background-color: #F0F3F4;">
                     </td>
 
                     <td class="we" id="ee"
-                        style="font-weight: bold ;font-size:12px ;width:20%!important; border-top:none;background-color: #F0F3F4;">
+                        style="font-weight: bold ;font-size:12px ;width:20%!important; border-top:none;background-color: #F0F3F4;border-bottom:.8px solid lightgray;">
                         <input type="text" value="GROOSS WEIGHT (Kilos)
                     "
                             style="width: 90%;border:none;outline:none;text-align:start;font-weight:bold;background-color: #F0F3F4;">
@@ -561,23 +589,22 @@
 
                 </tr>
                 <tr>
-                    <td class="we" id="ee"
-                        style="font-weight: bold ;font-size:12px ;width:33%!important; border-top:none">
-                        <input type="text" value="14"
+                    <td class="we no_al" id="ee" style="font-size:12px ;width:33%!important; border-top:none">
+                        <input type="text" value="--"
                             style="width: 100%;border:none;outline:none;text-align:start;">
 
                         <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
-                    <td class="we" id="noor"
-                        style="font-weight: bold ;font-size:12px;border-top:none;border-right:1px solid black">
-                        <input type="text" value="23"
+                    <td class="we no_al" id="noor"
+                        style="font-size:12px;border-top:none;border-right:1px solid black">
+                        <input type="text" value="--"
                             style="width: 100%;border:none;outline:none;text-align:start;">
                     </td>
-                    <td style="border: 1px solid black;border-left:none!important";>
-                        <input type="text" value="56"
+                    <td style="border: 1px solid black;border-left:none!important;border-top:.8px solid lightgray" class="no_al">
+                        <input type="text" value="--"
                             style="width: 80%;border:none;outline:none;text-align:start;">
                     </td>
-                    <td style="border: 1px solid black;border-left:none!important";>
-                        <input type="text" value="65"
+                    <td style="border: 1px solid black;border-left:none!important;border-top:.8px solid lightgray" class="no_al">
+                        <input type="text" value="{{ @$total_weight }}"
                             style="width: 80%;border:none;outline:none;text-align:start;">
                     </td>
                 </tr>
@@ -586,13 +613,13 @@
             </tbody>
         </table>
         <table>
-            <tbody style="border:1px solid;">
+            <tbody style="border:1px solid;border-top:none!important;" class="bol_vehicle_table">
 
 
-                <tr>
+                <tr style="border-top: none!important">
 
                     <td class="we" id="ee"
-                        style="font-weight: bold ;font-size:12px ;width:11%!important; border:none;width:33%;border-bottom:1px solid;
+                        style="font-weight: bold ;font-size:12px ;width:11%!important; border:none;width:33%;border-bottom:1.5px solid lightgray;
                     ">
                         <input type="text" value="YEAR
                         "
@@ -600,7 +627,7 @@
                     </td>
 
                     <td class="we" id="ee"
-                        style="font-weight: bold ;font-size:12px ;border-bottom:1px solid;width:11%!important; width:33%;">
+                        style="font-weight: bold ;font-size:12px ;border-bottom:1.5px solid lightgray;width:11%!important; width:33%;border-top:none;">
                         <input type="text" value="MAKE
                             "
                             style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;">
@@ -609,22 +636,22 @@
 
 
                     <td class="we" id="ee"
-                        style="font-weight: bold ;font-size:12px ;border-bottom:1px solid;width:11%!important; width:33%;">
+                        style="font-weight: bold ;font-size:12px ;border-bottom:1.5px solid lightgray;width:11%!important; width:33%;border-top:none;">
                         <input type="text" value="MODAL/COLOR
                     "
                             style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;">
                     </td>
 
                     <td class="we" id="ee"
-                        style="font-weight: bold ;font-size:12px ;border-bottom:1px solid;width:11%!important; width:33%;">
+                        style="font-weight: bold ;font-size:12px ;border-bottom:1.5px solid lightgray;width:11%!important; width:33%;border-top:none">
                         <input type="text" value="VIN
                         "
                             style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;">
                     </td>
 
                     <td class="we" id="ee"
-                        style="font-weight: bold ;font-size:12px ;border-bottom:1px solid;width:11%!important;width:33%;">
-                        <input type="text" value="GROOSS WEIGHT (Kilos)
+                        style="font-weight: bold ;font-size:12px ;border-bottom:1.5px solid lightgray;width:11%!important;width:33%;border-top:none">
+                        <input type="text" value="WEIGHT
                         "
                             style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;">
                     </td>
@@ -634,16 +661,16 @@
                 @foreach (@$shipment[0]['vehicle'] as $vehicle)
                     <tr>
                         <td class="td3_data"><input type="text" value="{{ @$vehicle['year'] }}"
-                                style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                                style="width: 100%;border:none;outline:none;text-align:start;font-size:12px"></td>
                         <td class="td3_data"><input type="text" value="{{ @$vehicle['make'] }}"
-                                style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                                style="width: 100%;border:none;outline:none;text-align:start;font-size:12px"></td>
                         <td class="td3_data"><input type="text"
                                 value="{{ @$vehicle['model'] }} / {{ @$vehicle['color'] }}"
-                                style="width: 100%;border:none;outline:none;text-align:start;"></td>
-                        <td class="td3_data"><input type="text" value="{{ @$vehicle['vin'] }}}"
-                                style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                                style="width: 100%;border:none;outline:none;text-align:start;font-size:12px"></td>
+                        <td class="td3_data"><input type="text" value="{{ @$vehicle['vin'] }}"
+                                style="width: 100%;border:none;outline:none;text-align:start;font-size:12px"></td>
                         <td class="td3_data"><input type="text" value="{{ @$vehicle['weight'] }}"
-                                style="width: 100%;border:none;outline:none;text-align:start;"></td>
+                                style="width: 100%;border:none;outline:none;text-align:start;font-size:12px"></td>
                     </tr>
                 @endforeach
 
@@ -654,46 +681,41 @@
 
         </table>
 
-        <table style="width: 49%;height:10px;margin-top:-1pxpx;margin-left: 0px;">
+        <table style="width: 49%;height:10px;margin-top:-1pxpx;margin-left: 0px;border-top:1px solid black;">
             <tbody style="border-right:none!important">
                 <tr>
                     <td class="we" id="ee"
-                        style="font-weight: bold ;font-size:12px ; width:50%;border-right:none;border-bottom:none;border-top:none;">
-                        <input type="text" value="DELIVERD BY:
-                            "
+                        style="font-weight: bold ;font-size:12px ; width:50%;border-right:none;border-bottom:none;border-top:none;padding-top:22px;">
+                        <input type="text" value="DELIVERD BY:"
                             style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;broder-left:none;border-bottom:none">
                     </td>
                     <td class="we" id="ee"
-                        style="font-size:12px;border-bottom:none;border-right: none;border-left: none;border-top:none">
-                        <input type="text" value="RECEIVED THE ABOVE DESCRIBED 
-                            "
+                        style="font-size:12px;border-bottom:none;border-right: none;border-left: none;border-top:none;padding-top:22px;">
+                        <input type="text" value="RECEIVED THE ABOVE DESCRIBED"
                             style="width: 97%;border:none;outline:none;border-right: none;text-align:start;broder-left:none;border-bottom:none;border-top:none">
                     </td>
                     <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
                 </tr>
                 <tr>
                     <td class="we" id="ee"
-                        style="font-weight: bold ;font-size:12px ; width:50%;border-right:none;border-bottom:none;border-top:none">
-                        <input type="text" value="LIGHTER TRUCK
-                            "
+                        style="font-weight: bold ;font-size:12px ; width:50%;border-right:none;border-bottom:none;border-top:none;">
+                        <input type="text" value="LIGHTER TRUCK"
                             style="width: 100%;border:none;outline:none;text-align:start;broder-left:none;font-weight:bold;border-bottom:none;border-top:none">
                     </td>
                     <td class="we" id="ee"
                         style="font-size:12px;border-left:none;border-top:none;border: none;"> <input type="text"
-                            value="EXPORTER
-                            "
+                            value="EXPORTER"
                             style="width: 96%;border:none;outline:none;text-align:start;border-right: none;broder-left:none;border-bottom:none;border-top:none">
                     </td>
                     <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
                 </tr>
                 <tr>
                     <td class="we" id="ee"
-                        style="font-weight: bold ;font-size:12px ; width:50%;border-right:none;border-bottom:none;border-top:none">
-                        <input type="text" value="ARRIVED DATE
-                            "
+                        style="font-weight: bold ;font-size:12px ; width:50%;border-right:none;border-bottom:none;border-top:none;">
+                        <input type="text" value="ARRIVED DATE"
                             style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;broder-left:none;border-bottom:none">
                     </td>
-                    <td class="we" id="ee"
+                    <td class="we no_al" id="ee"
                         style="font-size:12px;border-right: none;border-bottom:none;border-top:none;border: none;">
                         <input type="text" value="ARRIVED DATE: {{ @$shipment[0]['est_arrival_date'] }}"
                             style="width: 97%;border:none;outline:none;text-align:start;broder-left:none;border-bottom:none;border-top:none">
@@ -703,11 +725,10 @@
                 <tr>
                     <td class="we" id="ee"
                         style="font-weight: bold;font-size:12px;width:50%;border-right:none;border-top:none;border-bottom:none;border-right: none;">
-                        <input type="text" value="UPLOADED DATE
-                            "
+                        <input type="text" value="UPLOADED DATE"
                             style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;broder-left:none;border-top:none;border-bottom:none">
                     </td>
-                    <td class="we" id="ee"
+                    <td class="we no_al" id="ee"
                         style="font-size:12px;border-right: none;bborder-top:none;border-bottom:none;border-left: none;border: none;">
                         <input type="text" value="{{ date('M d, Y', @$shipment[0]['create_at']) }}"
                             style="width: 97%;border:none;outline:none;text-align:start;broder-left:none;border-top:none;border-bottom:none">
@@ -723,7 +744,7 @@
                                 "
                             style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;broder-left:none;border-top:none">
                     </td>
-                    <td class="we" id="ee"
+                    <td class="we no_al" id="ee"
                         style="font-weight: bold;font-size:12px;border-right: none;border-left:none;border-top:none;border-bottom: none;">
                         <input type="text" value="-
                                 "
@@ -733,55 +754,54 @@
                 </tr>
                 <tr>
                     <td class="we" id="ee"
-                        style="font-weight: bold;font-size:12px;width:50%;border:none;border-bottom:1px solid;border-left: 1px solid;">
+                        style="font-weight: bold;font-size:12px;width:50%;border:none;border-bottom:1px solid;border-left: 1px solid;padding-bottom: 26px;">
                         <input type="text" value="PLACE BY: __________________"
                             style="width: 100%;border:none;outline:none;text-align:start;font-weight:bold;broder-left:none;border-top:none;/* border-left: 1px solid; */">
                     </td>
                     <td class="we" id="ee"
-                        style="font-weight: bold ;font-size:12px;border-right: none;border-left:none;border-top:none">
+                        style="font-weight: bold ;font-size:12px;border-right: none;border-left:none;border-top:none;padding-bottom: 26px;">
                         <input type="text" value="LOCATION: ___________________"
                             style="width: 90%;border:none;outline:none;text-align:start;font-weight:bold;border-top:none">
                     </td>
 
-                   
-
-                  
-                   
-
-                    
-
                 </tr>
 
-                
+
 
 
             </tbody>
         </table>
-        <table class="tbl" style="width: 51%;float: right;margin-top:-134px;margin-right: -1px;">
+        <table class="tbl" style="width: 51.2%;float: right;margin-top: -180px;margin-right: 0px;border-top:1px solid black;">
             <tbody>
                 <tr>
                     <td class="we" id="ee"
                         style="font-size:12px;width: 37%;border-top:none;/* border-left:none!important; */">
 
-                        <textarea style="width: 92%;height:79px;font-size:10px!important;">RECEIVED THE ABOVE DESCRIBED GOODS OR PACKAGES SUBJECT TO ALL THE TERMS OF THE UNDERSIGNED'S  REGULAR FORM OF DOCK RECEIPT AND BILL OF LADING WHICH SHALL CONSTITUTE THE CONTRACT UNDER WHICH THE GOODS ARE RECEIVED, COPIES OF WHICH ARE AVAIABLE FROM THE CARRIER ON REQUEST AND MAY BE INSPECTED AT ANY OF ITS OFFICES.</textarea>
-                    <br>
-                        <input type="text" value="FOR THE MASTERS" style="width: 90%;border:none;outline:none;text-align:start;font-weight:bold;border-top:none">
-                    
-                    <br>
-                    <input type="text" value="BY: ___________________" style="width: 50%;border:none;outline:none;text-align:start;font-weight:bold;border-top:none">
-                    <input type="text" value="DATE: _________________" style="width: 40%;border:none;outline:none;text-align:start;font-weight:bold;border-top:none">
-                </td>
+                        <textarea style="width: 92%;height: 99.5px;padding-top: 13px;font-size:10px!important;">RECEIVED THE ABOVE DESCRIBED GOODS OR PACKAGES SUBJECT TO ALL THE TERMS OF THE UNDERSIGNED'S  REGULAR FORM OF DOCK RECEIPT AND BILL OF LADING WHICH SHALL CONSTITUTE THE CONTRACT UNDER WHICH THE GOODS ARE RECEIVED, COPIES OF WHICH ARE AVAIABLE FROM THE CARRIER ON REQUEST AND MAY BE INSPECTED AT ANY OF ITS OFFICES.</textarea>
+                        <br>
+                        <input type="text" value="FOR THE MASTERS"
+                            style="width: 90%;border:none;outline:none;text-align:start;font-weight:bold;border-top:none">
+
+                        <br>
+                        <input type="text" value="BY: ___________________"
+                            style="width: 50%;border:none;outline:none;text-align:start;font-weight:bold;border-top:none;padding-bottom: 26px;">
+                        <input type="text" value="DATE: _________________"
+                            style="width: 40%;border:none;outline:none;text-align:start;font-weight:bold;border-top:none">
+                    </td>
 
                     <!-- <td class="we" id="prnpl">(Principle or seller-license and adress including zip code)</td> -->
                 </tr>
 
-                
+
 
 
 
 
             </tbody>
         </table>
-
+        <div>
+            <br>
+            <br>
+        </div>
 
     </div>

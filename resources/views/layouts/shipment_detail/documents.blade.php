@@ -871,7 +871,7 @@
                     @if (@$shipments[0]['loading_image'])
                         <div class="row mt-4">
                             <div class="col-12 d-flex justify-content-center ">
-                                <a href="#" id="download_all">
+                                <a id="{{ @$shipments[0]['id'] }}" onclick="downloadImages_zip(this.id)">
                                     <button
                                         style="background: #3e5871;cursor:pointer; border-radius: 6px;border:none;color:white;transform: skew(-30deg);">
                                         <div style="transform: skew(30deg);padding:1px 10px;font-size: 13px;">

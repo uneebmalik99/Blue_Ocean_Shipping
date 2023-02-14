@@ -132,6 +132,7 @@ class ContainerController extends Controller
 
         unset($data['shipment_id']);
         unset($data['loading_delelte_images']);
+        unset($data['loading_images']);
 
         $obj = Shipment::find($shipment_id);
         $obj->update($data);
@@ -145,7 +146,7 @@ class ContainerController extends Controller
            }
         }
 
-        if ($request->file('loading_image')) {
+        if ($request->file('loading_images')) {
             $Obj_loading = new Loading_Image;
             foreach ($loading_image as $load_images) {
                 $image_name = time() . '.' . $load_images->extension();

@@ -124,16 +124,15 @@ class VehicleController extends Controller
 
     public function update_vehicle(Request $request)
     {
+        // dd($request->all());
         $data = [];
         $validated = Validator::validate(
             $request->all(),
             [
-                'customer_name' => 'required',
-                'vin' => 'required',
-                'auction' => 'required',
-                'buyer_id' => 'required',
-                'key' => 'required',
-                'status' => 'required',
+                // 'customer_name' => 'required',
+                // 'auction' => 'required',
+                // 'buyer_id' => 'required',
+                // 'status' => 'required',
                 'vehicle_id' => 'required',
             ]
 
@@ -150,14 +149,16 @@ class VehicleController extends Controller
         unset($data['pickup_deleted_images']);
 
         $vehicle_id = $data['vehicle_id'];
-        $checkAlreadyVin = Vehicle::where('vin', $data['vin'])->where(function ($type) use ($data) {
-            $type->where('id', '!=', $data['vehicle_id']);
-        })->get()->toArray();
-        if ($checkAlreadyVin) {
-            return $this->error('Vin Already Exists', 401, $checkAlreadyVin);
-        }
-        unset($data['vehicle_id']);
+        // $checkAlreadyVin = Vehicle::where('id', $data['vehicle_id'])->where(function ($type) use ($data) {
+        //     $type->where('id', '!=', $data['vehicle_id']);
+        // })->get()->toArray();
+        // if ($checkAlreadyVin) {
+        //     return $this->error('Vin Already Exists', 401, $checkAlreadyVin);
+        // }
 
+        unset($data['vehicle_id']);
+        unset($data['vin']);
+        
         // vehicle update code start  
 
         $obj = Vehicle::find($vehicle_id);
