@@ -21,7 +21,15 @@ class TicketController extends Controller
 
     public function Notification()
     {
-        $data['notification'] = Notification::with('customer')->paginate($this->perpage);
+        if(Auth::user()->hasRole("Super Admin")){
+            $data['notification'] = Notification::with('user')->paginate($this->perpage);
+            // $data['location'] = Location::all()->toArray();
+            // $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
+            
+            }
+            else{
+                $data['notification'] = Notification::with('user')->where('user_id', Auth::user()->id)->paginate($this->perpage);
+            }
         // dd();
         if ($data['notification']->toArray()) {
             $current = Carbon::now();

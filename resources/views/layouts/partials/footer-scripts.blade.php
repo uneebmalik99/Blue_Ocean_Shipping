@@ -79,7 +79,7 @@
     var channel = pusher.subscribe('notification-channel');
     channel.bind('user-assignment', function(data) {
 
-
+        console.log(data);
         var url = "{{ asset('assets/audio/negative_beeps-6008.mp3') }}";
         var audio = new Audio(url);
         audio.currentTime = 0;
