@@ -89,7 +89,7 @@ class VehicleController extends Controller
         $search_text = $validated['vin_lot_no'];
 
         if (auth()->user()->hasRole('Customer')) {
-            $data = Vehicle::with(['invoice', 'auction_image', 'warehouse_image', 'auction_invoice', 'billofsales', 'originaltitles', 'pickupimages'])->where('customer_name', auth()->user()->id)
+            $data = Vehicle::with(['invoice', 'auction_image', 'warehouse_image', 'auction_invoice', 'billofsales', 'originaltitles', 'pickupimages','vehicle_status'])->where('customer_name', auth()->user()->id)
                 ->where(function ($query) use ($search_text) {
                     $query->where('vin', 'LIKE', "%{$search_text}%")
                         ->orwhere('lot', 'LIKE', "%{$search_text}%");
@@ -100,7 +100,7 @@ class VehicleController extends Controller
                         ->orwhere('status', 3);
                 })->get()->toArray();
         } else {
-            $data = Vehicle::with(['invoice', 'auction_image', 'warehouse_image', 'auction_invoice', 'billofsales', 'originaltitles', 'pickupimages'])
+            $data = Vehicle::with(['invoice', 'auction_image', 'warehouse_image', 'auction_invoice', 'billofsales', 'originaltitles', 'pickupimages','vehicle_status'])
                 ->where(function ($query) use ($search_text) {
                     $query->where('vin', 'LIKE', "%{$search_text}%")
                         ->orwhere('lot', 'LIKE', "%{$search_text}%");

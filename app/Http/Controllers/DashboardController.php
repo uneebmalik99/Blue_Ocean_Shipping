@@ -42,10 +42,15 @@ class DashboardController extends Controller
     // Notification function fetch all Notification from database and show on navbar in all pages
     public function Notification()
     {
-
+        if(Auth::user()->hasRole("Super Admin")){
         $data['notification'] = Notification::with('user')->paginate($this->perpage);
         // $data['location'] = Location::all()->toArray();
         // $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
+        
+        }
+        else{
+            $data['notification'] = Notification::with('user')->where('user_id', Auth::user()->id)->paginate($this->perpage);
+        }
         $data['location'] = Warehouse::where('status', '1')->get()->toArray();
         if ($data['notification']->toArray()) {
             $current = Carbon::now();
