@@ -59,7 +59,6 @@
                     message: data.tab,
                 });
                 
-               
 
                     $('#exampleModal').modal('hide');
                     setTimeout(function() {
