@@ -7,6 +7,7 @@ use App\Models\Export;
 use App\Models\Invoice;
 use App\Models\Consignee;
 use App\Models\Notification;
+use App\Models\ImportVehicle;
 use App\Models\Shipment;
 use App\Models\Vehicle;
 use Carbon\Carbon;
@@ -95,6 +96,7 @@ class InvoiceController extends Controller
             ],
         ];
         $data['vehicles_cart'] = VehicleCart::with('vehicle')->get()->toArray();
+        $data['total_imported_vehicles'] = ImportVehicle::all()->count();
 
         $notification = $this->Notification();
         return view($this->view . 'list', $data, $notification);

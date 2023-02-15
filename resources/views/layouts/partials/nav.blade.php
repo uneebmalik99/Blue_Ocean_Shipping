@@ -39,9 +39,8 @@
                         <li class="header-notification change-loges.html">
                             <a href="{{ route('importVehicles.list') }}">
                                 <span class="pcoded-micon"><i class="ti-calendar"></i></span>
-                                <span class="pcoded-mtext" data-i18n="nav.event-calendar.main">Imported
-                                    Vehicles</span>
-                                <span class="pcoded-mcaret"></span>
+                                <span class="pcoded-mtext" data-i18n="nav.event-calendar.main">Imported Vehicles</span>
+                                <span class="pcoded-mcaret" style="font-size:11px;background:red;color:white;border-radius:50%;padding:2px 5px;">{{ @$total_imported_vehicles }}</span>
                             </a>
                         </li>
                     @endif

@@ -34,7 +34,16 @@ opacity:0.60;
 filter:alpha(opacity=60);
 -webkit-backface-visibility:hidden
 }
-
+@media only screen and (min-width: 1920px) {
+ .changeImage {
+    height:90px!important;
+  }
+}
+@media only screen and (min-width:2160px) {
+ .changeImage {
+    height:100px!important;
+  }
+}
 
 .close {
 text-decoration:none;float:right;font-size:24px;font-weight:bold;color:white
@@ -47,7 +56,7 @@ display:inline-block;
 </style>
 @if(@$images)
 @foreach(@$images as $img)  
-<img src="{{asset($img['name'])}}" alt=""class="item_1" style="width:24%!important;height:66px!important;"   onclick="onClick(this)" class="modal-hover-opacity"class="hover-shadow cursor">
+<img src="{{asset($img['name'])}}" alt=""class="item_1 changeImage" style="width:24%!important;height:66px;"   onclick="onClick(this)" class="modal-hover-opacity"class="hover-shadow cursor">
 @endforeach
 @else
 <h6 class="text-center mt-5 w-100" style="color:gray">No Image Found</h6>

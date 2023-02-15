@@ -121,6 +121,8 @@ class ReportingController extends Controller
         $data['vehicles'] = Vehicle::where('status', '1')->get()->toArray();
         $data['vehicles_cart'] = VehicleCart::with('vehicle')->get()->toArray();
         $notification = $this->Notification();
+        $data['total_imported_vehicles'] = ImportVehicle::all()->count();
+
         return view($this->view . 'list', $data, $notification);
     }
 
@@ -174,6 +176,9 @@ class ReportingController extends Controller
             $output =  view('layouts.reporting.'. $req->id, $data)->render();
         }
         else{}
+
+        $data['total_imported_vehicles'] = ImportVehicle::all()->count();
+
 
         return Response($output);
     }

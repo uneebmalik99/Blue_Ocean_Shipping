@@ -177,6 +177,8 @@ class MasterController extends Controller
         $data['destination_countries'] = DestinationCountry::with('state.destination_port')->get()->toArray();
         $data['Vehicle_mms'] = Make::with('model.series')->get()->toArray();
         $data['vehicles_cart'] = VehicleCart::with('vehicle')->get()->toArray();
+        $data['total_imported_vehicles'] = ImportVehicle::all()->count();
+
 
         // $data['states_countries'] = State::with('country')->where('status','1')->get();
         // return $data['destination_countries'];

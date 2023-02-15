@@ -8,6 +8,11 @@ use App\Models\VehicleCart;
 use App\Models\Notification;
 use App\Models\Location;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+use App\Models\ImportVehicle;
+
+
 
 class ShipmentRateController extends Controller
 {
@@ -80,6 +85,7 @@ class ShipmentRateController extends Controller
             ],
         ];
         $data['vehicles_cart'] = VehicleCart::with('vehicle')->get()->toArray();
+        $data['total_imported_vehicles'] = ImportVehicle::all()->count();
 
         $notification = $this->Notification();
         $data['shippment_rate']  = ShippmentRate::all()->toArray();

@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Location;
 use App\Models\Notification;
+use App\Models\ImportVehicle;
 
 use App\Http\Controllers\Controller;
 use App\Models\MasterTowing;
 use App\Models\VehicleCart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class MasterTowingController extends Controller
 {
@@ -82,6 +85,8 @@ class MasterTowingController extends Controller
             ],
         ];
         $data['vehicles_cart'] = VehicleCart::with('vehicle')->get()->toArray();
+        $data['total_imported_vehicles'] = ImportVehicle::all()->count();
+
 
         $notification = $this->Notification();
         $data['master_towing']  = MasterTowing::all()->toArray();

@@ -205,6 +205,7 @@ class VehicleController extends Controller
             }
         }
         $data['location'] = Warehouse::where('status', '1')->get()->toArray();
+        $data['total_imported_vehicles'] = ImportVehicle::all()->count();
 
         $notification = $this->Notification();
         return view($this->view . 'list', $data, $notification);
@@ -308,6 +309,8 @@ class VehicleController extends Controller
             }
         }
         $data['location'] = Warehouse::where('status', '1')->get()->toArray();
+        $data['total_imported_vehicles'] = ImportVehicle::all()->count();
+
 
         $notification = $this->Notification();
         return view($this->view . 'list', $data, $notification);

@@ -7,11 +7,14 @@ use App\Models\Location;
 use App\Models\Notification;
 use App\Models\User;
 use App\Models\VehicleCart;
+use App\Models\ImportVehicle;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification as NotificationAssignment;  
 use App\Notifications\UserAssignmentNotification;
 use Illuminate\Support\Facades\Auth;
+
+
 class NotificationController extends Controller
 {
 
@@ -89,6 +92,7 @@ class NotificationController extends Controller
         ];
 
         $data['vehicles_cart'] = VehicleCart::with('vehicle')->get()->toArray();
+        $data['total_imported_vehicles'] = ImportVehicle::all()->count();
 
         if(Auth::user()->hasRole('Super Admin')){
             $notification = $this->Notification();

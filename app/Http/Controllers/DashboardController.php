@@ -13,6 +13,7 @@ use App\Models\Shipment;
 use App\Models\LoadingCountry;
 use App\Models\Shipper;
 use App\Models\Warehouse;
+use App\Models\ImportVehicle;
 use App\Models\Customer;
 use Carbon\Carbon;
 // use App\Http\Controllers\Auth;
@@ -259,6 +260,8 @@ class DashboardController extends Controller
             $data['completed_count'] = $completed_count;
             $data['completed_total'] = $completed_value;
         }
+        $data['total_imported_vehicles'] = ImportVehicle::all()->count();
+
         $notification = $this->Notification();
         return view($this->view . 'list', $data, $notification);
     }
@@ -426,6 +429,8 @@ class DashboardController extends Controller
             $data['completed_count'] = $completed_count;
             $data['completed_total'] = $completed_value;
         }
+        $data['total_imported_vehicles'] = ImportVehicle::all()->count();
+
         $notification = $this->Notification();
         return view($this->view . 'list', $data, $notification);
     }

@@ -453,6 +453,16 @@ background-color: #e93f7800!important;
         text-align: center;
         text-decoration: none !important;
     }
+    @media only screen and (min-width: 1920px) {
+ .changeImage {
+    height:90px!important;
+  }
+}
+@media only screen and (min-width:2160px) {
+ .changeImage {
+    height:100px!important;
+  }
+}
 </style>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
@@ -792,7 +802,7 @@ background-color: #e93f7800!important;
                         @if (@$shipments[0]['loading_image'])
                             @foreach (@$shipments[0]['loading_image'] as $img)
                                 <img src="{{ asset($img['name']) }}" alt="vehicle_img" class="item_1 changeImage"
-                                    style="width:23.5%;height: 66px!important;" onclick="onClick(this)"
+                                    style="width:23.5%;height: 66px" onclick="onClick(this)"
                                     class="modal-hover-opacity"class="hover-shadow cursor">
                             @endforeach
                         @else

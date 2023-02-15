@@ -304,7 +304,16 @@
         text-decoration: none;
         color: white;
     }
-
+    @media only screen and (min-width: 1920px) {
+ .changeImage {
+    height:90px!important;
+  }
+}
+@media only screen and (min-width:2160px) {
+ .changeImage {
+    height:100px!important;
+  }
+}
     /* @media screen and (min-width: 1600px) {
         .img_fluid {
             height: 300px !important;
@@ -854,7 +863,7 @@
                         @if (@$shipments[0]['loading_image'])
                             @foreach (@$shipments[0]['loading_image'] as $img)
                                 <img src="{{ asset($img['name']) }}" alt="vehicle_img" class="item_1 changeImage"
-                                    style="width:23.5%;height:auto%;" onclick="onClick(this)"
+                                    style="width:23.5%;height:24%!important;" onclick="onClick(this)"
                                     class="modal-hover-opacity">
                             @endforeach
                             @else

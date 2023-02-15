@@ -428,7 +428,16 @@ background-color: #e93f7800!important;
         text-decoration: none;
         color: white;
     }
-
+    @media only screen and (min-width: 1920px) {
+ .changeImage {
+    height:90px!important;
+  }
+}
+@media only screen and (min-width:2160px) {
+ .changeImage {
+    height:100px!important;
+  }
+}
 
 </style>
 <div class="row my-5">
@@ -605,8 +614,8 @@ background-color: #e93f7800!important;
                                     @if (@$vehicle['pickupimages'])
                                     @foreach (@$vehicle['warehouse_image'] as $img)
                                         <img src="{{ asset($img['name']) }}" alt="" class=""
-                                            class="showMainImage"
-                                            style="width:24%;height:auto%;margin-top:4px;"
+                                            class="showMainImage changeImage "
+                                            style="width:24%;height:66px;margin-top:4px;"
                                             onclick="onClick(this)" class="modal-hover-opacity"class="hover-shadow cursor">
                                     @endforeach
                                     @else

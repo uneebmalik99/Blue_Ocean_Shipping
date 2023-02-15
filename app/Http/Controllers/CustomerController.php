@@ -169,6 +169,7 @@ class CustomerController extends Controller
         } else {
             $data['lastweekconsigneeanalysis'] = 100;
         }
+        $data['total_imported_vehicles'] = ImportVehicle::all()->count();
 
         $data['shipper'] = Shipper::all();
         // $data['consignees'] = Consignee::all();
@@ -248,6 +249,7 @@ class CustomerController extends Controller
         } else {
             $data['lastweekconsigneeanalysis'] = 100;
         }
+        $data['total_imported_vehicles'] = ImportVehicle::all()->count();
 
         $data['shipper'] = Shipper::where('address', $state);
         // $data['consignees'] = Consignee::all();

@@ -32,6 +32,7 @@ use App\Models\LoadingTerminal;
 use App\Models\LoadingPort;
 use App\Models\ShippingCountry;
 use App\Models\ShipmentLine;
+use App\Models\ImportVehicle;
 use App\Models\LoadingCountry;
 use App\Models\State;
 use Carbon\Carbon;
@@ -160,6 +161,7 @@ class ShipmentController extends Controller
 
             $data['destination_port'] = DCountry::select('port')->where('status', '1')->groupBy('port')->get()->toArray();
         }
+        $data['total_imported_vehicles'] = ImportVehicle::all()->count();
 
         $current_date = Carbon::now();
         $period = CarbonPeriod::create('2022-09-09', $current_date);
@@ -211,6 +213,7 @@ class ShipmentController extends Controller
             $data['loading_port'] = LoadingCountry::select('port')->where('status', '1')->groupBy('port')->get()->toArray();
             $data['destination_port'] = DCountry::select('port')->where('status', '1')->groupBy('port')->get()->toArray();
         }
+        $data['total_imported_vehicles'] = ImportVehicle::all()->count();
         $current_date = Carbon::now();
         $period = CarbonPeriod::create('2022-09-09', $current_date);
         $period = CarbonPeriod::create('2022-09-09', $current_date);

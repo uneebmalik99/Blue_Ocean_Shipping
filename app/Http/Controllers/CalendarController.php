@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Location;
 use App\Models\VehicleCart;
 use Carbon\Carbon;
+use App\Models\ImportVehicle;
 
 class CalendarController extends Controller
 {
@@ -75,6 +76,7 @@ class CalendarController extends Controller
             ],
         ];
         $data['vehicles_cart'] = VehicleCart::with('vehicle')->get()->toArray();
+        $data['total_imported_vehicles'] = ImportVehicle::all()->count();
 
         $records = User::paginate($this->perpage);
         $data['records'] = $records;

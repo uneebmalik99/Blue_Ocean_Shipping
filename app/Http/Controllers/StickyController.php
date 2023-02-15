@@ -9,6 +9,7 @@ use App\Models\VehicleCart;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Models\ImportVehicle;
 
 class StickyController extends Controller
 {
@@ -86,7 +87,7 @@ class StickyController extends Controller
             ],
         ];
         $data['vehicles_cart'] = VehicleCart::with('vehicle')->get()->toArray();
-
+        $data['total_imported_vehicles'] = ImportVehicle::all()->count();
         $notification = $this->Notification();
         $data['location'] = Location::all();
         $data['records'] = Sticky::with('user')->where('customer_id',auth()->user()->id)->get()->toArray();
