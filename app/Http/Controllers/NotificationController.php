@@ -7,11 +7,14 @@ use App\Models\Location;
 use App\Models\Notification;
 use App\Models\User;
 use App\Models\VehicleCart;
+use App\Models\ImportVehicle;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification as NotificationAssignment;  
 use App\Notifications\UserAssignmentNotification;
 use Illuminate\Support\Facades\Auth;
+
+
 class NotificationController extends Controller
 {
 
@@ -89,6 +92,7 @@ class NotificationController extends Controller
         ];
 
         $data['vehicles_cart'] = VehicleCart::with('vehicle')->get()->toArray();
+        $data['total_imported_vehicles'] = ImportVehicle::all()->count();
 
         if(Auth::user()->hasRole('Super Admin')){
             $notification = $this->Notification();
@@ -143,18 +147,7 @@ class NotificationController extends Controller
            $user_id = $user['id'];
 
             event(new UserAssignmentEvent($user_id,$notification));
-            $options = [
-                'cluster' => env('PUSHER_APP_CLUSTER'),
-                'useTLS' => true
-            ];
-            $pusher = new Pusher(
-                env('PUSHER_APP_KEY'),
-                env('PUSHER_APP_SECRET'),
-                env('PUSHER_APP_ID'),
-                $options
-            );
-        
-            $pusher->trigger('private-user-'.$user_id, 'new-notification', ['message' => $notification]);
+            
         }
 
         return back()->with('success', 'Notification Submitted Successfully');
