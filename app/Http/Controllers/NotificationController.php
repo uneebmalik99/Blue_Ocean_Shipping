@@ -154,7 +154,7 @@ class NotificationController extends Controller
                 $options
             );
         
-            $pusher->trigger('private-user.'.$user_id, 'new-notification', ['message' => $notification]);
+            $pusher->trigger('private-user-'.$user_id, 'new-notification', ['message' => $notification]);
         }
 
         return back()->with('success', 'Notification Submitted Successfully');
