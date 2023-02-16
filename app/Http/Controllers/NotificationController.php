@@ -146,7 +146,7 @@ class NotificationController extends Controller
             $notification = auth()->user()->name.' Assigned a Task to '.$user['name'];
            $user_id = $user['id'];
 
-            event(new UserAssignmentEvent($user_id,$notification));
+            event(new UserAssignmentEvent($notification,$user_id));
             
         }
 
