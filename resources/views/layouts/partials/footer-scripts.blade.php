@@ -75,11 +75,11 @@
     var pusher = new Pusher('7b4eda220fb943405624', {
         cluster: 'ap2'
     });
-    
-    var channel = pusher.subscribe('private-user-'.{{auth()->user()->id}});
-    channel.bind('new-notification', function(data) {
 
-        //console.log(data);
+    var channel = pusher.subscribe('notification-channel');
+    channel.bind('user-assignment', function(data) {
+
+        console.log(data);
         var url = "{{ asset('assets/audio/negative_beeps-6008.mp3') }}";
         var audio = new Audio(url);
         audio.currentTime = 0;
