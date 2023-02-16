@@ -34,7 +34,7 @@ class UserAssignmentEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('user.'.$this->user_id);
+        return new PrivateChannel('private-user-'.$this->user_id);
     }
     public function broadcastAs()
     {
