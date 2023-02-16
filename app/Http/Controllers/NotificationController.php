@@ -144,9 +144,21 @@ class NotificationController extends Controller
             $user = User::whereid($request->user_id)->first()->toArray();
             
             $notification = auth()->user()->name.' Assigned a Task to '.$user['name'];
-           
+           $user_id = $user['id'];
 
-            event(new UserAssignmentEvent($notification));
+            event(new UserAssignmentEvent($user_id,$notification));
+            $options = [
+                'cluster' => env('PUSHER_APP_CLUSTER'),
+                'useTLS' => true
+            ];
+            $pusher = new Pusher(
+                env('PUSHER_APP_KEY'),
+                env('PUSHER_APP_SECRET'),
+                env('PUSHER_APP_ID'),
+                $options
+            );
+        
+            $pusher->trigger('private-user.'.$user_id, 'new-notification', ['message' => $notification]);
         }
 
         return back()->with('success', 'Notification Submitted Successfully');
