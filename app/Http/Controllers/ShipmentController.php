@@ -496,7 +496,7 @@ class ShipmentController extends Controller
     public function create_form(Request $request)
     {
         if ($request->ajax()) {
-
+            
             if (!$request->vehicle) {
                 return 'please select atleast one vehicle';
             }
@@ -519,7 +519,7 @@ class ShipmentController extends Controller
 
             $data = [];
             $data = $request->all();
-            // dd($data);
+           
             $vehicles = $request->vehicle;
             $tab = $request->tab;
             $loading_image = $request->file('loading_image');
@@ -540,20 +540,37 @@ class ShipmentController extends Controller
             $days = (strtotime($data['est_arrival_date']) - strtotime($current_date)) / (60 * 60 * 24);
 
             if ($current_date < $data['sale_date']) {
-                $data['status'] = 1;
+                $data['status'] = 1; // Booked
             } else if ($current_date >= $data['sale_date']) {
-                $data['status'] = 2;
+                $data['status'] = 2; // Shipped
             } else {
             }
             if (abs($days) < '10') {
-                $data['status'] = 3;
+                $data['status'] = 3; // Arrived
             }
             if ($request->id) {
                 if ($vehicles) {
                     $old_vehicles = Vehicle::where('shipment_id', $data['id'])->get()->toArray();
+                    $shipment_status = Shipment::find($data['id'])->select('status')->first();
+                    if($shipment_status['status'] == 1){
+                        $vehicle_status = 7;
+                    }
+                    else if($shipment_status['status'] == 2){
+                        $vehicle_status = 8;
+                    }
+                    else if($shipment_status['status'] == 3){
+                        $vehicle_status = 9;
+                    }
+                    else if($shipment_status['status'] == 4){
+                        $vehicle_status = 10;
+                    }
+                    else {
+                        $vehicle_status = null;
+                    }
+
                     foreach ($old_vehicles as $old_vehicle) {
                         if (in_array($old_vehicle['id'], $vehicles)) {
-                            // dd($vehicles);
+                            
                         } else {
                             // dd($old_vehicle['id']);
                             $update_vehicle = Vehicle::find($old_vehicle['id']);
@@ -563,6 +580,7 @@ class ShipmentController extends Controller
                     }
                     foreach ($vehicles as $vehicle_id) {
                         $get_vehicle = Vehicle::find($vehicle_id);
+                        $get_vehicle->status = $vehicle_status;
                         $get_vehicle->shipment_id = $data['id'];
                         $get_vehicle->update();
                     }
@@ -1082,7 +1100,7 @@ class ShipmentController extends Controller
     public function add_vehicles(Request $req)
     {
         // return $req->id;
-
+        
         $vehicle = Vehicle::find($req->id);
         $vehicle->vehicle_active_shipment = '1';
         $vehicle->save();
