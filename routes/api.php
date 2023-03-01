@@ -35,6 +35,8 @@ Route::prefix('/auth')->middleware(['auth:sanctum'])->group(function () {
     Route::prefix('/vehicle')->group(function(){
         Route::post('/search', [VehicleController::class, 'search_vehicle']);
         Route::post('/update', [VehicleController::class, 'update_vehicle']);
+        Route::get('/all/vehicles', [VehicleController::class, 'all_vehicles']);
+        Route::post('/customerVehicles', [VehicleController::class, 'customer_vehicles']);
     });
     Route::prefix('/shipment')->group(function(){
         Route::post('/search', [ContainerController::class, 'search_shipment']);
