@@ -9,8 +9,6 @@ use App\Models\Loading_Image;
 use Illuminate\Support\Facades\Validator;
 use App\Traits\ApiResponser;
 use Illuminate\Support\Facades\Storage;
-
-
 class ContainerController extends Controller
 {
     use ApiResponser;
@@ -91,7 +89,6 @@ class ContainerController extends Controller
     {
         //
     }
-    
     /***
      * Shipment Search
      */
@@ -99,11 +96,9 @@ class ContainerController extends Controller
         $validated = Validator::validate($request->all(),[
             'container_number' => 'string|required'
         ]
-
         );
         
         $search_text = $validated['container_number'];
-        
         if(auth()->user()->hasRole('Customer')){
         $data = Shipment::with(['vehicle','vehicle.warehouse_image', 'loading_image', 'vehicle.vehicle_status'])->where('container_no', $search_text)->get()->toArray();
         }
@@ -129,14 +124,11 @@ class ContainerController extends Controller
         $data = $request->all();
         $shipment_id = $data['shipment_id'];
         $loading_image = $request->file('loading_images');
-
         unset($data['shipment_id']);
         unset($data['loading_delelte_images']);
         unset($data['loading_images']);
-
         $obj = Shipment::find($shipment_id);
         $obj->update($data);
-
 
         if($request->loading_delelte_images){
             $loading_image_delete = [];

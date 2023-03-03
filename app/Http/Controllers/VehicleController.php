@@ -115,7 +115,6 @@ class VehicleController extends Controller
     {
         $data = [];
         $data = [
-            // "page_title" => $this->plural . " List",
             "page_heading" => $this->plural . ' List',
             "breadcrumbs" => array('#' => $this->plural . " List"),
             "module" => [
@@ -130,11 +129,7 @@ class VehicleController extends Controller
         ];
 
         $data['vehicles_cart'] = VehicleCart::with('vehicle')->get()->toArray();
-        // dd($data['vehicles_cart']);
-
-
         if(Auth::user()->hasRole('Customer')){
-
             $data['records'] = Vehicle::with('user','pickupimages')->where('customer_name', auth()->user()->id)->where('status', 3)->get()->toArray();
             $data['new_orders'] = Vehicle::where('customer_name', auth()->user()->id)->where('status', '1')->get();
             $data['dispatched'] = Vehicle::where('customer_name', auth()->user()->id)->where('status', '2')->get();
@@ -154,9 +149,7 @@ class VehicleController extends Controller
                 if($towing_charges['towing_charges'] != null){
                    $data['towing'] += $towing_charges['towing_charges'];
                 }
-                
             }
-            // $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
             $data['status'] = VehicleStatus::limit(3)->get()->toArray();
             $data['make'] = MMS::select('make')->where('status', '1')->groupBy('make')->get()->toArray();
             $data['model'] = MMS::select('model')->where('status', '1')->groupBy('model')->get()->toArray();
@@ -167,9 +160,7 @@ class VehicleController extends Controller
                 $value = str_replace( array( '\'', '"', ',' , ';', '<', '>',  '$'),'', $inventory['value']);
                 $value = preg_replace("/[^A-Za-z0-9.!?[:space:]]/","",$value);
                 $data['inventory_value'] += (int)$value;
-                
             }
-            
         }
         else{
             $data['records'] = Vehicle::with('user','pickupimages')->where('status', 3)->get()->toArray();
@@ -482,8 +473,7 @@ class VehicleController extends Controller
                     ->orwhere('status', 3);
                 });
             }
-            // $total = Vehicle::all()->toArray();
-            // $records = Vehicle::with('user');
+           
             $warehouse = $request->warehouse;
             $year = $request->year;
             $make = $request->make;
@@ -525,7 +515,6 @@ class VehicleController extends Controller
                 if ($status != "") {
                     if ($status == 'all') {
                         $records = Vehicle::with('user', 'vehicle_status')->where('status', '3')->get()->toArray();
-
                     } else {
                         $records = Vehicle::with('user', 'vehicle_status')->where('status', $status)->paginate($this->perpage);
                         $data['records'] = $records;
@@ -541,7 +530,6 @@ class VehicleController extends Controller
 
     public function create_form(Request $request)
     {
-        // dd($request->all());
         $vehicle = [];
         if($request->id === null){
             $request->validate([
@@ -566,12 +554,10 @@ class VehicleController extends Controller
 
         }
         $data = $request->all();
-       
         $vin['vin'] = $data['vin'];
         $tab = $data['tab'];
         unset($data['tab']);
-        $Obj = new Vehicle;
-        
+        $Obj = new Vehicle;   
         if($request->id === null)
     {
         $new = $Obj->create($data);
@@ -596,13 +582,11 @@ class VehicleController extends Controller
         }
         return Response($output);
     }
-        
     }
 
     public function store_image(Request $request)
     {
         
-
         $output = [];
         $auction_invoice = $request->file("auction_invoice");
         $auction_copy = $request->file("auction_copy");
@@ -611,13 +595,8 @@ class VehicleController extends Controller
         $billofsales = $request->file("billofsales");
         $originaltitle = $request->file("originaltitle");
         $pickup = $request->file("pickup");
-        // dd($pickup);
-
         $Obj = new Vehicle;
         $Obj_vehicle = $Obj->where('vin', $request->vin)->get();
-
-        // dd($request->all());
-
 
         if($request->auction_old){
             $auction_old_images = AuctionImage::where('vehicle_id', $Obj_vehicle[0]['id'])->get();
@@ -641,8 +620,6 @@ class VehicleController extends Controller
                 }
             }
         }
-
-
         if($request->warehouse_old){
             $warehouse_old_images = WarehouseImage::where('vehicle_id', $Obj_vehicle[0]['id'])->get();
             foreach($warehouse_old_images as $old_images){
@@ -670,7 +647,6 @@ class VehicleController extends Controller
                 $Obj_auctionInvoice->save();
                 $output['result'] = "Success";
             }
-            
         }
 
         if($auction_copy){
@@ -687,11 +663,9 @@ class VehicleController extends Controller
                 $Obj_auctionCopy->size = $size . ' kb';
                 $Obj_auctionCopy->save();
                 $output['result'] = "Success";
-            }
-            
+            }    
         }
         
-
         if(!$auction_images && !$request->auction_old){
             $auction_image = AuctionImage::where('vehicle_id', $Obj_vehicle[0]['id'])->delete();
         }
@@ -704,28 +678,22 @@ class VehicleController extends Controller
             $auction_image = PickupImage::where('vehicle_id', $Obj_vehicle[0]['id'])->delete();
         }
         
-
         if($auction_images){
             $Obj_auctionImages = new AuctionImage;
             foreach ($auction_images as $auctionImages) {
                 $file_name = time() . '.' . $auctionImages->extension();
-              
                     $filename = Storage::putFile($this->directory, $auctionImages);
                     $type = $auctionImages->extension();
                     $doc = $auctionImages->move(public_path($this->directory), $filename);
-                
                 $data = [
                     'name' => $filename,
                     'thumbnail' => $file_name,
                     'vehicle_id' => $Obj_vehicle[0]['id'],
                 ];
-
-
                 $Obj_auctionImages->create($data);
                 $output['result'] = "Success";
             }   
         }
-
         if($billofsales){
             $Obj_billofsales = new BillOfSale;
             foreach ($billofsales as $billofsales) {

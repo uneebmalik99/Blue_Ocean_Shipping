@@ -10,9 +10,10 @@ use Illuminate\Http\Request;
 use App\Traits\ApiResponser;
 use App\Models\WarehouseImage;
 use App\Models\PickupImage;
+use App\Models\User;
 use App\Models\AuctionImage; 
 use Illuminate\Support\Facades\Storage;
-
+use Spatie\Permission\Traits\HasRoles;
 use Directory;
 use Illuminate\Support\Facades\Validator;
 
@@ -226,5 +227,43 @@ class VehicleController extends Controller
             return $this->error('Vehicle Not Updated Successfully', 401, $obj);
         }
         return $this->success($obj, "vehicle Updated Successfully", 200);
+    }
+
+    public function all_vehicles(){
+
+        $email = auth()->user()->email;
+        $user_role = User::with('roles')->where('email', $email)->get()->toArray();
+        if($user_role[0]['roles'][0]['name'] == 'Super Admin'){
+            $vehicles = Vehicle::with(['user','user.billings','user.shippers','pickupimages', 'warehouse_image', 'vehicle_status', 'billofsales'])->get()->toArray();
+        }
+        if($user_role[0]['roles'][0]['name'] == 'Customer'){
+            $vehicles = Vehicle::with(['user','user.billings','user.shippers','pickupimages', 'warehouse_image', 'vehicle_status', 'billofsales'])->where('customer_name', auth()->user()->id)->get()->toArray();
+        }
+        return $this->success($vehicles, "vehicle Show Successfully", 200);
+    }
+
+    public function customer_vehicles(Request $req){
+        $search_text = $req->vin_lot_no;
+        
+        $email = auth()->user()->email;
+        $user_role = User::with('roles')->where('email', $email)->get()->toArray();
+
+        if($user_role[0]['roles'][0]['name'] == 'Customer'){
+            $vehicles = Vehicle::with(['user','user.billings','user.shippers','pickupimages', 'warehouse_image', 'vehicle_status', 'billofsales'])->where(function($query) use ($search_text){
+                $query->where('vin', 'LIKE', "%{$search_text}%")
+                ->orwhere('lot', 'LIKE', "%{$search_text}%");
+            })->where('customer_name', auth()->user()->id)->get()->toArray();
+
+        }
+        if($user_role[0]['roles'][0]['name'] == 'Super Admin'){
+            $vehicles = Vehicle::with(['user','user.billings','user.shippers','pickupimages', 'warehouse_image', 'vehicle_status', 'billofsales'])->where(function($query) use ($search_text){
+                $query->where('vin', 'LIKE', "%{$search_text}%")
+                ->orwhere('lot', 'LIKE', "%{$search_text}%");
+            })->get()->toArray();
+        }
+        return $this->success($vehicles, "vehicle Show Successfully", 200);
+
+
+
     }
 }
