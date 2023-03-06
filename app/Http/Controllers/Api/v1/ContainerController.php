@@ -22,6 +22,9 @@ class ContainerController extends Controller
     public function index()
     {
         //
+        $data=Shipment::with(['vehicle','vehicle.warehouse_image', 'loading_image', 'vehicle.vehicle_status'])->get()->toArray();
+        return $this->success($data,"All Shipments",200);
+
     }
 
     /**

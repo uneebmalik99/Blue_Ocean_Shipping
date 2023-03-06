@@ -29,6 +29,9 @@ class VehicleController extends Controller
     public function index()
     {
         //
+        $data  = Vehicle::with(['invoice', 'auction_image', 'warehouse_image', 'auction_invoice', 'billofsales', 'originaltitles', 'pickupimages','vehicle_status'])->get()->toArray();
+        return $this->success($data, "All vehicles", 200);
+
     }
 
     /**
