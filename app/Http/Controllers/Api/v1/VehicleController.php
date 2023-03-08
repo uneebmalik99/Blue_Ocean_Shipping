@@ -28,9 +28,7 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        //
-        $data  = Vehicle::with(['invoice', 'auction_image', 'warehouse_image', 'auction_invoice', 'billofsales', 'originaltitles', 'pickupimages','vehicle_status'])->get()->toArray();
-        return $this->success($data, "All vehicles", 200);
+        
 
     }
 
@@ -53,9 +51,18 @@ class VehicleController extends Controller
      * @param  \App\Models\Vehicle  $vehicle
      * @return \Illuminate\Http\Response
      */
-    public function show(Vehicle $vehicle)
+    public function show(Vehicle $vehicle,$id)
     {
         //
+        
+        $data = Vehicle::findOrFail($id)->toArray();
+        if($data){
+            return $this->success($data,'Vehicle Detail',200);
+
+        }
+        else {
+            return $this->error('Vehicle Not Found',401);
+        }
     }
 
     /**

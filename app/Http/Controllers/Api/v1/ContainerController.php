@@ -57,6 +57,14 @@ class ContainerController extends Controller
     public function show($id)
     {
         //
+        $data = Shipment::findOrFail($id)->toArray();
+        if($data){
+            return $this->success($data,'Shipment/Container Detail',200);
+
+        }
+        else {
+            return $this->error('Shipment/Container Not Found',401);
+        }
     }
 
     /**
