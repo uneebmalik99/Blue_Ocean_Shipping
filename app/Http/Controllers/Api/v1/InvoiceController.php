@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Invoice;
 use App\Traits\ApiResponser;
+use DB;
 class InvoiceController extends Controller
 {
     use ApiResponser;
@@ -18,7 +19,12 @@ class InvoiceController extends Controller
     public function index()
     {
         //
-        $data  = Invoice::with('vehicle.user')->get()->toArray();
+        $data  = DB::table('invoices')
+        // ->join('invoices', 'invoices.id', '=', 'vehicles.inovice_id')
+        ->join('vehicles','inovice_id', '=', 'invoices.id')
+
+        ->select('invoices.*', 'vehicles.vin','vehicles.year')
+        ->get()->toArray();
         return $this->success($data,"All Invoices",200);
     }
 
@@ -42,6 +48,25 @@ class InvoiceController extends Controller
     public function show($id)
     {
         //
+        try {
+            $data  = DB::table('invoices')
+        // ->join('invoices', 'invoices.id', '=', 'vehicles.inovice_id')
+        ->join('vehicles','inovice_id', '=', 'invoices.id')
+
+        ->select('invoices.*', 'vehicles.vin','vehicles.year')
+        ->where('invoices.id', $id)->get()->toArray();
+            if($data){
+                return $this->success($data,'Invoice Detail',200);
+    
+            }
+            else {
+                return $this->error('Invoice Not Found Not Found',401);
+            }
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            // Model not found, handle the exception here
+            return response()->json(
+                ['error' => 'Model not found'], 404);
+        }
     }
 
     /**
@@ -65,5 +90,24 @@ class InvoiceController extends Controller
     public function destroy($id)
     {
         //
+        try {
+            $data  = DB::table('invoices')
+       
+        ->join('vehicles','inovice_id', '=', 'invoices.id')
+
+        ->select('invoices.*', 'vehicles.vin','vehicles.year')
+        ->where('invoices.id', $id)->delete();
+            if($data){
+                return $this->success((bool)$data,'Invoice Delete',200);
+    
+            }
+            else {
+                return $this->error('Invoice Not Found or Not Deleted',401);
+            }
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            // Model not found, handle the exception here
+            return response()->json(
+                ['error' => 'Model not found'], 404);
+        }
     }
 }

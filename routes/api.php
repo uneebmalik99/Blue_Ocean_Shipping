@@ -59,10 +59,17 @@ Route::prefix('/auth')->middleware(['auth:sanctum'])->group(function () {
         Route::post('/customerVehicles', [VehicleController::class, 'customer_vehicles']);
         Route::get('/allvehicles', [VehicleController::class, 'index']);
         Route::get('/show/{id}',[VehicleController::class,'show']);
+        Route::get('/delete/{id}',[VehicleController::class,'destroy']);
+        Route::post('/create',[VehicleController::class,'store']);
     });
     Route::prefix('/shipment')->group(function () {
         Route::post('/search', [ContainerController::class, 'search_shipment']);
         Route::post('/update', [ContainerController::class, 'update_shipment']);
+        Route::get('/all/shipments', [ContainerController::class,'index']);
+        Route::get('/show/{id}',[ContainerController::class,'show']);
+        Route::get('/delete/{id}',[ContainerController::class,'destroy']);
+        Route::post('/create',[ContainerController::class,'store']);
+
     });
     Route::prefix('/customer')->group(function () {
         Route::get('/View/AllCustomers', [CustomerApiController::class, 'view_all_customers']);
@@ -71,6 +78,8 @@ Route::prefix('/auth')->middleware(['auth:sanctum'])->group(function () {
     });
     Route::prefix('/invoice')->group(function (){
         Route::get('/allinvoices', [InvoiceController::class, 'index']);
+        Route::get('/show/{id}', [InvoiceController::class, 'show']);
+        Route::get('/delete/{id}', [InvoiceController::class,'destroy']);
     });
     Route::prefix('/dashboard')->group(function(){
         Route::get('/view',[DashboardController::class, 'index']);

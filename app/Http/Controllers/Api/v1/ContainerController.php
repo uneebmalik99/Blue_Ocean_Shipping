@@ -46,6 +46,52 @@ class ContainerController extends Controller
     public function store(Request $request)
     {
         //
+        $validated = Validator::validate($request->all(),[
+            'company_name' => 'required',
+            'booking_number' => 'required',
+            'container_no' => 'required',
+            'status' => 'required|integer'
+        ]
+        );
+        $data = [];
+        $data = $request->all();
+        
+        $loading_image = $request->file('loading_images');
+        unset($data['shipment_id']);
+        unset($data['loading_delelte_images']);
+        unset($data['loading_images']);
+        $data['select_consignee'] = auth()->user()->id;
+        $obj = Shipment::create($data);
+        
+
+        // if($request->loading_delelte_images){
+        //     $loading_image_delete = [];
+        //    foreach($request->loading_delelte_images as $loading_images){
+        //     $loading_delete = Loading_Image::find($loading_images)->delete();
+        //     array_push($loading_image_delete, $loading_delete);
+        //    }
+        // }
+
+        if ($request->file('loading_images')) {
+            $Obj_loading = new Loading_Image;
+            foreach ($loading_image as $load_images) {
+                $image_name = time() . '.' . $load_images->extension();
+                $filename = Storage::putFile($this->directory, $load_images);
+                $load_images->move(public_path($this->directory), $filename);
+                $data = [
+                    'name' => $filename,
+                    'thumbnail' => $image_name,
+                    'shipment_id' => $shipment_id,
+                ];
+                $Obj_loading->create($data);
+            }
+        }
+
+        if (!$obj) {
+            return $this->error('Shipment Not Created Successfully', 401, $obj);
+        }
+        return $this->success($obj, "Shipment Created Successfully", 200);
+
     }
 
     /**
@@ -57,14 +103,23 @@ class ContainerController extends Controller
     public function show($id)
     {
         //
-        $data = Shipment::findOrFail($id)->toArray();
-        if($data){
-            return $this->success($data,'Shipment/Container Detail',200);
-
+        try {
+            $data = Shipment::findOrFail($id)->toArray();
+            if($data){
+                return $this->success($data,'Shipment/Container Detail',200);
+    
+            }
+            else {
+                return $this->error('Shipment/Container Not Found',401);
+            }
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            // Model not found, handle the exception here
+            return response()->json(
+                ['error' => 'Model not found'], 404);
         }
-        else {
-            return $this->error('Shipment/Container Not Found',401);
-        }
+        
+        
+        
     }
 
     /**
@@ -99,6 +154,21 @@ class ContainerController extends Controller
     public function destroy($id)
     {
         //
+        try {
+            $data = Shipment::destroy($id);
+            if($data){
+                return $this->success((bool)$data,'Shipment/Container Deleted',200);
+    
+            }
+            else {
+                return $this->error('Shipment/Container Not Found',401);
+            }
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            // Model not found, handle the exception here
+            return response()->json(
+                ['error' => 'Model not found'], 404);
+        }
+        
     }
     /***
      * Shipment Search
