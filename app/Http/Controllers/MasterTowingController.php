@@ -86,8 +86,6 @@ class MasterTowingController extends Controller
         ];
         $data['vehicles_cart'] = VehicleCart::with('vehicle')->get()->toArray();
         $data['total_imported_vehicles'] = ImportVehicle::all()->count();
-
-
         $notification = $this->Notification();
         $data['master_towing']  = MasterTowing::all()->toArray();
         return view($this->view . 'towing_rate', $data, $notification);
