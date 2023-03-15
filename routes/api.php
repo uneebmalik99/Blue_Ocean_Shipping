@@ -45,11 +45,16 @@ Route::prefix('/auth')->middleware(['auth:sanctum'])->group(function () {
         // shipping rate 
      Route::get('/shipment',[RateController::class, 'index']);
      Route::get('/shipment/delete/{id?}' , [RateController::class, 'shipping_rate_delete']);
+     Route::post('/shipment/save', [RateController::class, 'shipmentrate_save']);
+     Route::post('/shipment/update', [RateController::class, 'shipmentrate_update']);
 
 
         //  towing rate
      Route::get('/towing',[RateController::class, 'towing']);
      Route::get('/towing/delete/{id?}',[RateController::class, 'towing_rate_delete']);
+     Route::post('/towing/save', [RateController::class, 'towingrate_save']);
+     Route::post('/towing/update', [RateController::class, 'towingrate_update']);
+
 
     });
     //Vehicle
