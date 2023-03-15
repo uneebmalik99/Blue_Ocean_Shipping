@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\v1\VehicleController;
 use App\Http\Controllers\Api\v1\CustomerApiController;
 use App\Http\Controllers\Api\v1\RateController;
 use App\Http\Controllers\api\v1\InvoiceController;
+use App\Http\Controllers\api\v1\StickyNoteController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -83,6 +84,11 @@ Route::prefix('/auth')->middleware(['auth:sanctum'])->group(function () {
     });
     Route::prefix('/dashboard')->group(function(){
         Route::get('/view',[DashboardController::class, 'index']);
+    });
+    Route::prefix('/sticknotes')->group(function(){
+        Route::get('/view',[StickyNoteController::class, 'index']);
+        Route::get('/create',[StickyNoteController::class, 'store']);
+
     });
 });
 //VehicLe Resoucrce Routes
