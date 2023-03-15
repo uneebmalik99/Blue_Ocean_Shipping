@@ -90,10 +90,15 @@ Route::prefix('/auth')->middleware(['auth:sanctum'])->group(function () {
     Route::prefix('/dashboard')->group(function(){
         Route::get('/view',[DashboardController::class, 'index']);
     });
+    /**
+     * Sticky Notes routes
+     * 
+     */
     Route::prefix('/sticknotes')->group(function(){
         Route::get('/view',[StickyNoteController::class, 'index']);
-        Route::get('/create',[StickyNoteController::class, 'store']);
-
+        Route::post('/create',[StickyNoteController::class, 'store']);
+        Route::get('/show/{id}',[StickyNoteController::class, 'show']);
+        Route::get('/delete/{id}',[StickyNoteController::class,'destroy']);
     });
 });
 //VehicLe Resoucrce Routes

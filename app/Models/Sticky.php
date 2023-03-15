@@ -13,11 +13,7 @@ class Sticky extends Model
     protected $primaryKey = 'id';
     public $timestamps = true;
     protected $table = "stickies";
-    protected $fillables = [
-        'notes',
-        'sticky_id',
-        'customer_id',
-    ];
+    protected $guarded  = [];
 
     public function customer()
     {
