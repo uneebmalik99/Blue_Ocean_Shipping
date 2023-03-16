@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\v1\CustomerApiController;
 use App\Http\Controllers\Api\v1\RateController;
 use App\Http\Controllers\api\v1\InvoiceController;
 use App\Http\Controllers\api\v1\StickyNoteController;
+use App\Http\Controllers\api\v1\NotificationController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -86,6 +87,7 @@ Route::prefix('/auth')->middleware(['auth:sanctum'])->group(function () {
         Route::get('/allinvoices', [InvoiceController::class, 'index']);
         Route::get('/show/{id}', [InvoiceController::class, 'show']);
         Route::get('/delete/{id}', [InvoiceController::class,'destroy']);
+        Route::post('/create', [InvoiceController::class,'store']);
     });
     Route::prefix('/dashboard')->group(function(){
         Route::get('/view',[DashboardController::class, 'index']);
@@ -99,6 +101,12 @@ Route::prefix('/auth')->middleware(['auth:sanctum'])->group(function () {
         Route::post('/create',[StickyNoteController::class, 'store']);
         Route::get('/show/{id}',[StickyNoteController::class, 'show']);
         Route::get('/delete/{id}',[StickyNoteController::class,'destroy']);
+    });
+    Route::prefix('/notification')->group(function(){
+        Route::get('/view',[NotificationController::class, 'index']);
+        Route::post('/create',[NotificationController::class, 'store']);
+        Route::get('/show/{id}',[NotificationController::class, 'show']);
+        Route::get('/delete/{id}',[NotificationController::class,'destroy']);
     });
 });
 //VehicLe Resoucrce Routes

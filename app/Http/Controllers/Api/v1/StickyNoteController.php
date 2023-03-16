@@ -78,10 +78,10 @@ class StickyNoteController extends Controller
     public function show($id)
     {
         //
-       
+        
         try {
             
-            $data = Sticky::with('user')->findorFail($id)->get()->toArray();
+            $data = Sticky::where('id',$id)->with('user')->get()->toArray();
             
             if($data){
                 return $this->success($data,'Sticky Detail',200);
