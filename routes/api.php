@@ -2,15 +2,15 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\v1\DashboardController;
-use App\Http\Controllers\Api\v1\AuthController;
-use App\Http\Controllers\Api\v1\ContainerController;
-use App\Http\Controllers\Api\v1\VehicleController;
-use App\Http\Controllers\Api\v1\CustomerApiController;
-use App\Http\Controllers\Api\v1\RateController;
-use App\Http\Controllers\api\v1\InvoiceController;
-use App\Http\Controllers\api\v1\StickyNoteController;
-use App\Http\Controllers\api\v1\NotificationController;
+use App\Http\Controllers\Api\V1\DashboardController;
+use App\Http\Controllers\Api\V1\AuthController;
+use App\Http\Controllers\Api\V1\ContainerController;
+use App\Http\Controllers\Api\V1\VehicleController;
+use App\Http\Controllers\Api\V1\CustomerApiController;
+use App\Http\Controllers\Api\V1\RateController;
+use App\Http\Controllers\Api\V1\InvoiceController;
+use App\Http\Controllers\Api\V1\StickyNoteController;
+use App\Http\Controllers\Api\V1\NotificationController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -89,9 +89,7 @@ Route::prefix('/auth')->middleware(['auth:sanctum'])->group(function () {
         Route::get('/delete/{id}', [InvoiceController::class,'destroy']);
         Route::post('/create', [InvoiceController::class,'store']);
     });
-    Route::prefix('/dashboard')->group(function(){
-        Route::get('/view',[DashboardController::class, 'index']);
-    });
+    
     /**
      * Sticky Notes routes
      * 
