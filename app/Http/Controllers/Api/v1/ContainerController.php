@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Shipment;
 use Illuminate\Http\Request;
 use App\Models\Loading_Image;
-use Illuminate\Support\Facades\Validator;
+use Validator;
 use App\Traits\ApiResponser;
 use Illuminate\Support\Facades\Storage;
 class ContainerController extends Controller

@@ -9,7 +9,7 @@ use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use App\Traits\ApiResponser;
 
-use Illuminate\Support\Facades\Validator;
+use Validator;
 
 
 class CustomerApiController extends Controller

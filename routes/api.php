@@ -30,7 +30,7 @@ Route::prefix('/auth')->middleware(['auth:sanctum'])->group(function () {
 
     //dashboard 
     Route::prefix('/dashboard')->group(function () {
-        Route::get('/list', [App\Http\Controllers\Api\V1\DashboardController::class, 'dashboard'])->name('dashboard.list');
+        Route::get('/list', [App\Http\Controllers\Api\V1\DashboardController::class, 'dashboard']);
     });
 
     // Rate shipment and towing 

@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Invoice;
 use App\Traits\ApiResponser;
 use DB;
-use Illuminate\Support\Facades\validator;
+use Validator;
+
 class InvoiceController extends Controller
 {
     use ApiResponser;

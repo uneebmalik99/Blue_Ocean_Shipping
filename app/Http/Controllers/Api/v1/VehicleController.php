@@ -16,7 +16,7 @@ use App\Models\AuctionImage;
 use Illuminate\Support\Facades\Storage;
 use Spatie\Permission\Traits\HasRoles;
 use Directory;
-use Illuminate\Support\Facades\Validator;
+use Validator;
 
 class VehicleController extends Controller
 {

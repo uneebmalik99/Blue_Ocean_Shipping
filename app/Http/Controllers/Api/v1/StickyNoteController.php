@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Traits\ApiResponser;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Sticky;
-use Illuminate\Support\Facades\Validator;
+use Validator;
 
 class StickyNoteController extends Controller
 {

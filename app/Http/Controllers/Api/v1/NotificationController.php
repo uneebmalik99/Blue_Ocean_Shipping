@@ -6,7 +6,7 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Notification;
-use Illuminate\Support\Facades\Validator;
+use Validator;
 use Illuminate\Support\Facades\Auth;
 use App\Traits\ApiResponser;
 
