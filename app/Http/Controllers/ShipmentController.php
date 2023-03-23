@@ -959,14 +959,15 @@ class ShipmentController extends Controller
             if ($state != null) {
                 if (Auth::user()->hasRole('Customer')) {
                     $user_vehicles_ids = Vehicle::where('customer_name', auth()->user()->id)->pluck('shipment_id');
-                    $data = Shipment::with('vehicle.user', 'customer.billings', 'customer.shippers')->whereIn('id', $user_vehicles_ids)->orwhere('customer_email', auth()->user()->email)->orwhere('loading_state', $state)->get();
+                    $data = Shipment::with('vehicle.user', 'customer.billings', 'customer.shippers')->where('customer_email', auth()->user()->email)->where('loading_state', $state)->get();
                 } else {
                     $data = Shipment::with('vehicle.user', 'customer.billings', 'customer.shippers')->where('loading_state', $state)->get();
                 }
             } else {
                 if (Auth::user()->hasRole('Customer')) {
                     $user_vehicles_ids = Vehicle::where('customer_name', auth()->user()->id)->pluck('shipment_id');
-                    $data = Shipment::with('vehicle.user', 'customer.billings')->whereIn('id', $user_vehicles_ids)->orwhere('customer_email', auth()->user()->email)->get();
+                    // $data = Shipment::with('vehicle.user', 'customer.billings')->whereIn('id', $user_vehicles_ids)->orwhere('customer_email', auth()->user()->email)->get();
+                    $data = Shipment::with('vehicle.user', 'customer.billings')->where('customer_email', auth()->user()->email)->get();
                     // dd($data);
                 } else {
                     $data = Shipment::with('vehicle.user', 'customer.billings')->get();

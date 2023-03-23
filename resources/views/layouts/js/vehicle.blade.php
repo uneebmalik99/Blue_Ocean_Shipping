@@ -587,7 +587,9 @@
     // });
 
     function addtoShipment(id) {
-        $.ajax({
+        const isChecked = $("#" + id).is(":checked");
+        if(isChecked){
+            $.ajax({
             method: 'POST',
             url: '{{ route('vehicle.add_to_cart') }}',
             data: {
@@ -608,6 +610,32 @@
                 // $('#model').html(data);
             }
         });
+        }
+        else{
+            $.ajax({
+            method: 'POST',
+            url: '{{ route('vehicle.delete_from_cart') }}',
+            data: {
+                'vehicle_id': id,
+            },
+            success: function(data) {
+                // alert(data);
+                console.log(data);
+                iziToast.success({
+                    title: 'Success',
+                    message: data,
+                    timeout: 1500,
+                    position: 'topCenter',
+                    zindex: '9999999999999',
+                });
+                setTimeout(function() {
+                    window.location.reload(true);
+                }, 2000);
+                // $('#model').html(data);
+            }
+        });
+        }
+        
     }
 
 

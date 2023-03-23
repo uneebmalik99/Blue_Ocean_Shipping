@@ -43,13 +43,12 @@ class DashboardController extends Controller
     // Notification function fetch all Notification from database and show on navbar in all pages
     public function Notification()
     {
-        if(Auth::user()->hasRole("Super Admin")){
-        $data['notification'] = Notification::with('user')->paginate($this->perpage);
-        // $data['location'] = Location::all()->toArray();
-        // $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
-        
-        }
-        else{
+        if (Auth::user()->hasRole("Super Admin")) {
+            $data['notification'] = Notification::with('user')->paginate($this->perpage);
+            // $data['location'] = Location::all()->toArray();
+            // $data['location'] = LoadingCountry::select('state')->where('status', '1')->groupBy('state')->get()->toArray();
+
+        } else {
             $data['notification'] = Notification::with('user')->where('user_id', Auth::user()->id)->paginate($this->perpage);
         }
         $data['location'] = Warehouse::where('status', '1')->get()->toArray();
@@ -207,12 +206,12 @@ class DashboardController extends Controller
             $data['Dispatched'] = Vehicle::where('status', 2)->count();
             $data['onHand'] = Vehicle::where('status', 3)->count();
             $data['no_titles'] = Vehicle::where(function ($type) {
-                    $type->where('title_type', '!=', 'EXPORTABLE');
-                })->where(function ($status) {
-                    $status->where('status', 1)
-                        ->orwhere('status', 2)
-                        ->orwhere('status', 3);
-                })
+                $type->where('title_type', '!=', 'EXPORTABLE');
+            })->where(function ($status) {
+                $status->where('status', 1)
+                    ->orwhere('status', 2)
+                    ->orwhere('status', 3);
+            })
                 ->get()->count();
             $all_vehicles = Vehicle::all();
             // $allVehicles_value = Vehicle::get()->sum('value');
@@ -443,11 +442,13 @@ class DashboardController extends Controller
             if ($state != null) {
                 if (Auth::user()->hasRole('Customer')) {
                     $user_vehicles_ids = Vehicle::where('customer_name', auth()->user()->id)->pluck('id');
-                    $data = Shipment::with('vehicle.user', 'customer.billings', 'customer.shippers')
-                        ->where(function ($status) use ($user_vehicles_ids) {
-                            $status->wherein('id', $user_vehicles_ids)
-                                ->orwhere('customer_email', auth()->user()->email);
-                        })->where('loading_state', $state)->get();
+                    // $data = Shipment::with('vehicle.user', 'customer.billings', 'customer.shippers')
+                    //     ->where(function ($status) use ($user_vehicles_ids) {
+                    //         $status->wherein('id', $user_vehicles_ids)
+                    //             ->orwhere('customer_email', auth()->user()->email);
+                    //     })->where('loading_state', $state)->get();
+                    $data = Shipment::with('vehicle.user', 'customer.billings', 'customer.shippers')->where('customer_email', auth()->user()->email)->where('loading_state', $state)->get();
+
                     // ->whereIn('id', $user_vehicles_ids)->where('customer_email', auth()->user()->email)->orwhere('loading_state', $state)->toSql();
                     dd($state);
                 } else {
@@ -457,7 +458,8 @@ class DashboardController extends Controller
                 if (Auth::user()->hasRole('Customer')) {
                     $user_vehicles_ids = Vehicle::where('customer_name', auth()->user()->id)->pluck('shipment_id');
                     // dd($user_vehicles_ids);
-                    $data = Shipment::with('vehicle.user', 'customer.billings')->whereIn('id', $user_vehicles_ids)->orwhere('customer_email', auth()->user()->email)->get();
+                    // $data = Shipment::with('vehicle.user', 'customer.billings')->whereIn('id', $user_vehicles_ids)->orwhere('customer_email', auth()->user()->email)->get();
+                    $data = Shipment::with('vehicle.user', 'customer.billings')->where('customer_email', auth()->user()->email)->get();
                     // dd($data);
                 } else {
                     $data = Shipment::with('vehicle.user', 'customer.billings')->get();

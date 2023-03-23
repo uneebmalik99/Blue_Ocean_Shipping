@@ -95,6 +95,11 @@ Route::prefix('/admin')->middleware(['auth','login.status','revalidatehistory'])
 
 
     Route::post('/vehicle/addToCart',       [VehicleController::class, 'AddToCart'])->name('vehicle.add_to_cart');
+
+
+    Route::post('/vehicle/deletefromcart',       [VehicleController::class, 'deletefromcart'])->name('vehicle.delete_from_cart');
+
+
     Route::post('/vehicle/vincheck',[VehicleController::class,'vincheck'])->name('vehicle.vincheck');
 
     Route::get('/vehicle/changeState/{state?}',       [VehicleController::class, 'changeState'])->name('vehicle.changeState');
