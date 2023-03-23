@@ -266,4 +266,13 @@ class VehicleController extends Controller
 
 
     }
+
+    public function delete($id = null)
+    {
+        $Vehicle = Vehicle::find($id);
+        $del = $Vehicle->delete();
+        if($del){
+            return $this->success("vehicle Delete Successfully", 200);
+        }
+    }
 }
