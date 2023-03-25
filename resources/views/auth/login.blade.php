@@ -261,11 +261,14 @@
         inset 0 -3em 3em rgba(0,0,0,0.1),
               0 0  0 2px rgb(255,255,255),
               0.3em 0.3em 1em rgba(0,0,0,0.3); ">
-                <div class="mx-auto">
-                    <button type="button" class="ml-2 col-6 btn active" onclick="login_tract(this.id)"
-                        id="login">LOGIN</button>
-                    <button type="button" class="col-5 btn" onclick="login_tract(this.id)" id="track">TRACK
-                        VIN</button>
+               <div>
+                    
+                    <button type="button" class=" col-6 btn active" onclick="login_tract(this.id)" id="login" style="
+                        border-radius:  10px 0px 0px 0px;
+                    ">LOGIN</button><button type="button" class=" col-6 btn " onclick="login_tract(this.id)" id="track" style="
+                        border-radius:  0px 10px 0px 0px;
+                    ">TRACK VIN</button>
+                    
                 </div>
                 <div id="login_page">
                     <form method="POST" action="{{ route('login') }}">
