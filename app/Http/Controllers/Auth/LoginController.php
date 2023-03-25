@@ -81,4 +81,17 @@ class LoginController extends Controller
         session(['lock-expires-at' => now()->addMinutes($request->user()->getLockoutTime())]);
         return redirect('/admin/dashboard');
     }
+
+
+    function login_trackVin(Request $req){
+        $id = $req->id;
+        if($id == 'track'){
+            $view = view('layouts.login_track.track_form')->render(); 
+        }
+        else{
+            $view = view('layouts.login_track.login_form')->render(); 
+        }
+        return $view;
+
+    }
 }

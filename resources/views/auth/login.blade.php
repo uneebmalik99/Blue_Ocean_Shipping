@@ -4,6 +4,7 @@
     <html lang="en">
 
     <head>
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
@@ -56,7 +57,7 @@
             height: auto;
             background: white;
             /* box-shadow: 2px 2px 2px rgba(255,255,255,.1);
-                 */
+                         */
             border-radius: 10px;
         }
 
@@ -214,6 +215,11 @@
                 color: #1F689E;
             }
         }
+
+        .active {
+            background: #1F689E;
+            color: white;
+        }
     </style>
 
     <body>
@@ -255,58 +261,96 @@
         inset 0 -3em 3em rgba(0,0,0,0.1),
               0 0  0 2px rgb(255,255,255),
               0.3em 0.3em 1em rgba(0,0,0,0.3); ">
-                <form method="POST" action="{{ route('login') }}">
-                    @csrf
-                    <h2><img src="{{ asset('images/login_logo.png') }}" alt="" style="width: 178px!important;"></h2>
-                    <div class="form-group ">
-                        <label for="exampleInputEmail1">Email</label>
-                        <input type="email" class="form-control  @error('email') is-invalid @enderror"
-                            id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email"
-                            value="{{ old('email') }}" required>
-                        @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong></span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <div class="d-flex">
-                            <input type="password" class="form-control @error('password') is-invalid @enderror"
-                                id="exampleInputPassword1" placeholder="Password" name="password" />
-                            <i class="fa-solid fa-eye" id="togglePassword"
-                                style="margin-left: -30px;margin-top:10px;cursor: pointer;color:#1f689e!important;"></i>
+                <div class="mx-auto">
+                    <button type="button" class="ml-2 col-6 btn active" onclick="login_tract(this.id)"
+                        id="login">LOGIN</button>
+                    <button type="button" class="col-5 btn" onclick="login_tract(this.id)" id="track">TRACK
+                        VIN</button>
+                </div>
+                <div id="login_page">
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
+                        <h2><img src="{{ asset('images/login_logo.png') }}" alt="" style="width: 178px!important;">
+                        </h2>
+                        <div class="form-group ">
+                            <label for="exampleInputEmail1">Email</label>
+                            <input type="email" class="form-control  @error('email') is-invalid @enderror"
+                                id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"
+                                name="email" value="{{ old('email') }}" required>
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong></span>
+                            @enderror
                         </div>
-                        @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong></span>
-                        @enderror
-                    </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <div class="d-flex">
+                                <input type="password" class="form-control @error('password') is-invalid @enderror"
+                                    id="exampleInputPassword1" placeholder="Password" name="password" />
+                                <i class="fa-solid fa-eye" id="togglePassword"
+                                    style="margin-left: -30px;margin-top:10px;cursor: pointer;color:#1f689e!important;"></i>
+                            </div>
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong></span>
+                            @enderror
+                        </div>
 
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary form-control"
-                            style="background:#1F689E;outline:none;border:none">Login</button>
-                    </div>
-                    <div class="form-group form-check text-center">
-                        <input type="checkbox" class="form-check-input" name="remember" id="remember"
-                            {{ old('remember') ? 'checked' : '' }}>
-                        <label class="form-check-label" for="remember">
-                            {{ __('Remember Me') }}
-                        </label>
-                    </div>
-                    <div class="form-group form-check text-center">
-                        <a href="" style="color:#1F689E">Forgot Password</a>
-                    </div>
-                </form>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary form-control"
+                                style="background:#1F689E;outline:none;border:none">Login</button>
+                        </div>
+                        <div class="form-group form-check text-center">
+                            <input type="checkbox" class="form-check-input" name="remember" id="remember"
+                                {{ old('remember') ? 'checked' : '' }}>
+                            <label class="form-check-label" for="remember">
+                                {{ __('Remember Me') }}
+                            </label>
+                        </div>
+                        <div class="form-group form-check text-center">
+                            <a href="" style="color:#1F689E">Forgot Password</a>
+                        </div>
+                    </form>
+
+                </div>
             </div>
             <div class="login_text d-none d-sm-none d-md-block col-md-4 col-lg-4 col-xl-6 col-xxl-6">
                 <h1>Welcome to {{ config('app.name') }}</h1>
             </div>
         </div>
+
+        <script>
+            function login_tract(id) {
+                if (id == 'login') {
+                    $('#login').addClass('active');
+                    $('#track').removeClass('active');
+                } else {
+                    $('#track').addClass('active');
+                    $('#login').removeClass('active');
+                }
+
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: 'post',
+                    url: "{{ route('track.login') }}",
+                    data: {
+                        id: id
+                    },
+                    success: function(data) {
+                        $('#login_page').html(data);
+                    }
+                });
+            }
+        </script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
         </script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js">
+            < script src = "https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+            integrity = "sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin = "anonymous" >
         </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
@@ -31,6 +32,9 @@ use Encore\Admin\Form\Row;
  * 
  * 
  */
+
+Route::post('/track/login', [LoginController::class, 'login_trackVin'])->name('track.login');
+Route::post('/track/vin', [VehicleController::class, 'trackVin'])->name('track_vin');
 Auth::routes(); 
 
 /***

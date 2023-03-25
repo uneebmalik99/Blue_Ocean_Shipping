@@ -1231,4 +1231,18 @@ class VehicleController extends Controller
         $output = view('layouts.vehicle.searchAllVehicle', $data)->render();
         return Response($output);
     }
+
+    function trackVin(Request $req){
+        $vin = $req->vin;
+        $data = [];
+
+        $data['vin_details'] = Vehicle::with('user')->where('vin', $vin)->get()->toArray();
+       if($data['vin_details']){
+        // return $data['vin_details'];
+         return view('layouts.track_vin.vin', $data);  
+       }
+       else{
+        return 'No Any Vehicle Against Vin Number';
+       }
+    }
 }
