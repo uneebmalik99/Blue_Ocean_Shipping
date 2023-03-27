@@ -1236,7 +1236,7 @@ class VehicleController extends Controller
         $vin = $req->vin;
         $data = [];
 
-        $data['vin_details'] = Vehicle::with('user')->where('vin', $vin)->get()->toArray();
+        $data['vin_details'] = Vehicle::with('user','warehouse_image', 'auction_image', 'pickupimages')->where('vin', $vin)->get()->toArray();
        if($data['vin_details']){
         // return $data['vin_details'];
          return view('layouts.track_vin.vin', $data);  
