@@ -35,6 +35,7 @@ use Encore\Admin\Form\Row;
 
 Route::post('/track/login', [LoginController::class, 'login_trackVin'])->name('track.login');
 Route::post('/track/vin', [VehicleController::class, 'trackVin'])->name('track_vin');
+Route::post('/track/vin/images', [VehicleController::class, 'tabImages'])->name('vehicle.tabImages');
 Auth::routes(); 
 
 /***

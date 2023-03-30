@@ -1245,4 +1245,34 @@ class VehicleController extends Controller
         return 'No Any Vehicle Against Vin Number';
        }
     }
+
+    function tabImages(Request $req){
+        $tab = $req->tab;
+        $vin = $req->vin;
+        $data = [];
+        $output = [];
+        // return $tab;
+        $data['vin_details'] = Vehicle::with('user','warehouse_image', 'auction_image', 'pickupimages')->where('vin', $vin)->get()->toArray();
+        // return $data['vin_details'];
+       if($data['vin_details']){
+            if($tab == 'Auction Images'){
+
+                $output = view('layouts.track_vin.auction', $data)->render();
+            }
+            else if($tab == 'Warehouse Images'){
+
+                $output = view('layouts.track_vin.warehouse', $data)->render();
+            }
+            else if($tab == 'Pickup Images'){
+                $output = view('layouts.track_vin.pickup', $data)->render();
+
+            }
+            else{
+
+            }
+
+            return Response($output);
+
+       }
+    }
 }
