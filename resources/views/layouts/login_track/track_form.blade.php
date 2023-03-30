@@ -1,5 +1,5 @@
-<form method="POST" action="{{ route('track_vin') }}">
-    @csrf
+<form method="GET" action="{{ route('track_vin') }}">
+    {{-- @csrf --}}
     <h2><img src="{{ asset('images/login_logo.png') }}" alt="" style="width: 178px!important;"></h2>
     <div class="form-group ">
         <label for="vin" class="" style="font-size:12px;">PROVIDE VIN NUMBER</label>

@@ -2,51 +2,55 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
+    .imgmodal {
+        z-index: 1;
+        display: none;
+        padding-top: 10px;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.8)
+    }
 
-.imgmodal {
-z-index:1;
-display:none;
-padding-top:10px;
-position:fixed;
-left:0;
-top:0;
-width:100%;
-height:100%;
-overflow:auto;
-background-color:rgb(0,0,0);
-background-color:rgba(0,0,0,0.8)
-}
-
-.imgmodal-content{
-margin: auto;
-display: block;
-    position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-
-.imgmodal-hover-opacity {
-opacity:1;
-filter:alpha(opacity=100);
--webkit-backface-visibility:hidden
-}
-
-.imgmodal-hover-opacity:hover {
-opacity:0.60;
-filter:alpha(opacity=60);
--webkit-backface-visibility:hidden
-}
+    .imgmodal-content {
+        margin: auto;
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 
 
-.close {
-text-decoration:none;float:right;font-size:24px;font-weight:bold;color:white
-}
-.container1 {
-width:200px;
-display:inline-block;
-}
+    .imgmodal-hover-opacity {
+        opacity: 1;
+        filter: alpha(opacity=100);
+        -webkit-backface-visibility: hidden
+    }
+
+    .imgmodal-hover-opacity:hover {
+        opacity: 0.60;
+        filter: alpha(opacity=60);
+        -webkit-backface-visibility: hidden
+    }
+
+
+    .close {
+        text-decoration: none;
+        float: right;
+        font-size: 24px;
+        font-weight: bold;
+        color: white
+    }
+
+    .container1 {
+        width: 200px;
+        display: inline-block;
+    }
 
 
     .item_1 {
@@ -459,16 +463,18 @@ background-color: #e93f7800!important;
         text-align: center;
         text-decoration: none !important;
     }
+
     @media only screen and (min-width: 1920px) {
- .changeImage {
-    height:90px!important;
-  }
-}
-@media only screen and (min-width:2160px) {
- .changeImage {
-    height:100px!important;
-  }
-}
+        .changeImage {
+            height: 90px !important;
+        }
+    }
+
+    @media only screen and (min-width:2160px) {
+        .changeImage {
+            height: 100px !important;
+        }
+    }
 </style>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
@@ -679,7 +685,7 @@ background-color: #e93f7800!important;
                                 </div>
                             </button>
                         </a>
-                      
+
                     </div>
                 </div>
 
@@ -855,13 +861,13 @@ background-color: #e93f7800!important;
                                     style=" margin-top:1px; ">
                                     @if (@$vehicle['warehouse_image'])
                                         @foreach (@$vehicle['warehouse_image'] as $img)
-                                        {{-- <div style="width: 24%!important;height:100%!important;"> --}}
+                                            {{-- <div style="width: 24%!important;height:100%!important;"> --}}
                                             <img src="{{ asset($img['name']) }}" alt=""
-                                                    class="showMainImage changeImage"
-                                                    style="width:24%;height:66px;margin-top:4px;object-fit:fill;"
-                                                    onclick="onClick(this)" class="modal-hover-opacity"
-                                                    class="hover-shadow cursor">
-                                        {{-- </div> --}}
+                                                class="showMainImage changeImage"
+                                                style="width:24%;height:66px;margin-top:4px;object-fit:fill;"
+                                                onclick="onClick(this)" class="modal-hover-opacity"
+                                                class="hover-shadow cursor">
+                                            {{-- </div> --}}
                                         @endforeach
                                     @else
                                         <h6 class="text-center mt-5 w-100" style="color:gray">No Image Found</h6>
@@ -874,7 +880,7 @@ background-color: #e93f7800!important;
                         <div class="row mt-4 showhide">
                             <div class="col-12 d-flex justify-content-center ">
                                 <a id="warehouse_images" class="downloadVehicles_zip"
-                                onclick="download_all(this.id)">
+                                    onclick="download_all(this.id)">
                                     <button
                                         style="background: #3e5871;cursor:pointer; border-radius: 6px;border:none;color:white;transform: skew(-30deg);">
                                         <div style="transform: skew(30deg);padding:1px 10px;font-size: 13px;">
@@ -905,7 +911,7 @@ background-color: #e93f7800!important;
 
 <div id="myModal" class="my_modal col-lg-12 col-md-12 col-xl-12 order-sm-12 col-12"
     style="color:red;z-index:999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;background-color:#000000db">
-    
+
     <div class="modal-content vehicle_modal_content">
         <div class="row">
 
