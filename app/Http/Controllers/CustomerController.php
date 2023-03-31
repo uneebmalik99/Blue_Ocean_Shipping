@@ -763,7 +763,9 @@ class CustomerController extends Controller
 
             // $data = [];
             $data = $request->all();
-            // dd($data);
+
+            // dd($request->all());
+
             $tab = $request->tab;
             $image = $request->file('customer_image');
             $file = $request->file('user_file');
@@ -956,7 +958,40 @@ class CustomerController extends Controller
                         'view' => $view,
                     ];
             } elseif ($tab == "shipper_customer") {
-                $Obj = Shipper::updateOrCreate(['id' => $request->id], $data);
+                // dd($data);
+                for($i=0; $i<count($data['shipper_name']); $i++){
+                    // $Obj = Shipper::updateOrCreate(['id' => $request->id], [
+                    //     'shipper_name' => $data['shipper_name'][$i],
+                    //     'contact_person_name' => $data['contact_person_name'][$i],
+                    //     'phone' => $data['phone'][$i],
+                    //     'company_email' => $data['company_email'][$i],
+                    //     'country' => $data['country'][$i],
+                    //     'city' => $data['city'][$i],
+                    //     'zip_code' => $data['zip_code'][$i],
+                    //     'address' => $data['address'][$i],
+                    //     'consignee' => $data['consignee'],
+                    //     'consolidate' => $data['consolidate'],
+                    //     'original_shipping_documents' => $data['original_shipping_documents'],
+                    //     'insurance' => $data['insurance'],
+                    //     'destination_port' => $data['destination_port']
+                    // ]);
+                    $Obj = Shipper::create([
+                        'shipper_name' => $data['shipper_name'][$i],
+                        'contact_person_name' => $data['contact_person_name'][$i],
+                        'phone' => $data['phone'][$i],
+                        'company_email' => $data['company_email'][$i],
+                        'country' => $data['country'][$i],
+                        'city' => $data['city'][$i],
+                        'zip_code' => $data['zip_code'][$i],
+                        'address' => $data['address'][$i],
+                        'consignee' => $data['consignee'],
+                        'consolidate' => $data['consolidate'],
+                        'original_shipping_documents' => $data['original_shipping_documents'],
+                        'insurance' => $data['insurance'],
+                        'destination_port' => $data['destination_port'],
+                        'customer_id' => $data['customer_id']
+                    ]);
+                }
                 $output =
                     [
                         'result' => 'success',
@@ -1125,4 +1160,14 @@ class CustomerController extends Controller
             return false;
         }
     }
+
+
+    public function addShipper(){
+        $output = [];
+        $output = view('layouts.customer_create.add_shipper')->render();
+
+        return Response($output);
+
+        
+    } 
 }

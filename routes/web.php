@@ -285,6 +285,11 @@ Route::prefix('/admin')->middleware(['auth','login.status','revalidatehistory'])
 
 
     // Customer Routes
+
+    Route::get('/Customer/AddShipper', [CustomerController::class, 'addShipper'])->name('customers.addShipper');
+
+
+
     Route::get('/customers', [CustomerController::class, 'index'])->name('customer.list');
     Route::get('/customers/create', [CustomerController::class, 'create'])->name('customer.create');
     Route::post('/customers/create', [CustomerController::class, 'create'])->name('customer.create');

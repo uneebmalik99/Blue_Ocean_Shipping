@@ -541,8 +541,8 @@
                                                             <option selected disabled>Select Shipper</option>
                                                         @endif
                                                         @foreach ($shippers as $shipper)
-                                                            <option value="{{ @$shipper['name'] }}">
-                                                                {{ @$shipper['name'] }}</option>
+                                                            <option value="{{ @$shipper['shipper_name'] }}">
+                                                                {{ @$shipper['shipper_name'] }}</option>
                                                         @endforeach
 
                                                     </select>

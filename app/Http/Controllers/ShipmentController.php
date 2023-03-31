@@ -261,7 +261,8 @@ class ShipmentController extends Controller
         $data['shipment_types'] = ShipmentType::where('status', '1')->get();
         $data['companies'] = User::role('Customer')->get();
         $data['destination_country'] = DCountry::select('country')->where('status', '1')->groupBy('country')->get()->toArray();
-        $data['shippers'] = ShipperName::where('status', '1')->get();
+        // $data['shippers'] = ShipperName::where('status', '1')->get();
+        $data['shippers'] = Shipper::all();
         if ($request->ajax()) {
             $tab = $request->tab;
             // return $tab;
