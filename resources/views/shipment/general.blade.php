@@ -535,15 +535,20 @@
                                                         class="form-control-sm border border-0 rounded-pill bg col-6"
                                                         name="shipper" id="shipper">
                                                         @if (@$shipment[0]['shipper'])
-                                                            <option value="{{ @$shipment[0]['shipper'] }}">
+                                                            <option value="{{ @$shipment[0]['shipper_id'] }}">
                                                                 {{ @$shipment[0]['shipper'] }}</option>
                                                         @else
                                                             <option selected disabled>Select Shipper</option>
                                                         @endif
+
+                                                        @if(@$shippers)
                                                         @foreach ($shippers as $shipper)
-                                                            <option value="{{ @$shipper['shipper_name'] }}">
+                                                         @if(@$shipment[0]['shipper'] != @$shipper['shipper_name'])
+                                                            <option value="{{ @$shipper['id'] }}">
                                                                 {{ @$shipper['shipper_name'] }}</option>
+                                                        @endif
                                                         @endforeach
+                                                        @endif
 
                                                     </select>
 

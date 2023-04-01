@@ -131,14 +131,14 @@
             <div class="text-muted d-flex align-items-center col-3">
                 <input class="text-muted d-flex px-2 consignee" type="radio" name="consignee"
                     value="same as billing party" id="billing_party"
-                    {{ @$shipper[0]['consignee'] == 'same as billing party' ? 'checked' : '' }}>
+                    {{ @$shipper['consignee'] == 'same as billing party' ? 'checked' : '' }}>
                 <label class="px-2 m-0" for="billing_party" style="font-size:13px!important;">Same as Billing
                     Party</label>
             </div>
 
             <div class="text-muted d-flex align-items-center col-3">
                 <input class="text-muted d-flex px-2 consignee" type="radio" name="consignee" value="new consignee"
-                    id="new_consignee" {{ @$shipper[0]['consignee'] == 'new consignee' ? 'checked' : '' }}>
+                    id="new_consignee" {{ @$shipper['consignee'] == 'new consignee' ? 'checked' : '' }}>
                 <label class="px-2 m-0" for="new_consignee" style="font-size:13px!important;">Add New
                     Consignee</label>
             </div>
@@ -157,13 +157,13 @@
         <div class="d-flex justify-content-start p-2">
             <div class="text-muted d-flex  align-items-center col-3">
                 <input class="text-muted d-flex px-2 consolidate" type="radio" name="consolidate" value="yes"
-                    id="consolidate_yes" {{ @$shipper[0]['consolidate'] == 'yes' ? 'checked' : '' }}>
+                    id="consolidate_yes" {{ @$shipper['consolidate'] == 'yes' ? 'checked' : '' }}>
                 <label class="px-2 m-0" for="consolidate_yes" style="font-size:13px!important;">Yes</label>
             </div>
 
             <div class="text-muted d-flex  align-items-center col-3">
                 <input class="text-muted d-flex px-2 consolidate" type="radio" name="consolidate" value="no"
-                    id="consolidate_no" {{ @$shipper[0]['consolidate'] == 'no' ? 'checked' : '' }}>
+                    id="consolidate_no" {{ @$shipper['consolidate'] == 'no' ? 'checked' : '' }}>
                 <label class="px-2 m-0" for="consolidate_no" style="font-size:13px!important;">No</label>
             </div>
         </div>
@@ -183,14 +183,14 @@
             <div class="text-muted d-flex align-items-center col-3">
                 <input class="text-muted d-flex px-2 original_shipping_documents" type="radio"
                     name="original_shipping_documents" value="send back" id="send_back"
-                    {{ @$shipper[0]['original_shipping_documents'] == 'send back' ? 'checked' : '' }}>
+                    {{ @$shipper['original_shipping_documents'] == 'send back' ? 'checked' : '' }}>
                 <label class="px-2 m-0" for="send_back" style="font-size:13px!important;">Send back</label>
             </div>
 
             <div class="text-muted d-flex align-items-center col-3">
                 <input class="text-muted d-flex px-2 original_shipping_documents" type="radio"
                     name="original_shipping_documents" value="pick up from office" id="pick_up"
-                    {{ @$shipper[0]['original_shipping_documents'] == 'pick up from office' ? 'checked' : '' }}>
+                    {{ @$shipper['original_shipping_documents'] == 'pick up from office' ? 'checked' : '' }}>
                 <label class="px-2 m-0" for="pick_up" style="font-size:13px!important;">Pick up from office</label>
             </div>
         </div>
@@ -208,13 +208,13 @@
         <div class="d-flex justify-content-start p-2">
             <div class="text-muted d-flex align-items-center col-3">
                 <input class="text-muted d-flex px-2 insurance" type="radio" name="insurance" value="yes"
-                    id="insurance_yes" {{ @$shipper[0]['insurance'] == 'yes' ? 'checked' : '' }}>
+                    id="insurance_yes" {{ @$shipper['insurance'] == 'yes' ? 'checked' : '' }}>
                 <label for="insurance_yes" class="px-2 m-0" style="font-size:13px!important;">Yes</label>
             </div>
 
             <div class="text-muted d-flex align-items-center col-3">
                 <input class="text-muted d-flex px-2 insurance" type="radio" name="insurance" value="no"
-                    id="insurance_no" {{ @$shipper[0]['insurance'] == 'no' ? 'checked' : '' }}>
+                    id="insurance_no" {{ @$shipper['insurance'] == 'no' ? 'checked' : '' }}>
                 <label for="insurance_no" class="px-2 m-0" style="font-size:13px!important;">No</label>
             </div>
         </div>
@@ -233,14 +233,14 @@
             <div class="text-muted d-flex col-3">
                 <input class="text-muted d-flex px-2 destination_port" type="radio" name="destination_port"
                     value="single" id="single"
-                    {{ @$shipper[0]['destination_port'] == 'single' ? 'checked' : '' }}>
+                    {{ @$shipper['destination_port'] == 'single' ? 'checked' : '' }}>
                 <label class="px-2 m-0" for="single" style="font-size:13px!important;">Single</label>
             </div>
 
             <div class="text-muted d-flex col-3">
                 <input class="text-muted d-flex px-2 destination_port" type="radio" name="destination_port"
                     value="multiple" id="multiple"
-                    {{ @$shipper[0]['destination_port'] == 'multiple' ? 'checked' : '' }}>
+                    {{ @$shipper['destination_port'] == 'multiple' ? 'checked' : '' }}>
                 <label class="px-2 m-0" for="multiple" style="font-size:13px!important;">Multiple</label>
             </div>
         </div>

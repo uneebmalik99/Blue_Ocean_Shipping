@@ -335,8 +335,10 @@
                 'company_name': company_name,
             },
             success: function(data) {
-                console.log(data[0]['billings'][0]['company_name'])
+                console.log(data['shipper'])
+
                 // alert(data[0]['shipper']['id']);
+                $('#shipper').append(data['shipper']);
                 $('#customer_email').val(data[0]['email']);
                 $('#customer_phone').val(data[0]['phone']);
                 $('#select_consignee').html('<option selected>Select Consignee</option><option value="' +

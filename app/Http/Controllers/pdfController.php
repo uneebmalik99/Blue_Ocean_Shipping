@@ -7,9 +7,11 @@ use App\Models\Invoice;
 use App\Models\Location;
 use App\Models\Vehicle;
 use App\Models\Notification;
+use App\Models\Shipper;
 use App\Models\Shipment;
 use Carbon\Carbon;
 use PDF;
+
 use App\Jobs\SendPdfJob;
 use Illuminate\Support\Facades\Mail;
 
@@ -167,7 +169,12 @@ class pdfController extends Controller
         }
         else if($request->tab == 'bol'){
             $data['total_weight'] = 0;
-            $data['shipment']=Shipment::with('vehicle.user', 'customer.billings', 'customer.shippers')->whereid($request->id)->get()->toArray();
+            $data['shipment']=Shipment::with('customer', 'vehicle.user', 'customer.billings')->whereid($request->id)->get()->toArray();
+            $selectedShipper = Shipper::where('id', $data['shipment'][0]['shipper'])->get()->toArray();
+            $data['shipment'][0]['customer']['shippers'] = $selectedShipper;
+            
+            // dd($data['shipment']);
+
             $data['button_hide'] = 'show';
             foreach ($data['shipment'][0]['vehicle'] as $weight) {
                 if($weight['weight'] != null){

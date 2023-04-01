@@ -262,7 +262,7 @@ class ShipmentController extends Controller
         $data['companies'] = User::role('Customer')->get();
         $data['destination_country'] = DCountry::select('country')->where('status', '1')->groupBy('country')->get()->toArray();
         // $data['shippers'] = ShipperName::where('status', '1')->get();
-        $data['shippers'] = Shipper::all();
+        // $data['shippers'] = Shipper::all();
         if ($request->ajax()) {
             $tab = $request->tab;
             // return $tab;
@@ -356,8 +356,18 @@ class ShipmentController extends Controller
         }
 
         $data['buyer_ids'] = User::with('billings')->get()->toArray();
-        $data['shipment'] = Shipment::with('vehicle.user', 'customer.billings')->where('id', $req->id)->get()->toArray();
-        $data['shippers'] = ShipperName::where('status', '1')->get();
+        $data['shipment'] = Shipment::with('customer', 'vehicle.user', 'customer.billings')->where('id', $req->id)->get()->toArray();
+        if(is_numeric($data['shipment'][0]['shipper'])){
+            $selectedShipper = Shipper::where('id', $data['shipment'][0]['shipper'])->get()->toArray();
+            $data['shipment'][0]['shipper'] = $selectedShipper[0]['shipper_name'];
+            $data['shipment'][0]['shipper_id'] = $selectedShipper[0]['id'];
+        }
+        else{
+            $data['shipment'][0]['shipper_id'] = $data['shipment'][0]['shipper'];
+        }
+        // dd($data['shipment']);
+        // $data['shippers'] = ShipperName::where('status', '1')->get();
+        $data['shippers'] = Shipper::where('customer_id', $data['shipment'][0]['customer']['id'])->get()->toArray();
         $notification = $this->Notification();
         $data['vehicles'] = Vehicle::where('shipment_id', null)->get();
         $data['consignees'] = Consignee::all()->toArray();
@@ -974,6 +984,7 @@ class ShipmentController extends Controller
                     $data = Shipment::with('vehicle.user', 'customer.billings')->get();
                 }
             }
+            
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('id', function ($row) {
@@ -994,7 +1005,13 @@ class ShipmentController extends Controller
                     return $bol;
                 })
                 ->addColumn('shipper', function ($row) {
-                    return strtoupper($row['shipper']);
+                    if(is_numeric($row['shipper'])){
+                        $shippers = Shipper::where('id', $row['shipper'])->get()->toArray();
+                        return strtoupper($shippers[0]['shipper_name']);
+                    }
+                    else{
+                        return strtoupper($row['shipper']);
+                    }
                 })
                 ->addColumn('vin', function ($row) {
                     $vin_array = [];
@@ -1077,7 +1094,10 @@ class ShipmentController extends Controller
     public function Customer_Details(Request $req)
     {
         $customer_details = User::with('billings')->where('company_name', $req->company_name)->get()->toArray();
+        $shippers['shippers'] = Shipper::where('customer_id', $customer_details[0]['id'])->get()->toArray();
+        $output = view('layouts.customer_create.SelectedShippers', $shippers)->render();
         // dd($customer_details);
+        $customer_details['shipper'] = $output;
         return $customer_details;
     }
 
