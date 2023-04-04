@@ -3,7 +3,13 @@
 
     @csrf
     @if (@$shipper[0]['id'])
-        <input type="hidden" id="id" name="id" value="{{ @$shipper[0]['id'] }}">
+        @foreach (@$shipper as $shippers)
+        <input type="hidden" id="id" name="id[]" value="{{ @$shippers['id'] }}">
+        @endforeach
+    @endif
+
+
+    @if (@$shipper[0]['id'])
         <input type="hidden" id="customer_id" name="customer_id" value="{{ @$shipper[0]['customer_id'] }}">
     @endif
 
