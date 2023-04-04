@@ -24,7 +24,6 @@
         }
 
         .vehicle_details_box p {
-
             font-family: 'Inter';
             font-style: normal;
             /* font-weight: 600; */
@@ -32,8 +31,6 @@
             /* line-height: 27px; */
             /* identical to box height */
             padding: 15px 15px;
-
-
             color: #FFFFFF;
         }
 
@@ -65,7 +62,8 @@
         }
 
         .images_vehicle img {
-            width: 214px;
+            width: 19%;
+
             margin-bottom: 24px;
         }
 
@@ -77,6 +75,98 @@
             background: #5d9ccb;
             color: white;
         }
+        .imgmodal {
+        z-index: 1;
+        display: none;
+        padding-top: 10px;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.8)
+    }
+
+    .imgmodal-content {
+        margin: auto;
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+
+    .imgmodal-hover-opacity {
+        opacity: 1;
+        filter: alpha(opacity=100);
+        -webkit-backface-visibility: hidden
+    }
+
+    .imgmodal-hover-opacity:hover {
+        opacity: 0.60;
+        filter: alpha(opacity=60);
+        -webkit-backface-visibility: hidden
+    }
+
+
+    .close {
+        text-decoration: none;
+        float: right;
+        font-size: 24px;
+        font-weight: bold;
+        color: white
+    }
+
+    .container1 {
+        width: 200px;
+        display: inline-block;
+    }
+
+
+    .item_1 {
+        transition: transform .2s;
+        box-sizing: border-box;
+    }
+
+    .item_1:hover {
+        transform: scale(1.5);
+        border-radius: 10px !important;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    @media screen and (max-width: 67%) {
+        .material-icons {
+            margin-left: 54px;
+            margin-top: 33px;
+        }
+    }
+
+    .bottom_button {
+        position: absolute;
+        top: 80%;
+        left: 80%;
+        font-size: 10px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        text-align: center;
+        text-decoration: none !important;
+    }
+
+    .left_button {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 10px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        text-align: center;
+        text-decoration: none !important;
+    }
     </style>
 </head>
 
@@ -109,7 +199,8 @@
                     {{-- <div class="vehicle_details" style="color:black!important;"> --}}
                     <div class="vehicle_details d-flex text-black">
                         <p>DESCRIPTION</p>
-                        <p>{{ $vin_details[0]['year'] }} {{ $vin_details[0]['make'] }} {{ $vin_details[0]['model'] }}</p>
+                        <p>{{ $vin_details[0]['year'] }} {{ $vin_details[0]['make'] }} {{ $vin_details[0]['model'] }}
+                        </p>
                     </div>
                     <div class="vehicle_details d-flex text-black">
                         <p>VIN NO</p>
@@ -161,38 +252,60 @@
 
                     {{-- <div class="vehicle_details" style="color:black!important;"> --}}
                     <div class="vehicle_details d-flex text-black">
-                        <p>Port of Loading</p>
-                        <p>NY</p>
+                        <p>STATUS</p>
+                        <p>
+                            @if (@$vin_details[0]['shipment']['status'] == '1')
+                                {{ 'BOOKED' }}
+                            @elseif (@$vin_details[0]['shipment']['status'] == '2')
+                                {{ 'SHIPPED' }}
+                            @elseif (@$vin_details[0]['shipment']['status'] == '3')
+                                {{ 'ARRIVED' }}
+                            @elseif (@$vin_details[0]['shipment']['status'] == '4')
+                                {{ 'COMPLETE' }}
+                            @else
+                                @if (@$vin_details[0]['status'] == '1')
+                                    {{ 'NEW ORDER' }}
+                                @elseif (@$vin_details[0]['status'] == '2')
+                                    {{ 'DISPATCHED' }}
+                                @elseif (@$vin_details[0]['status'] == '3')
+                                    {{ 'ON HAND' }}
+                                @else
+                                @endif
+
+                            @endif
+
+
+                        </p>
                     </div>
 
                     <div class="vehicle_details d-flex text-black">
-                        <p>Container Numner</p>
-                        <p>293847524239</p>
+                        <p>PORT OF LOADING</p>
+                        <p>{{ @$vin_details[0]['shipment']['loading_port'] }}</p>
                     </div>
 
                     <div class="vehicle_details d-flex text-black">
-                        <p>Booking Number</p>
+                        <p>CONTAINER NUMBER</p>
+                        <p>{{ @$vin_details[0]['shipment']['container_no'] }}</p>
+                    </div>
+
+                    <div class="vehicle_details d-flex text-black">
+                        <p>BOOKING NUMBER</p>
                         <p>3298457234342</p>
                     </div>
 
                     <div class="vehicle_details d-flex text-black">
-                        <p>Loading Date</p>
-                        <p>12/12/1998</p>
+                        <p>LOADING DATE</p>
+                        <p>{{ @$vin_details[0]['shipment']['booking_number'] }}</p>
                     </div>
 
                     <div class="vehicle_details d-flex text-black">
-                        <p>Arrival date</p>
-                        <p>12/12/1998</p>
+                        <p>ARRIVAL DATE</p>
+                        <p>{{ @$vin_details[0]['shipment']['est_arrival_date'] }}</p>
                     </div>
 
                     <div class="vehicle_details d-flex text-black">
-                        <p>Expected Arrival date</p>
-                        <p>12/12/1998</p>
-                    </div>
-
-                    <div class="vehicle_details d-flex text-black">
-                        <p>Destination Port</p>
-                        <p>XYZ</p>
+                        <p>DESTINATION PORT</p>
+                        <p>{{ @$vin_details[0]['shipment']['destination_port'] }}</p>
                     </div>
                     <br>
                     {{-- </div> --}}
@@ -200,6 +313,14 @@
             </div>
 
 
+        </div>
+    </div>
+
+    <div id="modal01" class="imgmodal" onclick="this.style.display='none' color:red">
+        <span class="close vehicle_close cursor" onclick="closeModal()" style="margin-top: 50px;margin-right:50px;color:red;">&times;</span>
+        {{-- <span class="close">&times;&nbsp;&nbsp;&nbsp;&nbsp;</span> --}}
+        <div class="imgmodal-content">
+            <img id="img01" style="max-width:100%">
         </div>
     </div>
 
@@ -214,33 +335,26 @@
             <tr>
                 <th scope="row">COLOR</th>
                 <td>{{ @$vin_details[0]['color'] }}</td>
-
             </tr>
             <tr>
                 <th scope="row">KEYS</th>
                 <td>{{ @$vin_details[0]['key'] }}</td>
-
             </tr>
             <tr>
                 <th scope="row">AUCTION</th>
                 <td>{{ @$vin_details[0]['auction'] }}</td>
-
             </tr>
-
             <tr>
                 <th scope="row">LOT</th>
                 <td>{{ @$vin_details[0]['lot'] }}</td>
-
             </tr>
             <tr>
                 <th scope="row">DELIEVERED TO WAREHOUSE</th>
                 <td>{{ @$vin_details[0]['port'] }}</td>
-
             </tr>
             <tr>
                 <th scope="row">BUYER NO</th>
                 <td>{{ @$vin_details[0]['buyer_id'] }}</td>
-
             </tr>
         </tbody>
     </table> --}}
@@ -270,18 +384,19 @@
             <div class="images_vehicle d-flex flex-wrap justify-content-between"
                 style="background: rgba(243, 243, 243, 0.72);
             box-shadow: 3px 4px 3px rgba(22, 22, 22, 0.24);
-            border-radius: 10px;padding: 20px 20px;">
+            border-radius: 0px 0px 10px 10px;padding: 20px 20px;">
 
                 @foreach ($vin_details[0]['warehouse_image'] as $warehouse_images)
-                    <img src="{{ asset($warehouse_images['name']) }}" alt=""class="" width="50">
+                    <img src="{{ asset($warehouse_images['name']) }}" alt=""class="" width="25%"
+                        onclick="onClick(this)">
                 @endforeach
 
                 {{-- @foreach ($vin_details[0]['auction_image'] as $auction_images)
-                    <img src="{{ asset($auction_images['name']) }}" alt=""class="" width="50">
+                    <img src="{{ asset($auction_images['name']) }}" alt=""class="" width="25%">
                 @endforeach --}}
 
                 {{-- @foreach ($vin_details[0]['pickupimages'] as $pickup_image)
-                    <img src="{{ asset($pickup_image['name']) }}" alt=""class="" width="50">
+                    <img src="{{ asset($pickup_image['name']) }}" alt=""class="" width="25%">
                 @endforeach --}}
             </div>
         </div>
@@ -324,7 +439,6 @@
             // alert(vin);
             $(this).addClass('active');
             tab = $(this).text();
-
             if (tab == 'Warehouse Images') {
                 $('.downloadVehicles_zip').attr('id', 'warehouse_images');
             } else if (tab == 'Auction Images') {
@@ -361,8 +475,6 @@
             textArea.remove();
             alert("Link copied to clipboard!");
         }
-
-
         async function download_all(tab) {
             id = "{{ @$vin_details[0]['id'] }}";
             $.ajax({
@@ -401,7 +513,19 @@
                     })
                 }
             });
+        }
 
+        function openModal() {
+            document.getElementById("myModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("modal01").style.display = "none";
+        }
+
+        function onClick(element) {
+            document.getElementById("img01").src = element.src;
+            document.getElementById("modal01").style.display = "block";
         }
     </script>
 </body>
