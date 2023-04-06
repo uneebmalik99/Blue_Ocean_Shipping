@@ -929,7 +929,6 @@ class CustomerController extends Controller
                     $role->assignRole('Customer');
                 }
 
-
                 if ($file) {
                     foreach ($file as $files) {
                         $file_name = time() . '.' . $files->extension();
@@ -958,7 +957,6 @@ class CustomerController extends Controller
                         'view' => $view,
                     ];
             } elseif ($tab == "shipper_customer") {
-                // dd($request->id);
                 if ($request->id) {
                     foreach ($request->shipper_name as $key => $val) {
                         if ($key < count($request->id)) {
@@ -971,50 +969,36 @@ class CustomerController extends Controller
                                 'city' => $data['city'][$key],
                                 'zip_code' => $data['zip_code'][$key],
                                 'address' => $data['address'][$key],
-                                'consignee' => $data['consignee'],
-                                'consolidate' => $data['consolidate'],
-                                'original_shipping_documents' => $data['original_shipping_documents'],
-                                'insurance' => $data['insurance'],
-                                'destination_port' => $data['destination_port'],
-                                'customer_id' => $data['customer_id']
+                                'consignee' => $data['consignee'] || null,
+                                'consolidate' => $data['consolidate'] || null,
+                                'original_shipping_documents' => $data['original_shipping_documents'] || null,
+                                'insurance' => $data['insurance'] || null,
+                                'destination_port' => $data['destination_port'] || null,
+                                'customer_id' => $data['customer_id'] || null
                             ]);
                         } else {
-                            // $Obj = Shipper::create([
-                            //     'shipper_name' => $data['shipper_name'][$key],
-                            //     'contact_person_name' => $data['contact_person_name'][$key],
-                            //     'phone' => $data['phone'][$key],
-                            //     'company_email' => $data['company_email'][$key],
-                            //     'country' => $data['country'][$key],
-                            //     'city' => $data['city'][$key],
-                            //     'zip_code' => $data['zip_code'][$key],
-                            //     'address' => $data['address'][$key],
-                            //     'consignee' => $data['consignee'],
-                            //     'consolidate' => $data['consolidate'],
-                            //     'original_shipping_documents' => $data['original_shipping_documents'],
-                            //     'insurance' => $data['insurance'],
-                            //     'destination_port' => $data['destination_port'],
-                            //     'customer_id' => $data['customer_id']
-                            // ]);
+                            $Obj = Shipper::create([
+                                'shipper_name' => $data['shipper_name'][$key],
+                                'contact_person_name' => $data['contact_person_name'][$key],
+                                'phone' => $data['phone'][$key],
+                                'company_email' => $data['company_email'][$key],
+                                'country' => $data['country'][$key],
+                                'city' => $data['city'][$key],
+                                'zip_code' => $data['zip_code'][$key],
+                                'address' => $data['address'][$key],
+                                'consignee' => $data['consignee'] || null,
+                                'consolidate' => $data['consolidate'] || null,
+                                'original_shipping_documents' => $data['original_shipping_documents'] || null,
+                                'insurance' => $data['insurance'] || null,
+                                'destination_port' => $data['destination_port'] || null,
+                                'customer_id' => $data['customer_id'] || null
+                            ]);
                         }
                     }
                 } else {
 
                     for ($i = 0; $i < count($data['shipper_name']); $i++) {
-                        // $Obj = Shipper::updateOrCreate(['id' => $request->id], [
-                        //     'shipper_name' => $data['shipper_name'][$i],
-                        //     'contact_person_name' => $data['contact_person_name'][$i],
-                        //     'phone' => $data['phone'][$i],
-                        //     'company_email' => $data['company_email'][$i],
-                        //     'country' => $data['country'][$i],
-                        //     'city' => $data['city'][$i],
-                        //     'zip_code' => $data['zip_code'][$i],
-                        //     'address' => $data['address'][$i],
-                        //     'consignee' => $data['consignee'],
-                        //     'consolidate' => $data['consolidate'],
-                        //     'original_shipping_documents' => $data['original_shipping_documents'],
-                        //     'insurance' => $data['insurance'],
-                        //     'destination_port' => $data['destination_port']
-                        // ]);
+
                         $Obj = Shipper::create([
                             'shipper_name' => $data['shipper_name'][$i],
                             'contact_person_name' => $data['contact_person_name'][$i],
@@ -1045,6 +1029,7 @@ class CustomerController extends Controller
                     if ($request->default) {
                         foreach ($request->default as $key => $val) {
                             if ($key < count($request->id)) {
+
                                 $Obj = Quotation::where('id', $request->id[$key])->update([
                                     'destination_port' => $data['destination_port'],
                                     'valid_from' => $data['valid_from'],
@@ -1057,7 +1042,9 @@ class CustomerController extends Controller
                                     'special_rate' => $data['special_rate'][$key],
                                     'customer_id' => $data['customer_id']
                                 ]);
+
                             } else {
+
                                 $Obj = Quotation::create([
                                     'destination_port' => $data['destination_port'],
                                     'valid_from' => $data['valid_from'],
@@ -1070,6 +1057,7 @@ class CustomerController extends Controller
                                     'special_rate' => $data['special_rate'][$key],
                                     'customer_id' => $data['customer_id']
                                 ]);
+                                
                             }
                         }
                     }
