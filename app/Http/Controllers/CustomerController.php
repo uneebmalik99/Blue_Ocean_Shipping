@@ -960,61 +960,69 @@ class CustomerController extends Controller
                 if ($request->id) {
                     foreach ($request->shipper_name as $key => $val) {
                         if ($key < count($request->id)) {
-                            $Obj = Shipper::where('id', $request->id[$key])->update([
-                                'shipper_name' => $data['shipper_name'][$key],
-                                'contact_person_name' => $data['contact_person_name'][$key],
-                                'phone' => $data['phone'][$key],
-                                'company_email' => $data['company_email'][$key],
-                                'country' => $data['country'][$key],
-                                'city' => $data['city'][$key],
-                                'zip_code' => $data['zip_code'][$key],
-                                'address' => $data['address'][$key],
-                                'consignee' => $data['consignee'] || null,
-                                'consolidate' => $data['consolidate'] || null,
-                                'original_shipping_documents' => $data['original_shipping_documents'] || null,
-                                'insurance' => $data['insurance'] || null,
-                                'destination_port' => $data['destination_port'] || null,
-                                'customer_id' => $data['customer_id'] || null
-                            ]);
+                            if($data['shipper_name'][$key] != null || $data['shipper_name'][$key] != ''){
+                                // dd($key, count($request->id), $data['shipper_name'][$key]);
+                                $Obj = Shipper::where('id', $request->id[$key])->update([
+                                    'shipper_name' => $data['shipper_name'][$key],
+                                    'contact_person_name' => $data['contact_person_name'][$key],
+                                    'phone' => $data['phone'][$key],
+                                    'company_email' => $data['company_email'][$key],
+                                    'country' => $data['country'][$key],
+                                    'city' => $data['city'][$key],
+                                    'zip_code' => $data['zip_code'][$key],
+                                    'address' => $data['address'][$key],
+                                    'consignee' => $data['consignee'],
+                                    'consolidate' => $data['consolidate'],
+                                    'original_shipping_documents' => $data['original_shipping_documents'],
+                                    'insurance' => $data['insurance'],
+                                    'destination_port' => $data['destination_port'],
+                                    'customer_id' => $data['customer_id']
+                                ]);
+                            }
                         } else {
-                            $Obj = Shipper::create([
-                                'shipper_name' => $data['shipper_name'][$key],
-                                'contact_person_name' => $data['contact_person_name'][$key],
-                                'phone' => $data['phone'][$key],
-                                'company_email' => $data['company_email'][$key],
-                                'country' => $data['country'][$key],
-                                'city' => $data['city'][$key],
-                                'zip_code' => $data['zip_code'][$key],
-                                'address' => $data['address'][$key],
-                                'consignee' => $data['consignee'] || null,
-                                'consolidate' => $data['consolidate'] || null,
-                                'original_shipping_documents' => $data['original_shipping_documents'] || null,
-                                'insurance' => $data['insurance'] || null,
-                                'destination_port' => $data['destination_port'] || null,
-                                'customer_id' => $data['customer_id'] || null
-                            ]);
+                            if($data['shipper_name'][$key] != null || $data['shipper_name'][$key] != '') {
+                                dd($data['shipper_name'][$key]);
+
+                                $Obj = Shipper::create([
+                                    'shipper_name' => $data['shipper_name'][$key],
+                                    'contact_person_name' => $data['contact_person_name'][$key],
+                                    'phone' => $data['phone'][$key],
+                                    'company_email' => $data['company_email'][$key],
+                                    'country' => $data['country'][$key],
+                                    'city' => $data['city'][$key],
+                                    'zip_code' => $data['zip_code'][$key],
+                                    'address' => $data['address'][$key],
+                                    'consignee' => $data['consignee'],
+                                    'consolidate' => $data['consolidate'],
+                                    'original_shipping_documents' => $data['original_shipping_documents'],
+                                    'insurance' => $data['insurance'],
+                                    'destination_port' => $data['destination_port'],
+                                    'customer_id' => $data['customer_id']
+                                ]);
+                            }
                         }
                     }
                 } else {
 
                     for ($i = 0; $i < count($data['shipper_name']); $i++) {
-
-                        $Obj = Shipper::create([
-                            'shipper_name' => $data['shipper_name'][$i],
-                            'contact_person_name' => $data['contact_person_name'][$i],
-                            'phone' => $data['phone'][$i],
-                            'company_email' => $data['company_email'][$i],
-                            'country' => $data['country'][$i],
-                            'city' => $data['city'][$i],
-                            'zip_code' => $data['zip_code'][$i],
-                            'address' => $data['address'][$i],
-                            'consignee' => $data['consignee'],
-                            'consolidate' => $data['consolidate'],
-                            'original_shipping_documents' => $data['original_shipping_documents'],
-                            'insurance' => $data['insurance'],
-                            'destination_port' => $data['destination_port'],
-                            'customer_id' => $data['customer_id']
-                        ]);
+                        if($data['shipper_name'][$i] != null || $data['shipper_name'][$i] != '') {
+                            $Obj = Shipper::create([
+                                'shipper_name' => $data['shipper_name'][$i],
+                                'contact_person_name' => $data['contact_person_name'][$i],
+                                'phone' => $data['phone'][$i],
+                                'company_email' => $data['company_email'][$i],
+                                'country' => $data['country'][$i],
+                                'city' => $data['city'][$i],
+                                'zip_code' => $data['zip_code'][$i],
+                                'address' => $data['address'][$i],
+                                'consignee' => $data['consignee'],
+                                'consolidate' => $data['consolidate'],
+                                'original_shipping_documents' => $data['original_shipping_documents'],
+                                'insurance' => $data['insurance'],
+                                'destination_port' => $data['destination_port'],
+                                'customer_id' => $data['customer_id']
+                            ]);
+                        }
                     }
                 }
                 $output =
@@ -1057,7 +1065,7 @@ class CustomerController extends Controller
                                     'special_rate' => $data['special_rate'][$key],
                                     'customer_id' => $data['customer_id']
                                 ]);
-                                
+
                             }
                         }
                     }
@@ -1121,12 +1129,14 @@ class CustomerController extends Controller
         $output = view('customer.FilterTable', $data)->render();
         return Response($output);
     }
+
     public function changeNotification(Request $req)
     {
         $id = $req->id;
         $notification = Notification::where('id', $id)->get();
         return Response($notification);
     }
+    
     public function export()
     {
         return Excel::download(new UsersExport, 'customers.xlsx');
