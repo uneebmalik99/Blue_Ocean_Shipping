@@ -981,8 +981,7 @@ class CustomerController extends Controller
                             }
                         } else {
                             if($data['shipper_name'][$key] != null || $data['shipper_name'][$key] != '') {
-                                dd($data['shipper_name'][$key]);
-
+                                // dd($data['shipper_name'][$key]);
                                 $Obj = Shipper::create([
                                     'shipper_name' => $data['shipper_name'][$key],
                                     'contact_person_name' => $data['contact_person_name'][$key],
