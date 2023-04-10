@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Session;
 use App\Exports\VehicleExport;
 use App\Http\Controllers\Controller;
 use App\Imports\VehicleImport;
@@ -1233,16 +1233,20 @@ class VehicleController extends Controller
     }
 
     function trackVin(Request $req){
+        
         $vin = $req->vin;
         $data = [];
 
-        $data['vin_details'] = Vehicle::with('shipment','user','warehouse_image', 'auction_image', 'pickupimages')->where('vin', $vin)->get()->toArray();
+        $data['vin_details'] = Vehicle::with('shipment','user','warehouse_image', 'auction_image', 'pickupimages')->where('vin', $vin)->orwhere('lot', $vin)->get()->toArray();
        if($data['vin_details']){
         // return $data['vin_details'];
          return view('layouts.track_vin.vin', $data);  
        }
        else{
-        return 'No Any Vehicle Against Vin Number';
+        Session::flash('message', 'No Any Vehicle Against Vin Number or Lot Number.');
+        return back();
+        
+        // return 'No Any Vehicle Against Vin Number';
        }
     }
 

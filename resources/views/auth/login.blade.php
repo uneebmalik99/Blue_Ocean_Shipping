@@ -14,6 +14,12 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
             integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
             crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"
+            integrity="sha512-Zq9o+E00xhhR/7vJ49mxFNJ0KQw1E1TMWkPTxrWcnpfEFDEXgUiwJHIKit93EW/XxE31HSI5GEOW06G6BF1AtA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.css"
+            integrity="sha512-DIW4FkYTOxjCqRt7oS9BFO+nVOwDL4bzukDyDtMO7crjUZhwpyrWBFroq+IqRe6VnJkTpRAS6nhDvf0w+wHmxg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
     <style>
         * {
@@ -57,7 +63,7 @@
             height: auto;
             background: white;
             /* box-shadow: 2px 2px 2px rgba(255,255,255,.1);
-                         */
+                                 */
             border-radius: 10px;
         }
 
@@ -261,14 +267,18 @@
         inset 0 -3em 3em rgba(0,0,0,0.1),
               0 0  0 2px rgb(255,255,255),
               0.3em 0.3em 1em rgba(0,0,0,0.3); ">
-               <div>
-                    
-                    <button type="button" class=" col-6 btn active" onclick="login_tract(this.id)" id="login" style="
+                <div>
+
+                    <button type="button" class=" col-6 btn active" onclick="login_tract(this.id)" id="login"
+                        style="
                         border-radius:  10px 0px 0px 0px;
-                    ">LOGIN</button><button type="button" class=" col-6 btn " onclick="login_tract(this.id)" id="track" style="
+                    ">LOGIN</button><button
+                        type="button" class=" col-6 btn " onclick="login_tract(this.id)" id="track"
+                        style="
                         border-radius:  0px 10px 0px 0px;
-                    ">TRACK VIN</button>
-                    
+                    ">TRACK
+                        VIN</button>
+
                 </div>
                 <div id="login_page">
                     <form method="POST" action="{{ route('login') }}">
@@ -372,6 +382,18 @@
                 this.classList.toggle('fa-eye-slash');
             });
         </script>
+        
+    
+    
+        @if(Session::has('message'))
+                <script>
+                
+                    iziToast.warning({
+                        position: 'topRight',
+                        message: '{{ Session::get('message') }}',
+                    });
+                </script>
+        @endif
     </body>
 
     </html>

@@ -806,10 +806,14 @@ class ShipmentController extends Controller
         // $data = ['shipment_id'=> null];
         // $data = ['status' => 1];
         // $data = ['shipment_status' => 0];
+
+        
         $data = [];
+        
         $data['shipment_id'] = null;
         $data['status'] = 1;
         $data['shipment_status'] = '0';
+
         $vehicles =  Shipment::with('vehicle')->where('id', $id)->get();
         foreach ($vehicles[0]['vehicle'] as $vehi) {
             $Obj = Vehicle::find($vehi['id']);
@@ -1005,6 +1009,8 @@ class ShipmentController extends Controller
                     return $bol;
                 })
                 ->addColumn('shipper', function ($row) {
+                    // return strtoupper($row['shipper']);
+
                     if(is_numeric($row['shipper'])){
                         $shippers = Shipper::where('id', $row['shipper'])->get()->toArray();
                         return strtoupper($shippers[0]['shipper_name']);
@@ -1127,10 +1133,9 @@ class ShipmentController extends Controller
 
         $vehicle = Vehicle::find($req->value);
         $vehicle->shipment_status = '0';
+        $vehicle->status = 3;
         $vehicle->vehicle_active_shipment = '0';
         $vehicle->save();
-
-
 
         $data = VehicleCart::find($req->id);
 

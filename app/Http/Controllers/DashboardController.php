@@ -450,7 +450,7 @@ class DashboardController extends Controller
                     $data = Shipment::with('vehicle.user', 'customer.billings', 'customer.shippers')->where('customer_email', auth()->user()->email)->where('loading_state', $state)->get();
 
                     // ->whereIn('id', $user_vehicles_ids)->where('customer_email', auth()->user()->email)->orwhere('loading_state', $state)->toSql();
-                    dd($state);
+                    // dd($state);
                 } else {
                     $data = Shipment::with('vehicle.user')->where('loading_state', $state)->get();
                 }
@@ -552,7 +552,7 @@ class DashboardController extends Controller
 
                 //     return $btn;
                 // })
-                ->rawColumns(['action', 'shipment_id', 'shipper', 'select_consignee', 'vin', 'log'])
+                ->rawColumns(['action', 'shipment_id', 'shipper', 'select_consignee', 'vin', 'lot'])
                 ->make(true);
         }
         if (Auth::user()->hasRole('Customer')) {
