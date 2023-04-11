@@ -1018,7 +1018,16 @@ class VehicleController extends Controller
                         $output['view'] = view('vehicle.' . $status_name, $data)->render();
                         return Response($output);
                     } else {
-                        $records = Vehicle::where('title_type', '!=', 'EXPORTABLE')->orwhereNull('title_type')->get();
+                        // $records = Vehicle::where('title_type', '!=', 'EXPORTABLE')->orwhereNull('title_type')->get();
+                        $records =  Vehicle::where(function ($type) {
+                                $type->where('title_type', '!=', 'EXPORTABLE');
+                            })
+                            ->where(function ($status) {
+                                $status->where('status', 1)
+                                    ->orwhere('status', 2)
+                                    ->orwhere('status', 3);
+                            })
+                            ->get();
                         $data['records'] = $records;
                         $output['view'] = view('vehicle.' . $status_name, $data)->render();
                         return Response($output);
