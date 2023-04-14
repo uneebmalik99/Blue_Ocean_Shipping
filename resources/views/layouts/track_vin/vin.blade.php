@@ -105,7 +105,7 @@ font-weight: 600 !important;
   justify-content: center;
   align-items: center;
   overflow-y: scroll;
-  max-height: 710px ;
+  /* max-height: 710px; */
 }
 
 .image-card {
@@ -541,9 +541,9 @@ font-size: 1.2rem; /* Increased font size */
         
 <div class="col-lg-7 right" style="margin-right: 3% ;"  >
     <div class="button-container">
-    <button id="warehouse" class="btn active" style="width:33% ; border: 0.5px solid #1F689E; border-top-left-radius: 5px !important; "> <img src="{{ asset('assets/images/ware.png') }}"  style="float: left; padding-top: 2px; width: 20px; height: 20px; margin-top: 6px; " alt="Logo"><h4 style="padding: 0px;">Warehouse Images</h4></button>
-    <button id="auction" class="btn" style="width:33% ; border: 0.5px solid #1F689E; border-radius: 0px; " ><img src="{{ asset('assets/images/auction.png') }}" style="float: left; padding-top: 2px; width: 20px; height: 20px; margin-top: 6px; " alt="Logo"><h4 style="padding: 0px;">Auction Images</h4></button>
-    <button id="pickup" class="btn" style="width:34% ; border: 0.5px solid #1F689E; border-top-right-radius: 10px !important; "><img src="{{ asset('assets/images/pickup.png') }}" style="float: left; padding-top: 2px; width: 20px; height: 20px; margin-top: 6px; " alt="Logo"><h4 style="padding: 0px;">Pickup Images</h4></button>
+    <button id="warehouse" class="btn active" style="width:33% ; border: 0.5px solid #1F689E; border-top-left-radius: 5px !important; ">Warehouse Images</button>
+    <button id="auction" class="btn" style="width:33% ; border: 0.5px solid #1F689E; border-radius: 0px; " >Auction Images</button>
+    <button id="pickup" class="btn" style="width:34% ; border: 0.5px solid #1F689E; border-top-right-radius: 10px !important; ">Pickup Images</button>
       </div>
 
       <input type="hidden" name="" id="vin" value={{ $vin_details[0]['vin'] }}>
