@@ -2,12 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\v1\AuthController;
-use App\Http\Controllers\Api\v1\ContainerController;
-use App\Http\Controllers\Api\v1\VehicleController;
-use App\Http\Controllers\Api\v1\CustomerApiController;
-use App\Http\Controllers\Api\v1\DashboardController;
-use App\Http\Controllers\Api\v1\RateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,56 +18,85 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 //Auth Api Routes
-Route::post('/auth/register', [AuthController::class, 'register']);
+Route::post('/auth/register', [App\Http\Controllers\Api\V1\AuthController::class, 'register']);
 
-Route::post('/auth/login', [AuthController::class, 'login']);
+Route::post('/auth/login', [App\Http\Controllers\Api\V1\AuthController::class, 'login']);
 
 Route::prefix('/auth')->middleware(['auth:sanctum'])->group(function () {
 
 
-    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::post('/logout', [App\Http\Controllers\Api\V1\AuthController::class, 'logout']);
 
 
     //dashboard 
     Route::prefix('/dashboard')->group(function () {
-        Route::get('/list', [DashboardController::class, 'dashboard'])->name('dashboard.list');
+        Route::get('/list', [App\Http\Controllers\Api\V1\DashboardController::class, 'dashboard']);
     });
 
     // Rate shipment and towing 
     Route::prefix('/rate')->group(function (){
         // shipping rate 
-     Route::get('/shipment',[RateController::class, 'index']);
-     Route::get('/shipment/delete/{id?}' , [RateController::class, 'shipping_rate_delete']);
-     Route::post('/shipment/save', [RateController::class, 'shipmentrate_save']);
-     Route::post('/shipment/update', [RateController::class, 'shipmentrate_update']);
+     Route::get('/shipment',[App\Http\Controllers\Api\V1\RateController::class, 'index']);
+     Route::get('/shipment/delete/{id?}' , [App\Http\Controllers\Api\V1\RateController::class, 'shipping_rate_delete']);
+     Route::post('/shipment/save', [App\Http\Controllers\Api\V1\RateController::class, 'shipmentrate_save']);
+     Route::post('/shipment/update', [App\Http\Controllers\Api\V1\RateController::class, 'shipmentrate_update']);
 
 
         //  towing rate
-     Route::get('/towing',[RateController::class, 'towing']);
-     Route::get('/towing/delete/{id?}',[RateController::class, 'towing_rate_delete']);
-     Route::post('/towing/save', [RateController::class, 'towingrate_save']);
-     Route::post('/towing/update', [RateController::class, 'towingrate_update']);
+     Route::get('/towing',[App\Http\Controllers\Api\V1\RateController::class, 'towing']);
+     Route::get('/towing/delete/{id?}',[App\Http\Controllers\Api\V1\RateController::class, 'towing_rate_delete']);
+     Route::post('/towing/save', [App\Http\Controllers\Api\V1\RateController::class, 'towingrate_save']);
+     Route::post('/towing/update', [App\Http\Controllers\Api\V1\RateController::class, 'towingrate_update']);
 
 
     });
     //Vehicle
     Route::prefix('/vehicle')->group(function () {
-        
-        Route::post('/search', [VehicleController::class, 'search_vehicle']);
-        Route::post('/update', [VehicleController::class, 'update_vehicle']);
-        Route::get('/all/vehicles', [VehicleController::class, 'all_vehicles']);
-        Route::post('/customerVehicles', [VehicleController::class, 'customer_vehicles']);
-        Route::get('/delete/{id?}', [VehicleController::class, 'delete']);
-
+        Route::post('/search', [App\Http\Controllers\Api\V1\VehicleController::class, 'search_vehicle']);
+        Route::post('/update', [App\Http\Controllers\Api\V1\VehicleController::class, 'update_vehicle']);
+        Route::get('/all/vehicles', [App\Http\Controllers\Api\V1\VehicleController::class, 'all_vehicles']);
+        Route::post('/customerVehicles', [App\Http\Controllers\Api\V1\VehicleController::class, 'customer_vehicles']);
+        Route::get('/allvehicles', [App\Http\Controllers\Api\V1\VehicleController::class, 'index']);
+        Route::get('/show/{id}',[App\Http\Controllers\Api\V1\VehicleController::class,'show']);
+        Route::get('/delete/{id}',[App\Http\Controllers\Api\V1\VehicleController::class,'destroy']);
+        Route::post('/create',[App\Http\Controllers\Api\V1\VehicleController::class,'store']);
     });
     Route::prefix('/shipment')->group(function () {
-        Route::post('/search', [ContainerController::class, 'search_shipment']);
-        Route::post('/update', [ContainerController::class, 'update_shipment']);
+        Route::post('/search', [App\Http\Controllers\Api\V1\ContainerController::class, 'search_shipment']);
+        Route::post('/update', [App\Http\Controllers\Api\V1\ContainerController::class, 'update_shipment']);
+        Route::get('/all/shipments', [App\Http\Controllers\Api\V1\ContainerController::class,'index']);
+        Route::get('/show/{id}',[App\Http\Controllers\Api\V1\ContainerController::class,'show']);
+        Route::get('/delete/{id}',[App\Http\Controllers\Api\V1\ContainerController::class,'destroy']);
+        Route::post('/create',[App\Http\Controllers\Api\V1\ContainerController::class,'store']);
+
     });
     Route::prefix('/customer')->group(function () {
-        Route::get('/View/AllCustomers', [CustomerApiController::class, 'view_all_customers']);
-        Route::get('/buyer_ids/{id?}', [CustomerApiController::class, 'view_buyer_ids']);
-        Route::get('/consignee/{id?}', [CustomerApiController::class, 'view_consignee']);
+        Route::get('/View/AllCustomers', [App\Http\Controllers\Api\V1\CustomerApiController::class, 'view_all_customers']);
+        Route::get('/buyer_ids/{id?}', [App\Http\Controllers\Api\V1\CustomerApiController::class, 'view_buyer_ids']);
+        Route::get('/consignee/{id?}', [App\Http\Controllers\Api\V1\CustomerApiController::class, 'view_consignee']);
+    });
+    Route::prefix('/invoice')->group(function (){
+        Route::get('/allinvoices', [App\Http\Controllers\Api\V1\InvoiceController::class, 'index']);
+        Route::get('/show/{id}', [App\Http\Controllers\Api\V1\InvoiceController::class, 'show']);
+        Route::get('/delete/{id}', [App\Http\Controllers\Api\V1\InvoiceController::class,'destroy']);
+        Route::post('/create', [App\Http\Controllers\Api\V1\InvoiceController::class,'store']);
+    });
+    
+    /**
+     * Sticky Notes routes
+     * 
+     */
+    Route::prefix('/sticknotes')->group(function(){
+        Route::get('/view',[App\Http\Controllers\Api\V1\StickyNoteController::class, 'index']);
+        Route::post('/create',[App\Http\Controllers\Api\V1\StickyNoteController::class, 'store']);
+        Route::get('/show/{id}',[App\Http\Controllers\Api\V1\StickyNoteController::class, 'show']);
+        Route::get('/delete/{id}',[App\Http\Controllers\Api\V1\StickyNoteController::class,'destroy']);
+    });
+    Route::prefix('/notification')->group(function(){
+        Route::get('/view',[App\Http\Controllers\Api\V1\NotificationController::class, 'index']);
+        Route::post('/create',[App\Http\Controllers\Api\V1\NotificationController::class, 'store']);
+        Route::get('/show/{id}',[App\Http\Controllers\Api\V1\NotificationController::class, 'show']);
+        Route::get('/delete/{id}',[App\Http\Controllers\Api\V1\NotificationController::class,'destroy']);
     });
 });
 //VehicLe Resoucrce Routes

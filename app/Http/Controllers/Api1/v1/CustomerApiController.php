@@ -1,13 +1,17 @@
 <?php
-namespace App\Http\Controllers\Api\V1;
+
+namespace App\Http\Controllers\api\v1;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
-use App\Traits\ApiResponser;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Http\JsonResponse;
+use App\Traits\ApiResponser;
 
-class AuthController extends Controller
+use Illuminate\Support\Facades\Validator;
+
+
+class CustomerApiController extends Controller
 {
     use ApiResponser;
     /**
@@ -18,10 +22,7 @@ class AuthController extends Controller
     public function index()
     {
         //
-       
     }
-
-    
 
     /**
      * Show the form for creating a new resource.
@@ -38,6 +39,7 @@ class AuthController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * 
      */
     public function store(Request $request)
     {
@@ -52,9 +54,8 @@ class AuthController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -65,7 +66,6 @@ class AuthController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -77,7 +77,6 @@ class AuthController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -88,51 +87,40 @@ class AuthController extends Controller
     {
         //
     }
-    public function register(Request $request)
-    {
-       
-        $attr = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|unique:user,email',
-            'password' => 'required|string|min:6|confirmed'
-        ]);
-        
-
-        $user = User::create([
-            'name' => $attr['name'],
-            'password' => bcrypt($attr['password']),
-            'email' => $attr['email']
-        ]);
-
-        return $this->success([
-            'token' => $user->createToken('API Token')->plainTextToken
-        ]);
-    }
-
-    public function login(Request $request)
-    {
-        $attr = $request->validate([
-            'email' => 'required|string|email|',
-            'password' => 'required|string'
-        ]);
-
-        if (!Auth::attempt($attr)) {
-            return $this->error('Credentials not match', 401);
+    public function view_all_customers(){
+        $users = User::role('Customer')->get();
+        if($users){
+            return response([
+                'data' => $users,
+                'success' => 'Success',
+            ], 200);
         }
-        
-        return $this->success([
-            'token' => auth()->user()->createToken('API Token')->plainTextToken,
-            'data' => auth()->user(),
-             
-        ],"Login Successfully");
+        else{
+            return response([
+                'data' => $users,
+                'error' => 'fail',
+            ], 401);
+        }
     }
-
-    public function logout()
-    {
-        auth()->user()->tokens()->delete();
-
-        return [
-            'message' => 'Tokens Revoked'
-        ];
+    public function view_buyer_ids($id = null){
+        $buyyer_ids = User::with('billings')->whereid($id)->get()->toArray();
+        if($buyyer_ids){
+            $data['buyer_numbers'] = $buyyer_ids[0]['billings'][0]['buyer_number'];
+            return $this->success($data, "Found Buyer Ids Successfully!", 200);
+        }
+        else{
+            return $this->error('Not Found Any Buyer Id For This Customer', 401, $buyyer_ids);
+        }
+    }
+    public function view_consignee($id = null){
+        $data = [];
+        $consignee = User::with('billings')->whereid($id)->get()->toArray();
+        if($consignee){
+            $data['consignee'] = $consignee[0]['billings'][0]['company_name'];
+            return $this->success($data, "Found Buyer Ids Successfully!", 200);
+        }
+        else{
+            return $this->error('Not Found Any Buyer Id For This Customer', 401, $consignee);
+        }
     }
 }

@@ -1,7 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\V1;
-
+namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -35,7 +34,21 @@ class RateController extends Controller
     {
         $data = [];
 
-        
+        $data = [
+            "page_title" => "Shippment Rate",
+            "page_heading" => $this->plural . ' List',
+            "breadcrumbs" => array('#' => $this->plural . " List"),
+            "module" => [
+                'type' => $this->type,
+                'singular' => $this->singular,
+                'plural' => $this->plural,
+                'view' => $this->view,
+                'db_key' => $this->db_key,
+                'action' => $this->action,
+                'page' => 'list',
+                'action' => $this->action,
+            ],
+        ];
         $data['vehicles_cart'] = VehicleCart::with('vehicle')->get()->toArray();
 
         $data['shippment_rate']  = ShippmentRate::all()->toArray();

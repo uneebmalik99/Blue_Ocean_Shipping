@@ -1,7 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\V1;
-
+namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -185,12 +184,6 @@ class DashboardController extends Controller
              $dispatch_value = $dispatch->sum('value');
              $data['dispatch_count'] = $dispatch_count;
              $data['dispatch_value'] = $dispatch_value;
-
-             $towing =  Vehicle::where('status', '5');
-             $towing_count = $dispatch->count();
-             $towing_value = $dispatch->sum('value');
-             $data['towing_count'] = $towing_count;
-             $data['towing_value'] = $towing_value;
   
              // ======= shipments statuses  ====== 
              $booked = Shipment::where('status', '1');
